@@ -1,0 +1,18 @@
+.treeSelectDropdown :global(.ant-select-tree .ant-select-tree-treenode) {
+  padding: 0 !important;
+  min-height: 32px;
+  align-items: center;
+}
+
+.treeSelectDropdown :global(.ant-select-tree .ant-select-tree-node-content-wrapper) {
+  padding: 8px 12px !important;
+  line-height: 22px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.treeSelectDropdown :global(.ant-select-tree .ant-select-tree-title) {
+  line-height: 22px;
+  flex: 1;
+}

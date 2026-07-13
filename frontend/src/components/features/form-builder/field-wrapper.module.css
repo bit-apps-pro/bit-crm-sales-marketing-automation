@@ -1,0 +1,10 @@
+.fieldAction {
+  opacity: 0;
+}
+
+:global(.selected) .field .fieldAction,
+.field:focus-within .fieldAction,
+.field:hover .fieldAction,
+.field:focus-visible .fieldAction {
+  opacity: 1;
+}

@@ -1,0 +1,154 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
+import { renderFullName } from '@common/helpers/entity-helpers'
+import { __ } from '@common/helpers/i18nWrap'
+import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
+import { type FieldItem } from '@features/field-settings/shared/field-types'
+import { type LeadType } from '@pages/lead/shared/lead-types'
+import If from '@utilities/If'
+import { Button, Table, Tag, Typography } from 'antd'
+import { useMemo } from 'react'
+import { LuEye } from 'react-icons/lu'
+import { Link, useSearchParams } from 'react-router'
+
+import { useLeadStoreKeysActions, useLeadStoreSelectedKeys } from '../state/use-selected-lead-keys-store'
+import DeleteLeadPopup from './delete-lead-popup'
+
+interface LeadsTableProps {
+  fieldList: FieldItem[]
+  isLoading: boolean
+  leads: LeadType[]
+}
+
+export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTableProps) {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const selectedLeadKeys = useLeadStoreSelectedKeys()
+  const { setSelectedKeys } = useLeadStoreKeysActions()
+  const sortBy = searchParams.get('sortBy') || ''
+  const sortOrder = searchParams.get('sortOrder') || ''
+  const tableScrollY = useTableScrollHeight(400)
+
+  const handleTableChange = (_pagination: unknown, _filters: unknown, sorter: unknown) => {
+    const sortData = Array.isArray(sorter) ? sorter[0] : sorter
+
+    setSearchParams(prev => {
+      if (
+        sortData &&
+        typeof sortData === 'object' &&
+        'field' in sortData &&
+        'order' in sortData &&
+        sortData.field
+      ) {
+        prev.set('sortBy', String(sortData.field))
+        prev.set('sortOrder', sortData.order === 'ascend' ? 'asc' : 'desc')
+      } else {
+        prev.delete('sortBy')
+        prev.delete('sortOrder')
+      }
+      return prev
+    })
+  }
+
+  const handleRowSelectionChange = (newSelectedRowKeys: React.Key[]) => {
+    setSelectedKeys(newSelectedRowKeys)
+  }
+
+  const dynamicColumns = useMemo(
+    () =>
+      fieldList
+        .filter(field => field.is_visible)
+        .map(field => ({
+          dataIndex: field.field_key,
+          ellipsis: {
+            showTitle: true
+          },
+          key: field.field_key,
+          render: (text: string, record: LeadType): React.ReactNode => {
+            if (field.field_key === 'full_name') {
+              return (
+                <Link to={`details/${record.id}`}>
+                  <div className="group flex h-full w-full cursor-pointer flex-col hover:text-blue-500">
+                    <Typography.Title className="mb-0 text-nowrap group-hover:text-blue-400" level={5}>
+                      {renderFullName(record?.title, record?.first_name, record?.last_name)}
+                    </Typography.Title>
+                    <Typography.Text className="text-nowrap">{record.email}</Typography.Text>
+                  </div>
+                </Link>
+              )
+            }
+            let parsedValue: string | string[] = text
+            try {
+              const parsed = JSON.parse(text)
+              if (Array.isArray(parsed) && parsed.every(e => typeof e === 'string')) {
+                parsedValue = parsed
+              }
+            } catch {
+              // empty scope
+            }
+            if (Array.isArray(parsedValue)) {
+              return (
+                <div className="flex flex-row flex-wrap gap-1">
+                  {parsedValue?.map((item, index) => (
+                    <Tag className="m-0 text-xs" key={`${index}-${item}`}>
+                      {item}
+                    </Tag>
+                  ))}
+                </div>
+              )
+            }
+            return parsedValue
+          },
+          sorter: field.field_key === 'full_name' ? false : true,
+          sortOrder: (() => {
+            if (sortBy !== field.field_key) return
+            return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
+          })(),
+          title: field?.label,
+          width: 200
+        })),
+    [fieldList, sortBy, sortOrder]
+  )
+
+  const columns = [
+    ...dynamicColumns,
+    {
+      dataIndex: 'actions',
+      fixed: 'right' as const,
+      key: 'actions',
+      render: (_: unknown, record: LeadType) => (
+        <div className="no-wrap">
+          <If conditions={checkCapability(CAPABILITIES.LEAD.VIEW)}>
+            <Link to={`details/${record.id}`}>
+              <Button icon={<LuEye size={14} />} type="link" />
+            </Link>
+          </If>
+          <If conditions={checkCapability(CAPABILITIES.LEAD.DELETE)}>
+            <DeleteLeadPopup id={record.id} />
+          </If>
+        </div>
+      ),
+      title: __('Actions'),
+      width: 100
+    }
+  ]
+  const rowSelection = {
+    columnWidth: 48,
+    fixed: true,
+    onChange: handleRowSelectionChange,
+    selectedRowKeys: selectedLeadKeys
+  }
+  return (
+    <Table<LeadType>
+      columns={columns}
+      dataSource={leads}
+      loading={isLoading}
+      onChange={handleTableChange}
+      pagination={false}
+      rowKey="id"
+      rowSelection={leads.length > 0 ? rowSelection : undefined}
+      scroll={{ x: 'max-content', y: tableScrollY }}
+      size="small"
+      virtual
+    />
+  )
+}

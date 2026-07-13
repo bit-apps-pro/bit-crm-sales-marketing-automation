@@ -1,0 +1,24 @@
+body.bit-crm-onboarding-fullscreen #wpadminbar,
+body.bit-crm-onboarding-fullscreen #adminmenumain,
+body.bit-crm-onboarding-fullscreen #adminmenuback,
+body.bit-crm-onboarding-fullscreen #adminmenuwrap,
+body.bit-crm-onboarding-fullscreen #wpfooter {
+  display: none !important;
+}
+
+body.bit-crm-onboarding-fullscreen #wpcontent {
+  margin-left: 0 !important;
+}
+
+body.bit-crm-onboarding-fullscreen #wpbody-content {
+  top: 0 !important;
+  height: 100vh !important;
+}
+
+body.bit-crm-onboarding-fullscreen {
+  overflow: hidden;
+}
+
+html.wp-toolbar:has(body.bit-crm-onboarding-fullscreen) {
+  padding-top: 0 !important;
+}

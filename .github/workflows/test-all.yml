@@ -1,0 +1,128 @@
+name: Run Lefthook on Push
+
+on:
+  pull_request_review:
+    types:
+      - submitted
+
+jobs:
+  check-approval:
+    runs-on: ubuntu-latest
+    outputs:
+      approved: ${{ steps.check.outputs.approved }}
+    steps:
+      - id: check
+        env:
+          REVIEW_STATE: ${{ github.event.review.state }}
+        run: |
+          if [ "$REVIEW_STATE" = "approved" ]; then
+            echo "approved=true" >> $GITHUB_OUTPUT
+          else
+            echo "approved=false" >> $GITHUB_OUTPUT
+          fi
+
+  setup:
+    needs: check-approval
+    if: needs.check-approval.outputs.approved == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [node, php]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: matrix.environment == 'node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup PHP
+        if: matrix.environment == 'php'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Get pnpm store directory
+        if: matrix.environment == 'node'
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ matrix.environment == 'node' && env.STORE_PATH || 'vendor' }}
+          key: ${{ runner.os }}-${{ matrix.environment }}-${{ hashFiles('**/pnpm-lock.yaml', '**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.environment }}-
+
+      - name: Install pnpm
+        if: matrix.environment == 'node'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install Node dependencies
+        if: matrix.environment == 'node'
+        run: pnpm install
+
+      - name: Install PHP dependencies
+        if: matrix.environment == 'php'
+        run: composer install --prefer-dist --no-progress
+
+  run-lefthook:
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache Node dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Cache PHP dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install Node dependencies
+        run: pnpm install
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run Lefthook
+        run: pnpm lefthook run github-actions

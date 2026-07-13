@@ -1,0 +1,97 @@
+{
+  "name": "bitapps/crm",
+  "description": "CRM for wordpress",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=8.2",
+    "bitapps/wp-validator": "^1",
+    "bitapps/wp-database": "^2.0",
+    "bitapps/wp-kit": "^2.0",
+    "typisttech/imposter-plugin": "^0.6.2",
+    "deliciousbrains/wp-background-processing": "^1.4",
+    "webklex/php-imap": "^6.1",
+    "mpdf/mpdf": "^8.2"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3",
+    "sirbrillig/phpcs-variable-analysis": "^2",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1",
+    "phpunit/phpunit": "^9",
+    "yoast/phpunit-polyfills": "^4",
+    "phpcompatibility/phpcompatibility-wp": "^2",
+    "spatie/phpunit-watcher": "^1",
+    "nunomaduro/phpinsights": "^2",
+    "wp-cli/wp-cli-bundle": "^2",
+    "szepeviktor/phpstan-wordpress": "^2",
+    "phpstan/extension-installer": "^1",
+    "spaze/phpstan-disallowed-calls": "^4",
+    "rector/rector": "^2",
+    "wp-coding-standards/wpcs": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "BitApps\\Crm\\": "./backend/app"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BitApps\\Crm\\CLI\\": "./cli",
+      "BitApps\\Crm\\Fixers\\": "./custom-fixers"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "sh -c \"[ ! -f backend/scripts/prune-mpdf-fonts.php ] || php backend/scripts/prune-mpdf-fonts.php\"",
+      "sh -c \"[ ! -f backend/scripts/prune-vendor-dev-files.php ] || php backend/scripts/prune-vendor-dev-files.php\""
+    ],
+    "post-update-cmd": [
+      "sh -c \"[ ! -f backend/scripts/prune-mpdf-fonts.php ] || php backend/scripts/prune-mpdf-fonts.php\"",
+      "sh -c \"[ ! -f backend/scripts/prune-vendor-dev-files.php ] || php backend/scripts/prune-vendor-dev-files.php\""
+    ],
+    "post-autoload-dump": [
+      "sh -c \"[ ! -f backend/scripts/fix-mpdf-imposter.php ] || php backend/scripts/fix-mpdf-imposter.php\""
+    ],
+    "clean": "rm -rf ./vendor && rm composer.lock && rm -rf ./dependencies",
+    "reset": "composer clean && composer install",
+    "lint": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php",
+    "unused:variable": "phpcs -p --standard=VariableAnalysis ./backend",
+    "code:analyse": "vendor/bin/phpstan analyse",
+    "compat": "./vendor/bin/phpcs -p --standard=PHPCompatibilityWP --runtime-set testVersion 8.2- ./backend",
+    "test": "composer test:api",
+    "test:function": "./vendor/bin/phpunit --testdox --colors=always tests/",
+    "test:api": "./vendor/bin/phpunit --testdox --group api --colors=always tests/",
+    "test:watch": "./vendor/bin/phpunit-watcher watch",
+    "insights": "./vendor/bin/phpinsights",
+    "phpcs": "phpcs -s --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1",
+    "phpcs:fix": "phpcbf",
+    "phpcs:report": "phpcs --report=summary --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1",
+    "pi": "./vendor/wp-cli/wp-cli/bin/wp bit-pi",
+    "crm": "./vendor/wp-cli/wp-cli/bin/wp bit-crm",
+    "db": "composer crm db",
+    "use:prod": "composer crm use toggleDev -- --active=n",
+    "use:dev": "composer crm use toggleDev -- --active=y",
+    "rector": "./vendor/bin/rector process --dry-run",
+    "refactor": "./vendor/bin/rector process"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "typisttech/imposter-plugin": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "imposter": {
+      "namespace": "BitApps\\Crm\\Deps\\"
+    },
+    "phpstan/extension-installer": {
+      "ignore": [
+        "nesbot/carbon"
+      ]
+    }
+  }
+}

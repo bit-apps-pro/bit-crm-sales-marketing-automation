@@ -1,0 +1,6 @@
+const PAGINATION = {
+  DEFAULT_PER_PAGE: 10,
+  EXTENDED_PER_PAGE: 20
+}
+
+export default PAGINATION

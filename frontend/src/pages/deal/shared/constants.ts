@@ -1,0 +1,3 @@
+export const ARROW_WIDTH = 12
+
+export const MAX_ALLOWED_AMOUNT = 999_999_999_999_999
