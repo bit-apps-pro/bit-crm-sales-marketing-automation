@@ -22,7 +22,7 @@ export default function ActivitySection({ activity, href, label }: ActivitySecti
           <Badge color="#703DD7" count={activity?.total} overflowCount={99} />
         </div>
         <Link to={href}>
-          <Button className="rounded-full" size="small" type="text" variant="solid">
+          <Button className="rounded-full" size="small" type="text">
             {__('View all')}
           </Button>
         </Link>

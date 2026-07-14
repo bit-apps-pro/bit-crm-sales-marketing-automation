@@ -18,7 +18,7 @@ export default function InvoiceStats({ invoiceStatusOverview }: InvoiceStatsProp
           {__('Invoice')}
         </Typography.Title>
         <Link to="/invoices">
-          <Button className="px-0" size="small" type="link">
+          <Button className="rounded-full" size="small" type="text">
             {__('View all')}
           </Button>
         </Link>

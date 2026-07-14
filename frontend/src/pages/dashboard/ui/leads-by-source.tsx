@@ -48,7 +48,7 @@ export default function LeadsBySource({ leadCountBySource }: LeadCountBySourcePr
           </Typography.Text>
         </div>
         <Link to="/leads">
-          <Button size="small" type="link">
+          <Button className="rounded-full" size="small" type="text">
             {__('View all')}
           </Button>
         </Link>

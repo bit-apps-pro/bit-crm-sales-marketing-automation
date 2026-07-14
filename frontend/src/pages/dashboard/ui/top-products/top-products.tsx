@@ -13,7 +13,7 @@ export default function TopProducts() {
             <Typography.Title className="mb-0" level={3}>
               {__('Top Products')}
             </Typography.Title>
-            <Button className="px-0" size="small">
+            <Button className="rounded-full" size="small" type="text">
               {__('View all')}
             </Button>
           </div>
