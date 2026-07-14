@@ -1,10 +1,11 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
+import brandLogo from '@resource/brand-logo.svg'
 import ThemeToggle from '@utilities/theme-toggle'
 import { Button, Layout } from 'antd'
 import { LuSettings } from 'react-icons/lu'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 import HeaderMoreDropdown from './header-more-dropdown'
 import HeaderNavItem from './header-nav-item'
@@ -17,27 +18,31 @@ const navItems = [
   { capability: CAPABILITIES.CONTACT.MENU, label: __('Contacts'), path: '../contacts' },
   { capability: CAPABILITIES.COMPANY.MENU, label: __('Companies'), path: '../companies' },
   { capability: CAPABILITIES.DEAL.MENU, label: __('Deals'), path: '../deals' },
-  { capability: CAPABILITIES.PRODUCT.MENU, label: __('Products'), path: '../products' }
+  { capability: CAPABILITIES.INVOICE.MENU, label: __('Invoices'), path: '../invoices' }
 ]
 
 export default function Header() {
   const navigate = useNavigate()
 
   return (
-    <AntHeader className="flex h-16 items-center justify-between bg-transparent py-5">
-      {/* <div className={cls.sidebarLogo} title="Bit CRM Logo">
-        <img alt="logo icon" src={logo} width={37} />
-        <Fade is={!isSidebarCollapsed}>
-          <LogoText color={isDarkTheme ? '#fff' : '#000'} w={65} />
-        </Fade>
-      </div> */}
-      <div>{__('Bit CRM')}</div>
+    <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent py-5">
+      <Link className="flex shrink-0 items-center" to="/">
+        <svg
+          aria-label="Bit CRM"
+          className="block h-10 w-auto text-[#171336] dark:text-white"
+          height="198"
+          role="img"
+          viewBox="0 0 868 198"
+          width="868"
+        >
+          <use href={`${brandLogo}#brand-logo`} />
+        </svg>
+      </Link>
       <div className="flex gap-1">
         {navItems.map(link => {
           if (!checkCapability(link.capability)) {
             return
           }
-
           return <HeaderNavItem key={link.label} props={link} />
         })}
         <HeaderMoreDropdown />

@@ -8,6 +8,7 @@ import useDebounceState from '@common/hooks/useDebounceState'
 import AdvancedFilter from '@features/advanced-filter'
 import { useActiveFilters } from '@features/advanced-filter/state/use-advance-filter-persist-store'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
+import IntegrationSettingsNavigation from '@features/integration-settings-navigation'
 import TagFilter from '@features/tag-filter'
 import If from '@utilities/If'
 import Pagination from '@utilities/pagination'
@@ -94,7 +95,7 @@ export default function Contacts() {
 
   return (
     <div className="px-6 py-4 dark:bg-transparent">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
             {__('Contacts')}
@@ -113,14 +114,23 @@ export default function Contacts() {
           </If>
         </div>
 
-        <Space.Compact direction="horizontal" size="large">
-          <ImportContacts customFields={customFields} systemDefinedFields={systemDefinedFields} />
-          <ExportContacts
-            customFields={customFields}
-            systemDefinedFields={systemDefinedFields}
-            totalContacts={totalContacts}
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <IntegrationSettingsNavigation
+            label={__('WooCommerce sync')}
+            to="/settings/integration-settings?tab=woo-integration"
+            tooltip={__(
+              'Automatically add customers from WooCommerce orders to Bit CRM and optionally tag them by purchased products or coupon codes.'
+            )}
           />
-        </Space.Compact>
+          <Space.Compact direction="horizontal" size="large">
+            <ImportContacts customFields={customFields} systemDefinedFields={systemDefinedFields} />
+            <ExportContacts
+              customFields={customFields}
+              systemDefinedFields={systemDefinedFields}
+              totalContacts={totalContacts}
+            />
+          </Space.Compact>
+        </div>
       </div>
 
       <div className="mt-4 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">

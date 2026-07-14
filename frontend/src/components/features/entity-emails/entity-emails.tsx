@@ -262,7 +262,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
             isLoading={Boolean(email) && (isEmailsFetching || isEmailsPending)}
           />
           <div className="flex justify-center py-2">
-            <Pagination size="small" total={totalEmails} />
+            <Pagination total={totalEmails} />
           </div>
         </div>
       </div>

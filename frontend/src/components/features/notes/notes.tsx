@@ -92,6 +92,7 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
             className="rounded-full"
             icon={<LuPlus />}
             onClick={() => handleModal('open', setSearchParams, { modal: 'note_create' })}
+            type="primary"
           >
             {__('New')}
           </Button>

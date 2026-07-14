@@ -41,7 +41,7 @@ export default function StageButton({
         }}
       >
         <span
-          className="px-2 text-center"
+          className="truncate px-2 text-center"
           style={{ marginLeft: isFirst ? '0' : `${ARROW_WIDTH / 2}px` }}
         >
           {stage.name}

@@ -22,7 +22,7 @@ export default function Prefix() {
   }
 
   return (
-    <div className="max-w-2xl rounded-lg border border-solid border-[#E5E3FE] p-4 dark:border-gray-700">
+    <div className="max-w-2xl rounded-lg border border-solid border-[#EBEAFF] p-4 dark:border-neutral-700">
       {isPrefixPending ? (
         <PrefixSkeleton />
       ) : (

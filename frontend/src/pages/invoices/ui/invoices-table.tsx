@@ -76,7 +76,8 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
           if (sortBy !== 'id') return
           return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
         })(),
-        title: __('Invoice Number')
+        title: __('Invoice Number'),
+        width: 200
       },
       {
         dataIndex: 'deal_name',
@@ -88,7 +89,8 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
             </Link>
           )
         },
-        title: __('Deal Name')
+        title: __('Deal Name'),
+        width: 200
       },
       {
         dataIndex: 'status',
@@ -110,7 +112,8 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
           if (sortBy !== 'status') return
           return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
         })(),
-        title: __('Status')
+        title: __('Status'),
+        width: 200
       },
       {
         dataIndex: 'invoice_date',
@@ -124,7 +127,8 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
           if (sortBy !== 'invoice_date') return
           return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
         })(),
-        title: __('Invoice Date')
+        title: __('Invoice Date'),
+        width: 200
       },
       {
         dataIndex: 'due_date',
@@ -138,7 +142,8 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
           if (sortBy !== 'due_date') return
           return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
         })(),
-        title: __('Due Date')
+        title: __('Due Date'),
+        width: 200
       },
       {
         dataIndex: 'paid_at',
@@ -151,10 +156,12 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
           if (sortBy !== 'paid_at') return
           return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
         })(),
-        title: __('Paid At')
+        title: __('Paid At'),
+        width: 200
       },
       {
         dataIndex: 'actions',
+        fixed: 'right' as const,
         key: 'actions',
         render: (_: unknown, record: InvoiceType) => (
           <Space>
@@ -171,12 +178,13 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
                 </Link>
               )}
             </If>
-            <If conditions={checkCapability(CAPABILITIES.INVOICE.DELETE) && !isDealView}>
+            <If conditions={checkCapability(CAPABILITIES.INVOICE.DELETE)}>
               <DeleteInvoicePopup id={record.id} />
             </If>
           </Space>
         ),
-        title: __('Actions')
+        title: __('Actions'),
+        width: 100
       }
     ],
     [sortBy, sortOrder, isDealView]
@@ -185,6 +193,8 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
     setSelectedKeys(selectedRowKeys)
   }
   const rowSelection = {
+    columnWidth: 48,
+    fixed: true,
     onChange: handleRowSelectionChange,
     selectedRowKeys: selectedKeys
   }

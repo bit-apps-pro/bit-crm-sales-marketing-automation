@@ -37,7 +37,7 @@ export default function InvoiceForm({ form, mode }: InvoiceFormProps) {
       <Typography.Title className="mb-3 text-center font-semibold">
         {mode === 'create' ? __('INVOICE') : __('EDIT INVOICE')}
       </Typography.Title>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <InvoiceLogo logo={businessSettings?.logo_url} />
         <InvoiceInformation form={form} />
         <BusinessInformation businessSettings={businessSettings} />

@@ -103,7 +103,9 @@ export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormL
           <InvoiceSubmitButton form={form} mode={mode} />
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <Card className="border lg:col-span-2">{children}</Card>
+          <Card className="border border-solid border-[#EBEAFF] lg:col-span-2 dark:border-neutral-700 dark:bg-neutral-900">
+            {children}
+          </Card>
           <div
             className="lg:sticky lg:top-4 lg:self-start"
             ref={containerRef}

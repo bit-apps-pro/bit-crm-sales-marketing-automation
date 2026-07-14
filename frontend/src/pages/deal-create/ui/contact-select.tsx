@@ -21,7 +21,7 @@ export default function ContactSelect({ form }: ContactSelectProps) {
       const existingCompanyId = form.getFieldValue('company_id')
       form.setFieldValue('email', email ?? undefined)
 
-      if (companyId) {
+      if (Number(companyId)) {
         form.setFieldValue('company_id', companyId)
       }
 

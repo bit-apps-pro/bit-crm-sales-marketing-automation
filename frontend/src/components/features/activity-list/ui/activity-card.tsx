@@ -22,7 +22,8 @@ export default function ActivityCard({ activity, type }: ActivityCardProps) {
 
   return (
     <Card
-      classNames={{ header: 'h-auto min-h-0 py-2' }}
+      className="border border-solid border-[#EBEAFF] dark:border-neutral-700 dark:bg-neutral-900"
+      classNames={{ header: 'h-auto min-h-0 py-2 border-[#EBEAFF] dark:border-neutral-700' }}
       extra={
         <div className="ml-4 flex items-center gap-2">
           <ActivityListActionDate date={activity.due_date} key="date" />
@@ -51,7 +52,7 @@ export default function ActivityCard({ activity, type }: ActivityCardProps) {
         )}
         <div
           className={cn(
-            'grid items-center rounded border border-solid border-[#E5E3FE] dark:border-gray-700',
+            'grid items-center rounded border border-solid border-[#EBEAFF] dark:border-neutral-700',
             type === 'page' ? 'grid-cols-4' : 'grid-cols-3'
           )}
         >
@@ -61,7 +62,7 @@ export default function ActivityCard({ activity, type }: ActivityCardProps) {
             </Typography.Text>
             <Typography.Text className="text-xs font-medium">{activity.assignee}</Typography.Text>
           </div>
-          <div className="h-full space-x-1 border-0 border-x border-solid border-[#E5E3FE] p-2 dark:border-gray-700">
+          <div className="flex h-full items-center space-x-1 border-0 border-x border-solid border-[#EBEAFF] p-2 dark:border-neutral-700">
             <Typography.Text className="text-xs" type="secondary">
               {__('Status:')}
             </Typography.Text>
@@ -70,7 +71,7 @@ export default function ActivityCard({ activity, type }: ActivityCardProps) {
             </Tag>
           </div>
           {type === 'page' && (
-            <div className="h-full border-0 border-r border-solid border-[#E5E3FE] p-2 dark:border-gray-700">
+            <div className="h-full border-0 border-r border-solid border-[#EBEAFF] p-2 dark:border-neutral-700">
               <ActivityRelatedEntity item={activity} />
             </div>
           )}

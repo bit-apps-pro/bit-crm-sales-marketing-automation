@@ -78,6 +78,7 @@ export default function Meetings({ entityId, fields, module }: MeetingsProps) {
             className="rounded-full"
             icon={<LuPlus />}
             onClick={() => handleModal('open', setSearchParams, { modal: 'meeting_create' })}
+            type="primary"
           >
             {__('New')}
           </Button>

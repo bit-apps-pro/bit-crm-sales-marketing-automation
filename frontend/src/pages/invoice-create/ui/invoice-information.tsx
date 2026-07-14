@@ -45,11 +45,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
           }
         ]}
       >
-        <Input
-          placeholder={__('INV')}
-          size="small"
-          suffix={<span className="text-base">-{'{id}'}</span>}
-        />
+        <Input classNames={{ input: '!min-h-0' }} placeholder={__('INV')} suffix={'-{id}'} />
       </Form.Item>
       <Form.Item
         className="ml-auto"
@@ -77,6 +73,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
               </div>
             </>
           )}
+          size="middle"
           value={invoiceTermKey === '' ? undefined : invoiceTermKey}
         />
       </Form.Item>

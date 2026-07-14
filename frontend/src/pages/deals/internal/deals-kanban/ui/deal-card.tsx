@@ -1,5 +1,5 @@
 import { $appConfig } from '@common/globalStates'
-import { cn } from '@common/helpers/globalHelpers'
+import { cn, unslugify } from '@common/helpers/globalHelpers'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { generateCurrencyFormatPreview } from '@pages/currencies/shared/common-functions'
 import { useFieldListStore } from '@pages/deals/state/use-deal-table-fields-store'
@@ -55,12 +55,25 @@ function DealCard({ deal, isDragOverlay = false, stage }: DealCardProps) {
           <div className="mt-1" key={fieldKey} title={fieldLabel}>
             {arrayValue.map(item => (
               <Tag className="text-xs" key={item}>
-                {item}
+                {unslugify(item)}
               </Tag>
             ))}
           </div>
         )
       }
+    }
+
+    if (
+      (field.type === 'select' || field.type === 'radio') &&
+      fieldValue &&
+      field.field_key !== 'stage' &&
+      typeof fieldValue === 'string'
+    ) {
+      return (
+        <p className={SHARED_STYLES.text} key={fieldKey}>
+          {unslugify(fieldValue)}
+        </p>
+      )
     }
 
     switch (fieldKey) {
@@ -101,6 +114,11 @@ function DealCard({ deal, isDragOverlay = false, stage }: DealCardProps) {
             <div className={SHARED_STYLES.link}>{deal.contact_name}</div>
           </NavLink>
         )
+      }
+
+      case 'lead_source': {
+        if (!deal?.lead_source) return
+        return <p className={SHARED_STYLES.text}>{deal?.lead_source}</p>
       }
 
       case 'name': {
@@ -145,6 +163,11 @@ function DealCard({ deal, isDragOverlay = false, stage }: DealCardProps) {
             {stage?.name}
           </Tag>
         )
+      }
+
+      case 'type': {
+        if (!deal?.type) return
+        return <p className={SHARED_STYLES.text}>{deal?.type}</p>
       }
 
       default: {

@@ -10,7 +10,7 @@ export default function IntegrationSettings() {
 
   return (
     <div>
-      <div className="border-0 border-b border-solid border-[#E5E3FE] px-4 py-2 dark:border-[#3F3A86]">
+      <div className="border-0 border-b border-solid border-[#E5E3FE] px-4 py-2 dark:border-neutral-700">
         <Typography.Title className="mb-0" level={2}>
           {__('Integration Settings')}
         </Typography.Title>

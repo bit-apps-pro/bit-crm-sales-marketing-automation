@@ -111,11 +111,7 @@ export default function RelatedEntitiesTableColumnSettings({
         placement="bottom"
         title={__('Table column settings')}
       >
-        <Button
-          className="rounded-full text-sm text-gray-500 dark:text-gray-400"
-          icon={<LuColumns2 />}
-          size="large"
-        >
+        <Button className="rounded-full text-sm text-gray-500 dark:text-gray-400" icon={<LuColumns2 />}>
           {__('Columns')}
         </Button>
       </Tooltip>

@@ -61,7 +61,7 @@ export default function FieldWrapper<T extends BaseFieldType>({
       {...attributes}
       className={cn(
         fieldStyle.field,
-        'group relative m-0 flex cursor-auto items-center gap-2 rounded border border-solid border-slate-200 bg-white p-1 pr-4 transition-shadow first:mt-4 dark:border-slate-500 dark:bg-black',
+        'group relative m-0 flex cursor-auto items-center gap-2 rounded border border-solid border-[#EBEAFF] bg-white p-1 pr-4 transition-shadow first:mt-4 dark:border-neutral-700 dark:bg-neutral-900',
         isDragging && 'shadow-lg',
         type === 'section' && 'mt-4'
       )}

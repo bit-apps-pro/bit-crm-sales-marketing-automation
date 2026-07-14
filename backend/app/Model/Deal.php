@@ -84,11 +84,6 @@ class Deal extends Model
         'is_trash'       => 'bool',
     ];
 
-    public function contact()
-    {
-        return $this->belongsTo(Contact::class, 'contact_id', 'id');
-    }
-
     public function fill($attributes, $force = false)
     {
         if (!$force && isset($this->casts)) {

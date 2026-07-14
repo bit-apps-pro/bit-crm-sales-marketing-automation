@@ -12,7 +12,7 @@ export default function FilterButton({
   title?: string
 }) {
   return (
-    <div className="flex h-10 cursor-pointer items-center gap-1 rounded-full border border-solid border-[#E5E3FE] bg-white px-1 dark:border-[#3F3A86] dark:bg-transparent">
+    <div className="flex h-10 cursor-pointer items-center gap-1 rounded-full border border-solid border-[#EBEAFF] bg-white px-1 dark:border-neutral-700 dark:bg-transparent">
       <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white">
         <LuFilter size={18} />
       </div>

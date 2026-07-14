@@ -11,7 +11,7 @@ interface BusinessInformationProps {
 
 export default function BusinessInformation({ businessSettings }: BusinessInformationProps) {
   return (
-    <div className="flex h-full flex-col space-y-4 rounded-md border border-solid border-gray-200 p-5 dark:border-gray-700">
+    <div className="flex h-full flex-col space-y-4 rounded-md border border-solid border-[#EBEAFF] p-5 dark:border-neutral-700 dark:bg-neutral-900">
       <div className="flex h-10 items-center justify-between">
         <Typography.Text strong>{__('From')}</Typography.Text>
       </div>

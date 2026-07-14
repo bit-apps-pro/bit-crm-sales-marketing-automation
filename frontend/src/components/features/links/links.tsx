@@ -117,7 +117,7 @@ export default function Links({ entityId, fields, module }: LinksProps) {
       <div>
         <LinkTable links={links} loading={isFetchingLinks} />
         <div className="flex justify-center py-2">
-          <Pagination size="small" total={total} />
+          <Pagination total={total} />
         </div>
       </div>
       <LinkCreateModal entityId={entityId} fieldOptions={fieldOptions} module={module} />

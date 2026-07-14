@@ -103,7 +103,7 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
           data: dealPipeline.map(stage => ((Number(stage.count) || 0) / maxCount) * 100)
         }
       ],
-      labels: dealPipeline.map(stage => stage.name || unslugify(stage.stage, '_'))
+      labels: dealPipeline.map(stage => stage.name || unslugify(stage.stage))
     }
   }, [colors.barColor, dealPipeline, maxCount])
 
@@ -131,7 +131,7 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
             labelPointStyle: () => ({ pointStyle: 'circle', rotation: 0 }),
             title: items => {
               const stage = dealPipeline[items[0].dataIndex]
-              return `${__('Deal')} ${stage?.name || unslugify(stage?.stage ?? '', '_')}`
+              return `${__('Deal')} ${stage?.name || unslugify(stage?.stage)}`
             }
           },
           cornerRadius: 10,
@@ -185,7 +185,7 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
         </div>
         <RangePicker
           allowClear={false}
-          className="w-64 flex-shrink-0 rounded-full border-[#E5E3FE]"
+          className="w-64 flex-shrink-0 rounded-full"
           format="DD MMM YYYY"
           onChange={handleRangeChange}
           separator="–"

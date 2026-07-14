@@ -67,7 +67,7 @@ export default function AdvancedFilter<T extends BaseFieldItemType>({
           'flex h-10 cursor-pointer items-center gap-1 rounded-full border border-solid bg-white px-1 dark:bg-transparent',
           isErrorsPresent
             ? 'border-red-500 dark:border-red-500'
-            : 'border-[#E5E3FE] dark:border-[#3F3A86]'
+            : 'border-[#EBEAFF] dark:border-neutral-700'
         ])}
       >
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white">

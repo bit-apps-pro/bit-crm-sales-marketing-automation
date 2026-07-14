@@ -2,7 +2,7 @@ import { __, sprintf } from '@common/helpers/i18nWrap'
 import { Button, Popconfirm } from 'antd'
 import { LuX } from 'react-icons/lu'
 
-import useDetachModule from '../data/use-detach-related-entities'
+import useDetachRelatedEntities from '../data/use-detach-related-entities'
 
 interface DetachModulePopupProps {
   entity: string
@@ -11,16 +11,16 @@ interface DetachModulePopupProps {
   relatedEntityIds: number[]
 }
 
-export default function DetachModulePopup({
+export default function DetachRelatedEntitiesPopup({
   entity,
   entityId,
   relatedEntity,
   relatedEntityIds
 }: DetachModulePopupProps) {
-  const { detachModule } = useDetachModule()
+  const { detachRelatedEntities } = useDetachRelatedEntities()
 
   const handleDetach = async () => {
-    await detachModule({ entity, entityId, relatedEntity, relatedEntityIds })
+    await detachRelatedEntities({ entity, entityId, relatedEntity, relatedEntityIds })
   }
 
   return (

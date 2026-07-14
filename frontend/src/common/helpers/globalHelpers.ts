@@ -246,17 +246,15 @@ export const slugify = (text: string, separator = '-'): string => {
  * space and each word is capitalized.
  *
  * @param slug The slug to be converted back to readable text.
- * @param separator The separator used in the slug (default: '-').
  * @returns The human-readable string.
  */
-export const unslugify = (slug: string, separator = '-'): string => {
-  return (
-    slug
-      ?.split(separator)
-      ?.filter(Boolean)
-      ?.map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      ?.join(' ') ?? ''
-  )
+export const unslugify = (slug: string): string => {
+  if (!slug) return ''
+  return slug
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
 export const showPaginationTotal = (total: number, range: number[]) => {

@@ -66,11 +66,6 @@ class Invoice extends Model
         'sent_at'              => 'siteTimeZone',
     ];
 
-    public function deal()
-    {
-        return $this->belongsTo(Deal::class, 'entity_id', 'id');
-    }
-
     public static function canTransitionStatus(string $from, string $to): bool
     {
         if ($from === $to) {

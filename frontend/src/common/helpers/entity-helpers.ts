@@ -1,10 +1,9 @@
 import { type BaseFieldType } from '@features/form-builder/shared/field-types'
-import { capitalize } from 'lodash'
 
-import { slugify } from './globalHelpers'
+import { slugify, unslugify } from './globalHelpers'
 
 export const renderFullName = (title?: string, firstName?: string, lastName?: string): string => {
-  return `${title ? capitalize(title) + ' ' : ''}${firstName ? firstName + ' ' : ''} ${lastName || ''}`
+  return [title ? unslugify(title) : undefined, firstName, lastName].filter(Boolean).join(' ')
 }
 
 export const findMatchedFieldKey = (header: string, fields: BaseFieldType[]): string | undefined => {

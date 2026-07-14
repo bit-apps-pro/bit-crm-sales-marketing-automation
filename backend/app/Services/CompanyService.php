@@ -378,7 +378,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         }
 
         $result = Company::where($column, $value)->where('is_trash', 0)->select(['id'])->paginate($page, $perPage);
-        $result['ids'] = $result['data']->pluck('id')->toArray();
+        $result['ids'] = empty($result['data']) ? [] : $result['data']->pluck('id')->toArray();
 
         return $result;
     }

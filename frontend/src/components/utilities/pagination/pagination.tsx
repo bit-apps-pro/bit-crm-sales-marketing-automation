@@ -37,7 +37,8 @@ export default function Pagination({
       showSizeChanger={
         showSizeChanger
           ? {
-              className: 'h-10 [&_.ant-select-selector]:rounded-full'
+              className:
+                'h-10  [&_.ant-select-selector]:rounded-full [&_.ant-pagination-item]:rounded-full'
             }
           : false
       }

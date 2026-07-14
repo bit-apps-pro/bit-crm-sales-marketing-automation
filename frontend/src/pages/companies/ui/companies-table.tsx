@@ -1,5 +1,6 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
+import { unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
@@ -76,6 +77,10 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
               return record.owner_name
             }
 
+            if (field.type === 'select' || field.type === 'radio') {
+              return unslugify(text)
+            }
+
             let parsedValue: string | string[] = text
             try {
               const parsed = JSON.parse(text)
@@ -90,7 +95,7 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
                 <div className="flex flex-row flex-wrap gap-1">
                   {parsedValue?.map(item => (
                     <Tag className="m-0 text-xs" key={item}>
-                      {item}
+                      {unslugify(item)}
                     </Tag>
                   ))}
                 </div>

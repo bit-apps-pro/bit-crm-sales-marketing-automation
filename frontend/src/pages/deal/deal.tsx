@@ -63,7 +63,11 @@ export default function Deal() {
               items={[
                 { title: __('Deals'), to: '/deals' },
                 {
-                  title: isDealPending ? <LoadingOutlined /> : renderFullName(deal?.name)
+                  title: isDealPending ? (
+                    <LoadingOutlined />
+                  ) : (
+                    renderFullName(undefined, undefined, deal?.name)
+                  )
                 }
               ]}
             />

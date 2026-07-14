@@ -8,8 +8,9 @@ import { useSelectedKeys } from '@pages/invoices/state/use-selected-invoice-keys
 import InvoicesTable from '@pages/invoices/ui/invoices-table'
 import If from '@utilities/If'
 import Pagination from '@utilities/pagination'
-import { Button } from 'antd'
+import { Button, Typography } from 'antd'
 import { useMemo } from 'react'
+import { LuPlus } from 'react-icons/lu'
 import { Link, useSearchParams } from 'react-router'
 
 import useDealInvoices from './data/use-deal-invoices'
@@ -44,30 +45,31 @@ export default function DealInvoices({ entityId }: DealInvoiceProps) {
     useDealInvoices(debouncedQueryParams)
 
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between">
-        <div>
-          <If conditions={selectedKeys.length !== 0 && checkCapability(CAPABILITIES.INVOICE.DELETE)}>
-            <InvoiceBulkOperations />
-          </If>
+    <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
+      <div className="flex items-center justify-between gap-2 p-2">
+        <div className="flex items-center gap-2">
+          <Typography.Title className="mb-0" level={5}>
+            {__('Invoices')}
+          </Typography.Title>
+          <Link target="_blank" to={`../invoices/create?dealId=${entityId}`}>
+            <Button className="rounded-full text-sm capitalize" icon={<LuPlus />} type="primary">
+              {__(`New`)}
+            </Button>
+          </Link>
         </div>
-        <Link target="_blank" to={`../invoices/create?dealId=${entityId}`}>
-          <Button
-            className="rounded-full text-sm capitalize text-gray-500 dark:text-gray-400"
-            size="large"
-          >
-            {__(`Create Invoice`)}
-          </Button>
-        </Link>
+
+        <If conditions={selectedKeys.length !== 0 && checkCapability(CAPABILITIES.INVOICE.DELETE)}>
+          <InvoiceBulkOperations size="middle" />
+        </If>
       </div>
-      <div className="rounded-lg bg-white dark:bg-neutral-900">
+      <div>
         <InvoicesTable
           invoices={invoices}
-          isDealView
+          isDealView={true}
           isLoading={isInvoicePending || isInvoiceFetching}
         />
-        <div className="flex justify-center py-2">
-          <Pagination current={page} pageSize={perPage} size="small" total={totalInvoice} />
+        <div className="flex justify-center py-3">
+          <Pagination current={page} pageSize={perPage} total={totalInvoice} />
         </div>
       </div>
     </div>

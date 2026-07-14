@@ -1,13 +1,14 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { $appConfig } from '@common/globalStates'
 import { checkCapability } from '@common/helpers/capabilityHelper'
+import { unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { generateCurrencyFormatPreview } from '@pages/currencies/shared/common-functions'
 import { type Deal } from '@pages/deal/shared/deal-types'
 import If from '@utilities/If'
-import { Button, Table } from 'antd'
+import { Button, Table, Tag } from 'antd'
 import { useAtomValue } from 'jotai'
 import { useMemo } from 'react'
 import { LuEye } from 'react-icons/lu'
@@ -83,6 +84,9 @@ export default function DealsTable({ deals, fieldList, isLoading }: DealsTablePr
             if (field.field_key === 'owner_id' && record.owner_name) {
               return String(record.owner_name)
             }
+            if (field.type === 'select' || field.type === 'radio') {
+              return unslugify(text)
+            }
 
             if (
               field.field_key === 'amount' &&
@@ -93,8 +97,27 @@ export default function DealsTable({ deals, fieldList, isLoading }: DealsTablePr
                 record.home_currency_amount ?? record.amount
               )
             }
-
-            return String(text ?? '')
+            let parsedValue: string | string[] = text
+            try {
+              const parsed = JSON.parse(text)
+              if (Array.isArray(parsed) && parsed.every(e => typeof e === 'string')) {
+                parsedValue = parsed
+              }
+            } catch {
+              // empty scope
+            }
+            if (Array.isArray(parsedValue)) {
+              return (
+                <div className="flex flex-row flex-wrap gap-1">
+                  {parsedValue?.map((item, index) => (
+                    <Tag className="m-0 text-xs" key={`${index}-${item}`}>
+                      {unslugify(item)}
+                    </Tag>
+                  ))}
+                </div>
+              )
+            }
+            return parsedValue
           },
           sorter: true,
           sortOrder: (() => {

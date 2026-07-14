@@ -36,7 +36,7 @@ export default function ActivityNotes({ activityId, open }: ActivityNotesProps) 
       {open && (
         <motion.div
           animate={{ marginTop: 20, maxHeight: 1000, opacity: 1, paddingBottom: 20, paddingTop: 20 }}
-          className="overflow-hidden rounded border border-solid border-[#E5E3FE] px-5 dark:border-gray-700"
+          className="overflow-hidden rounded border border-solid border-[#EBEAFF] px-5 dark:border-neutral-700"
           exit={{ marginTop: 0, maxHeight: 0, opacity: 0, paddingBottom: 0, paddingTop: 0 }}
           initial={{ marginTop: 0, maxHeight: 0, opacity: 0, paddingBottom: 0, paddingTop: 0 }}
           key="activity-notes-panel"

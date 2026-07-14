@@ -176,7 +176,9 @@ final class CommonController
         $relatedEntityIds = $paginatedResult['ids'];
 
         if (empty($relatedEntityIds)) {
-            return Response::success([])->message(__('No related entities found', 'bit-crm'));
+            unset($paginatedResult['ids']);
+
+            return Response::success($paginatedResult)->message(__('No related entities found', 'bit-crm'));
         }
 
         try {

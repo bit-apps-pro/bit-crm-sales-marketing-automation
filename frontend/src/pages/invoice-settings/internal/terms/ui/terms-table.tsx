@@ -77,7 +77,6 @@ export default function TermsTable({ data, loading }: TermsTable) {
   }, [setSearchParams, handleModal, deleteTerm, isDeletingTerm])
   return (
     <Table
-      bordered
       columns={columns}
       dataSource={data}
       loading={loading}

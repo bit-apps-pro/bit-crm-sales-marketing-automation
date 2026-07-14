@@ -29,8 +29,8 @@ export default function Terms() {
   }
 
   return (
-    <div>
-      <div className="mb-5 flex items-center gap-2">
+    <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
+      <div className="flex items-center gap-2 p-3">
         <Typography.Title className="mb-0" level={4}>
           {__('Terms')}
         </Typography.Title>
@@ -44,8 +44,8 @@ export default function Terms() {
         </Button>
       </div>
       <TermsTable data={terms} loading={isTermsFetching || isTermsPending} />
-      <div className="mt-4 flex justify-end">
-        <Pagination size="small" total={total} />
+      <div className="flex justify-center py-5">
+        <Pagination total={total} />
       </div>
       <TermCreateModal />
       <TermEditModal />

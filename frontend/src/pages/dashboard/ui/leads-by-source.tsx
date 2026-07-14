@@ -72,7 +72,7 @@ export default function LeadsBySource({ leadCountBySource }: LeadCountBySourcePr
                     tooltip: {
                       callbacks: {
                         label: context => {
-                          const label = unslugify(context.label || '', '_')
+                          const label = unslugify(context.label)
                           const value = Number(context.parsed) || 0
                           const total = context.dataset.data.reduce(
                             (sum, current) => sum + Number(current),
@@ -100,7 +100,7 @@ export default function LeadsBySource({ leadCountBySource }: LeadCountBySourcePr
                     className="inline-block h-3 w-3 rounded-[3px]"
                     style={{ backgroundColor: SOURCE_COLORS[index % SOURCE_COLORS.length] }}
                   />
-                  <Typography.Text>{unslugify(source.lead_source, '_')}</Typography.Text>
+                  <Typography.Text>{unslugify(source.lead_source)}</Typography.Text>
                 </div>
                 <Typography.Text>{source.total}</Typography.Text>
               </div>

@@ -80,6 +80,7 @@ export default function Tasks({ entityId, fields, module }: TasksProps) {
             className="rounded-full"
             icon={<LuPlus />}
             onClick={() => handleModal('open', setSearchParams, { modal: 'task_create' })}
+            type="primary"
           >
             {__('New')}
           </Button>

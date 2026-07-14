@@ -2,7 +2,7 @@ import { __, sprintf } from '@common/helpers/i18nWrap'
 import { Modal } from 'antd'
 import { LuInfo } from 'react-icons/lu'
 
-import useDetachModule from '../data/use-detach-related-entities'
+import useDetachRelatedEntities from '../data/use-detach-related-entities'
 import {
   useRelatedEntityBulkOperationsStoreActions,
   useRelatedEntityIsDetachModalOpen
@@ -23,15 +23,15 @@ export default function DetachRelatedModal({
   entityId,
   relatedEntity
 }: DetachRelatedModalProps) {
-  const { detachModule, isDetachingModule } = useDetachModule()
+  const { detachRelatedEntities, isDetachingRelatedEntities } = useDetachRelatedEntities()
   const { setDetachModalOpen } = useRelatedEntityBulkOperationsStoreActions()
   const isOpen = useRelatedEntityIsDetachModalOpen()
   const selectedKeys = useSelectedKeys()
   const { clearSelectedKeys } = useRelatedEntityKeysStoreActions()
 
-  const handleDetachModule = async (): Promise<void> => {
+  const handleDetachRelated = async (): Promise<void> => {
     const entityIds = selectedKeys.map(Number)
-    await detachModule({
+    await detachRelatedEntities({
       entity,
       entityId,
       relatedEntity,
@@ -42,11 +42,11 @@ export default function DetachRelatedModal({
   }
   return (
     <Modal
-      confirmLoading={isDetachingModule}
+      confirmLoading={isDetachingRelatedEntities}
       destroyOnHidden
       okText={__('Detach')}
       onCancel={() => setDetachModalOpen(false)}
-      onOk={handleDetachModule}
+      onOk={handleDetachRelated}
       open={isOpen}
       title={
         <div className="flex items-center gap-1">

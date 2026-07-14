@@ -30,7 +30,7 @@ interface SettingRowProps {
 function SettingRow({ control, description, disabled, title }: SettingRowProps) {
   return (
     <div
-      className={`flex items-center justify-between gap-6 border-0 border-b border-solid border-[#E5E3FE] px-6 py-4 last:border-b-0 dark:border-[#3F3A86] ${disabled ? 'opacity-50' : ''}`}
+      className={`flex items-center justify-between gap-6 border-0 border-b border-solid border-[#E5E3FE] px-6 py-4 last:border-b-0 dark:border-neutral-700 ${disabled ? 'opacity-50' : ''}`}
     >
       <div className="flex-1">
         <Text className="block font-medium">{title}</Text>
@@ -95,8 +95,8 @@ export default function WoocommerceSyncSettings({ settingKey }: Props) {
       layout="vertical"
       onValuesChange={handleValuesChange}
     >
-      <div className="rounded-md border border-solid border-[#E5E3FE] dark:border-[#3F3A86]">
-        <div className="flex items-center border-0 border-b border-solid border-[#E5E3FE] px-6 py-3 dark:border-[#3F3A86]">
+      <div className="rounded-md border border-solid border-[#E5E3FE] dark:border-neutral-700">
+        <div className="flex items-center border-0 border-b border-solid border-[#E5E3FE] px-6 py-3 dark:border-neutral-700">
           <Title className="mb-0" level={5}>
             {__('WooCommerce Sync')}
           </Title>

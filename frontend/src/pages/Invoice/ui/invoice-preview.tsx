@@ -14,7 +14,7 @@ export default function InvoicePreview({ data }: InvoicePreviewProps) {
   const { businessSettings } = useBusinessSettings()
 
   return (
-    <div className="min-h-[1123px] space-y-5 rounded-md border border-solid border-[#EBEAFF] bg-white p-16 dark:border-neutral-700 dark:bg-neutral-900">
+    <div className="min-h-[1123px] space-y-5 rounded-lg border border-solid border-[#EBEAFF] bg-white p-16 dark:border-neutral-700 dark:bg-neutral-900">
       <InvoiceInfoPreview data={data} logoUrl={businessSettings?.logo_url} />
       <InvoiceSenderReceiverPreview
         businessSettings={businessSettings}

@@ -79,8 +79,8 @@ export default function ContactOverView({
 
   return (
     <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
-      <div className="col-span-2 rounded-md border border-solid border-[#E5E3FE] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-        <div className="sticky top-0 z-10 flex items-center justify-end rounded-t-md border-0 border-b border-solid border-[#E5E3FE] bg-white px-4 py-2 dark:bg-neutral-900">
+      <div className="col-span-2 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
+        <div className="sticky top-0 z-10 flex items-center justify-end rounded-t-md border-0 border-b border-solid border-[#EBEAFF] bg-white px-4 py-2 dark:border-neutral-700 dark:bg-neutral-900">
           <Button
             className="rounded-full"
             loading={isUpdatePending}

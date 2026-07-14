@@ -90,7 +90,7 @@ export default function Leads() {
 
   return (
     <div className="px-6 py-4 dark:bg-transparent">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
             {__('Leads')}
@@ -107,14 +107,16 @@ export default function Leads() {
             <LoadingOutlined />
           </If>
         </div>
-        <Space.Compact direction="horizontal" size="large">
-          <ImportLeads customFields={customFields} systemDefinedFields={systemDefinedFields} />
-          <ExportLeads
-            customFields={customFields}
-            systemDefinedFields={systemDefinedFields}
-            totalLeads={totalLeads}
-          />
-        </Space.Compact>
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <Space.Compact direction="horizontal" size="large">
+            <ImportLeads customFields={customFields} systemDefinedFields={systemDefinedFields} />
+            <ExportLeads
+              customFields={customFields}
+              systemDefinedFields={systemDefinedFields}
+              totalLeads={totalLeads}
+            />
+          </Space.Compact>
+        </div>
       </div>
       <div className="mt-4 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
         <div className="flex flex-wrap items-center justify-between gap-4 p-3">

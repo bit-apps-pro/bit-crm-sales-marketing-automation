@@ -1,5 +1,6 @@
 import { checkCapability, getCapability } from '@common/helpers/capabilityHelper'
 import { renderFullName } from '@common/helpers/entity-helpers'
+import { unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem, type ModuleType } from '@common/types/types'
@@ -13,7 +14,7 @@ import {
   useRelatedEntityKeysStoreActions,
   useSelectedKeys
 } from '../state/use-selected-related-entity-keys-store'
-import DetachModulePopup from './detach-module-popup'
+import DetachRelatedEntitiesPopup from './detach-related-entities-popup'
 
 interface RelatedEntitiesTableProps {
   detachable: boolean
@@ -130,6 +131,9 @@ export default function RelatedEntitiesTable({
                 </Link>
               )
             }
+            if (field.type === 'select' || field.type === 'radio') {
+              return unslugify(text)
+            }
             if (field.field_key === 'owner_id' && record?.owner_name) {
               return record.owner_name
             }
@@ -147,7 +151,7 @@ export default function RelatedEntitiesTable({
                 <div className="flex flex-row flex-wrap gap-1">
                   {parsedValue?.map((item, index) => (
                     <Tag className="m-0 text-xs" key={index}>
-                      {item}
+                      {unslugify(item)}
                     </Tag>
                   ))}
                 </div>
@@ -180,7 +184,7 @@ export default function RelatedEntitiesTable({
             </Link>
           </If>
           <If conditions={checkCapability(getCapability('UPDATE', relatedEntity)) && detachable}>
-            <DetachModulePopup
+            <DetachRelatedEntitiesPopup
               entity={entity}
               entityId={entityId}
               relatedEntity={relatedEntity}

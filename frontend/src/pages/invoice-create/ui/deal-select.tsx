@@ -35,7 +35,7 @@ export default function DealSelect({ mode }: { mode: string }) {
   }, [dealContactCurrency, setContactInformation, setCurrencyData, setDealInformation])
 
   return (
-    <div className="flex h-full flex-col space-y-4 rounded-lg border border-solid border-gray-200 p-5 dark:border-gray-700">
+    <div className="flex h-full flex-col space-y-4 rounded-lg border border-solid border-[#EBEAFF] p-5 dark:border-neutral-700 dark:bg-neutral-900">
       <div className="flex items-center justify-between gap-10">
         <Typography.Text strong>{__('Select a deal')}</Typography.Text>
         <div className="flex-1">

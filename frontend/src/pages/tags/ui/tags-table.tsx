@@ -86,6 +86,9 @@ export default function TagsTable({ isFetchingTags, isPendingTags, tags }: TagsT
       {
         dataIndex: 'module',
         key: 'module',
+        render: (module: string) => {
+          return <span className="capitalize">{module}</span>
+        },
         title: __('Module')
       },
       {

@@ -3,21 +3,21 @@ import queryRequest, { type Response } from '@common/helpers/request'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useContext } from 'react'
 
-interface DetachModulePayload {
+interface DetachRelatedEntitiesPayload {
   entity: string
   entityId: number
   relatedEntity: string
   relatedEntityIds: number[]
 }
 
-export default function useDetachModule() {
+export default function useDetachRelatedEntities() {
   const { messageApi } = useContext(NotifyContext)
   const queryClient = useQueryClient()
 
   const { isPending, mutateAsync } = useMutation<
     Response<string>,
     Response<string>,
-    DetachModulePayload
+    DetachRelatedEntitiesPayload
   >({
     mutationFn: payload => queryRequest(`common/related-entities/detach`, payload),
     mutationKey: ['common', 'related-entities', 'detach'],
@@ -31,7 +31,7 @@ export default function useDetachModule() {
   })
 
   return {
-    detachModule: mutateAsync,
-    isDetachingModule: isPending
+    detachRelatedEntities: mutateAsync,
+    isDetachingRelatedEntities: isPending
   }
 }

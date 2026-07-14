@@ -1,6 +1,7 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { renderFullName } from '@common/helpers/entity-helpers'
+import { unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
@@ -69,12 +70,15 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
                 <Link to={`details/${record.id}`}>
                   <div className="group flex h-full w-full cursor-pointer flex-col hover:text-blue-500">
                     <Typography.Title className="mb-0 text-nowrap group-hover:text-blue-400" level={5}>
-                      {renderFullName(record?.title, record?.first_name, record?.last_name)}
+                      {renderFullName(record.title, record.first_name, record.last_name)}
                     </Typography.Title>
                     <Typography.Text className="text-nowrap">{record.email}</Typography.Text>
                   </div>
                 </Link>
               )
+            }
+            if (field.type === 'select' || field.type === 'radio') {
+              return unslugify(text)
             }
             let parsedValue: string | string[] = text
             try {
@@ -90,7 +94,7 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
                 <div className="flex flex-row flex-wrap gap-1">
                   {parsedValue?.map((item, index) => (
                     <Tag className="m-0 text-xs" key={`${index}-${item}`}>
-                      {item}
+                      {unslugify(item)}
                     </Tag>
                   ))}
                 </div>

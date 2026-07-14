@@ -29,15 +29,15 @@ export default function WoocommerceProductIntegration() {
   }
 
   return (
-    <div className="rounded-md border border-solid border-[#E5E3FE] dark:border-[#3F3A86]">
-      <div className="flex items-center border-0 border-b border-solid border-[#E5E3FE] px-6 py-3 dark:border-[#3F3A86]">
+    <div className="rounded-md border border-solid border-[#E5E3FE] dark:border-neutral-700">
+      <div className="flex items-center border-0 border-b border-solid border-[#E5E3FE] px-6 py-3 dark:border-neutral-700">
         <Title className="mb-0" level={5}>
           {__('WooCommerce Product Integration')}
         </Title>
       </div>
       <div
         className={cn(
-          'flex items-center justify-between gap-6 border-0 border-b border-solid border-[#E5E3FE] px-6 py-4 last:border-b-0 dark:border-[#3F3A86]',
+          'flex items-center justify-between gap-6 border-0 border-b border-solid border-[#E5E3FE] px-6 py-4 last:border-b-0 dark:border-neutral-700',
           !isWooPluginActive && 'opacity-50'
         )}
       >
@@ -45,7 +45,7 @@ export default function WoocommerceProductIntegration() {
           <Text className="block font-medium">{__('Enable WooCommerce Products')}</Text>
           <Text className="block text-sm" type="secondary">
             {__(
-              'Allow selecting WooCommerce products in deals and other modules. Product source selection will be available when this is enabled.'
+              'Allow selecting WooCommerce products in deal and invoice line items. Product source selection will be available when this is enabled.'
             )}
           </Text>
         </div>

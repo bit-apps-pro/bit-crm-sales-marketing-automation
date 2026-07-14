@@ -78,6 +78,7 @@ export default function Calls({ entityId, fields, module }: CallsProps) {
             className="rounded-full"
             icon={<LuPlus />}
             onClick={() => handleModal('open', setSearchParams, { modal: 'call_create' })}
+            type="primary"
           >
             {__('New')}
           </Button>

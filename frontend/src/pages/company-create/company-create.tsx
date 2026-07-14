@@ -102,8 +102,8 @@ const CompanyCreate = () => {
         {isFieldsFetching ? (
           <EntityCreateSkeleton />
         ) : (
-          <div className="col-span-2 rounded-md border border-solid border-[#E5E3FE] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-            <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-md border-0 border-b border-solid border-[#E5E3FE] bg-white px-4 py-2 dark:bg-neutral-900">
+          <div className="col-span-2 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
+            <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-md border-0 border-b border-solid border-[#EBEAFF] bg-white px-4 py-2 dark:border-neutral-700 dark:bg-neutral-900">
               <div className="flex items-center gap-2">
                 <Typography.Title className="mb-0" level={4}>
                   {__('Create Company')}

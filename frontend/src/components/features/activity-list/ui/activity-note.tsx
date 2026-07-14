@@ -59,7 +59,7 @@ export default function ActivityNote({ editNoteId, note, setEditNoteId }: Activi
   return (
     <div className="">
       <If conditions={editNoteId !== note.id}>
-        <div className="flex items-start justify-between gap-2 border-0 border-b border-solid border-[#E5E3FE]">
+        <div className="flex items-start justify-between gap-2 border-0 border-b border-solid border-[#EBEAFF] dark:border-neutral-700">
           <div
             className="min-w-0 break-normal break-words"
             dangerouslySetInnerHTML={{ __html: note.details }}

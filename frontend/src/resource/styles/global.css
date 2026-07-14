@@ -32,6 +32,14 @@ svg {
   translate: 0 1px;
 }
 
+.ant-modal-footer .ant-btn {
+  border-radius: 9999px;
+}
+
+.ant-popconfirm-buttons .ant-btn {
+  border-radius: 9999px;
+}
+
 .link-reset:focus {
   border: 0;
   outline: 0;
@@ -126,11 +134,13 @@ a:focus {
 /* quill editor */
 
 .ql-toolbar.ql-snow {
+  border-color: #ebeaff !important;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 .ql-container.ql-snow {
+  border-color: #ebeaff !important;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -209,6 +219,33 @@ a:focus {
     max-width: var(--scrollbar-width-legacy);
     max-height: var(--scrollbar-width-legacy);
   }
+}
+
+.dark .ql-snow .ql-picker {
+  color: #d4d4d4;
+}
+
+.dark .ql-snow .ql-picker-options {
+  background: #1f1f1f;
+  border-color: #404040;
+}
+
+.dark .ql-editor.ql-blank::before {
+  color: #737373;
+}
+
+.dark .ql-snow .ql-stroke {
+  stroke: #d4d4d4;
+}
+
+.dark .ql-snow .ql-fill,
+.dark .ql-snow .ql-stroke.ql-fill {
+  fill: #d4d4d4;
+}
+
+.dark .ql-toolbar.ql-snow,
+.dark .ql-container.ql-snow {
+  border-color: #424242 !important;
 }
 
 .mention.mention {

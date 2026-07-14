@@ -4,9 +4,9 @@ import { __ } from '@common/helpers/i18nWrap'
 import useDebounceState from '@common/hooks/useDebounceState'
 import If from '@utilities/If'
 import Pagination from '@utilities/pagination'
-import { Button } from 'antd'
+import { Button, Typography } from 'antd'
 import { useEffect, useMemo } from 'react'
-import { LuTrash2 } from 'react-icons/lu'
+import { LuPlus, LuX } from 'react-icons/lu'
 import { Link, useSearchParams } from 'react-router'
 
 import useRelatedEntities from './data/use-related-entities'
@@ -82,56 +82,55 @@ export default function RelatedEntities({
   }, [entityId, entity, relatedEntity, clearSelectedKeys, setDetachModalOpen])
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between">
-        <div className="flex flex-wrap items-center gap-2">
+    <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
+      <div className="flex justify-between gap-2 p-3">
+        <div className="flex items-center gap-2">
+          <Typography.Title className="mb-0 capitalize" level={5}>
+            {__(relatedEntity)}
+          </Typography.Title>
+          <Link target="_blank" to={`../${relatedEntity}s/create?${entity}Id=${entityId}`}>
+            <Button className="rounded-full text-sm capitalize" icon={<LuPlus />} type="primary">
+              {__('New')}
+            </Button>
+          </Link>
           <RelatedEntitiesTableColumnSettings
             entity={entity}
             orders={orders}
             relatedEntity={relatedEntity}
             visibleColumns={visibleColumns}
           />
-          <If
-            conditions={
-              selectedKeys.length !== 0 &&
-              checkCapability(getCapability('UPDATE', relatedEntity)) &&
-              detachable
-            }
-          >
-            <Button
-              className="rounded-full text-sm capitalize"
-              icon={<LuTrash2 className="text-red-600" />}
-              onClick={() => setDetachModalOpen(true)}
-              size="large"
-            >
-              {selectedKeys.length === 1
-                ? __(`Detach ${relatedEntity} (1)`, 'bit-crm')
-                : __(`Detach ${relatedEntity}s (${selectedKeys.length})`, 'bit-crm')}
-            </Button>
-          </If>
         </div>
-        <Link target="_blank" to={`../${relatedEntity}s/create?${entity}Id=${entityId}`}>
+        <If
+          conditions={
+            selectedKeys.length !== 0 &&
+            checkCapability(getCapability('UPDATE', relatedEntity)) &&
+            detachable
+          }
+        >
           <Button
-            className="rounded-full text-sm capitalize text-gray-500 dark:text-gray-400"
-            size="large"
+            className="rounded-full text-sm capitalize"
+            danger
+            icon={<LuX className="text-red-600" />}
+            onClick={() => setDetachModalOpen(true)}
           >
-            {__(`Create ${relatedEntity}`)}
+            {selectedKeys.length === 1
+              ? __(`Detach ${relatedEntity} (1)`, 'bit-crm')
+              : __(`Detach ${relatedEntity}s (${selectedKeys.length})`, 'bit-crm')}
           </Button>
-        </Link>
+        </If>
       </div>
-      <div className="rounded-lg bg-white dark:bg-neutral-900">
-        <RelatedEntitiesTable
-          detachable={detachable}
-          entities={entities}
-          entity={entity}
-          entityId={entityId}
-          fields={fieldList}
-          isLoading={isEntitiesPending || isFieldsPending}
-          relatedEntity={relatedEntity}
-        />
-        <div className="flex justify-center py-2">
-          <Pagination size="small" total={totalEntities} />
-        </div>
+
+      <RelatedEntitiesTable
+        detachable={detachable}
+        entities={entities}
+        entity={entity}
+        entityId={entityId}
+        fields={fieldList}
+        isLoading={isEntitiesPending || isFieldsPending}
+        relatedEntity={relatedEntity}
+      />
+      <div className="flex justify-center py-3">
+        <Pagination total={totalEntities} />
       </div>
       <If conditions={detachable}>
         <DetachRelatedEntityModal entity={entity} entityId={entityId} relatedEntity={relatedEntity} />

@@ -14,7 +14,7 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="relative flex h-10 w-20 cursor-pointer items-center justify-center rounded-full border border-solid border-[#E5E3FE] bg-white transition-colors duration-300 focus:outline-none focus:ring-0 dark:border-[#3F3A86] dark:bg-transparent"
+      className="relative flex h-10 w-20 cursor-pointer items-center justify-center rounded-full border border-solid border-[#EBEAFF] bg-white transition-colors duration-300 focus:outline-none focus:ring-0 dark:border-neutral-700 dark:bg-transparent"
       onClick={toggleTheme}
     >
       <div className="absolute inset-0 flex items-center justify-between px-3">
