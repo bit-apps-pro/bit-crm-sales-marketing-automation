@@ -41,13 +41,5 @@ export const MODULE_FIELD_CONFIG: Record<string, ModuleFieldConfig> = {
     queryKeys: ['lead', 'fields'],
     settingsKey: 'lead_fields_settings',
     tableQueryKeys: ['lead', 'table-fields']
-  },
-  [MODULES.PRODUCT]: {
-    columnSettingsKey: 'product_columns_settings',
-    endPoint: 'products/fields',
-    orderKey: 'product_fields_order',
-    queryKeys: ['products', 'fields'],
-    settingsKey: 'product_fields_settings',
-    tableQueryKeys: ['products', 'table-fields']
   }
 }
