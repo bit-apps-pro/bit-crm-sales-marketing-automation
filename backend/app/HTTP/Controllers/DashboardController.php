@@ -31,7 +31,6 @@ final class DashboardController
                 'userName'              => wp_get_current_user()->display_name,
                 'pendingActivities'     => $this->dashboardService->getPendingActivities(),
                 'leadCountBySource'     => $this->dashboardService->getLeadCountBySource(),
-                'topProductsByQuantity' => $this->dashboardService->getTopProductsByQuantity(),
                 'invoiceStatusOverview' => $this->dashboardService->getInvoiceStatusOverview(),
                 'dealsPipeline'         => $this->dashboardService->getDealPipeline($startDate, $endDate),
                 'stats'                 => $this->dashboardService->getStats(),

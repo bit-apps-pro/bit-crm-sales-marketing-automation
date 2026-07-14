@@ -18,8 +18,6 @@ interface LeadCountBySourceProps {
 }
 
 export default function LeadsBySource({ leadCountBySource }: LeadCountBySourceProps) {
-  const hasSingleSource = leadCountBySource.length === 1
-
   const data = useMemo(
     () => ({
       datasets: [
@@ -27,15 +25,15 @@ export default function LeadsBySource({ leadCountBySource }: LeadCountBySourcePr
           backgroundColor: leadCountBySource.map(
             (_, index) => SOURCE_COLORS[index % SOURCE_COLORS.length]
           ),
-          borderRadius: hasSingleSource ? 0 : 5,
+          borderRadius: 0,
           borderWidth: 0,
           data: leadCountBySource.map(source => source.total),
-          spacing: hasSingleSource ? 0 : 10
+          spacing: 0
         }
       ],
       labels: leadCountBySource.map(source => source.lead_source)
     }),
-    [hasSingleSource, leadCountBySource]
+    [leadCountBySource]
   )
 
   return (

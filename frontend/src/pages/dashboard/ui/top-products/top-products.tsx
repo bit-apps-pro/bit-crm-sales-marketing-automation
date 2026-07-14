@@ -1,12 +1,10 @@
 import { __ } from '@common/helpers/i18nWrap'
-import { type TopProduct } from '@pages/dashboard/shared/types'
 import LockedOverlay from '@utilities/pro-feature-alert/internal/locked-overlay'
 import { Button, Empty, Typography } from 'antd'
-import { type FC } from 'react'
 
 import DashboardCard from '../dashboard-card'
 
-const TopProducts: FC<{ topProductsByQuantity: TopProduct[] }> = () => {
+export default function TopProducts() {
   return (
     <DashboardCard>
       <LockedOverlay className="min-h-[240px]" featureName={__('Top Products')} showIcon={false}>
@@ -28,5 +26,3 @@ const TopProducts: FC<{ topProductsByQuantity: TopProduct[] }> = () => {
     </DashboardCard>
   )
 }
-
-export default TopProducts

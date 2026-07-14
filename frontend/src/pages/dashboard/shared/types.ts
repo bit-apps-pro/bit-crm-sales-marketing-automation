@@ -30,13 +30,6 @@ export interface PendingActivityGroup {
 
 export type PendingActivity = Record<ActivityTypeValue, PendingActivityGroup>
 
-export interface TopProduct {
-  grand_total: string
-  product_id: string
-  product_name: string
-  total: string
-}
-
 export type Trend = 'down' | 'flat' | 'up'
 
 export interface DashboardStat {

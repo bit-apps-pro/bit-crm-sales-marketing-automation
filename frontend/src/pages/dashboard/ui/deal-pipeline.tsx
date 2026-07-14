@@ -87,26 +87,25 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
     [dealPipeline]
   )
 
-  const data = useMemo<ChartData<'bar'>>(
-    () => ({
+  const data = useMemo<ChartData<'bar'>>(() => {
+    return {
       datasets: [
         {
-          backgroundColor: '#EFF2FF',
+          backgroundColor: colors.barColor,
           // Fixed pixel width so bars stay the same thickness regardless of count.
           barThickness: BAR_THICKNESS,
           borderRadius: 14,
           borderSkipped: false,
           // ...and fill with the full stage color on hover. Stages without a
           // configured color keep the neutral bar fill (no color shown).
-          hoverBackgroundColor: dealPipeline.map(stage => stage.color ?? '#EFF2FF'),
+          hoverBackgroundColor: dealPipeline.map(stage => stage.color ?? colors.barColor),
           // Heights are a percentage of the busiest stage so the y-axis reads 0–100%.
           data: dealPipeline.map(stage => ((Number(stage.count) || 0) / maxCount) * 100)
         }
       ],
       labels: dealPipeline.map(stage => stage.name || unslugify(stage.stage, '_'))
-    }),
-    [dealPipeline, maxCount]
-  )
+    }
+  }, [colors.barColor, dealPipeline, maxCount])
 
   const options = useMemo<ChartOptions<'bar'>>(
     () => ({

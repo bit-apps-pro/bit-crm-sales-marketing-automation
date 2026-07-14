@@ -28,6 +28,12 @@ export const DEAL_PIPELINE_CHART = {
 } as const
 
 export const THEME = {
-  dark: { grid: 'rgba(255, 255, 255, 0.08)' },
-  light: { grid: '#F1F0FA' }
-}
+  dark: {
+    barColor: '#64748B',
+    grid: 'rgba(255, 255, 255, 0.08)'
+  },
+  light: {
+    barColor: '#EFF2FF',
+    grid: '#F1F0FA'
+  }
+} as const

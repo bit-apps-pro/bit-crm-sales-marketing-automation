@@ -30,7 +30,7 @@ export default function StatCard({
       <div className="relative z-10">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#EEF0FB] text-primary">
+            <div className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#EEF0FB] text-primary dark:bg-zinc-800">
               {icon}
             </div>
             <Typography.Title className="mb-0 text-[#9090A8]" level={5}>
@@ -39,7 +39,7 @@ export default function StatCard({
           </div>
           <div>
             <Link
-              className="flex h-7 w-7 min-w-0 items-center justify-center rounded-full border-none bg-[#EEF0FB]"
+              className="flex h-7 w-7 min-w-0 items-center justify-center rounded-full border-none bg-[#EEF0FB] transition-colors hover:bg-[#E3E6F5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-zinc-800 dark:hover:bg-slate-700"
               to={href ?? ''}
             >
               <LuArrowUpRight className="text-primary" />

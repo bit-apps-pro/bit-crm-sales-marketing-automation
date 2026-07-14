@@ -8,7 +8,6 @@ use BitApps\Crm\Model\Activity;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Model\Lead;
-use BitApps\Crm\Model\LineItem;
 use BitApps\Crm\src\Capability;
 use DateTimeImmutable;
 use Throwable;
@@ -16,8 +15,6 @@ use Throwable;
 class DashboardService
 {
     private const TOP_LEAD_SOURCES_LIMIT = 4;
-
-    private const TOP_PRODUCTS_LIMIT = 3;
 
     private const PENDING_ACTIVITY_TYPES = ['meeting', 'call', 'task'];
 
@@ -44,30 +41,6 @@ class DashboardService
         }
 
         return $leadCountBySource->toArray();
-    }
-
-    public function getTopProductsByQuantity(): array
-    {
-        if (!Capability::check('bit_crm_product_view')) {
-            return [];
-        }
-
-        $topProductsByQuantity = LineItem::select('product_id')
-            ->selectRaw('MAX(product_name) as product_name')
-            ->selectRaw('SUM(quantity) as total, SUM(SUM(quantity)) OVER () as grand_total')
-            ->whereIn('module', [Deal::MODULE_NAME, Invoice::MODULE_NAME])
-            ->where('product_source', LineItem::SOURCE_PRODUCT)
-            ->groupBy('product_id')
-            ->orderBy('total')
-            ->desc()
-            ->take(self::TOP_PRODUCTS_LIMIT)
-            ->get();
-
-        if (empty($topProductsByQuantity)) {
-            return [];
-        }
-
-        return $topProductsByQuantity->toArray();
     }
 
     public function getDealPipeline(string $startDate, string $endDate): array

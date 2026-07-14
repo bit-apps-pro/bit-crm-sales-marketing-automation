@@ -8,8 +8,7 @@ import {
   type DealPipeline,
   type InvoiceData,
   type LeadCountBySource,
-  type PendingActivity,
-  type TopProduct
+  type PendingActivity
 } from '../shared/types'
 
 interface DashboardResponse {
@@ -18,7 +17,6 @@ interface DashboardResponse {
   leadCountBySource: LeadCountBySource[]
   pendingActivities: PendingActivity
   stats: DashboardStats
-  topProductsByQuantity: TopProduct[]
   userName: string
 }
 
@@ -57,7 +55,6 @@ export default function useDashboard({ endDate, startDate }: UseDashboardParams)
     leadCountBySource: data?.leadCountBySource ?? [],
     pendingActivities: data?.pendingActivities ?? DEFAULT_PENDING_ACTIVITIES,
     stats: data?.stats ?? DEFAULT_STATS,
-    topProductsByQuantity: data?.topProductsByQuantity ?? [],
     userName: data?.userName ?? ''
   }
 }

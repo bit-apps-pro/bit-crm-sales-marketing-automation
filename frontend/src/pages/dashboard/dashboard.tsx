@@ -41,7 +41,6 @@ export default function Dashboard() {
     leadCountBySource,
     pendingActivities,
     stats,
-    topProductsByQuantity,
     userName
   } = useDashboard(debouncedQueryParams)
 
@@ -63,13 +62,13 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-col gap-5">
         <StatCards stats={stats} />
-        <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-5">
-          <div className="w-full md:col-span-1">
+        <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-10">
+          <div className="w-full md:col-span-3">
             <PendingActivities pendingActivities={pendingActivities} />
           </div>
           <div
             className={cn(
-              'col-span-1 flex flex-col gap-5 lg:col-span-3',
+              'col-span-1 flex flex-col gap-5 lg:col-span-5',
               !hasSalesOverviewAccess && 'hidden'
             )}
           >
@@ -86,11 +85,11 @@ export default function Dashboard() {
                 <InvoiceStats invoiceStatusOverview={invoiceStatusOverview} />
               </If>
               <If conditions={canViewProducts}>
-                <TopProducts topProductsByQuantity={topProductsByQuantity} />
+                <TopProducts />
               </If>
             </div>
           </div>
-          <div className="w-full space-y-5 md:col-span-1">
+          <div className="w-full space-y-5 md:col-span-2">
             <If conditions={checkCapability(CAPABILITIES.LEAD.VIEW)}>
               <LeadsBySource leadCountBySource={leadCountBySource} />
             </If>
