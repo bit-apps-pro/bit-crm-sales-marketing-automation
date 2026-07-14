@@ -67,7 +67,7 @@
     "phpcs:fix": "phpcbf",
     "phpcs:report": "phpcs --report=summary --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1",
     "pi": "./vendor/wp-cli/wp-cli/bin/wp bit-pi",
-    "crm": "./vendor/wp-cli/wp-cli/bin/wp bit-crm",
+    "crm": "./vendor/wp-cli/wp-cli/bin/wp bit-crm-sales-marketing-automation",
     "db": "composer crm db",
     "use:prod": "composer crm use toggleDev -- --active=n",
     "use:dev": "composer crm use toggleDev -- --active=y",

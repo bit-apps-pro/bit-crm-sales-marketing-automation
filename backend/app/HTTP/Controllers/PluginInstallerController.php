@@ -27,14 +27,14 @@ final class PluginInstallerController
         $pluginData = OtherPluginsData::getPluginData($validated['slug']);
 
         if (empty($pluginData) || !OtherPluginsData::verifyPluginData($pluginData)) {
-            return Response::error(null)->message(__('Invalid plugin data or plugin not found!', 'bit-crm'));
+            return Response::error(null)->message(__('Invalid plugin data or plugin not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
             $this->pluginInstallerService->installAndActivatePlugin($pluginData);
 
             // translators: %s: plugin slug
-            return Response::success(null)->message(\sprintf(__('Plugin "%s" has been installed and activated successfully.', 'bit-crm'), $pluginData['slug']));
+            return Response::success(null)->message(\sprintf(__('Plugin "%s" has been installed and activated successfully.', 'bit-crm-sales-marketing-automation'), $pluginData['slug']));
         } catch (Throwable $th) {
             return Response::error(null)->message($th->getMessage());
         }

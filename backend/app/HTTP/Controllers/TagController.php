@@ -61,7 +61,7 @@ final class TagController
         try {
             $tags = $tagsQuery->paginate($page, $perPage);
         } catch (Throwable $th) {
-            return Response::error(__('Something went wrong! Failed to fetch tags!', 'bit-crm'));
+            return Response::error(__('Something went wrong! Failed to fetch tags!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($tags);
@@ -70,10 +70,10 @@ final class TagController
     public function store(StoreRequest $request)
     {
         if (!TagService::store($request->validated())) {
-            return Response::error(__('Failed to create tag!', 'bit-crm'));
+            return Response::error(__('Failed to create tag!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Tag created successfully', 'bit-crm'));
+        return Response::success(__('Tag created successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function edit(EditRequest $request)
@@ -83,7 +83,7 @@ final class TagController
         $tag = Tag::select(['id', 'title', 'module'])->findOne(['id' => $validated['id']]);
 
         if (!$tag) {
-            return Response::error(__('Tag not found!', 'bit-crm'));
+            return Response::error(__('Tag not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($tag);
@@ -96,7 +96,7 @@ final class TagController
         $tag = Tag::findOne(['id' => $validated['id']]);
 
         if (!$tag) {
-            return Response::error(__('Failed to update. Tag not found!', 'bit-crm'));
+            return Response::error(__('Failed to update. Tag not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated['slug'] = Slug::generate($validated['title']);
@@ -105,10 +105,10 @@ final class TagController
         if ($tag->update($validated)) {
             Hooks::doAction('bit_crm/tag_updated', $tag);
 
-            return Response::success(__('Tag updated successfully', 'bit-crm'));
+            return Response::success(__('Tag updated successfully', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to update tag!', 'bit-crm'));
+        return Response::error(__('Failed to update tag!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function updatePin(UpdatePinRequest $request)
@@ -118,20 +118,20 @@ final class TagController
         $tag = Tag::findOne(['id' => $validated['id']]);
 
         if (!$tag) {
-            return Response::error(__('Tag does not exist.', 'bit-crm'));
+            return Response::error(__('Tag does not exist.', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
             $tag->update(['is_pinned' => $validated['is_pinned']])->save();
         } catch (Throwable $th) {
-            return Response::error(__('Failed to pin.', 'bit-crm'));
+            return Response::error(__('Failed to pin.', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($validated['is_pinned'] === 1) {
-            return Response::success(__('Tag pinned successfully', 'bit-crm'));
+            return Response::success(__('Tag pinned successfully', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Tag unpinned successfully', 'bit-crm'));
+        return Response::success(__('Tag unpinned successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)
@@ -141,13 +141,13 @@ final class TagController
         $tags = Tag::whereIn('id', $tagsId);
 
         if (!$tags->count()) {
-            return Response::error(__('Tag not found!', 'bit-crm'));
+            return Response::error(__('Tag not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
             $tags->delete();
         } catch (Throwable $th) {
-            return Response::error(__('Failed to delete!', 'bit-crm'));
+            return Response::error(__('Failed to delete!', 'bit-crm-sales-marketing-automation'));
         }
 
         Hooks::doAction('bit_crm/tag_deleted', $tagsId);
@@ -155,10 +155,10 @@ final class TagController
         try {
             TagEntity::whereIn('tag_id', $tagsId)->delete();
         } catch (Throwable $th) {
-            return Response::error(__('Failed to delete tag relations!', 'bit-crm'));
+            return Response::error(__('Failed to delete tag relations!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Tag deleted successfully', 'bit-crm'));
+        return Response::success(__('Tag deleted successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function tagsByModule(TagsByModuleRequest $request)
@@ -168,13 +168,13 @@ final class TagController
         $module = $validatedData['module'];
 
         if (!ModuleService::isValidModule($module)) {
-            return Response::error(__('Invalid module', 'bit-crm'));
+            return Response::error(__('Invalid module', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
             $tags = Tag::where('module', $module)->get();
         } catch (Throwable $th) {
-            return Response::error(__('Something went wrong! Failed to fetch tags!', 'bit-crm'));
+            return Response::error(__('Something went wrong! Failed to fetch tags!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($tags);

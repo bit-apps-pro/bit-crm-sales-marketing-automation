@@ -66,7 +66,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             if (!$storedLead) {
                 Connection::rollback();
 
-                return ['success' => false, 'errors' => [__('Failed to create new lead!', 'bit-crm')]];
+                return ['success' => false, 'errors' => [__('Failed to create new lead!', 'bit-crm-sales-marketing-automation')]];
             }
 
             $leadId = $storedLead->id;
@@ -84,7 +84,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to create new lead!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to create new lead!', 'bit-crm-sales-marketing-automation')]];
         }
     }
 
@@ -101,7 +101,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         $lead = Lead::findOne(['id' => $id, 'is_trash' => 0, 'is_converted' => 0]);
 
         if (!$lead) {
-            return ['success' => false, 'errors' => [__('Lead not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Lead not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         $lead = $lead->getAttributes();
@@ -134,7 +134,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
 
         $lead = Lead::findOne(['id' => $validated['id'], 'is_trash' => 0]);
         if (!$lead) {
-            return ['success' => false, 'errors' => [__('Lead not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Lead not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         Connection::startTransaction();
@@ -143,7 +143,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             if (!$lead->update($validated['systemDefinedFieldsValues'])) {
                 Connection::rollback();
 
-                return ['success' => false, 'errors' => [__('Failed to update Lead.', 'bit-crm')]];
+                return ['success' => false, 'errors' => [__('Failed to update Lead.', 'bit-crm-sales-marketing-automation')]];
             }
 
             Hooks::doAction(HookKeys::UPDATE_CUSTOM_FIELDS_VALUES, Lead::MODULE_NAME, $lead->id, $validated['customFieldsValues'] ?? []);
@@ -151,11 +151,11 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             Connection::commit();
             Hooks::doAction('bit_crm/lead_updated', $lead);
 
-            return ['success' => true, 'data' => $lead, 'message' => __('Lead updated successfully.', 'bit-crm')];
+            return ['success' => true, 'data' => $lead, 'message' => __('Lead updated successfully.', 'bit-crm-sales-marketing-automation')];
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to update Lead.', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to update Lead.', 'bit-crm-sales-marketing-automation')]];
         }
     }
 
@@ -174,7 +174,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         $leadsData = $leads->get()->toArray();
 
         if (!\count($leadsData)) {
-            return ['success' => false, 'errors' => [__('Leads not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Leads not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         $currentUserId = get_current_user_id();
@@ -206,11 +206,11 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
                 }
             }
 
-            return ['success' => true, 'data' => $data, 'message' => __('Deleted successfully.', 'bit-crm')];
+            return ['success' => true, 'data' => $data, 'message' => __('Deleted successfully.', 'bit-crm-sales-marketing-automation')];
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to delete!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to delete!', 'bit-crm-sales-marketing-automation')]];
         }
     }
 

@@ -49,13 +49,13 @@ final class CurrencyController
         $homeCurrencySettings = Setting::findOne(['setting_key' => CurrencyHelper::KEY_HOME_CURRENCY_DATA]);
 
         if (!empty($homeCurrencySettings)) {
-            return Response::error(null)->message(__('Home currency is already set!', 'bit-crm'));
+            return Response::error(null)->message(__('Home currency is already set!', 'bit-crm-sales-marketing-automation'));
         }
 
         $currencyData = CurrencyHelper::getCurrencyData($currencyCode);
 
         if (empty($currencyData)) {
-            return Response::error(null)->message(__('Invalid currency selected!', 'bit-crm'));
+            return Response::error(null)->message(__('Invalid currency selected!', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated['label'] = $currencyData['label'];
@@ -87,14 +87,14 @@ final class CurrencyController
             && \is_array($currencyResult[1]['setting_value']);
 
             if (!$hasHomeCurrencyData) {
-                return Response::error(null)->message(__('Failed to set home currency!', 'bit-crm'));
+                return Response::error(null)->message(__('Failed to set home currency!', 'bit-crm-sales-marketing-automation'));
             }
 
-            return Response::success($currencyResult[1]['setting_value'])->message(__('Home currency set successfully.', 'bit-crm'));
+            return Response::success($currencyResult[1]['setting_value'])->message(__('Home currency set successfully.', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
             Connection::rollBack();
 
-            return Response::error(null)->message(__('Failed to set home currency!', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to set home currency!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -105,11 +105,11 @@ final class CurrencyController
         $homeCurrencyData = $homeCurrencyDataSetting['setting_value'] ?? [];
 
         if (empty($homeCurrencyData)) {
-            return Response::error(null)->message(__('Home currency not found!', 'bit-crm'));
+            return Response::error(null)->message(__('Home currency not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($homeCurrencyData['currency'] !== $validated['currency']) {
-            return Response::error(null)->message(__('Invalid currency!', 'bit-crm'));
+            return Response::error(null)->message(__('Invalid currency!', 'bit-crm-sales-marketing-automation'));
         }
 
         $homeCurrencyData = array_merge($homeCurrencyData, $validated);
@@ -117,9 +117,9 @@ final class CurrencyController
         try {
             $homeCurrencyDataSetting->update(['setting_value' => $homeCurrencyData, 'updated_by' => get_current_user_id()]);
 
-            return Response::success($homeCurrencyData)->message(__('Home currency updated successfully.', 'bit-crm'));
+            return Response::success($homeCurrencyData)->message(__('Home currency updated successfully.', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
-            return Response::error(null)->message(__('Failed to update home currency!', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to update home currency!', 'bit-crm-sales-marketing-automation'));
         }
     }
 }

@@ -1,6 +1,6 @@
 import PAGINATION from '@common/constants/pagination'
 import { checkCapability, getCapability } from '@common/helpers/capabilityHelper'
-import { __ } from '@common/helpers/i18nWrap'
+import { __, sprintf } from '@common/helpers/i18nWrap'
 import useDebounceState from '@common/hooks/useDebounceState'
 import If from '@utilities/If'
 import Pagination from '@utilities/pagination'
@@ -113,9 +113,12 @@ export default function RelatedEntities({
             icon={<LuX className="text-red-600" />}
             onClick={() => setDetachModalOpen(true)}
           >
-            {selectedKeys.length === 1
-              ? __(`Detach ${relatedEntity} (1)`, 'bit-crm')
-              : __(`Detach ${relatedEntity}s (${selectedKeys.length})`, 'bit-crm')}
+            {selectedKeys.length > 0 &&
+              sprintf(
+                /* translators: %s: Number of selected entities. */
+                __('Detach (%s)', 'bit-crm-sales-marketing-automation'),
+                selectedKeys.length
+              )}
           </Button>
         </If>
       </div>

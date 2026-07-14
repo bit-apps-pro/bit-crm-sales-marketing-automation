@@ -17,7 +17,7 @@ class StoreRequest extends Request
 
     public function failedAuthorizationMessage()
     {
-        return __('Authorization Error: You don\'t have access!', 'bit-crm');
+        return __('Authorization Error: You don\'t have access!', 'bit-crm-sales-marketing-automation');
     }
 
     public function rules()
@@ -27,7 +27,7 @@ class StoreRequest extends Request
                 'required',
                 'string',
                 'sanitize:text',
-                new UniqueTagByModuleRule(Tag::class, 'title', __('Tag already exists for the module!', 'bit-crm')),
+                new UniqueTagByModuleRule(Tag::class, 'title', __('Tag already exists for the module!', 'bit-crm-sales-marketing-automation')),
             ],
             'module' => ['required', 'string', 'sanitize:text', new ValidModuleRule()]
         ];

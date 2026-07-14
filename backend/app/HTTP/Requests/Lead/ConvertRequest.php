@@ -38,8 +38,8 @@ final class ConvertRequest extends Request
     public function messages()
     {
         return [
-            'ids.max' => __('You can convert leads to a maximum of 100 leads at a time.', 'bit-crm'),
-            'ids.min' => __('You must convert at least 1 lead at a time.', 'bit-crm'),
+            'ids.max' => __('You can convert leads to a maximum of 100 leads at a time.', 'bit-crm-sales-marketing-automation'),
+            'ids.min' => __('You must convert at least 1 lead at a time.', 'bit-crm-sales-marketing-automation'),
         ];
     }
 }

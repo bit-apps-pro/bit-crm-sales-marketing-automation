@@ -1,4 +1,4 @@
-import { __ } from '@common/helpers/i18nWrap'
+import { __, sprintf } from '@common/helpers/i18nWrap'
 import { type FormInstance } from 'antd'
 import { type Rule } from 'antd/lib/form'
 import { startCase } from 'lodash'
@@ -32,7 +32,14 @@ export const getValidationRules = (label: string, type: string, required: boolea
   const rules: Rule[] = []
 
   if (required) {
-    rules.push({ message: __(`${label} is required`), required })
+    rules.push({
+      message: sprintf(
+        /* translators: %s: Form field label. */
+        __('%s is required'),
+        label
+      ),
+      required
+    })
   }
 
   if (type === 'email') {

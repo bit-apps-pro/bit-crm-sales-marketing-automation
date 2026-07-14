@@ -24,7 +24,7 @@ class WooCommerceProductService
     {
         if (!$this->isPluginActive()) {
             return [
-                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm'),
+                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm-sales-marketing-automation'),
             ];
         }
 
@@ -56,7 +56,7 @@ class WooCommerceProductService
     {
         if (!$this->isPluginActive()) {
             return [
-                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm'),
+                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm-sales-marketing-automation'),
             ];
         }
 
@@ -92,7 +92,7 @@ class WooCommerceProductService
     {
         if (!$this->isPluginActive()) {
             return [
-                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm'),
+                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm-sales-marketing-automation'),
             ];
         }
 
@@ -120,7 +120,7 @@ class WooCommerceProductService
     {
         if (!$this->isPluginActive()) {
             return [
-                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm'),
+                'error' => __('The WooCommerce plugin is not installed or activated.', 'bit-crm-sales-marketing-automation'),
             ];
         }
 

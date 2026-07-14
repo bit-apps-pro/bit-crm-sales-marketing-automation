@@ -13,7 +13,7 @@ class PluginCommands
     public function toggleDev($_, $assocArgs)
     {
         if (!isset($assocArgs['active'])) {
-            WP_CLI::error('missing parameter use wp bit-crm use toggleDev --active=y|n');
+            WP_CLI::error('missing parameter use wp bit-crm-sales-marketing-automation use toggleDev --active=y|n');
 
             return;
         }

@@ -71,7 +71,7 @@ final class AttachmentController
             return Response::success(
                 \sprintf(
                     // translators: %d: Number of attachments that were skipped because they already exist
-                    __('%d attachments already exist; skipped creation!', 'bit-crm'),
+                    __('%d attachments already exist; skipped creation!', 'bit-crm-sales-marketing-automation'),
                     $skipCount
                 )
             );
@@ -81,13 +81,13 @@ final class AttachmentController
             $message = $skipCount > 0
                 ? \sprintf(
                     // translators: 1: Number of attachments created, 2: Number of attachments that already existed
-                    __('%1$d attachments created successfully, %2$d already exist.', 'bit-crm'),
+                    __('%1$d attachments created successfully, %2$d already exist.', 'bit-crm-sales-marketing-automation'),
                     \count($data),
                     $skipCount
                 )
                 : \sprintf(
                     // translators: %d: Number of attachments created
-                    __('%d attachments created successfully.', 'bit-crm'),
+                    __('%d attachments created successfully.', 'bit-crm-sales-marketing-automation'),
                     \count($data)
                 );
 
@@ -96,7 +96,7 @@ final class AttachmentController
             return Response::success($message);
         }
 
-        return Response::error(__('Failed to create attachment!', 'bit-crm'));
+        return Response::error(__('Failed to create attachment!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)
@@ -105,15 +105,15 @@ final class AttachmentController
         $attachment = new Attachment($validated['id']);
 
         if (!$attachment->exists()) {
-            return Response::error(__('Attachment not found!', 'bit-crm'));
+            return Response::error(__('Attachment not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($attachment->delete()) {
             Hooks::doAction('bit_crm/attachment_deleted', $validated['id']);
 
-            return Response::success(__('Attachment deleted successfully!', 'bit-crm'));
+            return Response::success(__('Attachment deleted successfully!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to delete attachment!', 'bit-crm'));
+        return Response::error(__('Failed to delete attachment!', 'bit-crm-sales-marketing-automation'));
     }
 }

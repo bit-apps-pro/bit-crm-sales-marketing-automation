@@ -10,7 +10,7 @@ class ModelCommand
     public function model($args)
     {
         if (empty($args)) {
-            WP_CLI::error('missing model name use wp bit-crm model "Model Name"');
+            WP_CLI::error('missing model name use wp bit-crm-sales-marketing-automation model "Model Name"');
 
             return;
         }

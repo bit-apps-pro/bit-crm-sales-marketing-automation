@@ -6,7 +6,7 @@ on:
       - submitted
 
 env:
-  PLUGIN_SLUG: bit-crm
+  PLUGIN_SLUG: bit-crm-sales-marketing-automation
 
 jobs:
   check-approval:

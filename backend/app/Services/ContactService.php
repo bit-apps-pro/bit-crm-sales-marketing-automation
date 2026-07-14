@@ -66,7 +66,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             if (!$storedContact) {
                 Connection::rollback();
 
-                return ['success' => false, 'errors' => [__('Failed to create new contact!', 'bit-crm')]];
+                return ['success' => false, 'errors' => [__('Failed to create new contact!', 'bit-crm-sales-marketing-automation')]];
             }
 
             $contactId = $storedContact->id;
@@ -84,7 +84,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to create new contact!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to create new contact!', 'bit-crm-sales-marketing-automation')]];
         }
     }
 
@@ -101,7 +101,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         $contact = Contact::findOne(['id' => $id, 'is_trash' => 0]);
 
         if (!$contact) {
-            return ['success' => false, 'errors' => [__('Contact not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Contact not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         $contact = $contact->getAttributes();
@@ -134,7 +134,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
 
         $contact = Contact::findOne(['id' => $validated['id'], 'is_trash' => 0]);
         if (!$contact) {
-            return ['success' => false, 'errors' => [__('Contact not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Contact not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         Connection::startTransaction();
@@ -143,7 +143,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             if (!$contact->update($validated['systemDefinedFieldsValues'])) {
                 Connection::rollback();
 
-                return ['success' => false, 'errors' => [__('Failed to update contact.', 'bit-crm')]];
+                return ['success' => false, 'errors' => [__('Failed to update contact.', 'bit-crm-sales-marketing-automation')]];
             }
 
             Hooks::doAction(HookKeys::UPDATE_CUSTOM_FIELDS_VALUES, Contact::MODULE_NAME, $contact->id, $validated['customFieldsValues'] ?? []);
@@ -151,11 +151,11 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             Connection::commit();
             Hooks::doAction('bit_crm/contact_updated', $contact);
 
-            return ['success' => true, 'data' => $contact, 'message' => __('Contact updated successfully.', 'bit-crm')];
+            return ['success' => true, 'data' => $contact, 'message' => __('Contact updated successfully.', 'bit-crm-sales-marketing-automation')];
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to update contact.', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to update contact.', 'bit-crm-sales-marketing-automation')]];
         }
     }
 
@@ -173,14 +173,14 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         $contacts = Contact::whereIn('id', $ids)->get();
 
         if (empty($contacts)) {
-            return ['success' => false, 'errors' => [__('Contacts not found', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Contacts not found', 'bit-crm-sales-marketing-automation')]];
         }
 
         $skippedIds = $this->getIdsWithAssociations($ids);
         $trashableIds = array_values(array_diff($ids, $skippedIds));
 
         if (empty($trashableIds)) {
-            return ['success' => false, 'errors' => [__('Failed to move contacts to trash. Please remove associations with deals before deleting.', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to move contacts to trash. Please remove associations with deals before deleting.', 'bit-crm-sales-marketing-automation')]];
         }
 
         $trashableContactsData = array_values(
@@ -216,10 +216,10 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             }
 
             $message = empty($skippedIds)
-                ? __('Contact deleted successfully.', 'bit-crm')
+                ? __('Contact deleted successfully.', 'bit-crm-sales-marketing-automation')
                 : \sprintf(
                     // translators: 1: number of deleted contacts, 2: number of skipped contacts
-                    __('%1$d contact(s) deleted. %2$d contact(s) skipped due to associated deals.', 'bit-crm'),
+                    __('%1$d contact(s) deleted. %2$d contact(s) skipped due to associated deals.', 'bit-crm-sales-marketing-automation'),
                     \count($trashableIds),
                     \count($skippedIds)
                 );
@@ -228,7 +228,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to delete!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to delete!', 'bit-crm-sales-marketing-automation')]];
         }
     }
 

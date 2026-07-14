@@ -28,7 +28,7 @@ class HomeCurrencyStoreRequest extends Request
     public function messages()
     {
         return [
-            'decimal_places.between' => __('The decimal places must be between 0 and 6.', 'bit-crm'),
+            'decimal_places.between' => __('The decimal places must be between 0 and 6.', 'bit-crm-sales-marketing-automation'),
         ];
     }
 }

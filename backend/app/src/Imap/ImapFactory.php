@@ -9,7 +9,7 @@ class ImapFactory
     public static function getImapClientInstance(string $email, int $imapSettingsId, ?int $afterUid = null)
     {
         if (!$imapSettings = ImapService::getImapSettingsById($imapSettingsId)) {
-            return ['success' => false, 'message' => __('Failed to fetch messages, please setup IMAP first.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Failed to fetch messages, please setup IMAP first.', 'bit-crm-sales-marketing-automation')];
         }
 
         $platform = $imapSettings['platform'];
@@ -25,6 +25,6 @@ class ImapFactory
                 return new OtherClient($imapSettings, $email, $afterUid);
         }
 
-        return ['success' => false, 'message' => __('Failed to get imap client, invalid platform.', 'bit-crm')];
+        return ['success' => false, 'message' => __('Failed to get imap client, invalid platform.', 'bit-crm-sales-marketing-automation')];
     }
 }

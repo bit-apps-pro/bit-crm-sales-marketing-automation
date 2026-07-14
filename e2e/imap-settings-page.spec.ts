@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('wp-admin/admin.php?page=bit-crm#/settings/imap-settings')
+  await page.goto('wp-admin/admin.php?page=bit-crm-sales-marketing-automation#/settings/imap-settings')
 })
 
 const getImapItem = (page: Page, title: string) =>

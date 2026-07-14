@@ -61,7 +61,7 @@ final class TrashController
         try {
             $trashes = $trashQuery->paginate($page, $perPage);
         } catch (Throwable $th) {
-            return Response::error(__('Failed to fetch trashes!', 'bit-crm'));
+            return Response::error(__('Failed to fetch trashes!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($trashes);
@@ -85,10 +85,10 @@ final class TrashController
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return Response::error(__('Failed to restore trashes!', 'bit-crm'));
+            return Response::error(__('Failed to restore trashes!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Trash restored successfully', 'bit-crm'));
+        return Response::success(__('Trash restored successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)
@@ -104,10 +104,10 @@ final class TrashController
         try {
             TrashService::deleteTrashes($trashes);
         } catch (Throwable $th) {
-            return Response::error(__('Could not delete trash', 'bit-crm'));
+            return Response::error(__('Could not delete trash', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Trash deleted successfully', 'bit-crm'));
+        return Response::success(__('Trash deleted successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function empty(EmptyRequest $request)
@@ -117,14 +117,14 @@ final class TrashController
         $isEmptyTrashQueueProcessExist = Config::getOption(Trash::IS_QUEUE_IN_PROCESS_KEY, false);
 
         if ($isEmptyTrashQueueProcessExist) {
-            return Response::error(__('Trash already scheduled for deletion successfully', 'bit-crm'));
+            return Response::error(__('Trash already scheduled for deletion successfully', 'bit-crm-sales-marketing-automation'));
         }
 
         $trashTable = Config::withDBPrefix('trashes');
         $trashQuery = Trash::raw("SELECT EXISTS(SELECT 1 FROM {$trashTable} LIMIT 1) as trash_exists");
 
         if ($trashQuery[0]->trash_exists < 1) {
-            return Response::error(__('Trash is already empty.', 'bit-crm'));
+            return Response::error(__('Trash is already empty.', 'bit-crm-sales-marketing-automation'));
         }
 
         Config::addOption(Trash::IS_QUEUE_IN_PROCESS_KEY, true);
@@ -134,6 +134,6 @@ final class TrashController
             ->save()
             ->dispatch();
 
-        return Response::success(__('Trash scheduled for deletion successfully', 'bit-crm'));
+        return Response::success(__('Trash scheduled for deletion successfully', 'bit-crm-sales-marketing-automation'));
     }
 }

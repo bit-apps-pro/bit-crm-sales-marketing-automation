@@ -40,7 +40,7 @@ class InvoicePdfService
         $details = InvoiceService::getInvoiceDetails($invoiceId);
 
         if ($details === null) {
-            throw new Exception(esc_html__('Invoice, Deal, or Contact not found.', 'bit-crm'));
+            throw new Exception(esc_html__('Invoice, Deal, or Contact not found.', 'bit-crm-sales-marketing-automation'));
         }
 
         $terms = $this->invoiceTermService->getAllTerms();
@@ -138,12 +138,12 @@ class InvoicePdfService
 
         $cssPath = Config::get('BASEDIR') . '/resources/invoice/template-1.css';
         if (!file_exists($cssPath)) {
-            throw new Exception(esc_html__('Invoice CSS template not found.', 'bit-crm'));
+            throw new Exception(esc_html__('Invoice CSS template not found.', 'bit-crm-sales-marketing-automation'));
         }
 
         $styleSheet = file_get_contents($cssPath);
         if ($styleSheet === false) {
-            throw new Exception(esc_html__('Failed to read invoice CSS template.', 'bit-crm'));
+            throw new Exception(esc_html__('Failed to read invoice CSS template.', 'bit-crm-sales-marketing-automation'));
         }
 
         $mpdf->WriteHTML('<style>' . $styleSheet . '</style>', MpdfHTMLParserMode::HEADER_CSS);

@@ -112,7 +112,7 @@ final class EmailController
         try {
             $emails = $emailsQuery->paginate($page, $perPage);
         } catch (Throwable $th) {
-            return Response::error(__('Failed to fetch emails!', 'bit-crm'));
+            return Response::error(__('Failed to fetch emails!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($emails);
@@ -125,7 +125,7 @@ final class EmailController
         $email = new Email($validated['id']);
 
         if (!$email->exists()) {
-            return Response::error(__('Email not found.', 'bit-crm'));
+            return Response::error(__('Email not found.', 'bit-crm-sales-marketing-automation'));
         }
 
         if (!empty($email->body)) {
@@ -135,7 +135,7 @@ final class EmailController
         $emailBody = EmailService::getEmailBody($email->toArray());
 
         if (!$emailBody) {
-            return Response::error(__('Failed to fetch email body!', 'bit-crm'));
+            return Response::error(__('Failed to fetch email body!', 'bit-crm-sales-marketing-automation'));
         }
 
         $email->body = $emailBody;
@@ -143,7 +143,7 @@ final class EmailController
         try {
             $email->save();
         } catch (Throwable $th) {
-            return Response::error(__('Failed to save email body!', 'bit-crm'));
+            return Response::error(__('Failed to save email body!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($email);
@@ -167,13 +167,13 @@ final class EmailController
         $sent = wp_mail($validated['entity_email'], $validated['subject'], $message, $headers, $formattedAttachments);
 
         if (!$sent) {
-            return Response::error(__('Failed to send email.', 'bit-crm'));
+            return Response::error(__('Failed to send email.', 'bit-crm-sales-marketing-automation'));
         }
 
         $messageId = $this->getMessageId();
 
         if (!$messageId) {
-            return Response::error(__('Failed to retrieve message ID after sending email.', 'bit-crm'));
+            return Response::error(__('Failed to retrieve message ID after sending email.', 'bit-crm-sales-marketing-automation'));
         }
 
         Email::insert(
@@ -190,7 +190,7 @@ final class EmailController
             ]
         );
 
-        return Response::success(__('Email sent successfully.', 'bit-crm'));
+        return Response::success(__('Email sent successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     private function getMessageId(): false|string

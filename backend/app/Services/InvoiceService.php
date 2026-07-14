@@ -58,8 +58,8 @@ class InvoiceService
 
     public static function sendInvoice($email, $attachments)
     {
-        $subject = __('Your Invoice', 'bit-crm');
-        $message = __('Please find your invoice attached.', 'bit-crm');
+        $subject = __('Your Invoice', 'bit-crm-sales-marketing-automation');
+        $message = __('Please find your invoice attached.', 'bit-crm-sales-marketing-automation');
         $headers = ['Content-Type: text/html; charset=UTF-8'];
 
         return wp_mail($email, $subject, $message, $headers, $attachments);

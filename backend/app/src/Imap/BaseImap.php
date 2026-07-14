@@ -38,7 +38,7 @@ class BaseImap
     public function receivedMessages(?int $limit, ?int $page)
     {
         if (empty($this->receivedFolder) || empty($this->receivedType)) {
-            return ['success' => false, 'message' => __('Received folder or type is not set.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Received folder or type is not set.', 'bit-crm-sales-marketing-automation')];
         }
 
         return $this->messages($this->receivedFolder, $this->receivedType, $limit, $page);
@@ -47,7 +47,7 @@ class BaseImap
     public function sentMessages(?int $limit, ?int $page)
     {
         if (empty($this->sentFolder) || empty($this->sentType)) {
-            return ['success' => false, 'message' => __('Sent folder or type is not set.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Sent folder or type is not set.', 'bit-crm-sales-marketing-automation')];
         }
 
         return $this->messages($this->sentFolder, $this->sentType, $limit, $page);
@@ -56,7 +56,7 @@ class BaseImap
     public function receivedMessagesCount()
     {
         if (empty($this->receivedFolder) || empty($this->receivedType)) {
-            return ['success' => false, 'message' => __('Received folder or type is not set.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Received folder or type is not set.', 'bit-crm-sales-marketing-automation')];
         }
 
         return $this->countMessages($this->receivedFolder, $this->receivedType);
@@ -65,7 +65,7 @@ class BaseImap
     public function sentMessagesCount()
     {
         if (empty($this->sentFolder) || empty($this->sentType)) {
-            return ['success' => false, 'message' => __('Sent folder or type is not set.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Sent folder or type is not set.', 'bit-crm-sales-marketing-automation')];
         }
 
         return $this->countMessages($this->sentFolder, $this->sentType);
@@ -74,7 +74,7 @@ class BaseImap
     public function getReceivedMessageByUid(string $uid)
     {
         if (empty($this->receivedFolder)) {
-            return ['success' => false, 'message' => __('Received folder is not set.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Received folder is not set.', 'bit-crm-sales-marketing-automation')];
         }
 
         return $this->messageByUid($this->receivedFolder, $uid);
@@ -83,7 +83,7 @@ class BaseImap
     public function getSentMessageByUid(string $uid)
     {
         if (empty($this->sentFolder)) {
-            return ['success' => false, 'message' => __('Sent folder is not set.', 'bit-crm')];
+            return ['success' => false, 'message' => __('Sent folder is not set.', 'bit-crm-sales-marketing-automation')];
         }
 
         return $this->messageByUid($this->sentFolder, $uid);

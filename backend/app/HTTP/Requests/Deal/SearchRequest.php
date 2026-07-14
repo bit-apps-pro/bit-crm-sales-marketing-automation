@@ -39,10 +39,10 @@ class SearchRequest extends Request
     public function messages()
     {
         return [
-            'advancedFilterGroups.*.*.field_key.string'  => __('Invalid field key!', 'bit-crm'),
-            'advancedFilterGroups.*.*.operator.string'   => __('Invalid operator!', 'bit-crm'),
-            'advancedFilterGroups.*.*.field_type.string' => __('Invalid field type!', 'bit-crm'),
-            'advancedFilterGroups.*.*.is_custom.boolean' => __('Invalid custom field flag!', 'bit-crm'),
+            'advancedFilterGroups.*.*.field_key.string'  => __('Invalid field key!', 'bit-crm-sales-marketing-automation'),
+            'advancedFilterGroups.*.*.operator.string'   => __('Invalid operator!', 'bit-crm-sales-marketing-automation'),
+            'advancedFilterGroups.*.*.field_type.string' => __('Invalid field type!', 'bit-crm-sales-marketing-automation'),
+            'advancedFilterGroups.*.*.is_custom.boolean' => __('Invalid custom field flag!', 'bit-crm-sales-marketing-automation'),
         ];
     }
 }

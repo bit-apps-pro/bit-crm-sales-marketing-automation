@@ -53,7 +53,7 @@ export default function DealInvoices({ entityId }: DealInvoiceProps) {
           </Typography.Title>
           <Link target="_blank" to={`../invoices/create?dealId=${entityId}`}>
             <Button className="rounded-full text-sm capitalize" icon={<LuPlus />} type="primary">
-              {__(`New`)}
+              {__('New')}
             </Button>
           </Link>
         </div>

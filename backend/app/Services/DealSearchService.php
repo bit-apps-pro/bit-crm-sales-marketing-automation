@@ -29,7 +29,7 @@ class DealSearchService
     public function search(array $args)
     {
         if (!$this->validateArguments($args)) {
-            throw new Exception(esc_html__('Invalid arguments.', 'bit-crm'));
+            throw new Exception(esc_html__('Invalid arguments.', 'bit-crm-sales-marketing-automation'));
         }
 
         $dealTable = Config::withDBPrefix('deals');
@@ -67,7 +67,7 @@ class DealSearchService
         try {
             $data = Deal::raw($baseQuery, $bindings) ?? [];
         } catch (Throwable $th) {
-            throw new Exception(esc_html__('Failed to fetch deals.', 'bit-crm'));
+            throw new Exception(esc_html__('Failed to fetch deals.', 'bit-crm-sales-marketing-automation'));
         }
 
         $total = \count($data) > 0 ? $this->totalData($countQuery, $bindings) : 0;

@@ -13,7 +13,7 @@ class DatabaseCommands
     public function migration($_, $assocArgs)
     {
         if (empty($assocArgs['table'])) {
-            WP_CLI::error('missing table name parameter use wp bit-crm db migration --table=table name');
+            WP_CLI::error('missing table name parameter use wp bit-crm-sales-marketing-automation db migration --table=table name');
 
             return;
         }

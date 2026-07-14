@@ -61,10 +61,10 @@ final class NoteController
         if ($note = Note::insert($validated)) {
             Hooks::doAction('bit_crm/note_created', $note);
 
-            return Response::success(__('Note created successfully!', 'bit-crm'));
+            return Response::success(__('Note created successfully!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to create note!', 'bit-crm'));
+        return Response::error(__('Failed to create note!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function edit(EditRequest $request)
@@ -73,7 +73,7 @@ final class NoteController
         $note = Note::findOne(['id' => $validated['id']]);
 
         if (empty($note)) {
-            return Response::error(__('Note not found!', 'bit-crm'));
+            return Response::error(__('Note not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($note);
@@ -85,7 +85,7 @@ final class NoteController
         $note = Note::findOne(['id' => $validated['id']]);
 
         if (empty($note)) {
-            return Response::error(__('Note not found!', 'bit-crm'));
+            return Response::error(__('Note not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated['updated_by'] = get_current_user_id();
@@ -100,7 +100,7 @@ final class NoteController
             return Response::success($note);
         }
 
-        return Response::error(__('Failed to update note!', 'bit-crm'));
+        return Response::error(__('Failed to update note!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)
@@ -109,15 +109,15 @@ final class NoteController
         $note = new Note($validated['id']);
 
         if (!$note->exists()) {
-            return Response::error(__('Note not found!', 'bit-crm'));
+            return Response::error(__('Note not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($note->delete()) {
             Hooks::doAction('bit_crm/note_deleted', $validated['id']);
 
-            return Response::success(__('Note deleted successfully!', 'bit-crm'));
+            return Response::success(__('Note deleted successfully!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to delete note!', 'bit-crm'));
+        return Response::error(__('Failed to delete note!', 'bit-crm-sales-marketing-automation'));
     }
 }

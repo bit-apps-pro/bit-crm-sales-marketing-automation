@@ -32,7 +32,7 @@
     "test:watch": "vitest --watch=true",
     "ts-check": "tsc",
     "type-cov": "pnpx type-coverage -p ./tsconfig.json --strict --details",
-    "update-ver": "pnpm bitapps-plugin-update-version --slug bit-crm"
+    "update-ver": "pnpm bitapps-plugin-update-version --slug bit-crm-sales-marketing-automation"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.24.0",

@@ -41,18 +41,18 @@ final class SettingsController
             try {
                 $setting->update(['setting_value' => $updatedValue, 'updated_by' => get_current_user_id()]);
             } catch (Throwable $th) {
-                return Response::error(__('Failed to update settings!', 'bit-crm'));
+                return Response::error(__('Failed to update settings!', 'bit-crm-sales-marketing-automation'));
             }
 
-            return Response::success(__('Settings update successfully.', 'bit-crm'));
+            return Response::success(__('Settings update successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated['created_by'] = get_current_user_id();
 
         if (Setting::insert($validated)) {
-            return Response::success(__('New settings inserted.', 'bit-crm'));
+            return Response::success(__('New settings inserted.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Settings upsert failed!', 'bit-crm'));
+        return Response::error(__('Settings upsert failed!', 'bit-crm-sales-marketing-automation'));
     }
 }

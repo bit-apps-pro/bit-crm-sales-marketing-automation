@@ -15,14 +15,14 @@ final class BusinessSettingsController
         $validated = $request->validated();
 
         if (BusinessSettingService::exists()) {
-            return Response::error(__('Business Settings already exists!', 'bit-crm'));
+            return Response::error(__('Business Settings already exists!', 'bit-crm-sales-marketing-automation'));
         }
 
         if (BusinessSettingService::store($validated)) {
-            return Response::success(__('Business Settings inserted successfully!', 'bit-crm'));
+            return Response::success(__('Business Settings inserted successfully!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Business Settings insertion failed!', 'bit-crm'));
+        return Response::error(__('Business Settings insertion failed!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function update(UpdateRequest $request)
@@ -32,10 +32,10 @@ final class BusinessSettingsController
         $setting = BusinessSettingService::update($validated);
 
         if (!$setting) {
-            return Response::error(__('Business Settings update failed!', 'bit-crm'));
+            return Response::error(__('Business Settings update failed!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Business Settings updated successfully!', 'bit-crm'));
+        return Response::success(__('Business Settings updated successfully!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function show(ShowRequest $request)
@@ -43,7 +43,7 @@ final class BusinessSettingsController
         $settingValue = BusinessSettingService::getSettings();
 
         if ($settingValue === null) {
-            return Response::error(__('Business settings not found!', 'bit-crm'));
+            return Response::error(__('Business settings not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($settingValue);

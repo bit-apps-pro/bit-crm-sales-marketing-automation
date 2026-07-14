@@ -61,11 +61,11 @@ final class InvoiceController
 
             Hooks::doAction('bit_crm/invoice_created', $storedInvoice);
 
-            return Response::success(['id' => $storedInvoice->id])->message(__('Invoice created successfully', 'bit-crm'));
+            return Response::success(['id' => $storedInvoice->id])->message(__('Invoice created successfully', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
             Connection::rollBack();
 
-            return Response::error(null)->message(__('Failed to create new invoice!', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to create new invoice!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -78,16 +78,16 @@ final class InvoiceController
         $invoice = Invoice::findOne(['id' => $validated['id']]);
 
         if (empty($invoice)) {
-            return Response::error(null)->message(__('Invoice not found!', 'bit-crm'));
+            return Response::error(null)->message(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($invoice->status === Invoice::STATUS_PAID) {
-            return Response::error(null)->message(__('Cannot update a paid invoice!', 'bit-crm'));
+            return Response::error(null)->message(__('Cannot update a paid invoice!', 'bit-crm-sales-marketing-automation'));
         }
 
         if (isset($validated['status'])) {
             if (!Invoice::canTransitionStatus($invoice->status, $validated['status'])) {
-                return Response::error(null)->message(__('Invalid status transition!', 'bit-crm'));
+                return Response::error(null)->message(__('Invalid status transition!', 'bit-crm-sales-marketing-automation'));
             }
 
             if ($validated['status'] === Invoice::STATUS_PAID) {
@@ -125,11 +125,11 @@ final class InvoiceController
 
             Hooks::doAction('bit_crm/invoice_updated', $invoice);
 
-            return Response::success(null)->message(__('Invoice updated successfully', 'bit-crm'));
+            return Response::success(null)->message(__('Invoice updated successfully', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
             Connection::rollBack();
 
-            return Response::error(null)->message(__('Failed to update invoice!', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to update invoice!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -140,15 +140,15 @@ final class InvoiceController
         $invoice = Invoice::findOne(['id' => $validated['id']]);
 
         if (empty($invoice)) {
-            return Response::error(__('Invoice not found!', 'bit-crm'));
+            return Response::error(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($invoice->status === Invoice::STATUS_PAID) {
-            return Response::error(__('Cannot change status of a paid invoice!', 'bit-crm'));
+            return Response::error(__('Cannot change status of a paid invoice!', 'bit-crm-sales-marketing-automation'));
         }
 
         if (!Invoice::canTransitionStatus($invoice->status, $validated['status'])) {
-            return Response::error(__('Invalid status transition!', 'bit-crm'));
+            return Response::error(__('Invalid status transition!', 'bit-crm-sales-marketing-automation'));
         }
 
         $updateData = [
@@ -169,9 +169,9 @@ final class InvoiceController
 
             Hooks::doAction('bit_crm/invoice_status_updated', $invoice);
 
-            return Response::success(__('Invoice status updated successfully', 'bit-crm'));
+            return Response::success(__('Invoice status updated successfully', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
-            return Response::error(__('Failed to update invoice status!', 'bit-crm'));
+            return Response::error(__('Failed to update invoice status!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -205,7 +205,7 @@ final class InvoiceController
         $details = InvoiceService::getInvoiceDetails((int) $validated['id']);
 
         if ($details === null) {
-            return Response::error(__('Invoice not found!', 'bit-crm'));
+            return Response::error(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($details);
@@ -220,7 +220,7 @@ final class InvoiceController
 
 
         if (!\count($invoicesData)) {
-            return Response::error(__('No invoices found to trash!', 'bit-crm'));
+            return Response::error(__('No invoices found to trash!', 'bit-crm-sales-marketing-automation'));
         }
 
         $currentUserId = get_current_user_id();
@@ -245,11 +245,11 @@ final class InvoiceController
 
             Hooks::doAction('bit_crm/invoices_trashed', $validated['ids']);
 
-            return Response::success([])->message(__('Invoices trashed successfully', 'bit-crm'));
+            return Response::success([])->message(__('Invoices trashed successfully', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
             Connection::rollBack();
 
-            return Response::error(__('Failed to trash invoices!', 'bit-crm'));
+            return Response::error(__('Failed to trash invoices!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -260,7 +260,7 @@ final class InvoiceController
         $invoice = Invoice::findOne(['id' => $validated['id']]);
 
         if (empty($invoice)) {
-            return Response::error(__('Invoice not found!', 'bit-crm'));
+            return Response::error(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
@@ -271,7 +271,7 @@ final class InvoiceController
 
             exit();
         } catch (Throwable $th) {
-            return Response::error(__('Failed to generate invoice PDF!', 'bit-crm'));
+            return Response::error(__('Failed to generate invoice PDF!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -282,7 +282,7 @@ final class InvoiceController
         $invoice = Invoice::findOne(['id' => $validated['id']]);
 
         if (empty($invoice)) {
-            return Response::error(__('Invoice not found!', 'bit-crm'));
+            return Response::error(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $deal = $invoice->module === Deal::MODULE_NAME
@@ -290,7 +290,7 @@ final class InvoiceController
             : null;
 
         if (empty($deal) || empty($deal['email'])) {
-            return Response::error(__('Deal email address not found!', 'bit-crm'));
+            return Response::error(__('Deal email address not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $tempDir = null;
@@ -311,7 +311,7 @@ final class InvoiceController
 
             $emailSent = InvoiceService::sendInvoice($deal['email'], [$tempFile]);
         } catch (Throwable $th) {
-            return Response::error(__('Failed to send invoice!', 'bit-crm'));
+            return Response::error(__('Failed to send invoice!', 'bit-crm-sales-marketing-automation'));
         } finally {
             if ($tempFile !== null && FileHandler::isValidPath($tempFile)) {
                 wp_delete_file($tempFile);
@@ -322,7 +322,7 @@ final class InvoiceController
         }
 
         if (!$emailSent) {
-            return Response::error(__('Failed to send invoice email!', 'bit-crm'));
+            return Response::error(__('Failed to send invoice email!', 'bit-crm-sales-marketing-automation'));
         }
 
         $updateData = [
@@ -340,17 +340,17 @@ final class InvoiceController
         try {
             $invoice->update($updateData);
         } catch (Throwable $th) {
-            return Response::success(__('Invoice sent, but status could not be updated. Please refresh.', 'bit-crm'));
+            return Response::success(__('Invoice sent, but status could not be updated. Please refresh.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Invoice sent successfully', 'bit-crm'));
+        return Response::success(__('Invoice sent successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function invoicePrefix(PrefixRequest $request)
     {
         $setting = Setting::findOne(['setting_key' => 'invoice_prefix']);
         if (empty($setting)) {
-            return Response::error(__('Invoice prefix setting not found!', 'bit-crm'));
+            return Response::error(__('Invoice prefix setting not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($setting->setting_value ?? '');

@@ -12,13 +12,13 @@ final class WooCommerceHistoricalSyncController
     public function trigger()
     {
         if (!class_exists('WooCommerce')) {
-            return Response::error(__('WooCommerce is not active.', 'bit-crm'));
+            return Response::error(__('WooCommerce is not active.', 'bit-crm-sales-marketing-automation'));
         }
 
         $process = new WooCommerceHistoricalSyncProcess();
 
         if ($process->isProcessing() || $process->isQueued()) {
-            return Response::error(__('Sync is already running.', 'bit-crm'));
+            return Response::error(__('Sync is already running.', 'bit-crm-sales-marketing-automation'));
         }
 
         WooCommerceHistoricalSyncProcess::updateState(['status' => 'running', 'page' => 1, 'last_order_id' => 0]);
@@ -30,7 +30,7 @@ final class WooCommerceHistoricalSyncController
     public function progress()
     {
         if (!Capability::check('bit_crm_setting_integration')) {
-            return Response::error(__('Unauthorized.', 'bit-crm'));
+            return Response::error(__('Unauthorized.', 'bit-crm-sales-marketing-automation'));
         }
 
         $process = new WooCommerceHistoricalSyncProcess();

@@ -36,27 +36,27 @@ class Roles
         $roles = [
             [
                 'name'         => self::BIT_CRM_ADMIN,
-                'display_name' => __('Bit CRM Admin', 'bit-crm'),
+                'display_name' => __('Bit CRM Admin', 'bit-crm-sales-marketing-automation'),
                 'capabilities' => AdminCapabilities::all()
             ],
             [
                 'name'         => self::BIT_CRM_LEAD_MANAGER,
-                'display_name' => __('Bit CRM Lead Manager', 'bit-crm'),
+                'display_name' => __('Bit CRM Lead Manager', 'bit-crm-sales-marketing-automation'),
                 'capabilities' => LeadManagerCapabilities::all()
             ],
             [
                 'name'         => self::BIT_CRM_CONTACT_MANAGER,
-                'display_name' => __('Bit CRM Contact Manager', 'bit-crm'),
+                'display_name' => __('Bit CRM Contact Manager', 'bit-crm-sales-marketing-automation'),
                 'capabilities' => ContactManagerCapabilities::all()
             ],
             [
                 'name'         => self::BIT_CRM_COMPANY_MANAGER,
-                'display_name' => __('Bit CRM Company Manager', 'bit-crm'),
+                'display_name' => __('Bit CRM Company Manager', 'bit-crm-sales-marketing-automation'),
                 'capabilities' => CompanyManagerCapabilities::all()
             ],
             [
                 'name'         => self::BIT_CRM_INVOICE_MANAGER,
-                'display_name' => __('Bit CRM Invoice Manager', 'bit-crm'),
+                'display_name' => __('Bit CRM Invoice Manager', 'bit-crm-sales-marketing-automation'),
                 'capabilities' => InvoiceManagerCapabilities::all()
             ],
         ];

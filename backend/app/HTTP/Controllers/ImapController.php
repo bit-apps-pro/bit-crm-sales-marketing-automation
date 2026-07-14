@@ -44,7 +44,7 @@ final class ImapController
                 ->orderBy('created_at')->desc()
                 ->paginate($page, self::DEFAULT_PER_PAGE);
         } catch (Throwable $th) {
-            return Response::error(__('Something went wrong! Failed to fetch imap settings!', 'bit-crm'));
+            return Response::error(__('Something went wrong! Failed to fetch imap settings!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($imapSettings);
@@ -59,14 +59,14 @@ final class ImapController
             $commonConfig = ImapService::getCommonImapConfigByPlatform($platform);
 
             if (empty($commonConfig)) {
-                return Response::error(__('Failed to save IMAP settings, invalid platform!', 'bit-crm'));
+                return Response::error(__('Failed to save IMAP settings, invalid platform!', 'bit-crm-sales-marketing-automation'));
             }
 
             $validated = array_merge($validated, $commonConfig);
         }
 
         if (ImapService::isExists($validated['username'], $validated['host'])) {
-            return Response::error(__('IMAP settings already exists!', 'bit-crm'));
+            return Response::error(__('IMAP settings already exists!', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated['visibility'] = $validated['is_private'] === 'yes' ? ImapSetting::VISIBILITY_PRIVATE : ImapSetting::VISIBILITY_PUBLIC;
@@ -76,10 +76,10 @@ final class ImapController
         if ($imapSetting = ImapSetting::insert($validated)) {
             Hooks::doAction('bit_crm/imap_configuration_created', $imapSetting);
 
-            return Response::success(__('Imap settings saved successfully', 'bit-crm'));
+            return Response::success(__('Imap settings saved successfully', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to save imap settings!', 'bit-crm'));
+        return Response::error(__('Failed to save imap settings!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function edit(EditRequest $request)
@@ -88,7 +88,7 @@ final class ImapController
         $imapSetting = ImapSetting::findOne(['id' => $validated['id']]);
 
         if (!$imapSetting) {
-            return Response::error(__('Imap settings not found!', 'bit-crm'));
+            return Response::error(__('Imap settings not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $imapSetting->app_password = Hash::decrypt($imapSetting->app_password);
@@ -102,7 +102,7 @@ final class ImapController
         $validated = $request->validated();
 
         if (ImapService::isExists($validated['username'], $validated['host'], $validated['id'])) {
-            return Response::error(__('Username (email) taken by another settings!', 'bit-crm'));
+            return Response::error(__('Username (email) taken by another settings!', 'bit-crm-sales-marketing-automation'));
         }
 
         $platform = $validated['platform'];
@@ -111,7 +111,7 @@ final class ImapController
             $commonConfig = ImapService::getCommonImapConfigByPlatform($platform);
 
             if (empty($commonConfig)) {
-                return Response::error(__('Failed to save IMAP settings, invalid platform!', 'bit-crm'));
+                return Response::error(__('Failed to save IMAP settings, invalid platform!', 'bit-crm-sales-marketing-automation'));
             }
 
             $validated = array_merge($validated, $commonConfig);
@@ -124,7 +124,7 @@ final class ImapController
         $imapSetting = ImapSetting::findOne(['id' => $validated['id']]);
 
         if (!$imapSetting) {
-            return Response::error(__('Imap settings not found!', 'bit-crm'));
+            return Response::error(__('Imap settings not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
@@ -132,9 +132,9 @@ final class ImapController
 
             Hooks::doAction('bit_crm/imap_configuration_updated', $imapSetting);
 
-            return Response::success(__('Imap settings updated successfully', 'bit-crm'));
+            return Response::success(__('Imap settings updated successfully', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
-            return Response::error(__('Failed to update imap settings!', 'bit-crm'));
+            return Response::error(__('Failed to update imap settings!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -144,16 +144,16 @@ final class ImapController
         $imapSetting = ImapSetting::findOne(['id' => $validated['id']]);
 
         if (!$imapSetting) {
-            return Response::error(__('Imap settings not found!', 'bit-crm'));
+            return Response::error(__('Imap settings not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
             $imapSetting->update(['status' => $validated['status']]);
         } catch (Throwable $th) {
-            return Response::error(__('Failed to update status!', 'bit-crm'));
+            return Response::error(__('Failed to update status!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Status updated successfully', 'bit-crm'));
+        return Response::success(__('Status updated successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)
@@ -162,7 +162,7 @@ final class ImapController
         $imapSetting = ImapSetting::where('id', $validated['id']);
 
         if (!$imapSetting->first()->id) {
-            return Response::error(__('Imap settings not found!', 'bit-crm'));
+            return Response::error(__('Imap settings not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
@@ -170,9 +170,9 @@ final class ImapController
 
             Hooks::doAction('bit_crm/imap_configuration_deleted', $validated['id']);
 
-            return Response::success(__('Imap settings deleted successfully', 'bit-crm'));
+            return Response::success(__('Imap settings deleted successfully', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
-            return Response::error(__('Failed to delete imap settings!', 'bit-crm'));
+            return Response::error(__('Failed to delete imap settings!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -192,7 +192,7 @@ final class ImapController
                 ->select(['id', 'title'])
                 ->get();
         } catch (Throwable $th) {
-            return Response::error(__('Something went wrong! Failed to fetch imap settings!', 'bit-crm'));
+            return Response::error(__('Something went wrong! Failed to fetch imap settings!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($imapSettings);
@@ -231,13 +231,13 @@ final class ImapController
             ->save()
             ->dispatch();
 
-        return Response::success(__('Emails fetched successfully', 'bit-crm'));
+        return Response::success(__('Emails fetched successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function list()
     {
         if (!Capability::check('bit_crm_setting_imap')) {
-            return Response::error(__(' Authorization Error: You don\'t have access!', 'bit-crm'))->httpStatus(401);
+            return Response::error(__(' Authorization Error: You don\'t have access!', 'bit-crm-sales-marketing-automation'))->httpStatus(401);
         }
 
         $currentUserId = get_current_user_id();
@@ -254,7 +254,7 @@ final class ImapController
                 ->select(['id', 'title', 'username'])
                 ->get();
         } catch (Throwable $th) {
-            return Response::error(__('Something went wrong! Failed to fetch imap settings!', 'bit-crm'));
+            return Response::error(__('Something went wrong! Failed to fetch imap settings!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($imapSettings);
@@ -275,7 +275,7 @@ final class ImapController
         switch ($fetchStatus) {
             case ImapSetting::STATUS_FETCH_PROCESSING:
                 $responseData = [
-                    'message'  => __('IMAP emails are currently being fetched. The list will update automatically once the process is complete.', 'bit-crm'),
+                    'message'  => __('IMAP emails are currently being fetched. The list will update automatically once the process is complete.', 'bit-crm-sales-marketing-automation'),
                     'status'   => ImapSetting::STATUS_FETCH_PROCESSING,
                     'batchKey' => $batchKey
                 ];
@@ -284,7 +284,7 @@ final class ImapController
 
             case ImapSetting::STATUS_FETCH_ERROR:
                 $responseData = [
-                    'message'  => __('An error occurred while fetching emails. Please check your IMAP settings and try again using the manual fetch button.', 'bit-crm'),
+                    'message'  => __('An error occurred while fetching emails. Please check your IMAP settings and try again using the manual fetch button.', 'bit-crm-sales-marketing-automation'),
                     'status'   => ImapSetting::STATUS_FETCH_ERROR,
                     'batchKey' => $batchKey
                 ];
@@ -298,7 +298,7 @@ final class ImapController
                 }
 
                 $responseData = [
-                    'message'  => __('IMAP emails have been fetched successfully.', 'bit-crm'),
+                    'message'  => __('IMAP emails have been fetched successfully.', 'bit-crm-sales-marketing-automation'),
                     'status'   => ImapSetting::STATUS_FETCH_COMPLETED,
                     'batchKey' => $batchKey
                 ];
@@ -307,7 +307,7 @@ final class ImapController
 
             default:
                 $responseData = [
-                    'message'  => __('IMAP emails are not being fetched currently.', 'bit-crm'),
+                    'message'  => __('IMAP emails are not being fetched currently.', 'bit-crm-sales-marketing-automation'),
                     'status'   => ImapSetting::STATUS_FETCH_IDLE,
                     'batchKey' => $batchKey
                 ];

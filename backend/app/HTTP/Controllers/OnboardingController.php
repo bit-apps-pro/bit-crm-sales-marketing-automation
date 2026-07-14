@@ -17,7 +17,7 @@ final class OnboardingController
     public function store(StoreRequest $request)
     {
         if (Config::getOption(self::KEY_ONBOARDING_COMPLETED, false)) {
-            return Response::error(__('Onboarding has already been completed!', 'bit-crm'));
+            return Response::error(__('Onboarding has already been completed!', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated = $request->validated();
@@ -32,10 +32,10 @@ final class OnboardingController
 
             Config::updateOption(self::KEY_ONBOARDING_COMPLETED, true);
         } catch (Throwable $th) {
-            return Response::error(null)->message(__('Failed to complete onboarding', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to complete onboarding', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(null)->message(__('Onboarding completed successfully!', 'bit-crm'));
+        return Response::success(null)->message(__('Onboarding completed successfully!', 'bit-crm-sales-marketing-automation'));
     }
 
     private function saveBusinessSettings(array $validated): ?Response
@@ -44,7 +44,7 @@ final class OnboardingController
         $email = $validated['email'] ?? '';
 
         if (empty($name) !== empty($email)) {
-            return Response::error(__('Business name and email must both be provided together, or both can be skipped.', 'bit-crm'));
+            return Response::error(__('Business name and email must both be provided together, or both can be skipped.', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($name === '' && $email === '') {
@@ -56,7 +56,7 @@ final class OnboardingController
             : BusinessSettingService::store(['name' => $name, 'email' => $email]);
 
         if (!$saved) {
-            return Response::error(null)->message(__('Failed to save business settings', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to save business settings', 'bit-crm-sales-marketing-automation'));
         }
 
         return null;

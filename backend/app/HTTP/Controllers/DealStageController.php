@@ -23,7 +23,7 @@ final class DealStageController
         $stages = $this->dealStageService->getAllStages(DealStageService::STATUS_ACTIVE);
         $stages = array_values($stages);
 
-        return Response::success($stages)->message(__('Deal stages retrieved successfully.', 'bit-crm'));
+        return Response::success($stages)->message(__('Deal stages retrieved successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function archived()
@@ -31,7 +31,7 @@ final class DealStageController
         $stages = $this->dealStageService->getAllStages(DealStageService::STATUS_ARCHIVED);
         $stages = array_values($stages);
 
-        return Response::success($stages)->message(__('Archived deal stages retrieved successfully.', 'bit-crm'));
+        return Response::success($stages)->message(__('Archived deal stages retrieved successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function store(UpsertRequest $request)
@@ -41,16 +41,16 @@ final class DealStageController
         $stages = $this->dealStageService->getAllStages();
 
         if (\array_key_exists($validated['key'], $stages)) {
-            return Response::error(null)->message(__('Stage with the given key already exists.', 'bit-crm'));
+            return Response::error(null)->message(__('Stage with the given key already exists.', 'bit-crm-sales-marketing-automation'));
         }
 
         $stages[$validated['key']] = $validated;
 
         if ($this->dealStageService->upsertStages($stages)) {
-            return Response::success(null)->message(__('Deal stage created successfully.', 'bit-crm'));
+            return Response::success(null)->message(__('Deal stage created successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(null)->message(__('Failed to create deal stage.', 'bit-crm'));
+        return Response::error(null)->message(__('Failed to create deal stage.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function update(UpsertRequest $request)
@@ -59,16 +59,16 @@ final class DealStageController
         $stages = $this->dealStageService->getAllStages();
 
         if (!\array_key_exists($validated['key'], $stages)) {
-            return Response::error([])->message(__('Stage not found.', 'bit-crm'));
+            return Response::error([])->message(__('Stage not found.', 'bit-crm-sales-marketing-automation'));
         }
 
         $stages[$validated['key']] = $validated;
 
         if ($this->dealStageService->upsertStages($stages)) {
-            return Response::success([])->message(__('Deal stage updated successfully.', 'bit-crm'));
+            return Response::success([])->message(__('Deal stage updated successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error([])->message(__('Failed to update deal stage.', 'bit-crm'));
+        return Response::error([])->message(__('Failed to update deal stage.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function archive(ArchiveRequest $request)
@@ -77,7 +77,7 @@ final class DealStageController
         $stages = $this->dealStageService->getAllStages();
 
         if (!\array_key_exists($validated['key'], $stages)) {
-            return Response::error([])->message(__('Stage not found.', 'bit-crm'));
+            return Response::error([])->message(__('Stage not found.', 'bit-crm-sales-marketing-automation'));
         }
 
         $stage = $stages[$validated['key']];
@@ -87,10 +87,10 @@ final class DealStageController
         $stages[$validated['key']] = $stage;
 
         if ($this->dealStageService->upsertStages($stages)) {
-            return Response::success([])->message(__('Deal stage archived successfully.', 'bit-crm'));
+            return Response::success([])->message(__('Deal stage archived successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error([])->message(__('Failed to archive deal stage.', 'bit-crm'));
+        return Response::error([])->message(__('Failed to archive deal stage.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function unarchive(UnarchiveRequest $request)
@@ -110,10 +110,10 @@ final class DealStageController
         }
 
         if ($this->dealStageService->upsertStages($stages)) {
-            return Response::success([])->message(__('Deal stages unarchived successfully.', 'bit-crm'));
+            return Response::success([])->message(__('Deal stages unarchived successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error([])->message(__('Failed to unarchive deal stages.', 'bit-crm'));
+        return Response::error([])->message(__('Failed to unarchive deal stages.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function updateSortOrder(UpdateSortOrderRequest $request)
@@ -130,9 +130,9 @@ final class DealStageController
         $formattedStages = array_merge($formattedStages, $storedStages);
 
         if ($this->dealStageService->upsertStages($formattedStages)) {
-            return Response::success([])->message(__('Deal stages sort order updated successfully.', 'bit-crm'));
+            return Response::success([])->message(__('Deal stages sort order updated successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error([])->message(__('Failed to update deal stages sort order.', 'bit-crm'));
+        return Response::error([])->message(__('Failed to update deal stages sort order.', 'bit-crm-sales-marketing-automation'));
     }
 }

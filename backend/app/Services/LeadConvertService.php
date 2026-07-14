@@ -198,7 +198,7 @@ class LeadConvertService
         $insertedDeals = Deal::insert($systemDefinedValues);
 
         if (!$insertedDeals) {
-            throw new Exception(esc_html__('Failed to insert deals during lead conversion.', 'bit-crm'));
+            throw new Exception(esc_html__('Failed to insert deals during lead conversion.', 'bit-crm-sales-marketing-automation'));
         }
 
         $dealsIds = ConvertService::extractIdAndReferenceUuid($insertedDeals->toArray());
@@ -455,7 +455,7 @@ class LeadConvertService
             if ($key === 'name') {
                 $name = EntityFieldService::renderFields($value, $lead);
                 if (!$name || trim($name) === '') {
-                    throw new Exception(esc_html__('Deal name cannot be empty. Please provide a valid name mapping or override value.', 'bit-crm'));
+                    throw new Exception(esc_html__('Deal name cannot be empty. Please provide a valid name mapping or override value.', 'bit-crm-sales-marketing-automation'));
                 }
                 $deal['name'] = $name;
 

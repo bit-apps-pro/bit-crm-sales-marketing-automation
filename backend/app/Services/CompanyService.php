@@ -64,7 +64,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
             if (!$storedCompany) {
                 Connection::rollback();
 
-                return ['success' => false, 'errors' => [__('Failed to create new company!', 'bit-crm')]];
+                return ['success' => false, 'errors' => [__('Failed to create new company!', 'bit-crm-sales-marketing-automation')]];
             }
 
             $companyId = $storedCompany->id;
@@ -82,7 +82,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to create new company!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to create new company!', 'bit-crm-sales-marketing-automation')]];
         }
     }
 
@@ -99,7 +99,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         $company = Company::findOne(['id' => $id, 'is_trash' => 0]);
 
         if (!$company) {
-            return ['success' => false, 'errors' => [__('Company not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Company not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         $company = $company->getAttributes();
@@ -132,14 +132,14 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
 
         $company = Company::findOne(['id' => $validated['id'], 'is_trash' => 0]);
         if (!$company) {
-            return ['success' => false, 'errors' => [__('Company not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Company not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         Connection::startTransaction();
 
         try {
             if (!$company->update($validated['systemDefinedFieldsValues'])) {
-                return ['success' => false, 'errors' => [__('Failed to update Company.', 'bit-crm')]];
+                return ['success' => false, 'errors' => [__('Failed to update Company.', 'bit-crm-sales-marketing-automation')]];
             }
 
             Hooks::doAction(HookKeys::UPDATE_CUSTOM_FIELDS_VALUES, Company::MODULE_NAME, $company->id, $validated['customFieldsValues'] ?? []);
@@ -155,11 +155,11 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
             Connection::commit();
             Hooks::doAction('bit_crm/company_updated', $company);
 
-            return ['success' => true, 'data' => $company, 'message' => __('Company updated successfully.', 'bit-crm')];
+            return ['success' => true, 'data' => $company, 'message' => __('Company updated successfully.', 'bit-crm-sales-marketing-automation')];
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to update Company.', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to update Company.', 'bit-crm-sales-marketing-automation')]];
         }
     }
 
@@ -176,14 +176,14 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         $companies = Company::whereIn('id', $ids)->get();
 
         if (empty($companies)) {
-            return ['success' => false, 'errors' => [__('Companies not found', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Companies not found', 'bit-crm-sales-marketing-automation')]];
         }
 
         $skippedIds = $this->getIdsWithAssociations($ids);
         $trashableIds = array_values(array_diff($ids, $skippedIds));
 
         if (empty($trashableIds)) {
-            return ['success' => false, 'errors' => [__('Cannot delete companies with associated deals or contacts.', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Cannot delete companies with associated deals or contacts.', 'bit-crm-sales-marketing-automation')]];
         }
 
         $trashableCompaniesData = array_values(
@@ -219,10 +219,10 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
             }
 
             $message = empty($skippedIds)
-                ? __('Company deleted successfully.', 'bit-crm')
+                ? __('Company deleted successfully.', 'bit-crm-sales-marketing-automation')
                 : \sprintf(
                     // translators: 1: number of deleted companies, 2: number of skipped companies
-                    __('%1$d company(s) deleted. %2$d company(s) skipped due to associated deals or contacts.', 'bit-crm'),
+                    __('%1$d company(s) deleted. %2$d company(s) skipped due to associated deals or contacts.', 'bit-crm-sales-marketing-automation'),
                     \count($trashableIds),
                     \count($skippedIds)
                 );
@@ -231,7 +231,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
             Connection::rollback();
 
-            return ['success' => false, 'errors' => [__('Failed to delete!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Failed to delete!', 'bit-crm-sales-marketing-automation')]];
         }
     }
 

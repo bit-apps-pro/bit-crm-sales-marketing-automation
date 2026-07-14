@@ -14,7 +14,7 @@ class FileHandler
             || !File::isUploaded($file['tmp_name'])
             || empty($file['name'])
         ) {
-            return Response::error(__('No valid file uploaded', 'bit-crm'));
+            return Response::error(__('No valid file uploaded', 'bit-crm-sales-marketing-automation'));
         }
 
         $uploadDir = trailingslashit(Config::get('UPLOAD_BASE_DIR') . '/' . trim($subDir, '/'));
@@ -26,11 +26,11 @@ class FileHandler
         $filePath = $uploadDir . $fileName;
 
         if (!File::move($file['tmp_name'], $filePath, true)) {
-            return Response::error(__('Failed to upload file', 'bit-crm'));
+            return Response::error(__('Failed to upload file', 'bit-crm-sales-marketing-automation'));
         }
 
         if (!File::isExist($filePath)) {
-            return Response::error(__('File not found after upload', 'bit-crm'));
+            return Response::error(__('File not found after upload', 'bit-crm-sales-marketing-automation'));
         }
 
         return [$filePath, $fileName];

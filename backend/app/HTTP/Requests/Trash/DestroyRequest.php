@@ -14,7 +14,7 @@ class DestroyRequest extends Request
 
     public function failedAuthorizationMessage()
     {
-        return __('Authorization Error: You don\'t have access!', 'bit-crm');
+        return __('Authorization Error: You don\'t have access!', 'bit-crm-sales-marketing-automation');
     }
 
     public function rules()
@@ -27,7 +27,7 @@ class DestroyRequest extends Request
     public function messages()
     {
         return [
-            'ids.max' => __('You can delete trashes to a maximum of 100 trashes at a time.', 'bit-crm')
+            'ids.max' => __('You can delete trashes to a maximum of 100 trashes at a time.', 'bit-crm-sales-marketing-automation')
         ];
     }
 }

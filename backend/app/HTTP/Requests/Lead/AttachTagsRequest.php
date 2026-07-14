@@ -14,7 +14,7 @@ class AttachTagsRequest extends Request
 
     public function failedAuthorizationMessage()
     {
-        return __(' Authorization Error: You don\'t have access!', 'bit-crm');
+        return __(' Authorization Error: You don\'t have access!', 'bit-crm-sales-marketing-automation');
     }
 
     public function rules()
@@ -28,7 +28,7 @@ class AttachTagsRequest extends Request
     public function messages()
     {
         return [
-            'lead_ids.max' => __('You can attach tags to a maximum of 100 leads at a time.', 'bit-crm')
+            'lead_ids.max' => __('You can attach tags to a maximum of 100 leads at a time.', 'bit-crm-sales-marketing-automation')
         ];
     }
 }

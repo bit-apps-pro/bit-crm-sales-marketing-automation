@@ -140,7 +140,7 @@ final class ActivityController
         $activity = Activity::findOne(['id' => $validated['id']]);
 
         if (empty($activity)) {
-            return Response::error(__('Activity not found!', 'bit-crm'));
+            return Response::error(__('Activity not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $oldStatus = $activity->is_completed ? 'completed' : 'pending';
@@ -151,11 +151,11 @@ final class ActivityController
             Hooks::doAction('bit_crm/activity_status_updated', $activity, $newStatus, $oldStatus);
 
             // translators: %s: activity type
-            return Response::success($activity)->message(\sprintf(__('%s status updated successfully!', 'bit-crm'), ucfirst($activity->type)));
+            return Response::success($activity)->message(\sprintf(__('%s status updated successfully!', 'bit-crm-sales-marketing-automation'), ucfirst($activity->type)));
         }
 
         // translators: %s: activity type
-        return Response::error(\sprintf(__('Failed to update %s status!', 'bit-crm'), ucfirst($activity->type)));
+        return Response::error(\sprintf(__('Failed to update %s status!', 'bit-crm-sales-marketing-automation'), ucfirst($activity->type)));
     }
 
     public function destroy(DestroyRequest $request)
@@ -192,7 +192,7 @@ final class ActivityController
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error([])->message(__('Failed to fetch fields!', 'bit-crm'));
+            return Response::error([])->message(__('Failed to fetch fields!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -205,11 +205,11 @@ final class ActivityController
         try {
             $options = EntityFactory::module($validated['module'])->getEntitiesAsOptions();
 
-            return Response::success($options)->message(__('Related field options retrieved successfully.', 'bit-crm'));
+            return Response::success($options)->message(__('Related field options retrieved successfully.', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error([])->message(__('Failed to retrieve related field options.', 'bit-crm'));
+            return Response::error([])->message(__('Failed to retrieve related field options.', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -218,7 +218,7 @@ final class ActivityController
         $validated = $request->validated();
 
         if ($validated['module'] !== Activity::MODULE_NAME) {
-            return Response::error([])->message(__('Invalid module for activity notes.', 'bit-crm'));
+            return Response::error([])->message(__('Invalid module for activity notes.', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
@@ -226,7 +226,7 @@ final class ActivityController
 
             return Response::success($notes);
         } catch (Throwable $th) {
-            return Response::error([])->message(__('Failed to retrieve activity notes.', 'bit-crm'));
+            return Response::error([])->message(__('Failed to retrieve activity notes.', 'bit-crm-sales-marketing-automation'));
         }
     }
 

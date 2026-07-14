@@ -15,7 +15,7 @@ class IndexRequest extends Request
 
     public function failedAuthorizationMessage()
     {
-        return __('Authorization Error: You don\'t have access!', 'bit-crm');
+        return __('Authorization Error: You don\'t have access!', 'bit-crm-sales-marketing-automation');
     }
 
     public function rules()

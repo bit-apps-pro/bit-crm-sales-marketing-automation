@@ -12,7 +12,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AFN',
-        'label'              => __('Afghan Afghani - AFN', 'bit-crm'),
+        'label'              => __('Afghan Afghani - AFN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'ALL' => [
@@ -22,7 +22,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'ALL',
-        'label'              => __('Albanian Lek - ALL', 'bit-crm'),
+        'label'              => __('Albanian Lek - ALL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'DZD' => [
@@ -32,7 +32,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'DZD',
-        'label'              => __('Algerian Dinar - DZD', 'bit-crm'),
+        'label'              => __('Algerian Dinar - DZD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'AOA' => [
@@ -42,7 +42,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AOA',
-        'label'              => __('Angolan Kwanza - AOA', 'bit-crm'),
+        'label'              => __('Angolan Kwanza - AOA', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ARS' => [
@@ -52,7 +52,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'ARS',
-        'label'              => __('Argentine Peso - ARS', 'bit-crm'),
+        'label'              => __('Argentine Peso - ARS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'AMD' => [
@@ -62,7 +62,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AMD',
-        'label'              => __('Armenian Dram - AMD', 'bit-crm'),
+        'label'              => __('Armenian Dram - AMD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'AWG' => [
@@ -72,7 +72,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AWG',
-        'label'              => __('Aruban Florin - AWG', 'bit-crm'),
+        'label'              => __('Aruban Florin - AWG', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'AUD' => [
@@ -82,7 +82,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AUD',
-        'label'              => __('Australian Dollar - AUD', 'bit-crm'),
+        'label'              => __('Australian Dollar - AUD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'AZN' => [
@@ -92,7 +92,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AZN',
-        'label'              => __('Azerbaijani New Manat - AZN', 'bit-crm'),
+        'label'              => __('Azerbaijani New Manat - AZN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BSD' => [
@@ -102,7 +102,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BSD',
-        'label'              => __('Bahamian Dollar - BSD', 'bit-crm'),
+        'label'              => __('Bahamian Dollar - BSD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BHD' => [
@@ -112,7 +112,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BHD',
-        'label'              => __('Bahraini Dinar - BHD', 'bit-crm'),
+        'label'              => __('Bahraini Dinar - BHD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'BDT' => [
@@ -122,7 +122,7 @@ return [
         'numeral_system'     => 'indian',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BDT',
-        'label'              => __('Bangladeshi Taka - BDT', 'bit-crm'),
+        'label'              => __('Bangladeshi Taka - BDT', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BBD' => [
@@ -132,7 +132,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BBD',
-        'label'              => __('Barbadian Dollar - BBD', 'bit-crm'),
+        'label'              => __('Barbadian Dollar - BBD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BYR' => [
@@ -142,7 +142,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BYR',
-        'label'              => __('Belarusian Ruble - BYR', 'bit-crm'),
+        'label'              => __('Belarusian Ruble - BYR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'BYN' => [
@@ -152,7 +152,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'BYN',
-        'label'              => __('Belarusian Ruble - BYN', 'bit-crm'),
+        'label'              => __('Belarusian Ruble - BYN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BZD' => [
@@ -162,7 +162,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BZD',
-        'label'              => __('Belize Dollar - BZD', 'bit-crm'),
+        'label'              => __('Belize Dollar - BZD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BMD' => [
@@ -172,7 +172,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BMD',
-        'label'              => __('Bermudan Dollar - BMD', 'bit-crm'),
+        'label'              => __('Bermudan Dollar - BMD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BTN' => [
@@ -182,7 +182,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BTN',
-        'label'              => __('Bhutanese Ngultrum - BTN', 'bit-crm'),
+        'label'              => __('Bhutanese Ngultrum - BTN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BOB' => [
@@ -192,7 +192,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'BOB',
-        'label'              => __('Bolivian Boliviano - BOB', 'bit-crm'),
+        'label'              => __('Bolivian Boliviano - BOB', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BOV' => [
@@ -202,7 +202,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BOV',
-        'label'              => __('Bolivian Mvdol - BOV', 'bit-crm'),
+        'label'              => __('Bolivian Mvdol - BOV', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BAM' => [
@@ -212,7 +212,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'BAM',
-        'label'              => __('Bosnia-Herzegovina Convertible Mark - BAM', 'bit-crm'),
+        'label'              => __('Bosnia-Herzegovina Convertible Mark - BAM', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BWP' => [
@@ -222,7 +222,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BWP',
-        'label'              => __('Botswanan Pula - BWP', 'bit-crm'),
+        'label'              => __('Botswanan Pula - BWP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BRL' => [
@@ -232,7 +232,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'BRL',
-        'label'              => __('Brazilian Real - BRL', 'bit-crm'),
+        'label'              => __('Brazilian Real - BRL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GBP' => [
@@ -242,7 +242,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GBP',
-        'label'              => __('British Pound Sterling - GBP', 'bit-crm'),
+        'label'              => __('British Pound Sterling - GBP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BND' => [
@@ -252,7 +252,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BND',
-        'label'              => __('Brunei Dollar - BND', 'bit-crm'),
+        'label'              => __('Brunei Dollar - BND', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BGN' => [
@@ -262,7 +262,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'BGN',
-        'label'              => __('Bulgarian Lev - BGN', 'bit-crm'),
+        'label'              => __('Bulgarian Lev - BGN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'BIF' => [
@@ -272,7 +272,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'BIF',
-        'label'              => __('Burundian Franc - BIF', 'bit-crm'),
+        'label'              => __('Burundian Franc - BIF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'KHR' => [
@@ -282,7 +282,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KHR',
-        'label'              => __('Cambodian Riel - KHR', 'bit-crm'),
+        'label'              => __('Cambodian Riel - KHR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CAD' => [
@@ -292,7 +292,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'CAD',
-        'label'              => __('Canadian Dollar - CAD', 'bit-crm'),
+        'label'              => __('Canadian Dollar - CAD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CVE' => [
@@ -302,7 +302,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CVE',
-        'label'              => __('Cape Verdean Escudo - CVE', 'bit-crm'),
+        'label'              => __('Cape Verdean Escudo - CVE', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'XCG' => [
@@ -312,7 +312,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'XCG',
-        'label'              => __('Caribbean Guilder - XCG', 'bit-crm'),
+        'label'              => __('Caribbean Guilder - XCG', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'KYD' => [
@@ -322,7 +322,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KYD',
-        'label'              => __('Cayman Islands Dollar - KYD', 'bit-crm'),
+        'label'              => __('Cayman Islands Dollar - KYD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'XOF' => [
@@ -332,7 +332,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'XOF',
-        'label'              => __('CFA Franc BCEAO - XOF', 'bit-crm'),
+        'label'              => __('CFA Franc BCEAO - XOF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'XAF' => [
@@ -342,7 +342,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'XAF',
-        'label'              => __('CFA Franc BEAC - XAF', 'bit-crm'),
+        'label'              => __('CFA Franc BEAC - XAF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'XPF' => [
@@ -352,7 +352,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'XPF',
-        'label'              => __('CFP Franc - XPF', 'bit-crm'),
+        'label'              => __('CFP Franc - XPF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'CLP' => [
@@ -362,7 +362,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'CLP',
-        'label'              => __('Chilean Peso - CLP', 'bit-crm'),
+        'label'              => __('Chilean Peso - CLP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'CNY' => [
@@ -372,7 +372,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CNY',
-        'label'              => __('Chinese Yuan - CNY', 'bit-crm'),
+        'label'              => __('Chinese Yuan - CNY', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'COP' => [
@@ -382,7 +382,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'COP',
-        'label'              => __('Colombian Peso - COP', 'bit-crm'),
+        'label'              => __('Colombian Peso - COP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'KMF' => [
@@ -392,7 +392,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KMF',
-        'label'              => __('Comorian Franc - KMF', 'bit-crm'),
+        'label'              => __('Comorian Franc - KMF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'CDF' => [
@@ -402,7 +402,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CDF',
-        'label'              => __('Congolese Franc - CDF', 'bit-crm'),
+        'label'              => __('Congolese Franc - CDF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CRC' => [
@@ -412,7 +412,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CRC',
-        'label'              => __('Costa Rican Colón - CRC', 'bit-crm'),
+        'label'              => __('Costa Rican Colón - CRC', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'HRK' => [
@@ -422,7 +422,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'HRK',
-        'label'              => __('Croatian Kuna - HRK', 'bit-crm'),
+        'label'              => __('Croatian Kuna - HRK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CUC' => [
@@ -432,7 +432,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CUC',
-        'label'              => __('Cuban Convertible Peso - CUC', 'bit-crm'),
+        'label'              => __('Cuban Convertible Peso - CUC', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CUP' => [
@@ -442,7 +442,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'CUP',
-        'label'              => __('Cuban Peso - CUP', 'bit-crm'),
+        'label'              => __('Cuban Peso - CUP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CZK' => [
@@ -452,7 +452,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'CZK',
-        'label'              => __('Czech Republic Koruna - CZK', 'bit-crm'),
+        'label'              => __('Czech Republic Koruna - CZK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'DKK' => [
@@ -462,7 +462,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'DKK',
-        'label'              => __('Danish Krone - DKK', 'bit-crm'),
+        'label'              => __('Danish Krone - DKK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'DJF' => [
@@ -472,7 +472,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'DJF',
-        'label'              => __('Djiboutian Franc - DJF', 'bit-crm'),
+        'label'              => __('Djiboutian Franc - DJF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'DOP' => [
@@ -482,7 +482,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'DOP',
-        'label'              => __('Dominican Peso - DOP', 'bit-crm'),
+        'label'              => __('Dominican Peso - DOP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'XCD' => [
@@ -492,7 +492,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'XCD',
-        'label'              => __('East Caribbean Dollar - XCD', 'bit-crm'),
+        'label'              => __('East Caribbean Dollar - XCD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'EGP' => [
@@ -502,7 +502,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'EGP',
-        'label'              => __('Egyptian Pound - EGP', 'bit-crm'),
+        'label'              => __('Egyptian Pound - EGP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ERN' => [
@@ -512,7 +512,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ERN',
-        'label'              => __('Eritrean Nakfa - ERN', 'bit-crm'),
+        'label'              => __('Eritrean Nakfa - ERN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ETB' => [
@@ -522,7 +522,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ETB',
-        'label'              => __('Ethiopian Birr - ETB', 'bit-crm'),
+        'label'              => __('Ethiopian Birr - ETB', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'EUR' => [
@@ -532,7 +532,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'EUR',
-        'label'              => __('Euro - EUR', 'bit-crm'),
+        'label'              => __('Euro - EUR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'FKP' => [
@@ -542,7 +542,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'FKP',
-        'label'              => __('Falkland Islands Pound - FKP', 'bit-crm'),
+        'label'              => __('Falkland Islands Pound - FKP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'FJD' => [
@@ -552,7 +552,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'FJD',
-        'label'              => __('Fijian Dollar - FJD', 'bit-crm'),
+        'label'              => __('Fijian Dollar - FJD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GMD' => [
@@ -562,7 +562,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GMD',
-        'label'              => __('Gambian Dalasi - GMD', 'bit-crm'),
+        'label'              => __('Gambian Dalasi - GMD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GEL' => [
@@ -572,7 +572,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GEL',
-        'label'              => __('Georgian Lari - GEL', 'bit-crm'),
+        'label'              => __('Georgian Lari - GEL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GHS' => [
@@ -582,7 +582,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GHS',
-        'label'              => __('Ghanaian Cedi - GHS', 'bit-crm'),
+        'label'              => __('Ghanaian Cedi - GHS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GIP' => [
@@ -592,7 +592,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GIP',
-        'label'              => __('Gibraltar Pound - GIP', 'bit-crm'),
+        'label'              => __('Gibraltar Pound - GIP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GTQ' => [
@@ -602,7 +602,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GTQ',
-        'label'              => __('Guatemalan Quetzal - GTQ', 'bit-crm'),
+        'label'              => __('Guatemalan Quetzal - GTQ', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GGP' => [
@@ -612,7 +612,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GGP',
-        'label'              => __('Guernsey Pound - GGP', 'bit-crm'),
+        'label'              => __('Guernsey Pound - GGP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'GNF' => [
@@ -622,7 +622,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GNF',
-        'label'              => __('Guinean Franc - GNF', 'bit-crm'),
+        'label'              => __('Guinean Franc - GNF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'GYD' => [
@@ -632,7 +632,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'GYD',
-        'label'              => __('Guyanaese Dollar - GYD', 'bit-crm'),
+        'label'              => __('Guyanaese Dollar - GYD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'HTG' => [
@@ -642,7 +642,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'HTG',
-        'label'              => __('Haitian Gourde - HTG', 'bit-crm'),
+        'label'              => __('Haitian Gourde - HTG', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'HNL' => [
@@ -652,7 +652,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'HNL',
-        'label'              => __('Honduran Lempira - HNL', 'bit-crm'),
+        'label'              => __('Honduran Lempira - HNL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'HKD' => [
@@ -662,7 +662,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'HKD',
-        'label'              => __('Hong Kong Dollar - HKD', 'bit-crm'),
+        'label'              => __('Hong Kong Dollar - HKD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'HUF' => [
@@ -672,7 +672,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'HUF',
-        'label'              => __('Hungarian Forint - HUF', 'bit-crm'),
+        'label'              => __('Hungarian Forint - HUF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ISK' => [
@@ -682,7 +682,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'ISK',
-        'label'              => __('Icelandic Króna - ISK', 'bit-crm'),
+        'label'              => __('Icelandic Króna - ISK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'INR' => [
@@ -692,7 +692,7 @@ return [
         'numeral_system'     => 'indian',
         'thousand_separator' => 'comma',
         'iso_code'           => 'INR',
-        'label'              => __('Indian Rupee - INR', 'bit-crm'),
+        'label'              => __('Indian Rupee - INR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'IDR' => [
@@ -702,7 +702,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'IDR',
-        'label'              => __('Indonesian Rupiah - IDR', 'bit-crm'),
+        'label'              => __('Indonesian Rupiah - IDR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'IRR' => [
@@ -712,7 +712,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'IRR',
-        'label'              => __('Iranian Rial - IRR', 'bit-crm'),
+        'label'              => __('Iranian Rial - IRR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'IQD' => [
@@ -722,7 +722,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'IQD',
-        'label'              => __('Iraqi Dinar - IQD', 'bit-crm'),
+        'label'              => __('Iraqi Dinar - IQD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'ILS' => [
@@ -732,7 +732,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ILS',
-        'label'              => __('Israeli New Sheqel - ILS', 'bit-crm'),
+        'label'              => __('Israeli New Sheqel - ILS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'JMD' => [
@@ -742,7 +742,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'JMD',
-        'label'              => __('Jamaican Dollar - JMD', 'bit-crm'),
+        'label'              => __('Jamaican Dollar - JMD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'JPY' => [
@@ -752,7 +752,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'JPY',
-        'label'              => __('Japanese Yen - JPY', 'bit-crm'),
+        'label'              => __('Japanese Yen - JPY', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'JEP' => [
@@ -762,7 +762,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'JEP',
-        'label'              => __('Jersey Pound - JEP', 'bit-crm'),
+        'label'              => __('Jersey Pound - JEP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'JOD' => [
@@ -772,7 +772,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'JOD',
-        'label'              => __('Jordanian Dinar - JOD', 'bit-crm'),
+        'label'              => __('Jordanian Dinar - JOD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'KZT' => [
@@ -782,7 +782,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KZT',
-        'label'              => __('Kazakhstani Tenge - KZT', 'bit-crm'),
+        'label'              => __('Kazakhstani Tenge - KZT', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'KES' => [
@@ -792,7 +792,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KES',
-        'label'              => __('Kenyan Shilling - KES', 'bit-crm'),
+        'label'              => __('Kenyan Shilling - KES', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'KWD' => [
@@ -802,7 +802,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KWD',
-        'label'              => __('Kuwaiti Dinar - KWD', 'bit-crm'),
+        'label'              => __('Kuwaiti Dinar - KWD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'KGS' => [
@@ -812,7 +812,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KGS',
-        'label'              => __('Kyrgystani Som - KGS', 'bit-crm'),
+        'label'              => __('Kyrgystani Som - KGS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'LAK' => [
@@ -822,7 +822,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LAK',
-        'label'              => __('Laotian Kip - LAK', 'bit-crm'),
+        'label'              => __('Laotian Kip - LAK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'LVL' => [
@@ -832,7 +832,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LVL',
-        'label'              => __('Latvian Lats - LVL', 'bit-crm'),
+        'label'              => __('Latvian Lats - LVL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'LBP' => [
@@ -842,7 +842,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LBP',
-        'label'              => __('Lebanese Pound - LBP', 'bit-crm'),
+        'label'              => __('Lebanese Pound - LBP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'LSL' => [
@@ -852,7 +852,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LSL',
-        'label'              => __('Lesotho Loti - LSL', 'bit-crm'),
+        'label'              => __('Lesotho Loti - LSL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'LRD' => [
@@ -862,7 +862,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LRD',
-        'label'              => __('Liberian Dollar - LRD', 'bit-crm'),
+        'label'              => __('Liberian Dollar - LRD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'LYD' => [
@@ -872,7 +872,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LYD',
-        'label'              => __('Libyan Dinar - LYD', 'bit-crm'),
+        'label'              => __('Libyan Dinar - LYD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'LTL' => [
@@ -882,7 +882,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LTL',
-        'label'              => __('Lithuanian Litas - LTL', 'bit-crm'),
+        'label'              => __('Lithuanian Litas - LTL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MOP' => [
@@ -892,7 +892,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MOP',
-        'label'              => __('Macanese Pataca - MOP', 'bit-crm'),
+        'label'              => __('Macanese Pataca - MOP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MKD' => [
@@ -902,7 +902,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'MKD',
-        'label'              => __('Macedonian Denar - MKD', 'bit-crm'),
+        'label'              => __('Macedonian Denar - MKD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MGA' => [
@@ -912,7 +912,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MGA',
-        'label'              => __('Malagasy Ariary - MGA', 'bit-crm'),
+        'label'              => __('Malagasy Ariary - MGA', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'MWK' => [
@@ -922,7 +922,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MWK',
-        'label'              => __('Malawian Kwacha - MWK', 'bit-crm'),
+        'label'              => __('Malawian Kwacha - MWK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MYR' => [
@@ -932,7 +932,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MYR',
-        'label'              => __('Malaysian Ringgit - MYR', 'bit-crm'),
+        'label'              => __('Malaysian Ringgit - MYR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MVR' => [
@@ -942,7 +942,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MVR',
-        'label'              => __('Maldivian Rufiyaa - MVR', 'bit-crm'),
+        'label'              => __('Maldivian Rufiyaa - MVR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'IMP' => [
@@ -952,7 +952,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'IMP',
-        'label'              => __('Manx Pound - IMP', 'bit-crm'),
+        'label'              => __('Manx Pound - IMP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MRO' => [
@@ -962,7 +962,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MRO',
-        'label'              => __('Mauritanian Ouguiya - MRO', 'bit-crm'),
+        'label'              => __('Mauritanian Ouguiya - MRO', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'MRU' => [
@@ -972,7 +972,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MRU',
-        'label'              => __('Mauritanian Ouguiya - MRU', 'bit-crm'),
+        'label'              => __('Mauritanian Ouguiya - MRU', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'MUR' => [
@@ -982,7 +982,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MUR',
-        'label'              => __('Mauritian Rupee - MUR', 'bit-crm'),
+        'label'              => __('Mauritian Rupee - MUR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'MXN' => [
@@ -992,7 +992,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MXN',
-        'label'              => __('Mexican Peso - MXN', 'bit-crm'),
+        'label'              => __('Mexican Peso - MXN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MXV' => [
@@ -1002,7 +1002,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MXV',
-        'label'              => __('Mexican Unidad de Inversion - MXV', 'bit-crm'),
+        'label'              => __('Mexican Unidad de Inversion - MXV', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MDL' => [
@@ -1012,7 +1012,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MDL',
-        'label'              => __('Moldovan Leu - MDL', 'bit-crm'),
+        'label'              => __('Moldovan Leu - MDL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MNT' => [
@@ -1022,7 +1022,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MNT',
-        'label'              => __('Mongolian Tugrik - MNT', 'bit-crm'),
+        'label'              => __('Mongolian Tugrik - MNT', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'MAD' => [
@@ -1032,7 +1032,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MAD',
-        'label'              => __('Moroccan Dirham - MAD', 'bit-crm'),
+        'label'              => __('Moroccan Dirham - MAD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MZE' => [
@@ -1042,7 +1042,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MZE',
-        'label'              => __('Mozambican Escudo - MZE', 'bit-crm'),
+        'label'              => __('Mozambican Escudo - MZE', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MZN' => [
@@ -1052,7 +1052,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MZN',
-        'label'              => __('Mozambican Metical - MZN', 'bit-crm'),
+        'label'              => __('Mozambican Metical - MZN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'MMK' => [
@@ -1062,7 +1062,7 @@ return [
         'numeral_system'     => 'indian',
         'thousand_separator' => 'comma',
         'iso_code'           => 'MMK',
-        'label'              => __('Myanma Kyat - MMK', 'bit-crm'),
+        'label'              => __('Myanma Kyat - MMK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'NAD' => [
@@ -1072,7 +1072,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'NAD',
-        'label'              => __('Namibian Dollar - NAD', 'bit-crm'),
+        'label'              => __('Namibian Dollar - NAD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'NPR' => [
@@ -1082,7 +1082,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'NPR',
-        'label'              => __('Nepalese Rupee - NPR', 'bit-crm'),
+        'label'              => __('Nepalese Rupee - NPR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ANG' => [
@@ -1092,7 +1092,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ANG',
-        'label'              => __('Netherlands Antillean Guilder - ANG', 'bit-crm'),
+        'label'              => __('Netherlands Antillean Guilder - ANG', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TWD' => [
@@ -1102,7 +1102,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TWD',
-        'label'              => __('New Taiwan Dollar - TWD', 'bit-crm'),
+        'label'              => __('New Taiwan Dollar - TWD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'NZD' => [
@@ -1112,7 +1112,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'NZD',
-        'label'              => __('New Zealand Dollar - NZD', 'bit-crm'),
+        'label'              => __('New Zealand Dollar - NZD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'NIO' => [
@@ -1122,7 +1122,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'NIO',
-        'label'              => __('Nicaraguan Córdoba - NIO', 'bit-crm'),
+        'label'              => __('Nicaraguan Córdoba - NIO', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'NGN' => [
@@ -1132,7 +1132,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'NGN',
-        'label'              => __('Nigerian Naira - NGN', 'bit-crm'),
+        'label'              => __('Nigerian Naira - NGN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'KPW' => [
@@ -1142,7 +1142,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KPW',
-        'label'              => __('North Korean Won - KPW', 'bit-crm'),
+        'label'              => __('North Korean Won - KPW', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'NOK' => [
@@ -1152,7 +1152,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'NOK',
-        'label'              => __('Norwegian Krone - NOK', 'bit-crm'),
+        'label'              => __('Norwegian Krone - NOK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'OMR' => [
@@ -1162,7 +1162,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'OMR',
-        'label'              => __('Omani Rial - OMR', 'bit-crm'),
+        'label'              => __('Omani Rial - OMR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'PKR' => [
@@ -1172,7 +1172,7 @@ return [
         'numeral_system'     => 'indian',
         'thousand_separator' => 'comma',
         'iso_code'           => 'PKR',
-        'label'              => __('Pakistani Rupee - PKR', 'bit-crm'),
+        'label'              => __('Pakistani Rupee - PKR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'PAB' => [
@@ -1182,7 +1182,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'PAB',
-        'label'              => __('Panamanian Balboa - PAB', 'bit-crm'),
+        'label'              => __('Panamanian Balboa - PAB', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'PGK' => [
@@ -1192,7 +1192,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'PGK',
-        'label'              => __('Papua New Guinean Kina - PGK', 'bit-crm'),
+        'label'              => __('Papua New Guinean Kina - PGK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'PYG' => [
@@ -1202,7 +1202,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'PYG',
-        'label'              => __('Paraguayan Guarani - PYG', 'bit-crm'),
+        'label'              => __('Paraguayan Guarani - PYG', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'PEN' => [
@@ -1212,7 +1212,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'PEN',
-        'label'              => __('Peruvian Sol - PEN', 'bit-crm'),
+        'label'              => __('Peruvian Sol - PEN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'PHP' => [
@@ -1222,7 +1222,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'PHP',
-        'label'              => __('Philippine Peso - PHP', 'bit-crm'),
+        'label'              => __('Philippine Peso - PHP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'PLN' => [
@@ -1232,7 +1232,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'PLN',
-        'label'              => __('Polish Zloty - PLN', 'bit-crm'),
+        'label'              => __('Polish Zloty - PLN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'QAR' => [
@@ -1242,7 +1242,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'QAR',
-        'label'              => __('Qatari Riyal - QAR', 'bit-crm'),
+        'label'              => __('Qatari Riyal - QAR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'RON' => [
@@ -1252,7 +1252,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'RON',
-        'label'              => __('Romanian New Leu - RON', 'bit-crm'),
+        'label'              => __('Romanian New Leu - RON', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'RUB' => [
@@ -1262,7 +1262,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'RUB',
-        'label'              => __('Russian Ruble - RUB', 'bit-crm'),
+        'label'              => __('Russian Ruble - RUB', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'RWF' => [
@@ -1272,7 +1272,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'RWF',
-        'label'              => __('Rwandan Franc - RWF', 'bit-crm'),
+        'label'              => __('Rwandan Franc - RWF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'SHP' => [
@@ -1282,7 +1282,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SHP',
-        'label'              => __('Saint Helena Pound - SHP', 'bit-crm'),
+        'label'              => __('Saint Helena Pound - SHP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SVC' => [
@@ -1292,7 +1292,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SVC',
-        'label'              => __('Salvadoran Colón - SVC', 'bit-crm'),
+        'label'              => __('Salvadoran Colón - SVC', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'WST' => [
@@ -1302,7 +1302,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'WST',
-        'label'              => __('Samoan Tala - WST', 'bit-crm'),
+        'label'              => __('Samoan Tala - WST', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SAR' => [
@@ -1312,7 +1312,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SAR',
-        'label'              => __('Saudi Riyal - SAR', 'bit-crm'),
+        'label'              => __('Saudi Riyal - SAR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'STD' => [
@@ -1322,7 +1322,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'STD',
-        'label'              => __('São Tomé and Príncipe Dobra - STD', 'bit-crm'),
+        'label'              => __('São Tomé and Príncipe Dobra - STD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'STN' => [
@@ -1332,7 +1332,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'STN',
-        'label'              => __('São Tomé and Príncipe Dobra - STN', 'bit-crm'),
+        'label'              => __('São Tomé and Príncipe Dobra - STN', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'RSD' => [
@@ -1342,7 +1342,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'RSD',
-        'label'              => __('Serbian Dinar - RSD', 'bit-crm'),
+        'label'              => __('Serbian Dinar - RSD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SCR' => [
@@ -1352,7 +1352,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SCR',
-        'label'              => __('Seychellois Rupee - SCR', 'bit-crm'),
+        'label'              => __('Seychellois Rupee - SCR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SLL' => [
@@ -1362,7 +1362,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SLL',
-        'label'              => __('Sierra Leonean Leone - SLL', 'bit-crm'),
+        'label'              => __('Sierra Leonean Leone - SLL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'SGD' => [
@@ -1372,7 +1372,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SGD',
-        'label'              => __('Singapore Dollar - SGD', 'bit-crm'),
+        'label'              => __('Singapore Dollar - SGD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SBD' => [
@@ -1382,7 +1382,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SBD',
-        'label'              => __('Solomon Islands Dollar - SBD', 'bit-crm'),
+        'label'              => __('Solomon Islands Dollar - SBD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SOS' => [
@@ -1392,7 +1392,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SOS',
-        'label'              => __('Somali Shilling - SOS', 'bit-crm'),
+        'label'              => __('Somali Shilling - SOS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'ZAR' => [
@@ -1402,7 +1402,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ZAR',
-        'label'              => __('South African Rand - ZAR', 'bit-crm'),
+        'label'              => __('South African Rand - ZAR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'KRW' => [
@@ -1412,7 +1412,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'KRW',
-        'label'              => __('South Korean Won - KRW', 'bit-crm'),
+        'label'              => __('South Korean Won - KRW', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'SSP' => [
@@ -1422,7 +1422,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SSP',
-        'label'              => __('South Sudanese Pound - SSP', 'bit-crm'),
+        'label'              => __('South Sudanese Pound - SSP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'XDR' => [
@@ -1432,7 +1432,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'XDR',
-        'label'              => __('Special Drawing Rights - XDR', 'bit-crm'),
+        'label'              => __('Special Drawing Rights - XDR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'LKR' => [
@@ -1442,7 +1442,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'LKR',
-        'label'              => __('Sri Lankan Rupee - LKR', 'bit-crm'),
+        'label'              => __('Sri Lankan Rupee - LKR', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SDG' => [
@@ -1452,7 +1452,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SDG',
-        'label'              => __('Sudanese Pound - SDG', 'bit-crm'),
+        'label'              => __('Sudanese Pound - SDG', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SRD' => [
@@ -1462,7 +1462,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SRD',
-        'label'              => __('Surinamese Dollar - SRD', 'bit-crm'),
+        'label'              => __('Surinamese Dollar - SRD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SZL' => [
@@ -1472,7 +1472,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SZL',
-        'label'              => __('Swazi Lilangeni - SZL', 'bit-crm'),
+        'label'              => __('Swazi Lilangeni - SZL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SEK' => [
@@ -1482,7 +1482,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'SEK',
-        'label'              => __('Swedish Krona - SEK', 'bit-crm'),
+        'label'              => __('Swedish Krona - SEK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CHF' => [
@@ -1492,7 +1492,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'CHF',
-        'label'              => __('Swiss Franc - CHF', 'bit-crm'),
+        'label'              => __('Swiss Franc - CHF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'SYP' => [
@@ -1502,7 +1502,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'SYP',
-        'label'              => __('Syrian Pound - SYP', 'bit-crm'),
+        'label'              => __('Syrian Pound - SYP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TJS' => [
@@ -1512,7 +1512,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TJS',
-        'label'              => __('Tajikistani Somoni - TJS', 'bit-crm'),
+        'label'              => __('Tajikistani Somoni - TJS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TZS' => [
@@ -1522,7 +1522,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TZS',
-        'label'              => __('Tanzanian Shilling - TZS', 'bit-crm'),
+        'label'              => __('Tanzanian Shilling - TZS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'THB' => [
@@ -1532,7 +1532,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'THB',
-        'label'              => __('Thai Baht - THB', 'bit-crm'),
+        'label'              => __('Thai Baht - THB', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TOP' => [
@@ -1542,7 +1542,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TOP',
-        'label'              => __('Tongan Paʻanga - TOP', 'bit-crm'),
+        'label'              => __('Tongan Paʻanga - TOP', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TTD' => [
@@ -1552,7 +1552,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TTD',
-        'label'              => __('Trinidad and Tobago Dollar - TTD', 'bit-crm'),
+        'label'              => __('Trinidad and Tobago Dollar - TTD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TND' => [
@@ -1562,7 +1562,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TND',
-        'label'              => __('Tunisian Dinar - TND', 'bit-crm'),
+        'label'              => __('Tunisian Dinar - TND', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 3
     ],
     'TRY' => [
@@ -1572,7 +1572,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'TRY',
-        'label'              => __('Turkish Lira - TRY', 'bit-crm'),
+        'label'              => __('Turkish Lira - TRY', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TMT' => [
@@ -1582,7 +1582,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TMT',
-        'label'              => __('Turkmenistani Manat - TMT', 'bit-crm'),
+        'label'              => __('Turkmenistani Manat - TMT', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'TVD' => [
@@ -1592,7 +1592,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'TVD',
-        'label'              => __('Tuvaluan Dollar - TVD', 'bit-crm'),
+        'label'              => __('Tuvaluan Dollar - TVD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'UGX' => [
@@ -1602,7 +1602,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'UGX',
-        'label'              => __('Ugandan Shilling - UGX', 'bit-crm'),
+        'label'              => __('Ugandan Shilling - UGX', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'UAH' => [
@@ -1612,7 +1612,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'space',
         'iso_code'           => 'UAH',
-        'label'              => __('Ukrainian Hryvnia - UAH', 'bit-crm'),
+        'label'              => __('Ukrainian Hryvnia - UAH', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CLF' => [
@@ -1622,7 +1622,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CLF',
-        'label'              => __('Unidad de Fomento - CLF', 'bit-crm'),
+        'label'              => __('Unidad de Fomento - CLF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'COU' => [
@@ -1632,7 +1632,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'COU',
-        'label'              => __('Unidad de Valor Real - COU', 'bit-crm'),
+        'label'              => __('Unidad de Valor Real - COU', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'AED' => [
@@ -1642,7 +1642,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'AED',
-        'label'              => __('United Arab Emirates Dirham - AED', 'bit-crm'),
+        'label'              => __('United Arab Emirates Dirham - AED', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'UYU' => [
@@ -1652,7 +1652,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'UYU',
-        'label'              => __('Uruguayan Peso - UYU', 'bit-crm'),
+        'label'              => __('Uruguayan Peso - UYU', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'UYI' => [
@@ -1662,7 +1662,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'UYI',
-        'label'              => __('Uruguay Peso en Unidades Indexadas - UYI', 'bit-crm'),
+        'label'              => __('Uruguay Peso en Unidades Indexadas - UYI', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'USD' => [
@@ -1672,7 +1672,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'USD',
-        'label'              => __('US Dollar - USD', 'bit-crm'),
+        'label'              => __('US Dollar - USD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'UZS' => [
@@ -1682,7 +1682,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'UZS',
-        'label'              => __('Uzbekistan Som - UZS', 'bit-crm'),
+        'label'              => __('Uzbekistan Som - UZS', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'VUV' => [
@@ -1692,7 +1692,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'VUV',
-        'label'              => __('Vanuatu Vatu - VUV', 'bit-crm'),
+        'label'              => __('Vanuatu Vatu - VUV', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'VEF' => [
@@ -1702,7 +1702,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'VEF',
-        'label'              => __('Venezuelan Bolívar - VEF', 'bit-crm'),
+        'label'              => __('Venezuelan Bolívar - VEF', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'VES' => [
@@ -1712,7 +1712,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'VES',
-        'label'              => __('Venezuelan Bolívar Soberano - VES', 'bit-crm'),
+        'label'              => __('Venezuelan Bolívar Soberano - VES', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'VED' => [
@@ -1722,7 +1722,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'VED',
-        'label'              => __('Venezuelan Bolívar Soberano - VED', 'bit-crm'),
+        'label'              => __('Venezuelan Bolívar Soberano - VED', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'VND' => [
@@ -1732,7 +1732,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'period',
         'iso_code'           => 'VND',
-        'label'              => __('Vietnamese Dong - VND', 'bit-crm'),
+        'label'              => __('Vietnamese Dong - VND', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'CHE' => [
@@ -1742,7 +1742,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CHE',
-        'label'              => __('WIR Euro - CHE', 'bit-crm'),
+        'label'              => __('WIR Euro - CHE', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'CHW' => [
@@ -1752,7 +1752,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'CHW',
-        'label'              => __('WIR Franc - CHW', 'bit-crm'),
+        'label'              => __('WIR Franc - CHW', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'YER' => [
@@ -1762,7 +1762,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'YER',
-        'label'              => __('Yemeni Rial - YER', 'bit-crm'),
+        'label'              => __('Yemeni Rial - YER', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ZMK' => [
@@ -1772,7 +1772,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ZMK',
-        'label'              => __('Zambian Kwacha - ZMK', 'bit-crm'),
+        'label'              => __('Zambian Kwacha - ZMK', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'ZMW' => [
@@ -1782,7 +1782,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ZMW',
-        'label'              => __('Zambian Kwacha - ZMW', 'bit-crm'),
+        'label'              => __('Zambian Kwacha - ZMW', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 0
     ],
     'ZWD' => [
@@ -1792,7 +1792,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ZWD',
-        'label'              => __('Zimbabwean Dollar - ZWD', 'bit-crm'),
+        'label'              => __('Zimbabwean Dollar - ZWD', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ],
     'ZWL' => [
@@ -1802,7 +1802,7 @@ return [
         'numeral_system'     => 'international',
         'thousand_separator' => 'comma',
         'iso_code'           => 'ZWL',
-        'label'              => __('Zimbabwean Dollar - ZWL', 'bit-crm'),
+        'label'              => __('Zimbabwean Dollar - ZWL', 'bit-crm-sales-marketing-automation'),
         'decimal_places'     => 2
     ]
 ];

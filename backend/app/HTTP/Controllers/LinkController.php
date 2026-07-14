@@ -57,10 +57,10 @@ final class LinkController
         if ($link = Link::insert($validated)) {
             Hooks::doAction('bit_crm/link_created', $link);
 
-            return Response::success(__('Link created successfully!', 'bit-crm'));
+            return Response::success(__('Link created successfully!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to create link!', 'bit-crm'));
+        return Response::error(__('Failed to create link!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function edit(EditRequest $request)
@@ -69,7 +69,7 @@ final class LinkController
         $link = Link::findOne(['id' => $validated['id']]);
 
         if (empty($link)) {
-            return Response::error(__('Link not found!', 'bit-crm'));
+            return Response::error(__('Link not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success($link);
@@ -81,7 +81,7 @@ final class LinkController
         $link = Link::findOne(['id' => $validated['id']]);
 
         if (empty($link)) {
-            return Response::error(__('Link not found!', 'bit-crm'));
+            return Response::error(__('Link not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $validated['updated_by'] = get_current_user_id();
@@ -92,7 +92,7 @@ final class LinkController
             return Response::success($link);
         }
 
-        return Response::error(__('Failed to update link!', 'bit-crm'));
+        return Response::error(__('Failed to update link!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)
@@ -101,15 +101,15 @@ final class LinkController
         $link = new Link($validated['id']);
 
         if (!$link->exists()) {
-            return Response::error(__('Link not found!', 'bit-crm'));
+            return Response::error(__('Link not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($link->delete()) {
             Hooks::doAction('bit_crm/link_deleted', $validated['id']);
 
-            return Response::success(__('Link deleted successfully!', 'bit-crm'));
+            return Response::success(__('Link deleted successfully!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to delete link!', 'bit-crm'));
+        return Response::error(__('Failed to delete link!', 'bit-crm-sales-marketing-automation'));
     }
 }

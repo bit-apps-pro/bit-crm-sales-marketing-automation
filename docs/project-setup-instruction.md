@@ -46,7 +46,7 @@ define('WP_DEBUG_DISPLAY', false);
 
 ```bash
 # Clone the public free repository into the WordPress plugin slug directory.
-git clone <repository-url> bit-crm
+git clone <repository-url> bit-crm-sales-marketing-automation
 ```
 
 Learn more about [SSH key setup](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows)
@@ -111,7 +111,7 @@ wp --info
 1. Run the following command to activate the plugin:
 
 ```bash
-wp plugin activate bit-crm
+wp plugin activate bit-crm-sales-marketing-automation
 ```
 
 ## Run the Project

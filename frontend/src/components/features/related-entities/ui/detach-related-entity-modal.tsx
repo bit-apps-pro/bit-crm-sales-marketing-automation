@@ -57,7 +57,7 @@ export default function DetachRelatedModal({
     >
       <p>
         {sprintf(
-          __('This action will detach the selected %s.', 'bit-crm'),
+          __('This action will detach the selected %s.', 'bit-crm-sales-marketing-automation'),
           selectedKeys.length > 1 ? `${relatedEntity}s` : relatedEntity
         )}
       </p>

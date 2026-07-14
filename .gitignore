@@ -17,8 +17,8 @@ eslint-cache/
 .idea/
 bun.lockb
 dependencies
-bit-crm.zip
-bit-crm/
+bit-crm-sales-marketing-automation.zip
+bit-crm-sales-marketing-automation/
 .env
 .vite/
 build

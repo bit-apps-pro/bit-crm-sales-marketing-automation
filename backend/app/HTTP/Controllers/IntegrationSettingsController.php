@@ -52,7 +52,7 @@ final class IntegrationSettingsController
                 );
             }
         } catch (Throwable $th) {
-            return Response::error(__('Failed to save settings.', 'bit-crm'));
+            return Response::error(__('Failed to save settings.', 'bit-crm-sales-marketing-automation'));
         }
 
         if ($validated['setting_key'] === self::WC_INTEGRATION_KEY) {
@@ -60,7 +60,7 @@ final class IntegrationSettingsController
             $this->handleWooSyncTransition($wasEnabled, $isNowEnabled);
         }
 
-        return Response::success(__('Settings saved successfully.', 'bit-crm'));
+        return Response::success(__('Settings saved successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function wooProductIntegration()

@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
  */
 class Config
 {
-    public const SLUG = 'bit-crm';
+    public const SLUG = 'bit-crm-sales-marketing-automation';
 
     public const TITLE = 'Bit CRM';
 
@@ -227,11 +227,11 @@ class Config
     {
         return [
             'settings' => [
-                'title' => __('Settings', 'bit-crm'),
+                'title' => __('Settings', 'bit-crm-sales-marketing-automation'),
                 'url'   => self::get('ADMIN_URL') . 'admin.php?page=' . self::SLUG . '#settings',
             ],
             'help' => [
-                'title' => __('Help', 'bit-crm'),
+                'title' => __('Help', 'bit-crm-sales-marketing-automation'),
                 'url'   => self::get('ADMIN_URL') . 'admin.php?page=' . self::SLUG . '#help',
             ],
         ];

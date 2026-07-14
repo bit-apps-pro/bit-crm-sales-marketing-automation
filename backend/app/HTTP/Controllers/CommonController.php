@@ -54,7 +54,7 @@ final class CommonController
 
         $counts = (new CommonService())->formatCounts($countsRaw);
 
-        return Response::success($counts)->message(__('Related entity counts retrieved successfully.', 'bit-crm'));
+        return Response::success($counts)->message(__('Related entity counts retrieved successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function relatedFieldOptions(RelatedFieldOptionsRequest $request)
@@ -73,9 +73,9 @@ final class CommonController
             $options = EntityFactory::module($validated['relatedModule'])->getEntitiesAsOptions($pagination, $validated['entityId'] ?? 0, $validated['searchTerm'] ?? null, $validated['args'] ?? []);
             $this->maybeIncludeSelectedOption($options, $validated['selectedValue'] ?? null, $validated['relatedModule']);
 
-            return Response::success($options)->message(__('Related field options retrieved successfully.', 'bit-crm'));
+            return Response::success($options)->message(__('Related field options retrieved successfully.', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
-            return Response::error([])->message(__('Failed to retrieve related field options.', 'bit-crm'));
+            return Response::error([])->message(__('Failed to retrieve related field options.', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -88,9 +88,9 @@ final class CommonController
             $requiredFields = (new CommonService())->filterRequiredFields($fields);
 
             return Response::success($requiredFields)
-                ->message(__('Required fields retrieved successfully.', 'bit-crm'));
+                ->message(__('Required fields retrieved successfully.', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
-            return Response::error([])->message(__('Failed to retrieve required fields.', 'bit-crm'));
+            return Response::error([])->message(__('Failed to retrieve required fields.', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -103,7 +103,7 @@ final class CommonController
         $csvPathAbsolute = Config::get('BASEDIR') . $csvPath;
 
         if (!file_exists($csvPathAbsolute)) {
-            return Response::error(__('Sample CSV file not found.', 'bit-crm'));
+            return Response::error(__('Sample CSV file not found.', 'bit-crm-sales-marketing-automation'));
         }
 
         $csvUrl = plugins_url(Config::SLUG . '/backend/' . $csvPath);
@@ -120,7 +120,7 @@ final class CommonController
         $settingsKeys = CommonService::getRelatedEntityTableSettingsKeys($entity, $relatedEntity);
 
         if ($settingsKeys === null) {
-            return Response::error(null)->message(__('Failed to retrieve table configuration for related entities.', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to retrieve table configuration for related entities.', 'bit-crm-sales-marketing-automation'));
         }
 
         $columnsOrder = SettingService::getSettingsValue($settingsKeys['columns_order']);
@@ -131,7 +131,7 @@ final class CommonController
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error(null)->message(__('Invalid related entity.', 'bit-crm'));
+            return Response::error(null)->message(__('Invalid related entity.', 'bit-crm-sales-marketing-automation'));
         }
 
         return Response::success(
@@ -157,20 +157,20 @@ final class CommonController
         $entityData = EntityFactory::module($entity)->findById($entityId);
 
         if (empty($entityData)) {
-            return Response::error(__('Invalid ID', 'bit-crm'));
+            return Response::error(__('Invalid ID', 'bit-crm-sales-marketing-automation'));
         }
 
         $foreignKey = CommonService::getEntityForeignKey($entity);
 
         if ($foreignKey === null) {
-            return Response::error([])->message(__('Invalid entity', 'bit-crm'));
+            return Response::error([])->message(__('Invalid entity', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
             $paginatedResult = EntityFactory::module($relatedEntity)->getIdsByColumnPaginated($foreignKey, $entityId, $page, $perPage);
         } catch (Throwable $th) {
             // translators: 1. Related entity (e.g., Contact, Deal, etc.)
-            return Response::error([])->message(\sprintf(__('Invalid related entity: %s', 'bit-crm'), $relatedEntity));
+            return Response::error([])->message(\sprintf(__('Invalid related entity: %s', 'bit-crm-sales-marketing-automation'), $relatedEntity));
         }
 
         $relatedEntityIds = $paginatedResult['ids'];
@@ -178,7 +178,7 @@ final class CommonController
         if (empty($relatedEntityIds)) {
             unset($paginatedResult['ids']);
 
-            return Response::success($paginatedResult)->message(__('No related entities found', 'bit-crm'));
+            return Response::success($paginatedResult)->message(__('No related entities found', 'bit-crm-sales-marketing-automation'));
         }
 
         try {
@@ -195,7 +195,7 @@ final class CommonController
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error(null)->message(__('Failed to retrieve related entities.', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to retrieve related entities.', 'bit-crm-sales-marketing-automation'));
         }
 
         $data['total'] = $paginatedResult['total'];
@@ -215,7 +215,7 @@ final class CommonController
         $updatedBy = get_current_user_id();
 
         if ($entity === Contact::MODULE_NAME && $relatedEntity === Deal::MODULE_NAME) {
-            return Response::error(null)->message(__('Detaching Deals from a Contact is not allowed. Please edit the Deal to change the associated Contact.', 'bit-crm'));
+            return Response::error(null)->message(__('Detaching Deals from a Contact is not allowed. Please edit the Deal to change the associated Contact.', 'bit-crm-sales-marketing-automation'));
         }
 
         $relatedEntityService = EntityFactory::module($relatedEntity);
@@ -229,14 +229,14 @@ final class CommonController
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error(null)->message(__('Failed to detach related entities.', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to detach related entities.', 'bit-crm-sales-marketing-automation'));
         }
 
         if (!$affectedRows) {
-            return Response::error(null)->message(__('Failed to detach related entities.', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to detach related entities.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(null)->message(__('Related entities detached successfully.', 'bit-crm'));
+        return Response::success(null)->message(__('Related entities detached successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     private function maybeIncludeSelectedOption(array &$options, int|string|null $selectedValue, string $relatedModule, array $columnSelect = [])

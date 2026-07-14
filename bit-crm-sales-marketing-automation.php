@@ -5,7 +5,7 @@
  * Version:      1.0.0
  * Author:       Bit Apps
  * Author URI:   https://bitapps.pro
- * Text Domain:  bit-crm
+ * Text Domain:  bit-crm-sales-marketing-automation
  * Requires PHP: 8.2
  * Requires at least: 5.8
  * Domain Path:  /languages

@@ -16,11 +16,11 @@ class PluginPageActions
     {
         return [
             'settings' => [
-                'title' => __('Settings', 'bit-crm'),
+                'title' => __('Settings', 'bit-crm-sales-marketing-automation'),
                 'url'   => Config::get('ADMIN_URL') . 'admin.php?page=' . Config::SLUG . '#/settings',
             ],
             'support' => [
-                'title' => __('Support', 'bit-crm'),
+                'title' => __('Support', 'bit-crm-sales-marketing-automation'),
                 'url'   => Config::get('ADMIN_URL') . 'admin.php?page=' . Config::SLUG . '#/support',
             ],
         ];

@@ -58,7 +58,7 @@ class LineItemService
         } catch (Throwable $th) {
             Connection::rollback();
 
-            throw new Exception(esc_html__('Failed to create line items', 'bit-crm'));
+            throw new Exception(esc_html__('Failed to create line items', 'bit-crm-sales-marketing-automation'));
         }
     }
 

@@ -16,7 +16,7 @@ class UpdateRequest extends Request
 
     public function failedAuthorizationMessage()
     {
-        return __('Authorization Error: You don\'t have access!', 'bit-crm');
+        return __('Authorization Error: You don\'t have access!', 'bit-crm-sales-marketing-automation');
     }
 
     public function rules()
@@ -27,7 +27,7 @@ class UpdateRequest extends Request
                 'required',
                 'string',
                 'sanitize:text',
-                (new UniqueTagByModuleRule(Tag::class, 'title', __('Tag already exists for the module!', 'bit-crm')))->ignore($this->get('id')),
+                (new UniqueTagByModuleRule(Tag::class, 'title', __('Tag already exists for the module!', 'bit-crm-sales-marketing-automation')))->ignore($this->get('id')),
             ],
             'module' => ['nullable', 'string', 'sanitize:text']
         ];

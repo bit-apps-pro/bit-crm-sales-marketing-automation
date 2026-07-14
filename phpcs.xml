@@ -22,7 +22,7 @@
   <config name="minimum_supported_wp_version" value="5.8" />
   <rule ref="WordPress.WP.I18n">
     <properties>
-      <property name="text_domain" type="array" value="bit-crm" />
+      <property name="text_domain" type="array" value="bit-crm-sales-marketing-automation" />
     </properties>
   </rule>
 

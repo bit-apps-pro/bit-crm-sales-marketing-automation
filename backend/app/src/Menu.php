@@ -49,8 +49,8 @@ final class Menu
     {
         return [
             'type'       => 'menu',
-            'title'      => __('Bit CRM - CRM for WordPress', 'bit-crm'),
-            'name'       => __('Bit CRM', 'bit-crm'),
+            'title'      => __('Bit CRM - CRM for WordPress', 'bit-crm-sales-marketing-automation'),
+            'name'       => __('Bit CRM', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_menu',
             'slug'       => Config::SLUG,
             'callback'   => [$body, 'render'],

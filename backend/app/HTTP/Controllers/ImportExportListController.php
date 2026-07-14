@@ -34,7 +34,7 @@ final class ImportExportListController
 
             return Response::success($result);
         } catch (Throwable $th) {
-            return Response::error(__('Something went wrong! Failed to fetch result!', 'bit-crm'));
+            return Response::error(__('Something went wrong! Failed to fetch result!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -45,7 +45,7 @@ final class ImportExportListController
         $importExport = new ImportExportList($validated['id']);
 
         if (!$importExport->exists()) {
-            return Response::error(__('Record not found!', 'bit-crm'));
+            return Response::error(__('Record not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $data = $importExport->getAttributes();
@@ -62,9 +62,9 @@ final class ImportExportListController
                 wp_delete_file($absoluteFilePath);
             }
         } catch (Throwable $th) {
-            return Response::error(__('Failed to delete data!', 'bit-crm'));
+            return Response::error(__('Failed to delete data!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Record deleted successfully', 'bit-crm'));
+        return Response::success(__('Record deleted successfully', 'bit-crm-sales-marketing-automation'));
     }
 }

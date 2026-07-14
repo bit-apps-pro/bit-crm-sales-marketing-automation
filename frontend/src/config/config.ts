@@ -57,7 +57,7 @@ const config = {
   KEY: getServerVariable('key'),
   NONCE: getServerVariable('nonce', ''),
   ONBOARDING_COMPLETED: SERVER_VARIABLES?.onboardingCompleted === '1',
-  PLUGIN_SLUG: getServerVariable('pluginSlug', 'bit-crm'),
+  PLUGIN_SLUG: getServerVariable('pluginSlug', 'bit-crm-sales-marketing-automation'),
   PRO_API_URL: getServerVariable('proApiURL'),
   PRO_SLUG: getServerVariable('proSlug'),
   PRO_VERSION: getServerVariable('proPluginVersion'),

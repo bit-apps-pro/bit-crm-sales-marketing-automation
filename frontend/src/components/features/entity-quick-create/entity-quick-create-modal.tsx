@@ -1,5 +1,5 @@
 import { formatModuleFieldsValues } from '@common/helpers/format-module-fields-values'
-import { __ } from '@common/helpers/i18nWrap'
+import { __, sprintf } from '@common/helpers/i18nWrap'
 import If from '@utilities/If'
 import { Form, Modal } from 'antd'
 import { capitalize } from 'lodash'
@@ -65,7 +65,11 @@ export default function EntityQuickCreateModal({
           paddingInline: '22px'
         }
       }}
-      title={__(`Create ${capitalize(module)}`)}
+      title={sprintf(
+        /* translators: %s: Entity type being created. */
+        __('Create %s'),
+        capitalize(module)
+      )}
     >
       <If conditions={isFieldsPending}>
         <EntityQuickCreateSkeleton />

@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
-const PLUGIN_SLUG = 'bit-crm'
+const PLUGIN_SLUG = 'bit-crm-sales-marketing-automation'
 const BUILD_DIRECTORY = path.resolve('build')
 const OUTPUT_DIRECTORY = path.join(BUILD_DIRECTORY, PLUGIN_SLUG)
 const ZIP_PATH = path.join(BUILD_DIRECTORY, `${PLUGIN_SLUG}.zip`)

@@ -33,11 +33,11 @@ class ActivityService
             Hooks::doAction('bit_crm/activity_created', $storedActivity);
 
             // translators: %s: activity type
-            return ['success' => true, 'data' => \sprintf(__('%s created successfully!', 'bit-crm'), ucfirst($validated['type']))];
+            return ['success' => true, 'data' => \sprintf(__('%s created successfully!', 'bit-crm-sales-marketing-automation'), ucfirst($validated['type']))];
         }
 
         // translators: %s: activity type
-        return ['success' => false, 'errors' => [\sprintf(__('Failed to create %s!', 'bit-crm'), $validated['type'])]];
+        return ['success' => false, 'errors' => [\sprintf(__('Failed to create %s!', 'bit-crm-sales-marketing-automation'), $validated['type'])]];
     }
 
     public function show(array|Request $data): array
@@ -51,7 +51,7 @@ class ActivityService
         $activity = Activity::findOne(['id' => $validated['id']]);
 
         if (empty($activity)) {
-            return ['success' => false, 'errors' => [__('Activity not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Activity not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         return ['success' => true, 'data' => $activity];
@@ -69,7 +69,7 @@ class ActivityService
 
         if (empty($activity)) {
             // translators: %s: activity type
-            return ['success' => false, 'errors' => [\sprintf(__('%s not found!', 'bit-crm'), ucfirst($validated['type']))]];
+            return ['success' => false, 'errors' => [\sprintf(__('%s not found!', 'bit-crm-sales-marketing-automation'), ucfirst($validated['type']))]];
         }
 
         $validated['updated_by'] = get_current_user_id();
@@ -82,11 +82,11 @@ class ActivityService
             Hooks::doAction('bit_crm/activity_updated', $activity);
 
             // translators: %s: activity type
-            return ['success' => true, 'data' => $activity, 'message' => \sprintf(__('%s updated successfully!', 'bit-crm'), ucfirst($validated['type']))];
+            return ['success' => true, 'data' => $activity, 'message' => \sprintf(__('%s updated successfully!', 'bit-crm-sales-marketing-automation'), ucfirst($validated['type']))];
         }
 
         // translators: %s: activity type
-        return ['success' => false, 'errors' => [\sprintf(__('Failed to update %s!', 'bit-crm'), $validated['type'])]];
+        return ['success' => false, 'errors' => [\sprintf(__('Failed to update %s!', 'bit-crm-sales-marketing-automation'), $validated['type'])]];
     }
 
     public function destroy(array|Request $data): array
@@ -101,7 +101,7 @@ class ActivityService
         $activity = Activity::findOne(['id' => $validated['id']]);
 
         if (empty($activity)) {
-            return ['success' => false, 'errors' => [__('Activity not found!', 'bit-crm')]];
+            return ['success' => false, 'errors' => [__('Activity not found!', 'bit-crm-sales-marketing-automation')]];
         }
 
         $type = $activity->type;
@@ -110,11 +110,11 @@ class ActivityService
             Hooks::doAction('bit_crm/activity_deleted', $validated['id']);
 
             // translators: %s: activity type
-            return ['success' => true, 'data' => null, 'message' => \sprintf(__('%s deleted successfully!', 'bit-crm'), ucfirst($type))];
+            return ['success' => true, 'data' => null, 'message' => \sprintf(__('%s deleted successfully!', 'bit-crm-sales-marketing-automation'), ucfirst($type))];
         }
 
         // translators: %s: activity type
-        return ['success' => false, 'errors' => [\sprintf(__('Failed to delete %s!', 'bit-crm'), $type)]];
+        return ['success' => false, 'errors' => [\sprintf(__('Failed to delete %s!', 'bit-crm-sales-marketing-automation'), $type)]];
     }
 
     public static function formatDataCollection($activities, $module, $entityId)

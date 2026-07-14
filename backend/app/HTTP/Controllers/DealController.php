@@ -70,7 +70,7 @@ final class DealController
 
         $deal = new Deal($validated['id']);
         if (!$deal->id) {
-            return Response::error(__('Deal not found!', 'bit-crm'));
+            return Response::error(__('Deal not found!', 'bit-crm-sales-marketing-automation'));
         }
         $dealData = $deal->getAttributes();
 
@@ -122,7 +122,7 @@ final class DealController
 
         $deal = new Deal($validated['id']);
         if (!$deal->id) {
-            return Response::error(__('Deal not found!', 'bit-crm'));
+            return Response::error(__('Deal not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         unset($validated['id']);
@@ -137,12 +137,12 @@ final class DealController
 
         $validated['updated_by'] = get_current_user_id();
         if (!$deal->update($validated)) {
-            return Response::error(__('Failed to update deal stage.', 'bit-crm'));
+            return Response::error(__('Failed to update deal stage.', 'bit-crm-sales-marketing-automation'));
         }
 
         Hooks::doAction('bit_crm/deal_stage_updated', $deal, $validated['stage']);
 
-        return Response::success(__('Deal stage updated successfully.', 'bit-crm'));
+        return Response::success(__('Deal stage updated successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function search(SearchRequest $request)
@@ -176,7 +176,7 @@ final class DealController
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error(__('Failed to fetch deals!', 'bit-crm'));
+            return Response::error(__('Failed to fetch deals!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -238,7 +238,7 @@ final class DealController
         }
 
         if (empty($tag)) {
-            return Response::error(__('Failed to add tag', 'bit-crm'));
+            return Response::error(__('Failed to add tag', 'bit-crm-sales-marketing-automation'));
         }
 
         $tagEntity = [
@@ -248,16 +248,16 @@ final class DealController
         ];
 
         if (TagEntity::findOne($tagEntity)) {
-            return Response::success(__('Tag already added', 'bit-crm'));
+            return Response::success(__('Tag already added', 'bit-crm-sales-marketing-automation'));
         }
 
         if (TagEntity::insert($tagEntity)) {
             Hooks::doAction('bit_crm/tag_attached_to_deal', $tag, $dealId);
 
-            return Response::success(__('Tag added successfully.', 'bit-crm'));
+            return Response::success(__('Tag added successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to add tag.', 'bit-crm'));
+        return Response::error(__('Failed to add tag.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function detachTag(DetachTagRequest $request)
@@ -271,12 +271,12 @@ final class DealController
             ->where('module', Deal::MODULE_NAME);
 
         if (!$tagEntity->delete()) {
-            return Response::error(__('Failed to remove tag', 'bit-crm'));
+            return Response::error(__('Failed to remove tag', 'bit-crm-sales-marketing-automation'));
         }
 
         Hooks::doAction('bit_crm/tag_detached_from_deal', $tagId, $dealId);
 
-        return Response::success(__('Tag removed successfully.', 'bit-crm'));
+        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function attachTags(AttachTagsRequest $request)
@@ -317,14 +317,14 @@ final class DealController
         }
 
         if (empty($dataToInsert)) {
-            return Response::error(__('Tags already added', 'bit-crm'));
+            return Response::error(__('Tags already added', 'bit-crm-sales-marketing-automation'));
         }
 
         TagEntity::insert($dataToInsert);
 
         Hooks::doAction('bit_crm/tags_attached_to_deals', $tagIds, $dealIds);
 
-        return Response::success(__('Tag added successfully.', 'bit-crm'));
+        return Response::success(__('Tag added successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function detachTags(DetachTagsRequest $request)
@@ -335,7 +335,7 @@ final class DealController
         $tagIds = $validated['tag_ids'];
 
         if (empty($dealIds) || empty($tagIds)) {
-            return Response::error(__('Deals or tags not found', 'bit-crm'));
+            return Response::error(__('Deals or tags not found', 'bit-crm-sales-marketing-automation'));
         }
 
         $deletedTagEntities = TagEntity::select(['entity_id', 'tag_id'])
@@ -345,12 +345,12 @@ final class DealController
             ->delete();
 
         if (!$deletedTagEntities) {
-            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm'));
+            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm-sales-marketing-automation'));
         }
 
         Hooks::doAction('bit_crm/tags_detached_from_deals', $tagIds, $dealIds);
 
-        return Response::success(__('Tag removed successfully.', 'bit-crm'));
+        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function import(ImportRequest $request)
@@ -360,7 +360,7 @@ final class DealController
         $file = $files['file'];
 
         if (!FileHandler::isFileType($file, 'csv')) {
-            return Response::success(__('Only csv files are allowed.', 'bit-crm'));
+            return Response::success(__('Only csv files are allowed.', 'bit-crm-sales-marketing-automation'));
         }
 
         $fields = JSON::maybeDecode($validated['fields'], true);
@@ -395,7 +395,7 @@ final class DealController
             ]
         )->save()->dispatch();
 
-        return Response::success(__('Import started successfully in the background.', 'bit-crm'));
+        return Response::success(__('Import started successfully in the background.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function showDealContactCurrency(ShowDealContactCurrencyRequest $request)
@@ -405,13 +405,13 @@ final class DealController
         $deal = Deal::findOne(['id' => $validated['id']]);
 
         if (empty($deal)) {
-            return Response::error(__('Deal not found!', 'bit-crm'));
+            return Response::error(__('Deal not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $contact = Contact::findOne(['id' => $deal['contact_id']]);
 
         if (empty($contact)) {
-            return Response::error(__('Contact not found!', 'bit-crm'));
+            return Response::error(__('Contact not found!', 'bit-crm-sales-marketing-automation'));
         }
 
         $currencyService = new CurrencyService();

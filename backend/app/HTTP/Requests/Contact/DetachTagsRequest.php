@@ -23,7 +23,7 @@ class DetachTagsRequest extends Request
     public function messages()
     {
         return [
-            'contact_ids.max' => __('You can detach tags from a maximum of 100 contacts at a time.', 'bit-crm')
+            'contact_ids.max' => __('You can detach tags from a maximum of 100 contacts at a time.', 'bit-crm-sales-marketing-automation')
         ];
     }
 }

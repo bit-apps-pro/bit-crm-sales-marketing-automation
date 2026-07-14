@@ -25,7 +25,7 @@ class CompanySearchService
     public function search(array $args)
     {
         if (!$this->validateArguments($args)) {
-            throw new Exception(esc_html__('Invalid arguments.', 'bit-crm'));
+            throw new Exception(esc_html__('Invalid arguments.', 'bit-crm-sales-marketing-automation'));
         }
 
         $companyTable = Config::withDBPrefix('companies');
@@ -55,7 +55,7 @@ class CompanySearchService
         try {
             $data = Company::raw($baseQuery, $bindings) ?? [];
         } catch (Throwable $th) {
-            throw new Exception(esc_html__('Failed to search companies.', 'bit-crm'));
+            throw new Exception(esc_html__('Failed to search companies.', 'bit-crm-sales-marketing-automation'));
         }
         $total = \count($data) > 0 ? $this->totalData($countQuery, $bindings) : 0;
 

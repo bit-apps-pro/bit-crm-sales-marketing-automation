@@ -133,7 +133,7 @@ final class CompanyController
         } catch (Throwable $th) {
             Logger::error($th);
 
-            return Response::error(null)->message(__('Failed to search companies!', 'bit-crm'));
+            return Response::error(null)->message(__('Failed to search companies!', 'bit-crm-sales-marketing-automation'));
         }
     }
 
@@ -166,7 +166,7 @@ final class CompanyController
         }
 
         if (empty($tag)) {
-            return Response::error(__('Failed to add tag', 'bit-crm'));
+            return Response::error(__('Failed to add tag', 'bit-crm-sales-marketing-automation'));
         }
 
         $tagEntity = [
@@ -176,16 +176,16 @@ final class CompanyController
         ];
 
         if (TagEntity::findOne($tagEntity)) {
-            return Response::success(__('Tag already added', 'bit-crm'));
+            return Response::success(__('Tag already added', 'bit-crm-sales-marketing-automation'));
         }
 
         if (TagEntity::insert($tagEntity)) {
             Hooks::doAction('bit_crm/tag_attached_to_company', $tag, $companyId);
 
-            return Response::success(__('Tag added successfully.', 'bit-crm'));
+            return Response::success(__('Tag added successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::error(__('Failed to add tag.', 'bit-crm'));
+        return Response::error(__('Failed to add tag.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function detachTag(DetachTagRequest $request)
@@ -199,12 +199,12 @@ final class CompanyController
             ->where('module', Company::MODULE_NAME);
 
         if (!$tagEntity->delete()) {
-            return Response::error(__('Failed to remove tag', 'bit-crm'));
+            return Response::error(__('Failed to remove tag', 'bit-crm-sales-marketing-automation'));
         }
 
         Hooks::doAction('bit_crm/tag_detached_from_company', $tagId, $companyId);
 
-        return Response::success(__('Tag removed successfully.', 'bit-crm'));
+        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function attachTags(AttachTagsRequest $request)
@@ -245,14 +245,14 @@ final class CompanyController
         }
 
         if (empty($dataToInsert)) {
-            return Response::error(__('Tags already added', 'bit-crm'));
+            return Response::error(__('Tags already added', 'bit-crm-sales-marketing-automation'));
         }
 
         TagEntity::insert($dataToInsert);
 
         Hooks::doAction('bit_crm/tags_attached_to_companies', $tagIds, $companyIds);
 
-        return Response::success(__('Tag added successfully.', 'bit-crm'));
+        return Response::success(__('Tag added successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function detachTags(DetachTagsRequest $request)
@@ -262,7 +262,7 @@ final class CompanyController
         $tagIds = $validated['tag_ids'];
 
         if (empty($companyIds) || empty($tagIds)) {
-            return Response::error(__('Companies or tags not found', 'bit-crm'));
+            return Response::error(__('Companies or tags not found', 'bit-crm-sales-marketing-automation'));
         }
 
         $deletedTagEntities = TagEntity::select(['entity_id', 'tag_id'])
@@ -272,12 +272,12 @@ final class CompanyController
             ->delete();
 
         if (!$deletedTagEntities) {
-            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm'));
+            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm-sales-marketing-automation'));
         }
 
         Hooks::doAction('bit_crm/tags_detached_from_companies', $tagIds, $companyIds);
 
-        return Response::success(__('Tag removed successfully.', 'bit-crm'));
+        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function import(ImportRequest $request)
@@ -287,7 +287,7 @@ final class CompanyController
         $file = $files['file'];
 
         if (!FileHandler::isFileType($file, 'csv')) {
-            return Response::success(__('Only csv files are allowed.', 'bit-crm'));
+            return Response::success(__('Only csv files are allowed.', 'bit-crm-sales-marketing-automation'));
         }
 
         $fields = JSON::maybeDecode($validated['fields'], true);
@@ -325,6 +325,6 @@ final class CompanyController
             ]
         )->save()->dispatch();
 
-        return Response::success(__('Import started successfully in the background.', 'bit-crm'));
+        return Response::success(__('Import started successfully in the background.', 'bit-crm-sales-marketing-automation'));
     }
 }
