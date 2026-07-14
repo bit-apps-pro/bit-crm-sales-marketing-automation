@@ -61,6 +61,10 @@ Create invoices from line items — either enter custom products manually or pul
 
 Send emails to your contacts from inside the CRM, configure SMTP for reliable delivery, and connect an IMAP mailbox to fetch and keep your customer conversations in sync — all without switching tools.
 
+= Source code =
+
+Bit CRM source code is available on [GitHub](https://github.com/bit-apps-pro/bit-crm-wordpress-plugin).
+
 == Installation ==
 
 1. From the WordPress Admin Panel, go to Plugins => Add New.

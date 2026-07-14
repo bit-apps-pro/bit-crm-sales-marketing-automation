@@ -6,7 +6,6 @@ use BitApps\Crm\src\Capability;
 use BitApps\Crm\src\Menu;
 use BitApps\Crm\src\StaticData\CurrencyHelper;
 use BitApps\Crm\Views\Body;
-use BitApps\CrmPro\Config as ProConfig;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -94,10 +93,6 @@ class Config
                 return set_url_scheme(plugins_url('', self::get('MAIN_FILE')), wp_parse_url(home_url())['scheme']);
 
             case 'ASSET_URI':
-                if (self::isProActivated()) {
-                    return ProConfig::get('ASSET_URI');
-                }
-
                 return self::get('ROOT_URI') . '/assets';
 
             case 'ASSET_JS_URI':
@@ -115,10 +110,6 @@ class Config
             case 'BUILD_CODE_NAME':
                 if (self::getEnv('DEV')) {
                     return '';
-                }
-
-                if (self::isProActivated()) {
-                    return file_get_contents(ProConfig::get('ROOT_DIR') . self::ASSETS_FOLDER . '/build-code-name.txt');
                 }
 
                 return file_get_contents(self::get('ROOT_DIR') . self::ASSETS_FOLDER . '/build-code-name.txt');
@@ -224,20 +215,6 @@ class Config
         return isset($_ENV[Config::VAR_PREFIX . $keyName])
             ? sanitize_text_field(wp_unslash($_ENV[Config::VAR_PREFIX . $keyName]))
             : false;
-    }
-
-    /**
-     * Check if pro plugin exist and active.
-     *
-     * @return bool
-     */
-    public static function isProActivated()
-    {
-        if (class_exists(ProConfig::class)) {
-            return ProConfig::isPro();
-        }
-
-        return false;
     }
 
     /**
