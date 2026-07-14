@@ -36,11 +36,10 @@
       "@pages/*": ["./frontend/src/pages/*"],
       "@static/*": ["./frontend/src/static/*"],
       "@config/*": ["./frontend/src/config/*"],
-      "@/*": ["./frontend/src/*"],
-      "@plugin-commons/*": ["./frontend/_plugin-commons/*"]
+      "@/*": ["./frontend/src/*"]
     }
   },
-  "include": ["./frontend", "./frontend/_plugin-commons", "./frontend/src/types", "./scripts"],
+  "include": ["./frontend", "./frontend/src/types", "./scripts"],
   "exclude": ["node_modules"],
   "types": ["node", "vite/client"]
 }

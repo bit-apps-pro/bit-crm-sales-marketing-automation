@@ -10,7 +10,7 @@
     "build:free": "tsc && vite build",
     "clean": "pnpm bitapps-plugin-clean-node",
     "dev:free": "vite",
-    "i18n": "pnpm bitapps-plugin-i18n",
+    "i18n": "node ./scripts/generate-i18n.mjs",
     "lint": "eslint frontend --fix",
     "lint:css": "stylelint frontend/**/*.{css,scss} --aei --color --fix",
     "lint:php": "composer lint",

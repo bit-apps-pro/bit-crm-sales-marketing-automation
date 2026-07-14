@@ -1,6 +1,5 @@
+import { setAppBgFromAdminBarBg, setCascadeLayerToWordpressStyles } from '@common/helpers/themeUtils'
 import { useEffect, useLayoutEffect } from 'react'
-
-import { setAppBgFromAdminBarBg, setCascadeLayerToWordpressStyles } from './themeUtils'
 
 interface UseAppEssentialsProps {
   cssLayers?: string

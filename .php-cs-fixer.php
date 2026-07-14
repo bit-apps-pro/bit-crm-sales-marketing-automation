@@ -11,7 +11,6 @@ $finder = Finder::create()
     ])
     ->in([
         __DIR__ . '/backend',
-        __DIR__ . '/_bitapps-plugin-commons/backend',
         __DIR__ . '/custom-fixers'
     ])
     ->ignoreVCSIgnored(true);

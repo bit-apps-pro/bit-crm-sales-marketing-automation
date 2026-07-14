@@ -1,5 +1,7 @@
 /* eslint-disable translate-obj-prop/translate-obj-prop */
 
+// Project-owned ESLint rule for translatable object properties.
+
 export default {
   'translate-obj-prop': {
     create(context) {

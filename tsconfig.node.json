@@ -19,9 +19,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "vite.config.ts",
-    "./frontend/_plugin-commons/vite-plugins",
-    "./frontend/src/common/helpers"
-  ]
+  "include": ["vite.config.ts", "./frontend/src/common/helpers"]
 }

@@ -1,3 +1,4 @@
+// Project-owned ESLint configuration for the Bit CRM free repository.
 import { fixupPluginRules } from '@eslint/compat'
 import { default as eslint } from '@eslint/js'
 import stylisticTs from '@stylistic/eslint-plugin-ts'
@@ -143,11 +144,6 @@ export default defineConfig(
         'error',
         {
           patterns: [
-            {
-              group: ['_bitapps-plugin-commons'],
-              message:
-                'Use `@plugin-commons/*` instead, make sure plugin commons are synced and up to date.'
-            },
             {
               group: ['@wordpress/i18n'],
               message: 'use `@common/helpers/i18nWrap` instead.'

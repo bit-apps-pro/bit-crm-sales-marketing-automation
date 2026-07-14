@@ -3,6 +3,8 @@ import CAPABILITIES from '@common/constants/capabilities'
 import NotifyContext from '@common/context/NotifyContext'
 import { $appConfig } from '@common/globalStates'
 import $navigate from '@common/globalStates/$navigate'
+import { createAntDesignStyleContainer } from '@common/helpers/themeUtils'
+import { useAppEssentials } from '@common/hooks/use-app-essentials'
 import {
   componentsTokenDark,
   componentsTokenLight,
@@ -11,8 +13,6 @@ import {
 } from '@config/theme'
 import Layout from '@pages/Layout'
 import SettingsLayout from '@pages/settings-layout'
-import { createAntDesignStyleContainer } from '@plugin-commons/utils/themeUtils'
-import { useAppEssentials } from '@plugin-commons/utils/useAppEssentials'
 import OnboardingGuard from '@utilities/onboarding-guard/onboarding-guard'
 import protectedRouteComponent from '@utilities/protected-route-component'
 import { ConfigProvider, message, notification, theme } from 'antd'
@@ -35,7 +35,6 @@ const History = lazy(() => import('@pages/history'))
 const Tasks = lazy(() => import('@pages/tasks'))
 const Meetings = lazy(() => import('@pages/meetings'))
 const Calls = lazy(() => import('@pages/calls'))
-const Support = lazy(() => import('@pages/Support'))
 const Error404 = lazy(() => import('@pages/Error404'))
 const ImapSettings = lazy(() => import('@pages/imap-settings'))
 const Contacts = lazy(() => import('@pages/contacts'))
@@ -337,8 +336,6 @@ export default function AppRoutes() {
                 }
                 path="/companies/create"
               />
-              <Route element={<Support />} path="/support" />
-
               <Route
                 element={
                   <ProtectedRoute capability={CAPABILITIES.CONTACT.MENU}>

@@ -1,5 +1,3 @@
-import { select } from './utils'
-
 /**
  * Create a template element with id 'antd-style' and insert it
  * into the head of the document. where antd styles will be injected.
@@ -25,8 +23,8 @@ export function isConflictingCSS(cssUrl: string) {
  * Set the background color of the app from the admin bar background color
  */
 export function setAppBgFromAdminBarBg() {
-  const bitAppsRootElm = select('#bit-apps-root')
-  const wpAdminBarElm = select('#wpadminbar')
+  const bitAppsRootElm = document.querySelector<HTMLElement>('#bit-apps-root')
+  const wpAdminBarElm = document.querySelector<HTMLElement>('#wpadminbar')
   if (bitAppsRootElm && wpAdminBarElm) {
     const bgColor = globalThis.getComputedStyle(wpAdminBarElm)?.backgroundColor
     bitAppsRootElm.style.backgroundColor = bgColor
@@ -61,11 +59,6 @@ export function setCascadeLayerToWordpressStyles(cssLayers: string) {
     }
   }
 
-  // const developmentAntdResetCss =
-  // '/wp-content/plugins/bit-flow/frontend/_plugin-commons/resources/css/antd-reset.css'
-  // const productionAntdResetCss = SERVER_VARIABLES.assetsURL + '/antd-reset.css'
-  // const antdResetCss = import.meta.env.DEV ? developmentAntdResetCss : productionAntdResetCss
-  // @import url('${antdResetCss}') layer(reset);
   const wpStyles = document.createElement('style')
   wpStyles.textContent = `
       ${cssLayers}

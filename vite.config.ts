@@ -1,14 +1,9 @@
-// export { default } from './.config/_plugin-commons/vite-config'
 import react from '@vitejs/plugin-react'
 import { generateBuildCodeNamePlugin } from 'bitapps-dev-utils'
 import { humanId } from 'human-id'
 import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-
-// import csso from 'postcss-csso'
-// import { viteStaticCopy } from 'vite-plugin-static-copy'
-// import incstr from 'incstr'
 
 export default defineConfig(({ mode }) => {
   const { DEV_SSL, DEV_SSL_CERT_PATH, DEV_SSL_KEY_PATH, PLUGIN_SLUG, SERVER_VARIABLES } = loadEnv(
@@ -77,14 +72,6 @@ export default defineConfig(({ mode }) => {
       }),
       tsconfigPaths(),
       generateBuildCodeNamePlugin({ codeName, dir: ASSETS_DIR })
-      // viteStaticCopy({
-      //   targets: [
-      //     {
-      //       src: normalizePath(path.resolve(__dirname, './frontend/_plugin-commons/resources/css/antd-reset.css')),
-      //       dest: `../${ASSETS_DIR}/`
-      //     }
-      //   ]
-      // })
     ],
     root: 'frontend',
     server: {
@@ -106,7 +93,7 @@ export default defineConfig(({ mode }) => {
       environment: 'happy-dom',
       // environment: 'jsdom',
       globals: true,
-      include: ['frontend/src/**/*.test.{tsx,ts}', 'frontend/_plugin-commons/**/*.test.{tsx,ts}'],
+      include: ['frontend/src/**/*.test.{tsx,ts}'],
       root: './',
       setupFiles: ['./frontend/src/config/test.setup.ts'],
       testTimeout: 10_000
