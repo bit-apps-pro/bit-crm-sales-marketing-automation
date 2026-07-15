@@ -63,7 +63,7 @@ Send emails to your contacts from inside the CRM, configure SMTP for reliable de
 
 = Source code =
 
-Bit CRM source code is available on [GitHub](https://github.com/bit-apps-pro/bit-crm-wordpress-plugin).
+Bit CRM source code is available on [GitHub](https://github.com/bit-Apps-Pro/bit-crm-sales-marketing-automation).
 
 == Installation ==
 
