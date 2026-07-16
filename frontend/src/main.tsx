@@ -10,12 +10,13 @@ import '@resource/styles/variables.css'
 import '@resource/styles/onboarding-fullscreen.css'
 import { createPortal } from 'react-dom'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router'
+import { createHashRouter, RouterProvider } from 'react-router'
 import 'jotai-devtools/styles.css'
 
 import AppRoutes from './AppRoutes'
 
 const queryClient = new QueryClient()
+const router = createHashRouter([{ Component: AppRoutes, path: '*' }])
 const elm = document.querySelector('#bit-apps-root')
 if (elm) {
   const root = createRoot(elm)
@@ -23,9 +24,7 @@ if (elm) {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <HashRouter>
-          <AppRoutes />
-        </HashRouter>
+        <RouterProvider router={router} />
         {createPortal(
           <>
             <JotaiDevelopmentTools position="bottom-right" />

@@ -35,6 +35,8 @@ const History = lazy(() => import('@pages/history'))
 const Tasks = lazy(() => import('@pages/tasks'))
 const Meetings = lazy(() => import('@pages/meetings'))
 const Calls = lazy(() => import('@pages/calls'))
+const Workflows = lazy(() => import('@pages/workflows'))
+const WorkflowSettings = lazy(() => import('@pages/data-management/internal/workflow-logs'))
 const Error404 = lazy(() => import('@pages/Error404'))
 const ImapSettings = lazy(() => import('@pages/imap-settings'))
 const Contacts = lazy(() => import('@pages/contacts'))
@@ -246,6 +248,14 @@ export default function AppRoutes() {
                   }
                   path="crm-users"
                 />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.WORKFLOW}>
+                      <WorkflowSettings />
+                    </ProtectedRoute>
+                  }
+                  path="workflow-settings"
+                />
               </Route>
 
               <Route
@@ -287,6 +297,14 @@ export default function AppRoutes() {
                   </ProtectedRoute>
                 }
                 path="/calls"
+              />
+              <Route
+                element={
+                  <ProtectedRoute capability={CAPABILITIES.WORKFLOW.MENU}>
+                    <Workflows />
+                  </ProtectedRoute>
+                }
+                path="/workflows"
               />
               <Route
                 element={

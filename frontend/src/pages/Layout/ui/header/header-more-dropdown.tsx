@@ -14,6 +14,7 @@ const MORE_MENU_ITEMS = [
   { capability: CAPABILITIES.LEAD.MENU, key: 'meetings', label: __('Meetings'), to: '/meetings' },
   { capability: CAPABILITIES.LEAD.MENU, key: 'calls', label: __('Calls'), to: '/calls' },
   { capability: CAPABILITIES.TAG.MENU, key: 'tags', label: __('Tags'), to: '/tags' },
+  { capability: CAPABILITIES.SETTING.MENU, key: 'workflows', label: __('Workflows'), to: '/workflows' },
   { capability: CAPABILITIES.OTHERS.History, key: 'history', label: __('History'), to: '/history' },
   { capability: CAPABILITIES.SETTING.MENU, key: 'settings', label: __('Settings'), to: '/settings' }
 ]

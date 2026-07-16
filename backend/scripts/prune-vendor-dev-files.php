@@ -161,7 +161,9 @@ function deleteDirectory(string $dir, array $keepPrefixes, array &$stats): void
     }
 }
 
-/** True when the file name starts with a protected prefix (LICENSE, NOTICE, ...). */
+/**
+ * True when the file name starts with a protected prefix (LICENSE, NOTICE, ...).
+ */
 function isProtected(string $lowerName, array $prefixes): bool
 {
     foreach ($prefixes as $prefix) {

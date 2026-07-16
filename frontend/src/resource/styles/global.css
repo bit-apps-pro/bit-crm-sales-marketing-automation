@@ -68,6 +68,10 @@ a:focus {
   box-shadow: initial;
 }
 
+.ant-mentions > textarea:focus {
+  box-shadow: none;
+}
+
 ::-webkit-scrollbar-thumb {
   border-radius: 100vw;
   background-color: #a9a9a9b8;

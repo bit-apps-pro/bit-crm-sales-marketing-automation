@@ -261,23 +261,11 @@ final class CompanyController
         $companyIds = $validated['company_ids'];
         $tagIds = $validated['tag_ids'];
 
-        if (empty($companyIds) || empty($tagIds)) {
-            return Response::error(__('Companies or tags not found', 'bit-crm-sales-marketing-automation'));
+        if ($this->companyService->detachTags($companyIds, $tagIds)) {
+            return Response::success(__('Tag(s) removed successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        $deletedTagEntities = TagEntity::select(['entity_id', 'tag_id'])
-            ->whereIn('entity_id', $companyIds)
-            ->whereIn('tag_id', $tagIds)
-            ->where('module', Company::MODULE_NAME)
-            ->delete();
-
-        if (!$deletedTagEntities) {
-            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm-sales-marketing-automation'));
-        }
-
-        Hooks::doAction('bit_crm/tags_detached_from_companies', $tagIds, $companyIds);
-
-        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
+        return Response::error(__('Failed to remove tag(s)!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function import(ImportRequest $request)

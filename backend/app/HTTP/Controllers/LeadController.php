@@ -259,27 +259,14 @@ final class LeadController
     public function detachTags(DetachTagsRequest $request)
     {
         $validated = $request->validated();
-
         $leadIds = $validated['lead_ids'];
         $tagIds = $validated['tag_ids'];
 
-        if (empty($leadIds) || empty($tagIds)) {
-            return Response::error(__('Leads or tags not found', 'bit-crm-sales-marketing-automation'));
+        if ($this->leadService->detachTags($leadIds, $tagIds)) {
+            return Response::success(__('Tag(s) removed successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        $deletedTagEntities = TagEntity::select(['entity_id', 'tag_id'])
-            ->whereIn('entity_id', $leadIds)
-            ->whereIn('tag_id', $tagIds)
-            ->where('module', Lead::MODULE_NAME)
-            ->delete();
-
-        if (!$deletedTagEntities) {
-            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm-sales-marketing-automation'));
-        }
-
-        Hooks::doAction('bit_crm/tags_detached_from_leads', $tagIds, $leadIds);
-
-        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
+        return Response::error(__('Failed to remove tag(s)!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function convert(ConvertRequest $request)
@@ -338,14 +325,16 @@ final class LeadController
             Lead::where('id', $id)->update(['is_converted' => 1]);
 
             Connection::commit();
-
-            return Response::success(['convertedContactId' => $convertedContacts[0]['id']])
-                ->message(__('Lead converted successfully.', 'bit-crm-sales-marketing-automation'));
         } catch (Throwable $th) {
             Connection::rollback();
 
             return Response::error(__('Failed to convert lead.', 'bit-crm-sales-marketing-automation'));
         }
+
+        Hooks::doAction('bit_crm/leads_converted_to_contact', [(int) $id]);
+
+        return Response::success(['convertedContactId' => $convertedContacts[0]['id']])
+            ->message(__('Lead converted successfully.', 'bit-crm-sales-marketing-automation'));
     }
 
     public function import(ImportRequest $request)

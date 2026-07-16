@@ -93,7 +93,6 @@ export default function ProductLookupSelect({
 
     const commonProps = {
       allowClear: false,
-      // autoFocus: true,
       className: 'w-full',
       disabled: disabled || allSourcesDisabled,
       hasMore: hasNextPage || false,

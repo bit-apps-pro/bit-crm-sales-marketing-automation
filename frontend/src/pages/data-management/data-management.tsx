@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router'
 import Exports from './internal/exports'
 import Imports from './internal/imports'
 import RecycleBin from './internal/recycle-bin'
+import WorkflowLogs from './internal/workflow-logs'
 
 const tabs = [
   {
@@ -26,6 +27,12 @@ const tabs = [
     children: <Exports />,
     key: 'exports',
     label: __('Exports')
+  },
+  {
+    capability: CAPABILITIES.SETTING.WORKFLOW,
+    children: <WorkflowLogs />,
+    key: 'workflow',
+    label: __('Workflow Logs')
   }
 ]
 

@@ -4,7 +4,6 @@ namespace BitApps\Crm\Services;
 
 use BitApps\Crm\Config;
 use BitApps\Crm\Constants\HookKeys;
-use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 
 class CrmUserService
 {
@@ -50,6 +49,19 @@ class CrmUserService
         return array_intersect($userCaps, $this->allPluginCapabilities());
     }
 
+    public function getCapabilityOptions(): array
+    {
+        static $capabilityOptions = null;
+
+        if (\is_null($capabilityOptions)) {
+            $path = Config::get('BASEDIR') . '/app/src/StaticData/capabilityOptions.php';
+            $capabilityOptions = file_exists($path) ? include $path : [];
+            $capabilityOptions = apply_filters(HookKeys::CAPABILITY_OPTIONS, $capabilityOptions);
+        }
+
+        return $capabilityOptions;
+    }
+
     protected function generateMenuCapabilitiesByModule(array $modules): array
     {
         $menuCapabilities = [];
@@ -63,18 +75,5 @@ class CrmUserService
         }
 
         return $menuCapabilities;
-    }
-
-    protected function getCapabilityOptions(): array
-    {
-        static $capabilityOptions = null;
-
-        if (\is_null($capabilityOptions)) {
-            $path = Config::get('BASEDIR') . '/app/src/StaticData/capabilityOptions.php';
-            $capabilityOptions = file_exists($path) ? include $path : [];
-            $capabilityOptions = Hooks::applyFilter(HookKeys::CAPABILITY_OPTIONS, $capabilityOptions);
-        }
-
-        return $capabilityOptions;
     }
 }

@@ -75,10 +75,17 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
                 Hooks::doAction(HookKeys::STORE_CUSTOM_FIELDS_VALUES, Contact::MODULE_NAME, $contactId, $validated['customFieldsValues']);
             }
 
-            $this->storeAndAttachTags($contactId, $validated['tagIds'] ?? [], $validated['newTagTitles'] ?? []);
+            $attachedTagIds = $this->storeAndAttachTags($contactId, $validated['tagIds'] ?? [], $validated['newTagTitles'] ?? []);
 
             Connection::commit();
+
+            $storedContact->reference_uuid = Uuid::binaryToUuid($storedContact->reference_uuid);
+
             Hooks::doAction('bit_crm/contact_created', $storedContact);
+
+            if (!empty($attachedTagIds)) {
+                Hooks::doAction('bit_crm/tags_attached_to_contacts', $attachedTagIds, [$contactId]);
+            }
 
             return ['success' => true, 'data' => $storedContact];
         } catch (Throwable $th) {
@@ -375,17 +382,33 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         return array_values($allFields);
     }
 
-    public function storeAndAttachTags(int $contactId, array $tagIds, array $newTagTitles)
+    /**
+     * Attaches tags to a contact, inserting only the links that don't already exist.
+     *
+     * @return array<int> the tag IDs newly attached to the contact (empty when nothing changed)
+     */
+    public function storeAndAttachTags(int $contactId, array $tagIds, array $newTagTitles): array
     {
         if (empty($contactId) || (empty($tagIds) && empty($newTagTitles))) {
-            return;
+            return [];
         }
 
         $newInsertedTagIds = $this->storeNewTags($newTagTitles);
         $tagIds = array_merge($tagIds, $newInsertedTagIds);
 
         if (empty($tagIds)) {
-            return;
+            return [];
+        }
+
+        $existingTags = TagEntity::where('entity_id', $contactId)
+            ->where('module', Contact::MODULE_NAME)
+            ->whereIn('tag_id', $tagIds)
+            ->get();
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('tag_id')->toArray() : [];
+
+        $newTagIds = array_values(array_diff($tagIds, $existingTagIds));
+        if (empty($newTagIds)) {
+            return [];
         }
 
         $tagEntityData = array_map(
@@ -396,13 +419,16 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
                     'module'    => Contact::MODULE_NAME,
                 ];
             },
-            $tagIds
+            $newTagIds
         );
 
         try {
             TagEntity::insert($tagEntityData);
         } catch (Throwable $th) {
+            return [];
         }
+
+        return $newTagIds;
     }
 
     public function getIdsWithAssociations(array $ids): array
@@ -451,6 +477,28 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         return Contact::class;
     }
 
+    public function detachTags(array|int $contactIds, array $tagIds): bool
+    {
+        if (empty($contactIds) || empty($tagIds)) {
+            return false;
+        }
+
+        $contactIds = \is_array($contactIds) ? $contactIds : [$contactIds];
+
+        $deletedTagEntities = TagEntity::whereIn('entity_id', $contactIds)
+            ->whereIn('tag_id', $tagIds)
+            ->where('module', Contact::MODULE_NAME)
+            ->delete();
+
+        if ($deletedTagEntities > 0) {
+            Hooks::doAction('bit_crm/tags_detached_from_contacts', $tagIds, $contactIds);
+
+            return true;
+        }
+
+        return false;
+    }
+
     private function storeNewTags(array $newTagTitles): array
     {
         $newInsertedTagIds = [];
@@ -470,6 +518,29 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             $newTagTitles
         );
 
+        $newTagSlugs = array_column($newTagData, 'slug');
+
+        $existingTags = Tag::whereIn('slug', $newTagSlugs)
+            ->where('module', Contact::MODULE_NAME)
+            ->get();
+
+        $existingTagSlugs = !empty($existingTags) ? $existingTags->pluck('slug')->toArray() : [];
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('id')->toArray() : [];
+        $existingSlugLookup = array_flip($existingTagSlugs);
+
+        $newTagData = array_filter(
+            $newTagData,
+            static function ($tag) use ($existingSlugLookup) {
+                return !isset($existingSlugLookup[$tag['slug']]);
+            }
+        );
+
+        if (empty($newTagData)) {
+            return $existingTagIds;
+        }
+
+        $newTagData = array_values($newTagData);
+
         try {
             $insertedTags = Tag::insert($newTagData);
 
@@ -481,7 +552,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
         }
 
-        return $newInsertedTagIds;
+        return array_merge($existingTagIds, $newInsertedTagIds);
     }
 
     private function buildOption($contact, array $columnSelect): array

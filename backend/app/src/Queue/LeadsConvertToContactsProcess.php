@@ -4,6 +4,7 @@ namespace BitApps\Crm\src\Queue;
 
 use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Connection;
+use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Services\LeadConvertService;
 use Throwable;
@@ -43,6 +44,8 @@ class LeadsConvertToContactsProcess extends WP_Background_Process
             Lead::whereIn('id', $chunkedIds)->update(['is_converted' => 1]);
 
             Connection::commit();
+
+            Hooks::doAction('bit_crm/leads_converted_to_contact', $chunkedIds);
         } catch (Throwable $th) {
             Connection::rollback();
         }

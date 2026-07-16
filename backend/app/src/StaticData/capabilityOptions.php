@@ -75,6 +75,7 @@ return [
         ['label' => __('SMTP Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_smtp'],
         ['label' => __('Integration Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_integration'],
         ['label' => __('CRM Users', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_crm_user'],
+        ['label' => __('Workflow Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_workflow'],
     ],
     'others' => [
         ['label' => __('History View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_history_view'],
