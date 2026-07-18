@@ -214,4 +214,14 @@ class HookKeys
      * apply_filters(string $sql, string $module): string
      */
     public const CUSTOM_FIELDS_JOIN = 'bit_crm_custom_fields_join';
+
+    /**
+     * Forces workflow triggers to execute inline instead of dispatching a
+     * background process. Enabled while firing hooks from inside a background
+     * worker (e.g. bulk lead conversion), where a nested loopback dispatch
+     * would hang. Honoured by the pro workflow executor.
+     *
+     * apply_filters(bool $runInline): bool
+     */
+    public const RUN_WORKFLOW_EXECUTION_INLINE = 'bit_crm/run_workflow_execution_inline';
 }

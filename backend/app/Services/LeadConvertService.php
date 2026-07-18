@@ -38,6 +38,15 @@ class LeadConvertService
 
     private string $homeCurrency = '';
 
+    /** @var iterable inserted company models awaiting the company_created hook */
+    private $createdCompanies = [];
+
+    /** @var iterable inserted contact models awaiting the contact_created hook */
+    private $createdContacts = [];
+
+    /** @var iterable inserted deal models awaiting the deal_created hook */
+    private $createdDeals = [];
+
     /**
      * Initialize the Lead Conversion Service.
      *
@@ -102,6 +111,7 @@ class LeadConvertService
 
         $this->moveLeadData($leadIdToCompanyId, Company::class);
         $this->moveTags($leadIdToCompanyId, Company::class);
+        $this->createdCompanies = $insertedCompanies;
 
         return $insertedCompanies->toArray();
     }
@@ -149,6 +159,7 @@ class LeadConvertService
 
         $this->moveLeadData($leadIdToContactId, Contact::class);
         $this->moveTags($leadIdToContactId, Contact::class);
+        $this->createdContacts = $insertedContacts;
 
         return $insertedContacts->toArray();
     }
@@ -211,8 +222,50 @@ class LeadConvertService
 
         $this->moveLeadData($leadIdToDealId, Deal::class);
         $this->moveTags($leadIdToDealId, Deal::class);
+        $this->createdDeals = $insertedDeals;
 
         return $insertedDeals->toArray();
+    }
+
+    /**
+     * Fire the standard entity-creation hooks for converted entities.
+     *
+     * Conversion inserts contacts/companies/deals in bulk, bypassing the per-entity
+     * hooks that the normal store() flow fires. This mirrors that behaviour so
+     * workflow triggers (contact_created, company_created, deal_created) run for
+     * converted entities too.
+     *
+     * MUST be called by the caller AFTER Connection::commit(), never inside the
+     * transaction, so listeners never read uncommitted or rolled-back rows.
+     */
+    public function dispatchCreationHooks(): void
+    {
+        $this->fireCreatedHooks($this->createdCompanies, 'bit_crm/company_created');
+        $this->fireCreatedHooks($this->createdContacts, 'bit_crm/contact_created');
+        $this->fireCreatedHooks($this->createdDeals, 'bit_crm/deal_created');
+    }
+
+    /**
+     * Fire all post-conversion hooks from inside a background worker.
+     *
+     * Forces workflow triggers to run inline: spawning another loopback
+     * background process from within an already-running worker hangs. The
+     * pro workflow executor honours this filter; the filter is always
+     * restored, even if a listener throws.
+     *
+     * Use dispatchCreationHooks() directly from web requests instead, where
+     * async workflow dispatch works and keeps the response fast.
+     */
+    public function dispatchCreationHooksFromWorker(): void
+    {
+        Hooks::addFilter(HookKeys::RUN_WORKFLOW_EXECUTION_INLINE, '__return_true');
+
+        try {
+            $this->dispatchCreationHooks();
+            Hooks::doAction('bit_crm/leads_converted_to_contact', array_map('intval', $this->ids));
+        } finally {
+            remove_filter(HookKeys::RUN_WORKFLOW_EXECUTION_INLINE, '__return_true');
+        }
     }
 
     /**
@@ -255,6 +308,25 @@ class LeadConvertService
             } else {
                 $lead->company_id = null;
             }
+        }
+    }
+
+    /**
+     * Fire a per-entity *_created hook for each inserted model.
+     *
+     * The reference_uuid is normalised from its stored binary form to string,
+     * matching what the entity Service store() methods pass to these hooks.
+     *
+     * @param iterable $entities inserted models
+     */
+    private function fireCreatedHooks($entities, string $hook): void
+    {
+        foreach ($entities as $entity) {
+            if (isset($entity->reference_uuid)) {
+                $entity->reference_uuid = Uuid::binaryToUuid($entity->reference_uuid);
+            }
+
+            Hooks::doAction($hook, $entity);
         }
     }
 

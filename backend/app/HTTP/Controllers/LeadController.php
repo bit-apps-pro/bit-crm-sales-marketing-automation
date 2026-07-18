@@ -331,6 +331,7 @@ final class LeadController
             return Response::error(__('Failed to convert lead.', 'bit-crm-sales-marketing-automation'));
         }
 
+        $leadConvertService->dispatchCreationHooks();
         Hooks::doAction('bit_crm/leads_converted_to_contact', [(int) $id]);
 
         return Response::success(['convertedContactId' => $convertedContacts[0]['id']])
