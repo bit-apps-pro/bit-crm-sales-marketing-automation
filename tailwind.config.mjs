@@ -13,7 +13,7 @@ export default {
     },
     extend: {
       colors: {
-        primary: '#703DD7'
+        primary: '#6E62E5'
       }
     }
   }

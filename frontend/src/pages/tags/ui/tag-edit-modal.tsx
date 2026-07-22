@@ -64,7 +64,7 @@ export default function TagEditModal({ refetchTags }: TagEditModalProps) {
     setEditModalOpen(false)
     handleModal('close', setSearchParams)
     refetchTags()
-    messageApi?.success(typeof data === 'string' ? data : __('Tag updated'))
+    messageApi?.success(typeof data === 'string' ? data : __('Tag Updated Successfully'))
   }
 
   return (
