@@ -53,7 +53,7 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
                 Hooks::doAction(HookKeys::STORE_CUSTOM_FIELDS_VALUES, Deal::MODULE_NAME, $dealId, $validated['customFieldsValues']);
             }
 
-            $this->storeAndAttachTags($dealId, (array) ($validated['tagIds'] ?? []), (array) ($validated['newTagTitles'] ?? []));
+            $attachedTagIds = $this->storeAndAttachTags($dealId, (array) ($validated['tagIds'] ?? []), (array) ($validated['newTagTitles'] ?? []));
 
             if (!empty($validated['lineItems'])) {
                 $dealCurrency = $systemDefinedFieldsValues['currency'] ?? null;
@@ -65,7 +65,13 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
 
             Connection::commit();
 
+            $storedDeal->reference_uuid = Uuid::binaryToUuid($storedDeal->reference_uuid);
+
             Hooks::doAction('bit_crm/deal_created', $storedDeal);
+
+            if (!empty($attachedTagIds)) {
+                Hooks::doAction('bit_crm/tags_attached_to_deals', $attachedTagIds, [$dealId]);
+            }
 
             return ['success' => true, 'data' => $storedDeal];
         } catch (Throwable $th) {
@@ -278,17 +284,33 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
         return $tags->toArray();
     }
 
-    public function storeAndAttachTags(int $dealId, array $tagIds, array $newTagTitles)
+    /**
+     * Attaches tags to a deal, inserting only the links that don't already exist.
+     *
+     * @return array<int> the tag IDs newly attached to the deal (empty when nothing changed)
+     */
+    public function storeAndAttachTags(int $dealId, array $tagIds, array $newTagTitles): array
     {
         if (empty($dealId) || (empty($tagIds) && empty($newTagTitles))) {
-            return;
+            return [];
         }
 
         $newInsertedTagIds = self::storeNewTags($newTagTitles);
         $tagIds = array_merge($tagIds, $newInsertedTagIds);
 
         if (empty($tagIds)) {
-            return;
+            return [];
+        }
+
+        $existingTags = TagEntity::where('entity_id', $dealId)
+            ->where('module', Deal::MODULE_NAME)
+            ->whereIn('tag_id', $tagIds)
+            ->get();
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('tag_id')->toArray() : [];
+
+        $newTagIds = array_values(array_diff($tagIds, $existingTagIds));
+        if (empty($newTagIds)) {
+            return [];
         }
 
         $tagEntityData = array_map(
@@ -299,13 +321,38 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
                     'module'    => Deal::MODULE_NAME,
                 ];
             },
-            $tagIds
+            $newTagIds
         );
 
         try {
             TagEntity::insert($tagEntityData);
         } catch (Throwable $th) {
+            return [];
         }
+
+        return $newTagIds;
+    }
+
+    public function detachTags(array|int $dealIds, array $tagIds): bool
+    {
+        if (empty($dealIds) || empty($tagIds)) {
+            return false;
+        }
+
+        $dealIds = \is_array($dealIds) ? $dealIds : [$dealIds];
+
+        $deletedTagEntities = TagEntity::whereIn('entity_id', $dealIds)
+            ->whereIn('tag_id', $tagIds)
+            ->where('module', Deal::MODULE_NAME)
+            ->delete();
+
+        if ($deletedTagEntities > 0) {
+            Hooks::doAction('bit_crm/tags_detached_from_deals', $tagIds, $dealIds);
+
+            return true;
+        }
+
+        return false;
     }
 
     public function search(array $params): array

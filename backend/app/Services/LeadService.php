@@ -75,10 +75,17 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
                 Hooks::doAction(HookKeys::STORE_CUSTOM_FIELDS_VALUES, Lead::MODULE_NAME, $leadId, $validated['customFieldsValues']);
             }
 
-            $this->storeAndAttachTags($leadId, $validated['tagIds'] ?? [], $validated['newTagTitles'] ?? []);
+            $attachedTagIds = $this->storeAndAttachTags($leadId, $validated['tagIds'] ?? [], $validated['newTagTitles'] ?? []);
 
             Connection::commit();
+
+            $storedLead->reference_uuid = Uuid::binaryToUuid($storedLead->reference_uuid);
+
             Hooks::doAction('bit_crm/lead_created', $storedLead);
+
+            if (!empty($attachedTagIds)) {
+                Hooks::doAction('bit_crm/tags_attached_to_leads', $attachedTagIds, [$leadId]);
+            }
 
             return ['success' => true, 'data' => $storedLead];
         } catch (Throwable $th) {
@@ -379,17 +386,33 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         return array_values($allFields);
     }
 
-    public function storeAndAttachTags(int $leadId, array $tagIds, array $newTagTitles)
+    /**
+     * Attaches tags to a lead, inserting only the links that don't already exist.
+     *
+     * @return array<int> the tag IDs newly attached to the lead (empty when nothing changed)
+     */
+    public function storeAndAttachTags(int $leadId, array $tagIds, array $newTagTitles): array
     {
         if (empty($leadId) || (empty($tagIds) && empty($newTagTitles))) {
-            return;
+            return [];
         }
 
         $newInsertedTagIds = $this->storeNewTags($newTagTitles);
         $tagIds = array_merge($tagIds, $newInsertedTagIds);
 
         if (empty($tagIds)) {
-            return;
+            return [];
+        }
+
+        $existingTags = TagEntity::where('entity_id', $leadId)
+            ->where('module', Lead::MODULE_NAME)
+            ->whereIn('tag_id', $tagIds)
+            ->get();
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('tag_id')->toArray() : [];
+
+        $newTagIds = array_values(array_diff($tagIds, $existingTagIds));
+        if (empty($newTagIds)) {
+            return [];
         }
 
         $tagEntityData = array_map(
@@ -400,16 +423,19 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
                     'module'    => Lead::MODULE_NAME,
                 ];
             },
-            $tagIds
+            $newTagIds
         );
 
         try {
             TagEntity::insert($tagEntityData);
         } catch (Throwable $th) {
+            return [];
         }
+
+        return $newTagIds;
     }
 
-    public static function getTagsByIds($leadIds, $unique = false)
+    public function getTagsByIds($leadIds, $unique = false)
     {
         $tagTable = Config::withDBPrefix('tags');
         $tagEntityTable = Config::withDBPrefix('tag_entity');
@@ -446,6 +472,28 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         return $tagsQuery->get()->toArray();
     }
 
+    public function detachTags(array|int $leadIds, array $tagIds): bool
+    {
+        if (empty($leadIds) || empty($tagIds)) {
+            return false;
+        }
+
+        $leadIds = \is_array($leadIds) ? $leadIds : [$leadIds];
+
+        $deletedTagEntities = TagEntity::whereIn('entity_id', $leadIds)
+            ->whereIn('tag_id', $tagIds)
+            ->where('module', Lead::MODULE_NAME)
+            ->delete();
+
+        if ($deletedTagEntities > 0) {
+            Hooks::doAction('bit_crm/tags_detached_from_leads', $tagIds, $leadIds);
+
+            return true;
+        }
+
+        return false;
+    }
+
     private static function storeNewTags(array $newTagTitles): array
     {
         $newInsertedTagIds = [];
@@ -465,6 +513,29 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             $newTagTitles
         );
 
+        $newTagSlugs = array_column($newTagData, 'slug');
+
+        $existingTags = Tag::whereIn('slug', $newTagSlugs)
+            ->where('module', Lead::MODULE_NAME)
+            ->get();
+
+        $existingTagSlugs = !empty($existingTags) ? $existingTags->pluck('slug')->toArray() : [];
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('id')->toArray() : [];
+        $existingSlugLookup = array_flip($existingTagSlugs);
+
+        $newTagData = array_filter(
+            $newTagData,
+            static function ($tag) use ($existingSlugLookup) {
+                return !isset($existingSlugLookup[$tag['slug']]);
+            }
+        );
+
+        if (empty($newTagData)) {
+            return $existingTagIds;
+        }
+
+        $newTagData = array_values($newTagData);
+
         try {
             $insertedTags = Tag::insert($newTagData);
 
@@ -476,6 +547,6 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
         }
 
-        return $newInsertedTagIds;
+        return array_merge($existingTagIds, $newInsertedTagIds);
     }
 }

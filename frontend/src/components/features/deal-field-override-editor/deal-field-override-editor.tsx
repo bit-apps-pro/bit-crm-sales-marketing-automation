@@ -12,10 +12,15 @@ import { type DealFieldOverrideEditorProps, type FieldOverride } from './shared/
 import DealFieldInput from './ui/deal-field-input'
 import DealFieldOverrideNote from './ui/deal-field-override-note'
 
-export default function DealFieldOverrideEditor({ form }: DealFieldOverrideEditorProps) {
+export default function DealFieldOverrideEditor({
+  form,
+  initialFieldOverrides
+}: DealFieldOverrideEditorProps) {
   const { fields: dealFields } = useDealFields()
   const { fields: leadFields } = useLeadFields()
-  const [fieldOverrides, setFieldOverrides] = useState<FieldOverride[]>([])
+  const [fieldOverrides, setFieldOverrides] = useState<FieldOverride[]>(
+    () => initialFieldOverrides ?? []
+  )
 
   const dealFieldOptions = useMemo(
     () => prepareFieldsAsOptions(filterDealFields(dealFields)),

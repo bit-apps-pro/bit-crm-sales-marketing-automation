@@ -81,7 +81,8 @@ const CAPABILITIES = {
     MENU: 'bit_crm_setting_menu',
     PRODUCT: 'bit_crm_setting_product',
     SMTP: 'bit_crm_setting_smtp',
-    USER: 'bit_crm_setting_crm_user'
+    USER: 'bit_crm_setting_crm_user',
+    WORKFLOW: 'bit_crm_setting_workflow'
   },
   TAG: {
     CREATE: 'bit_crm_tag_create',
@@ -89,6 +90,13 @@ const CAPABILITIES = {
     MENU: 'bit_crm_tag_menu',
     UPDATE: 'bit_crm_tag_update',
     VIEW: 'bit_crm_tag_view'
+  },
+  WORKFLOW: {
+    CREATE: 'bit_crm_workflow_create',
+    DELETE: 'bit_crm_workflow_delete',
+    MENU: 'bit_crm_workflow_menu',
+    UPDATE: 'bit_crm_workflow_update',
+    VIEW: 'bit_crm_workflow_view'
   }
 }
 

@@ -2,13 +2,69 @@
 
 namespace BitApps\Crm\Services;
 
+use BitApps\Crm\Config;
 use BitApps\Crm\Constants\CommonConstant;
+use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
+use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Factories\EntityFactory;
+use BitApps\Crm\HTTP\Requests\Email\SendRequest;
+use BitApps\Crm\Model\Email;
 use BitApps\Crm\src\Imap\Messages;
 use Throwable;
 
 class EmailService
 {
+    public function send(array|Request $data): array
+    {
+        $rules = (new SendRequest())->rules();
+        $validated = CommonService::resolveValidatedData($data, $rules);
+
+        if (isset($validated['errors'])) {
+            return $validated;
+        }
+
+        $formattedAttachments = $this->processAttachments($validated['attachments'] ?? []);
+        $message = $this->formatMessage($validated['message'], $validated['entity_id'], $validated['module']);
+        $headers = ['Content-Type: text/html; charset=UTF-8'];
+
+        $phpMailer = null;
+
+        Hooks::addAction(
+            'phpmailer_init',
+            function ($mailer) use (&$phpMailer) {
+                $phpMailer = $mailer;
+            }
+        );
+
+        $sent = wp_mail($validated['entity_email'], $validated['subject'], $message, $headers, $formattedAttachments);
+
+        if (!$sent) {
+            return ['success' => false, 'errors' => [__('Failed to send email.', 'bit-crm-sales-marketing-automation')]];
+        }
+
+        $messageId = $this->getMessageId($phpMailer);
+
+        if (!$messageId) {
+            return ['success' => false, 'errors' => [__('Failed to retrieve message ID after sending email.', 'bit-crm-sales-marketing-automation')]];
+        }
+
+        $email = Email::insert(
+            [
+                'message_id'      => $messageId,
+                'entity_email'    => $validated['entity_email'],
+                'email_date'      => current_time('mysql'),
+                'subject'         => $validated['subject'],
+                'body'            => $message,
+                'email_direction' => CommonConstant::EMAIL_DIRECTION_SENT,
+                'sent_from'       => Config::SLUG,
+                'attachments'     => $validated['attachments'] ?? [],
+                'created_by'      => get_current_user_id(),
+            ]
+        );
+
+        return ['success' => true, 'data' => $email];
+    }
+
     public static function getEmailBody($emailData)
     {
         $imapMessages = new Messages($emailData['entity_email'], $emailData['imap_id']);
@@ -64,5 +120,14 @@ class EmailService
         }
 
         return EntityFieldService::renderFieldsInHtml($message, $entityData);
+    }
+
+    private function getMessageId($phpMailer): false|string
+    {
+        if ($phpMailer && !empty($phpMailer->getLastMessageID())) {
+            return trim($phpMailer->getLastMessageID(), '<>');
+        }
+
+        return false;
     }
 }

@@ -2,6 +2,7 @@ import { MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
 import DealFieldOverrideEditor from '@features/deal-field-override-editor'
+import { type FieldOverride } from '@features/deal-field-override-editor/shared/types'
 import LookupFieldSelect from '@features/lookup-field-select'
 import customizedRequiredMark from '@utilities/customized-required-mark'
 import If from '@utilities/If'
@@ -16,7 +17,13 @@ const OPTIONAL_MODULE_OPTIONS = [{ label: __('Deal'), value: MODULES.DEAL }]
 
 const ALL_MODULE_OPTIONS = [...MANDATORY_MODULE_OPTIONS, ...OPTIONAL_MODULE_OPTIONS]
 
-export default function ConversionForm({ form }: { form: FormInstance }) {
+export default function ConversionForm({
+  form,
+  initialDealFieldOverrides
+}: {
+  form: FormInstance
+  initialDealFieldOverrides?: FieldOverride[]
+}) {
   const convertTo = Form.useWatch('convertTo', form) || []
   const isDealSelected = convertTo.includes(MODULES.DEAL)
 
@@ -40,7 +47,7 @@ export default function ConversionForm({ form }: { form: FormInstance }) {
       </Form.Item>
 
       <If conditions={isDealSelected}>
-        <DealFieldOverrideEditor form={form} />
+        <DealFieldOverrideEditor form={form} initialFieldOverrides={initialDealFieldOverrides} />
       </If>
 
       <Form.Item

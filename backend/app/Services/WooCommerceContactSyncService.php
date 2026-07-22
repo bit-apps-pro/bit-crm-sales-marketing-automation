@@ -19,7 +19,7 @@ class WooCommerceContactSyncService
             return false;
         }
 
-        $order = \is_int($orderOrId) ? $this->getWcOrder($orderOrId) : $orderOrId;
+        $order = is_numeric($orderOrId) ? $this->getWcOrder($orderOrId) : $orderOrId;
 
         if (!$order) {
             return false;

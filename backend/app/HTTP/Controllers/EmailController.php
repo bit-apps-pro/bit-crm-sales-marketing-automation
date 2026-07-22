@@ -3,8 +3,6 @@
 namespace BitApps\Crm\HTTP\Controllers;
 
 use BitApps\Crm\Config;
-use BitApps\Crm\Constants\CommonConstant;
-use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
 use BitApps\Crm\Helpers\CaseConverter;
 use BitApps\Crm\HTTP\Requests\Email\IndexRequest;
@@ -20,8 +18,6 @@ use Throwable;
 final class EmailController
 {
     public const DEFAULT_PER_PAGE = 10;
-
-    private $phpMailer;
 
     public function index(IndexRequest $request)
     {
@@ -151,54 +147,12 @@ final class EmailController
 
     public function send(SendRequest $request)
     {
-        $validated = $request->validated();
-        $emailService = new EmailService();
-        $formattedAttachments = $emailService->processAttachments($validated['attachments'] ?? []);
-        $message = $emailService->formatMessage($validated['message'], $validated['entity_id'], $validated['module']);
-        $headers = ['Content-Type: text/html; charset=UTF-8'];
+        $result = (new EmailService())->send($request);
 
-        Hooks::addAction(
-            'phpmailer_init',
-            function ($phpmailer) {
-                $this->phpMailer = $phpmailer;
-            }
-        );
-
-        $sent = wp_mail($validated['entity_email'], $validated['subject'], $message, $headers, $formattedAttachments);
-
-        if (!$sent) {
-            return Response::error(__('Failed to send email.', 'bit-crm-sales-marketing-automation'));
+        if (empty($result['success'])) {
+            return Response::error($result['errors'][0] ?? __('Failed to send email.', 'bit-crm-sales-marketing-automation'));
         }
-
-        $messageId = $this->getMessageId();
-
-        if (!$messageId) {
-            return Response::error(__('Failed to retrieve message ID after sending email.', 'bit-crm-sales-marketing-automation'));
-        }
-
-        Email::insert(
-            [
-                'message_id'      => $messageId,
-                'entity_email'    => $validated['entity_email'],
-                'email_date'      => current_time('mysql'),
-                'subject'         => $validated['subject'],
-                'body'            => $message,
-                'email_direction' => CommonConstant::EMAIL_DIRECTION_SENT,
-                'sent_from'       => Config::SLUG,
-                'attachments'     => $validated['attachments'] ?? [],
-                'created_by'      => get_current_user_id(),
-            ]
-        );
 
         return Response::success(__('Email sent successfully.', 'bit-crm-sales-marketing-automation'));
-    }
-
-    private function getMessageId(): false|string
-    {
-        if ($this->phpMailer && !empty($this->phpMailer->getLastMessageID())) {
-            return trim($this->phpMailer->getLastMessageID(), '<>');
-        }
-
-        return false;
     }
 }

@@ -26,7 +26,10 @@ export default function DetachRelatedEntitiesPopup({
   return (
     <Popconfirm
       cancelText={__('No')}
-      description={sprintf(__('Are you sure you want to detach the %s?', 'bit-crm-sales-marketing-automation'), relatedEntity)}
+      description={sprintf(
+        __('Are you sure you want to detach the %s?', 'bit-crm-sales-marketing-automation'),
+        relatedEntity
+      )}
       okText={__('Yes')}
       onConfirm={handleDetach}
       placement="topRight"

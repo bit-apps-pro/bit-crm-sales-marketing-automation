@@ -69,11 +69,13 @@ final class TagController
 
     public function store(StoreRequest $request)
     {
-        if (!TagService::store($request->validated())) {
+        $tag = TagService::store($request->validated());
+
+        if (!$tag) {
             return Response::error(__('Failed to create tag!', 'bit-crm-sales-marketing-automation'));
         }
 
-        return Response::success(__('Tag created successfully', 'bit-crm-sales-marketing-automation'));
+        return Response::success($tag, __('Tag created successfully', 'bit-crm-sales-marketing-automation'));
     }
 
     public function edit(EditRequest $request)

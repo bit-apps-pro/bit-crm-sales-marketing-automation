@@ -48,7 +48,7 @@ export default function Timeline({ entityId, module }: TimelinePropsType) {
       </>
     ),
     dot: (
-      <div className="flex items-center justify-center rounded bg-white p-1 shadow-sm">
+      <div className="flex items-center justify-center rounded bg-white p-1 shadow-sm dark:bg-slate-800">
         <RenderIconByEvent event={timeline?.event} />
       </div>
     ),

@@ -80,10 +80,12 @@ final class DealController
         }
 
         $lineItems = (new LineItemService($deal->id, Deal::MODULE_NAME))->getLineItems();
-        $hasLineItems = !empty(array_filter(
-            $lineItems,
-            fn ($lineItem) => !empty($lineItem['product_id'])
-        ));
+        $hasLineItems = !empty(
+            array_filter(
+                $lineItems,
+                fn ($lineItem) => !empty($lineItem['product_id'])
+            )
+        );
 
         $response = [
             'deal'             => $dealData,
@@ -330,27 +332,14 @@ final class DealController
     public function detachTags(DetachTagsRequest $request)
     {
         $validated = $request->validated();
-
         $dealIds = $validated['deal_ids'];
         $tagIds = $validated['tag_ids'];
 
-        if (empty($dealIds) || empty($tagIds)) {
-            return Response::error(__('Deals or tags not found', 'bit-crm-sales-marketing-automation'));
+        if ($this->dealService->detachTags($dealIds, $tagIds)) {
+            return Response::success(__('Tag(s) removed successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        $deletedTagEntities = TagEntity::select(['entity_id', 'tag_id'])
-            ->whereIn('entity_id', $dealIds)
-            ->whereIn('tag_id', $tagIds)
-            ->where('module', Deal::MODULE_NAME)
-            ->delete();
-
-        if (!$deletedTagEntities) {
-            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm-sales-marketing-automation'));
-        }
-
-        Hooks::doAction('bit_crm/tags_detached_from_deals', $tagIds, $dealIds);
-
-        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
+        return Response::error(__('Failed to remove tag(s)!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function import(ImportRequest $request)

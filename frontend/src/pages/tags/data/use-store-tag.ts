@@ -8,9 +8,9 @@ export default function useStoreTag() {
   const { error, isError, isPending, mutateAsync } = useMutation<
     Response<TagItemType>,
     Error,
-    TagItemType
+    Pick<TagItemType, 'module' | 'title'>
   >({
-    mutationFn: (tagData: TagItemType) => queryRequest('tags/store', tagData),
+    mutationFn: tagData => queryRequest('tags/store', tagData),
     mutationKey: ['store_tag']
   })
 

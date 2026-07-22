@@ -51,20 +51,13 @@ final class NoteController
 
     public function store(StoreRequest $request)
     {
-        $validated = $request->validated();
-        $validated['created_by'] = get_current_user_id();
+        $result = (new NoteService())->store($request);
 
-        if (empty($validated['attachments'])) {
-            unset($validated['attachments']);
+        if (empty($result['success'])) {
+            return Response::error($result['errors'][0] ?? __('Failed to create note!', 'bit-crm-sales-marketing-automation'));
         }
 
-        if ($note = Note::insert($validated)) {
-            Hooks::doAction('bit_crm/note_created', $note);
-
-            return Response::success(__('Note created successfully!', 'bit-crm-sales-marketing-automation'));
-        }
-
-        return Response::error(__('Failed to create note!', 'bit-crm-sales-marketing-automation'));
+        return Response::success(__('Note created successfully!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function edit(EditRequest $request)

@@ -6,6 +6,7 @@ use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Connection;
 use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Services\LeadConvertService;
+use BitApps\Crm\Utils\Logger;
 use Throwable;
 use WP_Background_Process;
 
@@ -31,6 +32,9 @@ class LeadsConvertToContactsProcess extends WP_Background_Process
 
         Connection::startTransaction();
 
+        $committed = false;
+        $leadConvertService = null;
+
         try {
             $leadConvertService = new LeadConvertService($chunkedIds, $defaultOwnerId, $options, $mapping);
 
@@ -43,8 +47,16 @@ class LeadsConvertToContactsProcess extends WP_Background_Process
             Lead::whereIn('id', $chunkedIds)->update(['is_converted' => 1]);
 
             Connection::commit();
+
+            $committed = true;
         } catch (Throwable $th) {
             Connection::rollback();
+
+            Logger::error($th);
+        }
+
+        if ($committed) {
+            $leadConvertService->dispatchCreationHooksFromWorker();
         }
 
         if (!empty($remainingIds)) {

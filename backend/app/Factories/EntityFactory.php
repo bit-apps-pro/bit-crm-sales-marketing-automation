@@ -49,7 +49,7 @@ class EntityFactory
 
     public function callMethod(string $methodName, array $args = []): mixed
     {
-        $serviceClass = $this->resolveServiceClass($methodName);
+        $serviceClass = self::resolveServiceClass($methodName);
         $serviceInstance = new $serviceClass();
 
         return \call_user_func_array([$serviceInstance, $methodName], $args);

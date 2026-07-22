@@ -21,6 +21,6 @@ export default function useUpcomingActivities(module: string, entityId: number) 
 
   return {
     isUpcomingActivitiesLoading: isPending,
-    upcomingActivities: data ?? []
+    upcomingActivities: data || []
   }
 }

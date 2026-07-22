@@ -245,23 +245,11 @@ final class ContactController
         $contactIds = $validated['contact_ids'];
         $tagIds = $validated['tag_ids'];
 
-        if (empty($contactIds) || empty($tagIds)) {
-            return Response::error(__('Contacts or tags not found', 'bit-crm-sales-marketing-automation'));
+        if ($this->contactService->detachTags($contactIds, $tagIds)) {
+            return Response::success(__('Tag(s) removed successfully.', 'bit-crm-sales-marketing-automation'));
         }
 
-        $deletedTagEntities = TagEntity::select(['entity_id', 'tag_id'])
-            ->whereIn('entity_id', $contactIds)
-            ->whereIn('tag_id', $tagIds)
-            ->where('module', Contact::MODULE_NAME)
-            ->delete();
-
-        if (!$deletedTagEntities) {
-            return Response::error(__('Failed to remove tags (tags not attached)', 'bit-crm-sales-marketing-automation'));
-        }
-
-        Hooks::doAction('bit_crm/tags_detached_from_contacts', $tagIds, $contactIds);
-
-        return Response::success(__('Tag removed successfully.', 'bit-crm-sales-marketing-automation'));
+        return Response::error(__('Failed to remove tag(s)!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function import(ImportRequest $request)

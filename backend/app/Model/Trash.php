@@ -18,6 +18,7 @@ class Trash extends Model
     protected $fillable = [
         'entity_id',
         'module',
+        'full_name',
         'created_by',
         'updated_by',
     ];

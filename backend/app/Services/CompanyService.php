@@ -73,10 +73,17 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
                 Hooks::doAction(HookKeys::STORE_CUSTOM_FIELDS_VALUES, Company::MODULE_NAME, $companyId, $validated['customFieldsValues']);
             }
 
-            $this->storeAndAttachTags($companyId, $validated['tagIds'] ?? [], $validated['newTagTitles'] ?? []);
+            $attachedTagIds = $this->storeAndAttachTags($companyId, $validated['tagIds'] ?? [], $validated['newTagTitles'] ?? []);
 
             Connection::commit();
+
+
+            $storedCompany->reference_uuid = Uuid::binaryToUuid($storedCompany->reference_uuid);
             Hooks::doAction('bit_crm/company_created', $storedCompany);
+
+            if (!empty($attachedTagIds)) {
+                Hooks::doAction('bit_crm/tags_attached_to_companies', $attachedTagIds, [$companyId]);
+            }
 
             return ['success' => true, 'data' => $storedCompany];
         } catch (Throwable $th) {
@@ -401,17 +408,33 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         return array_values($allFields);
     }
 
-    public function storeAndAttachTags(int $companyId, array $tagIds, array $newTagTitles)
+    /**
+     * Attaches tags to a company, inserting only the links that don't already exist.
+     *
+     * @return array<int> the tag IDs newly attached to the company (empty when nothing changed)
+     */
+    public function storeAndAttachTags(int $companyId, array $tagIds, array $newTagTitles): array
     {
         if (empty($companyId) || (empty($tagIds) && empty($newTagTitles))) {
-            return;
+            return [];
         }
 
         $newInsertedTagIds = $this->storeNewTags($newTagTitles);
         $tagIds = array_merge($tagIds, $newInsertedTagIds);
 
         if (empty($tagIds)) {
-            return;
+            return [];
+        }
+
+        $existingTags = TagEntity::where('entity_id', $companyId)
+            ->where('module', Company::MODULE_NAME)
+            ->whereIn('tag_id', $tagIds)
+            ->get();
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('tag_id')->toArray() : [];
+
+        $newTagIds = array_values(array_diff($tagIds, $existingTagIds));
+        if (empty($newTagIds)) {
+            return [];
         }
 
         $tagEntityData = array_map(
@@ -422,13 +445,16 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
                     'module'    => Company::MODULE_NAME,
                 ];
             },
-            $tagIds
+            $newTagIds
         );
 
         try {
             TagEntity::insert($tagEntityData);
         } catch (Throwable $th) {
+            return [];
         }
+
+        return $newTagIds;
     }
 
     public function findOrCreateByName(string $name): array|bool
@@ -470,6 +496,28 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
             ->get(["{$companiesTable}.id"]);
 
         return empty($associatedIds) ? [] : $associatedIds->pluck('id')->toArray();
+    }
+
+    public function detachTags(array|int $companyId, array $tagIds): bool
+    {
+        if (empty($companyId) || empty($tagIds)) {
+            return false;
+        }
+
+        $companyId = \is_array($companyId) ? $companyId : [$companyId];
+
+        $deletedTagEntities = TagEntity::whereIn('entity_id', $companyId)
+            ->whereIn('tag_id', $tagIds)
+            ->where('module', Company::MODULE_NAME)
+            ->delete();
+
+        if ($deletedTagEntities > 0) {
+            Hooks::doAction('bit_crm/tags_detached_from_companies', $tagIds, $companyId);
+
+            return true;
+        }
+
+        return false;
     }
 
     private function createByName(string $name): array|bool
@@ -516,6 +564,29 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
             $newTagTitles
         );
 
+        $newTagSlugs = array_column($newTagData, 'slug');
+
+        $existingTags = Tag::whereIn('slug', $newTagSlugs)
+            ->where('module', Company::MODULE_NAME)
+            ->get();
+
+        $existingTagSlugs = !empty($existingTags) ? $existingTags->pluck('slug')->toArray() : [];
+        $existingTagIds = !empty($existingTags) ? $existingTags->pluck('id')->toArray() : [];
+        $existingSlugLookup = array_flip($existingTagSlugs);
+
+        $newTagData = array_filter(
+            $newTagData,
+            static function ($tag) use ($existingSlugLookup) {
+                return !isset($existingSlugLookup[$tag['slug']]);
+            }
+        );
+
+        if (empty($newTagData)) {
+            return $existingTagIds;
+        }
+
+        $newTagData = array_values($newTagData);
+
         try {
             $insertedTags = Tag::insert($newTagData);
 
@@ -527,7 +598,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         } catch (Throwable $th) {
         }
 
-        return $newInsertedTagIds;
+        return array_merge($existingTagIds, $newInsertedTagIds);
     }
 
     private function buildOption($company, array $columnSelect): array
