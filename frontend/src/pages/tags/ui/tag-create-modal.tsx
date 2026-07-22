@@ -65,7 +65,7 @@ export default function TagCreateModal({ refetchTags }: TagCreateModalProps) {
     setCreateModalOpen(false)
     await refetchTags()
     handleModal('close', setSearchParams)
-    messageApi?.success(typeof data === 'string' ? data : __('Tag Created'))
+    messageApi?.success(typeof data === 'string' ? data : __('Tag Created Successfully'))
   }
 
   return (
