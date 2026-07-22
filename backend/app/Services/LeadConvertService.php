@@ -264,7 +264,7 @@ class LeadConvertService
             $this->dispatchCreationHooks();
             Hooks::doAction('bit_crm/leads_converted_to_contact', array_map('intval', $this->ids));
         } finally {
-            remove_filter(HookKeys::RUN_WORKFLOW_EXECUTION_INLINE, '__return_true');
+            Hooks::removeFilter(HookKeys::RUN_WORKFLOW_EXECUTION_INLINE, '__return_true');
         }
     }
 
@@ -314,7 +314,7 @@ class LeadConvertService
     /**
      * Fire a per-entity *_created hook for each inserted model.
      *
-     * The reference_uuid is normalised from its stored binary form to string,
+     * The reference_uuid is normalized from its stored binary form to string,
      * matching what the entity Service store() methods pass to these hooks.
      *
      * @param iterable $entities inserted models
