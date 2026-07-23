@@ -158,12 +158,14 @@ final class LeadController
         unset($validated['lead_id']);
 
         if (empty($tag) && Capability::check('bit_crm_tag_create')) {
-            $tag = TagService::store(
+            $result = (new TagService())->store(
                 [
                     'title'  => $validated['title'],
                     'module' => Lead::MODULE_NAME
                 ]
             );
+
+            $tag = !empty($result['success']) ? $result['data'] : null;
         }
 
         if (empty($tag)) {

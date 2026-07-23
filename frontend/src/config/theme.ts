@@ -21,7 +21,7 @@ export const lightThemeConfig: Partial<AliasToken> = {
   // controlOutline: '#48484823',
   colorBgLayout: '#F9FCFF',
   colorBorder: '#E5E3FE',
-  colorPrimary: '#703DD7',
+  colorPrimary: '#6E62E5',
   colorPrimaryBg: '#e7edf3',
   // colorPrimaryBorderHover: '#2e2e2e',
   // colorPrimaryHover: '#1a1a1a',
@@ -43,9 +43,9 @@ export const darkThemeConfig = {
   borderRadiusXS: 4,
   colorError: '#ff6264',
   colorInfo: '#ffffff',
-  colorPrimary: '#703DD7',
+  colorPrimary: '#6E62E5',
   colorPrimaryBorderHover: 'red',
-  colorPrimaryHover: '#5F2FC4',
+  colorPrimaryHover: '#5A4EE0',
   colorSuccess: '#00ff87',
   colorWarning: '#ffb828',
   controlOutline: '#424242',
@@ -111,7 +111,7 @@ export const componentsTokenLight: ThemeConfig['components'] = {
     hoverBorderColor: '#404040'
   },
   Menu: {
-    itemSelectedBg: '#703DD7',
+    itemSelectedBg: '#6E62E5',
     itemSelectedColor: '#fff'
   },
   Select: {
@@ -150,7 +150,7 @@ export const componentsTokenDark: ThemeConfig['components'] = {
     controlHeight: 40
   },
   Menu: {
-    itemSelectedBg: '#703DD7',
+    itemSelectedBg: '#6E62E5',
     itemSelectedColor: '#fff'
   },
   Select: {
