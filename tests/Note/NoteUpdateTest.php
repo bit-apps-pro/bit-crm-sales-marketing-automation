@@ -16,7 +16,7 @@ class NoteUpdateTest extends BaseTestCase
 
     private $storeRoute;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,7 +26,7 @@ class NoteUpdateTest extends BaseTestCase
         $this->storeRoute = 'notes/store';
     }
 
-    public function tearDown() : void
+    public function tearDown(): void
     {
         parent::tearDown();
     }
@@ -50,8 +50,7 @@ class NoteUpdateTest extends BaseTestCase
             'id'          => $record['id'],
             'title'       => $updatedTitle,
             'details'     => 'Test Note Details Update',
-            'module'      => Lead::MODULE_NAME,
-            'entity_id'   => 1,
+            'is_shared'   => false,
             'attachments' => [],
         ]);
 
@@ -85,8 +84,7 @@ class NoteUpdateTest extends BaseTestCase
             'id'          => $record['id'],
             'title'       => $updatedTitle,
             'details'     => 'Test Note Details Update with Attachments',
-            'module'      => Lead::MODULE_NAME,
-            'entity_id'   => 1,
+            'is_shared'   => false,
             'attachments' => [
                 [
                     'media_id'           => $mediaId,
@@ -114,6 +112,7 @@ class NoteUpdateTest extends BaseTestCase
             'title'       => 'Test Note',
             'details'     => 'Test Note Details',
             'module'      => Lead::MODULE_NAME,
+            'is_shared'   => false,
             'entity_id'   => 1,
             'attachments' => [],
         ]);

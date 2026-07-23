@@ -1,6 +1,7 @@
 import { type FieldItem, type Order } from '@features/field-settings/shared/field-types'
 
 export interface StoreContactPayloadType {
+  clientPortal: boolean
   customFieldsValues: Record<string, Record<string, unknown>>
   newTagTitles: string[]
   nextAction?: null | string

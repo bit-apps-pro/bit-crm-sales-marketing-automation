@@ -22,6 +22,7 @@ class StoreRequest extends Request
             'attachments' => ['nullable', 'array'],
             'entity_id'   => ['required', 'integer'],
             'module'      => ['required', 'string', 'sanitize:text'],
+            'is_shared'   => ['nullable', 'boolean'],
             'type'        => ['nullable', 'string', 'sanitize:text'],
             'attributes'  => ['nullable', 'array'],
         ];

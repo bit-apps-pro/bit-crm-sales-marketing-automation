@@ -1,4 +1,4 @@
-import { type LineItem } from '@features/product-line-items/shared/types'
+import { type LineItem, type TaxOption } from '@features/product-line-items/shared/types'
 import { type ContactType } from '@pages/contact/shared/contact-types'
 import { type Deal } from '@pages/deal/shared/deal-types'
 
@@ -15,7 +15,7 @@ export interface InvoiceType {
   invoice_prefix: string
   module: string
   status: InvoiceStatus
-  tax_option: string
+  tax_option: TaxOption
   term_key: string
   top_section_notes: SectionType[]
 }

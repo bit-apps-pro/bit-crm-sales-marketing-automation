@@ -21,10 +21,11 @@ class UpdateRequest extends Request
         $rules = [
             'id'          => ['required', 'integer'],
             'module'      => ['nullable', 'string', new ValidModuleRule()],
-            'entity_id'   => ['nullable', 'integer'],
             'title'       => ['required', 'string', 'sanitize:text', 'max:255'],
             'type'        => ['required', 'string', 'sanitize:text', new TypeRule()],
             'due_date'    => ['nullable', 'string', 'sanitize:text'],
+            'is_shared'   => ['nullable', 'boolean'],
+            'entity_id'   => ['nullable', 'integer'],
             'details'     => ['nullable', 'string', 'sanitize:text'],
             'attachments' => ['nullable', 'array'],
             'assigned_to' => ['required', 'integer'],

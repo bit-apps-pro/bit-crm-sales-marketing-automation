@@ -86,6 +86,11 @@ const navGroups = [
         path: '../settings/data-management'
       },
       {
+        capability: CAPABILITIES.SETTING.PORTAL_SETTINGS,
+        label: __('Portal Settings'),
+        path: '../settings/portal-settings'
+      },
+      {
         capability: CAPABILITIES.SETTING.USER,
         label: __('CRM Users'),
         path: '../settings/crm-users'

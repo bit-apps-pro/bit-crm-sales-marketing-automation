@@ -2,19 +2,21 @@ import { getFilteredModuleOptions, MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
 import LookupFieldSelect from '@features/lookup-field-select'
+import ShareWithContact from '@features/share-with-contact'
 import WpMediaUploader from '@features/wp-media-uploader'
 import customizedRequiredMark from '@utilities/customized-required-mark'
 import If from '@utilities/If'
 import ModuleSelect from '@utilities/module-select'
 import { DatePicker, Form, type FormInstance, Input, Mentions } from 'antd'
 import dayjs from 'dayjs'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { type FieldOptionsType } from '../shared/meeting-types'
 
 const FILTERED_MODULE_OPTIONS = getFilteredModuleOptions([MODULES.INVOICE])
 
 interface MeetingFormProps {
+  entityId?: number | string
   fieldOptions?: FieldOptionsType[]
   form: FormInstance
   module?: string
@@ -22,12 +24,22 @@ interface MeetingFormProps {
 }
 
 export default function MeetingForm({
+  entityId,
   fieldOptions,
   form,
   module: initialModule,
   variant
 }: MeetingFormProps) {
   const [selectedModule, setSelectedModule] = useState<string>(initialModule || '')
+  const watchedEntityId = Form.useWatch('entity_id', form)
+  const prevEntityIdRef = useRef(watchedEntityId)
+
+  useEffect(() => {
+    if (prevEntityIdRef.current !== undefined && prevEntityIdRef.current !== watchedEntityId) {
+      form.setFieldValue('is_shared', false)
+    }
+    prevEntityIdRef.current = watchedEntityId
+  }, [watchedEntityId, form])
 
   const handleModuleChange = (value: string) => {
     setSelectedModule(value)
@@ -35,7 +47,7 @@ export default function MeetingForm({
   }
 
   return (
-    <div>
+    <div className="space-y-2">
       <Form form={form} layout="vertical" requiredMark={customizedRequiredMark}>
         <If conditions={variant === 'page'}>
           <Form.Item
@@ -51,7 +63,11 @@ export default function MeetingForm({
             name="entity_id"
             rules={[{ message: __('Please select entity!'), required: true }]}
           >
-            <LookupFieldSelect relatedModule={selectedModule} showAddNew={false} />
+            <LookupFieldSelect
+              disabled={selectedModule === ''}
+              relatedModule={selectedModule}
+              showAddNew={false}
+            />
           </Form.Item>
         </If>
         <Form.Item
@@ -108,6 +124,15 @@ export default function MeetingForm({
             <Input.TextArea autoSize={{ maxRows: 6, minRows: 2 }} placeholder={__('Details...')} />
           )}
         </Form.Item>
+        <If conditions={initialModule === MODULES.CONTACT || selectedModule === MODULES.CONTACT}>
+          <ShareWithContact
+            capability="meetings"
+            entityId={entityId ?? watchedEntityId}
+            form={form}
+            sharedText={__('Contact will have access to this meeting.')}
+            unsharedText={__('Only you and your team can see this meeting.')}
+          />
+        </If>
       </Form>
       <div className="mb-2">
         <WpMediaUploader />

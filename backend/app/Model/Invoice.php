@@ -45,6 +45,7 @@ class Invoice extends Model
         'top_section_notes',
         'status',
         'tax_option',
+        'sent_at',
         'is_trash',
         'term_key',
         'paid_at',

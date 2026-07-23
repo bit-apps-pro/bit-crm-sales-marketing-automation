@@ -23,6 +23,7 @@ class StoreRequest extends Request
             'due_date'    => ['nullable', 'string', 'sanitize:text'],
             'details'     => ['nullable', 'string', 'sanitize:text'],
             'attachments' => ['nullable', 'array'],
+            'is_shared'   => ['nullable', 'boolean'],
             'entity_id'   => ['required', 'integer'],
             'module'      => ['required', 'string', 'sanitize:text'],
             'assigned_to' => ['required', 'integer'],

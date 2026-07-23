@@ -5,6 +5,7 @@ import { Button } from 'antd'
 import { useState } from 'react'
 import { LuTrash2 } from 'react-icons/lu'
 
+import ClientPortalAccess from './client-portal-access'
 import DeleteModal from './delete-modal'
 
 export default function Actions({ id }: { id: number | string }) {
@@ -13,6 +14,7 @@ export default function Actions({ id }: { id: number | string }) {
   return (
     <>
       <div className="flex items-center justify-end gap-2">
+        <ClientPortalAccess id={id} />
         <Button
           className="rounded-full p-0"
           danger

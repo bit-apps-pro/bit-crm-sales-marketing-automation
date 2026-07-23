@@ -20,6 +20,7 @@ class UpdateRequest extends Request
             'id'          => ['required', 'integer'],
             'title'       => [$isSubModule ? 'nullable' : 'required', 'string', 'sanitize:text', 'max:255'],
             'details'     => ['nullable', 'string', 'sanitize:wp_kses_post'],
+            'is_shared'   => [$isSubModule ? 'nullable' : 'required', 'boolean'],
             'attachments' => ['nullable', 'array'],
             'attributes'  => ['nullable', 'array'],
         ];

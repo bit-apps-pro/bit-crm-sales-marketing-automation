@@ -18,9 +18,7 @@ class InvoiceService
 {
     public static function generateInvoiceFileName(string $prefix, int $id): string
     {
-        $safePrefix = sanitize_file_name($prefix);
-
-        return Invoice::MODULE_NAME . '-' . $safePrefix . '-' . $id . '.pdf';
+        return Invoice::MODULE_NAME . '-' . sanitize_file_name($prefix) . '-' . $id . '.pdf';
     }
 
     public static function getInvoiceDetails(int $invoiceId): ?array
@@ -38,7 +36,7 @@ class InvoiceService
             $deal = self::hydrate(new Deal(), self::columnsByAlias($row, new Deal()));
             $contact = self::hydrate(new Contact(), self::columnsByAlias($row, new Contact()));
 
-            $lineItems = LineItem::find(['entity_id' => $invoice->id, 'module' => Invoice::MODULE_NAME]);
+            $lineItems = self::getLineItems($invoice->id);
 
             $lineItems = !empty($lineItems) ? $lineItems->toArray() : [];
 
@@ -149,5 +147,10 @@ class InvoiceService
         $model->setExists(true);
 
         return $model;
+    }
+
+    private static function getLineItems(int $invoiceId)
+    {
+        return LineItem::find(['entity_id' => $invoiceId, 'module' => Invoice::MODULE_NAME]);
     }
 }

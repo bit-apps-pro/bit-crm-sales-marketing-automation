@@ -58,6 +58,12 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
+        $clientPortalEnabled = $validated['clientPortal'] ?? false;
+
+        if ($clientPortalEnabled && empty($systemDefinedFieldsValues['email'])) {
+            return ['success' => false, 'errors' => [__('Email is required for client portal access.', 'bit-crm-sales-marketing-automation')]];
+        }
+
         Connection::startTransaction();
 
         try {
@@ -82,6 +88,10 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             $storedContact->reference_uuid = Uuid::binaryToUuid($storedContact->reference_uuid);
 
             Hooks::doAction('bit_crm/contact_created', $storedContact);
+
+            if ($clientPortalEnabled) {
+                Hooks::doAction(Config::withPrefix('portal_grant_access'), $storedContact);
+            }
 
             if (!empty($attachedTagIds)) {
                 Hooks::doAction('bit_crm/tags_attached_to_contacts', $attachedTagIds, [$contactId]);

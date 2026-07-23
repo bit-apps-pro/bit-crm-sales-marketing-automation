@@ -14,6 +14,7 @@ import { Link, useSearchParams } from 'react-router'
 
 import useContactFields from './data/use-contact-fields'
 import useStoreContact from './data/use-store-contact'
+import PortalSwitch from './internal/portal-switch'
 
 const BREADCRUMB_ITEMS = [
   {
@@ -32,6 +33,7 @@ const ContactCreate = () => {
   const [form] = Form.useForm()
   const { columnSettings, fields, isFieldsFetching } = useContactFields()
   const { isTagsPending, refetchTags, tags } = useTags({ module: MODULES.CONTACT })
+  const [clientPortalAccessEnabled, setClientPortalAccessEnabled] = useState(false)
   const companyId = searchParams.get('companyId') || ''
   const { isCreateAndAddPending, isCreatePending, storeContact } = useStoreContact(form)
 
@@ -60,6 +62,7 @@ const ContactCreate = () => {
 
       const contactData = {
         ...formattedContactsValues,
+        clientPortal: clientPortalAccessEnabled,
         newTagTitles,
         nextAction,
         tagIds
@@ -67,8 +70,9 @@ const ContactCreate = () => {
 
       await storeContact(contactData)
       resetTagState()
+      setClientPortalAccessEnabled(false)
     },
-    [fields, newTagTitles, tagIds, storeContact, resetTagState]
+    [fields, newTagTitles, tagIds, storeContact, resetTagState, clientPortalAccessEnabled]
   )
 
   const handleAddTag = useCallback(
@@ -152,15 +156,21 @@ const ContactCreate = () => {
           </div>
         )}
 
-        <div className="rounded-md border border-solid border-[#EBEAFF] bg-white px-4 pb-6 pt-4 dark:border-neutral-700 dark:bg-neutral-900">
-          <Typography.Title level={5}>{__('Tags')}</Typography.Title>
-          <EntityTags
-            loading={isTagsPending}
-            onAddTag={handleAddTag}
-            onRemoveTag={handleRemoveTag}
-            options={tagOptions}
-            value={selectedTagValues}
+        <div className="space-y-5">
+          <PortalSwitch
+            clientPortalAccessEnabled={clientPortalAccessEnabled}
+            setClientPortalAccessEnabled={setClientPortalAccessEnabled}
           />
+          <div className="rounded-md border border-solid border-[#EBEAFF] bg-white px-4 pb-6 pt-4 dark:border-neutral-700 dark:bg-neutral-900">
+            <Typography.Title level={5}>{__('Tags')}</Typography.Title>
+            <EntityTags
+              loading={isTagsPending}
+              onAddTag={handleAddTag}
+              onRemoveTag={handleRemoveTag}
+              options={tagOptions}
+              value={selectedTagValues}
+            />
+          </div>
         </div>
       </div>
     </div>

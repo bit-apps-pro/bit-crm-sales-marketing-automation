@@ -57,7 +57,7 @@ export default function ActivityNote({ editNoteId, note, setEditNoteId }: Activi
   ]
 
   return (
-    <div className="">
+    <div>
       <If conditions={editNoteId !== note.id}>
         <div className="flex items-start justify-between gap-2 border-0 border-b border-solid border-[#EBEAFF] dark:border-neutral-700">
           <div
@@ -65,15 +65,13 @@ export default function ActivityNote({ editNoteId, note, setEditNoteId }: Activi
             dangerouslySetInnerHTML={{ __html: note.details }}
           />
           <div className="flex shrink-0 items-center">
-            <div>
-              <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
-                <Button
-                  className="text-gray-600 dark:text-gray-400"
-                  icon={<LuEllipsisVertical size={12} />}
-                  type="link"
-                />
-              </Dropdown>
-            </div>
+            <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
+              <Button
+                className="text-gray-600 dark:text-gray-400"
+                icon={<LuEllipsisVertical size={12} />}
+                type="link"
+              />
+            </Dropdown>
           </div>
         </div>
       </If>

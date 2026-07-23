@@ -18,7 +18,7 @@ const __ = (text: string, domain = 'bitapp') => {
 }
 
 const sprintf = (text: string, ...vars: any) => {
-  if (!wp?.i18n) {
+  if (typeof wp === 'undefined' || !wp?.i18n) {
     const matches: any = text.match(/%[ E-GXb-gosux]/g)
     let str = text
     vars.map((val: any, idx: number) => {

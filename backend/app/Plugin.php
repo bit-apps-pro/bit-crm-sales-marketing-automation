@@ -157,7 +157,6 @@ final class Plugin
             new Layout();
             new HtmlTagModifier();
         }
-
         new HookProvider();
     }
 

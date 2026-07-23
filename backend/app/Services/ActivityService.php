@@ -2,6 +2,7 @@
 
 namespace BitApps\Crm\Services;
 
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Factories\EntityFactory;
@@ -27,6 +28,14 @@ class ActivityService
 
         if (empty($validated['attachments'])) {
             unset($validated['attachments']);
+        }
+
+        if (!empty($validated['is_shared'])) {
+            $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_ACTIVITY, null, (int) $validated['entity_id'], $validated['type']);
+
+            if ($error) {
+                return $error;
+            }
         }
 
         if ($storedActivity = Activity::insert($validated)) {
@@ -70,6 +79,17 @@ class ActivityService
         if (empty($activity)) {
             // translators: %s: activity type
             return ['success' => false, 'errors' => [\sprintf(__('%s not found!', 'bit-crm-sales-marketing-automation'), ucfirst($validated['type']))]];
+        }
+
+        // An activity's owning entity is fixed at creation; never reassign it on update.
+        unset($validated['entity_id']);
+
+        if (!empty($validated['is_shared'])) {
+            $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_ACTIVITY, null, (int) $activity->entity_id, $validated['type']);
+
+            if ($error) {
+                return $error;
+            }
         }
 
         $validated['updated_by'] = get_current_user_id();

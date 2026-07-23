@@ -38,7 +38,6 @@ export default function ContactOverView({
     const values = await form.validateFields()
     const formattedData = formatModuleFieldsValues(fields, values)
     formattedData.id = contactId
-
     await updateContact(formattedData)
     refetchContact()
   }

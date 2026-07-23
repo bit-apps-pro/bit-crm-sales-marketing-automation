@@ -34,6 +34,8 @@ final class InvoiceController
 
     private const DEFAULT_PER_PAGE = 10;
 
+    private const SETTING_KEY = Setting::BUSINESS_SETTINGS_KEY;
+
     private const TEMP_DIR = '/bit_crm/temp';
 
     public function store(StoreRequest $request)

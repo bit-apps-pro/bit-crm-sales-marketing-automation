@@ -9,6 +9,8 @@ class Setting extends Model
 {
     public const MODULE_NAME = 'setting';
 
+    public const BUSINESS_SETTINGS_KEY = 'business_settings';
+
     protected $prefix = Config::VAR_PREFIX;
 
     protected $fillable = [

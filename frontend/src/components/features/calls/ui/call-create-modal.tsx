@@ -94,7 +94,13 @@ export default function CallCreateModal({
       title={__('Create Call')}
     >
       <If conditions={isCreateModalOpen}>
-        <CallForm fieldOptions={fieldOptions} form={form} variant={variant} />
+        <CallForm
+          entityId={entityId}
+          fieldOptions={fieldOptions}
+          form={form}
+          module={module}
+          variant={variant}
+        />
       </If>
     </Modal>
   )

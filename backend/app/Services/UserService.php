@@ -22,12 +22,7 @@ class UserService implements UserInterface
             'fields' => ['ID', 'display_name', 'user_email'],
         ];
 
-        if (isset($args['role_filter']) && $args['role_filter'] === Config::SLUG) {
-            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for role filtering
-            $args['meta_query'] = $this->getMetaQueryForRoleFilter();
-
-            unset($args['role_filter']);
-        }
+        $args = $this->applyRoleFilter($args);
 
         $searchTerm = !empty($args['search_term']) ? sanitize_text_field($args['search_term']) : null;
 
@@ -49,12 +44,7 @@ class UserService implements UserInterface
             'count_total' => true,
         ];
 
-        if (isset($args['role_filter']) && $args['role_filter'] === Config::SLUG) {
-            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for role filtering
-            $args['meta_query'] = $this->getMetaQueryForRoleFilter();
-
-            unset($args['role_filter']);
-        }
+        $args = $this->applyRoleFilter($args);
 
         $searchTerm = !empty($args['search_term']) ? sanitize_text_field($args['search_term']) : null;
 
@@ -139,6 +129,26 @@ class UserService implements UserInterface
             ],
             $users
         );
+    }
+
+    private function applyRoleFilter(array $args): array
+    {
+        if (!isset($args['role_filter']) || empty($args['role_filter'])) {
+            return $args;
+        }
+
+        if ($args['role_filter'] === Config::SLUG) {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for CRM capability filtering
+            $args['meta_query'] = $this->getMetaQueryForRoleFilter();
+            unset($args['role_filter']);
+
+            return $args;
+        }
+
+        $args['role'] = sanitize_key($args['role_filter']);
+        unset($args['role_filter']);
+
+        return $args;
     }
 
     private function getMetaQueryForRoleFilter(): array

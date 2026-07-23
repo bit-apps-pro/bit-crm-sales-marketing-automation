@@ -114,7 +114,7 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
       </div>
       {isFetchingNotes ? <NotesSkeleton quantity={3} /> : <NoteList notes={notes} />}
       <NoteCreateModal entityId={entityId} fieldOptions={generateFieldOptions(fields)} module={module} />
-      <NoteEditModal fieldOptions={generateFieldOptions(fields)} />
+      <NoteEditModal fieldOptions={generateFieldOptions(fields)} module={module} />
       <If conditions={notes && notes.length > 0}>
         <Pagination total={total} />
       </If>

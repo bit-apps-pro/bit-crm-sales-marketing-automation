@@ -3,6 +3,7 @@
 namespace BitApps\Crm\HTTP\Controllers;
 
 use BitApps\Crm\Config;
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
 use BitApps\Crm\HTTP\Requests\Note\DestroyRequest;
@@ -79,6 +80,16 @@ final class NoteController
 
         if (empty($note)) {
             return Response::error(__('Note not found!', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $isShared = $validated['is_shared'] ?? false;
+
+        if ($isShared) {
+            $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_NOTE, null, (int) $note->entity_id);
+
+            if ($error) {
+                return Response::error($error['errors'][0] ?? __('Failed to update note!', 'bit-crm-sales-marketing-automation'));
+            }
         }
 
         $validated['updated_by'] = get_current_user_id();

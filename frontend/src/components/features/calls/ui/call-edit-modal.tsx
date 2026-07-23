@@ -97,7 +97,13 @@ export default function CallEditModal({ fieldOptions, variant }: CallEditModalPr
       title={__('Update Call')}
     >
       <If conditions={isEditModalOpen}>
-        <CallForm fieldOptions={fieldOptions} form={form} module={call?.module} variant={variant} />
+        <CallForm
+          entityId={call?.entity_id}
+          fieldOptions={fieldOptions}
+          form={form}
+          module={call?.module}
+          variant={variant}
+        />
       </If>
     </Modal>
   )

@@ -216,6 +216,28 @@ class HookKeys
     public const CUSTOM_FIELDS_JOIN = 'bit_crm_custom_fields_join';
 
     /**
+     * Validates whether an activity may be shared with a client. The client
+     * portal is a pro feature, so the free plugin defines the extension point
+     * and defaults to allowing the share (null); the pro plugin hooks in to
+     * enforce that the contact has a portal user with the relevant capability.
+     *
+     * Returns null when the share is permitted, or an error array shaped
+     * ['success' => false, 'errors' => string[]] when it is not.
+     *
+     * apply_filters(?array $error, int $entityId, string $activityType): ?array
+     */
+    public const VALIDATE_SHARED_ACTIVITY = 'bit_crm_validate_shared_activity';
+
+    /**
+     * Validates whether a note may be shared with a client. Mirrors
+     * VALIDATE_SHARED_ACTIVITY: free defaults to allowing the share (null),
+     * pro enforces the portal user's notes capability.
+     *
+     * apply_filters(?array $error, int $entityId): ?array
+     */
+    public const VALIDATE_SHARED_NOTE = 'bit_crm_validate_shared_note';
+
+    /**
      * Forces workflow triggers to execute inline instead of dispatching a
      * background process. Enabled while firing hooks from inside a background
      * worker (e.g. bulk lead conversion), where a nested loopback dispatch

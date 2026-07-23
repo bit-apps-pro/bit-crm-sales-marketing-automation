@@ -3,12 +3,12 @@ import { Typography } from 'antd'
 import DOMPurify from 'dompurify'
 
 interface InvoiceSectionsPreviewProps {
-  sectionNotes: SectionType[]
+  sectionNotes?: SectionType[]
 }
 export default function InvoiceSectionsPreview({ sectionNotes }: InvoiceSectionsPreviewProps) {
   return (
     <div>
-      {sectionNotes.map(
+      {sectionNotes?.map(
         (sectionNote, index: number) =>
           sectionNote.value.length !== 0 && (
             <div key={index}>

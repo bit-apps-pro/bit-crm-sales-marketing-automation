@@ -1,6 +1,6 @@
 import { Skeleton } from 'antd'
 
-export default function ActivityListSkeleton({ quantity }: { quantity: number }) {
+export default function ActivityListSkeleton({ quantity = 4 }: { quantity?: number }) {
   return (
     <div className="grid grid-cols-1 items-start gap-2 md:grid-cols-2">
       {Array.from({ length: quantity }).map((_, index) => (

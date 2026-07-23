@@ -1,7 +1,10 @@
+import { MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import QuillEditor from '@features/quill-editor'
+import ShareWithContact from '@features/share-with-contact'
 import WpMediaUploader from '@features/wp-media-uploader'
 import customizedRequiredMark from '@utilities/customized-required-mark'
+import If from '@utilities/If'
 import { type FormInstance } from 'antd'
 import { Form, Input, Mentions } from 'antd'
 
@@ -9,8 +12,10 @@ import { type FieldOptionsType } from '../shared/note-types'
 
 interface NoteFormProps {
   detailsValue?: string
+  entityId?: number | string
   fieldOptions: FieldOptionsType[]
   form: FormInstance
+  module: string
 }
 
 interface MentionItem {
@@ -48,7 +53,7 @@ const quillEditorToolbarConfig = [
   [{ list: 'ordered' }, { list: 'bullet' }]
 ]
 
-export default function NoteForm({ detailsValue, fieldOptions, form }: NoteFormProps) {
+export default function NoteForm({ detailsValue, entityId, fieldOptions, form, module }: NoteFormProps) {
   const handleDetailsChange = (html: string) => {
     form.setFieldsValue({ details: html })
   }
@@ -80,6 +85,15 @@ export default function NoteForm({ detailsValue, fieldOptions, form }: NoteFormP
         <Form.Item hidden name="details">
           <Input type="hidden" />
         </Form.Item>
+        <If conditions={module === MODULES.CONTACT}>
+          <ShareWithContact
+            capability="notes"
+            entityId={entityId}
+            form={form}
+            sharedText={__('Contact will have access to this note.')}
+            unsharedText={__('Only you and your team can see this note.')}
+          />
+        </If>
       </Form>
       <div className="mb-2">
         <WpMediaUploader />

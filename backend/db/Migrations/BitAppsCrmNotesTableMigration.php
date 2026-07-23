@@ -23,6 +23,7 @@ final class BitAppsCrmNotesTableMigration extends Migration
                 $table->longtext('attachments')->nullable();
                 $table->bigint('entity_id');
                 $table->string('module');
+                $table->boolean('is_shared')->defaultValue(0);
                 $table->bigint('created_by')->nullable();
                 $table->bigint('updated_by')->nullable();
                 $table->string('type')->nullable();

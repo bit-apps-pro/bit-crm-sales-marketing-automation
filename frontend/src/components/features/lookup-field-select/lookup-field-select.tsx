@@ -85,7 +85,7 @@ export default function LookupFieldSelect({
   const validValue = data?.find(item => item.value === value) ? value : undefined
 
   return (
-    <div className="relative">
+    <div className="relative last:mb-4">
       <Space.Compact block>
         <LoadMoreSelect
           allowClear

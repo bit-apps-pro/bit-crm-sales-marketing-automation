@@ -98,6 +98,7 @@ export default function MeetingEditModal({ fieldOptions, variant }: MeetingEditM
     >
       <If conditions={isEditModalOpen}>
         <MeetingForm
+          entityId={meeting?.entity_id}
           fieldOptions={fieldOptions}
           form={form}
           module={meeting?.module}

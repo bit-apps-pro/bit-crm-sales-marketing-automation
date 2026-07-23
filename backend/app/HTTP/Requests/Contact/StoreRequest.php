@@ -24,6 +24,7 @@ class StoreRequest extends Request
             'tagIds.*'                            => ['nullable', 'integer'],
             'newTagTitles'                        => ['nullable', 'array'],
             'newTagTitles.*'                      => ['nullable', 'string', 'sanitize:text'],
+            'clientPortal'                        => ['nullable', 'boolean'],
         ];
 
         return Hooks::applyFilter(HookKeys::CUSTOM_FIELD_VALUES_RULES, $rules);

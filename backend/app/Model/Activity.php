@@ -38,12 +38,15 @@ class Activity extends Model
         'entity_id',
         'module',
         'assigned_to',
+        'is_shared',
+        'user_id',
         'created_by',
         'updated_by',
         'attributes',
     ];
 
     protected $casts = [
+        'is_shared'    => 'bool',
         'is_completed' => 'bool',
         'attachments'  => 'array',
         'due_date'     => 'siteTimeZone',

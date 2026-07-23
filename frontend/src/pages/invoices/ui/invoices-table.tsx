@@ -4,6 +4,7 @@ import { formatDate } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type InvoiceType } from '@pages/invoice-create/shared/invoice-create-types'
+import { statusConfig } from '@pages/invoices/shared/status-config'
 import If from '@utilities/If'
 import { Button, Space, Table, Tag } from 'antd'
 import { useMemo } from 'react'
@@ -17,12 +18,6 @@ interface InvoicesTableProps {
   invoices: InvoiceType[]
   isDealView?: boolean
   isLoading: boolean
-}
-
-const statusConfig = {
-  draft: { color: 'default', label: __('Draft') },
-  overdue: { color: 'red', label: __('Overdue') },
-  paid: { color: 'green', label: __('Paid') }
 }
 
 export default function InvoicesTable({ invoices, isDealView = false, isLoading }: InvoicesTableProps) {

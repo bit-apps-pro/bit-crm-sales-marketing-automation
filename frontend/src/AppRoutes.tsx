@@ -20,6 +20,7 @@ import { useAtom, useAtomValue } from 'jotai'
 import { lazy, useEffect, useMemo } from 'react'
 import { Route, Routes, useNavigate } from 'react-router'
 
+const PortalSettings = lazy(() => import('@pages/portal-settings'))
 const Root = lazy(() => import('@pages/dashboard'))
 const GeneralSettings = lazy(() => import('@pages/general-settings'))
 const LeadSettings = lazy(() => import('@pages/lead-settings'))
@@ -239,6 +240,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="smtp-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.PORTAL_SETTINGS}>
+                      <PortalSettings />
+                    </ProtectedRoute>
+                  }
+                  path="portal-settings"
                 />
                 <Route
                   element={

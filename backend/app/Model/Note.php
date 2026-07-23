@@ -27,10 +27,12 @@ class Note extends Model
         'created_by',
         'updated_by',
         'attributes',
+        'is_shared',
         'type',
     ];
 
     protected $casts = [
+        'is_shared'   => 'bool',
         'attachments' => 'array',
         'created_at'  => 'siteTimeZone',
         'updated_at'  => 'siteTimeZone',

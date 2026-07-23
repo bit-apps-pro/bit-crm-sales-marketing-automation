@@ -48,6 +48,7 @@ return [
         ['label' => __('Export', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_export'],
         ['label' => __('Import', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_import'],
     ],
+
     Tag::MODULE_NAME => [
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_create'],

@@ -10,6 +10,7 @@ export interface MeetingType {
   entity_name?: string
   id?: number
   is_completed?: boolean
+  is_shared: boolean
   module?: string
   notes_count: number
   title: string

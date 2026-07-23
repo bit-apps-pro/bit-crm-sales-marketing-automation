@@ -2,6 +2,7 @@
 
 namespace BitApps\Crm\Services;
 
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\HTTP\Requests\Note\StoreRequest;
@@ -17,10 +18,19 @@ class NoteService
             return $validated;
         }
 
+        $isShared = $validated['is_shared'] ?? false;
         $validated['created_by'] = get_current_user_id();
 
         if (empty($validated['attachments'])) {
             unset($validated['attachments']);
+        }
+
+        if ($isShared) {
+            $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_NOTE, null, (int) $validated['entity_id']);
+
+            if ($error) {
+                return $error;
+            }
         }
 
         if ($note = Note::insert($validated)) {
@@ -34,14 +44,14 @@ class NoteService
 
     public static function formatDataCollection($notes, $module, $entityId)
     {
-        if (empty($notes) || empty($module) || empty($entityId)) {
+        if (empty($notes)) {
             return $notes;
         }
 
-        $entityData = EntityFieldService::getEntityData($module, $entityId);
+        $entityData = [];
 
-        if (empty($entityData)) {
-            return $notes;
+        if (!empty($module) && !empty($entityId)) {
+            $entityData = EntityFieldService::getEntityData($module, $entityId);
         }
 
         return $notes->map(

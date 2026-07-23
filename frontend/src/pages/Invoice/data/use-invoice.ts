@@ -11,7 +11,7 @@ import {
 } from '@pages/invoice-create/shared/invoice-create-types'
 import { useQuery } from '@tanstack/react-query'
 
-interface InvoiceResponse {
+export interface InvoiceResponse {
   contact: ContactInformation
   currency_data: CurrencyItemType
   deal: DealInformation

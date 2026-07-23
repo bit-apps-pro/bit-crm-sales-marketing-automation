@@ -83,7 +83,7 @@ export default function NoteCreateModal({
       title={__('Create Note')}
     >
       <If conditions={isCreateModalOpen}>
-        <NoteForm fieldOptions={fieldOptions} form={form} />
+        <NoteForm entityId={entityId} fieldOptions={fieldOptions} form={form} module={module} />
       </If>
     </Modal>
   )

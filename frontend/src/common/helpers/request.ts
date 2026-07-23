@@ -106,7 +106,10 @@ export async function request<T>(
   data?: any | FormData | null | Record<string, unknown> | undefined, // eslint-disable-line @typescript-eslint/no-explicit-any
   queryParam?: null | QueryParam | undefined,
   method: MethodType = 'POST',
-  options?: OptionsType
+  options?: OptionsType,
+  isPro = false
 ): Promise<Response<T>> {
-  return queryRequest<T>(action, data, queryParam, method, options).catch(error => error as Response<T>)
+  return queryRequest<T>(action, data, queryParam, method, options, isPro).catch(
+    error => error as Response<T>
+  )
 }

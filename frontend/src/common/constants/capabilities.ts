@@ -79,6 +79,7 @@ const CAPABILITIES = {
     INVOICE: 'bit_crm_setting_invoice',
     LEAD: 'bit_crm_setting_lead',
     MENU: 'bit_crm_setting_menu',
+    PORTAL_SETTINGS: 'bit_crm_setting_portal',
     PRODUCT: 'bit_crm_setting_product',
     SMTP: 'bit_crm_setting_smtp',
     USER: 'bit_crm_setting_crm_user',

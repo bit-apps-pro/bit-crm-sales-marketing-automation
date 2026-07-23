@@ -13,9 +13,10 @@ import NoteForm from './note-form'
 
 interface NoteEditModalProps {
   fieldOptions: FieldOptionsType[]
+  module: string
 }
 
-export default function NoteEditModal({ fieldOptions }: NoteEditModalProps) {
+export default function NoteEditModal({ fieldOptions, module }: NoteEditModalProps) {
   const { handleModal, isEditModalOpen, setEditModalOpen } = useNoteStore()
   const [searchParams, setSearchParams] = useSearchParams()
   const { attachments, clearAttachments, setAttachments } = useAttachmentStore()
@@ -96,7 +97,13 @@ export default function NoteEditModal({ fieldOptions }: NoteEditModalProps) {
       title={__('Update Note')}
     >
       <If conditions={isEditModalOpen}>
-        <NoteForm detailsValue={note?.details} fieldOptions={fieldOptions} form={form} />
+        <NoteForm
+          detailsValue={note?.details}
+          entityId={note?.entity_id}
+          fieldOptions={fieldOptions}
+          form={form}
+          module={module}
+        />
       </If>
     </Modal>
   )

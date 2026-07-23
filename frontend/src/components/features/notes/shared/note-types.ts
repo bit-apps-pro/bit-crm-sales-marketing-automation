@@ -7,6 +7,7 @@ export interface NoteType {
   details: string
   entity_id: number | string
   id?: number
+  is_shared: boolean
   module: string
   title: string
   type?: string

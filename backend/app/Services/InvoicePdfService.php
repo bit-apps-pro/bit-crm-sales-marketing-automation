@@ -46,7 +46,7 @@ class InvoicePdfService
         $terms = $this->invoiceTermService->getAllTerms();
         $termName = $terms[$details['invoice']->term_key]['name'] ?? 'Custom';
 
-        $settings = Setting::findOne(['setting_key' => 'business_settings']);
+        $settings = Setting::findOne(['setting_key' => Setting::BUSINESS_SETTINGS_KEY]);
         $businessSettings = !empty($settings) ? ($settings->setting_value ?? []) : [];
 
         return new InvoiceData(

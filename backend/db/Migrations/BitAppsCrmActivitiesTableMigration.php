@@ -26,6 +26,7 @@ final class BitAppsCrmActivitiesTableMigration extends Migration
                 $table->longtext('attachments')->nullable();
                 $table->bool('is_completed')->defaultValue(0);
                 $table->bigint('entity_id');
+                $table->boolean('is_shared')->defaultValue(0);
                 $table->string('module');
                 $table->bigint('assigned_to')->nullable();
                 $table->bigint('created_by')->nullable();

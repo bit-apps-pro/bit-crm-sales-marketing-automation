@@ -51,7 +51,6 @@ export default function MeetingCreateModal({
     }
 
     await meetingStore(data)
-
     setCreateModalOpen(false)
     form.resetFields()
     handleModal('close', setSearchParams)
@@ -94,7 +93,13 @@ export default function MeetingCreateModal({
       title={__('Create Meeting')}
     >
       <If conditions={isCreateModalOpen}>
-        <MeetingForm fieldOptions={fieldOptions} form={form} variant={variant} />
+        <MeetingForm
+          entityId={entityId}
+          fieldOptions={fieldOptions}
+          form={form}
+          module={module}
+          variant={variant}
+        />
       </If>
     </Modal>
   )

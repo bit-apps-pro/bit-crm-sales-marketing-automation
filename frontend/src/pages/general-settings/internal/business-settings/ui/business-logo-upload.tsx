@@ -1,18 +1,26 @@
 import NotifyContext from '@common/context/NotifyContext'
 import { __ } from '@common/helpers/i18nWrap'
+import If from '@utilities/If'
 import { Button } from 'antd'
 import { useContext } from 'react'
 import { LuUpload, LuX } from 'react-icons/lu'
 
 interface BusinessLogoUploadProps {
+  disabled?: boolean
   onChange?: (url?: string) => void
   value?: string
 }
 
-export default function BusinessLogoUpload({ onChange, value }: BusinessLogoUploadProps) {
+export default function BusinessLogoUpload({
+  disabled = false,
+  onChange,
+  value
+}: BusinessLogoUploadProps) {
   const { messageApi } = useContext(NotifyContext)
   const LOGOSIZE = 2 * 1024 * 1024
   const openMediaLibrary = () => {
+    if (disabled) return
+
     if (!window.wp?.media) {
       console.error('WordPress media library is not available')
       return
@@ -51,19 +59,23 @@ export default function BusinessLogoUpload({ onChange, value }: BusinessLogoUplo
                 src={value}
               />
             </div>
-            <Button
-              aria-label={__('Remove Logo')}
-              className="absolute -right-2 -top-2 shadow-md"
-              danger
-              icon={<LuX />}
-              onClick={() => onChange?.()}
-              shape="circle"
-              size="small"
-            />
+            <If conditions={!disabled}>
+              <Button
+                aria-label={__('Remove Logo')}
+                className="absolute -right-2 -top-2 shadow-md"
+                danger
+                disabled={disabled}
+                icon={<LuX />}
+                onClick={() => onChange?.()}
+                shape="circle"
+                size="small"
+              />
+            </If>
           </div>
         ) : (
           <Button
             className="flex flex-col px-8 py-16 text-base"
+            disabled={disabled}
             icon={<LuUpload size={24} />}
             onClick={openMediaLibrary}
             type="dashed"

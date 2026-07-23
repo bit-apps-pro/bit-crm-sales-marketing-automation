@@ -33,8 +33,12 @@ export default function useStoreContact(form: FormInstance) {
     onSettled: () => {
       setNextAction(undefined)
     },
-    onSuccess: ({ data }, { nextAction }) => {
-      messageApi?.success('Contact created successfully')
+    onSuccess: ({ data, message }, { nextAction }) => {
+      if (message) {
+        messageApi?.warning(message)
+      } else {
+        messageApi?.success('Contact created successfully')
+      }
       form.resetFields()
       if (nextAction === 'create' && data?.id) return navigate(`/contacts/details/${data.id}`)
     }

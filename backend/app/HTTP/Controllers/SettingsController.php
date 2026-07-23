@@ -25,12 +25,15 @@ final class SettingsController
             $settingValue = $setting->setting_value;
 
             if (Arr::isAssoc($settingValue)) {
-                $fieldKey = key($validated['setting_value']);
-
-                if (!\is_array($validated['setting_value'][$fieldKey])) {
-                    $settingValue[$fieldKey] = $validated['setting_value'][$fieldKey];
-                } else {
-                    $settingValue[$fieldKey] = array_merge($settingValue[$fieldKey] ?? [], $validated['setting_value'][$fieldKey]);
+                // Merge every provided field into the existing value so a multi-field
+                // payload is persisted atomically in a single update (callers no longer
+                // need to send one request per field).
+                foreach ($validated['setting_value'] as $fieldKey => $fieldValue) {
+                    if (\is_array($fieldValue)) {
+                        $settingValue[$fieldKey] = array_merge($settingValue[$fieldKey] ?? [], $fieldValue);
+                    } else {
+                        $settingValue[$fieldKey] = $fieldValue;
+                    }
                 }
 
                 $updatedValue = $settingValue;

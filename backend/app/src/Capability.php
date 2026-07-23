@@ -6,6 +6,7 @@ use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPKit\Utils\Capabilities;
 use BitApps\Crm\Services\CrmUserService;
 use BitApps\Crm\src\UserPermissions\Roles;
+use WP_User;
 
 final class Capability
 {
@@ -27,8 +28,9 @@ final class Capability
 
         $crmUserHelper = new CrmUserService();
         $crmUserCaps = $crmUserHelper->getUserPluginCaps($user);
+        $grantedPluginCaps = self::getGrantedPluginCapabilities($user);
 
-        return array_values($crmUserCaps);
+        return array_values(array_unique(array_merge($crmUserCaps, $grantedPluginCaps)));
     }
 
     public static function check($capability)
@@ -58,5 +60,21 @@ final class Capability
         }
 
         return $formattedCapabilities;
+    }
+
+    private static function getGrantedPluginCapabilities(WP_User $user): array
+    {
+        $allCaps = \is_array($user->allcaps ?? null) ? $user->allcaps : [];
+        $pluginCaps = [];
+
+        foreach ($allCaps as $capability => $grant) {
+            if (!$grant || strpos($capability, Config::VAR_PREFIX) !== 0) {
+                continue;
+            }
+
+            $pluginCaps[] = $capability;
+        }
+
+        return $pluginCaps;
     }
 }

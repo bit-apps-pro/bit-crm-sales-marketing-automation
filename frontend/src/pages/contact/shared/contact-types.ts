@@ -44,6 +44,7 @@ export interface ContactType {
   mobile?: string
   next_id: null | number
   owner_id?: number
+  owner_name?: string
   parent_id?: number
   parent_name?: string
   phone?: string
