@@ -106,7 +106,7 @@ final class CommonController
             return Response::error(__('Sample CSV file not found.', 'bit-crm-sales-marketing-automation'));
         }
 
-        $csvUrl = plugins_url(Config::SLUG . '/backend/' . $csvPath);
+        $csvUrl = plugins_url('backend' . $csvPath, Config::get('MAIN_FILE'));
 
         return Response::success(['download_url' => $csvUrl]);
     }

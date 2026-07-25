@@ -52,8 +52,7 @@ final class ImportExportListController
 
         $absoluteFilePath = null;
         if ($data['type'] === ImportExportList::EXPORT) {
-            $filePath = $data['file_path'];
-            $absoluteFilePath = ABSPATH . ltrim($filePath, '/');
+            $absoluteFilePath = FileHandler::getAbsoluteUploadPath($data['file_path']);
         }
 
         try {

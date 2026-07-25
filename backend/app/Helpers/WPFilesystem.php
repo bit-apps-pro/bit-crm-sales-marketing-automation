@@ -15,7 +15,7 @@ final class WPFilesystem
         global $wp_filesystem;
 
         if (!$wp_filesystem instanceof WP_Filesystem_Base) {
-            include_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/file.php';
 
             if (!WP_Filesystem() || !$wp_filesystem instanceof WP_Filesystem_Base) {
                 throw new RuntimeException('Unable to initialize WP_Filesystem');

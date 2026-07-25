@@ -36,9 +36,35 @@ class FileHandler
         return [$filePath, $fileName];
     }
 
+    /**
+     * Path of a plugin sub directory, relative to the uploads base directory.
+     *
+     * Stored paths stay relative to wp_upload_dir() so they remain valid when the
+     * uploads directory lives outside ABSPATH (UPLOADS constant, relocated
+     * WP_CONTENT_DIR, multisite). Resolve them with getAbsoluteUploadPath() for
+     * filesystem access, or getUploadUrl() for a public URL.
+     */
     public static function getRelativeUploadPath(string $subDir): string
     {
-        return trailingslashit(str_replace(ABSPATH, '/', Config::get('UPLOAD_BASE_DIR'))) . $subDir;
+        return trailingslashit(trim($subDir, '/'));
+    }
+
+    /**
+     * Resolve an uploads-relative path to an absolute filesystem path.
+     */
+    public static function getAbsoluteUploadPath(string $relativePath): string
+    {
+        return wp_normalize_path(
+            trailingslashit(Config::get('UPLOAD_BASE_DIR')) . ltrim($relativePath, '/')
+        );
+    }
+
+    /**
+     * Resolve an uploads-relative path to a public URL.
+     */
+    public static function getUploadUrl(string $relativePath): string
+    {
+        return trailingslashit(Config::get('UPLOAD_BASE_URL')) . ltrim($relativePath, '/');
     }
 
     public static function readCsvChunk(string $path, int $offset, int $limit): array

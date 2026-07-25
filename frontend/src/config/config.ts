@@ -41,6 +41,7 @@ interface ConfigType {
   SITE_URL?: string
   TIME_FORMAT: string
   TIME_ZONE: string
+  UPLOAD_BASE_URL: string
 }
 
 const config = {
@@ -67,7 +68,8 @@ const config = {
   SITE_BASE_URL: getServerVariable('siteBaseURL'),
   SITE_URL: getServerVariable('siteUrl'),
   TIME_FORMAT: getServerVariable('timeFormat'),
-  TIME_ZONE: getServerVariable('timeZone')
+  TIME_ZONE: getServerVariable('timeZone'),
+  UPLOAD_BASE_URL: getServerVariable('uploadBaseUrl')
 } as const satisfies ConfigType
 
 export default config
