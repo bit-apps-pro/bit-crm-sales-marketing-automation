@@ -29,7 +29,7 @@ class Tag extends Model
     {
         parent::boot();
 
-        static::saved(
+        static::created(
             function ($model) {
                 ActivityLogHandler::addLog(
                     ActivityLogHandler::CREATED,
