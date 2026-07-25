@@ -14,8 +14,6 @@ import useBusinessSettings from '@pages/general-settings/internal/business-setti
 import useUpdateInvoice from '@pages/invoice-edit/data/use-update-invoice'
 import If from '@utilities/If'
 import { Button, type FormInstance } from 'antd'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 import { useContext, useRef } from 'react'
 import { LuPlus } from 'react-icons/lu'
 import { useNavigate } from 'react-router'
@@ -30,8 +28,6 @@ import {
   useInvoiceNumberSelect,
   useInvoiceTopSectionNotesSelect
 } from '../state/use-invoice-create-store'
-
-dayjs.extend(utc)
 
 interface InvoiceSubmitButtonProps {
   form: FormInstance<InvoiceFormType>
@@ -90,8 +86,8 @@ export default function InvoiceSubmitButton({ form, mode }: InvoiceSubmitButtonP
     try {
       const formData = await form.validateFields()
       const invoicePrefix = formData.invoicePrefix
-      const invoiceDate = dayjs(formData.invoiceDate).utc().format('YYYY-MM-DD HH:mm:ss')
-      const dueDate = dayjs(formData.dueDate).utc().format('YYYY-MM-DD HH:mm:ss')
+      const invoiceDate = formData.invoiceDate
+      const dueDate = formData.dueDate
       const termKey = formData.invoiceTerm
 
       const data = {

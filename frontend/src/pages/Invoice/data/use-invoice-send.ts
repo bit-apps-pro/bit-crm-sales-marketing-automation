@@ -29,7 +29,7 @@ export default function useInvoiceSend() {
       messageApi?.error(error.message || error.data)
     },
     onSuccess: (_, variables) => {
-      messageApi?.success(__('Email sent successfully'))
+      messageApi?.success(__('Invoice sent successfully'))
       queryClient.invalidateQueries({ queryKey: ['invoice', Number(variables.id)] })
       queryClient.invalidateQueries({ queryKey: ['invoices'] })
       queryClient.invalidateQueries({

@@ -93,7 +93,7 @@ final class InvoiceController
             }
 
             if ($validated['status'] === Invoice::STATUS_PAID) {
-                $validated['paid_at'] = current_time('mysql');
+                $validated['paid_at'] = current_time('mysql', true);
             }
         }
 
@@ -159,11 +159,11 @@ final class InvoiceController
         ];
 
         if ($validated['status'] === Invoice::STATUS_PAID) {
-            $updateData['paid_at'] = current_time('mysql');
+            $updateData['paid_at'] = current_time('mysql', true);
         }
 
         if ($validated['status'] === Invoice::STATUS_SENT) {
-            $updateData['sent_at'] = current_time('mysql');
+            $updateData['sent_at'] = current_time('mysql', true);
         }
 
         try {
@@ -328,7 +328,7 @@ final class InvoiceController
         }
 
         $updateData = [
-            'sent_at'    => current_time('mysql'),
+            'sent_at'    => current_time('mysql', true),
             'updated_by' => get_current_user_id(),
         ];
 

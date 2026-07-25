@@ -76,6 +76,24 @@ class Invoice extends Model
         return \in_array($to, self::ALLOWED_STATUS_TRANSITIONS[$from] ?? [], true);
     }
 
+    public function fill($attributes, $force = false)
+    {
+        if (!$force && isset($this->casts)) {
+            $savedCasts = $this->casts;
+            $this->casts = array_filter($this->casts, fn ($cast) => $cast !== 'siteTimeZone');
+
+            try {
+                $result = parent::fill($attributes, $force);
+            } finally {
+                $this->casts = $savedCasts;
+            }
+
+            return $result;
+        }
+
+        return parent::fill($attributes, $force);
+    }
+
     protected function castToSiteTimeZone($value)
     {
         return get_date_from_gmt($value);

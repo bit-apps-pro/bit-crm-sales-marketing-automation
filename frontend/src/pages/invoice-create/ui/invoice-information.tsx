@@ -53,7 +53,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
         name="invoiceDate"
         rules={[{ message: __('Invoice date is required'), required: true }]}
       >
-        <DatePicker className="w-full" />
+        <DatePicker className="w-full" format={'YYYY-MM-DD'} />
       </Form.Item>
       <Form.Item label={__('Terms')} name="invoiceTerm">
         <Select
@@ -86,6 +86,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
         <DatePicker
           className="w-full"
           disabled={!invoiceDate}
+          format={'YYYY-MM-DD'}
           minDate={dayjs(invoiceDate)}
           onChange={() => {
             form.setFieldValue('invoiceTerm', 'custom')
