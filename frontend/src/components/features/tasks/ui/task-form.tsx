@@ -70,6 +70,7 @@ export default function TaskForm({ fieldOptions, form, module: initialModule, va
           <DatePicker
             className="w-full"
             format={'YYYY-MM-DD hh:mm A'}
+            minDate={dayjs().startOf('day')}
             placeholder={__('Select date and time')}
             showTime={{ defaultValue: dayjs('12:00', 'hh:mm') }}
           />

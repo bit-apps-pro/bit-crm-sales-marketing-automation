@@ -106,6 +106,7 @@ export default function UpdateDealStageModal() {
     >
       <If conditions={isOpen && payload}>
         <UpdateDealStageForm
+          createdAt={dealEditData?.created_at}
           currencySymbol={dealCurrencyData?.symbol}
           form={form}
           isAmountDisabled={hasLineItems}

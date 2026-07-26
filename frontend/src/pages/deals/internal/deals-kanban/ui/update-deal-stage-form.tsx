@@ -6,11 +6,13 @@ import { Form } from 'antd'
 import dayjs from 'dayjs'
 
 export default function UpdateDealStageForm({
+  createdAt,
   currencySymbol,
   form,
   isAmountDisabled,
   stage
 }: {
+  createdAt?: string
   currencySymbol?: string
   form: FormInstance
   isAmountDisabled?: boolean
@@ -35,6 +37,7 @@ export default function UpdateDealStageForm({
         <DatePicker
           className="w-full"
           format={'YYYY-MM-DD hh:mm A'}
+          minDate={createdAt ? dayjs(createdAt).startOf('day') : undefined}
           placeholder={__('Select date and time')}
           showTime={{ defaultValue: dayjs('12:00', 'hh:mm') }}
         />
