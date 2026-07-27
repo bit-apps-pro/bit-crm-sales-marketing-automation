@@ -36,9 +36,11 @@ export default function DealSelect({ mode }: { mode: string }) {
 
   return (
     <div className="flex h-full flex-col space-y-4 rounded-lg border border-solid border-[#EBEAFF] p-5 dark:border-neutral-700 dark:bg-neutral-900">
-      <div className="flex items-center justify-between gap-10">
-        <Typography.Text strong>{__('Select a deal')}</Typography.Text>
-        <div className="flex-1">
+      <div className="flex items-start justify-between gap-10">
+        <Typography.Text className="flex h-10 items-center whitespace-nowrap" strong>
+          {__('Select a deal')}
+        </Typography.Text>
+        <div className="min-w-0 flex-1 pb-6">
           <LookupFieldSelect
             className="w-full"
             disabled={mode === 'edit'}

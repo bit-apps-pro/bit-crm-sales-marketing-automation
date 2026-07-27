@@ -29,6 +29,11 @@ export default function BusinessInformation({ businessSettings }: BusinessInform
                 {businessSettings.phone_number}
               </Typography.Text>
             </If>
+            <If conditions={businessSettings.mobile_number}>
+              <Typography.Text className="block text-sm" type="secondary">
+                {businessSettings.mobile_number}
+              </Typography.Text>
+            </If>
             <If conditions={businessSettings.email}>
               <Typography.Text className="block text-sm" type="secondary">
                 {businessSettings.email}

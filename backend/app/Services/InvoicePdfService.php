@@ -62,57 +62,25 @@ class InvoicePdfService
 
     private function calculateTotals(Invoice $invoice, array $lineItems): InvoiceTotals
     {
-        $subtotal = 0.0;
-        $totalTax = 0.0;
         $isExclusive = $invoice->tax_option === LineItem::TAX_EXCLUSIVE;
         $isInclusive = $invoice->tax_option === LineItem::TAX_INCLUSIVE;
 
-        foreach ($lineItems as $item) {
-            $unitPrice = (float) ($item['unit_price_in_deal_currency'] ?? 0);
-            $quantity = (float) ($item['quantity'] ?? 0);
-            $discountPercentage = (float) ($item['discount_percentage'] ?? 0);
-            $taxRate = (float) ($item['tax_rate'] ?? 0);
-
-            $afterDiscount = $unitPrice * $quantity * (1 - $discountPercentage / 100);
-
-            if ($isExclusive) {
-                $subtotal += $afterDiscount;
-                $totalTax += $afterDiscount * ($taxRate / 100);
-            } elseif ($isInclusive) {
-                $priceWithoutTax = $afterDiscount / (1 + $taxRate / 100);
-                $subtotal += $priceWithoutTax;
-                $totalTax += $afterDiscount - $priceWithoutTax;
-            } else {
-                $subtotal += $afterDiscount;
-            }
-        }
-
-        $discount = $this->calculateGrossDiscount($invoice, $subtotal, $totalTax);
-        $grandTotal = $subtotal + $totalTax - $discount;
+        $totals = InvoiceService::computeTotals(
+            $lineItems,
+            $invoice->tax_option,
+            (float) ($invoice->gross_discount_amount ?? 0),
+            $invoice->gross_discount_type ?? 'amount',
+            'unit_price_in_deal_currency'
+        );
 
         return new InvoiceTotals(
-            $subtotal,
-            $totalTax,
-            $grandTotal,
-            $discount,
+            $totals['subtotal'],
+            $totals['totalTax'],
+            $totals['grandTotal'],
+            $totals['discount'],
             $isExclusive,
             $isInclusive
         );
-    }
-
-    private function calculateGrossDiscount(Invoice $invoice, float $subtotal, float $totalTax): float
-    {
-        $grossDiscountAmount = (float) ($invoice->gross_discount_amount ?? 0);
-
-        if ($grossDiscountAmount <= 0) {
-            return 0.0;
-        }
-
-        if (($invoice->gross_discount_type ?? '') === 'rate') {
-            return ($subtotal + $totalTax) * ($grossDiscountAmount / 100);
-        }
-
-        return $grossDiscountAmount;
     }
 
     private function getDefaultPdfConfig(): array

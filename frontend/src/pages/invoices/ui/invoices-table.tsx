@@ -1,12 +1,15 @@
 import CAPABILITIES from '@common/constants/capabilities'
+import { $appConfig } from '@common/globalStates'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { formatDate } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
+import { generateCurrencyFormatPreview } from '@pages/currencies/shared/common-functions'
 import { type InvoiceType } from '@pages/invoice-create/shared/invoice-create-types'
 import { statusConfig } from '@pages/invoices/shared/status-config'
 import If from '@utilities/If'
-import { Button, Space, Table, Tag } from 'antd'
+import { Button, Table, Tag } from 'antd'
+import { useAtomValue } from 'jotai'
 import { useMemo } from 'react'
 import { LuPenLine } from 'react-icons/lu'
 import { Link, useSearchParams } from 'react-router'
@@ -27,6 +30,7 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
   const sortOrder = searchParams.get('sortOrder') || ''
   const selectedKeys = useSelectedKeys()
   const tableScrollY = useTableScrollHeight(400)
+  const { homeCurrencyData } = useAtomValue($appConfig)
 
   const handleTableChange = (_pagination: unknown, _filters: unknown, sorter: unknown) => {
     const sortData = Array.isArray(sorter) ? sorter[0] : sorter
@@ -53,6 +57,9 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
     () => [
       {
         dataIndex: 'id',
+        ellipsis: {
+          showTitle: true
+        },
         key: 'id',
         render: (id: number, record: InvoiceType) => {
           return (
@@ -76,6 +83,9 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
       },
       {
         dataIndex: 'deal_name',
+        ellipsis: {
+          showTitle: true
+        },
         key: 'deal_name',
         render: (value: string, record: InvoiceType) => {
           return (
@@ -89,6 +99,9 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
       },
       {
         dataIndex: 'status',
+        ellipsis: {
+          showTitle: true
+        },
         key: 'status',
         render: (status: string) => {
           const config = statusConfig[status as keyof typeof statusConfig] || {
@@ -111,7 +124,30 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
         width: 200
       },
       {
+        dataIndex: 'amount',
+        ellipsis: {
+          showTitle: true
+        },
+        key: 'amount',
+        render: (_: unknown, record: InvoiceType) => {
+          return generateCurrencyFormatPreview(
+            homeCurrencyData,
+            record.home_currency_amount ?? record.amount
+          )
+        },
+        sorter: true,
+        sortOrder: (() => {
+          if (sortBy !== 'amount') return
+          return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
+        })(),
+        title: __('Amount'),
+        width: 200
+      },
+      {
         dataIndex: 'invoice_date',
+        ellipsis: {
+          showTitle: true
+        },
         key: 'invoice_date',
         render: (date: string) => {
           const formattedDate = formatDate(date)
@@ -127,6 +163,9 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
       },
       {
         dataIndex: 'due_date',
+        ellipsis: {
+          showTitle: true
+        },
         key: 'due_date',
         render: (date: string) => {
           const formattedDate = formatDate(date)
@@ -142,6 +181,9 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
       },
       {
         dataIndex: 'paid_at',
+        ellipsis: {
+          showTitle: true
+        },
         key: 'paid_at',
         render: (date: null | string) => {
           return date ? formatDate(date) : '-'
@@ -159,7 +201,7 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
         fixed: 'right' as const,
         key: 'actions',
         render: (_: unknown, record: InvoiceType) => (
-          <Space>
+          <div>
             <If conditions={checkCapability(CAPABILITIES.INVOICE.UPDATE)}>
               {record.status === 'paid' ? (
                 <Button disabled type="link">
@@ -176,13 +218,13 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
             <If conditions={checkCapability(CAPABILITIES.INVOICE.DELETE)}>
               <DeleteInvoicePopup id={record.id} />
             </If>
-          </Space>
+          </div>
         ),
         title: __('Actions'),
         width: 100
       }
     ],
-    [sortBy, sortOrder, isDealView]
+    [sortBy, sortOrder, isDealView, homeCurrencyData]
   )
   const handleRowSelectionChange = (selectedRowKeys: React.Key[]) => {
     setSelectedKeys(selectedRowKeys)

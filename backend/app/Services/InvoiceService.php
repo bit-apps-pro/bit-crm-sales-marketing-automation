@@ -91,6 +91,175 @@ class InvoiceService
         return $currencies[$deal->currency] ?? CurrencyHelper::getHomeCurrencyData();
     }
 
+    /**
+     * Resolve an invoice's deal-currency and home-currency grand totals directly from the
+     * raw request line items, before the invoice/line-items are persisted.
+     *
+     * The line items are normalized (clamped) and per-item converted to home currency the
+     * same way LineItemService does, so the returned totals match exactly what will be
+     * stored once the line items are synced. This lets the invoice be written in a single
+     * insert (mirroring how DealService computes home_currency_amount before insert).
+     *
+     * @param array<int, array<string, mixed>> $requestLineItems raw 'line_items' from the request
+     *
+     * @return array{amount: string, home_currency_amount: string}
+     */
+    public static function resolveInvoiceAmounts(
+        array $requestLineItems,
+        ?string $currency,
+        string $taxOption,
+        float $grossDiscountAmount,
+        string $grossDiscountType
+    ): array {
+        $currencyService = new CurrencyService();
+        $homeCurrency = CurrencyHelper::getHomeCurrency();
+
+        // Normalize each line item (clamp + convert to home currency) using the same rules
+        // LineItemService applies at save time, so the total matches what will be persisted.
+        $normalized = [];
+        foreach ($requestLineItems as $item) {
+            $unitPriceInDealCurrency = max(0, (float) ($item['unit_price'] ?? 0));
+            $quantity = max(1, (int) ($item['quantity'] ?? LineItem::DEFAULT_QUANTITY));
+            $discountPercentage = max(0, min(100, (int) ($item['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
+            $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (int) ($item['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
+
+            $unitPriceInHomeCurrency = $unitPriceInDealCurrency;
+            if ($currency && $currency !== $homeCurrency) {
+                $unitPriceInHomeCurrency = $currencyService->convertIntoHomeCurrency($unitPriceInDealCurrency, $currency);
+            }
+
+            $normalized[] = [
+                'unit_price_in_deal_currency' => $unitPriceInDealCurrency,
+                'unit_price_in_home_currency' => $unitPriceInHomeCurrency,
+                'quantity'                    => $quantity,
+                'discount_percentage'         => $discountPercentage,
+                'tax_rate'                    => $taxRate,
+            ];
+        }
+
+        // A flat ('amount') gross discount is expressed in the invoice currency, so it must
+        // be converted to home currency before subtracting from the home-currency subtotal.
+        // A 'rate' discount is proportional and needs no conversion.
+        $homeGrossDiscountAmount = $grossDiscountAmount;
+        if ($grossDiscountType !== 'rate' && $grossDiscountAmount > 0 && $currency && $currency !== $homeCurrency) {
+            $homeGrossDiscountAmount = $currencyService->convertIntoHomeCurrency($grossDiscountAmount, $currency);
+        }
+
+        return [
+            'amount' => self::calculateGrandTotal(
+                $normalized,
+                $taxOption,
+                $grossDiscountAmount,
+                $grossDiscountType,
+                'unit_price_in_deal_currency'
+            ),
+            'home_currency_amount' => self::calculateGrandTotal(
+                $normalized,
+                $taxOption,
+                $homeGrossDiscountAmount,
+                $grossDiscountType,
+                'unit_price_in_home_currency'
+            ),
+        ];
+    }
+
+    /**
+     * Compute an invoice's subtotal, tax, gross discount and grand total from its line items,
+     * reading unit prices from $unitPriceColumn ('unit_price_in_deal_currency' or
+     * 'unit_price_in_home_currency'). Returns raw floats — the single source of truth for the
+     * total math, consumed by calculateGrandTotal() (storage) and InvoicePdfService (rendering).
+     *
+     * @param array<int, array<string, mixed>> $lineItems
+     *
+     * @return array{subtotal: float, totalTax: float, discount: float, grandTotal: float}
+     */
+    public static function computeTotals(
+        array $lineItems,
+        string $taxOption,
+        float $grossDiscountAmount,
+        string $grossDiscountType,
+        string $unitPriceColumn = 'unit_price_in_deal_currency'
+    ): array {
+        $subtotal = 0.0;
+        $totalTax = 0.0;
+        $isExclusive = $taxOption === LineItem::TAX_EXCLUSIVE;
+        $isInclusive = $taxOption === LineItem::TAX_INCLUSIVE;
+
+        foreach ($lineItems as $item) {
+            $unitPrice = (float) ($item[$unitPriceColumn] ?? 0);
+            $quantity = (float) ($item['quantity'] ?? 0);
+            $discountPercentage = (float) ($item['discount_percentage'] ?? 0);
+            $taxRate = (float) ($item['tax_rate'] ?? 0);
+
+            $afterDiscount = $unitPrice * $quantity * (1 - $discountPercentage / 100);
+
+            if ($isExclusive) {
+                $subtotal += $afterDiscount;
+                $totalTax += $afterDiscount * ($taxRate / 100);
+            } elseif ($isInclusive) {
+                $priceWithoutTax = $afterDiscount / (1 + $taxRate / 100);
+                $subtotal += $priceWithoutTax;
+                $totalTax += $afterDiscount - $priceWithoutTax;
+            } else {
+                $subtotal += $afterDiscount;
+            }
+        }
+
+        $discount = self::calculateGrossDiscount($subtotal, $totalTax, $grossDiscountAmount, $grossDiscountType);
+
+        return [
+            'subtotal'   => $subtotal,
+            'totalTax'   => $totalTax,
+            'discount'   => $discount,
+            'grandTotal' => $subtotal + $totalTax - $discount,
+        ];
+    }
+
+    /**
+     * Compute an invoice grand total (subtotal + tax − gross discount) from its line items,
+     * reading unit prices from $unitPriceColumn ('unit_price_in_deal_currency' or
+     * 'unit_price_in_home_currency'). Returns a monetary string.
+     *
+     * @param array<int, array<string, mixed>> $lineItems
+     */
+    public static function calculateGrandTotal(
+        array $lineItems,
+        string $taxOption,
+        float $grossDiscountAmount,
+        string $grossDiscountType,
+        string $unitPriceColumn
+    ): string {
+        $totals = self::computeTotals($lineItems, $taxOption, $grossDiscountAmount, $grossDiscountType, $unitPriceColumn);
+
+        return number_format(
+            $totals['grandTotal'],
+            LineItem::MONETARY_PRECISION,
+            LineItem::MONETARY_DECIMAL_POINT,
+            LineItem::MONETARY_THOUSANDS_SEPARATOR
+        );
+    }
+
+    /**
+     * Resolve the invoice-level gross discount as an absolute amount.
+     * 'rate' => percentage of (subtotal + tax); otherwise a flat amount.
+     */
+    public static function calculateGrossDiscount(
+        float $subtotal,
+        float $totalTax,
+        float $grossDiscountAmount,
+        string $grossDiscountType
+    ): float {
+        if ($grossDiscountAmount <= 0) {
+            return 0.0;
+        }
+
+        if ($grossDiscountType === 'rate') {
+            return ($subtotal + $totalTax) * ($grossDiscountAmount / 100);
+        }
+
+        return $grossDiscountAmount;
+    }
+
     private static function invoiceJoinQuery(int $invoiceId): QueryBuilder
     {
         $invoiceTable = Config::withDBPrefix('invoices');
