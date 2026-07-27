@@ -4,7 +4,7 @@ import onboardingImage2 from '@resource/img/apps/onboarding-image-2.webp'
 import customizedRequiredMark from '@utilities/customized-required-mark'
 import { Form, Progress, theme } from 'antd'
 import { useAtomValue } from 'jotai'
-import { type ReactNode, useEffect, useState } from 'react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { Navigate } from 'react-router'
 
 import useSaveOnboarding from './data/use-save-onboarding'
@@ -25,13 +25,14 @@ export interface OnboardingType {
 }
 
 export default function Onboarding() {
-  const { onboardingCompleted } = useAtomValue($appConfig)
+  const { isDarkTheme, onboardingCompleted } = useAtomValue($appConfig)
   const [form] = Form.useForm<OnboardingType>()
   const [currentStep, setCurrentStep] = useState(0)
   const advance = () => setCurrentStep(step => Math.min(step + 1, STEPS.length - 1))
   const goBack = () => setCurrentStep(step => Math.max(step - 1, 0))
   const { isSavingOnboarding, saveOnboarding } = useSaveOnboarding()
   const { token } = theme.useToken()
+  const stepHeadingRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     document.body.classList.add('bit-crm-onboarding-fullscreen')
@@ -41,6 +42,18 @@ export default function Onboarding() {
       document.body.classList.remove('bit-crm-onboarding-fullscreen')
     }
   }, [])
+
+  useEffect(() => {
+    if (isDarkTheme) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [isDarkTheme])
+
+  useEffect(() => {
+    stepHeadingRef.current?.focus()
+  }, [currentStep])
 
   const handleFinish = async () => {
     const { email, name, plugins = [] } = form.getFieldsValue(true)
@@ -62,9 +75,9 @@ export default function Onboarding() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 p-6">
-      <div className="flex w-full max-w-[880px] flex-col gap-6">
-        <div className="px-2">
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 sm:p-6 dark:bg-neutral-950">
+      <div className="flex w-full max-w-[880px] flex-col sm:gap-6">
+        <div className="flex flex-col gap-1">
           <Progress percent={percent} showInfo={false} strokeColor={token.colorPrimary} />
         </div>
 
@@ -75,9 +88,13 @@ export default function Onboarding() {
           preserve
           requiredMark={customizedRequiredMark}
         >
-          <div className="grid h-full grid-cols-2 gap-[35px] rounded-[20px] bg-white p-[35px]">
-            <img alt="" className="min-h-full w-full" src={activeStep.image} />
-            <div className="flex min-h-full flex-col px-2 py-3">
+          <div className="grid h-full grid-cols-1 gap-6 rounded-[20px] bg-white p-6 md:grid-cols-2 md:gap-[35px] md:p-[35px] dark:bg-neutral-900">
+            <img
+              alt={activeStep.key}
+              className="hidden w-full rounded-[14px] object-cover md:block md:min-h-full"
+              src={activeStep.image}
+            />
+            <div className="flex min-h-full flex-col md:px-2 md:py-3">
               {STEPS.map((step, index) => (
                 <div
                   className={index === currentStep ? 'flex h-full flex-col' : 'hidden'}

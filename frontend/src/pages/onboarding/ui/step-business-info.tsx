@@ -30,7 +30,7 @@ export default function StepBusinessInfo({ form, onNext }: StepBusinessInfoProps
       <Typography.Title className="mb-2" level={3}>
         {__('Welcome to')} <span className="text-primary">{__('Bit CRM')}</span>
       </Typography.Title>
-      <Typography.Text className="mb-6 text-sm text-gray-500">
+      <Typography.Text className="mb-6 text-sm text-gray-500" type="secondary">
         {__('Tell us a bit about your business to personalize your CRM experience.')}
       </Typography.Text>
 
@@ -46,14 +46,14 @@ export default function StepBusinessInfo({ form, onNext }: StepBusinessInfoProps
         label={__('Business Email')}
         name="email"
         rules={[
-          { message: __('Email is required'), required: true },
+          { message: __('Business email is required'), required: true },
           { message: __('Enter a valid email'), type: 'email' }
         ]}
       >
         <Input />
       </Form.Item>
 
-      <div className="mt-auto flex justify-between">
+      <div className="mt-auto flex justify-between gap-3 pt-6">
         <Button className="rounded-full" onClick={handleSkip} type="text">
           {__('Skip')}
         </Button>
