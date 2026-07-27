@@ -46,15 +46,25 @@ final class InvoiceController
 
         $validated['created_by'] = get_current_user_id();
 
+        $dealCurrency = $validated['currency'] ?? null;
+        $taxOption = $validated['tax_option'] ?? LineItem::TAX_EXCLUSIVE;
+
+        $amounts = InvoiceService::resolveInvoiceAmounts(
+            $lineItems,
+            $dealCurrency,
+            $taxOption,
+            (float) ($validated['gross_discount_amount'] ?? 0),
+            $validated['gross_discount_type'] ?? 'amount'
+        );
+        $validated['amount'] = $amounts['amount'];
+        $validated['home_currency_amount'] = $amounts['home_currency_amount'];
+
         Connection::startTransaction();
 
         try {
             $storedInvoice = Invoice::insert($validated);
 
             if (!empty($lineItems)) {
-                $dealCurrency = $validated['currency'] ?? null;
-                $taxOption = $validated['tax_option'] ?? LineItem::TAX_EXCLUSIVE;
-
                 $lineItemsService = new LineItemService($storedInvoice->id, Invoice::MODULE_NAME);
                 $lineItemsService->syncLineItems($lineItems, $dealCurrency, $taxOption);
             }
@@ -115,10 +125,20 @@ final class InvoiceController
                 }
             }
 
-            $invoice->update($validated);
-
             $dealCurrency = $validated['currency'];
             $taxOption = $validated['tax_option'];
+
+            $amounts = InvoiceService::resolveInvoiceAmounts(
+                $lineItems,
+                $dealCurrency,
+                $taxOption,
+                (float) ($validated['gross_discount_amount'] ?? 0),
+                $validated['gross_discount_type'] ?? 'amount'
+            );
+            $validated['amount'] = $amounts['amount'];
+            $validated['home_currency_amount'] = $amounts['home_currency_amount'];
+
+            $invoice->update($validated);
 
             $lineItemsService = new LineItemService($invoice->id, Invoice::MODULE_NAME);
             $lineItemsService->syncLineItems($lineItems, $dealCurrency, $taxOption);

@@ -3,13 +3,16 @@ import { type ContactType } from '@pages/contact/shared/contact-types'
 import { type Deal } from '@pages/deal/shared/deal-types'
 
 export interface InvoiceType {
+  amount?: number
   bottom_section_notes: SectionType[]
   color: string
+  currency?: string
   deal_name: string
   due_date: string
   entity_id: number | string
   gross_discount_amount: number
   gross_discount_type: GrossDiscountType
+  home_currency_amount?: number
   id: number
   invoice_date: Date
   invoice_prefix: string

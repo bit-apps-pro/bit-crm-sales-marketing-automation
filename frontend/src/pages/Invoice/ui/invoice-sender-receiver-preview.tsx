@@ -32,6 +32,11 @@ export default function InvoiceSenderReceiverPreview({
             {businessSettings.phone_number}
           </Typography.Text>
         )}
+        {businessSettings?.mobile_number && (
+          <Typography.Text className="block text-sm" type="secondary">
+            {businessSettings.mobile_number}
+          </Typography.Text>
+        )}
         {businessSettings?.email && (
           <Typography.Text className="block text-sm" type="secondary">
             {businessSettings.email}
@@ -60,8 +65,10 @@ export default function InvoiceSenderReceiverPreview({
         <Typography.Text strong>
           {renderFullName(contact?.title, contact?.first_name, contact?.last_name)}
         </Typography.Text>
-        <Typography.Text className="block text-sm">{deal?.email}</Typography.Text>
-        <Typography.Text className="block text-sm">
+        <Typography.Text className="block text-sm" type="secondary">
+          {deal?.email}
+        </Typography.Text>
+        <Typography.Text className="block text-sm" type="secondary">
           {renderFullAddress(
             contact?.billing_address_line_1,
             contact?.billing_address_line_2,

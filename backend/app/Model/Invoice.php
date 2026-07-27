@@ -51,6 +51,9 @@ class Invoice extends Model
         'paid_at',
         'sent_at',
         'bottom_section_notes',
+        'amount',
+        'home_currency_amount',
+        'currency',
         'created_by',
         'updated_by',
     ];

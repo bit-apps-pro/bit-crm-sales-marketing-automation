@@ -33,6 +33,9 @@ final class BitAppsCrmInvoicesTableMigration extends Migration
                 $table->string('gross_discount_type')->nullable()->defaultValue('amount');
                 $table->longtext('top_section_notes')->nullable();
                 $table->longtext('bottom_section_notes')->nullable();
+                $table->string('amount')->nullable()->defaultValue('0');
+                $table->string('home_currency_amount')->nullable();
+                $table->string('currency')->nullable();
                 $table->bigint('created_by')->nullable();
                 $table->bigint('updated_by')->nullable();
                 $table->timestamps();
