@@ -27,14 +27,6 @@ export interface LeadTableSettingsResponseType {
 
 export type UpdateLeadTableSettingsPayloadType =
   | {
-      setting_key: 'company_lead_table_columns_order'
-      setting_value: Order[]
-    }
-  | {
-      setting_key: 'company_lead_table_visible_columns'
-      setting_value: string[]
-    }
-  | {
       setting_key: 'lead_table_columns_order'
       setting_value: Order[]
     }

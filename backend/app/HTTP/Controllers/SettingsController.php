@@ -3,21 +3,16 @@
 namespace BitApps\Crm\HTTP\Controllers;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Helpers\Arr;
-use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
+use BitApps\Crm\HTTP\Requests\Settings\UpsertRequest;
 use BitApps\Crm\Model\Setting;
 use Throwable;
 
 final class SettingsController
 {
-    public function upsert(Request $request)
+    public function upsert(UpsertRequest $request)
     {
-        $validated = $request->validate(
-            [
-                'setting_key'   => ['required', 'string', 'sanitize:text'],
-                'setting_value' => ['required', 'array']
-            ]
-        );
+        $validated = $request->validated();
 
         $setting = Setting::findOne(['setting_key' => $validated['setting_key']]);
 

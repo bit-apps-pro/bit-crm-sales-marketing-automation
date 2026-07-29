@@ -14,18 +14,18 @@ class CommonService
     private const RELATED_ENTITY_TABLE_SETTINGS_KEYS = [
         Contact::MODULE_NAME => [
             Deal::MODULE_NAME => [
-                'columns_order'   => 'contact_deal_table_columns_order',
-                'visible_columns' => 'contact_deal_table_visible_columns',
+                'columns_order'   => Contact::SETTINGS_KEYS['DEAL_TABLE_COLUMNS_ORDER'],
+                'visible_columns' => Contact::SETTINGS_KEYS['DEAL_TABLE_VISIBLE_COLUMNS'],
             ],
         ],
         Company::MODULE_NAME => [
             Contact::MODULE_NAME => [
-                'columns_order'   => 'company_contact_table_columns_order',
-                'visible_columns' => 'company_contact_table_visible_columns',
+                'columns_order'   => Company::SETTINGS_KEYS['CONTACT_TABLE_COLUMNS_ORDER'],
+                'visible_columns' => Company::SETTINGS_KEYS['CONTACT_TABLE_VISIBLE_COLUMNS'],
             ],
             Deal::MODULE_NAME => [
-                'columns_order'   => 'company_deal_table_columns_order',
-                'visible_columns' => 'company_deal_table_visible_columns',
+                'columns_order'   => Company::SETTINGS_KEYS['DEAL_TABLE_COLUMNS_ORDER'],
+                'visible_columns' => Company::SETTINGS_KEYS['DEAL_TABLE_VISIBLE_COLUMNS'],
             ],
         ],
     ];

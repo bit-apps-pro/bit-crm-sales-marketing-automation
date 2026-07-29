@@ -10,6 +10,10 @@ class Invoice extends Model
 {
     public const MODULE_NAME = 'invoice';
 
+    public const SETTINGS_KEYS = [
+        'PREFIX' => 'invoice_prefix',
+    ];
+
     public const STATUS_DRAFT = 'draft';
 
     public const STATUS_OVERDUE = 'overdue';

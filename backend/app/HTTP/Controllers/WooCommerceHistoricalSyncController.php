@@ -3,6 +3,7 @@
 namespace BitApps\Crm\HTTP\Controllers;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
+use BitApps\Crm\Services\IntegrationSettingsService;
 use BitApps\Crm\Services\SettingService;
 use BitApps\Crm\src\Capability;
 use BitApps\Crm\src\Queue\WooCommerceHistoricalSyncProcess;
@@ -59,7 +60,7 @@ final class WooCommerceHistoricalSyncController
             return;
         }
 
-        $settings = SettingService::getSettingsValue('woocommerce_integration_settings');
+        $settings = SettingService::getSettingsValue(IntegrationSettingsService::SETTINGS_KEYS['WOOCOMMERCE_INTEGRATION_SETTINGS']);
 
         if (empty($settings['sync_enabled'])) {
             return;

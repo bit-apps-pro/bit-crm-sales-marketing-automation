@@ -13,7 +13,7 @@ class WooCommerceContactSyncService
             return false;
         }
 
-        $settings = SettingService::getSettingsValue('woocommerce_integration_settings');
+        $settings = SettingService::getSettingsValue(IntegrationSettingsService::SETTINGS_KEYS['WOOCOMMERCE_INTEGRATION_SETTINGS']);
 
         if (!($settings['sync_enabled'] ?? false)) {
             return false;

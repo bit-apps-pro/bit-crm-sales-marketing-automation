@@ -67,6 +67,13 @@ class HookKeys
     public const CAPABILITY_OPTIONS = 'bit_crm_capability_options';
 
     /**
+     * Filters setting keys that may be upserted, grouped by required capability.
+     *
+     * apply_filters(array $settingKeysByCapability): array
+     */
+    public const SETTING_KEYS_BY_CAPABILITY = 'bit_crm_setting_keys_by_capability';
+
+    /**
      * Filters the list of currencies stored/enabled for the CRM.
      *
      * apply_filters(array $currencies): array
