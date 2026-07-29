@@ -24,11 +24,15 @@ class Company extends Model
     public const CSV_FIELDS_PREFIX = 'csv_fields_';
 
     public const SETTINGS_KEYS = [
-        'FIELDS'                => 'company_fields_settings',
-        'FIELDS_ORDER'          => 'company_fields_order',
-        'TABLE_VISIBLE_COLUMNS' => 'company_table_visible_columns',
-        'COLUMNS_ORDER'         => 'company_table_columns_order',
-        'COLUMNS_SETTINGS'      => 'company_columns_settings',
+        'FIELDS'                        => 'company_fields_settings',
+        'FIELDS_ORDER'                  => 'company_fields_order',
+        'TABLE_VISIBLE_COLUMNS'         => 'company_table_visible_columns',
+        'COLUMNS_ORDER'                 => 'company_table_columns_order',
+        'COLUMNS_SETTINGS'              => 'company_columns_settings',
+        'CONTACT_TABLE_COLUMNS_ORDER'   => 'company_contact_table_columns_order',
+        'CONTACT_TABLE_VISIBLE_COLUMNS' => 'company_contact_table_visible_columns',
+        'DEAL_TABLE_COLUMNS_ORDER'      => 'company_deal_table_columns_order',
+        'DEAL_TABLE_VISIBLE_COLUMNS'    => 'company_deal_table_visible_columns',
     ];
 
     public const RELATED_MODELS = [

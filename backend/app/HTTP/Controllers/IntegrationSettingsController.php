@@ -6,13 +6,12 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
 use BitApps\Crm\HTTP\Requests\Integration\ShowRequest;
 use BitApps\Crm\HTTP\Requests\Integration\UpsertRequest;
 use BitApps\Crm\Model\Setting;
+use BitApps\Crm\Services\IntegrationSettingsService;
 use BitApps\Crm\Services\WooCommerceProductService;
 use Throwable;
 
 final class IntegrationSettingsController
 {
-    private const WC_INTEGRATION_KEY = 'woocommerce_integration_settings';
-
     public function show(ShowRequest $request)
     {
         $validated = $request->validated();
@@ -55,7 +54,7 @@ final class IntegrationSettingsController
             return Response::error(__('Failed to save settings.', 'bit-crm-sales-marketing-automation'));
         }
 
-        if ($validated['setting_key'] === self::WC_INTEGRATION_KEY) {
+        if ($validated['setting_key'] === IntegrationSettingsService::SETTINGS_KEYS['WOOCOMMERCE_INTEGRATION_SETTINGS']) {
             $isNowEnabled = (bool) ($validated['setting_value']['sync_enabled'] ?? false);
             $this->handleWooSyncTransition($wasEnabled, $isNowEnabled);
         }
@@ -66,7 +65,7 @@ final class IntegrationSettingsController
     public function wooProductIntegration()
     {
         $isWooActive = (new WooCommerceProductService())->isPluginActive();
-        $setting = Setting::findOne(['setting_key' => 'integration_settings']);
+        $setting = Setting::findOne(['setting_key' => IntegrationSettingsService::SETTINGS_KEYS['INTEGRATION_SETTINGS']]);
 
         $savedValue = $setting ? ($setting->setting_value['enable_woo_products'] ?? null) : null;
         $enableWooProducts = $isWooActive && ($savedValue ?? true);

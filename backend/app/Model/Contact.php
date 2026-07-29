@@ -24,11 +24,13 @@ class Contact extends Model
     public const CSV_FIELDS_PREFIX = 'csv_fields_';
 
     public const SETTINGS_KEYS = [
-        'FIELDS'                => 'contact_fields_settings',
-        'FIELDS_ORDER'          => 'contact_fields_order',
-        'TABLE_VISIBLE_COLUMNS' => 'contact_table_visible_columns',
-        'COLUMNS_ORDER'         => 'contact_table_columns_order',
-        'COLUMNS_SETTINGS'      => 'contact_columns_settings',
+        'FIELDS'                     => 'contact_fields_settings',
+        'FIELDS_ORDER'               => 'contact_fields_order',
+        'TABLE_VISIBLE_COLUMNS'      => 'contact_table_visible_columns',
+        'COLUMNS_ORDER'              => 'contact_table_columns_order',
+        'COLUMNS_SETTINGS'           => 'contact_columns_settings',
+        'DEAL_TABLE_COLUMNS_ORDER'   => 'contact_deal_table_columns_order',
+        'DEAL_TABLE_VISIBLE_COLUMNS' => 'contact_deal_table_visible_columns',
     ];
 
     public const RELATED_MODELS = [

@@ -4,6 +4,7 @@ namespace BitApps\Crm\src\Queue;
 
 use BitApps\Crm\Config;
 use BitApps\Crm\Model\Setting;
+use BitApps\Crm\Services\IntegrationSettingsService;
 use BitApps\Crm\Services\SettingService;
 use BitApps\Crm\Services\WooCommerceContactSyncService;
 use WP_Background_Process;
@@ -47,7 +48,7 @@ class WooCommerceHistoricalSyncProcess extends WP_Background_Process
             return false;
         }
 
-        $settings = SettingService::getSettingsValue('woocommerce_integration_settings');
+        $settings = SettingService::getSettingsValue(IntegrationSettingsService::SETTINGS_KEYS['WOOCOMMERCE_INTEGRATION_SETTINGS']);
         if (empty($settings['sync_enabled'])) {
             self::updateState(['status' => 'stopped', 'page' => $item['page'] ?? 1, 'last_order_id' => $item['last_order_id'] ?? 0]);
 
