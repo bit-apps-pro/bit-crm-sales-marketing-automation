@@ -1,5 +1,7 @@
+import { MODULES } from '@common/constants/modules'
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
+import config from '@config/config'
 import LookupFieldSelect from '@features/lookup-field-select'
 import LookupField from '@utilities/lookup-field'
 import { Checkbox, DatePicker, Divider, Form, Input, InputNumber, Radio, Select } from 'antd'
@@ -79,6 +81,9 @@ export default function EntityInput({
           <LookupFieldSelect
             disabled={disabled}
             fieldKey={fieldKey}
+            queryParams={
+              relatedModule === MODULES.USER ? { role_filter: config.PLUGIN_SLUG } : undefined
+            }
             relatedModule={relatedModule}
             showAddNew={enableQuickCreate}
             sourceModule={sourceModule}

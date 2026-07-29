@@ -1,4 +1,6 @@
+import { MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
+import config from '@config/config'
 import LookupFieldSelect from '@features/lookup-field-select'
 import If from '@utilities/If'
 import { DatePicker, Input, Select, Typography } from 'antd'
@@ -79,6 +81,11 @@ export default function FilterValueInput({
           <LookupFieldSelect
             className="w-full"
             onChange={handleValueChange}
+            queryParams={
+              selectedField?.related_module === MODULES.USER
+                ? { role_filter: config.PLUGIN_SLUG }
+                : undefined
+            }
             relatedModule={selectedField?.related_module || ''}
             showAddNew={false}
             status={error ? 'error' : undefined}
