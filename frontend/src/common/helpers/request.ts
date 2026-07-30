@@ -39,6 +39,8 @@ export interface Response<T> {
 // eslint-disable-next-line unicorn/no-null
 const replaceUndefined = (_: string, value: unknown) => (value === undefined ? null : value)
 
+const PRO_ACTION_PREFIX = 'pro_'
+
 export default async function queryRequest<T>(
   action: string,
   data?: any | FormData | null | Record<string, unknown> | undefined, // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -48,8 +50,10 @@ export default async function queryRequest<T>(
   isPro = false
 ): Promise<Response<T>> {
   const { API_URL, NONCE, PRO_API_URL } = config
-  const baseUrl = isPro && PRO_API_URL ? PRO_API_URL : API_URL
-  const uri = new URL(`${baseUrl}/${action}`, `${window.location.protocol}//${window.location.host}`)
+  const isProPrefixedAction = action.startsWith(PRO_ACTION_PREFIX)
+  const route = isProPrefixedAction ? action.slice(PRO_ACTION_PREFIX.length) : action
+  const baseUrl = (isPro || isProPrefixedAction) && PRO_API_URL ? PRO_API_URL : API_URL
+  const uri = new URL(`${baseUrl}/${route}`, `${window.location.protocol}//${window.location.host}`)
 
   // append query params in url
   if (queryParam !== null) {
