@@ -66,6 +66,24 @@ class Capabilities
     }
 
     /**
+     * Get activity related (activity, note, link, attachment) capabilities.
+     *
+     * Uses explicit `view` instead of generateCrudCapabilities' `read`
+     * to match the enforced capability names in capabilityOptions.php.
+     *
+     * @return array
+     */
+    public static function getActivityRelatedCapabilities()
+    {
+        return array_merge(
+            self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'activity'),
+            self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'note'),
+            self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'link'),
+            self::generateCapabilitiesWithPrefix(['view', 'create', 'delete'], 'attachment')
+        );
+    }
+
+    /**
      * Get common capabilities.
      *
      * @return array [ 'bit_crm_dashboard', 'bit_crm_settings_menu', ... ]

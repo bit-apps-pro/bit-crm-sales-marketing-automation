@@ -63,9 +63,11 @@ export default function Dashboard() {
       <div className="flex flex-col gap-5">
         <StatCards stats={stats} />
         <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-10">
-          <div className="w-full md:col-span-3">
-            <PendingActivities pendingActivities={pendingActivities} />
-          </div>
+          <If conditions={checkCapability(CAPABILITIES.ACTIVITY.VIEW)}>
+            <div className="w-full md:col-span-3">
+              <PendingActivities pendingActivities={pendingActivities} />
+            </div>
+          </If>
           <div
             className={cn(
               'col-span-1 flex flex-col gap-5 lg:col-span-5',

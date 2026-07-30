@@ -3,9 +3,15 @@
 namespace BitApps\Crm\HTTP\Requests\Link;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
+use BitApps\Crm\src\Capability;
 
 class StoreRequest extends Request
 {
+    public function authorize()
+    {
+        return Capability::check('bit_crm_link_create');
+    }
+
     public function rules()
     {
         return [

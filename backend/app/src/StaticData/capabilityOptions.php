@@ -4,11 +4,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+use BitApps\Crm\Model\Activity;
+use BitApps\Crm\Model\Attachment;
 use BitApps\Crm\Model\Company;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Model\Lead;
+use BitApps\Crm\Model\Link;
+use BitApps\Crm\Model\Note;
 use BitApps\Crm\Model\Setting;
 use BitApps\Crm\Model\Tag;
 
@@ -48,6 +52,29 @@ return [
         ['label' => __('Export', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_export'],
         ['label' => __('Import', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_import'],
     ],
+    Activity::MODULE_NAME => [
+        ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_activity_view'],
+        ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_activity_create'],
+        ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_activity_update'],
+        ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_activity_delete'],
+    ],
+    Note::MODULE_NAME => [
+        ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_note_view'],
+        ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_note_create'],
+        ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_note_update'],
+        ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_note_delete'],
+    ],
+    Link::MODULE_NAME => [
+        ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_link_view'],
+        ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_link_create'],
+        ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_link_update'],
+        ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_link_delete'],
+    ],
+    Attachment::MODULE_NAME => [
+        ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_view'],
+        ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_create'],
+        ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_delete'],
+    ],
 
     Tag::MODULE_NAME => [
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_view'],
@@ -78,6 +105,7 @@ return [
         ['label' => __('CRM Users', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_crm_user'],
         ['label' => __('Workflow Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_workflow'],
         ['label' => __('History Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_history'],
+        ['label' => __('Portal Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_portal'],
     ],
     'others' => [
         ['label' => __('History View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_history_view'],

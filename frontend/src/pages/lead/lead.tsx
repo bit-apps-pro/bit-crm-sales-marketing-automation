@@ -99,6 +99,7 @@ const Lead = () => {
               destroyOnHidden
               items={[
                 {
+                  capability: CAPABILITIES.LEAD.VIEW,
                   children: (
                     <LeadOverview
                       columnSettings={columnSettings}
@@ -114,6 +115,7 @@ const Lead = () => {
                   label: tabLabel(ICONS['overview'], __('Overview'))
                 },
                 {
+                  capability: CAPABILITIES.LEAD.VIEW,
                   children: (
                     <EntityEmails
                       email={lead?.email}
@@ -122,41 +124,46 @@ const Lead = () => {
                       module={MODULES.LEAD}
                     />
                   ),
-                  disabled: !checkCapability(CAPABILITIES.LEAD.VIEW),
                   key: 'email',
                   label: tabLabel(ICONS['email'], __('Emails'))
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: <Tasks entityId={Number(leadId)} fields={fields} module={MODULES.LEAD} />,
                   key: 'tasks',
                   label: tabLabel(ICONS['task'], __('Tasks'), taskCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: <Meetings entityId={Number(leadId)} fields={fields} module={MODULES.LEAD} />,
                   key: 'meetings',
                   label: tabLabel(ICONS['meeting'], __('Meetings'), meetingCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: <Calls entityId={Number(leadId)} fields={fields} module={MODULES.LEAD} />,
                   key: 'calls',
                   label: tabLabel(ICONS['call'], __('Calls'), callCount)
                 },
                 {
+                  capability: CAPABILITIES.ATTACHMENT.VIEW,
                   children: <Attachments entityId={Number(leadId)} module={MODULES.LEAD} />,
                   key: 'attachments',
                   label: tabLabel(ICONS['attachment'], __('Attachments'), attachmentCount)
                 },
                 {
+                  capability: CAPABILITIES.NOTE.VIEW,
                   children: <Notes entityId={Number(leadId)} fields={fields} module={MODULES.LEAD} />,
                   key: 'notes',
                   label: tabLabel(ICONS['note'], __('Notes'), noteCount)
                 },
                 {
+                  capability: CAPABILITIES.LINK.VIEW,
                   children: <Links entityId={Number(leadId)} fields={fields} module={MODULES.LEAD} />,
                   key: 'links',
                   label: tabLabel(ICONS['link'], __('Links'), linkCount)
                 }
-              ]}
+              ].filter(tab => tab.capability && checkCapability(tab.capability))}
               onChange={path => setSearchParams({ tab: path })}
             />
           </div>

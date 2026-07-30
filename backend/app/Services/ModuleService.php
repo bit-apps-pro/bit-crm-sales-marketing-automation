@@ -27,6 +27,18 @@ class ModuleService
         Activity::MODULE_NAME,
     ];
 
+    public const MODULE_VIEW_CAPABILITIES = [
+        Lead::MODULE_NAME    => 'bit_crm_lead_view',
+        Contact::MODULE_NAME => 'bit_crm_contact_view',
+        Company::MODULE_NAME => 'bit_crm_company_view',
+        Deal::MODULE_NAME    => 'bit_crm_deal_view',
+    ];
+
+    public static function moduleViewCapability(?string $module): ?string
+    {
+        return self::MODULE_VIEW_CAPABILITIES[$module] ?? null;
+    }
+
     public static function isValidModule(string $module): bool
     {
         if (empty($module)) {

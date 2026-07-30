@@ -6,14 +6,14 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Model\Activity;
 use BitApps\Crm\Rules\Activity\PriorityRule;
 use BitApps\Crm\Rules\ValidModuleRule;
+use BitApps\Crm\src\Capability;
 
 class IndexRequest extends Request
 {
-    // TODO: Uncomment the authorize method when capabilities are implemented
-    // public function authorize()
-    // {
-    //     return Capability::check('cap');
-    // }
+    public function authorize()
+    {
+        return Capability::check('bit_crm_activity_view');
+    }
 
     public function rules()
     {

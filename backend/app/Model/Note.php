@@ -10,6 +10,8 @@ class Note extends Model
 {
     public const MODULE_NAME = 'note';
 
+    public const TYPE_SUBMODULE = 'submodule';
+
     public const SORT_RECENT_FIRST = 'recent_first';
 
     public const SORT_RECENT_LAST = 'recent_last';

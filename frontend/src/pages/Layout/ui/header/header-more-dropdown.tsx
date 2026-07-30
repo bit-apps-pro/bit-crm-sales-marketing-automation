@@ -10,9 +10,9 @@ import { NavLink, useLocation } from 'react-router'
 
 const MORE_MENU_ITEMS = [
   { capability: CAPABILITIES.PRODUCT.MENU, key: 'products', label: __('Products'), to: '../products' },
-  { capability: CAPABILITIES.LEAD.MENU, key: 'tasks', label: __('Tasks'), to: '/tasks' },
-  { capability: CAPABILITIES.LEAD.MENU, key: 'meetings', label: __('Meetings'), to: '/meetings' },
-  { capability: CAPABILITIES.LEAD.MENU, key: 'calls', label: __('Calls'), to: '/calls' },
+  { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'tasks', label: __('Tasks'), to: '/tasks' },
+  { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'meetings', label: __('Meetings'), to: '/meetings' },
+  { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'calls', label: __('Calls'), to: '/calls' },
   { capability: CAPABILITIES.TAG.MENU, key: 'tags', label: __('Tags'), to: '/tags' },
   { capability: CAPABILITIES.WORKFLOW.MENU, key: 'workflows', label: __('Workflows'), to: '/workflows' },
   { capability: CAPABILITIES.OTHERS.History, key: 'history', label: __('History'), to: '/history' },

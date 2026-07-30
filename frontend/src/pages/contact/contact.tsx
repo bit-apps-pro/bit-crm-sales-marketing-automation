@@ -97,6 +97,7 @@ const Contact = () => {
               destroyOnHidden
               items={[
                 {
+                  capability: CAPABILITIES.CONTACT.VIEW,
                   children: (
                     <ContactOverview
                       columnSettings={columnSettings}
@@ -112,6 +113,7 @@ const Contact = () => {
                   label: tabLabel(ICONS['overview'], __('Overview'))
                 },
                 {
+                  capability: CAPABILITIES.CONTACT.VIEW,
                   children: (
                     <EntityEmails
                       email={contact?.email || ''}
@@ -120,11 +122,11 @@ const Contact = () => {
                       module={MODULES.CONTACT}
                     />
                   ),
-                  disabled: !checkCapability(CAPABILITIES.CONTACT.VIEW),
                   key: 'email',
                   label: tabLabel(ICONS['email'], __('Emails'))
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: (
                     <Tasks entityId={Number(contactId)} fields={fields} module={MODULES.CONTACT} />
                   ),
@@ -132,6 +134,7 @@ const Contact = () => {
                   label: tabLabel(ICONS['task'], __('Tasks'), taskCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: (
                     <Meetings entityId={Number(contactId)} fields={fields} module={MODULES.CONTACT} />
                   ),
@@ -139,6 +142,7 @@ const Contact = () => {
                   label: tabLabel(ICONS['meeting'], __('Meetings'), meetingCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: (
                     <Calls entityId={Number(contactId)} fields={fields} module={MODULES.CONTACT} />
                   ),
@@ -146,11 +150,13 @@ const Contact = () => {
                   label: tabLabel(ICONS['call'], __('Calls'), callCount)
                 },
                 {
+                  capability: CAPABILITIES.ATTACHMENT.VIEW,
                   children: <Attachments entityId={Number(contactId)} module={MODULES.CONTACT} />,
                   key: 'attachments',
                   label: tabLabel(ICONS['attachment'], __('Attachments'), attachmentCount)
                 },
                 {
+                  capability: CAPABILITIES.NOTE.VIEW,
                   children: (
                     <Notes entityId={Number(contactId)} fields={fields} module={MODULES.CONTACT} />
                   ),
@@ -158,6 +164,7 @@ const Contact = () => {
                   label: tabLabel(ICONS['note'], __('Notes'), noteCount)
                 },
                 {
+                  capability: CAPABILITIES.LINK.VIEW,
                   children: (
                     <Links entityId={Number(contactId)} fields={fields} module={MODULES.CONTACT} />
                   ),
@@ -165,6 +172,7 @@ const Contact = () => {
                   label: tabLabel(ICONS['link'], __('Links'), linkCount)
                 },
                 {
+                  capability: CAPABILITIES.DEAL.VIEW,
                   children: (
                     <RelatedEntities
                       detachable={false}
@@ -176,7 +184,7 @@ const Contact = () => {
                   key: 'deals',
                   label: __('Deals')
                 }
-              ]}
+              ].filter(tab => tab.capability && checkCapability(tab.capability))}
               onChange={path => setSearchParams({ tab: path })}
             />
           </div>

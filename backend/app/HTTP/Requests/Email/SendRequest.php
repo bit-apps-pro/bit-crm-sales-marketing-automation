@@ -3,13 +3,20 @@
 namespace BitApps\Crm\HTTP\Requests\Email;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
+use BitApps\Crm\Services\ModuleService;
 use BitApps\Crm\src\Capability;
 
 class SendRequest extends Request
 {
     public function authorize()
     {
-        return Capability::check('bit_crm_lead_emails');
+        $capability = ModuleService::moduleViewCapability($this->module);
+
+        if (!$capability) {
+            return false;
+        }
+
+        return Capability::check($capability);
     }
 
     public function rules()

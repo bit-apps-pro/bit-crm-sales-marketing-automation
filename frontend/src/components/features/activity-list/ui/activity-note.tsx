@@ -1,3 +1,5 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import useDeleteNote from '@features/notes/data/use-delete-note'
 import useUpdateNote from '@features/notes/data/use-update-note'
@@ -42,12 +44,14 @@ export default function ActivityNote({ editNoteId, note, setEditNoteId }: Activi
 
   const items = [
     {
+      capability: CAPABILITIES.NOTE.UPDATE,
       icon: <LuPenLine size={14} />,
       key: 'edit',
       label: __('Edit'),
       onClick: () => handleEditNote(note.id)
     },
     {
+      capability: CAPABILITIES.NOTE.DELETE,
       disabled: isDeletingNote,
       icon: <LuTrash2 className="text-red-500" size={14} />,
       key: 'delete',
@@ -55,6 +59,8 @@ export default function ActivityNote({ editNoteId, note, setEditNoteId }: Activi
       onClick: () => handleDeleteNote(note.id)
     }
   ]
+
+  const availableItems = items.filter(item => item.capability && checkCapability(item.capability))
 
   return (
     <div>
@@ -64,15 +70,17 @@ export default function ActivityNote({ editNoteId, note, setEditNoteId }: Activi
             className="min-w-0 break-normal break-words"
             dangerouslySetInnerHTML={{ __html: note.details }}
           />
-          <div className="flex shrink-0 items-center">
-            <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
-              <Button
-                className="text-gray-600 dark:text-gray-400"
-                icon={<LuEllipsisVertical size={12} />}
-                type="link"
-              />
-            </Dropdown>
-          </div>
+          <If conditions={availableItems.length > 0}>
+            <div className="flex shrink-0 items-center">
+              <Dropdown menu={{ items: availableItems }} placement="bottomRight" trigger={['click']}>
+                <Button
+                  className="text-gray-600 dark:text-gray-400"
+                  icon={<LuEllipsisVertical size={12} />}
+                  type="link"
+                />
+              </Dropdown>
+            </div>
+          </If>
         </div>
       </If>
       <If conditions={editNoteId === note.id}>

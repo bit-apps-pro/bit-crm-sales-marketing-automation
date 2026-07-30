@@ -1,4 +1,7 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
+import If from '@utilities/If'
 import { type DropdownProps } from 'antd'
 import { Button, Dropdown, Popconfirm } from 'antd'
 import { useState } from 'react'
@@ -31,7 +34,7 @@ export default function NoteListActionMore({ id }: { id: number }) {
 
   const items = [
     {
-      capability: '',
+      capability: CAPABILITIES.NOTE.UPDATE,
       key: 'edit',
       label: (
         <Button icon={<LuPenLine />} onClick={handleEdit} size="small" type="link">
@@ -40,7 +43,7 @@ export default function NoteListActionMore({ id }: { id: number }) {
       )
     },
     {
-      capability: '',
+      capability: CAPABILITIES.NOTE.DELETE,
       key: 'delete',
       label: (
         <Popconfirm
@@ -57,6 +60,8 @@ export default function NoteListActionMore({ id }: { id: number }) {
     }
   ]
 
+  const availableItems = items.filter(item => item.capability && checkCapability(item.capability))
+
   const handleOpenChange: DropdownProps['onOpenChange'] = (nextOpen, info) => {
     if (info.source === 'trigger' || nextOpen) {
       setIsOpen(nextOpen)
@@ -64,8 +69,15 @@ export default function NoteListActionMore({ id }: { id: number }) {
   }
 
   return (
-    <Dropdown menu={{ items }} onOpenChange={handleOpenChange} open={isOpen} trigger={['click']}>
-      <Button className="h-full w-full" icon={<LuEllipsisVertical size={12} />} type="link" />
-    </Dropdown>
+    <If conditions={availableItems.length > 0}>
+      <Dropdown
+        menu={{ items: availableItems }}
+        onOpenChange={handleOpenChange}
+        open={isOpen}
+        trigger={['click']}
+      >
+        <Button className="h-full w-full" icon={<LuEllipsisVertical size={12} />} type="link" />
+      </Dropdown>
+    </If>
   )
 }

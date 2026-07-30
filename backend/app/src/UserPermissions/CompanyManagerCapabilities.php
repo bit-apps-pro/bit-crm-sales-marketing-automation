@@ -12,11 +12,12 @@ class CompanyManagerCapabilities
         $tagCapabilities = Capabilities::getTagCapabilities();
         $historyCapabilities = Capabilities::getHistoryCapabilities();
         $commonCapabilities = Capabilities::getCommonsCapabilities();
+        $activityRelatedCapabilities = Capabilities::getActivityRelatedCapabilities();
         $otherCapabilities = Capabilities::generateCapabilitiesWithPrefix(
             ['emails', 'settings', 'menu', 'export', 'import', 'activity_log'],
             Company::MODULE_NAME
         );
 
-        return array_merge($crudCapabilities, $tagCapabilities, $historyCapabilities, $commonCapabilities, $otherCapabilities);
+        return array_merge($crudCapabilities, $tagCapabilities, $historyCapabilities, $commonCapabilities, $activityRelatedCapabilities, $otherCapabilities);
     }
 }

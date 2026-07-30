@@ -1,4 +1,6 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import If from '@utilities/If'
 import Pagination from '@utilities/pagination'
@@ -43,14 +45,16 @@ export default function Attachments({ entityId, module }: AttachmentsProps) {
           <Typography.Title className="mb-0" level={5}>
             {__('Attachments')}
           </Typography.Title>
-          <Button
-            className="rounded-full"
-            icon={<LuPlus />}
-            onClick={() => handleModal('open', setSearchParams, { modal: 'attachment_create' })}
-            type="primary"
-          >
-            {__('New')}
-          </Button>
+          <If conditions={checkCapability(CAPABILITIES.ATTACHMENT.CREATE)}>
+            <Button
+              className="rounded-full"
+              icon={<LuPlus />}
+              onClick={() => handleModal('open', setSearchParams, { modal: 'attachment_create' })}
+              type="primary"
+            >
+              {__('New')}
+            </Button>
+          </If>
           <If conditions={isFetchingAttachments || isRefetchingAttachments}>
             <LoadingOutlined />
           </If>
