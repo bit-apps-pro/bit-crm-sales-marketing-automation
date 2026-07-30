@@ -1,7 +1,7 @@
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
-import useUpdateWooProductIntegration from '@pages/integration-settings/data/use-update-woo-product-integration'
-import useWooProductIntegration from '@pages/integration-settings/data/use-woo-product-integration'
+import useUpdateWooProductIntegration from '@pages/woo-settings/data/use-update-woo-product-integration'
+import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
 import { Skeleton, Switch, Typography } from 'antd'
 
 const { Text, Title } = Typography

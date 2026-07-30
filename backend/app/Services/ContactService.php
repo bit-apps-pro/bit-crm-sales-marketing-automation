@@ -140,7 +140,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
 
     public function update(array|Request $data): array
     {
-        $rules = (new UpdateRequest())->rules();
+        $rules = CommonService::makeOnlyIdRequired((new UpdateRequest())->rules());
         $validated = CommonService::resolveValidatedData($data, $rules);
 
         if (isset($validated['errors'])) {

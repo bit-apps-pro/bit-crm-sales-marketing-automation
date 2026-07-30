@@ -4,9 +4,9 @@ import { Form, Input, Skeleton, Switch, Typography } from 'antd'
 import { useEffect, useRef } from 'react'
 import { LuLoader } from 'react-icons/lu'
 
-import useUpsertWcSyncSettings from '../../data/use-upsert-wc-sync-settings'
-import useWcSyncSettings from '../../data/use-wc-sync-settings'
-import { type WooCommerceIntegrationSettings } from '../../shared/types'
+import useUpsertWcSyncSettings from '../data/use-upsert-wc-sync-settings'
+import useWcSyncSettings from '../data/use-wc-sync-settings'
+import { type WooCommerceIntegrationSettings } from '../shared/types'
 
 const { Text, Title } = Typography
 

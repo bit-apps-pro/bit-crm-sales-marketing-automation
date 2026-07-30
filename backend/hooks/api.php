@@ -4,6 +4,7 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\Router\Route;
 use BitApps\Crm\HTTP\Controllers\ActivityController;
 use BitApps\Crm\HTTP\Controllers\ActivityLogController;
 use BitApps\Crm\HTTP\Controllers\AttachmentController;
+use BitApps\Crm\HTTP\Controllers\BitFormIntegrationController;
 use BitApps\Crm\HTTP\Controllers\BusinessSettingsController;
 use BitApps\Crm\HTTP\Controllers\CommonController;
 use BitApps\Crm\HTTP\Controllers\CompanyController;
@@ -213,6 +214,10 @@ Route::group(
 
         Route::get('plugins/info', [PluginInstallerController::class, 'pluginInfo']);
         Route::post('plugins/install', [PluginInstallerController::class, 'install']);
+
+        Route::get('bit-form/forms', [BitFormIntegrationController::class, 'forms']);
+        Route::post('bit-form/toggle-form-status', [BitFormIntegrationController::class, 'toggleFormStatus']);
+        Route::post('bit-form/create-form', [BitFormIntegrationController::class, 'createForm']);
 
         Route::post('onboarding/store', [OnboardingController::class, 'store']);
 

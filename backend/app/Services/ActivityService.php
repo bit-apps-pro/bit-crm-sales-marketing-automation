@@ -68,7 +68,8 @@ class ActivityService
 
     public function update(array|Request $data): array
     {
-        $validated = CommonService::resolveValidatedData($data, (new UpdateRequest())->rules());
+        $rules = CommonService::makeOnlyIdRequired((new UpdateRequest())->rules());
+        $validated = CommonService::resolveValidatedData($data, $rules);
 
         if (isset($validated['errors'])) {
             return $validated;
@@ -127,7 +128,7 @@ class ActivityService
         $type = $activity->type;
 
         if ($activity->delete()) {
-            Hooks::doAction('bit_crm/activity_deleted', $validated['id']);
+            Hooks::doAction('bit_crm/activity_deleted', $activity);
 
             // translators: %s: activity type
             return ['success' => true, 'data' => null, 'message' => \sprintf(__('%s deleted successfully!', 'bit-crm-sales-marketing-automation'), ucfirst($type))];

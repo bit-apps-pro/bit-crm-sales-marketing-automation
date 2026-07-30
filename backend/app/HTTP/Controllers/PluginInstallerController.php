@@ -34,7 +34,7 @@ final class PluginInstallerController
             $this->pluginInstallerService->installAndActivatePlugin($pluginData);
 
             // translators: %s: plugin slug
-            return Response::success(null)->message(\sprintf(__('Plugin "%s" has been installed and activated successfully.', 'bit-crm-sales-marketing-automation'), $pluginData['slug']));
+            return Response::success(null)->message(\sprintf(__('Plugin "%s" has been activated successfully.', 'bit-crm-sales-marketing-automation'), $pluginData['slug']));
         } catch (Throwable $th) {
             return Response::error(null)->message($th->getMessage());
         }
@@ -44,9 +44,11 @@ final class PluginInstallerController
     {
         $validated = $request->validated();
         $pluginData = OtherPluginsData::getPluginData($validated['slug']);
+        $pluginPath = $pluginData['path'] ?? '';
 
         $data = [
-            'isInstalled'       => is_plugin_active($pluginData['path'] ?? ''),
+            'isInstalled'       => $this->pluginInstallerService->isPluginInstalled($pluginPath),
+            'isActive'          => $this->pluginInstallerService->isPluginActive($pluginPath),
             'url'               => Config::get('ADMIN_URL') . 'admin.php?page=' . $validated['slug'],
             'canInstallPlugins' => Capabilities::check('install_plugins'),
             'additionalInfo'    => $this->getAdditionalInfo($pluginData),

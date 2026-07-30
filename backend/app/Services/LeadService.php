@@ -20,6 +20,7 @@ use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Model\Tag;
 use BitApps\Crm\Model\TagEntity;
 use BitApps\Crm\Model\Trash;
+use BitApps\Crm\src\StaticData\CurrencyHelper;
 use BitApps\Crm\src\StaticData\LeadSystemDefinedFields;
 use Throwable;
 
@@ -58,6 +59,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
+        $systemDefinedFieldsValues['currency'] = $validated['currency'] ?? CurrencyHelper::getHomeCurrency();
         Connection::startTransaction();
 
         try {
@@ -130,7 +132,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
 
     public function update(array|Request $data): array
     {
-        $rules = (new UpdateRequest())->rules();
+        $rules = CommonService::makeOnlyIdRequired((new UpdateRequest())->rules());
         $validated = CommonService::resolveValidatedData($data, $rules);
 
         if (isset($validated['errors'])) {

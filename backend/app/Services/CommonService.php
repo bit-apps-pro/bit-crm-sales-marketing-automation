@@ -145,6 +145,31 @@ class CommonService
         return $validator->validated();
     }
 
+    /**
+     * Given an update() rules set, returns a copy where "id" is the only
+     * required field — for update() methods called directly with an array
+     * (via the API or another plugin) instead of through the HTTP request
+     * pipeline.
+     */
+    public static function makeOnlyIdRequired(array $rules): array
+    {
+        foreach ($rules as $field => $fieldRules) {
+            if ($field === 'id' || !\is_array($fieldRules)) {
+                continue;
+            }
+
+            $fieldRules = array_values(array_filter($fieldRules, static fn ($rule) => $rule !== 'required'));
+
+            if (!\in_array('nullable', $fieldRules, true)) {
+                array_unshift($fieldRules, 'nullable');
+            }
+
+            $rules[$field] = $fieldRules;
+        }
+
+        return $rules;
+    }
+
     private static function resolveUserDisplayName($userId): ?string
     {
         if (empty($userId) || !is_numeric($userId)) {

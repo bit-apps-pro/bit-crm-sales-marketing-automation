@@ -117,7 +117,7 @@ export default function Contacts() {
         <div className="flex flex-wrap items-center justify-end gap-2">
           <IntegrationSettingsNavigation
             label={__('WooCommerce sync')}
-            to="/settings/integration-settings?tab=woo-integration"
+            to="/settings/woo-settings"
             tooltip={__(
               'Automatically add customers from WooCommerce orders to Bit CRM and optionally tag them by purchased products or coupon codes.'
             )}

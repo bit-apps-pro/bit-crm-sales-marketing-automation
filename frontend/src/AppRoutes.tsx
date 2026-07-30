@@ -50,7 +50,9 @@ const Deal = lazy(() => import('@pages/deal'))
 const DealCreate = lazy(() => import('@pages/deal-create'))
 const ProductSettings = lazy(() => import('@pages/product-settings'))
 const Products = lazy(() => import('@pages/products'))
-const IntegrationSettings = lazy(() => import('@pages/integration-settings'))
+const WooSettings = lazy(() => import('@pages/woo-settings'))
+const BitFormSettings = lazy(() => import('@pages/bit-form-settings'))
+const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations-settings'))
 const Currencies = lazy(() => import('@pages/currencies'))
 const InvoiceCreate = lazy(() => import('@pages/invoice-create'))
 const Invoices = lazy(() => import('@pages/invoices'))
@@ -212,10 +214,26 @@ export default function AppRoutes() {
                 <Route
                   element={
                     <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
-                      <IntegrationSettings />
+                      <WooSettings />
                     </ProtectedRoute>
                   }
-                  path="integration-settings"
+                  path="woo-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
+                      <BitFormSettings />
+                    </ProtectedRoute>
+                  }
+                  path="bit-form-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
+                      <OthersIntegrationsSettings />
+                    </ProtectedRoute>
+                  }
+                  path="others-integrations-settings"
                 />
                 <Route
                   element={

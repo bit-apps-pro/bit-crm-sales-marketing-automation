@@ -142,7 +142,7 @@ final class Menu
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
             'name'       => 'Settings',
-            'capability' => 'bit_crm_settings_menu',
+            'capability' => 'bit_crm_setting_menu',
             'slug'       => Config::SLUG . '#/settings',
         ];
     }
