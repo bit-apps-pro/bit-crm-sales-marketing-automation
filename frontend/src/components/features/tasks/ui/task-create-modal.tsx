@@ -1,7 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
 // Import from the original activities feature
 import config from '@config/config'
-import { PRIORITIES } from '@features/activity-list/shared/activity-constants'
+import { PRIORITIES } from '@features/activity-feed/shared/activity-constants'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import If from '@utilities/If'
 import { Form, Modal } from 'antd'
@@ -81,10 +81,13 @@ export default function TaskCreateModal({
 
   return (
     <Modal
+      cancelButtonProps={{
+        className: 'rounded-full'
+      }}
       centered
       confirmLoading={isStoringTask}
       destroyOnHidden
-      okButtonProps={{ disabled: isStoringTask }}
+      okButtonProps={{ className: 'rounded-full', disabled: isStoringTask }}
       okText={__('Create')}
       onCancel={handleClose}
       onOk={handleSubmit}

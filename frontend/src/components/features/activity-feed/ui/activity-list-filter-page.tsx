@@ -1,6 +1,6 @@
 import { getFilteredModuleOptions, MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
-import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@features/activity-list/shared/activity-constants'
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@features/activity-feed/shared/activity-constants'
 import ActivityFilter from '@utilities/activity-filter/ui/activity-filter'
 
 const FILTERED_MODULE_OPTIONS = getFilteredModuleOptions([MODULES.INVOICE])

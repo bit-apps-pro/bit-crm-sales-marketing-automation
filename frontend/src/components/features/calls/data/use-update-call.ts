@@ -34,8 +34,7 @@ export default function useUpdateCall(form: FormInstance) {
     },
     onSuccess: () => {
       messageApi?.success(__('Call updated successfully'))
-      queryClient.invalidateQueries({ queryKey: ['activities', 'calls'] })
-      queryClient.invalidateQueries({ queryKey: ['activities', 'upcoming'] })
+      queryClient.invalidateQueries({ queryKey: ['activities'] })
     }
   })
 

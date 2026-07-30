@@ -72,6 +72,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             if (!$storedContact) {
                 Connection::rollback();
 
+
                 return ['success' => false, 'errors' => [__('Failed to create new contact!', 'bit-crm-sales-marketing-automation')]];
             }
 

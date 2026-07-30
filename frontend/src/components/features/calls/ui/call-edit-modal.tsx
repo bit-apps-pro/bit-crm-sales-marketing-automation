@@ -58,22 +58,19 @@ export default function CallEditModal({ fieldOptions, variant }: CallEditModalPr
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (call && call.id) {
-      const currentValues = form.getFieldsValue()
-      const hasValues = Object.values(currentValues).some(
-        val => val !== undefined && val !== null && val !== ''
-      )
-
-      if (!hasValues) {
-        form.setFieldsValue(call)
-
-        if (call.attachments && call.attachments.length > 0) {
-          setAttachments(call.attachments)
-        }
-      }
+    if (call?.attachments && call.attachments.length > 0) {
+      setAttachments(call.attachments)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [call?.id])
+
+  // The form instance outlives the modal, so antd keeps the previous values
+  // across reopens; sync them whenever fresh data arrives.
+  useEffect(() => {
+    if (isEditModalOpen && call) {
+      form.setFieldsValue(call)
+    }
+  }, [form, isEditModalOpen, call])
 
   return (
     <Modal
@@ -96,11 +93,13 @@ export default function CallEditModal({ fieldOptions, variant }: CallEditModalPr
       }}
       title={__('Update Call')}
     >
-      <If conditions={isEditModalOpen}>
+      <If conditions={isEditModalOpen && !!call?.id}>
         <CallForm
           entityId={call?.entity_id}
           fieldOptions={fieldOptions}
           form={form}
+          initialValues={call}
+          key={call?.id}
           module={call?.module}
           variant={variant}
         />

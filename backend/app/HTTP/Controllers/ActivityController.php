@@ -207,7 +207,7 @@ final class ActivityController
         }
 
         try {
-            $notes = Note::where('entity_id', $validated['id'])->where('module', Activity::MODULE_NAME)->where('type', Note::TYPE_SUBMODULE)->desc()->get();
+            $notes = Note::where('entity_id', $validated['id'])->where('module', Activity::MODULE_NAME)->where('type', Note::TYPE_SUBMODULE)->where('submodule_type', $validated['submoduleType'])->desc()->get();
 
             return Response::success($notes);
         } catch (Throwable $th) {

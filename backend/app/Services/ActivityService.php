@@ -2,6 +2,7 @@
 
 namespace BitApps\Crm\Services;
 
+use BitApps\Crm\Config;
 use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
@@ -11,6 +12,7 @@ use BitApps\Crm\HTTP\Requests\Activity\ShowRequest;
 use BitApps\Crm\HTTP\Requests\Activity\StoreRequest;
 use BitApps\Crm\HTTP\Requests\Activity\UpdateRequest;
 use BitApps\Crm\Model\Activity;
+use BitApps\Crm\Model\Note;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
 
@@ -57,11 +59,16 @@ class ActivityService
             return $validated;
         }
 
-        $activity = Activity::findOne(['id' => $validated['id']]);
+        $wpUsersTable = Config::get('WP_DB_PREFIX') . 'users';
+
+        $activity = Activity::selectRaw("(SELECT display_name FROM {$wpUsersTable} WHERE ID = assigned_to) AS assignee")
+            ->findOne(['id' => $validated['id']]);
 
         if (empty($activity)) {
             return ['success' => false, 'errors' => [__('Activity not found!', 'bit-crm-sales-marketing-automation')]];
         }
+
+        $activity = self::formatData($activity);
 
         return ['success' => true, 'data' => $activity];
     }
@@ -128,6 +135,10 @@ class ActivityService
         $type = $activity->type;
 
         if ($activity->delete()) {
+            Note::where('module', Activity::MODULE_NAME)
+                ->where('entity_id', $validated['id'])
+                ->delete();
+
             Hooks::doAction('bit_crm/activity_deleted', $activity);
 
             // translators: %s: activity type
@@ -157,9 +168,13 @@ class ActivityService
         );
     }
 
-    private static function formatData($data, $entityData)
+    public static function formatData($data, $entityData = [])
     {
-        if (empty($entityData)) {
+        if (empty($data)) {
+            return $data;
+        }
+
+        if (empty($entityData) && !empty($data->module) && !empty($data->entity_id)) {
             $entityData = EntityFieldService::getEntityData($data->module, $data->entity_id);
         }
 

@@ -27,6 +27,7 @@ final class BitAppsCrmNotesTableMigration extends Migration
                 $table->bigint('created_by')->nullable();
                 $table->bigint('updated_by')->nullable();
                 $table->string('type')->nullable();
+                $table->string('submodule_type')->nullable();
                 $table->longtext('attributes')->nullable();
                 $table->timestamps();
             }

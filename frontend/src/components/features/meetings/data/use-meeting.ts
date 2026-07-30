@@ -11,7 +11,7 @@ type TransformedMeetingType = Omit<MeetingType, 'due_date'> & { due_date?: Dayjs
 
 export default function useMeeting(id: number) {
   const { isEditModalOpen } = useMeetingStore()
-  const { data, error, isError, isPending } = useQuery<
+  const { data, error, isError, isFetching } = useQuery<
     Response<MeetingType>,
     Error,
     TransformedMeetingType
@@ -33,7 +33,7 @@ export default function useMeeting(id: number) {
   }
 
   return {
-    isFetchingMeeting: isPending,
+    isFetchingMeeting: isFetching,
     meeting: data
   }
 }

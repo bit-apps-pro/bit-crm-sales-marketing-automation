@@ -7,8 +7,10 @@ interface TaskStore {
     searchParamData?: { id?: string; modal: string }
   ) => void
   isCreateModalOpen: boolean
+  isDeleteModalOpen: boolean
   isEditModalOpen: boolean
   setCreateModalOpen: (isOpen: boolean) => void
+  setDeleteModalOpen: (isOpen: boolean) => void
   setEditModalOpen: (isOpen: boolean) => void
 }
 
@@ -28,12 +30,14 @@ const useTaskStore = create<TaskStore>(set => ({
     }
 
     currentParams.delete('modal')
-    currentParams.delete('id')
+    // currentParams.delete('id')
     setSearchParams(currentParams.toString())
   },
   isCreateModalOpen: false,
+  isDeleteModalOpen: false,
   isEditModalOpen: false,
   setCreateModalOpen: (isOpen: boolean) => set({ isCreateModalOpen: isOpen }),
+  setDeleteModalOpen: (isOpen: boolean) => set({ isDeleteModalOpen: isOpen }),
   setEditModalOpen: (isOpen: boolean) => set({ isEditModalOpen: isOpen })
 }))
 

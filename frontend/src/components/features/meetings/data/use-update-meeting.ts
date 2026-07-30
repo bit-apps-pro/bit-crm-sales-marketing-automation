@@ -34,8 +34,7 @@ export default function useUpdateMeeting(form: FormInstance) {
     },
     onSuccess: () => {
       messageApi?.success(__('Meeting updated successfully'))
-      queryClient.invalidateQueries({ queryKey: ['activities', 'meetings'] })
-      queryClient.invalidateQueries({ queryKey: ['activities', 'upcoming'] })
+      queryClient.invalidateQueries({ queryKey: ['activities'] })
     }
   })
 

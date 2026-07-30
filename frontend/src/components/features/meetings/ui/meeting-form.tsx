@@ -19,6 +19,7 @@ interface MeetingFormProps {
   entityId?: number | string
   fieldOptions?: FieldOptionsType[]
   form: FormInstance
+  initialValues?: Record<string, unknown>
   module?: string
   variant: 'component' | 'page'
 }
@@ -27,6 +28,7 @@ export default function MeetingForm({
   entityId,
   fieldOptions,
   form,
+  initialValues,
   module: initialModule,
   variant
 }: MeetingFormProps) {
@@ -48,7 +50,12 @@ export default function MeetingForm({
 
   return (
     <div className="space-y-2">
-      <Form form={form} layout="vertical" requiredMark={customizedRequiredMark}>
+      <Form
+        form={form}
+        initialValues={initialValues}
+        layout="vertical"
+        requiredMark={customizedRequiredMark}
+      >
         <If conditions={variant === 'page'}>
           <Form.Item
             label={__('Module')}

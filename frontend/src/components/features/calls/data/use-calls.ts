@@ -1,24 +1,43 @@
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { type CallsIndexType } from '../shared/call-types'
+
+const PER_PAGE = 10
+
+interface CallsData {
+  calls: CallsIndexType['data']
+  totalCalls: number
+}
 
 export default function useCalls(
   module: string,
   entityId: number,
-  page: number | string,
-  perPage: number | string,
   status: string,
   search: string,
   assignedTo: string
 ) {
-  const { data, error, isError, isFetching, isPending, isRefetching, refetch } = useQuery<
-    Response<CallsIndexType>,
-    Error,
-    CallsIndexType
-  >({
-    queryFn: ({ signal }) =>
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isError,
+    isFetching,
+    isFetchingNextPage,
+    isPending,
+    isRefetching,
+    refetch
+  } = useInfiniteQuery<Response<CallsIndexType>, Error, CallsData>({
+    getNextPageParam: lastPage => {
+      const { data: page } = lastPage
+      const currentPage = Number(page.current_page)
+      const perPage = Number(page.per_page)
+      return currentPage * perPage < page.total ? currentPage + 1 : undefined
+    },
+    initialPageParam: 1,
+    queryFn: ({ pageParam, signal }) =>
       queryRequest(
         'activities/index',
         {},
@@ -26,24 +45,20 @@ export default function useCalls(
           assigned_to: assignedTo,
           entityId: entityId || 0,
           module: module || '',
-          page: Number(page),
-          perPage: Number(perPage),
+          page: pageParam as number,
+          perPage: PER_PAGE,
           search,
           status,
           type: 'call'
         },
         'GET',
-        {
-          signal
-        }
+        { signal }
       ),
-    queryKey: [
-      'activities',
-      'calls',
-      { assignedTo, entityId, module, page: Number(page), perPage: Number(perPage), search, status }
-    ],
-    select: res => res.data,
-    staleTime: 5000
+    queryKey: ['activities', 'calls', 'infinite', { assignedTo, entityId, module, search, status }],
+    select: response => ({
+      calls: response.pages.flatMap(page => page.data.data),
+      totalCalls: response.pages[0]?.data.total ?? 0
+    })
   })
 
   if (isError) {
@@ -51,13 +66,14 @@ export default function useCalls(
   }
 
   return {
-    calls: data?.data,
-    currentPage: data?.current_page || 1,
+    calls: data?.calls,
+    fetchNextPage,
+    hasNextPage,
     isFetchingCalls: isFetching,
+    isFetchingNextPage,
     isPendingCalls: isPending,
     isRefetchingCalls: isRefetching,
-    pageSize: data?.per_page || 0,
     refetchCalls: refetch,
-    totalCalls: data?.total || 0
+    totalCalls: data?.totalCalls ?? 0
   }
 }
