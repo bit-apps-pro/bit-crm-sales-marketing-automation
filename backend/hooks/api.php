@@ -153,7 +153,6 @@ Route::group(
         Route::post('activities/update', [ActivityController::class, 'update']);
         Route::post('activities/update-status', [ActivityController::class, 'updateStatus']);
         Route::post('activities/delete', [ActivityController::class, 'destroy']);
-        Route::get('activities/wp-users-by-roles', [ActivityController::class, 'wpUsersByRoles']);
         Route::post('activities/fields-by-module', [ActivityController::class, 'fieldsByModule']);
         Route::post('activities/entities-by-module', [ActivityController::class, 'entitiesByModule']);
         Route::get('activities/{id}', [ActivityController::class, 'show']);

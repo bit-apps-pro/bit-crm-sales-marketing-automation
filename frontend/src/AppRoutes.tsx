@@ -303,7 +303,7 @@ export default function AppRoutes() {
               />
               <Route
                 element={
-                  <ProtectedRoute capability={CAPABILITIES.LEAD.MENU}>
+                  <ProtectedRoute capability={CAPABILITIES.ACTIVITY.VIEW}>
                     <Tasks />
                   </ProtectedRoute>
                 }
@@ -311,7 +311,7 @@ export default function AppRoutes() {
               />
               <Route
                 element={
-                  <ProtectedRoute capability={CAPABILITIES.LEAD.MENU}>
+                  <ProtectedRoute capability={CAPABILITIES.ACTIVITY.VIEW}>
                     <Meetings />
                   </ProtectedRoute>
                 }
@@ -319,7 +319,7 @@ export default function AppRoutes() {
               />
               <Route
                 element={
-                  <ProtectedRoute capability={CAPABILITIES.LEAD.MENU}>
+                  <ProtectedRoute capability={CAPABILITIES.ACTIVITY.VIEW}>
                     <Calls />
                   </ProtectedRoute>
                 }

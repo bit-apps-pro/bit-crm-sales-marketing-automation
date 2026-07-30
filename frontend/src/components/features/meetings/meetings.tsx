@@ -1,4 +1,6 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import If from '@utilities/If'
@@ -74,14 +76,16 @@ export default function Meetings({ entityId, fields, module }: MeetingsProps) {
           <Typography.Title className="mb-0" level={5}>
             {__('Meetings')}
           </Typography.Title>
-          <Button
-            className="rounded-full"
-            icon={<LuPlus />}
-            onClick={() => handleModal('open', setSearchParams, { modal: 'meeting_create' })}
-            type="primary"
-          >
-            {__('New')}
-          </Button>
+          <If conditions={checkCapability(CAPABILITIES.ACTIVITY.CREATE)}>
+            <Button
+              className="rounded-full"
+              icon={<LuPlus />}
+              onClick={() => handleModal('open', setSearchParams, { modal: 'meeting_create' })}
+              type="primary"
+            >
+              {__('New')}
+            </Button>
+          </If>
           <If conditions={isFetchingMeetings || isRefetchingMeetings}>
             <LoadingOutlined />
           </If>

@@ -3,15 +3,14 @@
 namespace BitApps\Crm\HTTP\Requests\Activity;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
-use BitApps\Crm\Deps\BitApps\WPKit\Utils\Capabilities;
+use BitApps\Crm\src\Capability;
 
 class UpdateStatusRequest extends Request
 {
-    // TODO: Uncomment the authorize method when capabilities are implemented
-    // public function authorize()
-    // {
-    //     return Capability::check('cap');
-    // }
+    public function authorize()
+    {
+        return Capability::check('bit_crm_activity_update');
+    }
 
     public function rules()
     {

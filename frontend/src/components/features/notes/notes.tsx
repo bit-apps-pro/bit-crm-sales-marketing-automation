@@ -1,4 +1,6 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import If from '@utilities/If'
@@ -88,14 +90,16 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
           <Typography.Title className="mb-0" level={5}>
             {__('Notes')}
           </Typography.Title>
-          <Button
-            className="rounded-full"
-            icon={<LuPlus />}
-            onClick={() => handleModal('open', setSearchParams, { modal: 'note_create' })}
-            type="primary"
-          >
-            {__('New')}
-          </Button>
+          <If conditions={checkCapability(CAPABILITIES.NOTE.CREATE)}>
+            <Button
+              className="rounded-full"
+              icon={<LuPlus />}
+              onClick={() => handleModal('open', setSearchParams, { modal: 'note_create' })}
+              type="primary"
+            >
+              {__('New')}
+            </Button>
+          </If>
           <If conditions={isFetchingNotes || isRefetchingNotes}>
             <LoadingOutlined />
           </If>

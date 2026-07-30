@@ -16,8 +16,8 @@ export default function useEmail<T>(emailId: number, module: EntityModule) {
 
   const { data, isFetching, isRefetching } = useQuery<EmailResType<T>>({
     enabled: !!emailId && checkCapability(emailCapability) && isViewOpen,
-    queryFn: () => queryRequest(`emails/${emailId}`, undefined, undefined, 'GET'),
-    queryKey: ['email', emailId],
+    queryFn: () => queryRequest(`emails/${emailId}`, undefined, { module }, 'GET'),
+    queryKey: ['email', emailId, module],
     retry: false
   })
 

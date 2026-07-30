@@ -1,4 +1,6 @@
+import CAPABILITIES from '@common/constants/capabilities'
 import { MODULES } from '@common/constants/modules'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import useEntityRelatedListsCount from '@common/hooks/use-entity-related-lists-count'
 import useTags from '@common/hooks/use-tags'
@@ -94,6 +96,7 @@ export default function Company() {
               destroyOnHidden
               items={[
                 {
+                  capability: CAPABILITIES.COMPANY.VIEW,
                   children: (
                     <CompanyOverview
                       columnSettings={columnSettings}
@@ -109,6 +112,7 @@ export default function Company() {
                   label: tabLabel(ICONS['overview'], __('Overview'))
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: (
                     <Tasks entityId={Number(companyId)} fields={fields} module={MODULES.COMPANY} />
                   ),
@@ -116,6 +120,7 @@ export default function Company() {
                   label: tabLabel(ICONS['task'], __('Tasks'), taskCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: (
                     <Meetings entityId={Number(companyId)} fields={fields} module={MODULES.COMPANY} />
                   ),
@@ -123,6 +128,7 @@ export default function Company() {
                   label: tabLabel(ICONS['meeting'], __('Meetings'), meetingCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: (
                     <Calls entityId={Number(companyId)} fields={fields} module={MODULES.COMPANY} />
                   ),
@@ -130,11 +136,13 @@ export default function Company() {
                   label: tabLabel(ICONS['call'], __('Calls'), callCount)
                 },
                 {
+                  capability: CAPABILITIES.ATTACHMENT.VIEW,
                   children: <Attachments entityId={Number(companyId)} module={MODULES.COMPANY} />,
                   key: 'attachments',
                   label: tabLabel(ICONS['attachment'], __('Attachments'), attachmentCount)
                 },
                 {
+                  capability: CAPABILITIES.NOTE.VIEW,
                   children: (
                     <Notes entityId={Number(companyId)} fields={fields} module={MODULES.COMPANY} />
                   ),
@@ -142,6 +150,7 @@ export default function Company() {
                   label: tabLabel(ICONS['note'], __('Notes'), noteCount)
                 },
                 {
+                  capability: CAPABILITIES.LINK.VIEW,
                   children: (
                     <Links entityId={Number(companyId)} fields={fields} module={MODULES.COMPANY} />
                   ),
@@ -149,6 +158,7 @@ export default function Company() {
                   label: tabLabel(ICONS['link'], __('Links'), linkCount)
                 },
                 {
+                  capability: CAPABILITIES.CONTACT.VIEW,
                   children: (
                     <RelatedEntities
                       detachable={true}
@@ -161,6 +171,7 @@ export default function Company() {
                   label: __('Contacts')
                 },
                 {
+                  capability: CAPABILITIES.DEAL.VIEW,
                   children: (
                     <RelatedEntities
                       detachable={true}
@@ -172,7 +183,7 @@ export default function Company() {
                   key: 'deals',
                   label: __('Deals')
                 }
-              ]}
+              ].filter(tab => tab.capability && checkCapability(tab.capability))}
               onChange={path => setSearchParams({ tab: path })}
             />
           </div>

@@ -1,6 +1,7 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
+import If from '@utilities/If'
 import { Button } from 'antd'
 import { useState } from 'react'
 import { LuTrash2 } from 'react-icons/lu'
@@ -14,7 +15,9 @@ export default function Actions({ id }: { id: number | string }) {
   return (
     <>
       <div className="flex items-center justify-end gap-2">
-        <ClientPortalAccess id={id} />
+        <If conditions={checkCapability(CAPABILITIES.SETTING.PORTAL_SETTINGS)}>
+          <ClientPortalAccess id={id} />
+        </If>
         <Button
           className="rounded-full p-0"
           danger

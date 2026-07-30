@@ -133,7 +133,8 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
     {
       autoSync: true,
       email,
-      imap_id: activeImap.id
+      imap_id: activeImap.id,
+      module
     },
     isEmailsSuccess &&
       (page === undefined || page === 1 ? true : false) &&
@@ -149,7 +150,8 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
     const { data, status } = await syncImap({
       autoSync: false,
       email,
-      imap_id: activeImap.id
+      imap_id: activeImap.id,
+      module
     }).catch(error => error as Response<ValidationType<Email>>)
     if (status === 'error') {
       return messageApi?.error((data as string) || 'Something went wrong.')

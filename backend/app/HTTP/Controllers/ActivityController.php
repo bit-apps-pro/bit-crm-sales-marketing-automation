@@ -19,15 +19,12 @@ use BitApps\Crm\HTTP\Requests\Activity\UpdateStatusRequest;
 use BitApps\Crm\Model\Activity;
 use BitApps\Crm\Model\Note;
 use BitApps\Crm\Services\ActivityService;
-use BitApps\Crm\src\UserPermissions\Roles;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
 
 final class ActivityController
 {
     public const DEFAULT_PER_PAGE = 10;
-
-    private const SUBMODULE = 'submodule';
 
     private ActivityService $activityService;
 
@@ -169,18 +166,6 @@ final class ActivityController
         return Response::success($result['data'])->message($result['message']);
     }
 
-    public function wpUsersByRoles()
-    {
-        $users = get_users(
-            [
-                'role__in' => Roles::getRoleNames(true),
-                'fields'   => ['ID', 'display_name', 'user_email']
-            ]
-        );
-
-        return Response::success($users);
-    }
-
     public function fieldsByModule(FieldsByModuleRequest $request)
     {
         $validated = $request->validated();
@@ -222,7 +207,7 @@ final class ActivityController
         }
 
         try {
-            $notes = Note::where('entity_id', $validated['id'])->where('module', Activity::MODULE_NAME)->where('type', self::SUBMODULE)->desc()->get();
+            $notes = Note::where('entity_id', $validated['id'])->where('module', Activity::MODULE_NAME)->where('type', Note::TYPE_SUBMODULE)->desc()->get();
 
             return Response::success($notes);
         } catch (Throwable $th) {

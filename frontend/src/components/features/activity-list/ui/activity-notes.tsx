@@ -1,3 +1,5 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import useSaveNote from '@features/notes/data/use-save-note'
 import { type NoteType } from '@features/notes/shared/note-types'
@@ -64,7 +66,9 @@ export default function ActivityNotes({ activityId, open }: ActivityNotesProps) 
                 )}
               </>
             )}
-            <If conditions={editNoteId === undefined}>
+            <If
+              conditions={editNoteId === undefined && checkCapability(CAPABILITIES.NOTE.CREATE)}
+            >
               <div>
                 <ActivityNoteForm form={form} />
                 <div className="text-right">

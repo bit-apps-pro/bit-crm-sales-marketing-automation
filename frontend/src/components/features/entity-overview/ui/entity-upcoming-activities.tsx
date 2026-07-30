@@ -1,3 +1,5 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import { Empty, Skeleton, Typography } from 'antd'
 
@@ -11,6 +13,10 @@ interface EntityUpcomingActivitiesProps {
 
 export default function EntityUpcomingActivities({ entityId, module }: EntityUpcomingActivitiesProps) {
   const { isUpcomingActivitiesLoading, upcomingActivities } = useUpcomingActivities(module, entityId)
+
+  if (!checkCapability(CAPABILITIES.ACTIVITY.VIEW)) {
+    return
+  }
 
   if (isUpcomingActivitiesLoading) {
     return (

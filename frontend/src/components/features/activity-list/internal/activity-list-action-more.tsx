@@ -1,4 +1,7 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
+import If from '@utilities/If'
 import { type DropdownProps } from 'antd'
 import { Button, Dropdown, Popconfirm } from 'antd'
 import { useState } from 'react'
@@ -38,7 +41,7 @@ export default function ActivityListActionMore({ id, isCompleted }: ActivityList
 
   const items = [
     {
-      capability: '',
+      capability: CAPABILITIES.ACTIVITY.UPDATE,
       disabled: isUpdatingStatus,
       icon: isCompleted ? <LuCircleX size={14} /> : <LuCircleCheck size={14} />,
       key: 'status',
@@ -46,14 +49,14 @@ export default function ActivityListActionMore({ id, isCompleted }: ActivityList
       onClick: handleStatusUpdate
     },
     {
-      capability: '',
+      capability: CAPABILITIES.ACTIVITY.UPDATE,
       icon: <LuPenLine size={14} />,
       key: 'edit',
       label: __('Edit'),
       onClick: handleEdit
     },
     {
-      capability: '',
+      capability: CAPABILITIES.ACTIVITY.DELETE,
       icon: <LuTrash2 className="text-red-500" size={14} />,
       key: 'delete',
       label: (
@@ -69,6 +72,8 @@ export default function ActivityListActionMore({ id, isCompleted }: ActivityList
     }
   ]
 
+  const availableItems = items.filter(item => item.capability && checkCapability(item.capability))
+
   const handleOpenChange: DropdownProps['onOpenChange'] = (nextOpen, info) => {
     if (info.source === 'trigger' || nextOpen) {
       setIsOpen(nextOpen)
@@ -76,18 +81,20 @@ export default function ActivityListActionMore({ id, isCompleted }: ActivityList
   }
 
   return (
-    <Dropdown
-      menu={{ items }}
-      onOpenChange={handleOpenChange}
-      open={isOpen}
-      placement="bottomRight"
-      trigger={['click']}
-    >
-      <Button
-        className="h-full w-full text-gray-600 dark:text-gray-400"
-        icon={<LuEllipsisVertical size={12} />}
-        type="link"
-      />
-    </Dropdown>
+    <If conditions={availableItems.length > 0}>
+      <Dropdown
+        menu={{ items: availableItems }}
+        onOpenChange={handleOpenChange}
+        open={isOpen}
+        placement="bottomRight"
+        trigger={['click']}
+      >
+        <Button
+          className="h-full w-full text-gray-600 dark:text-gray-400"
+          icon={<LuEllipsisVertical size={12} />}
+          type="link"
+        />
+      </Dropdown>
+    </If>
   )
 }

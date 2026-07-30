@@ -1,5 +1,16 @@
 const CAPABILITIES = {
+  ACTIVITY: {
+    CREATE: 'bit_crm_activity_create',
+    DELETE: 'bit_crm_activity_delete',
+    UPDATE: 'bit_crm_activity_update',
+    VIEW: 'bit_crm_activity_view'
+  },
   ADMINISTRATOR: 'administrator',
+  ATTACHMENT: {
+    CREATE: 'bit_crm_attachment_create',
+    DELETE: 'bit_crm_attachment_delete',
+    VIEW: 'bit_crm_attachment_view'
+  },
   COMPANY: {
     CREATE: 'bit_crm_company_create',
     DELETE: 'bit_crm_company_delete',
@@ -55,6 +66,18 @@ const CAPABILITIES = {
     SETTINGS: 'bit_crm_lead_settings',
     UPDATE: 'bit_crm_lead_update',
     VIEW: 'bit_crm_lead_view'
+  },
+  LINK: {
+    CREATE: 'bit_crm_link_create',
+    DELETE: 'bit_crm_link_delete',
+    UPDATE: 'bit_crm_link_update',
+    VIEW: 'bit_crm_link_view'
+  },
+  NOTE: {
+    CREATE: 'bit_crm_note_create',
+    DELETE: 'bit_crm_note_delete',
+    UPDATE: 'bit_crm_note_update',
+    VIEW: 'bit_crm_note_view'
   },
   OTHERS: {
     History: 'bit_crm_history_view'

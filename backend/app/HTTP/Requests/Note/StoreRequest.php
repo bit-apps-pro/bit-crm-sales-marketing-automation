@@ -3,18 +3,19 @@
 namespace BitApps\Crm\HTTP\Requests\Note;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
+use BitApps\Crm\Model\Note;
+use BitApps\Crm\src\Capability;
 
 class StoreRequest extends Request
 {
-    // TODO: Uncomment the authorize method when capabilities are implemented
-    // public function authorize()
-    // {
-    //     return Capability::check('cap');
-    // }
+    public function authorize()
+    {
+        return Capability::check('bit_crm_note_create');
+    }
 
     public function rules()
     {
-        $isSubModule = ($this->type !== null && $this->type !== 'submodule') ? false : true;
+        $isSubModule = $this->type === Note::TYPE_SUBMODULE;
 
         return [
             'title'       => [$isSubModule ? 'nullable' : 'required', 'string', 'sanitize:text', 'max:255'],

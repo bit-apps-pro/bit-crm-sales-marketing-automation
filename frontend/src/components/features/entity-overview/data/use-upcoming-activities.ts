@@ -1,3 +1,5 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import queryRequest, { type Response } from '@common/helpers/request'
 import { type ActivityType } from '@features/activity-list/shared/activity-types'
 import { useQuery } from '@tanstack/react-query'
@@ -6,7 +8,7 @@ const UPCOMING_ACTIVITIES_LIMIT = 2
 
 export default function useUpcomingActivities(module: string, entityId: number) {
   const { data, isPending } = useQuery<Response<ActivityType[]>, Error, ActivityType[]>({
-    enabled: Boolean(module && entityId),
+    enabled: Boolean(module && entityId) && checkCapability(CAPABILITIES.ACTIVITY.VIEW),
     queryFn: ({ signal }) =>
       queryRequest(
         'activities/upcoming',

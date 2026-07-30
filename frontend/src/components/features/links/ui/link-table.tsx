@@ -1,4 +1,7 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
+import If from '@utilities/If'
 import { Button, Popconfirm, Table, Typography } from 'antd'
 import { type ColumnsType } from 'antd/es/table'
 import { useCallback, useMemo } from 'react'
@@ -70,20 +73,24 @@ export default function LinkTable({ links, loading }: { links?: LinkType[]; load
         key: 'actions',
         render: (_, record) => (
           <div className="flex items-center gap-2">
-            <Button
-              icon={<LuPenLine />}
-              onClick={() => handleEdit(record.id!)}
-              size="small"
-              type="link"
-            />
-            <Popconfirm
-              cancelText={__('No')}
-              okText={__('Yes')}
-              onConfirm={() => handleDelete(record.id!)}
-              title={__('Are you sure to delete this?')}
-            >
-              <Button danger icon={<LuTrash2 />} size="small" type="link" />
-            </Popconfirm>
+            <If conditions={checkCapability(CAPABILITIES.LINK.UPDATE)}>
+              <Button
+                icon={<LuPenLine />}
+                onClick={() => handleEdit(record.id!)}
+                size="small"
+                type="link"
+              />
+            </If>
+            <If conditions={checkCapability(CAPABILITIES.LINK.DELETE)}>
+              <Popconfirm
+                cancelText={__('No')}
+                okText={__('Yes')}
+                onConfirm={() => handleDelete(record.id!)}
+                title={__('Are you sure to delete this?')}
+              >
+                <Button danger icon={<LuTrash2 />} size="small" type="link" />
+              </Popconfirm>
+            </If>
           </div>
         ),
         title: __('Actions')

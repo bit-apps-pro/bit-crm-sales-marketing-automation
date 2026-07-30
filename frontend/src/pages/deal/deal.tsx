@@ -100,6 +100,7 @@ export default function Deal() {
               animated
               items={[
                 {
+                  capability: CAPABILITIES.DEAL.VIEW,
                   children: (
                     <DealOverview
                       columnSettings={columnSettings}
@@ -113,6 +114,7 @@ export default function Deal() {
                   label: tabLabel(ICONS['overview'], __('Overview'))
                 },
                 {
+                  capability: CAPABILITIES.DEAL.VIEW,
                   children: (
                     <EntityEmails
                       email={deal?.email || ''}
@@ -121,46 +123,52 @@ export default function Deal() {
                       module={MODULES.DEAL}
                     />
                   ),
-                  disabled: !checkCapability(CAPABILITIES.DEAL.VIEW),
                   key: 'email',
                   label: tabLabel(ICONS['email'], __('Emails'))
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: <Tasks entityId={Number(dealId)} fields={fields} module={MODULES.DEAL} />,
                   key: 'tasks',
                   label: tabLabel(ICONS['task'], __('Tasks'), taskCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: <Meetings entityId={Number(dealId)} fields={fields} module={MODULES.DEAL} />,
                   key: 'meetings',
                   label: tabLabel(ICONS['meeting'], __('Meetings'), meetingCount)
                 },
                 {
+                  capability: CAPABILITIES.ACTIVITY.VIEW,
                   children: <Calls entityId={Number(dealId)} fields={fields} module={MODULES.DEAL} />,
                   key: 'calls',
                   label: tabLabel(ICONS['call'], __('Calls'), callCount)
                 },
                 {
+                  capability: CAPABILITIES.ATTACHMENT.VIEW,
                   children: <Attachments entityId={Number(dealId)} module={MODULES.DEAL} />,
                   key: 'attachments',
                   label: tabLabel(ICONS['attachment'], __('Attachments'), attachmentCount)
                 },
                 {
+                  capability: CAPABILITIES.NOTE.VIEW,
                   children: <Notes entityId={Number(dealId)} fields={fields} module={MODULES.DEAL} />,
                   key: 'notes',
                   label: tabLabel(ICONS['note'], __('Notes'), noteCount)
                 },
                 {
+                  capability: CAPABILITIES.LINK.VIEW,
                   children: <Links entityId={Number(dealId)} fields={fields} module={MODULES.DEAL} />,
                   key: 'links',
                   label: tabLabel(ICONS['link'], __('Links'), linkCount)
                 },
                 {
+                  capability: CAPABILITIES.INVOICE.VIEW,
                   children: <DealInvoices entityId={Number(dealId)} module={MODULES.DEAL} />,
                   key: 'invoices',
                   label: __('Invoices')
                 }
-              ]}
+              ].filter(tab => tab.capability && checkCapability(tab.capability))}
               onChange={path => setSearchParams({ tab: path })}
             />
           </div>

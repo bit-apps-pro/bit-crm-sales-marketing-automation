@@ -5,6 +5,7 @@ interface Payload {
   autoSync: boolean
   email: string
   imap_id: number
+  module: string
 }
 
 export default function useAutoSyncImap(payload: Payload, enabled: boolean) {
