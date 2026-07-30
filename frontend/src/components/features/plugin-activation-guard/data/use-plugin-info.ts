@@ -2,12 +2,7 @@ import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
 import { useQuery } from '@tanstack/react-query'
 
-export interface PluginInfo {
-  additionalInfo?: Record<string, unknown>
-  canInstallPlugins: boolean
-  isInstalled: boolean
-  url: string
-}
+import { type PluginInfo } from '../shared/types'
 
 export default function usePluginInfo(pluginSlug: string) {
   const { data, isError, isFetching, isPending, refetch } = useQuery<

@@ -19,6 +19,10 @@ class OtherPluginsData
             'slug' => 'bit-integrations',
             'path' => 'bit-integrations/bitwpfi.php',
         ],
+        'bit-pi' => [
+            'slug' => 'bit-pi',
+            'path' => 'bit-pi/bit-pi.php',
+        ],
     ];
 
     /**

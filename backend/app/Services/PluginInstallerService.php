@@ -39,6 +39,26 @@ class PluginInstallerService
     }
 
     /**
+     * Check if a plugin is installed.
+     *
+     * @param string $pluginPath Relative plugin file path (e.g. "bit-form/bitforms.php")
+     */
+    public function isPluginInstalled(string $pluginPath): bool
+    {
+        return \array_key_exists($pluginPath, get_plugins());
+    }
+
+    /**
+     * Check if a plugin is active.
+     *
+     * @param string $pluginPath Relative plugin file path (e.g. "bit-form/bitforms.php")
+     */
+    public function isPluginActive(string $pluginPath): bool
+    {
+        return is_plugin_active($pluginPath);
+    }
+
+    /**
      * Load required WordPress files for plugin installation.
      */
     private function loadWordPressDependencies(): void

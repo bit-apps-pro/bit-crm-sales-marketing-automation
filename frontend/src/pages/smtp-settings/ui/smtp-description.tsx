@@ -1,8 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
+import { type PluginInfo } from '@features/plugin-activation-guard/shared/types'
 import If from '@utilities/If'
 import { Alert, Button, Descriptions, Typography } from 'antd'
-
-import { type PluginInfo } from '../data/use-plugin-info'
 
 interface Config {
   [key: string]: unknown

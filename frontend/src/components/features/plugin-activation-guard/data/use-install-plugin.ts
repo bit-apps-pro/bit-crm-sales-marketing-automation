@@ -16,7 +16,7 @@ export default function useInstallPlugin(pluginSlug: string) {
       messageApi?.error(error.message || __('Failed to install plugin'))
     },
     onSuccess: () => {
-      messageApi?.success(__('Plugin installed and activated successfully'))
+      messageApi?.success(__('Plugin activated successfully'))
       queryClient.invalidateQueries({ queryKey: ['plugin-info', pluginSlug] })
     }
   })

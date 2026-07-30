@@ -64,14 +64,29 @@ const navGroups = [
         capability: CAPABILITIES.SETTING.SMTP,
         label: __('SMTP Settings'),
         path: '../settings/smtp-settings'
-      },
-      {
-        capability: CAPABILITIES.SETTING.INTEGRATION,
-        label: __('Integration Settings'),
-        path: '../settings/integration-settings'
       }
     ],
     title: __('Communication')
+  },
+  {
+    items: [
+      {
+        capability: CAPABILITIES.SETTING.INTEGRATION,
+        label: __('Woo Commerce'),
+        path: '../settings/woo-settings'
+      },
+      {
+        capability: CAPABILITIES.SETTING.INTEGRATION,
+        label: __('Bit Form'),
+        path: '../settings/bit-form-settings'
+      },
+      {
+        capability: CAPABILITIES.SETTING.INTEGRATION,
+        label: __('Others'),
+        path: '../settings/others-integrations-settings'
+      }
+    ],
+    title: __('Integrations')
   },
   {
     items: [

@@ -1,7 +1,7 @@
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import { type Product } from '@common/types/product'
-import useWooProductIntegration from '@pages/integration-settings/data/use-woo-product-integration'
+import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
 import If from '@utilities/If'
 import { Badge, Button, Select, Space, Typography } from 'antd'
 import { lazy, useCallback, useEffect } from 'react'
