@@ -4,6 +4,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import { Tabs, Typography } from 'antd'
 import { useSearchParams } from 'react-router'
 
+import ActivityLogs from './internal/activity-logs'
 import Exports from './internal/exports'
 import Imports from './internal/imports'
 import RecycleBin from './internal/recycle-bin'
@@ -27,6 +28,12 @@ const tabs = [
     children: <Exports />,
     key: 'exports',
     label: __('Exports')
+  },
+  {
+    capability: CAPABILITIES.SETTING.HISTORY,
+    children: <ActivityLogs />,
+    key: 'activity-logs',
+    label: __('History Logs')
   },
   {
     capability: CAPABILITIES.SETTING.WORKFLOW,

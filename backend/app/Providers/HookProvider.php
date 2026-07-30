@@ -8,6 +8,7 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\RequestType;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Router\Router;
 use BitApps\Crm\HTTP\Controllers\WooCommerceHistoricalSyncController;
 use BitApps\Crm\Plugin;
+use BitApps\Crm\Services\ActivityLogService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\src\Queue\WooCommerceContactSyncProcess;
 use DateTime;
@@ -34,6 +35,10 @@ class HookProvider
         Hooks::addAction('update_option_gmt_offset', [$this, 'rescheduleOverdueInvoiceCheck']);
 
         $this->scheduleOverdueInvoiceCheck();
+
+        Hooks::addAction('bit_crm_activity_log_cleanup', [ActivityLogService::class, 'activityLogCleanup']);
+
+        $this->scheduleActivityLogCleanup();
 
         if (Config::getEnv('CLI_ACTIVE')) {
             include_once __DIR__ . '/../../../cli/RegisterCommands.php';
@@ -106,6 +111,13 @@ class HookProvider
             $midnight = new DateTime('tomorrow midnight', wp_timezone());
 
             wp_schedule_event($midnight->getTimestamp(), 'daily', 'bit_crm_invoices_overdue_check');
+        }
+    }
+
+    private function scheduleActivityLogCleanup(): void
+    {
+        if (!wp_next_scheduled('bit_crm_activity_log_cleanup')) {
+            wp_schedule_event(time(), 'daily', 'bit_crm_activity_log_cleanup');
         }
     }
 

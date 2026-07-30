@@ -74,6 +74,7 @@ const CAPABILITIES = {
     DATA_MANAGEMENT: 'bit_crm_setting_data_management',
     DEAL: 'bit_crm_setting_deal',
     GENERAL: 'bit_crm_setting_general',
+    HISTORY: 'bit_crm_setting_history',
     IMAP: 'bit_crm_setting_imap',
     INTEGRATION: 'bit_crm_setting_integration',
     INVOICE: 'bit_crm_setting_invoice',

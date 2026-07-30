@@ -1,3 +1,4 @@
+export { default as ProActivityLogsAlert } from './internal/mocks/pro-activity-logs-alert'
 export { default as ProCrmUsersAlert } from './internal/mocks/pro-crm-users-alert'
 export { default as ProEntitiesAlert } from './internal/mocks/pro-entities-alert'
 export { default as ProEntitySettingsAlert } from './internal/mocks/pro-entity-settings-alert'
