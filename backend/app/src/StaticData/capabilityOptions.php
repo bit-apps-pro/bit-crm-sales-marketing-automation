@@ -109,5 +109,6 @@ return [
     ],
     'others' => [
         ['label' => __('History View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_history_view'],
+        ['label' => __('Support & License', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_manage_support_license'],
     ]
 ];
