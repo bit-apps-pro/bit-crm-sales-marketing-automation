@@ -2,7 +2,6 @@ import { __ } from '@common/helpers/i18nWrap'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import If from '@utilities/If'
 import { Form, Modal } from 'antd'
-import dayjs from 'dayjs'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router'
 
@@ -21,7 +20,8 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
   const { handleModal, isEditModalOpen, setEditModalOpen } = useTaskStore()
   const [searchParams, setSearchParams] = useSearchParams()
   const { attachments, clearAttachments, setAttachments } = useAttachmentStore()
-  const { isFetchingTask, task } = useTask(Number(searchParams.get('id')))
+  const id = Number(searchParams.get('id')) || 0
+  const { isFetchingTask, task } = useTask(id)
   const [form] = Form.useForm()
   const { isUpdatingTask, updateTask } = useUpdateTask(form)
 
@@ -59,26 +59,28 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (isEditModalOpen && task && task.id) {
-      form.setFieldsValue({
-        ...task,
-        due_date: task.due_date ? dayjs(task.due_date) : undefined
-      })
-
-      if (task.attachments && task.attachments.length > 0) {
-        setAttachments(task.attachments)
-      }
+    if (task?.attachments && task.attachments.length > 0) {
+      setAttachments(task.attachments)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [task?.id, isEditModalOpen])
+  }, [task?.id])
+
+  // The form instance outlives the modal, so antd keeps the previous values
+  // across reopens; sync them whenever fresh data arrives.
+  useEffect(() => {
+    if (isEditModalOpen && task) {
+      form.setFieldsValue(task)
+    }
+  }, [form, isEditModalOpen, task])
 
   return (
     <Modal
+      cancelButtonProps={{ className: 'rounded-full' }}
       centered
       confirmLoading={isUpdatingTask}
       destroyOnHidden
       loading={isFetchingTask}
-      okButtonProps={{ disabled: isUpdatingTask }}
+      okButtonProps={{ className: 'rounded-full', disabled: isUpdatingTask }}
       okText={__('Update')}
       onCancel={handleClose}
       onOk={handleSubmit}
@@ -93,8 +95,15 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
       }}
       title={__('Update Task')}
     >
-      <If conditions={isEditModalOpen}>
-        <TaskForm fieldOptions={fieldOptions} form={form} module={task?.module} variant={variant} />
+      <If conditions={isEditModalOpen && !!task?.id}>
+        <TaskForm
+          fieldOptions={fieldOptions}
+          form={form}
+          initialValues={task}
+          key={task?.id}
+          module={task?.module}
+          variant={variant}
+        />
       </If>
     </Modal>
   )

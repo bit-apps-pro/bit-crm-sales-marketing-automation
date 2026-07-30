@@ -11,7 +11,7 @@ type TransformedTaskType = Omit<TaskType, 'due_date'> & { due_date?: Dayjs }
 
 export default function useTask(id: number) {
   const { isEditModalOpen } = useTaskStore()
-  const { data, error, isError, isPending } = useQuery<Response<TaskType>, Error, TransformedTaskType>({
+  const { data, error, isError, isFetching } = useQuery<Response<TaskType>, Error, TransformedTaskType>({
     enabled: isEditModalOpen,
     queryFn: ({ signal }) => queryRequest(`activities/${id}`, {}, undefined, 'GET', { signal }),
     queryKey: ['activities', 'tasks', id],
@@ -28,7 +28,7 @@ export default function useTask(id: number) {
   }
 
   return {
-    isFetchingTask: isPending,
+    isFetchingTask: isFetching,
     task: data
   }
 }

@@ -1,25 +1,44 @@
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { type TasksIndexType } from '../shared/task-types'
 
-export default function useTasks(
+const PER_PAGE = 10
+
+interface TaskData {
+  tasks: TasksIndexType['data']
+  total: number
+}
+
+export default function useTask(
   module: string,
   entityId: number,
-  page: number | string,
-  perPage: number | string,
   status: string,
   search: string,
   priority: string,
   assignedTo: string
 ) {
-  const { data, error, isError, isFetching, isPending, isRefetching, refetch } = useQuery<
-    Response<TasksIndexType>,
-    Error,
-    TasksIndexType
-  >({
-    queryFn: ({ signal }) =>
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isError,
+    isFetching,
+    isFetchingNextPage,
+    isPending,
+    isRefetching,
+    refetch
+  } = useInfiniteQuery<Response<TasksIndexType>, Error, TaskData>({
+    getNextPageParam: lastPage => {
+      const { data: page } = lastPage
+      const currentPage = Number(page.current_page)
+      const perPage = Number(page.per_page)
+      return currentPage * perPage < page.total ? currentPage + 1 : undefined
+    },
+    initialPageParam: 1,
+    queryFn: ({ pageParam, signal }) =>
       queryRequest(
         'activities/index',
         {},
@@ -27,33 +46,26 @@ export default function useTasks(
           assigned_to: assignedTo,
           entityId: entityId || 0,
           module: module || '',
-          page: Number(page),
-          perPage: Number(perPage),
+          page: pageParam as number,
+          perPage: PER_PAGE,
           priority,
           search,
           status,
           type: 'task'
         },
         'GET',
-        {
-          signal
-        }
+        { signal }
       ),
     queryKey: [
       'activities',
       'tasks',
-      {
-        assignedTo,
-        entityId,
-        module,
-        page: Number(page),
-        perPage: Number(perPage),
-        priority,
-        search,
-        status
-      }
+      'infinite',
+      { assignedTo, entityId, module, priority, search, status }
     ],
-    select: res => res.data
+    select: response => ({
+      tasks: response.pages.flatMap(page => page.data.data),
+      total: response.pages[0]?.data.total ?? 0
+    })
   })
 
   if (isError) {
@@ -61,13 +73,14 @@ export default function useTasks(
   }
 
   return {
-    currentPage: data?.current_page || 1,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
     isFetchingTasks: isFetching,
     isPendingTasks: isPending,
     isRefetchingTasks: isRefetching,
-    pageSize: data?.per_page || 0,
     refetchTasks: refetch,
-    tasks: data?.data,
-    total: data?.total || 0
+    tasks: data?.tasks,
+    total: data?.total ?? 0
   }
 }

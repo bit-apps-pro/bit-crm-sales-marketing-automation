@@ -2,7 +2,7 @@ import NotifyContext from '@common/context/NotifyContext'
 import { __ } from '@common/helpers/i18nWrap'
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
-import { type ActivityType } from '@features/activity-list/shared/activity-types'
+import { type ActivityType } from '@features/activity-feed/shared/activity-types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useContext } from 'react'
 

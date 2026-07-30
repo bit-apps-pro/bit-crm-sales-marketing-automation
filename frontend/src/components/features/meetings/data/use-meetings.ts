@@ -1,24 +1,43 @@
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { type MeetingsIndexType } from '../shared/meeting-types'
+
+const PER_PAGE = 10
+
+interface MeetingsData {
+  meetings: MeetingsIndexType['data']
+  total: number
+}
 
 export default function useMeetings(
   module: string,
   entityId: number,
-  page: number | string,
-  perPage: number | string,
   status: string,
   search: string,
   assignedTo: string
 ) {
-  const { data, error, isError, isFetching, isPending, isRefetching, refetch } = useQuery<
-    Response<MeetingsIndexType>,
-    Error,
-    MeetingsIndexType
-  >({
-    queryFn: ({ signal }) =>
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isError,
+    isFetching,
+    isFetchingNextPage,
+    isPending,
+    isRefetching,
+    refetch
+  } = useInfiniteQuery<Response<MeetingsIndexType>, Error, MeetingsData>({
+    getNextPageParam: lastPage => {
+      const { data: page } = lastPage
+      const currentPage = Number(page.current_page)
+      const perPage = Number(page.per_page)
+      return currentPage * perPage < page.total ? currentPage + 1 : undefined
+    },
+    initialPageParam: 1,
+    queryFn: ({ pageParam, signal }) =>
       queryRequest(
         'activities/index',
         {},
@@ -26,24 +45,20 @@ export default function useMeetings(
           assigned_to: assignedTo,
           entityId: entityId || 0,
           module: module || '',
-          page: Number(page),
-          perPage: Number(perPage),
+          page: pageParam as number,
+          perPage: PER_PAGE,
           search,
           status,
           type: 'meeting'
         },
         'GET',
-        {
-          signal
-        }
+        { signal }
       ),
-    queryKey: [
-      'activities',
-      'meetings',
-      { assignedTo, entityId, module, page: Number(page), perPage: Number(perPage), search, status }
-    ],
-    select: res => res.data,
-    staleTime: 5000
+    queryKey: ['activities', 'meetings', 'infinite', { assignedTo, entityId, module, search, status }],
+    select: response => ({
+      meetings: response.pages.flatMap(page => page.data.data),
+      total: response.pages[0]?.data.total ?? 0
+    })
   })
 
   if (isError) {
@@ -51,13 +66,14 @@ export default function useMeetings(
   }
 
   return {
-    currentPage: data?.current_page || 1,
+    fetchNextPage,
+    hasNextPage,
     isFetchingMeetings: isFetching,
+    isFetchingNextPage,
     isPendingMeetings: isPending,
     isRefetchingMeetings: isRefetching,
-    meetings: data?.data,
-    pageSize: data?.per_page || 0,
+    meetings: data?.meetings,
     refetchMeetings: refetch,
-    total: data?.total || 0
+    total: data?.total ?? 0
   }
 }

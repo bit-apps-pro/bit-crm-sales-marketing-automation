@@ -1,19 +1,16 @@
 import { __ } from '@common/helpers/i18nWrap'
-import ActivityList from '@components/features/activity-list'
-import ActivityListFilterPage from '@components/features/activity-list/ui/activity-list-filter-page'
-import ActivityListSkeleton from '@components/features/activity-list/ui/activity-list-skeleton'
-import useTasks from '@components/features/tasks/data/use-tasks'
 import useTaskStore from '@components/features/tasks/state/use-task-store'
+import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-filter-page'
+import useInfiniteTasks from '@features/tasks/data/use-tasks'
 import TaskCreateModal from '@features/tasks/ui/task-create-modal'
 import TaskEditModal from '@features/tasks/ui/task-edit-modal'
-import If from '@utilities/If'
-import Pagination from '@utilities/pagination'
 import { Button, Input, Typography } from 'antd'
-import { type ChangeEvent } from 'react'
-import { useState } from 'react'
+import { type ChangeEvent, useState } from 'react'
 import { LuPlus, LuSearch } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 import { useDebounce } from 'react-use'
+
+import ActivitiesBoard from '../../components/features/activity-feed/activity-feed'
 
 export default function TasksPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -21,30 +18,16 @@ export default function TasksPage() {
   const module = searchParams.get('module') || ''
   const [searchDebounced, setSearchDebounced] = useState(search)
   const { handleModal } = useTaskStore()
-  const page = searchParams.get('page') || 1
-  const perPage = searchParams.get('perPage') || 10
   const status = searchParams.get('status') || ''
   const priority = searchParams.get('priority') || ''
   const assignedTo = searchParams.get('assigned_to') || ''
 
-  const { isPendingTasks, tasks, total } = useTasks(
-    module,
-    0,
-    page,
-    perPage,
-    status,
-    searchDebounced,
-    priority,
-    assignedTo
-  )
+  const { fetchNextPage, hasNextPage, isFetchingNextPage, isPendingTasks, tasks, total } =
+    useInfiniteTasks(module, 0, status, searchDebounced, priority, assignedTo)
 
   useDebounce(() => setSearchDebounced(search), 300, [search])
   const handleSearchTermChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchParams(prev => {
-      if (prev.get('page') !== '1') {
-        prev.set('page', '1')
-      }
-
       if (!e.target.value) {
         prev.delete('search')
         return prev
@@ -56,7 +39,7 @@ export default function TasksPage() {
   }
 
   return (
-    <div className="px-6 py-4 dark:bg-transparent">
+    <div className="flex h-full flex-col px-6 py-4 dark:bg-transparent">
       <div className="mb-4 flex items-center justify-between py-1">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
@@ -86,26 +69,15 @@ export default function TasksPage() {
           />
         </div>
       </div>
-
-      <If conditions={isPendingTasks}>
-        <ActivityListSkeleton quantity={4} />
-      </If>
-
-      <If conditions={!isPendingTasks && total === 0}>
-        <div className="flex items-center justify-center py-16 text-gray-400">
-          {__('No tasks found')}
-        </div>
-      </If>
-      <If conditions={!isPendingTasks && total > 0}>
-        <ActivityList activities={tasks} type="page" />
-      </If>
-
-      <If conditions={!isPendingTasks && total > 0}>
-        <div className="mt-4 flex items-center justify-end">
-          <Pagination total={total} />
-        </div>
-      </If>
-
+      <ActivitiesBoard
+        activities={tasks}
+        activityType="task"
+        hasMore={Boolean(hasNextPage)}
+        isLoading={isPendingTasks}
+        isLoadingMore={isFetchingNextPage}
+        onLoadMore={() => fetchNextPage()}
+        total={total}
+      />
       <TaskCreateModal variant="page" />
       <TaskEditModal variant="page" />
     </div>

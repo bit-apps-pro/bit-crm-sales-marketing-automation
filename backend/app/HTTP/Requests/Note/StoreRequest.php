@@ -18,14 +18,15 @@ class StoreRequest extends Request
         $isSubModule = $this->type === Note::TYPE_SUBMODULE;
 
         return [
-            'title'       => [$isSubModule ? 'nullable' : 'required', 'string', 'sanitize:text', 'max:255'],
-            'details'     => ['nullable', 'string', 'sanitize:wp_kses_post'],
-            'attachments' => ['nullable', 'array'],
-            'entity_id'   => ['required', 'integer'],
-            'module'      => ['required', 'string', 'sanitize:text'],
-            'is_shared'   => ['nullable', 'boolean'],
-            'type'        => ['nullable', 'string', 'sanitize:text'],
-            'attributes'  => ['nullable', 'array'],
+            'title'          => [$isSubModule ? 'nullable' : 'required', 'string', 'sanitize:text', 'max:255'],
+            'details'        => ['nullable', 'string', 'sanitize:wp_kses_post'],
+            'attachments'    => ['nullable', 'array'],
+            'entity_id'      => ['required', 'integer'],
+            'module'         => ['required', 'string', 'sanitize:text'],
+            'type'           => ['nullable', 'string', 'sanitize:text'],
+            'attributes'     => ['nullable', 'array'],
+            'is_shared'      => ['nullable', 'boolean'],
+            'submodule_type' => [$isSubModule ? 'required' : 'nullable', 'string', 'sanitize:text'],
         ];
     }
 }

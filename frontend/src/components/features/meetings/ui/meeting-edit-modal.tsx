@@ -58,22 +58,19 @@ export default function MeetingEditModal({ fieldOptions, variant }: MeetingEditM
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (meeting && meeting.id) {
-      const currentValues = form.getFieldsValue()
-      const hasValues = Object.values(currentValues).some(
-        val => val !== undefined && val !== null && val !== ''
-      )
-
-      if (!hasValues) {
-        form.setFieldsValue(meeting)
-
-        if (meeting.attachments && meeting.attachments.length > 0) {
-          setAttachments(meeting.attachments)
-        }
-      }
+    if (meeting?.attachments && meeting.attachments.length > 0) {
+      setAttachments(meeting.attachments)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meeting?.id])
+
+  // The form instance outlives the modal, so antd keeps the previous values
+  // across reopens; sync them whenever fresh data arrives.
+  useEffect(() => {
+    if (isEditModalOpen && meeting) {
+      form.setFieldsValue(meeting)
+    }
+  }, [form, isEditModalOpen, meeting])
 
   return (
     <Modal
@@ -96,11 +93,13 @@ export default function MeetingEditModal({ fieldOptions, variant }: MeetingEditM
       }}
       title={__('Update Meeting')}
     >
-      <If conditions={isEditModalOpen}>
+      <If conditions={isEditModalOpen && !!meeting?.id}>
         <MeetingForm
           entityId={meeting?.entity_id}
           fieldOptions={fieldOptions}
           form={form}
+          initialValues={meeting}
+          key={meeting?.id}
           module={meeting?.module}
           variant={variant}
         />

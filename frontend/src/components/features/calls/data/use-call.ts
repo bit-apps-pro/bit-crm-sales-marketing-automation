@@ -10,7 +10,7 @@ type TransformedCallType = Omit<CallType, 'due_date'> & { due_date?: Dayjs }
 
 export default function useCall(id: number) {
   const { isEditModalOpen } = useCallStore()
-  const { data, error, isError, isPending } = useQuery<Response<CallType>, Error, TransformedCallType>({
+  const { data, error, isError, isFetching } = useQuery<Response<CallType>, Error, TransformedCallType>({
     enabled: isEditModalOpen,
     queryFn: ({ signal }) => queryRequest(`activities/${id}`, {}, undefined, 'GET', { signal }),
     queryKey: ['activities', 'calls', id],
@@ -28,6 +28,6 @@ export default function useCall(id: number) {
 
   return {
     call: data,
-    isFetchingCall: isPending
+    isFetchingCall: isFetching
   }
 }

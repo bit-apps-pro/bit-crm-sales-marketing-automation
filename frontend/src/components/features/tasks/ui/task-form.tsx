@@ -1,7 +1,7 @@
 import { getFilteredModuleOptions, MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
-import { PRIORITY_OPTIONS } from '@features/activity-list/shared/activity-constants'
+import { PRIORITY_OPTIONS } from '@features/activity-feed/shared/activity-constants'
 import LookupFieldSelect from '@features/lookup-field-select'
 import WpMediaUploader from '@features/wp-media-uploader'
 import customizedRequiredMark from '@utilities/customized-required-mark'
@@ -18,11 +18,18 @@ const FILTERED_MODULE_OPTIONS = getFilteredModuleOptions([MODULES.INVOICE])
 interface TaskFormProps {
   fieldOptions?: FieldOptionsType[]
   form: FormInstance
+  initialValues?: Record<string, unknown>
   module?: string
   variant: 'component' | 'page'
 }
 
-export default function TaskForm({ fieldOptions, form, module: initialModule, variant }: TaskFormProps) {
+export default function TaskForm({
+  fieldOptions,
+  form,
+  initialValues,
+  module: initialModule,
+  variant
+}: TaskFormProps) {
   const [selectedModule, setSelectedModule] = useState<string>(initialModule || '')
 
   const handleModuleChange = (value: string) => {
@@ -32,7 +39,12 @@ export default function TaskForm({ fieldOptions, form, module: initialModule, va
 
   return (
     <div>
-      <Form form={form} layout="vertical" requiredMark={customizedRequiredMark}>
+      <Form
+        form={form}
+        initialValues={initialValues}
+        layout="vertical"
+        requiredMark={customizedRequiredMark}
+      >
         <If conditions={variant === 'page'}>
           <Form.Item
             label={__('Module')}

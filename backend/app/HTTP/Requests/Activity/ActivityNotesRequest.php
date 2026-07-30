@@ -15,8 +15,9 @@ class ActivityNotesRequest extends Request
     public function rules()
     {
         return [
-            'id'     => ['required', 'integer'],
-            'module' => ['required', 'string', 'sanitize:text'],
+            'id'            => ['required', 'integer'],
+            'module'        => ['required', 'string', 'sanitize:text'],
+            'submoduleType' => ['required', 'string', 'sanitize:text'],
         ];
     }
 }

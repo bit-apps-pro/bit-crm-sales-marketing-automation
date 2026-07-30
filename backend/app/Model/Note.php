@@ -21,6 +21,7 @@ class Note extends Model
     protected $prefix = Config::VAR_PREFIX;
 
     protected $fillable = [
+        'submodule_type',
         'title',
         'details',
         'attachments',

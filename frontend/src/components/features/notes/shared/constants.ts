@@ -3,6 +3,8 @@ import { __ } from '@common/helpers/i18nWrap'
 export const DEFAULT_PAGE = 1
 export const DEFAULT_PER_PAGE = 10
 
+export const NOTE_TYPE_SUBMODULE = 'submodule'
+
 export const RECENT_FIRST = 'recent_first'
 export const RECENT_LAST = 'recent_last'
 

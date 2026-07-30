@@ -28,7 +28,7 @@ const useMeetingStore = create<MeetingStore>(set => ({
     }
 
     currentParams.delete('modal')
-    currentParams.delete('id')
+    // currentParams.delete('id')
     setSearchParams(currentParams.toString())
   },
   isCreateModalOpen: false,

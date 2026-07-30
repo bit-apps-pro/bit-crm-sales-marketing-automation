@@ -1,7 +1,7 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import queryRequest, { type Response } from '@common/helpers/request'
-import { type ActivityType } from '@features/activity-list/shared/activity-types'
+import { type ActivityType } from '@features/activity-feed/shared/activity-types'
 import { useQuery } from '@tanstack/react-query'
 
 const UPCOMING_ACTIVITIES_LIMIT = 2

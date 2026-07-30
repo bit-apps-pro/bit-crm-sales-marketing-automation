@@ -34,8 +34,8 @@ export default function useUpdateTask(form: FormInstance) {
     },
     onSuccess: () => {
       messageApi?.success(__('Task updated successfully'))
-      queryClient.invalidateQueries({ queryKey: ['activities', 'tasks'] })
-      queryClient.invalidateQueries({ queryKey: ['activities', 'upcoming'] })
+      // Prefix match: covers the list, detail and upcoming activity queries.
+      queryClient.invalidateQueries({ queryKey: ['activities'] })
     }
   })
 

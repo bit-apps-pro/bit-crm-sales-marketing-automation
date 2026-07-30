@@ -1,16 +1,12 @@
 import { __ } from '@common/helpers/i18nWrap'
-import ActivityList from '@components/features/activity-list'
-import ActivityListFilterPage from '@components/features/activity-list/ui/activity-list-filter-page'
-import ActivityListSkeleton from '@components/features/activity-list/ui/activity-list-skeleton'
-import useMeetings from '@components/features/meetings/data/use-meetings'
 import useMeetingStore from '@components/features/meetings/state/use-meeting-store'
+import ActivitiesBoard from '@features/activity-feed/activity-feed'
+import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-filter-page'
+import useInfiniteMeetings from '@features/meetings/data/use-meetings'
 import MeetingCreateModal from '@features/meetings/ui/meeting-create-modal'
 import MeetingEditModal from '@features/meetings/ui/meeting-edit-modal'
-import If from '@utilities/If'
-import Pagination from '@utilities/pagination'
 import { Button, Input, Typography } from 'antd'
-import { type ChangeEvent } from 'react'
-import { useState } from 'react'
+import { type ChangeEvent, useState } from 'react'
 import { LuPlus, LuSearch } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 import { useDebounce } from 'react-use'
@@ -21,29 +17,16 @@ export default function MeetingsPage() {
   const module = searchParams.get('module') || ''
   const [searchDebounced, setSearchDebounced] = useState(search)
   const { handleModal } = useMeetingStore()
-  const page = searchParams.get('page') || 1
-  const perPage = searchParams.get('perPage') || 10
   const status = searchParams.get('status') || ''
   const assignedTo = searchParams.get('assigned_to') || ''
 
-  const { isPendingMeetings, meetings, total } = useMeetings(
-    module,
-    0,
-    page,
-    perPage,
-    status,
-    searchDebounced,
-    assignedTo
-  )
+  const { fetchNextPage, hasNextPage, isFetchingNextPage, isPendingMeetings, meetings, total } =
+    useInfiniteMeetings(module, 0, status, searchDebounced, assignedTo)
 
   useDebounce(() => setSearchDebounced(search), 300, [search])
 
   const handleSearchTermChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchParams(prev => {
-      if (prev.get('page') !== '1') {
-        prev.set('page', '1')
-      }
-
       if (!e.target.value) {
         prev.delete('search')
         return prev
@@ -55,7 +38,7 @@ export default function MeetingsPage() {
   }
 
   return (
-    <div className="px-6 py-4 dark:bg-transparent">
+    <div className="flex h-full flex-col px-6 py-4">
       <div className="mb-4 flex items-center justify-between py-1">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
@@ -85,24 +68,15 @@ export default function MeetingsPage() {
           />
         </div>
       </div>
-      <If conditions={isPendingMeetings}>
-        <ActivityListSkeleton quantity={4} />
-      </If>
-      <If conditions={!isPendingMeetings && total === 0}>
-        <div className="flex items-center justify-center py-16 text-gray-400">
-          {__('No meetings found')}
-        </div>
-      </If>
-      <If conditions={!isPendingMeetings && total > 0}>
-        <ActivityList activities={meetings} type="page" />
-      </If>
-
-      <If conditions={!isPendingMeetings && total > 0}>
-        <div className="mt-4 flex items-center justify-end">
-          <Pagination total={total} />
-        </div>
-      </If>
-
+      <ActivitiesBoard
+        activities={meetings}
+        activityType="meeting"
+        hasMore={Boolean(hasNextPage)}
+        isLoading={isPendingMeetings}
+        isLoadingMore={isFetchingNextPage}
+        onLoadMore={() => fetchNextPage()}
+        total={total}
+      />
       <MeetingCreateModal variant="page" />
       <MeetingEditModal variant="page" />
     </div>

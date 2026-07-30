@@ -1,4 +1,4 @@
-import { type ActivityType, type ActivityTypeValue } from '@features/activity-list/shared/activity-types'
+import { type ActivityType, type ActivityTypeValue } from '@features/activity-feed/shared/activity-types'
 
 export interface DealPipeline {
   amount: string

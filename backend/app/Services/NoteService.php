@@ -61,8 +61,16 @@ class NoteService
         );
     }
 
-    private static function formatData($data, $entityData)
+    public static function formatData($data, $entityData = [])
     {
+        if (empty($data)) {
+            return $data;
+        }
+
+        if (empty($entityData) && !empty($data->module) && !empty($data->entity_id)) {
+            $entityData = EntityFieldService::getEntityData($data->module, $data->entity_id);
+        }
+
         $data->title = EntityFieldService::renderFields($data->title, $entityData);
         $data->details = EntityFieldService::renderFieldsInHtml($data->details, $entityData);
 

@@ -1,6 +1,6 @@
 import { formatDateTime } from '@common/helpers/globalHelpers'
 import { ICONS } from '@common/icons'
-import { type ActivityType } from '@features/activity-list/shared/activity-types'
+import { type ActivityType } from '@features/activity-feed/shared/activity-types'
 import If from '@utilities/If'
 import { LuClock } from 'react-icons/lu'
 
@@ -26,9 +26,9 @@ export default function EntityUpcomingActivity({ activity }: { activity: Activit
         </div>
       </div>
       <If conditions={activity.due_date}>
-        <div className="flex items-center gap-1.5 text-slate-500 dark:text-neutral-500">
-          <LuClock />
-          <span className="text-xs">{formattedDueDate}</span>
+        <div className="flex shrink-0 items-center gap-1.5 text-slate-500 dark:text-neutral-500">
+          <LuClock className="shrink-0" />
+          <span className="whitespace-nowrap text-xs">{formattedDueDate}</span>
         </div>
       </If>
     </div>
