@@ -15,8 +15,7 @@ const MORE_MENU_ITEMS = [
   { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'calls', label: __('Calls'), to: '/calls' },
   { capability: CAPABILITIES.TAG.MENU, key: 'tags', label: __('Tags'), to: '/tags' },
   { capability: CAPABILITIES.WORKFLOW.MENU, key: 'workflows', label: __('Workflows'), to: '/workflows' },
-  { capability: CAPABILITIES.OTHERS.History, key: 'history', label: __('History'), to: '/history' },
-  { capability: CAPABILITIES.SETTING.MENU, key: 'settings', label: __('Settings'), to: '/settings' }
+  { capability: CAPABILITIES.OTHERS.History, key: 'history', label: __('History'), to: '/history' }
 ]
 
 export default function HeaderMoreDropdown() {

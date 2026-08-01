@@ -1,12 +1,13 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
+import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import brandLogo from '@resource/brand-logo.svg'
 import If from '@utilities/If'
 import ThemeToggle from '@utilities/theme-toggle'
 import { Button, Layout } from 'antd'
 import { LuSettings } from 'react-icons/lu'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 
 import HeaderMoreDropdown from './header-more-dropdown'
 import HeaderNavItem from './header-nav-item'
@@ -24,6 +25,8 @@ const navItems = [
 
 export default function Header() {
   const navigate = useNavigate()
+  const location = useLocation()
+  const isSettingsActive = location.pathname.startsWith('/settings')
 
   return (
     <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-4 py-5">
@@ -52,9 +55,14 @@ export default function Header() {
         <ThemeToggle />
         <If conditions={checkCapability(CAPABILITIES.SETTING.MENU)}>
           <Button
-            className="h-10 w-10 shadow-none"
+            aria-current={isSettingsActive ? 'page' : undefined}
+            aria-label={__('Settings')}
+            className={cn([
+              'h-10 w-10 shadow-none transition-colors duration-300 ease-in-out',
+              isSettingsActive && 'border-none bg-primary'
+            ])}
             classNames={{ icon: ' flex items-center' }}
-            icon={<LuSettings className="text-gray-500" size={18} />}
+            icon={<LuSettings className={isSettingsActive ? 'text-white' : 'text-gray-500'} size={18} />}
             onClick={() => navigate('/settings')}
             shape="circle"
           />
