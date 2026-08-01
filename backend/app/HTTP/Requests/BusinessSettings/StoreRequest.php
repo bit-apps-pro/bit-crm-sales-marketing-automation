@@ -10,7 +10,7 @@ class StoreRequest extends Request
 {
     public function authorize()
     {
-        return Capability::check('bit_crm_setting_business');
+        return Capability::check('bit_crm_setting_general');
     }
 
     public function rules()

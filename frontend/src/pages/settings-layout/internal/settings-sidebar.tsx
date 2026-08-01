@@ -101,7 +101,7 @@ const navGroups = [
         path: '../settings/data-management'
       },
       {
-        capability: CAPABILITIES.SETTING.PORTAL_SETTINGS,
+        capability: CAPABILITIES.SETTING.PORTAL,
         label: __('Portal Settings'),
         path: '../settings/portal-settings'
       },

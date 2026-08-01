@@ -121,7 +121,7 @@ final class CompanyController
                     'offset'               => $offset,
                     'page'                 => $page,
                     'sortBy'               => !empty($validatedData['sortBy']) ? $validatedData['sortBy'] : 'id',
-                    'sortOrder'            => !empty($validatedData['sortOrder']) ? $validatedData['sortOrder'] : 'asc',
+                    'sortOrder'            => !empty($validatedData['sortOrder']) ? $validatedData['sortOrder'] : 'desc',
                     'searchTerm'           => $validatedData['searchTerm'],
                     'filters'              => !empty($validatedData['filters']) ? $validatedData['filters'] : [],
                     'tags'                 => !empty($validatedData['tags']) ? $validatedData['tags'] : [],

@@ -261,7 +261,7 @@ export default function AppRoutes() {
                 />
                 <Route
                   element={
-                    <ProtectedRoute capability={CAPABILITIES.SETTING.PORTAL_SETTINGS}>
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.PORTAL}>
                       <PortalSettings />
                     </ProtectedRoute>
                   }

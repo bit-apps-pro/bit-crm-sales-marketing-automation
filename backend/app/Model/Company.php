@@ -53,6 +53,7 @@ class Company extends Model
 
     protected $fillable = [
         'owner_id',
+        'company_number',
         'parent_id',
         'name',
         'phone',

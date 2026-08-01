@@ -15,7 +15,7 @@ export default function Actions({ id }: { id: number | string }) {
   return (
     <>
       <div className="flex items-center justify-end gap-2">
-        <If conditions={checkCapability(CAPABILITIES.SETTING.PORTAL_SETTINGS)}>
+        <If conditions={checkCapability(CAPABILITIES.SETTING.PORTAL)}>
           <ClientPortalAccess id={id} />
         </If>
         <Button

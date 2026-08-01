@@ -38,7 +38,6 @@ const CAPABILITIES = {
     UPDATE: 'bit_crm_deal_update',
     VIEW: 'bit_crm_deal_view'
   },
-  GENERAL_SETTINGS: 'bit_crm_general_settings',
   HISTORY: {
     MENU: 'bit_crm_history_menu',
     READ: 'bit_crm_history_read'
@@ -91,7 +90,6 @@ const CAPABILITIES = {
     VIEW: 'bit_crm_product_view'
   },
   SETTING: {
-    BUSINESS_SETTINGS: 'bit_crm_setting_business',
     COMPANY: 'bit_crm_setting_company',
     CONTACT: 'bit_crm_setting_contact',
     CURRENCY: 'bit_crm_setting_currency',
@@ -104,7 +102,7 @@ const CAPABILITIES = {
     INVOICE: 'bit_crm_setting_invoice',
     LEAD: 'bit_crm_setting_lead',
     MENU: 'bit_crm_setting_menu',
-    PORTAL_SETTINGS: 'bit_crm_setting_portal',
+    PORTAL: 'bit_crm_setting_portal',
     PRODUCT: 'bit_crm_setting_product',
     SMTP: 'bit_crm_setting_smtp',
     USER: 'bit_crm_setting_crm_user',
