@@ -1,5 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons'
-import { __, sprintf } from '@common/helpers/i18nWrap'
+import { __ } from '@common/helpers/i18nWrap'
 import useDebounce from '@common/hooks/use-debounce'
 import FieldWrapper from '@features/form-builder/index'
 import { MODULE_FIELD_CONFIG } from '@features/form-builder/shared/module-field-config'
@@ -8,10 +8,10 @@ import AddNewFieldModal from '@features/form-builder/ui/add-new-field-modal'
 import FieldRenderer from '@features/form-builder/ui/field-renderer'
 import If from '@utilities/If'
 import Sortable from '@utilities/sortable'
-import { Button, Popover, Radio, Typography } from 'antd'
+import { Radio, Typography } from 'antd'
 import { isEqual } from 'lodash'
 import { useEffect, useState } from 'react'
-import { LuAlignJustify, LuColumns2, LuInfo } from 'react-icons/lu'
+import { LuAlignJustify, LuColumns2 } from 'react-icons/lu'
 
 import useFields from './data/use-fields'
 import useUpdateFields from './data/use-update-fields'
@@ -114,27 +114,6 @@ export default function FieldSettings({ module }: FieldSettingsPropsType) {
               </div>
             </Radio.Button>
           </Radio.Group>
-          <Popover
-            content={
-              <div className="max-w-xs">
-                <Typography.Text className="text-xs">
-                  {sprintf(
-                    __(
-                      'Adjusting this setting changes how fields are arranged in the %s creation and update forms.'
-                    ),
-                    module
-                  )}
-                </Typography.Text>
-                <Button className="text-xs text-blue-700 dark:text-blue-500" size="small" type="link">
-                  {__('Learn more')}
-                </Button>
-              </div>
-            }
-          >
-            <span className="flex items-center">
-              <LuInfo />
-            </span>
-          </Popover>
         </div>
 
         <If conditions={isFieldsFetching}>

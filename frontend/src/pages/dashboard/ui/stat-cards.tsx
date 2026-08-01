@@ -19,35 +19,35 @@ export default function StatCards({ stats }: StatCardsProps) {
       href: '/leads',
       icon: <LuMagnet size={16} />,
       stats: leads,
-      title: __('Total Leads')
+      title: __('Leads')
     },
     {
       capabilities: CAPABILITIES.CONTACT.VIEW,
       href: '/contacts',
       icon: <LuUser size={16} />,
       stats: contacts,
-      title: __('Total Contacts')
+      title: __('Contacts')
     },
     {
       capabilities: CAPABILITIES.COMPANY.VIEW,
       href: '/companies',
       icon: <LuBuilding2 size={16} />,
       stats: companies,
-      title: __('Total Companies')
+      title: __('Companies')
     },
     {
       capabilities: CAPABILITIES.DEAL.VIEW,
       href: '/deals',
       icon: <LuHandshake size={16} />,
       stats: deals,
-      title: __('Total Deals')
+      title: __('Deals')
     },
     {
       capabilities: CAPABILITIES.INVOICE.VIEW,
       href: '/invoices',
       icon: <LuFileText size={16} />,
       stats: invoices,
-      title: __('Total Invoices')
+      title: __('Invoices')
     }
   ]
 
