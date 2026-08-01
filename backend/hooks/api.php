@@ -15,6 +15,7 @@ use BitApps\Crm\HTTP\Controllers\DealController;
 use BitApps\Crm\HTTP\Controllers\DealStageController;
 use BitApps\Crm\HTTP\Controllers\DownloadController;
 use BitApps\Crm\HTTP\Controllers\EmailController;
+use BitApps\Crm\HTTP\Controllers\ExternalApiController;
 use BitApps\Crm\HTTP\Controllers\ImapController;
 use BitApps\Crm\HTTP\Controllers\ImportExportListController;
 use BitApps\Crm\HTTP\Controllers\IntegrationSettingsController;
@@ -111,6 +112,11 @@ Route::group(
         Route::post('settings/business/store', [BusinessSettingsController::class, 'store']);
         Route::post('settings/business/update', [BusinessSettingsController::class, 'update']);
         Route::get('settings/business/show', [BusinessSettingsController::class, 'show']);
+
+        Route::get('settings/external-api/index', [ExternalApiController::class, 'index']);
+        Route::post('settings/external-api/update', [ExternalApiController::class, 'updateSettings']);
+        Route::post('settings/external-api/keys/store', [ExternalApiController::class, 'storeKey']);
+        Route::post('settings/external-api/keys/delete', [ExternalApiController::class, 'destroyKey']);
 
         Route::get('settings/integration/woo-product', [IntegrationSettingsController::class, 'wooProductIntegration']);
         Route::get('settings/integration/show', [IntegrationSettingsController::class, 'show']);

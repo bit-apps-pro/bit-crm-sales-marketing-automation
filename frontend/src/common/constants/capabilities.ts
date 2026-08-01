@@ -90,6 +90,7 @@ const CAPABILITIES = {
     VIEW: 'bit_crm_product_view'
   },
   SETTING: {
+    API: 'bit_crm_setting_api',
     COMPANY: 'bit_crm_setting_company',
     CONTACT: 'bit_crm_setting_contact',
     CURRENCY: 'bit_crm_setting_currency',
