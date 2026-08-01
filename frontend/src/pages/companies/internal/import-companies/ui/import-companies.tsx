@@ -5,6 +5,7 @@ import { findMatchedFieldKey } from '@common/helpers/entity-helpers'
 import { formatFieldsMap } from '@common/helpers/format-fields-map'
 import { generateLookupFieldsOptions } from '@common/helpers/generate-lookup-fields-options'
 import { __ } from '@common/helpers/i18nWrap'
+import useExclusiveFieldMapping from '@common/hooks/use-exclusive-field-mapping'
 import DownloadSample from '@features/download-sample/download-sample'
 import { SAMPLE_FILE_NAMES } from '@features/download-sample/shared/constants'
 import { DUPLICATE_HANDLING_OPTIONS, LOOKUP_FIELDS_CONFIG } from '@pages/companies/shared/constants'
@@ -95,6 +96,8 @@ export default function ImportCompanies({ customFields, systemDefinedFields }: I
     [systemDefinedFields, customFields]
   )
 
+  const disableMappedFields = useExclusiveFieldMapping(form, headers)
+
   const columns = [
     {
       dataIndex: 'header',
@@ -113,7 +116,7 @@ export default function ImportCompanies({ customFields, systemDefinedFields }: I
             popupMatchSelectWidth={false}
             showSearch
             style={{ width: '100%' }}
-            treeData={fieldOptions}
+            treeData={disableMappedFields(fieldOptions, header)}
             treeDefaultExpandAll
           />
         </Form.Item>
