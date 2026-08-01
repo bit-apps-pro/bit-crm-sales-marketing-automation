@@ -21,7 +21,9 @@ export default function Tutorial() {
           <div className="order-3 2xl:order-none">
             <Button
               className="w-full justify-center rounded-full border-none bg-[#FFEFEF] text-[#FF0000] hover:bg-[#FF0000] hover:!text-white 2xl:w-auto"
+              href="https://www.youtube.com/@bit-apps"
               icon={<LuArrowUpRight />}
+              target="_blank"
             >
               {__('Watch Tutorials')}
             </Button>
