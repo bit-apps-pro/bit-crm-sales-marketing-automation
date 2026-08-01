@@ -68,7 +68,7 @@ export default function PluginIntegrationCard({ description, logo, slug, title }
           <If conditions={isPluginInfoError}>
             <div className="flex items-center justify-between gap-2">
               <Typography.Text type="danger">
-                {__('Could not check this plugin’s status.')}
+                {__("Could not check this plugin's status.")}
               </Typography.Text>
               <Button
                 className="rounded-full"

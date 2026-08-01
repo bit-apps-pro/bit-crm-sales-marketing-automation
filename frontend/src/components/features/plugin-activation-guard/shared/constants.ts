@@ -1,7 +1,12 @@
 import { __ } from '@common/helpers/i18nWrap'
+import bitFlowsLogo from '@resource/img/Bit-Flows-Main-logo.svg'
+import bitFormLogo from '@resource/img/Bit-Form-Main-logo.svg'
+import bitIntegrationsLogo from '@resource/img/Bit-Integrations-Main-logo.svg'
+import bitSmtpLogo from '@resource/img/Bit-SMTP-Main-Logo.svg'
 
 export const PLUGIN_GUARD_CONTENT = {
   'bit-form': {
+    logo: bitFormLogo,
     notActivated: {
       buttonLabel: __('Activate'),
       subTitle: __('Bit Form plugin is installed but not activated. Please activate it to continue.'),
@@ -16,6 +21,7 @@ export const PLUGIN_GUARD_CONTENT = {
     }
   },
   'bit-integrations': {
+    logo: bitIntegrationsLogo,
     notActivated: {
       buttonLabel: __('Activate'),
       subTitle: __(
@@ -32,6 +38,7 @@ export const PLUGIN_GUARD_CONTENT = {
     }
   },
   'bit-pi': {
+    logo: bitFlowsLogo,
     notActivated: {
       buttonLabel: __('Activate'),
       subTitle: __('Bit Flows plugin is installed but not activated. Please activate it to continue.'),
@@ -46,6 +53,7 @@ export const PLUGIN_GUARD_CONTENT = {
     }
   },
   'bit-smtp': {
+    logo: bitSmtpLogo,
     notActivated: {
       buttonLabel: __('Activate'),
       subTitle: __('Bit SMTP plugin is installed but not activated. Please activate it to continue.'),

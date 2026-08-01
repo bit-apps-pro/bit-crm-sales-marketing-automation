@@ -21,6 +21,7 @@ use BitApps\Crm\Model\Tag;
 use BitApps\Crm\Model\TagEntity;
 use BitApps\Crm\Model\Trash;
 use BitApps\Crm\src\StaticData\CompanySystemDefinedFields;
+use BitApps\Crm\src\StaticData\CurrencyHelper;
 use Throwable;
 
 class CompanyService implements EntityDataInterface, EntityFieldsInterface
@@ -56,6 +57,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
+        $systemDefinedFieldsValues['currency'] = $validated['currency'] ?? CurrencyHelper::getHomeCurrency();
         Connection::startTransaction();
 
         try {

@@ -29,6 +29,7 @@ class DashboardService
         $leadCountBySource = Lead::select('lead_source')
             ->selectRaw('COUNT(*) as total')
             ->where('is_trash', 0)
+            ->where('lead_source', '!=', '')
             ->where('is_converted', 0)
             ->groupBy('lead_source')
             ->orderBy('total')
@@ -102,9 +103,9 @@ class DashboardService
         $grouped = array_fill_keys(self::PENDING_ACTIVITY_TYPES, ['items' => [], 'total' => 0]);
 
         $activities = Activity::raw(
-            "SELECT id, type, title, details, due_date, assignee
+            "SELECT id, type, title, details, due_date, module, entity_id, assignee
              FROM (
-                 SELECT a.id, a.type, a.title, a.details, a.due_date,
+                 SELECT a.id, a.type, a.title, a.details, a.due_date, a.module, a.entity_id,
                         u.display_name AS assignee,
                         ROW_NUMBER() OVER (PARTITION BY a.type ORDER BY a.due_date ASC) AS rn
                  FROM {$activitiesTable} a
@@ -129,10 +130,20 @@ class DashboardService
             }
         }
 
+        $entityDataCache = [];
+
         foreach ($activities as $activity) {
-            if (isset($grouped[$activity->type])) {
-                $grouped[$activity->type]['items'][] = $activity;
+            if (!isset($grouped[$activity->type])) {
+                continue;
             }
+
+            $cacheKey = $activity->module . ':' . $activity->entity_id;
+
+            if (!\array_key_exists($cacheKey, $entityDataCache)) {
+                $entityDataCache[$cacheKey] = EntityFieldService::getEntityData($activity->module, $activity->entity_id);
+            }
+
+            $grouped[$activity->type]['items'][] = ActivityService::formatData($activity, $entityDataCache[$cacheKey]);
         }
 
         return $grouped;

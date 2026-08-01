@@ -12,6 +12,10 @@ import { createPortal } from 'react-dom'
 import { createRoot } from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router'
 import 'jotai-devtools/styles.css'
+// Emits assets/logo.svg under a stable, unhashed name (see the assetFileNames
+// rule in vite.config.ts). Body.php hardcodes that URL for the pre-hydration
+// splash, so the file must exist regardless of which chunks a build includes.
+import '@resource/logo.svg?no-inline'
 
 import AppRoutes from './AppRoutes'
 

@@ -55,7 +55,7 @@ export default function ProductLineItemsTable({
         </div>
       ),
       title: __('Product Name'),
-      width: 350
+      width: 300
     },
     {
       dataIndex: 'price',
@@ -86,7 +86,7 @@ export default function ProductLineItemsTable({
         />
       ),
       title: __('Quantity'),
-      width: 80
+      width: 100
     },
     {
       dataIndex: 'discount_percentage',
@@ -103,7 +103,7 @@ export default function ProductLineItemsTable({
         />
       ),
       title: __('Discount'),
-      width: 80
+      width: 100
     },
     {
       dataIndex: 'tax_rate',
@@ -121,7 +121,7 @@ export default function ProductLineItemsTable({
         />
       ),
       title: __('Tax Rate'),
-      width: 80
+      width: 100
     },
     {
       dataIndex: 'total',
@@ -132,7 +132,7 @@ export default function ProductLineItemsTable({
         </div>
       ),
       title: __('Total'),
-      width: 80
+      width: 100
     },
     {
       align: 'center',

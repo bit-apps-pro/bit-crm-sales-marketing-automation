@@ -30,7 +30,7 @@ export default function BusinessSettings() {
 
   const handleFormSubmit = async () => {
     const data = await form.validateFields()
-    if (!checkCapability(CAPABILITIES.SETTING.BUSINESS_SETTINGS)) {
+    if (!checkCapability(CAPABILITIES.SETTING.GENERAL)) {
       messageApi?.error(__('You do not have permission to update business settings.'))
       return
     }

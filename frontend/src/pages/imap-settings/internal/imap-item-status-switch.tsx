@@ -5,8 +5,13 @@ import { useState } from 'react'
 
 import useStatusUpdateImap from '../data/use-status-update-imap'
 
-export default function ImapItemStatusSwitch({ id, status }: { id: number; status: string }) {
-  const [isChecked, setChecked] = useState(status === '1')
+interface ImapItemStatusSwitchProps {
+  id: number
+  status: boolean
+}
+
+export default function ImapItemStatusSwitch({ id, status }: ImapItemStatusSwitchProps) {
+  const [isChecked, setChecked] = useState<boolean>(status)
   const { updateStatus } = useStatusUpdateImap()
 
   const handleStatusUpdate = async () => {
