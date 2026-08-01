@@ -42,6 +42,7 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
         $systemDefinedFieldsValues = $this->convertCurrencies($systemDefinedFieldsValues);
+        $systemDefinedFieldsValues['currency'] = $validated['currency'] ?? CurrencyHelper::getHomeCurrency();
 
         Connection::startTransaction();
 

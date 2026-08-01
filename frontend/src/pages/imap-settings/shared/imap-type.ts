@@ -13,7 +13,7 @@ export interface ImapType {
 
 export type ImapDataType = Pick<ImapType, 'id' | 'platform' | 'title' | 'username' | 'visibility'> & {
   can_update: boolean
-  status: string
+  status: boolean
 }
 export interface ImapsIndexType {
   data: ImapDataType[]

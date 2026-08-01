@@ -90,7 +90,6 @@ return [
     ],
     Setting::MODULE_NAME => [
         ['label' => __('General Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_general'],
-        ['label' => __('Business Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_business'],
         ['label' => __('Lead Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_lead'],
         ['label' => __('Contact Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_contact'],
         ['label' => __('Company Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_company'],
@@ -109,5 +108,6 @@ return [
     ],
     'others' => [
         ['label' => __('History View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_history_view'],
+        ['label' => __('Support & License', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_manage_support_license'],
     ]
 ];

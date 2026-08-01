@@ -22,6 +22,7 @@ use BitApps\Crm\Model\Tag;
 use BitApps\Crm\Model\TagEntity;
 use BitApps\Crm\Model\Trash;
 use BitApps\Crm\src\StaticData\ContactSystemDefinedFields;
+use BitApps\Crm\src\StaticData\CurrencyHelper;
 use Throwable;
 
 class ContactService implements EntityDataInterface, EntityFieldsInterface
@@ -58,6 +59,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
+        $systemDefinedFieldsValues['currency'] = $validated['currency'] ?? CurrencyHelper::getHomeCurrency();
         $clientPortalEnabled = $validated['clientPortal'] ?? false;
 
         if ($clientPortalEnabled && empty($systemDefinedFieldsValues['email'])) {

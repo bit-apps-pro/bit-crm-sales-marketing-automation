@@ -33,7 +33,7 @@ export default function PluginActivationGuard({ children, slug }: PluginActivati
   }
 
   const isInstalled = data?.isInstalled ?? false
-  const { notActivated, notInstalled } = PLUGIN_GUARD_CONTENT[slug]
+  const { logo, notActivated, notInstalled } = PLUGIN_GUARD_CONTENT[slug]
   const content = isInstalled ? notActivated : notInstalled
 
   return (
@@ -57,6 +57,7 @@ export default function PluginActivationGuard({ children, slug }: PluginActivati
           </Typography.Text>
         )
       }
+      icon={<img alt={slug} className="mx-auto h-12 w-auto max-w-[220px] object-contain" src={logo} />}
       status={isInstalled ? 'warning' : 'error'}
       subTitle={content.subTitle}
       title={content.title}

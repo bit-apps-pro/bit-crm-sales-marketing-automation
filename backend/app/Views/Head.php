@@ -59,7 +59,7 @@ class Head
             [
                 'nonce'               => wp_create_nonce('wp_rest'),
                 'rootURL'             => Config::get('ROOT_URI'),
-                'siteURL'             => Config::get('SITE_URL'),
+                'siteUrl'             => Config::get('SITE_URL'),
                 'siteBaseURL'         => is_multisite() ? network_site_url() : site_url(),
                 'assetsURL'           => Config::get('ASSET_URI'),
                 'baseURL'             => Config::get('ADMIN_URL') . 'admin.php?page=' . Config::SLUG . '#',
@@ -76,6 +76,7 @@ class Head
                 'capabilities'        => Config::get('capabilities'),
                 'homeCurrencyData'    => Config::get('HOME_CURRENCY_DATA'),
                 'currentUserId'       => get_current_user_id(),
+                'loggedInUserName'    => wp_get_current_user()->display_name ?: wp_get_current_user()->user_login,
                 'onboardingCompleted' => Config::getOption(OnboardingController::KEY_ONBOARDING_COMPLETED, false),
             ]
         );

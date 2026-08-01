@@ -43,7 +43,7 @@ class ImapSetting extends Model
     ];
 
     protected $casts = [
-        'status' => 'boolean',
+        'status' => 'bool',
     ];
 
     protected static function boot()

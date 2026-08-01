@@ -12,7 +12,7 @@ export default function useBusinessSettings() {
     Error,
     BusinessSettings
   >({
-    enabled: checkCapability(CAPABILITIES.SETTING.BUSINESS_SETTINGS),
+    enabled: checkCapability(CAPABILITIES.SETTING.GENERAL),
     queryFn: ({ signal }) =>
       queryRequest('settings/business/show', undefined, undefined, 'GET', {
         signal

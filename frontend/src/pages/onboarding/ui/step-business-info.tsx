@@ -1,5 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
-import logo from '@resource/logo.svg'
+import logo from '@resource/logo.svg?no-inline'
 import { Button, Form, type FormInstance, Input, Typography } from 'antd'
 
 import { type OnboardingType } from '../onboarding'
