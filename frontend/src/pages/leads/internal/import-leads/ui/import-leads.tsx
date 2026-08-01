@@ -3,6 +3,7 @@ import NotifyContext from '@common/context/NotifyContext'
 import { findMatchedFieldKey } from '@common/helpers/entity-helpers'
 import { formatFieldsMap } from '@common/helpers/format-fields-map'
 import { __ } from '@common/helpers/i18nWrap'
+import useExclusiveFieldMapping from '@common/hooks/use-exclusive-field-mapping'
 import DownloadSample from '@features/download-sample'
 import { SAMPLE_FILE_NAMES } from '@features/download-sample/shared/constants'
 import { type LeadType } from '@pages/lead/shared/lead-types'
@@ -105,6 +106,8 @@ export default function ImportLeads({ customFields, systemDefinedFields }: Impor
     [systemDefinedFields, customFields]
   )
 
+  const disableMappedFields = useExclusiveFieldMapping(form, headers)
+
   const columns = [
     {
       dataIndex: 'header',
@@ -119,7 +122,7 @@ export default function ImportLeads({ customFields, systemDefinedFields }: Impor
         <Form.Item className="mb-0" initialValue={findMatchedFieldKey(header, allFields)} name={header}>
           <Select
             allowClear
-            options={fieldOptions}
+            options={disableMappedFields(fieldOptions, header)}
             placeholder={__('Select a field')}
             showSearch
             style={{ width: '100%' }}
