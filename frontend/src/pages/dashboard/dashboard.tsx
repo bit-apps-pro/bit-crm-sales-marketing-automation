@@ -54,7 +54,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-5">
+    <div className="px-6 py-4">
       <div>
         <Typography.Title className="" level={2}>
           {sprintf(__('Welcome %s,'), userName)}

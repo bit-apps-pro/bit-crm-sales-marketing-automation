@@ -29,7 +29,7 @@ export default function Header() {
   const isSettingsActive = location.pathname.startsWith('/settings')
 
   return (
-    <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-4 py-5">
+    <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-6 py-5">
       <Link className="flex shrink-0 items-center" to="/">
         <svg
           aria-label="Bit CRM"

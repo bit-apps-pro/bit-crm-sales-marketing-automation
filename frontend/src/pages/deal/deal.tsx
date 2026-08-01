@@ -53,7 +53,7 @@ export default function Deal() {
     return <Empty className="flex h-full flex-col items-center justify-center" />
 
   return (
-    <div className="space-y-5 p-6">
+    <div className="space-y-5 px-6 py-4">
       {isFieldsPending || isDealPending || !deal ? (
         <EntitySkeleton />
       ) : (

@@ -38,7 +38,7 @@ export default function Invoice() {
   })
 
   return (
-    <div className="space-y-4 p-6 dark:bg-transparent">
+    <div className="space-y-4 px-6 py-4 dark:bg-transparent">
       <div className="flex items-center justify-between">
         <Breadcrumb
           items={[
