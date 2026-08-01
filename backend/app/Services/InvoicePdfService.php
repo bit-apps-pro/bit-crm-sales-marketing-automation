@@ -35,6 +35,29 @@ class InvoicePdfService
         return $this->createPdf($data, $totals);
     }
 
+    public function calculateTotals(Invoice $invoice, array $lineItems): InvoiceTotals
+    {
+        $isExclusive = $invoice->tax_option === LineItem::TAX_EXCLUSIVE;
+        $isInclusive = $invoice->tax_option === LineItem::TAX_INCLUSIVE;
+
+        $totals = InvoiceService::computeTotals(
+            $lineItems,
+            $invoice->tax_option,
+            (float) ($invoice->gross_discount_amount ?? 0),
+            $invoice->gross_discount_type ?? 'amount',
+            'unit_price_in_deal_currency'
+        );
+
+        return new InvoiceTotals(
+            $totals['subtotal'],
+            $totals['totalTax'],
+            $totals['grandTotal'],
+            $totals['discount'],
+            $isExclusive,
+            $isInclusive
+        );
+    }
+
     private function fetchData(int $invoiceId): InvoiceData
     {
         $details = InvoiceService::getInvoiceDetails($invoiceId);
@@ -57,29 +80,6 @@ class InvoicePdfService
             $termName,
             $details['currency_data'],
             $businessSettings
-        );
-    }
-
-    private function calculateTotals(Invoice $invoice, array $lineItems): InvoiceTotals
-    {
-        $isExclusive = $invoice->tax_option === LineItem::TAX_EXCLUSIVE;
-        $isInclusive = $invoice->tax_option === LineItem::TAX_INCLUSIVE;
-
-        $totals = InvoiceService::computeTotals(
-            $lineItems,
-            $invoice->tax_option,
-            (float) ($invoice->gross_discount_amount ?? 0),
-            $invoice->gross_discount_type ?? 'amount',
-            'unit_price_in_deal_currency'
-        );
-
-        return new InvoiceTotals(
-            $totals['subtotal'],
-            $totals['totalTax'],
-            $totals['grandTotal'],
-            $totals['discount'],
-            $isExclusive,
-            $isInclusive
         );
     }
 

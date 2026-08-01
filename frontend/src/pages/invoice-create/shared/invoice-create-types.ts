@@ -1,3 +1,4 @@
+import { type InvoiceStatus } from '@common/constants/invoice-status'
 import { type LineItem, type TaxOption } from '@features/product-line-items/shared/types'
 import { type ContactType } from '@pages/contact/shared/contact-types'
 import { type Deal } from '@pages/deal/shared/deal-types'
@@ -16,10 +17,14 @@ export interface InvoiceType {
   id: number
   invoice_date: Date
   invoice_prefix: string
+  minimum_payment_type?: 'amount' | 'percentage'
+  minimum_payment_value?: number | string
   module: string
+  partial_payment_allowed?: boolean
   status: InvoiceStatus
   tax_option: TaxOption
   term_key: string
+  token?: null | string
   top_section_notes: SectionType[]
 }
 export interface LogoType {
@@ -29,8 +34,6 @@ export interface LogoType {
   media_url: string
   mime: string
 }
-
-export type InvoiceStatus = 'draft' | 'overdue' | 'paid' | 'sent'
 
 export interface SectionType {
   label: string

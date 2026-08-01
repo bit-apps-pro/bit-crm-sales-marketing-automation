@@ -43,6 +43,10 @@ declare const SERVER_VARIABLES: {
   proApiURL?: string
   proPluginVersion: string
   proSlug: string
+  publicInvoice?: {
+    id: number
+    token: string
+  }
   rootURL: string
   routePrefix: string
   settings: string

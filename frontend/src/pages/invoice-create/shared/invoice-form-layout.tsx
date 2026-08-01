@@ -1,4 +1,6 @@
+import CAPABILITIES from '@common/constants/capabilities'
 import { __ } from '@common/helpers/i18nWrap'
+import IntegrationSettingsNavigation from '@features/integration-settings-navigation'
 import {
   useGrossDiscountSelect,
   useGrossDiscountTypeSelect,
@@ -100,7 +102,19 @@ export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormL
               }
             ]}
           />
-          <InvoiceSubmitButton form={form} mode={mode} />
+          <div className="flex items-center gap-2">
+            {mode === 'edit' && (
+              <IntegrationSettingsNavigation
+                capability={CAPABILITIES.SETTING.INVOICE}
+                label={__('Payment settings')}
+                to="/settings/invoice-settings?tab=payments"
+                tooltip={__(
+                  'Invoice payments are collected through WooCommerce. Enable "Accept invoice payments via WooCommerce" here so customers can pay this invoice at checkout.'
+                )}
+              />
+            )}
+            <InvoiceSubmitButton form={form} mode={mode} />
+          </div>
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <Card className="border border-solid border-[#EBEAFF] lg:col-span-2 dark:border-neutral-700 dark:bg-neutral-900">

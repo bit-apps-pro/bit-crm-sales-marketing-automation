@@ -9,8 +9,9 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\Router\Router;
 use BitApps\Crm\HTTP\Controllers\WooCommerceHistoricalSyncController;
 use BitApps\Crm\Plugin;
 use BitApps\Crm\Services\ActivityLogService;
+use BitApps\Crm\Services\InvoicePublicPageService;
 use BitApps\Crm\Services\InvoiceService;
-use BitApps\Crm\src\Queue\WooCommerceContactSyncProcess;
+use BitApps\Crm\Services\WooCommerceContactSyncService;
 use DateTime;
 
 class HookProvider
@@ -24,6 +25,11 @@ class HookProvider
         Hooks::addAction('rest_api_init', [$this, 'loadAppApiHooks']);
         Hooks::addFilter('safe_style_css', [$this, 'allowStyleProperties']);
         $this->registerWooCommerceHooks();
+
+        // Priority 0: must run before redirect_canonical's 404-permalink
+        // guessing, which would otherwise redirect the unregistered
+        // /bit-crm/invoice path to a similarly named post.
+        Hooks::addAction('template_redirect', [new InvoicePublicPageService(), 'maybeRenderPage'], 0);
 
         Hooks::addAction('bit_crm_invoices_overdue_check', [InvoiceService::class, 'runOverdueInvoiceCheck']);
 
@@ -64,12 +70,6 @@ class HookProvider
             include $this->_pluginBackend . 'hooks' . DIRECTORY_SEPARATOR . 'api.php';
             $router->register();
         }
-    }
-
-    public function queueWooCommerceContactSync(int $orderId): void
-    {
-        $process = new WooCommerceContactSyncProcess();
-        $process->push_to_queue(['order_id' => $orderId])->save()->dispatch();
     }
 
     /**
@@ -123,8 +123,8 @@ class HookProvider
 
     private function registerWooCommerceHooks(): void
     {
-        Hooks::addAction('woocommerce_new_order', [$this, 'queueWooCommerceContactSync']);
-        Hooks::addAction('woocommerce_update_order', [$this, 'queueWooCommerceContactSync']);
+        Hooks::addAction('woocommerce_new_order', [WooCommerceContactSyncService::class, 'handleOrderSync']);
+        Hooks::addAction('woocommerce_update_order', [WooCommerceContactSyncService::class, 'handleOrderSync']);
 
         $this->maybeDispatchPendingWooHistoricalSync();
     }

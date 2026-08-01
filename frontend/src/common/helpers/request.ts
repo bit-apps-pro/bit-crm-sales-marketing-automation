@@ -23,6 +23,13 @@ interface OptionsType {
   headers?: Record<string, string>
   method?: MethodType
   signal?: AbortSignal
+  /**
+   * Public token-authenticated routes must send NO x-wp-nonce header: WP
+   * returns 403 for a present-but-stale nonce (full-page caches serve stale
+   * ones) even on anonymous endpoints, while a nonce-less request is simply
+   * treated as unauthenticated.
+   */
+  skipNonce?: boolean
 }
 
 type QueryParam = Record<string, number | string>
@@ -64,10 +71,14 @@ export default async function queryRequest<T>(
     }
   }
 
+  const { skipNonce, ...restOptions } = options ?? {}
   const fetchOptions: OptionsType = {
-    headers: { 'x-wp-nonce': NONCE },
     method,
-    ...options
+    ...restOptions,
+    headers: {
+      ...(skipNonce ? {} : { 'x-wp-nonce': NONCE }),
+      ...restOptions.headers
+    }
   }
 
   if (method.toLowerCase() === 'post') {

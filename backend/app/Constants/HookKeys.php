@@ -183,6 +183,26 @@ class HookKeys
     public const ENTITY_RELATED_MODELS = 'bit_crm_entity_related_models';
 
     /**
+     * Payment block of the public (token-guarded) invoice payload. The free
+     * plugin always supplies the "payment unavailable" defaults — invoice
+     * payment is a pro feature, so free responses must force the unavailable
+     * state regardless of what the database rows say. The pro plugin's
+     * InvoicePaymentHooks replaces the block with live payment data.
+     *
+     * apply_filters(array $paymentData, Invoice $invoice, array $details): array
+     */
+    public const PUBLIC_INVOICE_PAYMENT_DATA = 'bit_crm_public_invoice_payment_data';
+
+    /**
+     * Localized config variables of the public invoice page (anonymous
+     * visitors!). The pro plugin adds what its pay flow needs (proApiURL);
+     * nothing sensitive may ever be added through this filter.
+     *
+     * apply_filters(array $frontendVars): array
+     */
+    public const PUBLIC_INVOICE_CONFIG_VARIABLES = 'bit_crm_public_invoice_config_variables';
+
+    /**
      * Adds validation rules for `customFieldsValues` to entity store/update
      * request classes.
      *

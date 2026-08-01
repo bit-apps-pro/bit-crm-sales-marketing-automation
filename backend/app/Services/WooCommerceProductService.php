@@ -231,6 +231,44 @@ class WooCommerceProductService
     }
 
     /**
+     * Normalize a WooCommerce product/variation description into clean plain text.
+     *
+     * WooCommerce descriptions can contain HTML (paragraphs, images, links),
+     * shortcodes and HTML entities, none of which are meaningful as a line item
+     * description on an invoice/deal or in the rendered PDF. This converts block
+     * boundaries to spaces so words don't fuse, drops shortcodes, strips all tags
+     * (including image/script/style), decodes entities and collapses whitespace.
+     *
+     * @param null|string $html the raw description HTML
+     *
+     * @return string clean, human-readable plain text
+     */
+    private function normalizeDescription(?string $html): string
+    {
+        if (empty($html)) {
+            return '';
+        }
+
+        // Convert block-level boundaries to spaces so adjacent blocks don't fuse.
+        $text = preg_replace('#</(?:p|div|li|h[1-6]|tr|td)>#i', ' ', $html);
+        $text = preg_replace('#<br\s*/?>#i', ' ', $text);
+
+        // Remove shortcodes (e.g. [su_button]...[/su_button]).
+        if (\function_exists('strip_shortcodes')) {
+            $text = strip_shortcodes($text);
+        }
+
+        // Strip all remaining tags, including <img>, <script> and <style> content.
+        $text = wp_strip_all_tags($text);
+
+        // Decode entities (&amp;, &nbsp;, &#8217;, ...) to real characters.
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        // Collapse all whitespace runs into single spaces.
+        return trim(preg_replace('/\s+/', ' ', $text));
+    }
+
+    /**
      * Get data for simple products.
      *
      * format the simple product (non-variable) data into an associative array.
@@ -246,7 +284,7 @@ class WooCommerceProductService
             'name'        => $product->get_formatted_name(),
             'price'       => (string) ((float) $product->get_price() / $exchangeRate),
             'currency'    => $currency,
-            'description' => $product->get_short_description(),
+            'description' => $this->normalizeDescription($product->get_short_description()),
             'sku'         => $product->get_sku(),
         ];
     }
@@ -283,7 +321,7 @@ class WooCommerceProductService
             $varData = [
                 'id'          => (string) $variationObj->get_id(),
                 'name'        => $variationObj->get_name(),
-                'description' => $variationObj->get_description(),
+                'description' => $this->normalizeDescription($variationObj->get_description()),
                 'price'       => (string) ((float) $variationObj->get_price() / $exchangeRate),
                 'sku'         => $variationObj->get_sku(),
                 'code'        => $variationObj->get_sku(),

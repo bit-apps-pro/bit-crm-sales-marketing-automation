@@ -1,4 +1,5 @@
 import CAPABILITIES from '@common/constants/capabilities'
+import { INVOICE_STATUS } from '@common/constants/invoice-status'
 import { $appConfig } from '@common/globalStates'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { formatDate } from '@common/helpers/globalHelpers'
@@ -203,7 +204,7 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
         render: (_: unknown, record: InvoiceType) => (
           <div>
             <If conditions={checkCapability(CAPABILITIES.INVOICE.UPDATE)}>
-              {record.status === 'paid' ? (
+              {record.status === INVOICE_STATUS.PAID || record.status === INVOICE_STATUS.PARTIALLY_PAID ? (
                 <Button disabled type="link">
                   <LuPenLine size={14} />
                 </Button>

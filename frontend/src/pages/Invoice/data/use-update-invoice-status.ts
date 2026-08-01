@@ -1,6 +1,7 @@
+import { type InvoiceStatus } from '@common/constants/invoice-status'
 import NotifyContext from '@common/context/NotifyContext'
 import queryRequest, { type Response } from '@common/helpers/request'
-import { type InvoiceStatus, type InvoiceType } from '@pages/invoice-create/shared/invoice-create-types'
+import { type InvoiceType } from '@pages/invoice-create/shared/invoice-create-types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { create } from 'mutative'
 import { useContext } from 'react'

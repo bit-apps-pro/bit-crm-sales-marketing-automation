@@ -19,7 +19,6 @@ use BitApps\Crm\src\Queue\LeadsConvertToContactsProcess;
 use BitApps\Crm\src\Queue\LeadsCsvImportProcess;
 use BitApps\Crm\src\Queue\MarkOverdueInvoicesProcess;
 use BitApps\Crm\src\Queue\TrashDeleteProcess;
-use BitApps\Crm\src\Queue\WooCommerceContactSyncProcess;
 use BitApps\Crm\src\Queue\WooCommerceHistoricalSyncProcess;
 use BitApps\Crm\Views\HtmlTagModifier;
 use BitApps\Crm\Views\Layout;
@@ -129,7 +128,6 @@ final class Plugin
             'fetch_imap_emails_process'           => FetchImapEmailsProcess::class,
             'trash_delete_process'                => TrashDeleteProcess::class,
             'install_plugins_process'             => InstallPluginsProcess::class,
-            'woocommerce_contact_sync_process'    => WooCommerceContactSyncProcess::class,
             'woocommerce_historical_sync_process' => WooCommerceHistoricalSyncProcess::class,
             'mark_overdue_invoices_process'       => MarkOverdueInvoicesProcess::class,
 

@@ -4,9 +4,43 @@ namespace BitApps\Crm\Services;
 
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\src\StaticData\CurrencyHelper;
+use BitApps\Crm\Utils\Logger;
+use Throwable;
 
 class WooCommerceContactSyncService
 {
+    /**
+     * Hook handler for woocommerce_new_order / woocommerce_update_order.
+     *
+     * WooCommerce saves an order several times within a single request
+     * (draft -> pending -> processing, plus meta saves), so the hooks fire
+     * multiple times for the same order in one PHP process. The static guard
+     * collapses those to a single sync per order per request, and only latches
+     * once a sync actually happens so an early no-op (e.g. email not set yet)
+     * still lets a later fire through. Any failure is swallowed so a CRM issue
+     * can never break the order save.
+     */
+    public static function handleOrderSync(int $orderId): void
+    {
+        static $synced = [];
+
+        if ($orderId <= 0 || isset($synced[$orderId])) {
+            return;
+        }
+
+        try {
+            $done = (new self())->syncOrder($orderId);
+        } catch (Throwable $th) {
+            Logger::error($th);
+
+            return;
+        }
+
+        if ($done) {
+            $synced[$orderId] = true;
+        }
+    }
+
     public function syncOrder($orderOrId): bool
     {
         if (!$this->isPluginActive()) {
