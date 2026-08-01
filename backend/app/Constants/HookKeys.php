@@ -273,4 +273,25 @@ class HookKeys
      * apply_filters(bool $runInline): bool
      */
     public const RUN_WORKFLOW_EXECUTION_INLINE = 'bit_crm/run_workflow_execution_inline';
+
+    /**
+     * Filters the endpoints reachable with an Application Password, i.e. from
+     * outside WordPress. Each entry is ['method' => 'GET', 'path' => 'contacts/{id}']
+     * with the path exactly as declared in the router.
+     *
+     * The list is deny-by-default: anything absent is unreachable externally.
+     * Append with array_merge(), never replace, and do not publish an endpoint
+     * whose Request class lacks an authorize() method.
+     *
+     * apply_filters(array[] $routes): array[]
+     */
+    public const EXTERNAL_API_ALLOWED_ROUTES = 'bit_crm_external_api_allowed_routes';
+
+    /**
+     * Filters how many external API requests a single Application Password may
+     * make per rate-limit window (60 seconds).
+     *
+     * apply_filters(int $maxPerWindow): int
+     */
+    public const EXTERNAL_API_RATE_LIMIT = 'bit_crm_external_api_rate_limit';
 }

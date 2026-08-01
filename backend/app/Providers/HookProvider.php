@@ -12,6 +12,7 @@ use BitApps\Crm\Services\ActivityLogService;
 use BitApps\Crm\Services\InvoicePublicPageService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\Services\WooCommerceContactSyncService;
+use BitApps\Crm\src\ExternalApi\ExternalApiGuard;
 use DateTime;
 
 class HookProvider
@@ -23,6 +24,7 @@ class HookProvider
         $this->_pluginBackend = Config::get('BASEDIR') . DIRECTORY_SEPARATOR;
         $this->loadAppAjaxHooks();
         Hooks::addAction('rest_api_init', [$this, 'loadAppApiHooks']);
+        Hooks::addFilter('rest_pre_dispatch', [ExternalApiGuard::class, 'handle'], 10, 3);
         Hooks::addFilter('safe_style_css', [$this, 'allowStyleProperties']);
         $this->registerWooCommerceHooks();
 

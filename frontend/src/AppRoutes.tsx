@@ -23,6 +23,7 @@ import { Route, Routes, useNavigate } from 'react-router'
 const PortalSettings = lazy(() => import('@pages/portal-settings'))
 const Root = lazy(() => import('@pages/dashboard'))
 const GeneralSettings = lazy(() => import('@pages/general-settings'))
+const ApiSettings = lazy(() => import('@pages/api-settings'))
 const LeadSettings = lazy(() => import('@pages/lead-settings'))
 const CompanySettings = lazy(() => import('@pages/company-settings'))
 const LeadCreate = lazy(() => import('@pages/lead-create'))
@@ -138,6 +139,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="general-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.API}>
+                      <ApiSettings />
+                    </ProtectedRoute>
+                  }
+                  path="api-settings"
                 />
                 <Route
                   element={

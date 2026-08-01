@@ -109,6 +109,11 @@ const navGroups = [
         capability: CAPABILITIES.SETTING.USER,
         label: __('CRM Users'),
         path: '../settings/crm-users'
+      },
+      {
+        capability: CAPABILITIES.SETTING.API,
+        label: __('REST API'),
+        path: '../settings/api-settings'
       }
     ],
     title: __('System')

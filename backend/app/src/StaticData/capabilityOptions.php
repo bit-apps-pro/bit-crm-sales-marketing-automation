@@ -102,6 +102,7 @@ return [
         ['label' => __('SMTP Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_smtp'],
         ['label' => __('Integration Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_integration'],
         ['label' => __('CRM Users', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_crm_user'],
+        ['label' => __('REST API Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_api'],
         ['label' => __('Workflow Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_workflow'],
         ['label' => __('History Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_history'],
         ['label' => __('Portal Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_portal'],

@@ -111,7 +111,7 @@ class UserService implements UserInterface
 
         return [
             'value' => $user->ID,
-            'label' => $user->display_name,
+            'label' => $user->display_name . ($user->user_email ? ' (' . $user->user_email . ')' : ''),
         ];
     }
 
@@ -120,12 +120,36 @@ class UserService implements UserInterface
         return $this->getUserAsOption($id);
     }
 
+    /**
+     * Meta query behind the Config::SLUG role filter: administrators OR users
+     * carrying CRM capabilities.
+     *
+     * Public so callers that need an additional meta condition can nest this
+     * inside their own query -- applyRoleFilter() replaces meta_query outright,
+     * so combining through 'role_filter' is not possible.
+     */
+    public function getMetaQueryForRoleFilter(): array
+    {
+        return [
+            'relation' => 'OR',
+            [
+                'key'     => Config::get('WP_BLOG_PREFIX') . 'capabilities',
+                'value'   => '"administrator"',
+                'compare' => 'LIKE',
+            ],
+            [
+                'key'   => CrmUserService::HAS_CRM_CAPABILITIES_META_KEY,
+                'value' => true,
+            ],
+        ];
+    }
+
     private function formatDataAsOptions(array $users): array
     {
         return array_map(
             fn ($user) => [
                 'value' => $user->ID,
-                'label' => $user->display_name,
+                'label' => $user->display_name . ($user->user_email ? ' (' . $user->user_email . ')' : ''),
             ],
             $users
         );
@@ -149,21 +173,5 @@ class UserService implements UserInterface
         unset($args['role_filter']);
 
         return $args;
-    }
-
-    private function getMetaQueryForRoleFilter(): array
-    {
-        return [
-            'relation' => 'OR',
-            [
-                'key'     => Config::get('WP_BLOG_PREFIX') . 'capabilities',
-                'value'   => '"administrator"',
-                'compare' => 'LIKE',
-            ],
-            [
-                'key'   => CrmUserService::HAS_CRM_CAPABILITIES_META_KEY,
-                'value' => true,
-            ],
-        ];
     }
 }
