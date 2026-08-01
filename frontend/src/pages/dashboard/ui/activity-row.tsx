@@ -10,7 +10,7 @@ interface ActivityRowProps {
 
 export default function ActivityRow({ item }: ActivityRowProps) {
   return (
-    <div className="space-y-2 rounded bg-[#FBFBFE] p-2 shadow-sm dark:bg-[#1A1A1A]">
+    <div className="space-y-2 rounded border border-solid border-[#E5E3FE] p-2 dark:border-neutral-700 dark:bg-neutral-900">
       <Typography.Paragraph className="mb-0 line-clamp-2 text-sm font-medium">
         {item.title}
       </Typography.Paragraph>

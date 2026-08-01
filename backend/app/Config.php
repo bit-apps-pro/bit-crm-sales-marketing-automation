@@ -18,6 +18,8 @@ class Config
 {
     public const SLUG = 'bit-crm-sales-marketing-automation';
 
+    public const PUBLIC_URL_PREFIX = 'bit-crm';
+
     public const TITLE = 'Bit CRM';
 
     public const VAR_PREFIX = 'bit_crm_';

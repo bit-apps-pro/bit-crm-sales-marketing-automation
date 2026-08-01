@@ -14,7 +14,10 @@ use Throwable;
 
 class EmailService
 {
-    public function send(array|Request $data): array
+    /**
+     * @param string[] $filePaths server-generated attachments (e.g. invoice PDFs) that are sent but not stored
+     */
+    public function send(array|Request $data, array $filePaths = []): array
     {
         $rules = (new SendRequest())->rules();
         $validated = CommonService::resolveValidatedData($data, $rules);
@@ -23,7 +26,7 @@ class EmailService
             return $validated;
         }
 
-        $formattedAttachments = $this->processAttachments($validated['attachments'] ?? []);
+        $formattedAttachments = array_merge($this->processAttachments($validated['attachments'] ?? []), $filePaths);
         $message = $this->formatMessage($validated['message'], $validated['entity_id'], $validated['module']);
         $headers = ['Content-Type: text/html; charset=UTF-8'];
 

@@ -2,6 +2,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import { Tabs, Typography } from 'antd'
 import { useSearchParams } from 'react-router'
 
+import Payments from './internal/payments'
 import Prefix from './internal/prefix/prefix'
 import Terms from './internal/terms/terms'
 
@@ -28,6 +29,11 @@ export default function InvoiceSettings() {
             children: <Terms />,
             key: 'configure-payment-terms',
             label: __('Configure Payment Terms')
+          },
+          {
+            children: <Payments />,
+            key: 'payments',
+            label: __('Payments')
           }
         ]}
         onChange={path => setSearchParams({ tab: path })}

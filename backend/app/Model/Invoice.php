@@ -22,14 +22,26 @@ class Invoice extends Model
 
     public const STATUS_SENT = 'sent';
 
-    public const VALID_STATUSES = [self::STATUS_DRAFT, self::STATUS_OVERDUE, self::STATUS_PAID, self::STATUS_SENT];
+    public const STATUS_PARTIALLY_PAID = 'partially_paid';
+
+    public const VALID_STATUSES = [self::STATUS_DRAFT, self::STATUS_OVERDUE, self::STATUS_PAID, self::STATUS_SENT, self::STATUS_PARTIALLY_PAID];
 
     public const ALLOWED_STATUS_TRANSITIONS = [
-        self::STATUS_DRAFT   => [self::STATUS_SENT, self::STATUS_PAID, self::STATUS_OVERDUE],
-        self::STATUS_SENT    => [self::STATUS_PAID, self::STATUS_OVERDUE],
-        self::STATUS_OVERDUE => [self::STATUS_PAID, self::STATUS_SENT],
-        self::STATUS_PAID    => [],
+        self::STATUS_DRAFT          => [self::STATUS_SENT, self::STATUS_PAID, self::STATUS_OVERDUE],
+        self::STATUS_SENT           => [self::STATUS_PAID, self::STATUS_OVERDUE, self::STATUS_PARTIALLY_PAID],
+        self::STATUS_OVERDUE        => [self::STATUS_PAID, self::STATUS_SENT, self::STATUS_PARTIALLY_PAID],
+        self::STATUS_PARTIALLY_PAID => [self::STATUS_PAID],
+        self::STATUS_PAID           => [],
     ];
+
+    /** Statuses that still have a collectible balance. */
+    public const PAYABLE_STATUSES = [self::STATUS_SENT, self::STATUS_OVERDUE, self::STATUS_PARTIALLY_PAID];
+
+    public const MINIMUM_PAYMENT_TYPE_AMOUNT = 'amount';
+
+    public const MINIMUM_PAYMENT_TYPE_PERCENTAGE = 'percentage';
+
+    public const MINIMUM_PAYMENT_TYPES = [self::MINIMUM_PAYMENT_TYPE_AMOUNT, self::MINIMUM_PAYMENT_TYPE_PERCENTAGE];
 
     public const RELATED_MODELS = [
         LineItem::class,
@@ -51,6 +63,10 @@ class Invoice extends Model
         'tax_option',
         'sent_at',
         'is_trash',
+        'token',
+        'partial_payment_allowed',
+        'minimum_payment_type',
+        'minimum_payment_value',
         'term_key',
         'paid_at',
         'sent_at',
@@ -63,15 +79,16 @@ class Invoice extends Model
     ];
 
     protected $casts = [
-        'top_section_notes'    => 'array',
-        'bottom_section_notes' => 'array',
-        'is_trash'             => 'bool',
-        'created_at'           => 'siteTimeZone',
-        'updated_at'           => 'siteTimeZone',
-        'invoice_date'         => 'siteTimeZone',
-        'due_date'             => 'siteTimeZone',
-        'paid_at'              => 'siteTimeZone',
-        'sent_at'              => 'siteTimeZone',
+        'top_section_notes'       => 'array',
+        'bottom_section_notes'    => 'array',
+        'is_trash'                => 'bool',
+        'partial_payment_allowed' => 'bool',
+        'created_at'              => 'siteTimeZone',
+        'updated_at'              => 'siteTimeZone',
+        'invoice_date'            => 'siteTimeZone',
+        'due_date'                => 'siteTimeZone',
+        'paid_at'                 => 'siteTimeZone',
+        'sent_at'                 => 'siteTimeZone',
     ];
 
     public static function canTransitionStatus(string $from, string $to): bool

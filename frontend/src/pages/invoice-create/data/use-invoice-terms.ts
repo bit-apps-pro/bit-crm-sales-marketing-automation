@@ -1,3 +1,5 @@
+import CAPABILITIES from '@common/constants/capabilities'
+import { checkCapability } from '@common/helpers/capabilityHelper'
 import queryRequest, { type Response } from '@common/helpers/request'
 import { useQuery } from '@tanstack/react-query'
 
@@ -13,6 +15,8 @@ export default function useInvoiceTerms() {
     Error,
     TermsOptions[]
   >({
+    enabled:
+      checkCapability(CAPABILITIES.INVOICE.VIEW) || checkCapability(CAPABILITIES.INVOICE.CREATE),
     queryFn: ({ signal }) =>
       queryRequest('invoices/terms/options', undefined, undefined, 'GET', { signal }),
     queryKey: ['invoices', 'terms', 'options'],

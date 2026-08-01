@@ -29,6 +29,10 @@ final class BitAppsCrmInvoicesTableMigration extends Migration
                 $table->string('tax_option')->defaultValue('exclusive');
                 $table->datetime('sent_at')->nullable();
                 $table->boolean('is_trash')->defaultValue(0);
+                $table->string('token')->nullable();
+                $table->boolean('partial_payment_allowed')->defaultValue(0);
+                $table->string('minimum_payment_type')->defaultValue('amount');
+                $table->string('minimum_payment_value')->defaultValue('0');
                 $table->string('gross_discount_amount')->nullable()->defaultValue('0');
                 $table->string('gross_discount_type')->nullable()->defaultValue('amount');
                 $table->longtext('top_section_notes')->nullable();

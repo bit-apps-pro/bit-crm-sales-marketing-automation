@@ -9,9 +9,12 @@ import { type InvoicePreviewData } from '../shared/invoice-preview-types'
 interface InvoiceInfoPreviewProps {
   data: InvoicePreviewData
   logoUrl?: string
+  termName?: string
 }
 
-export default function InvoiceInfoPreview({ data, logoUrl }: InvoiceInfoPreviewProps) {
+export default function InvoiceInfoPreview({ data, logoUrl, termName }: InvoiceInfoPreviewProps) {
+  // The public invoice page passes the term name in (its viewers cannot call
+  // the capability-gated terms endpoint); the admin pages use the hook.
   const { terms } = useInvoiceTerms()
 
   const term = useMemo(
@@ -35,7 +38,7 @@ export default function InvoiceInfoPreview({ data, logoUrl }: InvoiceInfoPreview
           <Typography.Text>{__('Due Date:')}</Typography.Text>
           <Typography.Text>{data.dueDate ? formatDate(data.dueDate) : '-'}</Typography.Text>
           <Typography.Text>{__('Terms:')}</Typography.Text>
-          <Typography.Text>{term?.label || '-'}</Typography.Text>
+          <Typography.Text>{term?.label || termName || '-'}</Typography.Text>
         </div>
       </div>
     </div>

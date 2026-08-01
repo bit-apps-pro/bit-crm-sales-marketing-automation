@@ -5,6 +5,7 @@ namespace BitApps\Crm\Services;
 use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Model;
 use BitApps\Crm\Deps\BitApps\WPDatabase\QueryBuilder;
+use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
@@ -54,13 +55,79 @@ class InvoiceService
         }
     }
 
-    public static function sendInvoice($email, $attachments)
+    public static function sendInvoice(string $email, int $dealId, array $attachments, ?string $shareUrl = null): bool
     {
         $subject = __('Your Invoice', 'bit-crm-sales-marketing-automation');
-        $message = __('Please find your invoice attached.', 'bit-crm-sales-marketing-automation');
-        $headers = ['Content-Type: text/html; charset=UTF-8'];
+        $message = '<p>' . esc_html__('Please find your invoice attached.', 'bit-crm-sales-marketing-automation') . '</p>';
 
-        return wp_mail($email, $subject, $message, $headers, $attachments);
+        if (!empty($shareUrl)) {
+            $message .= '<p>'
+                . esc_html__('You can also view and pay your invoice online using the link below:', 'bit-crm-sales-marketing-automation')
+                . '</p>'
+                . '<p><a href="' . esc_url($shareUrl) . '">' . esc_html($shareUrl) . '</a></p>';
+        }
+
+        $result = (new EmailService())->send(
+            [
+                'entity_email' => $email,
+                'module'       => Deal::MODULE_NAME,
+                'entity_id'    => $dealId,
+                'subject'      => $subject,
+                'message'      => $message,
+            ],
+            $attachments
+        );
+
+        return !empty($result['success']);
+    }
+
+    public static function isPastDue(Invoice $invoice): bool
+    {
+        return !empty($invoice->due_date)
+            && substr((string) $invoice->due_date, 0, 10) < current_time('Y-m-d');
+    }
+
+    /**
+     * Publishes an invoice for sending/sharing: re-derives sent/overdue from
+     * the due date unless the status is payment-derived (paid/partially paid),
+     * and stamps sent_at. Both the email-send and share-link flows go through
+     * here so the two paths can never publish a status differently.
+     *
+     * @param bool $refreshSentAt also stamp sent_at when the status is
+     *                            unchanged — the email flow records every
+     *                            send; the share-link flow leaves
+     *                            already-published invoices untouched
+     *
+     * @return bool whether the status changed
+     */
+    public static function publishInvoice(Invoice $invoice, bool $refreshSentAt = false): bool
+    {
+        $isPaymentDerived = $invoice->status === Invoice::STATUS_PAID
+            || $invoice->status === Invoice::STATUS_PARTIALLY_PAID;
+
+        $publishStatus = self::isPastDue($invoice) ? Invoice::STATUS_OVERDUE : Invoice::STATUS_SENT;
+        $statusChanged = !$isPaymentDerived && $publishStatus !== $invoice->status;
+
+        if (!$statusChanged && !$refreshSentAt) {
+            return false;
+        }
+
+        $updateData = [
+            'sent_at'    => current_time('mysql', true),
+            'updated_by' => get_current_user_id(),
+        ];
+
+        if ($statusChanged) {
+            $updateData['status'] = $publishStatus;
+        }
+
+        $invoice->update($updateData);
+
+        if ($statusChanged) {
+            Hooks::doAction('bit_crm/invoice_status_updated', $invoice);
+        }
+
+        return $statusChanged;
     }
 
     public static function runOverdueInvoiceCheck(): void

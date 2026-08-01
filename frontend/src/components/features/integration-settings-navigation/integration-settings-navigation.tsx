@@ -5,17 +5,19 @@ import { LuSquareArrowUpRight } from 'react-icons/lu'
 import { Link } from 'react-router'
 
 interface IntegrationSettingsNavigationProps {
+  capability?: string
   label: string
   to: string
   tooltip: string
 }
 
 export default function IntegrationSettingsNavigation({
+  capability = CAPABILITIES.SETTING.INTEGRATION,
   label,
   to,
   tooltip
 }: IntegrationSettingsNavigationProps) {
-  if (!checkCapability(CAPABILITIES.SETTING.INTEGRATION)) return
+  if (!checkCapability(capability)) return
 
   return (
     <Tooltip title={tooltip}>

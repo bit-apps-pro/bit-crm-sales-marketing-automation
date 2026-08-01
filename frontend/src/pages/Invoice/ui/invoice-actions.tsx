@@ -1,4 +1,5 @@
 import CAPABILITIES from '@common/constants/capabilities'
+import { INVOICE_STATUS } from '@common/constants/invoice-status'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import { useInvoiceBulkOperationsStoreActions } from '@pages/invoices/shared/invoice-bulk-operations/state/use-invoice-bulk-operations-store'
@@ -25,7 +26,7 @@ export default function InvoiceActions({ status }: { status?: string }) {
     if (!id) return
     updateInvoiceStatus({
       id: id,
-      status: 'paid'
+      status: INVOICE_STATUS.PAID
     })
   }
 
@@ -38,7 +39,7 @@ export default function InvoiceActions({ status }: { status?: string }) {
   const items: CapableMenuItem[] = [
     {
       capability: CAPABILITIES.INVOICE.UPDATE,
-      disabled: status === 'paid',
+      disabled: status === INVOICE_STATUS.PAID || status === INVOICE_STATUS.PARTIALLY_PAID,
       icon: <LuPenLine size={14} />,
       key: 'edit',
       label: <span>{__('Edit')}</span>,
@@ -52,7 +53,7 @@ export default function InvoiceActions({ status }: { status?: string }) {
     },
     {
       capability: CAPABILITIES.INVOICE.UPDATE,
-      disabled: status === 'paid',
+      disabled: status === INVOICE_STATUS.PAID,
       icon: <LuCheck size={14} />,
       key: 'statusUpdate',
       label: <span>{__('Mark as Paid')}</span>,

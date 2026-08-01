@@ -25,6 +25,7 @@ use BitApps\Crm\Model\Setting;
 use BitApps\Crm\Model\Trash;
 use BitApps\Crm\Services\InvoicePdfService;
 use BitApps\Crm\Services\InvoiceService;
+use BitApps\Crm\Services\InvoiceShareTokenService;
 use BitApps\Crm\Services\LineItemService;
 use Throwable;
 
@@ -35,6 +36,8 @@ final class InvoiceController
     private const DEFAULT_PER_PAGE = 10;
 
     private const SETTING_KEY = Setting::BUSINESS_SETTINGS_KEY;
+
+    private const SORTABLE_COLUMNS = ['id', 'status', 'amount', 'invoice_date', 'due_date', 'paid_at', 'created_at', 'updated_at'];
 
     private const TEMP_DIR = '/bit_crm/temp';
 
@@ -93,8 +96,8 @@ final class InvoiceController
             return Response::error(null)->message(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
         }
 
-        if ($invoice->status === Invoice::STATUS_PAID) {
-            return Response::error(null)->message(__('Cannot update a paid invoice!', 'bit-crm-sales-marketing-automation'));
+        if ($invoice->status === Invoice::STATUS_PAID || $invoice->status === Invoice::STATUS_PARTIALLY_PAID) {
+            return Response::error(null)->message(__('Cannot update an invoice that already has payments!', 'bit-crm-sales-marketing-automation'));
         }
 
         if (isset($validated['status'])) {
@@ -331,7 +334,9 @@ final class InvoiceController
             $tempFile = $tempDir . '/' . $invoiceFileName;
             $mpdf->Output($tempFile, 'F');
 
-            $emailSent = InvoiceService::sendInvoice($deal['email'], [$tempFile]);
+            $shareUrl = (new InvoiceShareTokenService())->getPublicInvoiceUrl($invoice);
+
+            $emailSent = InvoiceService::sendInvoice($deal['email'], (int) $deal['id'], [$tempFile], $shareUrl);
         } catch (Throwable $th) {
             return Response::error(__('Failed to send invoice!', 'bit-crm-sales-marketing-automation'));
         } finally {
@@ -347,20 +352,8 @@ final class InvoiceController
             return Response::error(__('Failed to send invoice email!', 'bit-crm-sales-marketing-automation'));
         }
 
-        $updateData = [
-            'sent_at'    => current_time('mysql', true),
-            'updated_by' => get_current_user_id(),
-        ];
-
-        if ($invoice->status !== Invoice::STATUS_PAID) {
-            $isOverdue = !empty($invoice->due_date)
-                && substr((string) $invoice->due_date, 0, 10) < current_time('Y-m-d');
-
-            $updateData['status'] = $isOverdue ? Invoice::STATUS_OVERDUE : Invoice::STATUS_SENT;
-        }
-
         try {
-            $invoice->update($updateData);
+            InvoiceService::publishInvoice($invoice, true);
         } catch (Throwable $th) {
             return Response::success(__('Invoice sent, but status could not be updated. Please refresh.', 'bit-crm-sales-marketing-automation'));
         }
@@ -400,19 +393,22 @@ final class InvoiceController
     {
         $dealTable = Config::withDBPrefix('deals');
         $invoiceTable = Config::withDBPrefix('invoices');
-        $qualifiedSortBy = "{$invoiceTable}.{$sortBy}";
+        $sortBy = \in_array($sortBy, self::SORTABLE_COLUMNS, true) ? $sortBy : 'id';
         $direction = $sortOrder === 'asc' ? 'asc' : 'desc';
 
         return Invoice::select('*')
             ->where('is_trash', false)
             ->when(
-                $direction === 'asc',
-                function ($query) use ($qualifiedSortBy) {
-                    return $query->orderBy($qualifiedSortBy)->asc();
-                },
-                function ($query) use ($qualifiedSortBy) {
-                    return $query->orderBy($qualifiedSortBy)->desc();
-                }
+                $sortBy === 'amount',
+                fn ($query) => $query->orderByRaw(
+                    "CAST(COALESCE(NULLIF({$invoiceTable}.home_currency_amount, ''), {$invoiceTable}.amount, '0') AS DECIMAL(26, 4)) "
+                    . ($direction === 'asc' ? 'ASC' : 'DESC')
+                ),
+                fn ($query) => $query->when(
+                    $direction === 'asc',
+                    fn ($sorted) => $sorted->orderBy("{$invoiceTable}.{$sortBy}")->asc(),
+                    fn ($sorted) => $sorted->orderBy("{$invoiceTable}.{$sortBy}")->desc()
+                )
             )
             ->selectRaw("{$dealTable}.name AS deal_name")
             ->where("{$invoiceTable}.module", Deal::MODULE_NAME)

@@ -1,14 +1,8 @@
+import { INVOICE_STATUS_OPTIONS } from '@common/constants/invoice-status'
 import { __ } from '@common/helpers/i18nWrap'
 import { Select } from 'antd'
 import { useMemo } from 'react'
 import { useSearchParams } from 'react-router'
-
-const statusOptions = [
-  { label: __('Draft'), value: 'draft' },
-  { label: __('Sent'), value: 'sent' },
-  { label: __('Paid'), value: 'paid' },
-  { label: __('Overdue'), value: 'overdue' }
-]
 
 export default function InvoiceStatusFilter() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -33,7 +27,7 @@ export default function InvoiceStatusFilter() {
       maxTagCount="responsive"
       mode="multiple"
       onChange={handleFilterChange}
-      options={statusOptions}
+      options={INVOICE_STATUS_OPTIONS}
       placeholder={__('Filter With Statuses')}
       value={selectedStatuses}
     />

@@ -82,6 +82,53 @@ class CurrencyService
         return (float) $amount / $currencyData['exchange_rate'];
     }
 
+    /**
+     * Exchange rate from one CRM-known currency to another, pivoting through
+     * the home currency (stored rates are foreign-units per home unit).
+     *
+     * @return null|float null when either currency is unknown to the CRM
+     */
+    public function getExchangeRate(?string $from, ?string $to): ?float
+    {
+        $fromRate = $this->ratePerHomeUnit($from);
+        $toRate = $this->ratePerHomeUnit($to);
+
+        if ($fromRate === null || $toRate === null) {
+            return null;
+        }
+
+        return $toRate / $fromRate;
+    }
+
+    /**
+     * True when the CRM can convert this currency (it is the home currency or
+     * has a stored exchange rate).
+     */
+    public function isKnownCurrency(?string $currency): bool
+    {
+        return $this->ratePerHomeUnit($currency) !== null;
+    }
+
+    /**
+     * Units of the given currency per one home-currency unit — the direction
+     * the CRM stores exchange rates in (see convertIntoHomeCurrency()).
+     */
+    private function ratePerHomeUnit(?string $currency): ?float
+    {
+        if (empty($currency)) {
+            return null;
+        }
+
+        if ($currency === CurrencyHelper::getHomeCurrency()) {
+            return 1.0;
+        }
+
+        $currencies = Hooks::applyFilter(HookKeys::OTHER_CURRENCIES_DATA, []);
+        $rate = $currencies[$currency]['exchange_rate'] ?? null;
+
+        return is_numeric($rate) && (float) $rate > 0 ? (float) $rate : null;
+    }
+
     public function currencyFormatPreview(array $currency, $number = 0, bool $includeSymbol = true): string
     {
         $sampleNumber = \is_string($number) ? (float) $number : (float) $number;

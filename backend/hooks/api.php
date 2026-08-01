@@ -19,6 +19,7 @@ use BitApps\Crm\HTTP\Controllers\ImapController;
 use BitApps\Crm\HTTP\Controllers\ImportExportListController;
 use BitApps\Crm\HTTP\Controllers\IntegrationSettingsController;
 use BitApps\Crm\HTTP\Controllers\InvoiceController;
+use BitApps\Crm\HTTP\Controllers\InvoiceShareController;
 use BitApps\Crm\HTTP\Controllers\InvoiceTermController;
 use BitApps\Crm\HTTP\Controllers\LeadController;
 use BitApps\Crm\HTTP\Controllers\LinkController;
@@ -210,6 +211,7 @@ Route::group(
         Route::get('invoices/{id}', [InvoiceController::class, 'show']);
         Route::post('invoices/{id}', [InvoiceController::class, 'update']);
         Route::post('invoices/{id}/status', [InvoiceController::class, 'updateStatus']);
+        Route::post('invoices/{id}/share-link', [InvoiceShareController::class, 'shareLink']);
 
         Route::get('plugins/info', [PluginInstallerController::class, 'pluginInfo']);
         Route::post('plugins/install', [PluginInstallerController::class, 'install']);
@@ -223,3 +225,14 @@ Route::group(
         Route::get('dashboard/index', [DashboardController::class, 'index']);
     }
 )->middleware('isLoggedIn');
+
+/*
+ * Public routes — no login required. Access is granted by the per-invoice
+ * share token, which the controller validates with hash_equals().
+ */
+Route::group(
+    function (): void {
+        Route::get('invoices/public/{id}', [InvoiceShareController::class, 'publicShow']);
+        Route::get('invoices/public/{id}/download', [InvoiceShareController::class, 'publicDownload']);
+    }
+);
