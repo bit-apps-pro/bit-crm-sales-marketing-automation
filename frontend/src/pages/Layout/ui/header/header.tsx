@@ -15,7 +15,7 @@ import HeaderNavItem from './header-nav-item'
 const { Header: AntHeader } = Layout
 
 const navItems = [
-  { capability: CAPABILITIES.DASHBOARD, label: __('Dashboard'), path: '../' },
+  { capability: CAPABILITIES.DASHBOARD, end: true, label: __('Dashboard'), path: '../' },
   { capability: CAPABILITIES.LEAD.MENU, label: __('Leads'), path: '../leads' },
   { capability: CAPABILITIES.CONTACT.MENU, label: __('Contacts'), path: '../contacts' },
   { capability: CAPABILITIES.COMPANY.MENU, label: __('Companies'), path: '../companies' },
