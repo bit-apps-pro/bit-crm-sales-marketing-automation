@@ -64,7 +64,7 @@ export default function StepInstallPlugins({ finishing, onBack, onFinish }: Step
                     <Typography.Title className="mb-0" level={5}>
                       {plugin.title}
                     </Typography.Title>
-                    <Typography.Text className="text-xs" type="secondary">
+                    <Typography.Text className="text-sm" type="secondary">
                       {plugin.description}
                     </Typography.Text>
                   </div>
