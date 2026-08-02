@@ -54,6 +54,7 @@ const Products = lazy(() => import('@pages/products'))
 const WooSettings = lazy(() => import('@pages/woo-settings'))
 const BitFormSettings = lazy(() => import('@pages/bit-form-settings'))
 const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations-settings'))
+const McpSettings = lazy(() => import('@pages/mcp-settings'))
 const Currencies = lazy(() => import('@pages/currencies'))
 const InvoiceCreate = lazy(() => import('@pages/invoice-create'))
 const Invoices = lazy(() => import('@pages/invoices'))
@@ -291,6 +292,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="workflow-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.MCP.SERVER}>
+                      <McpSettings />
+                    </ProtectedRoute>
+                  }
+                  path="mcp-server"
                 />
               </Route>
 

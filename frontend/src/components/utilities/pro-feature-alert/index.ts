@@ -5,6 +5,7 @@ export { default as ProEntitySettingsAlert } from './internal/mocks/pro-entity-s
 export { default as ProExportListAlert } from './internal/mocks/pro-export-list-alert'
 export { default as ProHistoryAlert } from './internal/mocks/pro-history-alert'
 export { default as ProInvoicePaymentsAlert } from './internal/mocks/pro-invoice-payments-alert'
+export { default as ProMcpSettingsAlert } from './internal/mocks/pro-mcp-settings-alert'
 export { default as ProPortalSettingsAlert } from './internal/mocks/pro-portal-settings-alert'
 export { default as ProWorkflowLogsAlert } from './internal/mocks/pro-workflow-logs-alert'
 export { default as ProBanner } from './ui/pro-banner'
