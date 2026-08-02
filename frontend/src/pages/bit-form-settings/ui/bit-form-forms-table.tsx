@@ -1,7 +1,7 @@
 import { formatDateTime } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
-import { Button, Space, Switch, Table, Typography } from 'antd'
+import { Button, Space, Switch, Table, Tooltip, Typography } from 'antd'
 import { type ColumnsType } from 'antd/es/table'
 import { useMemo } from 'react'
 import { LuEye, LuPenLine, LuUnplug } from 'react-icons/lu'
@@ -84,30 +84,37 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
         key: 'actions',
         render: (_, item) => (
           <Space>
-            <Button
-              href={item.urls.editForm}
-              icon={<LuPenLine size={14} />}
-              rel="noreferrer"
-              size="small"
-              target="_blank"
-              type="link"
-            />
-            <Button
-              href={item.urls.editIntegration}
-              icon={<LuUnplug size={14} />}
-              rel="noreferrer"
-              size="small"
-              target="_blank"
-              type="link"
-            />
-            <Button
-              href={item.urls.preview}
-              icon={<LuEye size={14} />}
-              rel="noreferrer"
-              size="small"
-              target="_blank"
-              type="link"
-            />
+            <Tooltip title={__('Edit form in Bit Form')}>
+              <Button
+                href={item.urls.editForm}
+                icon={<LuPenLine size={14} />}
+                rel="noreferrer"
+                size="small"
+                target="_blank"
+                type="link"
+              />
+            </Tooltip>
+            <Tooltip title={__('Edit integration in Bit Form')}>
+              <Button
+                href={item.urls.editIntegration}
+                icon={<LuUnplug size={14} />}
+                rel="noreferrer"
+                size="small"
+                target="_blank"
+                type="link"
+              />
+            </Tooltip>
+
+            <Tooltip title={__('Preview form in Bit Form')}>
+              <Button
+                href={item.urls.preview}
+                icon={<LuEye size={14} />}
+                rel="noreferrer"
+                size="small"
+                target="_blank"
+                type="link"
+              />
+            </Tooltip>
           </Space>
         ),
         title: __('Actions'),

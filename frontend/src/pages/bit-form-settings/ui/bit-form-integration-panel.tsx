@@ -54,9 +54,7 @@ export default function BitFormIntegrationPanel() {
           <Typography.Title className="mb-0" level={5}>
             {__('Lead Capture forms')}
           </Typography.Title>
-          <Typography.Text type="secondary">
-            {__('Bit Form forms connected to Bit CRM.')}
-          </Typography.Text>
+          <Typography.Text type="secondary">{__('Bit Form connected to Bit CRM.')}</Typography.Text>
         </div>
         {forms.length > 0 && createButton}
       </div>
