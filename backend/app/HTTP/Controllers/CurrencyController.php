@@ -30,7 +30,7 @@ final class CurrencyController
 
     public function staticData()
     {
-        $homeCurrencyData = CurrencyHelper::getHomeCurrencyData();
+        $homeCurrencyData = CurrencyHelper::getHomeCurrencyData(false);
         $storedCurrencies = !empty($homeCurrencyData) ? [$homeCurrencyData] : [];
         $storedCurrencies = Hooks::applyFilter(HookKeys::STATIC_STORED_CURRENCIES, $storedCurrencies);
 
