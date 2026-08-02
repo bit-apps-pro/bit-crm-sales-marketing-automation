@@ -129,7 +129,6 @@ Route::group(
         Route::post('tags/index', [TagController::class, 'index']);
         Route::get('tags/edit/{id}', [TagController::class, 'edit']);
         Route::post('tags/update', [TagController::class, 'update']);
-        Route::post('tags/update-pin', [TagController::class, 'updatePin']);
         Route::post('tags/delete', [TagController::class, 'destroy']);
         Route::get('tags/{page}', [TagController::class, 'index']);
         Route::get('tags-by-module', [TagController::class, 'tagsByModule']);
@@ -160,8 +159,6 @@ Route::group(
         Route::post('activities/update', [ActivityController::class, 'update']);
         Route::post('activities/update-status', [ActivityController::class, 'updateStatus']);
         Route::post('activities/delete', [ActivityController::class, 'destroy']);
-        Route::post('activities/fields-by-module', [ActivityController::class, 'fieldsByModule']);
-        Route::post('activities/entities-by-module', [ActivityController::class, 'entitiesByModule']);
         Route::get('activities/{id}', [ActivityController::class, 'show']);
 
         Route::get('attachments/index', [AttachmentController::class, 'index']);

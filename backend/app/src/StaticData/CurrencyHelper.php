@@ -40,7 +40,7 @@ class CurrencyHelper
         return isset($currency['currency']) ? $currency['currency'] : self::DEFAULT_HOME_CURRENCY_CODE;
     }
 
-    public static function getHomeCurrencyData(): array
+    public static function getHomeCurrencyData(bool $includeMockData = true): array
     {
         $setting = Setting::findOne(['setting_key' => CurrencyHelper::KEY_HOME_CURRENCY_DATA]);
 
@@ -48,7 +48,11 @@ class CurrencyHelper
             return $setting['setting_value'];
         }
 
-        return self::getMockedHomeCurrencyData();
+        if ($includeMockData) {
+            return self::getMockedHomeCurrencyData();
+        }
+
+        return [];
     }
 
     private static function getMockedHomeCurrencyData(): array
