@@ -31,9 +31,16 @@ class StoreRequest extends Request
         ];
 
         if ($this->type === Activity::TYPES['TASK']) {
-            $rules['priority'] = ['required', 'string', 'sanitize:text', new PriorityRule()];
+            $rules = array_merge($rules, self::otherRules());
         }
 
         return $rules;
+    }
+
+    public static function otherRules(): array
+    {
+        return [
+            'priority' => ['required', 'string', 'sanitize:text', new PriorityRule()],
+        ];
     }
 }

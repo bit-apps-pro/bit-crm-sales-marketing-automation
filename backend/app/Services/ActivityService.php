@@ -20,7 +20,12 @@ class ActivityService
 {
     public function store(array|Request $data): array
     {
-        $validated = CommonService::resolveValidatedData($data, (new StoreRequest())->rules());
+        $rules = (new StoreRequest())->rules();
+        if (\is_array($data) && ($data['type'] ?? null) === Activity::TYPES['TASK']) {
+            $rules = array_merge($rules, StoreRequest::otherRules());
+        }
+
+        $validated = CommonService::resolveValidatedData($data, $rules);
 
         if (isset($validated['errors'])) {
             return $validated;
@@ -75,7 +80,12 @@ class ActivityService
 
     public function update(array|Request $data): array
     {
-        $rules = CommonService::makeOnlyIdRequired((new UpdateRequest())->rules());
+        $rules = (new UpdateRequest())->rules();
+        if (\is_array($data) && ($data['type'] ?? null) === Activity::TYPES['TASK']) {
+            $rules = array_merge($rules, UpdateRequest::otherRules());
+        }
+
+        $rules = CommonService::makeOnlyIdRequired($rules);
         $validated = CommonService::resolveValidatedData($data, $rules);
 
         if (isset($validated['errors'])) {
