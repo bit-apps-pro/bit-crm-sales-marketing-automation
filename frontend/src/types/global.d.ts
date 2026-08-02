@@ -12,6 +12,7 @@ declare module 'deepmerge-alt'
 declare module 'bitapps-dev-utils'
 
 declare let wp
+declare const VITE_PLUGIN_HAS_SUBMODULE_UPDATES: boolean
 
 declare const SERVER_VARIABLES: {
   ajaxURL: string

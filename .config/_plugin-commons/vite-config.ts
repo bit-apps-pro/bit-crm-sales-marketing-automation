@@ -4,6 +4,9 @@ import { humanId } from 'human-id'
 import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+// import csso from 'postcss-csso'
+// import { viteStaticCopy } from 'vite-plugin-static-copy'
+// import incstr from 'incstr'
 
 export default defineConfig(({ mode }) => {
   const { DEV_SSL, DEV_SSL_CERT_PATH, DEV_SSL_KEY_PATH, PLUGIN_SLUG, SERVER_VARIABLES } = loadEnv(
@@ -15,7 +18,8 @@ export default defineConfig(({ mode }) => {
   const isDevelopment = mode === 'development' || mode === 'test'
   const isTest = mode === 'test'
   const folderName = path.basename(process.cwd())
-  const ASSETS_DIR = 'assets'
+  const isPro = process.env.VITE_PRO === 'true'
+  const ASSETS_DIR = isPro ? 'pro/assets' : 'assets'
   const codeName = humanId({ capitalize: false, separator: '-' })
 
   return {
@@ -32,21 +36,20 @@ export default defineConfig(({ mode }) => {
             const fileName = pathArr?.at(-1)
 
             if (fileName === 'main.css') {
-              return `main-${PLUGIN_SLUG}-ba-assets-${codeName}.css`
+              return `main-${PLUGIN_SLUG}-${codeName}.css`
             }
 
             if (fileName === 'logo.svg') {
               return `logo.svg`
             }
 
-            return `${PLUGIN_SLUG}-ba-assets-[hash].[ext]`
+            return `${PLUGIN_SLUG}-${hash()}.[ext]`
           },
           chunkFileNames: fInfo => {
             if (fInfo?.facadeModuleId?.includes('lucide-react')) {
-              return `icons/[name]-[hash].js`
+              return `icons/[name]-icon.js`
             }
-            const name = typeof fInfo.name === 'string' ? fInfo.name.slice(0, 8).toLowerCase() : ''
-            return name + '-[hash].js'
+            return `[name]-[hash].js`
           },
           entryFileNames: `main-${codeName}.js`,
           generatedCode: {
@@ -54,6 +57,12 @@ export default defineConfig(({ mode }) => {
             constBindings: true,
             objectShorthand: true,
             preset: 'es2015'
+          },
+          manualChunks: {
+            antd: ['antd'],
+            'css-in-js': ['@emotion/react'],
+            'react-query': ['@tanstack/react-query'],
+            router: ['react-router']
           }
         }
       }
@@ -73,7 +82,16 @@ export default defineConfig(({ mode }) => {
       tsconfigPaths(),
       generateBuildCodeNamePlugin({ codeName, dir: ASSETS_DIR }),
       checkSubmoduleUpdatesPlugin()
+      // viteStaticCopy({
+      //   targets: [
+      //     {
+      //       src: normalizePath(path.resolve(__dirname, './frontend/_plugin-commons/resources/css/antd-reset.css')),
+      //       dest: `../${ASSETS_DIR}/`
+      //     }
+      //   ]
+      // })
     ],
+
     root: 'frontend',
     server: {
       ...(DEV_SSL === 'true' && {
@@ -92,12 +110,14 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       environment: 'happy-dom',
-      // environment: 'jsdom',
       globals: true,
-      include: ['frontend/src/**/*.test.{tsx,ts}', '_bitapps-plugin-commons/**/*.test.{tsx,ts}'],
-      root: './',
-      setupFiles: ['./frontend/src/config/test.setup.ts'],
+      root: './frontend/src',
+      setupFiles: ['./config/test.setup.ts'],
       testTimeout: 10_000
     }
   }
 })
+
+function hash() {
+  return Math.round(Math.random() * (999 - 1) + 1)
+}
