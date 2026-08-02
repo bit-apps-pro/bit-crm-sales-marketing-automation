@@ -23,6 +23,11 @@ export default defineConfig(({ mode }) => {
     base: isDevelopment ? `/wp-content/plugins/${folderName}/frontend/` : '',
     build: {
       emptyOutDir: true,
+      // Two entries (main + portal) make Rollup hoist everything they share --
+      // Tailwind's utilities and antd's base styles included -- into a common
+      // chunk whose CSS is a separate file. PHP can't guess that hashed name,
+      // so the manifest is what lets it enqueue the entry's full CSS set.
+      manifest: 'ba-assets-manifest.json',
       outDir: `../${ASSETS_DIR}`,
       rollupOptions: {
         input: path.resolve(import.meta.dirname, 'frontend/src/main.tsx'),

@@ -97,14 +97,19 @@ class Config
             case 'ASSET_URI':
                 return self::get('ROOT_URI') . '/assets';
 
+            case 'ASSET_DIR':
+                return self::get('ROOT_DIR') . self::ASSETS_FOLDER;
+
             case 'ASSET_JS_URI':
                 return self::get('ASSET_URI') . '/js';
 
             case 'ASSET_CSS_URI':
                 return self::get('ASSET_URI') . '/css';
 
+
             case 'PLUGIN_PAGE_LINKS':
                 return self::pluginPageLinks();
+
 
             case 'SIDE_BAR_MENU':
                 return Menu::getSideBarMenu(new Body());

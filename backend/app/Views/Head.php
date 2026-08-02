@@ -11,6 +11,42 @@ class Head
 {
     public const FONT_URL = 'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap';
 
+    public const MANIFEST_FILE = 'ba-assets-manifest.json';
+
+    /**
+     * Enqueue every stylesheet an entry point needs, resolved from the Vite manifest.
+     *
+     * With the portal entry in the build, Rollup hoists what the two entries share --
+     * Tailwind's utilities and antd's base styles among them -- into a common chunk
+     * whose CSS is emitted as its own hashed file. Enqueueing only `main-*.css` left
+     * that file to be injected by JS after the chunk downloaded, so a slow response
+     * painted the layout's own module CSS (including its dark background) with none
+     * of the utility classes applied.
+     *
+     * @param string $handlePrefix Prefix for the generated style handles
+     * @param string $entry        Manifest key, relative to the Vite root
+     */
+    public static function enqueueEntryStyles($handlePrefix, $entry)
+    {
+        $manifest = self::readManifest();
+
+        if (empty($manifest[$entry])) {
+            return false;
+        }
+
+        $assetURI = Config::get('ASSET_URI');
+
+        foreach (self::collectEntryStyles($manifest, $entry) as $index => $file) {
+            // No version query string: Vite's preload helper skips a chunk's CSS only
+            // when an existing <link href> matches exactly, and `?ver=` breaks that
+            // match -- leaving it to append a second <link> for the same stylesheet.
+            // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion -- Filenames are content-hashed.
+            wp_enqueue_style("{$handlePrefix}-{$index}", "{$assetURI}/{$file}", null, null, 'screen');
+        }
+
+        return true;
+    }
+
     /**
      * Load the asset libraries.
      *
@@ -37,7 +73,9 @@ class Head
         } else {
             // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion -- Intentional; see note below.
             wp_enqueue_script($slug . '-index-MODULE', Config::get('ASSET_URI') . "/main-{$codeName}.js", [], ''); // WARNING: Do not add version in production, it may cause unexpected behavior.
-            wp_enqueue_style($slug . '-styles', Config::get('ASSET_URI') . "/main-{$slug}-ba-assets-{$codeName}.css", null, $version, 'screen');
+            if (!self::enqueueEntryStyles($slug . '-styles', 'src/main.tsx')) {
+                wp_enqueue_style($slug . '-styles', Config::get('ASSET_URI') . "/main-{$slug}-ba-assets-{$codeName}.css", null, $version, 'screen');
+            }
         }
 
         wp_localize_script(Config::SLUG . '-index-MODULE', Config::VAR_PREFIX, self::createConfigVariable());
@@ -86,5 +124,56 @@ class Head
         }
 
         return $frontendVars;
+    }
+
+    /**
+     * The entry's own CSS plus the CSS of every chunk it statically imports, in
+     * dependency order so resets and base styles land before what overrides them.
+     *
+     * @param array  $manifest
+     * @param string $entry
+     * @param mixed $visited
+     *
+     * @return array
+     */
+    private static function collectEntryStyles($manifest, $entry, &$visited = [])
+    {
+        if (isset($visited[$entry]) || empty($manifest[$entry])) {
+            return [];
+        }
+
+        $visited[$entry] = true;
+        $styles = [];
+
+        // Imports first: a chunk's dependencies define the base its own rules build on.
+        foreach ($manifest[$entry]['imports'] ?? [] as $import) {
+            $styles = array_merge($styles, self::collectEntryStyles($manifest, $import, $visited));
+        }
+
+        return array_values(array_unique(array_merge($styles, $manifest[$entry]['css'] ?? [])));
+    }
+
+    /**
+     * Read the build manifest once per request, empty when it is not present.
+     *
+     * @return array
+     */
+    private static function readManifest()
+    {
+        static $manifest = null;
+
+        if ($manifest !== null) {
+            return $manifest;
+        }
+
+        $path = Config::get('ASSET_DIR') . '/' . self::MANIFEST_FILE;
+
+        if (!file_exists($path)) {
+            return $manifest = [];
+        }
+
+        $decoded = json_decode(file_get_contents($path), true);
+
+        return $manifest = \is_array($decoded) ? $decoded : [];
     }
 }

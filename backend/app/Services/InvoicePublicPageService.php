@@ -171,8 +171,11 @@ class InvoicePublicPageService
         } else {
             $codeName = Config::get('BUILD_CODE_NAME');
             // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion -- hashed via build code name, mirrors Head::addHeadScripts()
-            wp_enqueue_script($scriptHandle, Config::get('ASSET_URI') . "/main-{$codeName}.js", [], '');
-            wp_enqueue_style($slug . '-styles', Config::get('ASSET_URI') . "/main-{$slug}-ba-assets-{$codeName}.css", null, $version, 'screen');
+            wp_enqueue_script($scriptHandle, Config::get('ASSET_URI') . "/main-{$codeName}.js", [], null); // WARNING: Do not add version in production, it may cause unexpected behavior.
+
+            if (!Head::enqueueEntryStyles($slug . '-styles', 'src/main.tsx')) {
+                wp_enqueue_style($slug . '-styles', Config::get('ASSET_URI') . "/main-{$slug}-ba-assets-{$codeName}.css", null, $version, 'screen');
+            }
         }
 
         wp_localize_script($scriptHandle, Config::VAR_PREFIX, $this->configVariables($invoiceId, $token));
