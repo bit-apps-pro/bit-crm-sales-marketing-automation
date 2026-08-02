@@ -59,7 +59,11 @@ export default function TaskForm({
             name="entity_id"
             rules={[{ message: __('Please select entity!'), required: true }]}
           >
-            <LookupFieldSelect relatedModule={selectedModule} showAddNew={false} />
+            <LookupFieldSelect
+              disabled={selectedModule === ''}
+              relatedModule={selectedModule}
+              showAddNew={false}
+            />
           </Form.Item>
         </If>
         <Form.Item
