@@ -5,6 +5,10 @@ namespace BitApps\Crm\Services;
 use BitApps\Crm\Config;
 use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
+use BitApps\Crm\Model\Activity;
+use BitApps\Crm\Model\Attachment;
+use BitApps\Crm\Model\Link;
+use BitApps\Crm\Model\Note;
 
 class CrmUserService
 {
@@ -13,6 +17,8 @@ class CrmUserService
     public const CAPABILITY_SLUG_OTHERS = 'others';
 
     public const ESSENTIAL_CAPABILITIES = ['bit_crm_menu'];
+
+    public const CAPABILITY_SLUG_DASHBOARD = 'dashboard';
 
     public function allPluginCapabilities()
     {
@@ -68,7 +74,8 @@ class CrmUserService
         $menuCapabilities = [];
 
         foreach ($modules as $module) {
-            if ($module === self::CAPABILITY_SLUG_OTHERS || $module === 'dashboard') {
+            if (\in_array($module, [self::CAPABILITY_SLUG_OTHERS, self::CAPABILITY_SLUG_DASHBOARD, Activity::MODULE_NAME,
+                Note::MODULE_NAME, Link::MODULE_NAME, Attachment::MODULE_NAME])) {
                 continue;
             }
 

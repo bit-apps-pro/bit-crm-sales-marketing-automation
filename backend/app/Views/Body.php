@@ -34,7 +34,7 @@ class Body
         <div
           style=display:flex;flex-direction:column;justify-content:center;align-items:center;height:90vh;font-family:Tahoma, Geneva, Verdana, sans-serif;>
           <img alt=app-logo class=bit-logo width=70 src={$assetURI}/logo.svg>
-          <h1>Welcome to Bit CRM.</h1>
+          <h1>Welcome to Bit CRM</h1>
           <p></p>
         </div>
        </div>",

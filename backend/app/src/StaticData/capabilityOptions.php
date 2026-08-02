@@ -21,6 +21,7 @@ return [
         ['label' => __('Dashboard View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_dashboard'],
     ],
     Lead::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_lead_menu', 'hidden' => true],
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_lead_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_lead_create'],
         ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_lead_update'],
@@ -29,6 +30,7 @@ return [
         ['label' => __('Import', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_lead_import'],
     ],
     Contact::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_contact_menu', 'hidden' => true],
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_contact_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_contact_create'],
         ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_contact_update'],
@@ -37,6 +39,7 @@ return [
         ['label' => __('Import', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_contact_import'],
     ],
     Company::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_company_menu', 'hidden' => true],
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_company_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_company_create'],
         ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_company_update'],
@@ -45,6 +48,7 @@ return [
         ['label' => __('Import', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_company_import'],
     ],
     Deal::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_menu', 'hidden' => true],
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_create'],
         ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_deal_update'],
@@ -75,20 +79,22 @@ return [
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_create'],
         ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_delete'],
     ],
-
     Tag::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_menu', 'hidden' => true],
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_create'],
         ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_update'],
         ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_tag_delete'],
     ],
     Invoice::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_invoice_menu', 'hidden' => true],
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_invoice_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_invoice_create'],
         ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_invoice_update'],
         ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_invoice_delete'],
     ],
     Setting::MODULE_NAME => [
+        ['label' => __('Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_menu', 'hidden' => true],
         ['label' => __('General Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_general'],
         ['label' => __('Lead Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_lead'],
         ['label' => __('Contact Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_contact'],
@@ -110,5 +116,8 @@ return [
     'others' => [
         ['label' => __('History View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_history_view'],
         ['label' => __('Support & License', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_manage_support_license'],
+    ],
+    'essential' => [
+        ['label' => __('CRM Menu', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_menu', 'hidden' => true],
     ]
 ];
