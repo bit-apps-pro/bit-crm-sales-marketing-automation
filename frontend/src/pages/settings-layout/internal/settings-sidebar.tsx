@@ -111,6 +111,11 @@ const navGroups = [
         path: '../settings/crm-users'
       },
       {
+        capability: CAPABILITIES.MCP.SERVER,
+        label: __('MCP Server'),
+        path: '../settings/mcp-server'
+      },
+      {
         capability: CAPABILITIES.SETTING.API,
         label: __('REST API'),
         path: '../settings/api-settings'

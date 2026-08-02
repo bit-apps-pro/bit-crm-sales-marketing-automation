@@ -15,7 +15,7 @@ import HeaderNavItem from './header-nav-item'
 const { Header: AntHeader } = Layout
 
 const navItems = [
-  { capability: CAPABILITIES.DASHBOARD, label: __('Dashboard'), path: '../' },
+  { capability: CAPABILITIES.DASHBOARD, end: true, label: __('Dashboard'), path: '../' },
   { capability: CAPABILITIES.LEAD.MENU, label: __('Leads'), path: '../leads' },
   { capability: CAPABILITIES.CONTACT.MENU, label: __('Contacts'), path: '../contacts' },
   { capability: CAPABILITIES.COMPANY.MENU, label: __('Companies'), path: '../companies' },
@@ -29,7 +29,7 @@ export default function Header() {
   const isSettingsActive = location.pathname.startsWith('/settings')
 
   return (
-    <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-4 py-5">
+    <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-6 py-5">
       <Link className="flex shrink-0 items-center" to="/">
         <svg
           aria-label="Bit CRM"

@@ -72,6 +72,9 @@ const CAPABILITIES = {
     UPDATE: 'bit_crm_link_update',
     VIEW: 'bit_crm_link_view'
   },
+  MCP: {
+    SERVER: 'bit_crm_mcp_server'
+  },
   NOTE: {
     CREATE: 'bit_crm_note_create',
     DELETE: 'bit_crm_note_delete',
