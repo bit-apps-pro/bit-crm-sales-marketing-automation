@@ -8,9 +8,8 @@ use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Services\LeadConvertService;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
-use WP_Background_Process;
 
-class LeadsConvertToContactsProcess extends WP_Background_Process
+class LeadsConvertToContactsProcess extends SafeBackgroundProcess
 {
     public const CHUNK_SIZE = 10;
 

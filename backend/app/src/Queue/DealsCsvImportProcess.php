@@ -9,9 +9,8 @@ use BitApps\Crm\Helpers\FileHandler;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Services\DealImportService;
 use BitApps\Crm\Services\ImportExportListService;
-use WP_Background_Process;
 
-class DealsCsvImportProcess extends WP_Background_Process
+class DealsCsvImportProcess extends SafeBackgroundProcess
 {
     protected const CHUNK_SIZE = 100;
 

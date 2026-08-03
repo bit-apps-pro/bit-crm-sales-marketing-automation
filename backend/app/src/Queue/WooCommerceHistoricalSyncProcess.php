@@ -7,9 +7,8 @@ use BitApps\Crm\Model\Setting;
 use BitApps\Crm\Services\IntegrationSettingsService;
 use BitApps\Crm\Services\SettingService;
 use BitApps\Crm\Services\WooCommerceContactSyncService;
-use WP_Background_Process;
 
-class WooCommerceHistoricalSyncProcess extends WP_Background_Process
+class WooCommerceHistoricalSyncProcess extends SafeBackgroundProcess
 {
     public const SYNC_SETTING_KEY = 'woo_historical_sync';
 

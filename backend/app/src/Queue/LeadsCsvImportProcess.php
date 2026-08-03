@@ -9,9 +9,8 @@ use BitApps\Crm\Helpers\FileHandler;
 use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Services\ImportExportListService;
 use BitApps\Crm\Services\LeadImportService;
-use WP_Background_Process;
 
-class LeadsCsvImportProcess extends WP_Background_Process
+class LeadsCsvImportProcess extends SafeBackgroundProcess
 {
     protected const CHUNK_SIZE = 100;
 

@@ -5,9 +5,8 @@ namespace BitApps\Crm\src\Queue;
 use BitApps\Crm\Config;
 use BitApps\Crm\Model\Trash;
 use BitApps\Crm\Services\TrashService;
-use WP_Background_Process;
 
-class TrashDeleteProcess extends WP_Background_Process
+class TrashDeleteProcess extends SafeBackgroundProcess
 {
     protected const CHUNK_SIZE = 50;
 

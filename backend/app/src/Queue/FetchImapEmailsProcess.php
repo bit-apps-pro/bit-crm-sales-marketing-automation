@@ -8,9 +8,8 @@ use BitApps\Crm\Model\Email;
 use BitApps\Crm\Model\ImapSetting;
 use BitApps\Crm\src\Imap\Messages;
 use Throwable;
-use WP_Background_Process;
 
-class FetchImapEmailsProcess extends WP_Background_Process
+class FetchImapEmailsProcess extends SafeBackgroundProcess
 {
     private const EMAILS_PER_BATCH = 50;
 
