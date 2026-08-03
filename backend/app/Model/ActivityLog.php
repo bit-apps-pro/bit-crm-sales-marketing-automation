@@ -9,6 +9,10 @@ class ActivityLog extends Model
 {
     public const MODULE_NAME = 'activity_log';
 
+    public const SETTINGS_KEYS = [
+        'LOG_SETTINGS' => 'activity_log',
+    ];
+
     public const SEARCHABLE_COLUMNS = ['title', 'event', 'details'];
 
     protected $prefix = Config::VAR_PREFIX;

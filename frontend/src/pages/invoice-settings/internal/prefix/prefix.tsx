@@ -37,7 +37,13 @@ export default function Prefix() {
             className="mb-2 max-w-xs"
             initialValue={__('INV')}
             name="prefix"
-            rules={[{ message: __('Please provide an invoice prefix'), required: true }]}
+            rules={[
+              { message: __('Please provide an invoice prefix'), required: true },
+              {
+                message: __('Invoice prefix cannot contain spaces'),
+                pattern: /^\S*$/ // Regex: No spaces allowed (only non-whitespace characters)
+              }
+            ]}
           >
             <Input maxLength={10} placeholder="INV" size="middle" />
           </Form.Item>
