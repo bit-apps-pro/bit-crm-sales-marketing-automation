@@ -9,6 +9,7 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\Router\Router;
 use BitApps\Crm\HTTP\Controllers\WooCommerceHistoricalSyncController;
 use BitApps\Crm\Plugin;
 use BitApps\Crm\Services\ActivityLogService;
+use BitApps\Crm\Services\CrmUserService;
 use BitApps\Crm\Services\InvoicePublicPageService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\Services\WooCommerceContactSyncService;
@@ -75,6 +76,24 @@ class HookProvider
     }
 
     /**
+     * TODO: check later why it's happening and if this the correct way to fix it.
+     * Let CRM users reach wp-admin on WooCommerce sites.
+     *
+     * WooCommerce redirects anyone lacking `edit_posts`, `manage_woocommerce`
+     * or `view_admin_dashboard` to the my-account page on every admin_init.
+     * CRM capabilities are granted per user without any of those, so a
+     * CRM-only user would be bounced before ever reaching the CRM menu.
+     *
+     * @param bool $prevent
+     *
+     * @return bool
+     */
+    public function allowCrmUsersAdminAccess($prevent)
+    {
+        return current_user_can(CrmUserService::ESSENTIAL_CAPABILITIES[0]) ? false : $prevent;
+    }
+
+    /**
      * Clear and re-anchor the daily overdue check to the next local midnight.
      *
      * Hooked to timezone setting changes so the recurring event tracks the new
@@ -127,6 +146,7 @@ class HookProvider
     {
         Hooks::addAction('woocommerce_new_order', [WooCommerceContactSyncService::class, 'handleOrderSync']);
         Hooks::addAction('woocommerce_update_order', [WooCommerceContactSyncService::class, 'handleOrderSync']);
+        Hooks::addFilter('woocommerce_prevent_admin_access', [$this, 'allowCrmUsersAdminAccess']);
 
         $this->maybeDispatchPendingWooHistoricalSync();
     }
