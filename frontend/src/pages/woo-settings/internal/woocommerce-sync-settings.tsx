@@ -77,7 +77,7 @@ export default function WoocommerceSyncSettings({ settingKey }: Props) {
     saveTimer.current = setTimeout(async () => {
       const values = form.getFieldsValue() as WooCommerceIntegrationSettings
       await saveSettings(values)
-    }, 600)
+    }, 1000)
   }
 
   if (isSettingsPending) {
