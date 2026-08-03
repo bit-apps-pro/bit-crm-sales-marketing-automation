@@ -9,9 +9,8 @@ use BitApps\Crm\Helpers\FileHandler;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Services\ContactImportService;
 use BitApps\Crm\Services\ImportExportListService;
-use WP_Background_Process;
 
-class ContactsCsvImportProcess extends WP_Background_Process
+class ContactsCsvImportProcess extends SafeBackgroundProcess
 {
     protected const CHUNK_SIZE = 100;
 

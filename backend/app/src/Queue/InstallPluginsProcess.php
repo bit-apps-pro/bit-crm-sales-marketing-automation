@@ -7,9 +7,8 @@ use BitApps\Crm\Services\PluginInstallerService;
 use BitApps\Crm\src\StaticData\OtherPluginsData;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
-use WP_Background_Process;
 
-class InstallPluginsProcess extends WP_Background_Process
+class InstallPluginsProcess extends SafeBackgroundProcess
 {
     protected $action = Config::VAR_PREFIX . 'install_plugins';
 

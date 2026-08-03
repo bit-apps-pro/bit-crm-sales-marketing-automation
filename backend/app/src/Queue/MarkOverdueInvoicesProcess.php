@@ -7,9 +7,8 @@ use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
-use WP_Background_Process;
 
-class MarkOverdueInvoicesProcess extends WP_Background_Process
+class MarkOverdueInvoicesProcess extends SafeBackgroundProcess
 {
     public const IS_RUNNING_KEY = 'is_mark_overdue_invoices_queue_in_process';
 
