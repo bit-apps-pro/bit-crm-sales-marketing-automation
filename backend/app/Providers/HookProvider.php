@@ -106,6 +106,24 @@ class HookProvider
     }
 
     /**
+     * TODO: check later why it's happening and if this the correct way to fix it.
+     * Let CRM users reach wp-admin on WooCommerce sites.
+     *
+     * WooCommerce redirects anyone lacking `edit_posts`, `manage_woocommerce`
+     * or `view_admin_dashboard` to the my-account page on every admin_init.
+     * CRM capabilities are granted per user without any of those, so a
+     * CRM-only user would be bounced before ever reaching the CRM menu.
+     *
+     * @param bool $prevent
+     *
+     * @return bool
+     */
+    public function allowCrmUsersAdminAccess($prevent)
+    {
+        return current_user_can(CrmUserService::ESSENTIAL_CAPABILITIES[0]) ? false : $prevent;
+    }
+
+    /**
      * Helps to register App hooks.
      */
     protected function loadAppAjaxHooks()

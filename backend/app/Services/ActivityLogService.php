@@ -29,7 +29,7 @@ class ActivityLogService
     public static function activityLogCleanup()
     {
         try {
-            $activityLogSettings = Setting::findOne(['setting_key' => 'activity_log']);
+            $activityLogSettings = Setting::findOne(['setting_key' => ActivityLog::SETTINGS_KEYS['LOG_SETTINGS']]);
 
             $preserveActivityLogs = $activityLogSettings['setting_value']['preserve_logs'] ?? self::DEFAULT_PRESERVE_DAYS;
 
