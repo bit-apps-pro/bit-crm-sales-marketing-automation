@@ -55,6 +55,7 @@ export default function ProductLookupSelect({
   const handleSelect = (_: number | string, record: unknown) => {
     const productOption = record as ProductOption
     if (productOption?.is_parent) return
+    setSearchTerm('')
     onSelect?.(productOption)
   }
 

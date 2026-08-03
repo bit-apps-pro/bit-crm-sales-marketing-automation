@@ -83,6 +83,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
 
             $storedLead->reference_uuid = Uuid::binaryToUuid($storedLead->reference_uuid);
 
+            $storedLead = CommonService::appendCustomFieldsValues($storedLead, Lead::MODULE_NAME);
             Hooks::doAction('bit_crm/lead_created', $storedLead);
 
             if (!empty($attachedTagIds)) {
@@ -158,6 +159,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             Hooks::doAction(HookKeys::UPDATE_CUSTOM_FIELDS_VALUES, Lead::MODULE_NAME, $lead->id, $validated['customFieldsValues'] ?? []);
 
             Connection::commit();
+            $lead = CommonService::appendCustomFieldsValues($lead, Lead::MODULE_NAME);
             Hooks::doAction('bit_crm/lead_updated', $lead);
 
             return ['success' => true, 'data' => $lead, 'message' => __('Lead updated successfully.', 'bit-crm-sales-marketing-automation')];

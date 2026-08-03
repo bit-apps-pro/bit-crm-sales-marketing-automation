@@ -136,6 +136,16 @@ class HookKeys
     public const MERGE_CUSTOM_FIELDS = 'bit_crm_merge_custom_fields';
 
     /**
+     * Returns an entity's stored custom field values keyed by field key,
+     * each entry as ['field_id' => custom field id, 'field_value' => decoded
+     * value, 'field_key' => key]. Used to enrich the bit_crm/*_created and
+     * bit_crm/*_updated hook payloads.
+     *
+     * apply_filters(array $values, string $module, int $entityId): array
+     */
+    public const GET_CUSTOM_FIELDS_VALUES = 'bit_crm_get_custom_fields_values';
+
+    /**
      * Persists custom field values after a new entity is created.
      *
      * do_action(string $module, int $entityId, array $customFieldsValues)

@@ -90,6 +90,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
 
             $storedContact->reference_uuid = Uuid::binaryToUuid($storedContact->reference_uuid);
 
+            $storedContact = CommonService::appendCustomFieldsValues($storedContact, Contact::MODULE_NAME);
             Hooks::doAction('bit_crm/contact_created', $storedContact);
 
             if ($clientPortalEnabled) {
@@ -169,6 +170,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             Hooks::doAction(HookKeys::UPDATE_CUSTOM_FIELDS_VALUES, Contact::MODULE_NAME, $contact->id, $validated['customFieldsValues'] ?? []);
 
             Connection::commit();
+            $contact = CommonService::appendCustomFieldsValues($contact, Contact::MODULE_NAME);
             Hooks::doAction('bit_crm/contact_updated', $contact);
 
             return ['success' => true, 'data' => $contact, 'message' => __('Contact updated successfully.', 'bit-crm-sales-marketing-automation')];

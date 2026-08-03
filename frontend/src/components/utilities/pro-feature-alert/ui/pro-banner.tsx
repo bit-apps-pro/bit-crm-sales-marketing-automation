@@ -12,6 +12,12 @@ interface ProBannerProps extends ProFeatureAlertProps {
   showIcon?: boolean
 }
 
+const BUTTON_STYLE = {
+  background: 'linear-gradient(212.29deg, #D875FF -6.01%, #754FF1 56.19%, #B657FF 118.4%)',
+  border: 'none',
+  borderRadius: 9999
+} as const
+
 export default function ProBanner({ className = '', featureName, showIcon = true }: ProBannerProps) {
   const { token } = theme.useToken()
   const primary = token.colorPrimary
@@ -43,11 +49,7 @@ export default function ProBanner({ className = '', featureName, showIcon = true
         icon={<LuCrown size={16} />}
         rel="noopener noreferrer"
         size="large"
-        style={{
-          background: 'linear-gradient(212.29deg, #D875FF -6.01%, #754FF1 56.19%, #B657FF 118.4%)',
-          border: 'none',
-          borderRadius: 9999
-        }}
+        style={BUTTON_STYLE}
         target="_blank"
         type="primary"
       >

@@ -83,7 +83,7 @@ const CAPABILITIES = {
   },
   OTHERS: {
     History: 'bit_crm_history_view',
-    SUPPORT_LICENSE: 'bit_crm_manage_support_license'
+    LICENSE: 'bit_crm_manage_license'
   },
   PRODUCT: {
     CREATE: 'bit_crm_product_create',
