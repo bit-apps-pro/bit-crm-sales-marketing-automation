@@ -68,6 +68,7 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
 
             $storedDeal->reference_uuid = Uuid::binaryToUuid($storedDeal->reference_uuid);
 
+            $storedDeal = CommonService::appendCustomFieldsValues($storedDeal, Deal::MODULE_NAME);
             Hooks::doAction('bit_crm/deal_created', $storedDeal);
 
             if (!empty($attachedTagIds)) {
@@ -158,6 +159,7 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
 
             Connection::commit();
 
+            $deal = CommonService::appendCustomFieldsValues($deal, Deal::MODULE_NAME);
             Hooks::doAction('bit_crm/deal_updated', $deal);
 
             return ['success' => true, 'data' => $deal, 'message' => __('Deal updated successfully.', 'bit-crm-sales-marketing-automation')];

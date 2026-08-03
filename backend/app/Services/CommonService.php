@@ -2,6 +2,8 @@
 
 namespace BitApps\Crm\Services;
 
+use BitApps\Crm\Constants\HookKeys;
+use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Deps\BitApps\WPValidator\Validator;
 use BitApps\Crm\Model\Company;
@@ -49,6 +51,41 @@ class CommonService
 
         $entity['created_by_name'] = self::resolveUserDisplayName($entity['created_by'] ?? null);
         $entity['updated_by_name'] = self::resolveUserDisplayName($entity['updated_by'] ?? null);
+    }
+
+    /**
+     * Appends the entity's stored custom field values to the model under a
+     * single "custom_fields_values" attribute, keyed by field key with each
+     * entry as ['field_id' => custom field id, 'field_value' => decoded
+     * value, 'field_key' => key]. System-defined attributes are untouched.
+     * Intended for enriching entity hook payloads (bit_crm/*_created,
+     * bit_crm/*_updated). The attribute is always present; it stays an empty
+     * array when the entity has no custom field values (or the pro plugin is
+     * inactive).
+     *
+     * @param mixed $model an entity model with an id attribute
+     *
+     * @return mixed the same model instance
+     */
+    public static function appendCustomFieldsValues($model, string $module)
+    {
+        if (empty($model->id)) {
+            return $model;
+        }
+
+        $values = Hooks::applyFilter(HookKeys::GET_CUSTOM_FIELDS_VALUES, [], $module, (int) $model->id);
+
+        // setAttribute() marks the attribute dirty on an existing model, and a
+        // later $model->update()/save() persists ALL dirty attributes — which
+        // would emit "custom_fields_values" as a table column and fail the
+        // query (workflow update-entity actions call update() on this very
+        // payload model). Toggling the exists flag off makes the enrichment
+        // untracked, so it can never leak into a write.
+        $model->setExists(false);
+        $model->custom_fields_values = $values;
+        $model->setExists(true);
+
+        return $model;
     }
 
     public function getPrevAndNextEntityId(string $table, int $id): array|bool

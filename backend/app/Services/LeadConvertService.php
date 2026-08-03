@@ -240,9 +240,9 @@ class LeadConvertService
      */
     public function dispatchCreationHooks(): void
     {
-        $this->fireCreatedHooks($this->createdCompanies, 'bit_crm/company_created');
-        $this->fireCreatedHooks($this->createdContacts, 'bit_crm/contact_created');
-        $this->fireCreatedHooks($this->createdDeals, 'bit_crm/deal_created');
+        $this->fireCreatedHooks($this->createdCompanies, 'bit_crm/company_created', Company::MODULE_NAME);
+        $this->fireCreatedHooks($this->createdContacts, 'bit_crm/contact_created', Contact::MODULE_NAME);
+        $this->fireCreatedHooks($this->createdDeals, 'bit_crm/deal_created', Deal::MODULE_NAME);
     }
 
     /**
@@ -319,13 +319,14 @@ class LeadConvertService
      *
      * @param iterable $entities inserted models
      */
-    private function fireCreatedHooks($entities, string $hook): void
+    private function fireCreatedHooks($entities, string $hook, string $module): void
     {
         foreach ($entities as $entity) {
             if (isset($entity->reference_uuid)) {
                 $entity->reference_uuid = Uuid::binaryToUuid($entity->reference_uuid);
             }
 
+            $entity = CommonService::appendCustomFieldsValues($entity, $module);
             Hooks::doAction($hook, $entity);
         }
     }

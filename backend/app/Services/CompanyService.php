@@ -81,6 +81,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
 
 
             $storedCompany->reference_uuid = Uuid::binaryToUuid($storedCompany->reference_uuid);
+            $storedCompany = CommonService::appendCustomFieldsValues($storedCompany, Company::MODULE_NAME);
             Hooks::doAction('bit_crm/company_created', $storedCompany);
 
             if (!empty($attachedTagIds)) {
@@ -162,6 +163,7 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
             }
 
             Connection::commit();
+            $company = CommonService::appendCustomFieldsValues($company, Company::MODULE_NAME);
             Hooks::doAction('bit_crm/company_updated', $company);
 
             return ['success' => true, 'data' => $company, 'message' => __('Company updated successfully.', 'bit-crm-sales-marketing-automation')];

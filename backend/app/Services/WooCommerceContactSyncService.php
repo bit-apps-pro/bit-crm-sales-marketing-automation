@@ -6,6 +6,7 @@ use BitApps\Crm\Model\Contact;
 use BitApps\Crm\src\StaticData\CurrencyHelper;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
+use WC_Order;
 
 class WooCommerceContactSyncService
 {
@@ -55,7 +56,9 @@ class WooCommerceContactSyncService
 
         $order = is_numeric($orderOrId) ? $this->getWcOrder($orderOrId) : $orderOrId;
 
-        if (!$order) {
+        // Refunds resolve through the same lookup but are WC_Order_Refund, which has
+        // none of the customer/billing getters used below, so skip anything not an order.
+        if (!$order instanceof WC_Order) {
             return false;
         }
 
