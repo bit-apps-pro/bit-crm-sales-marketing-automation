@@ -11,7 +11,7 @@ export default function useDeals(
   searchData: SearchData & { advancedFilterGroups?: FilterCondition[][] }
 ) {
   const { advancedFilterGroups, ...rest } = searchData
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<
     Response<DealsResponse>,
     Error,
     DealsResponse
@@ -27,7 +27,7 @@ export default function useDeals(
     deals: data?.data || [],
     isDealsError: isError,
     isDealsFetching: isFetching,
-    isDealsPending: isPending,
+    isDealsLoading: isLoading,
     refetchDeals: refetch,
     stageStatistics: data?.stageStatistics || {},
     totalDeals: data?.total || 0

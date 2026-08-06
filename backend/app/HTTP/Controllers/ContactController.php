@@ -137,6 +137,13 @@ final class ContactController
     {
         $validated = $request->validated();
         $contactId = $validated['contact_id'];
+
+        $contact = Contact::findOne(['id' => $contactId, 'is_trash' => 0]);
+
+        if (empty($contact)) {
+            return Response::error(__('Contact not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
         $tag = Tag::findOne(['module' => Contact::MODULE_NAME, 'slug' => $validated['title']]);
 
         unset($validated['contact_id']);
@@ -199,6 +206,19 @@ final class ContactController
         $validated = $request->validated();
         $contactIds = $validated['contact_ids'];
         $tagIds = $validated['tag_ids'];
+
+        $existingContacts = Contact::whereIn('id', $contactIds)
+            ->where('is_trash', 0)
+            ->select(['id'])
+            ->get();
+
+        $contactIds = empty($existingContacts) ? [] : array_map('intval', $existingContacts->pluck('id')->toArray());
+
+        if (empty($contactIds)) {
+            return Response::error(__('Contact not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $dataToInsert = [];
 
         if (\count($contactIds) && \count($tagIds)) {
             $existingRecords = TagEntity::select(['entity_id', 'tag_id'])

@@ -33,7 +33,7 @@ export default function useCompanies(searchData: SearchData, advancedFilterGroup
   const { setGroupErrors } = useAdvancedFilterActions()
   const { messageApi } = useContext(NotifyContext)
 
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<CompanyResponse>,
     ResponseError,
     CompanyResponse
@@ -65,7 +65,7 @@ export default function useCompanies(searchData: SearchData, advancedFilterGroup
     companies: data?.data || [],
     isCompaniesError: isError,
     isCompaniesFetching: isFetching,
-    isCompaniesPending: isPending,
+    isCompaniesLoading: isLoading,
     refetchCompanies: refetch,
     totalCompanies: data?.total || 0
   }

@@ -31,6 +31,8 @@ class ContactSearchService
 
         $contactTable = Config::withDBPrefix('contacts');
         $contactTableAlias = self::CONTACT_TABLE_ALIAS;
+        $customFieldKeys = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_KEYS, [], self::MODULE);
+        $allowedColumns = $this->allowedColumns($customFieldKeys);
         $customFieldsSelect = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_COLUMNS, '', self::MODULE);
         $customFieldsJoin = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_JOIN, '', self::MODULE);
         $companyTableJoin = $this->getCompanyTableJoin();
@@ -48,7 +50,7 @@ class ContactSearchService
         {$ownerTableJoin}
         WHERE {$contactTableAlias}.is_trash = 0";
 
-        [$advancedFilters, $advancedFiltersBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? []);
+        [$advancedFilters, $advancedFiltersBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? [], $allowedColumns);
         $baseQuery .= $this->filterByTags($args['tags']);
         $baseQuery .= $this->filterByIds($args['ids'] ?? []);
         [$searchFilter, $searchBindings] = $this->filterBySearchTerm($args['searchTerm']);
@@ -57,7 +59,9 @@ class ContactSearchService
 
         $countQuery = $baseQuery;
 
-        $baseQuery .= " ORDER BY `{$args['sortBy']}` {$args['sortOrder']} LIMIT {$args['perPage']} OFFSET {$args['offset']}";
+        $sortBy = $this->sanitizeSortColumn($args['sortBy'], $allowedColumns);
+
+        $baseQuery .= " ORDER BY `{$sortBy}` {$args['sortOrder']} LIMIT {$args['perPage']} OFFSET {$args['offset']}";
         $bindings = array_merge($searchBindings, $advancedFiltersBindings);
 
         try {
@@ -143,15 +147,39 @@ class ContactSearchService
         return [rtrim($search, 'AND'), $bindings];
     }
 
-    private function advancedFilters(array $filters): array
+    private function advancedFilters(array $filters, array $allowedColumns): array
     {
         if (empty($filters)) {
             return [null, []];
         }
 
-        $advancedFilterService = new AdvancedFilterService(Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_KEYS, [], self::MODULE));
+        $advancedFilterService = new AdvancedFilterService($allowedColumns);
 
         return $advancedFilterService->applyAdvancedFilters($filters);
+    }
+
+    /**
+     * Real contact columns plus registered custom fields, which together are every
+     * key the fields endpoint exposes as a sortable or filterable table column.
+     *
+     * Both clauses interpolate the identifier into a raw query, so nothing outside
+     * this list may reach the SQL.
+     */
+    private function allowedColumns(array $customFieldKeys): array
+    {
+        return array_merge(
+            (new Contact())->getFillable(),
+            ['id', 'created_at', 'updated_at'],
+            $customFieldKeys
+        );
+    }
+
+    /**
+     * @param mixed $sortBy
+     */
+    private function sanitizeSortColumn($sortBy, array $allowedColumns): string
+    {
+        return \in_array($sortBy, $allowedColumns, true) ? $sortBy : 'id';
     }
 
     private function totalData(string $query, array $bindings): int

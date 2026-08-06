@@ -4,7 +4,7 @@ import { type BaseFieldItemType } from '@features/entity-form/shared/entity-form
 import { useQuery } from '@tanstack/react-query'
 
 export default function useRequiredModuleFields(module: string) {
-  const { data, isFetching, isPending } = useQuery<
+  const { data, isFetching, isLoading } = useQuery<
     Response<BaseFieldItemType[]>,
     Error,
     BaseFieldItemType[]
@@ -19,6 +19,6 @@ export default function useRequiredModuleFields(module: string) {
   return {
     fields: data || [],
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending
+    isFieldsLoading: isLoading
   }
 }

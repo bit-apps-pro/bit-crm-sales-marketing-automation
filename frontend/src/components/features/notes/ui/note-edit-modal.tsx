@@ -20,7 +20,7 @@ export default function NoteEditModal({ fieldOptions, module }: NoteEditModalPro
   const { handleModal, isEditModalOpen, setEditModalOpen } = useNoteStore()
   const [searchParams, setSearchParams] = useSearchParams()
   const { attachments, clearAttachments, setAttachments } = useAttachmentStore()
-  const { isFetchingNote, note } = useNote(Number(searchParams.get('id')), isEditModalOpen)
+  const { isNoteLoading, note } = useNote(Number(searchParams.get('id')), isEditModalOpen)
   const [form] = Form.useForm()
   const { isUpdatingNote, updateNote } = useUpdateNote(form)
 
@@ -80,7 +80,7 @@ export default function NoteEditModal({ fieldOptions, module }: NoteEditModalPro
       centered
       confirmLoading={isUpdatingNote}
       destroyOnHidden
-      loading={isFetchingNote}
+      loading={isNoteLoading}
       okButtonProps={{ disabled: isUpdatingNote }}
       okText={__('Update')}
       onCancel={handleClose}

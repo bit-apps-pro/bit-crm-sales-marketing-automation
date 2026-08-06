@@ -58,7 +58,7 @@ export default function Links({ entityId, fields, module }: LinksProps) {
 
   const fieldOptions = generateFieldOptions(fields)
 
-  const { isFetchingLinks, isRefetchingLinks, links, total } = useLinks(
+  const { isPendingLinks, isRefetchingLinks, links, total } = useLinks(
     module,
     entityId,
     page,
@@ -77,13 +77,13 @@ export default function Links({ entityId, fields, module }: LinksProps) {
   }
 
   useEffect(() => {
-    if (!isFetchingLinks && !isRefetchingLinks && links?.length === 0 && Number(page) !== 1) {
+    if (!isPendingLinks && !isRefetchingLinks && links?.length === 0 && Number(page) !== 1) {
       setSearchParams(prev => {
         prev.set('page', '1')
         return prev
       })
     }
-  }, [isFetchingLinks, isRefetchingLinks, links?.length, page, setSearchParams])
+  }, [isPendingLinks, isRefetchingLinks, links?.length, page, setSearchParams])
 
   return (
     <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
@@ -102,7 +102,7 @@ export default function Links({ entityId, fields, module }: LinksProps) {
               {__('New')}
             </Button>
           </If>
-          <If conditions={isFetchingLinks || isRefetchingLinks}>
+          <If conditions={isPendingLinks || isRefetchingLinks}>
             <LoadingOutlined />
           </If>
         </div>
@@ -119,7 +119,7 @@ export default function Links({ entityId, fields, module }: LinksProps) {
         </div>
       </div>
       <div>
-        <LinkTable links={links} loading={isFetchingLinks} />
+        <LinkTable links={links} loading={isPendingLinks} />
         <div className="flex justify-center py-2">
           <Pagination total={total} />
         </div>

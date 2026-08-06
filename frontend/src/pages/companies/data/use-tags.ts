@@ -8,7 +8,7 @@ interface TagResType {
 }
 
 export default function useTags(isEnabled: boolean) {
-  const { data, isFetching, isPending, refetch } = useQuery<TagResType>({
+  const { data, isFetching, isLoading, refetch } = useQuery<TagResType>({
     enabled: isEnabled,
     queryFn: ({ signal }: { signal: AbortSignal }) =>
       queryRequest('tags-by-module', undefined, { module: MODULES.COMPANY }, 'GET', { signal }),
@@ -17,7 +17,7 @@ export default function useTags(isEnabled: boolean) {
 
   return {
     isTagsFetching: isFetching,
-    isTagsPending: isPending,
+    isTagsLoading: isLoading,
     refetchTag: refetch,
     tags: data?.data || []
   }

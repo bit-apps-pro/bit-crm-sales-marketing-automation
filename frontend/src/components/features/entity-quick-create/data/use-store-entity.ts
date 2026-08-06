@@ -27,6 +27,9 @@ export default function useStoreEntity(form: FormInstance, module: string) {
     onSuccess: () => {
       messageApi?.success('Created successfully')
       queryClient.invalidateQueries({ queryKey: [MODULES_PLURAL[module]] })
+      // Lookup options live under their own key, so they need explicit
+      // invalidation for the new entity to show up in the select.
+      queryClient.invalidateQueries({ queryKey: ['related-field-options'] })
     }
   })
 

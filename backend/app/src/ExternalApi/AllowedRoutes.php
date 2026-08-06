@@ -53,6 +53,12 @@ final class AllowedRoutes
      * - UI-shaped endpoints (table-fields, fieldsWithOrder, ...). They return
      *   admin table configuration, so publishing them freezes internal shapes
      *   into a contract that cannot then be refactored.
+     *
+     * - emails/send and invoices/send (send outbound mail from the site),
+     *   attachments/store (file ingestion) and trashes/delete, trashes/empty
+     *   (permanent, unrestorable deletion). Each has a capability check, but
+     *   they are consequential enough that publishing them must be its own
+     *   decision.
      */
     private const ROUTES = [
         // Contacts
@@ -60,43 +66,80 @@ final class AllowedRoutes
         ['method' => 'POST', 'path' => 'contacts/search'],
         ['method' => 'GET', 'path' => 'contacts/{id}'],
         ['method' => 'POST', 'path' => 'contacts/{id}'],
+        ['method' => 'POST', 'path' => 'contacts/trash'],
         ['method' => 'POST', 'path' => 'contacts/attach-tag'],
         ['method' => 'POST', 'path' => 'contacts/detach-tag'],
+        ['method' => 'POST', 'path' => 'contacts/attach-tags'],
+        ['method' => 'POST', 'path' => 'contacts/detach-tags'],
 
         // Leads
         ['method' => 'POST', 'path' => 'leads/store'],
         ['method' => 'POST', 'path' => 'leads/search'],
         ['method' => 'GET', 'path' => 'leads/{id}'],
         ['method' => 'POST', 'path' => 'leads/{id}'],
+        ['method' => 'POST', 'path' => 'leads/trash'],
         ['method' => 'POST', 'path' => 'leads/attach-tag'],
         ['method' => 'POST', 'path' => 'leads/detach-tag'],
+        ['method' => 'POST', 'path' => 'leads/attach-tags'],
+        ['method' => 'POST', 'path' => 'leads/detach-tags'],
 
         // Companies
         ['method' => 'POST', 'path' => 'companies/store'],
         ['method' => 'POST', 'path' => 'companies/search'],
         ['method' => 'GET', 'path' => 'companies/{id}'],
         ['method' => 'POST', 'path' => 'companies/{id}'],
+        ['method' => 'POST', 'path' => 'companies/trash'],
+        ['method' => 'POST', 'path' => 'companies/attach-tag'],
+        ['method' => 'POST', 'path' => 'companies/detach-tag'],
+        ['method' => 'POST', 'path' => 'companies/attach-tags'],
+        ['method' => 'POST', 'path' => 'companies/detach-tags'],
 
         // Deals
         ['method' => 'POST', 'path' => 'deals/store'],
         ['method' => 'POST', 'path' => 'deals/search'],
         ['method' => 'GET', 'path' => 'deals/{id}'],
         ['method' => 'POST', 'path' => 'deals/{id}'],
+        ['method' => 'POST', 'path' => 'deals/trash'],
         ['method' => 'POST', 'path' => 'deals/update-stage'],
         ['method' => 'GET', 'path' => 'deals/stages'],
+        ['method' => 'POST', 'path' => 'deals/attach-tag'],
+        ['method' => 'POST', 'path' => 'deals/detach-tag'],
+        ['method' => 'POST', 'path' => 'deals/attach-tags'],
+        ['method' => 'POST', 'path' => 'deals/detach-tags'],
 
         // Tags
         ['method' => 'POST', 'path' => 'tags/index'],
         ['method' => 'POST', 'path' => 'tags/store'],
+        ['method' => 'POST', 'path' => 'tags/update'],
+        ['method' => 'POST', 'path' => 'tags/delete'],
 
         // Notes
         ['method' => 'GET', 'path' => 'notes/index'],
         ['method' => 'POST', 'path' => 'notes/store'],
+        ['method' => 'POST', 'path' => 'notes/update'],
+        ['method' => 'POST', 'path' => 'notes/delete'],
 
         // Activities
         ['method' => 'GET', 'path' => 'activities/index'],
         ['method' => 'POST', 'path' => 'activities/store'],
+        ['method' => 'POST', 'path' => 'activities/update'],
+        ['method' => 'POST', 'path' => 'activities/update-status'],
+        ['method' => 'POST', 'path' => 'activities/delete'],
         ['method' => 'GET', 'path' => 'activities/{id}'],
+
+        // Activity history
+        ['method' => 'GET', 'path' => 'activity-logs/index'],
+
+        // Invoices
+        ['method' => 'POST', 'path' => 'invoices/store'],
+        ['method' => 'GET', 'path' => 'invoices/index'],
+        ['method' => 'GET', 'path' => 'invoices/{id}'],
+        ['method' => 'POST', 'path' => 'invoices/{id}'],
+        ['method' => 'POST', 'path' => 'invoices/{id}/status'],
+        ['method' => 'POST', 'path' => 'invoices/trash'],
+        ['method' => 'GET', 'path' => 'invoices/deals/{id}'],
+        ['method' => 'GET', 'path' => 'invoices/download'],
+        ['method' => 'POST', 'path' => 'invoices/{id}/share-link'],
     ];
 
     /**

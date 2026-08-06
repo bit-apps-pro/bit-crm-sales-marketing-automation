@@ -10,7 +10,7 @@ interface DealFieldsResponse {
 }
 
 export default function useDealFields() {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery<
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<
     Response<DealFieldsResponse>,
     Error,
     DealFieldsResponse
@@ -24,7 +24,7 @@ export default function useDealFields() {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
     totalFetchedFields: data?.fields?.length || 0,

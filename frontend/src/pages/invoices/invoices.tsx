@@ -39,7 +39,7 @@ export default function Invoices() {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { invoices, isInvoiceFetching, isInvoicePending, totalInvoice } =
+  const { invoices, isInvoiceFetching, isInvoiceLoading, totalInvoice } =
     useInvoices(debouncedQueryParams)
 
   return (
@@ -68,7 +68,7 @@ export default function Invoices() {
           </div>
           <InvoiceStatusFilter />
         </div>
-        <InvoicesTable invoices={invoices} isLoading={isInvoicePending || isInvoiceFetching} />
+        <InvoicesTable invoices={invoices} isLoading={isInvoiceLoading} />
         <div className="flex justify-center py-5">
           <Pagination total={totalInvoice} />
         </div>

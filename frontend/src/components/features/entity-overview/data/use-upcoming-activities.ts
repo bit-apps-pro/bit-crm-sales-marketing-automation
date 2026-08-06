@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 const UPCOMING_ACTIVITIES_LIMIT = 2
 
 export default function useUpcomingActivities(module: string, entityId: number) {
-  const { data, isPending } = useQuery<Response<ActivityType[]>, Error, ActivityType[]>({
+  const { data, isLoading } = useQuery<Response<ActivityType[]>, Error, ActivityType[]>({
     enabled: Boolean(module && entityId) && checkCapability(CAPABILITIES.ACTIVITY.VIEW),
     queryFn: ({ signal }) =>
       queryRequest(
@@ -22,7 +22,7 @@ export default function useUpcomingActivities(module: string, entityId: number) 
   })
 
   return {
-    isUpcomingActivitiesLoading: isPending,
+    isUpcomingActivitiesLoading: isLoading,
     upcomingActivities: data || []
   }
 }

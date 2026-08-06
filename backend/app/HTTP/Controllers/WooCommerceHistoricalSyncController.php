@@ -12,6 +12,10 @@ final class WooCommerceHistoricalSyncController
 {
     public function trigger()
     {
+        if (!Capability::check('bit_crm_setting_integration')) {
+            return Response::error(__('Unauthorized.', 'bit-crm-sales-marketing-automation'));
+        }
+
         if (!class_exists('WooCommerce')) {
             return Response::error(__('WooCommerce is not active.', 'bit-crm-sales-marketing-automation'));
         }

@@ -31,7 +31,7 @@ export default function RecycleBin() {
   const sortBy = searchParams.get('sortBy') || 'created_at'
   const sortOrder = searchParams.get('sortOrder') || 'desc'
 
-  const { isFetchingTrashes, isPendingTrashes, isRefetchingTrashes, totalTrashes, trashes } = useTrashes(
+  const { isFetchingTrashes, isRefetchingTrashes, isTrashesLoading, totalTrashes, trashes } = useTrashes(
     {
       dateRange,
       module,
@@ -153,7 +153,7 @@ export default function RecycleBin() {
           </div>
         </div>
         <TrashTable
-          isLoading={isFetchingTrashes || isPendingTrashes}
+          isLoading={isTrashesLoading}
           onDelete={handleDeleteTrash}
           onRestore={handleRestoreTrash}
           trashes={trashes}

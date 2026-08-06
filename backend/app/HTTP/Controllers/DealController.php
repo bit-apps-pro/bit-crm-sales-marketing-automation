@@ -226,6 +226,13 @@ final class DealController
         $validated = $request->validated();
 
         $dealId = $validated['deal_id'];
+
+        $deal = Deal::findOne(['id' => $dealId, 'is_trash' => 0]);
+
+        if (empty($deal)) {
+            return Response::error(__('Deal not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
         $tag = Tag::findOne(['module' => Deal::MODULE_NAME, 'slug' => $validated['title']]);
 
         unset($validated['deal_id']);
@@ -289,6 +296,19 @@ final class DealController
 
         $dealIds = $validated['deal_ids'];
         $tagIds = $validated['tag_ids'];
+
+        $existingDeals = Deal::whereIn('id', $dealIds)
+            ->where('is_trash', 0)
+            ->select(['id'])
+            ->get();
+
+        $dealIds = empty($existingDeals) ? [] : array_map('intval', $existingDeals->pluck('id')->toArray());
+
+        if (empty($dealIds)) {
+            return Response::error(__('Deal not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $dataToInsert = [];
 
         if (\count($dealIds) && \count($tagIds)) {
             $existingRecords = TagEntity::select(['entity_id', 'tag_id'])

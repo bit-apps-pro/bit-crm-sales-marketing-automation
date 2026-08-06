@@ -9,7 +9,7 @@ import { BITFORM_ABSENT_CODE, type BitFormApiError, type BitFormFormsResponse } 
 export const bitFormFormsQueryKey = ['bit-form', 'forms']
 
 export default function useBitFormForms() {
-  const { data, error, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isFetching, isLoading, refetch } = useQuery<
     Response<BitFormFormsResponse>,
     BitFormApiError,
     BitFormFormsResponse
@@ -27,7 +27,7 @@ export default function useBitFormForms() {
     formsError: error ?? undefined,
     isBitFormOutdated: error?.code === BITFORM_ABSENT_CODE,
     isFormsFetching: isFetching,
-    isFormsPending: isPending,
+    isFormsLoading: isLoading,
     refetchForms: refetch
   }
 }

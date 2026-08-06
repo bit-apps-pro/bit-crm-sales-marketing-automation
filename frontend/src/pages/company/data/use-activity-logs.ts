@@ -22,7 +22,7 @@ interface SearchParams {
 }
 
 export default function useActivityLogs(companyId: string, searchParams: SearchParams) {
-  const { data, isFetching, isPending, refetch } = useQuery({
+  const { data, isFetching, isLoading, refetch } = useQuery({
     enabled: !!companyId,
     placeholderData: keepPreviousData,
     queryFn: ({ signal }) =>
@@ -39,7 +39,7 @@ export default function useActivityLogs(companyId: string, searchParams: SearchP
   return {
     activityLogs: data?.data?.activity_logs || [],
     isActivityLogsFetching: isFetching,
-    isActivityLogsPending: isPending,
+    isActivityLogsLoading: isLoading,
     refetchActivityLogs: refetch,
     totalActivityLogs: data?.data?.totalActivityLogs || 0
   }

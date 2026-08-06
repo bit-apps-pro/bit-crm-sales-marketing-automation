@@ -10,10 +10,9 @@ import CreateLeadFormModal from './create-lead-form-modal'
 
 export default function BitFormIntegrationPanel() {
   const [isCreateModalOpen, setCreateModalOpen] = useState(false)
-  const { forms, formsError, isBitFormOutdated, isFormsFetching, isFormsPending, refetchForms } =
-    useBitFormForms()
+  const { forms, formsError, isBitFormOutdated, isFormsLoading, refetchForms } = useBitFormForms()
 
-  if (isFormsPending) {
+  if (isFormsLoading) {
     return <Skeleton active paragraph={{ rows: 6 }} />
   }
 
@@ -64,7 +63,7 @@ export default function BitFormIntegrationPanel() {
           {createButton}
         </Empty>
       ) : (
-        <BitFormFormsTable forms={forms} loading={isFormsFetching} />
+        <BitFormFormsTable forms={forms} loading={isFormsLoading} />
       )}
 
       <CreateLeadFormModal onClose={() => setCreateModalOpen(false)} open={isCreateModalOpen} />

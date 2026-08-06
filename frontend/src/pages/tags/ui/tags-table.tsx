@@ -13,7 +13,7 @@ import useDeleteTags from '../data/use-delete-tags'
 import { type TagItemType, type TagsTablePropsType } from '../shared/tag-types'
 import { useTagStoreKeysActions, useTagStoreSelectedKeys } from '../state/use-selected-tag-keys-store'
 
-export default function TagsTable({ isFetchingTags, isPendingTags, tags }: TagsTablePropsType) {
+export default function TagsTable({ isTagsLoading, tags }: TagsTablePropsType) {
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBy = searchParams.get('sortBy') || ''
   const sortOrder = searchParams.get('sortOrder') || ''
@@ -148,7 +148,7 @@ export default function TagsTable({ isFetchingTags, isPendingTags, tags }: TagsT
     <Table<TagItemType>
       columns={columns}
       dataSource={tags}
-      loading={isFetchingTags || isPendingTags}
+      loading={isTagsLoading}
       onChange={handleTableChange}
       pagination={false}
       rowKey="id"

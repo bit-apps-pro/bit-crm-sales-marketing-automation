@@ -50,7 +50,7 @@ export default function Deals() {
   const activeFilters = useActiveFilters()
   const dealActiveFilters = activeFilters[MODULES.DEAL] || []
 
-  const { fields, isFieldsFetching, isFieldsPending, orders, visibleColumns } = useDealFields()
+  const { fields, isFieldsLoading, orders, visibleColumns } = useDealFields()
 
   const queryParams = useMemo(
     () => ({
@@ -80,7 +80,7 @@ export default function Deals() {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { deals, isDealsFetching, isDealsPending, totalDeals } = useDeals(debouncedQueryParams)
+  const { deals, isDealsFetching, isDealsLoading, totalDeals } = useDeals(debouncedQueryParams)
 
   const { customFields, systemDefinedFields } = useMemo(() => {
     const customFields: typeof fields = []
@@ -117,7 +117,7 @@ export default function Deals() {
               </Button>
             </NavLink>
           </If>
-          <If conditions={isDealsFetching || isDealsPending}>
+          <If conditions={isDealsFetching}>
             <LoadingOutlined />
           </If>
         </div>
@@ -146,7 +146,7 @@ export default function Deals() {
           <DealsTable
             deals={deals}
             fieldList={fieldList}
-            isLoading={isDealsFetching || isDealsPending || isFieldsPending || isFieldsFetching}
+            isLoading={isDealsLoading || isFieldsLoading}
           />
         ) : (
           <DealsKanban searchData={debouncedQueryParams} />

@@ -107,7 +107,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
   const source = searchParams.get('source') || pluginSlug
   const { messageApi } = useContext(NotifyContext)
 
-  const { imaps, isImapsFetching, isImapsPending, totalImaps } = useImapSettings()
+  const { imaps, isImapsFetching, isImapsLoading, totalImaps } = useImapSettings()
 
   const emailsFilter = useMemo(
     () => ({
@@ -126,7 +126,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
 
   const debouncedQueryParams = useDebounceState(emailsFilter, 300)
 
-  const { emails, isEmailsFetching, isEmailsPending, isEmailsSuccess, totalEmails } =
+  const { emails, isEmailsFetching, isEmailsLoading, isEmailsSuccess, totalEmails } =
     useEmails(debouncedQueryParams)
 
   const { isAutoSyncingImap } = useAutoSyncImap(
@@ -208,7 +208,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
             <Select
               className="w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
               disabled={source === pluginSlug}
-              loading={isImapsFetching || isImapsPending}
+              loading={isImapsLoading}
               notFoundContent={<EmptyImapSelect />}
               onChange={value => handleActiveImap(imaps, value)}
               options={imaps?.map(imap => ({
@@ -259,10 +259,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
         </div>
 
         <div>
-          <EmailsTable
-            emails={formatEmails(emails)}
-            isLoading={Boolean(email) && (isEmailsFetching || isEmailsPending)}
-          />
+          <EmailsTable emails={formatEmails(emails)} isLoading={Boolean(email) && isEmailsLoading} />
           <div className="flex justify-center py-2">
             <Pagination total={totalEmails} />
           </div>

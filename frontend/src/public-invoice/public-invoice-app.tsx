@@ -48,9 +48,9 @@ export default function PublicInvoiceApp() {
 }
 
 function PublicInvoiceContent() {
-  const { invoiceData, isInvoiceError, isInvoicePending } = usePublicInvoice()
+  const { invoiceData, isInvoiceError, isInvoiceLoading } = usePublicInvoice()
 
-  if (isInvoicePending && !isInvoiceError) {
+  if (isInvoiceLoading && !isInvoiceError) {
     return (
       <div className="mx-auto max-w-4xl p-6">
         <InvoicePreviewSkeleton />

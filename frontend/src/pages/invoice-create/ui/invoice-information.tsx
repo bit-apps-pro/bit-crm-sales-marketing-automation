@@ -15,7 +15,7 @@ interface InvoiceInformationProps {
 }
 
 export default function InvoiceInformation({ form }: InvoiceInformationProps) {
-  const { isTermsFetching, isTermsPending, terms } = useInvoiceTerms()
+  const { isTermsLoading, terms } = useInvoiceTerms()
   const invoiceDate = Form.useWatch('invoiceDate', form)
   const invoiceTermKey = Form.useWatch('invoiceTerm', form)
 
@@ -57,7 +57,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
       </Form.Item>
       <Form.Item label={__('Terms')} name="invoiceTerm">
         <Select
-          loading={isTermsFetching || isTermsPending}
+          loading={isTermsLoading}
           onChange={handleTermChange}
           options={terms}
           placeholder={__('Select Time')}

@@ -10,7 +10,7 @@ export interface TermsOptions {
 }
 
 export default function useInvoiceTerms() {
-  const { data, isError, isFetching, isPending } = useQuery<
+  const { data, isError, isFetching, isLoading } = useQuery<
     Response<TermsOptions[]>,
     Error,
     TermsOptions[]
@@ -25,7 +25,7 @@ export default function useInvoiceTerms() {
   return {
     isTermsError: isError,
     isTermsFetching: isFetching,
-    isTermsPending: isPending,
+    isTermsLoading: isLoading,
     terms: data || []
   }
 }

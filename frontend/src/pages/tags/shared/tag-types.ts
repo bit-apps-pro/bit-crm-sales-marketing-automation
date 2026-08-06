@@ -33,7 +33,7 @@ export interface TableDataType {
 
 export interface TagsTablePropsType {
   isFetchingTags: boolean
-  isPendingTags: boolean
+  isTagsLoading: boolean
   tags: TagItemType[]
 }
 

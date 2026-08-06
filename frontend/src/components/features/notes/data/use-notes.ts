@@ -49,7 +49,7 @@ export default function useNotes(
 
   return {
     currentPage: data?.current_page || 1,
-    isFetchingNotes: isPending,
+    isPendingNotes: isPending,
     isRefetchingNotes: isRefetching,
     notes: data?.data,
     pageSize: data?.per_page || 0,

@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type BusinessSettings } from '../shared/types'
 
 export default function useBusinessSettings() {
-  const { data, isFetching, isPending, refetch } = useQuery<
+  const { data, isFetching, isLoading, refetch } = useQuery<
     Response<BusinessSettings>,
     Error,
     BusinessSettings
@@ -25,7 +25,7 @@ export default function useBusinessSettings() {
   return {
     businessSettings: data,
     isBusinessSettingsFetching: isFetching,
-    isBusinessSettingsPending: isPending,
+    isBusinessSettingsLoading: isLoading,
     refetchBusinessSettings: refetch
   }
 }

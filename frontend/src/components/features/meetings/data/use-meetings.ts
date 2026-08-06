@@ -26,7 +26,7 @@ export default function useMeetings(
     isError,
     isFetching,
     isFetchingNextPage,
-    isPending,
+    isLoading,
     isRefetching,
     refetch
   } = useInfiniteQuery<Response<MeetingsIndexType>, Error, MeetingsData>({
@@ -70,7 +70,7 @@ export default function useMeetings(
     hasNextPage,
     isFetchingMeetings: isFetching,
     isFetchingNextPage,
-    isPendingMeetings: isPending,
+    isMeetingsLoading: isLoading,
     isRefetchingMeetings: isRefetching,
     meetings: data?.meetings,
     refetchMeetings: refetch,

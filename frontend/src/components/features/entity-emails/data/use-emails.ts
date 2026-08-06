@@ -42,7 +42,7 @@ interface EmailsResType {
 export default function useEmails(payload: QueryParam) {
   const emailCapability = getEmailCapability(payload.module)
 
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery<EmailsResType>({
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<EmailsResType>({
     enabled: !!payload.entity_email && checkCapability(emailCapability),
     queryFn: () => queryRequest('emails/index', payload, undefined, 'POST'),
     queryKey: ['emails', 'index', payload]
@@ -51,7 +51,7 @@ export default function useEmails(payload: QueryParam) {
   return {
     emails: data?.data?.data || [],
     isEmailsFetching: isFetching,
-    isEmailsPending: isPending,
+    isEmailsLoading: isLoading,
     isEmailsSuccess: isSuccess,
     refetchEmails: refetch,
     totalEmails: data?.data?.total || 0

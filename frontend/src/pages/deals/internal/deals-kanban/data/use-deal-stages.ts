@@ -8,7 +8,7 @@ import { useDealsKanbanActionsStore } from '../state/use-deals-kanban-store'
 
 export default function useDealStages() {
   const { setStages } = useDealsKanbanActionsStore()
-  const { data, isFetching, isPending } = useQuery<Response<Stage[]>, Error, Response<Stage[]>>({
+  const { data, isFetching, isLoading } = useQuery<Response<Stage[]>, Error, Response<Stage[]>>({
     queryFn: ({ signal }) => queryRequest('deals/stages', undefined, undefined, 'GET', { signal }),
     queryKey: ['deal-stages']
   })
@@ -19,7 +19,7 @@ export default function useDealStages() {
 
   return {
     isStagesFetching: isFetching,
-    isStagesPending: isPending,
+    isStagesLoading: isLoading,
     stages: data?.data || []
   }
 }

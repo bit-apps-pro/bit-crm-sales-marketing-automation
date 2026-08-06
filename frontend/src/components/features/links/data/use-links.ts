@@ -49,7 +49,7 @@ export default function useLinks(
 
   return {
     currentPage: data?.current_page || 1,
-    isFetchingLinks: isPending,
+    isPendingLinks: isPending,
     isRefetchingLinks: isRefetching,
     links: data?.data,
     pageSize: data?.per_page || 0,

@@ -8,7 +8,7 @@ interface ResponseType {
 }
 
 export default function useLeadFields() {
-  const { data, isFetching } = useQuery({
+  const { data, isFetching, isLoading } = useQuery({
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('leads/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['lead', 'fields'],
@@ -17,6 +17,7 @@ export default function useLeadFields() {
 
   return {
     isLeadFieldsFetching: isFetching,
+    isLeadFieldsLoading: isLoading,
     leadFields: data?.fields || []
   }
 }

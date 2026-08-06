@@ -16,7 +16,7 @@ export default function ApiSettings() {
   const page = Number(searchParams.get('page')) || 1
   const perPage = Number(searchParams.get('perPage')) || PAGINATION.DEFAULT_PER_PAGE
 
-  const { apiSettings, isFetchingApiSettings, isPendingApiSettings, total, users } = useApiSettings({
+  const { apiSettings, isApiSettingsLoading, total, users } = useApiSettings({
     page,
     perPage
   })
@@ -55,7 +55,7 @@ export default function ApiSettings() {
             </div>
             <Switch
               checked={apiSettings?.enabled ?? false}
-              loading={isUpdatingApiSettings || isPendingApiSettings}
+              loading={isUpdatingApiSettings || isApiSettingsLoading}
               onChange={enabled => updateApiSettings({ enabled })}
             />
           </div>
@@ -96,11 +96,7 @@ export default function ApiSettings() {
               </Button>
             </div>
 
-            <ApiKeyTable
-              isFetchingApiKeys={isFetchingApiSettings}
-              isPendingApiKeys={isPendingApiSettings}
-              users={users}
-            />
+            <ApiKeyTable isLoadingApiKeys={isApiSettingsLoading} users={users} />
 
             <div className="flex justify-center py-5">
               <Pagination showSizeChanger={false} total={total || 0} />

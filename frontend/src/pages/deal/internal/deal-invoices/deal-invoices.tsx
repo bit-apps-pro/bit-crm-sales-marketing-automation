@@ -41,8 +41,7 @@ export default function DealInvoices({ entityId }: DealInvoiceProps) {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { invoices, isInvoiceFetching, isInvoicePending, totalInvoice } =
-    useDealInvoices(debouncedQueryParams)
+  const { invoices, isInvoiceLoading, totalInvoice } = useDealInvoices(debouncedQueryParams)
 
   return (
     <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
@@ -63,11 +62,7 @@ export default function DealInvoices({ entityId }: DealInvoiceProps) {
         </If>
       </div>
       <div>
-        <InvoicesTable
-          invoices={invoices}
-          isDealView={true}
-          isLoading={isInvoicePending || isInvoiceFetching}
-        />
+        <InvoicesTable invoices={invoices} isDealView={true} isLoading={isInvoiceLoading} />
         <div className="flex justify-center py-3">
           <Pagination current={page} pageSize={perPage} total={totalInvoice} />
         </div>

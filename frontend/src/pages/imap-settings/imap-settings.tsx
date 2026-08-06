@@ -19,7 +19,7 @@ export default function ImapSettings() {
   const [, setSearchParams] = useSearchParams()
   const { page } = useParams()
   const pageNo = Number(page) || 1
-  const { imaps, isFetchingImaps, isRefetchingImaps } = useImaps(pageNo)
+  const { imaps, isImapsLoading, isRefetchingImaps } = useImaps(pageNo)
   const navigate = useNavigate()
 
   const handlePageChange = (page: number) => {
@@ -50,7 +50,7 @@ export default function ImapSettings() {
 
       <div className="mx-auto max-w-7xl px-4">
         <div className="mt-6 flex gap-4">
-          {isFetchingImaps && checkCapability(CAPABILITIES.SETTING.IMAP) ? (
+          {isImapsLoading && checkCapability(CAPABILITIES.SETTING.IMAP) ? (
             <ImapSkeleton quantity={3} />
           ) : (
             <ImapList imaps={imaps?.data || []} />

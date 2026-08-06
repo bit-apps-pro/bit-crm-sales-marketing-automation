@@ -17,7 +17,7 @@ import useStageStore from './state/use-stage-store'
 export default function Stages() {
   const [, setSearchParams] = useSearchParams()
   const [form] = Form.useForm()
-  const { isStagesFetching, isStagesPending, stages } = useStages()
+  const { isStagesFetching, isStagesLoading, stages } = useStages()
   const [dataSource, setDataSource] = useState<Stage[]>([])
   const { updateSortOrder } = useUpdateSortOrder()
   const { handleModal } = useStageStore()
@@ -41,10 +41,10 @@ export default function Stages() {
   }
 
   useEffect(() => {
-    if (!isStagesFetching && !isStagesPending) {
+    if (!isStagesFetching && !isStagesLoading) {
       setDataSource(stages)
     }
-  }, [stages, isStagesFetching, isStagesPending])
+  }, [stages, isStagesFetching, isStagesLoading])
 
   return (
     <div>

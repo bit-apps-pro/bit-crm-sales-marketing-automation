@@ -3,6 +3,7 @@
 namespace BitApps\Crm\HTTP\Requests\Invoice;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
+use BitApps\Crm\Rules\Common\NumberBetweenRule;
 use BitApps\Crm\src\Capability;
 
 class StoreRequest extends Request
@@ -35,8 +36,8 @@ class StoreRequest extends Request
             'line_items.*.product_name'        => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.unit_price'          => ['nullable', 'numeric'],
             'line_items.*.quantity'            => ['nullable', 'integer'],
-            'line_items.*.discount_percentage' => ['nullable', 'integer'],
-            'line_items.*.tax_rate'            => ['nullable', 'integer'],
+            'line_items.*.discount_percentage' => ['nullable', 'numeric', new NumberBetweenRule(0, 100)],
+            'line_items.*.tax_rate'            => ['nullable', 'numeric', new NumberBetweenRule(0, 1000)],
             'line_items.*.product_code'        => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.product_source'      => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.description'         => ['nullable', 'string', 'sanitize:text'],

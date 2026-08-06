@@ -27,7 +27,7 @@ export default function useTask(
     isError,
     isFetching,
     isFetchingNextPage,
-    isPending,
+    isLoading,
     isRefetching,
     refetch
   } = useInfiniteQuery<Response<TasksIndexType>, Error, TaskData>({
@@ -77,8 +77,8 @@ export default function useTask(
     hasNextPage,
     isFetchingNextPage,
     isFetchingTasks: isFetching,
-    isPendingTasks: isPending,
     isRefetchingTasks: isRefetching,
+    isTasksLoading: isLoading,
     refetchTasks: refetch,
     tasks: data?.tasks,
     total: data?.total ?? 0

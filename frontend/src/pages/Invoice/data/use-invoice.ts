@@ -20,7 +20,7 @@ export interface InvoiceResponse {
 }
 
 export default function useInvoice(invoiceId: number) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, isPending, refetch } = useQuery<
     Response<InvoiceResponse>,
     Error,
     InvoiceResponse
@@ -40,6 +40,7 @@ export default function useInvoice(invoiceId: number) {
     invoice: data?.invoice ?? undefined,
     isInvoiceError: isError,
     isInvoiceFetching: isFetching,
+    isInvoiceLoading: isLoading,
     isInvoicePending: isPending,
     lineItems: data?.line_items ?? [],
     refetchInvoice: refetch

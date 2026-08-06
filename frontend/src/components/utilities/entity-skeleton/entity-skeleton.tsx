@@ -11,7 +11,7 @@ export default function EntitySkeleton() {
           <Skeleton.Button active size="small" style={{ height: 28, width: 36 }} />
         </div>
       </div>
-      <section className="flex flex-col rounded-md bg-slate-200 p-4 dark:bg-slate-900">
+      <section className="flex flex-col rounded-md border border-solid border-[#E5E3FE] p-5 dark:border-neutral-700 dark:bg-neutral-900">
         <Skeleton.Input active size="large" style={{ height: 28, marginBottom: 8, width: 200 }} />
         <Skeleton.Input active size="small" style={{ height: 18, marginBottom: 4, width: 150 }} />
         <Skeleton.Input active size="small" style={{ height: 14, width: 120 }} />
@@ -41,14 +41,14 @@ export default function EntitySkeleton() {
 
           <aside className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-transparent">
             <div>
-              <section className="border-0 border-b border-solid border-[#E5E3FE]">
+              <section className="border-0 border-b border-solid border-[#E5E3FE] dark:border-neutral-700">
                 <div className="space-y-4 border-b border-gray-200 p-4">
                   <Skeleton.Input active size="small" />
                   <Skeleton.Input active className="w-full" size="large" />
                 </div>
               </section>
 
-              <section className="space-y-4 rounded-md border border-gray-200 p-4">
+              <section className="space-y-4 rounded-md border border-[#EBEAFF] p-4 dark:border-neutral-700">
                 <Skeleton.Input active size="small" />
                 <div className="space-y-4">
                   {Array.from({ length: 4 }).map((_, i) => (

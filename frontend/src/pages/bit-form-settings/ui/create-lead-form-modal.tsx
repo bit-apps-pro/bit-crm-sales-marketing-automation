@@ -48,7 +48,7 @@ export default function CreateLeadFormModal({ onClose, open }: CreateLeadFormMod
     onBitFormAbsent: handleClose,
     onCreated: handleCreated
   })
-  const { isTagsPending, tags } = useTags({ isEnabled: open, module: MODULES.LEAD })
+  const { isTagsLoading, tags } = useTags({ isEnabled: open, module: MODULES.LEAD })
 
   const handleSubmit = async () => {
     const values = await form.validateFields()
@@ -137,7 +137,7 @@ export default function CreateLeadFormModal({ onClose, open }: CreateLeadFormMod
           >
             <Select
               allowClear
-              loading={isTagsPending}
+              loading={isTagsLoading}
               mode="tags"
               options={tags.map(tag => ({ label: tag.title, value: tag.id }))}
               placeholder={__('Select or create tags (optional)')}

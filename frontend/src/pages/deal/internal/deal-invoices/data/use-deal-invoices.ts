@@ -22,7 +22,7 @@ interface SearchData {
 }
 
 export default function useDealInvoices(searchData: SearchData) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<
     Response<InvoicesResType>,
     Error,
     InvoicesResType
@@ -38,7 +38,7 @@ export default function useDealInvoices(searchData: SearchData) {
     invoices: data?.data || [],
     isInvoiceError: isError,
     isInvoiceFetching: isFetching,
-    isInvoicePending: isPending,
+    isInvoiceLoading: isLoading,
     pageSize: data?.per_page || 0,
     refetchInvoice: refetch,
     totalInvoice: data?.total || 0

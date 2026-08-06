@@ -14,14 +14,17 @@ export default function InvoiceCreate() {
   const [form] = Form.useForm()
   const { clearStore, setCurrencyData } = useInvoiceCreateStoreActions()
   const { clearStore: clearLineItemsStore } = useLineItemsStoreActions()
-  const { isPrefixPending, prefix } = usePrefix()
+  const { isPrefixLoading, prefix } = usePrefix()
   const { homeCurrencyData } = useAtomValue($appConfig)
   const isDealSelected = useDealInformationSelect().isDealSelected
 
-  useEffect(() => {
-    clearStore()
-    clearLineItemsStore()
-  }, [clearStore, clearLineItemsStore])
+  useEffect(
+    () => () => {
+      clearStore()
+      clearLineItemsStore()
+    },
+    [clearStore, clearLineItemsStore]
+  )
 
   useEffect(() => {
     if (!isDealSelected) {
@@ -32,7 +35,7 @@ export default function InvoiceCreate() {
     }
   }, [form, prefix, setCurrencyData, homeCurrencyData, isDealSelected])
 
-  if (isPrefixPending) {
+  if (isPrefixLoading) {
     return <InvoiceSkeleton />
   }
 

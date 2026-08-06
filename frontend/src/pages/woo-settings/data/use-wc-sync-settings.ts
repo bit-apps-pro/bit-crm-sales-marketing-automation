@@ -9,7 +9,7 @@ import { type WcSyncSettingsResponse } from '../shared/types'
 export const wcSyncSettingsQueryKey = (settingKey: string) => ['settings', 'integration', settingKey]
 
 export default function useWcSyncSettings(settingKey: string) {
-  const { data, isFetching, isPending } = useQuery<
+  const { data, isFetching, isLoading } = useQuery<
     Response<WcSyncSettingsResponse>,
     Error,
     undefined | WcSyncSettingsResponse
@@ -26,7 +26,7 @@ export default function useWcSyncSettings(settingKey: string) {
 
   return {
     isSettingsFetching: isFetching,
-    isSettingsPending: isPending,
+    isSettingsLoading: isLoading,
     isWooPluginActive: data?.is_woo_plugin_active ?? false,
     settings: data?.setting_value ?? undefined
   }

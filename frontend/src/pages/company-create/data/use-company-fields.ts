@@ -9,7 +9,7 @@ interface ResponseType {
 }
 
 export default function useCompanyFields() {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery({
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery({
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('companies/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['companies', 'fields'],
@@ -21,7 +21,7 @@ export default function useCompanyFields() {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch
   }

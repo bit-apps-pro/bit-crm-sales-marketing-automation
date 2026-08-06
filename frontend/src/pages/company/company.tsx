@@ -39,7 +39,7 @@ const tabLabel = (icon: ReactNode, text: string, count?: string) => (
 
 export default function Company() {
   const { id: companyId } = useParams()
-  const { columnSettings, fields, isFieldsPending } = useCompanyFields()
+  const { columnSettings, fields, isFieldsLoading } = useCompanyFields()
   const { company, isCompanyError, isCompanyPending, refetchCompany } = useCompany(companyId || 0)
   const { refetchTags, tags } = useTags({ module: MODULES.COMPANY })
   const { attachmentCount, callCount, linkCount, meetingCount, noteCount, taskCount } =
@@ -52,7 +52,7 @@ export default function Company() {
 
   return (
     <div className="space-y-5 px-6 py-4">
-      {isFieldsPending || isCompanyPending || !company ? (
+      {isFieldsLoading || isCompanyPending || !company ? (
         <EntitySkeleton />
       ) : (
         <>

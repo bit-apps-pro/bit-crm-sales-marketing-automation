@@ -20,7 +20,7 @@ interface DealContactCurrencyResponseType {
 }
 
 export default function useDealContactCurrency(dealId: number | string) {
-  const { data, isFetching, isPending, refetch } = useQuery<DealContactCurrencyResponseType, Error>({
+  const { data, isFetching, isLoading, refetch } = useQuery<DealContactCurrencyResponseType, Error>({
     enabled: Boolean(dealId) && checkCapability(CAPABILITIES.DEAL.VIEW),
     queryFn: ({ signal }) =>
       queryRequest(`deals/contact-currency/${dealId}`, undefined, undefined, 'GET', { signal }),
@@ -29,7 +29,7 @@ export default function useDealContactCurrency(dealId: number | string) {
   return {
     dealContactCurrency: data,
     isDealContactCurrencyFetching: isFetching,
-    isDealContactCurrencyPending: isPending,
+    isDealContactCurrencyLoading: isLoading,
     refetchDealContactCurrency: refetch
   }
 }

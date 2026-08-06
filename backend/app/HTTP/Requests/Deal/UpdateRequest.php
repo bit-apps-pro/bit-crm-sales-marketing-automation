@@ -5,6 +5,7 @@ namespace BitApps\Crm\HTTP\Requests\Deal;
 use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
+use BitApps\Crm\Rules\Common\NumberBetweenRule;
 use BitApps\Crm\src\Capability;
 
 class UpdateRequest extends Request
@@ -26,8 +27,8 @@ class UpdateRequest extends Request
             'lineItems.*.product_name'             => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.unit_price'               => ['nullable', 'numeric'],
             'lineItems.*.quantity'                 => ['nullable', 'integer'],
-            'lineItems.*.discount_percentage'      => ['nullable', 'integer'],
-            'lineItems.*.tax_rate'                 => ['nullable', 'integer'],
+            'lineItems.*.discount_percentage'      => ['nullable', 'numeric', new NumberBetweenRule(0, 100)],
+            'lineItems.*.tax_rate'                 => ['nullable', 'numeric', new NumberBetweenRule(0, 1000)],
             'lineItems.*.product_code'             => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.product_source'           => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.description'              => ['nullable', 'string', 'sanitize:text'],

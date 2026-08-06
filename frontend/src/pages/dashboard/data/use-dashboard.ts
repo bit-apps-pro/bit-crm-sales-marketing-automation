@@ -26,7 +26,7 @@ interface UseDashboardParams {
 }
 
 export default function useDashboard({ endDate, startDate }: UseDashboardParams) {
-  const { data, error, isError, isPending } = useQuery<
+  const { data, error, isError, isLoading } = useQuery<
     Response<DashboardResponse>,
     Error,
     DashboardResponse
@@ -51,7 +51,7 @@ export default function useDashboard({ endDate, startDate }: UseDashboardParams)
   return {
     dealsPipeline: data?.dealsPipeline ?? [],
     invoiceStatusOverview: data?.invoiceStatusOverview ?? [],
-    isLoading: isPending,
+    isLoading: isLoading,
     leadCountBySource: data?.leadCountBySource ?? [],
     pendingActivities: data?.pendingActivities ?? DEFAULT_PENDING_ACTIVITIES,
     stats: data?.stats ?? DEFAULT_STATS,

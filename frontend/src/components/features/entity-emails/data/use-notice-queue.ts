@@ -17,7 +17,7 @@ interface NoticeQueue {
 export default function useNoticeQueue(batchKey: string) {
   const queryClient = useQueryClient()
 
-  const { data, error, isError, isFetched, isFetching, isPending, isSuccess } = useQuery<
+  const { data, error, isError, isFetched, isFetching, isLoading, isSuccess } = useQuery<
     Response<NoticeQueue>,
     Error,
     NoticeQueue
@@ -43,7 +43,7 @@ export default function useNoticeQueue(batchKey: string) {
   }
 
   return {
-    isFetchingNotice: isPending,
+    isNoticeLoading: isLoading,
     isSuccess,
     notice: data
   }

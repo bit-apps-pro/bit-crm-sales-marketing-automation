@@ -51,8 +51,8 @@ const DealCreate = () => {
   const contactId = searchParams.get('contactId') || ''
   const companyId = searchParams.get('companyId') || ''
 
-  const { columnSettings, fields, isFieldsFetching } = useDealFields()
-  const { isTagsPending, refetchTags, tags } = useTags({ module: MODULES.DEAL })
+  const { columnSettings, fields, isFieldsLoading } = useDealFields()
+  const { isTagsLoading, refetchTags, tags } = useTags({ module: MODULES.DEAL })
   const { isCreateAndAddPending, isCreatePending, storeDeal } = useStoreDeal(form)
   const { stages } = useDealStages()
   const lineItems = useLineItemsSelect()
@@ -182,7 +182,7 @@ const DealCreate = () => {
       <Breadcrumb items={BREADCRUMB_ITEMS} />
 
       <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
-        {isFieldsFetching ? (
+        {isFieldsLoading ? (
           <EntityCreateSkeleton />
         ) : (
           <div className="col-span-2 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
@@ -248,7 +248,7 @@ const DealCreate = () => {
               {
                 children: (
                   <EntityTags
-                    loading={isTagsPending}
+                    loading={isTagsLoading}
                     onAddTag={handleAddTag}
                     onRemoveTag={handleRemoveTag}
                     options={tagOptions}

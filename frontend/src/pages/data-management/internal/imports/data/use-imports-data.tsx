@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type ImportsDataParams, type ImportsDataResponse } from '../shared/types'
 
 export function useImportsData(params: ImportsDataParams) {
-  const { data, isFetching, isPending, refetch } = useQuery<
+  const { data, isFetching, isLoading, refetch } = useQuery<
     Response<ImportsDataResponse>,
     Error,
     ImportsDataResponse
@@ -28,7 +28,7 @@ export function useImportsData(params: ImportsDataParams) {
   return {
     importsData: data?.data || [],
     isImportsDataFetching: isFetching,
-    isImportsDataPending: isPending,
+    isImportsDataLoading: isLoading,
     refetchImportsData: refetch,
     totalImportsData: data?.total || 0
   }

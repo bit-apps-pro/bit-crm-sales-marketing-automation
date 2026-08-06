@@ -56,7 +56,7 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
   const page = searchParams.get('page') || DEFAULT_PAGE
   const perPage = searchParams.get('perPage') || DEFAULT_PER_PAGE
   const sortOrder = searchParams.get('sortOrder') || RECENT_FIRST
-  const { isFetchingNotes, isRefetchingNotes, notes, total } = useNotes(
+  const { isPendingNotes, isRefetchingNotes, notes, total } = useNotes(
     module,
     entityId,
     page,
@@ -75,13 +75,13 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
   }
 
   useEffect(() => {
-    if (!isFetchingNotes && !isRefetchingNotes && notes?.length === 0 && Number(page) !== 1) {
+    if (!isPendingNotes && !isRefetchingNotes && notes?.length === 0 && Number(page) !== 1) {
       setSearchParams(prev => {
         prev.set('page', '1')
         return prev
       })
     }
-  }, [isFetchingNotes, isRefetchingNotes, notes?.length, page, setSearchParams])
+  }, [isPendingNotes, isRefetchingNotes, notes?.length, page, setSearchParams])
 
   return (
     <div className="space-y-5">
@@ -100,7 +100,7 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
               {__('New')}
             </Button>
           </If>
-          <If conditions={isFetchingNotes || isRefetchingNotes}>
+          <If conditions={isPendingNotes || isRefetchingNotes}>
             <LoadingOutlined />
           </If>
         </div>
@@ -116,7 +116,7 @@ export default function Notes({ entityId, fields, module }: NotesProps) {
           <SearchInput queryKey="search" />
         </div>
       </div>
-      {isFetchingNotes ? <NotesSkeleton quantity={3} /> : <NoteList notes={notes} />}
+      {isPendingNotes ? <NotesSkeleton quantity={3} /> : <NoteList notes={notes} />}
       <NoteCreateModal entityId={entityId} fieldOptions={generateFieldOptions(fields)} module={module} />
       <NoteEditModal fieldOptions={generateFieldOptions(fields)} module={module} />
       <If conditions={notes && notes.length > 0}>

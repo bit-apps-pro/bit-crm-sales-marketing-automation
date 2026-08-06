@@ -8,7 +8,7 @@ import useLinkStore from '../state/use-link-store'
 export default function useLink(id: null | number) {
   const { isEditModalOpen } = useLinkStore()
 
-  const { data, error, isError, isPending } = useQuery<Response<LinkType>, Error, LinkType>({
+  const { data, error, isError, isLoading } = useQuery<Response<LinkType>, Error, LinkType>({
     enabled: isEditModalOpen,
     queryFn: ({ signal }) => queryRequest(`links/edit/${id}`, {}, undefined, 'GET', { signal }),
     queryKey: ['links', 'edit', id],
@@ -20,7 +20,7 @@ export default function useLink(id: null | number) {
   }
 
   return {
-    isFetchingLink: isPending,
+    isLoadingLink: isLoading,
     link: data
   }
 }

@@ -26,7 +26,7 @@ export default function useCalls(
     isError,
     isFetching,
     isFetchingNextPage,
-    isPending,
+    isLoading,
     isRefetching,
     refetch
   } = useInfiniteQuery<Response<CallsIndexType>, Error, CallsData>({
@@ -69,9 +69,9 @@ export default function useCalls(
     calls: data?.calls,
     fetchNextPage,
     hasNextPage,
+    isCallsLoading: isLoading,
     isFetchingCalls: isFetching,
     isFetchingNextPage,
-    isPendingCalls: isPending,
     isRefetchingCalls: isRefetching,
     refetchCalls: refetch,
     totalCalls: data?.totalCalls ?? 0

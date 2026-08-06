@@ -41,8 +41,8 @@ const tabLabel = (icon: ReactNode, text: string, count?: string) => (
 
 const Contact = () => {
   const { id: contactId } = useParams()
-  const { columnSettings, fields, isFieldsPending } = useContactFields()
-  const { contact, isContactError, isContactPending, refetchContact } = useContact(contactId)
+  const { columnSettings, fields, isFieldsLoading } = useContactFields()
+  const { contact, isContactError, isContactLoading, refetchContact } = useContact(contactId)
   const { refetchTags, tags } = useTags({ module: MODULES.CONTACT })
   const { attachmentCount, callCount, linkCount, meetingCount, noteCount, taskCount } =
     useEntityRelatedListsCount({ entityId: Number(contactId), module: MODULES.CONTACT })
@@ -54,7 +54,7 @@ const Contact = () => {
 
   return (
     <div className="space-y-5 px-6 py-4">
-      {isFieldsPending || isContactPending || !contact ? (
+      {isFieldsLoading || isContactLoading || !contact ? (
         <EntitySkeleton />
       ) : (
         <>

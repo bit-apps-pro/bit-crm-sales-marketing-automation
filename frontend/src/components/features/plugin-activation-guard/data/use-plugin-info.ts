@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type PluginInfo } from '../shared/types'
 
 export default function usePluginInfo(pluginSlug: string) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, isPending, refetch } = useQuery<
     Response<PluginInfo>,
     Error,
     PluginInfo
@@ -20,6 +20,7 @@ export default function usePluginInfo(pluginSlug: string) {
     data,
     isPluginInfoError: isError,
     isPluginInfoFetching: isFetching,
+    isPluginInfoLoading: isLoading,
     isPluginInfoPending: isPending,
     refetchPluginInfo: refetch
   }

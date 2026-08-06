@@ -6,7 +6,7 @@ import { getPublicInvoiceContext, type PublicInvoiceResponse } from '../shared/p
 export default function usePublicInvoice() {
   const context = getPublicInvoiceContext()
 
-  const { data, isError, isPending } = useQuery<
+  const { data, isError, isLoading } = useQuery<
     Response<PublicInvoiceResponse>,
     Error,
     PublicInvoiceResponse
@@ -25,6 +25,6 @@ export default function usePublicInvoice() {
   return {
     invoiceData: data,
     isInvoiceError: isError || !context,
-    isInvoicePending: isPending
+    isInvoiceLoading: isLoading
   }
 }

@@ -15,12 +15,12 @@ import HomeCurrencyEditModal from './ui/home-currency-edit-modal'
 import HomeCurrencySetupModal from './ui/home-currency-setup-modal'
 
 export default function Currencies() {
-  const { currencies, homeCurrency, isCurrenciesPending, refetchCurrencies } = useCurrencies()
+  const { currencies, homeCurrency, isCurrenciesLoading, refetchCurrencies } = useCurrencies()
   const { setCreateModalOpen } = useCurrencyActions()
 
   const hasHomeCurrency = homeCurrency && Object.keys(homeCurrency).length > 0
 
-  if (isCurrenciesPending) {
+  if (isCurrenciesLoading) {
     return (
       <div>
         <div className="border-0 border-b border-solid border-[#E5E3FE] px-4 py-2 dark:border-[#3F3A86]">

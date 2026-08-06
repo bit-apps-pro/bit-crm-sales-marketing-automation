@@ -17,7 +17,7 @@ export default function TermEditModal() {
   const isEditModalOpen = useIsTermEditModalOpen()
   const { setEditModalOpen } = useTermsStoreActions()
   const { isUpdatingTerm, updateTerm } = useUpdateTerm(form)
-  const { isTermFetching, isTermPending, term } = useTerm(termKey)
+  const { isTermFetching, isTermLoading, term } = useTerm(termKey)
 
   const handleClose = () => {
     setEditModalOpen(false)
@@ -49,13 +49,13 @@ export default function TermEditModal() {
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (term && !isTermFetching && !isTermPending) {
+    if (term && !isTermFetching && !isTermLoading) {
       form.setFieldsValue({
         days: term.days,
         name: term.name
       })
     }
-  }, [term, isTermFetching, isTermPending, form])
+  }, [term, isTermFetching, isTermLoading, form])
 
   return (
     <Modal
@@ -63,7 +63,7 @@ export default function TermEditModal() {
       centered
       confirmLoading={isUpdatingTerm}
       destroyOnHidden
-      loading={isTermFetching || isTermPending}
+      loading={isTermLoading}
       okButtonProps={{ className: 'rounded-full' }}
       okText={__('Update')}
       onCancel={handleClose}

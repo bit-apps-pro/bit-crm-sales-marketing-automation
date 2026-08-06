@@ -18,7 +18,7 @@ export default function TagsModal() {
   const [form] = useForm<{ tags: number[] }>()
   const { isTagEntityStoring, storeTagEntity } = useSaveTagEntities(form)
   const { deleteTagEntity, isTagEntityDeleting } = useDeleteTagEntities(form)
-  const { isTagsFetching, isTagsPending, tags } = useTags({ module: MODULES.DEAL })
+  const { isTagsLoading, tags } = useTags({ module: MODULES.DEAL })
 
   const { setAttachTagsModalOpen, setDetachTagsModalOpen } = useBulkOperationActionsStore()
   const isAttachTagsModalOpen = useIsAttachTagsModalOpenStore()
@@ -67,7 +67,7 @@ export default function TagsModal() {
                 }
               ]}
             >
-              <Select loading={isTagsFetching || isTagsPending} mode="multiple" options={tagOptions} />
+              <Select loading={isTagsLoading} mode="multiple" options={tagOptions} />
             </Form.Item>
           </Form>
         </div>

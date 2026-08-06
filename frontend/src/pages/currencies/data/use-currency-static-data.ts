@@ -15,7 +15,7 @@ interface CurrencyStaticDataResult {
 }
 
 export default function useCurrencyStaticData() {
-  const { data, isError, isFetching, isPending } = useQuery<
+  const { data, isError, isFetching, isLoading } = useQuery<
     Response<ResponseData>,
     Error,
     CurrencyStaticDataResult
@@ -48,6 +48,6 @@ export default function useCurrencyStaticData() {
     currencyStaticData: data?.currencyStaticData || {},
     isCurrencyStaticDataError: isError,
     isCurrencyStaticDataFetching: isFetching,
-    isCurrencyStaticDataPending: isPending
+    isCurrencyStaticDataLoading: isLoading
   }
 }

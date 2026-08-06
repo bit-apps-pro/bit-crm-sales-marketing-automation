@@ -24,7 +24,7 @@ function processData(obj: Deal): Deal {
 }
 
 export default function useDeal(dealId: number | string) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<Response<Deal>, Error, Deal>({
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<Response<Deal>, Error, Deal>({
     enabled: dealId !== 0 && Boolean(dealId) && checkCapability(CAPABILITIES.DEAL.VIEW),
     queryFn: ({ signal }) => queryRequest(`deals/${dealId}`, undefined, undefined, 'GET', { signal }),
     queryKey: ['deal', Number(dealId)],
@@ -38,7 +38,7 @@ export default function useDeal(dealId: number | string) {
     deal: data,
     isDealError: isError,
     isDealFetching: isFetching,
-    isDealPending: isPending,
+    isDealLoading: isLoading,
     refetchDeal: refetch
   }
 }

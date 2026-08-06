@@ -9,7 +9,7 @@ interface ResponseType {
 }
 
 export default function useDealFields() {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery({
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery({
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('deals/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['deals', 'fields'],
@@ -21,7 +21,7 @@ export default function useDealFields() {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch
   }

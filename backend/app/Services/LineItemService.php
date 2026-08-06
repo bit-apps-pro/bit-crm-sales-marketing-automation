@@ -83,7 +83,7 @@ class LineItemService
         return LineItem::insert($lineItems);
     }
 
-    private function calculateLineItemTotal(float $unitPrice, int $quantity, int $discountPercentage, int $taxRate, string $taxOption): string
+    private function calculateLineItemTotal(float $unitPrice, int $quantity, float $discountPercentage, float $taxRate, string $taxOption): string
     {
         $baseAmount = $quantity * $unitPrice;
         $discountAmount = $baseAmount * ($discountPercentage / 100);
@@ -165,8 +165,8 @@ class LineItemService
     {
         $unitPrice = max(0, (float) ($itemData['unit_price'] ?? 0));
         $quantity = max(1, (int) ($itemData['quantity'] ?? LineItem::DEFAULT_QUANTITY));
-        $discountPercentage = max(0, min(100, (int) ($itemData['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
-        $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (int) ($itemData['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
+        $discountPercentage = max(0, min(100, (float) ($itemData['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
+        $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (float) ($itemData['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
 
         return [
             'product_id'          => $itemData['product_id'] ?? null,

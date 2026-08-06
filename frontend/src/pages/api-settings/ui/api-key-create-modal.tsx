@@ -39,6 +39,7 @@ export default function ApiKeyCreateModal({ onClose, open }: Props) {
     <Modal
       cancelButtonProps={{ style: createdKey ? { display: 'none' } : undefined }}
       destroyOnHidden
+      maskClosable={false}
       okButtonProps={{
         disabled: isCreatingApiKey,
         loading: isCreatingApiKey

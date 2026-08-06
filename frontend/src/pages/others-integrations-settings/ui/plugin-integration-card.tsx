@@ -9,7 +9,7 @@ import { type PluginCard } from '../shared/constants'
 
 export default function PluginIntegrationCard({ description, logo, slug, title }: PluginCard) {
   const { token } = theme.useToken()
-  const { data, isPluginInfoError, isPluginInfoFetching, isPluginInfoPending, refetchPluginInfo } =
+  const { data, isPluginInfoError, isPluginInfoFetching, isPluginInfoLoading, refetchPluginInfo } =
     usePluginInfo(slug)
   const { installPlugin, isInstalling } = useInstallPlugin(slug)
 
@@ -48,11 +48,11 @@ export default function PluginIntegrationCard({ description, logo, slug, title }
       className="h-full border border-solid border-[#E5E3FE] transition-shadow duration-300 ease-out dark:border-neutral-700 dark:bg-neutral-900"
       classNames={{ body: 'flex h-full flex-col' }}
     >
-      <If conditions={isPluginInfoPending}>
+      <If conditions={isPluginInfoLoading}>
         <Skeleton active paragraph={{ rows: 3 }} title={{ width: '40%' }} />
       </If>
 
-      <If conditions={!isPluginInfoPending}>
+      <If conditions={!isPluginInfoLoading}>
         <div className="mb-3 flex items-center justify-between gap-3">
           <img alt={title} className="h-8 w-auto max-w-[200px] object-contain" src={logo} />
           <Tag className="m-0 shrink-0 text-xs" color={status.color}>

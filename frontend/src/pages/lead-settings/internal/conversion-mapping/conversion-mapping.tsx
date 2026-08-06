@@ -1,8 +1,10 @@
+import { LoadingOutlined } from '@ant-design/icons'
 import { MODULES } from '@common/constants/modules'
 import { formatFieldsMap } from '@common/helpers/format-fields-map'
 import generateEntityConversionFieldMappings from '@common/helpers/generateEntityConversionFieldMappings'
 import { __ } from '@common/helpers/i18nWrap'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
+import If from '@utilities/If'
 import { type FormInstance } from 'antd'
 import { Button, Form, Select, Table, Typography } from 'antd'
 import { useMemo } from 'react'
@@ -19,13 +21,30 @@ import ConversionMappingSkeleton from './ui/ConversionMappingSkeleton'
 
 export default function ConversionMapping() {
   const [form] = Form.useForm()
-  const { isLeadFieldsFetching, leadFields } = useLeadFields()
-  const { contactCustomFields, contactFields, contactSystemDefinedFields, isContactFieldsFetching } =
-    useContactFields()
-  const { companyCustomFields, companyFields, companySystemDefinedFields, isCompanyFieldsFetching } =
-    useCompanyFields()
-  const { dealCustomFields, dealFields, dealSystemDefinedFields, isDealFieldsFetching } = useDealFields()
-  const { conversionMapping, isConversionMappingFetching } = useConversionMapping()
+  const { isLeadFieldsFetching, isLeadFieldsLoading, leadFields } = useLeadFields()
+  const {
+    contactCustomFields,
+    contactFields,
+    contactSystemDefinedFields,
+    isContactFieldsFetching,
+    isContactFieldsLoading
+  } = useContactFields()
+  const {
+    companyCustomFields,
+    companyFields,
+    companySystemDefinedFields,
+    isCompanyFieldsFetching,
+    isCompanyFieldsLoading
+  } = useCompanyFields()
+  const {
+    dealCustomFields,
+    dealFields,
+    dealSystemDefinedFields,
+    isDealFieldsFetching,
+    isDealFieldsLoading
+  } = useDealFields()
+  const { conversionMapping, isConversionMappingFetching, isConversionMappingLoading } =
+    useConversionMapping()
   const { isSavingMapping, saveMapping } = useSaveMapping()
 
   const dataSource: DataSourceItem[] = leadFields.map(field => ({
@@ -201,6 +220,13 @@ export default function ConversionMapping() {
   }, [conversionMapping, initialValues])
 
   const isLoading =
+    isLeadFieldsLoading ||
+    isContactFieldsLoading ||
+    isCompanyFieldsLoading ||
+    isDealFieldsLoading ||
+    isConversionMappingLoading
+
+  const isFetching =
     isLeadFieldsFetching ||
     isContactFieldsFetching ||
     isConversionMappingFetching ||
@@ -213,9 +239,14 @@ export default function ConversionMapping() {
 
   return (
     <div className="light:bg-slate-100 space-y-2 rounded-lg">
-      <Typography.Title className="mb-0" level={4}>
-        {__('Field mapping')}
-      </Typography.Title>
+      <div className="flex items-center gap-5">
+        <Typography.Title className="mb-0" level={4}>
+          {__('Field mapping')}
+        </Typography.Title>
+        <If conditions={isFetching}>
+          <LoadingOutlined />
+        </If>
+      </div>
       <Form
         form={form}
         initialValues={{

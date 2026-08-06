@@ -7,7 +7,7 @@ interface ResponseType {
 }
 
 export default function useContactFields() {
-  const { data, isFetching } = useQuery({
+  const { data, isFetching, isLoading } = useQuery({
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('contacts/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['contact', 'fields'],
@@ -18,7 +18,8 @@ export default function useContactFields() {
     contactCustomFields: data?.customFields || [],
     contactFields: data?.fields || [],
     contactSystemDefinedFields: data?.systemDefinedFields || [],
-    isContactFieldsFetching: isFetching
+    isContactFieldsFetching: isFetching,
+    isContactFieldsLoading: isLoading
   }
 }
 

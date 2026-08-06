@@ -1,6 +1,6 @@
 import NotifyContext from '@common/context/NotifyContext'
 import { __ } from '@common/helpers/i18nWrap'
-import { Form, Modal } from 'antd'
+import { Form, Modal, Typography } from 'antd'
 import { useContext, useEffect } from 'react'
 import { useParams, useSearchParams } from 'react-router'
 
@@ -17,7 +17,7 @@ export default function ImapEditModal() {
   const { page } = useParams()
   const pageNo = Number(page) || 1
   const { refetchImaps } = useImaps(pageNo)
-  const { imap, isFetchingImap } = useImap(Number(searchParams.get('id')))
+  const { imap, isImapLoading } = useImap(Number(searchParams.get('id')))
   const [form] = Form.useForm()
   const { isUpdatingImap, updateImap } = useUpdateImap(form)
 
@@ -58,10 +58,10 @@ export default function ImapEditModal() {
   return (
     <Modal
       destroyOnHidden
-      loading={isFetchingImap}
+      loading={isImapLoading}
       okButtonProps={{
         'aria-label': 'IMAP settings save button',
-        disabled: isUpdatingImap,
+        disabled: isUpdatingImap || !imap,
         loading: isUpdatingImap
       }}
       okText={__('Update')}
@@ -70,7 +70,12 @@ export default function ImapEditModal() {
       open={isEditModalOpen}
       title={__('Update IMAP Settings')}
     >
-      {isEditModalOpen && <ImapForm form={form} />}
+      {isEditModalOpen &&
+        (imap ? (
+          <ImapForm form={form} />
+        ) : (
+          <Typography.Text type="danger">{__('Imap settings not found!')}</Typography.Text>
+        ))}
     </Modal>
   )
 }

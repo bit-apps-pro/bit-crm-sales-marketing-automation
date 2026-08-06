@@ -15,16 +15,16 @@ export default function BusinessSettings() {
   const [form] = Form.useForm()
   const { businessSettingsUpdating, updateBusinessSettings } = useUpdateBusinessSettings(form)
   const { businessSettingsInserting, insertBusinessSettings } = useStoreBusinessSettings(form)
-  const { businessSettings, isBusinessSettingsPending } = useBusinessSettings()
+  const { businessSettings, isBusinessSettingsLoading } = useBusinessSettings()
   const { messageApi } = useContext(NotifyContext)
 
   useEffect(() => {
-    if (!isBusinessSettingsPending && businessSettings) {
+    if (!isBusinessSettingsLoading && businessSettings) {
       form.setFieldsValue(businessSettings)
     }
-  }, [businessSettings, isBusinessSettingsPending, form])
+  }, [businessSettings, isBusinessSettingsLoading, form])
 
-  if (isBusinessSettingsPending) {
+  if (isBusinessSettingsLoading) {
     return <BusinessSettingsSkeleton />
   }
 

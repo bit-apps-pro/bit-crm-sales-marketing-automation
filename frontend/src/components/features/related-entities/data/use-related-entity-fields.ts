@@ -18,7 +18,7 @@ interface ProcessedFieldsResult {
 }
 
 export default function useRelatedEntityFields(entity: string, relatedEntity: string) {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery<
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<
     Response<ResponseType>,
     Error,
     ProcessedFieldsResult
@@ -44,7 +44,7 @@ export default function useRelatedEntityFields(entity: string, relatedEntity: st
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
     totalFetchedFields: data?.fields?.length || 0,

@@ -15,14 +15,14 @@ function processDates(obj: Record<string, any>): ContactType {
     if (value?.field_type === 'date') {
       obj[key] = value.field_value ? dayjs(value.field_value) : ''
     } else if (key === 'date_of_birth' && value) {
-      obj[key] = dayjs(value)
+      obj[key] = !value || value === '0000-00-00' ? '' : dayjs(value)
     }
   })
   return obj as ContactType
 }
 
 export default function useContact(id: string | undefined) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<ContactResType>({
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<ContactResType>({
     queryFn: ({ signal }) => queryRequest(`contacts/${id}`, undefined, undefined, 'GET', { signal }),
     queryKey: ['contact', id],
     retry: false,
@@ -36,7 +36,7 @@ export default function useContact(id: string | undefined) {
     contact: data?.data,
     isContactError: isError,
     isContactFetching: isFetching,
-    isContactPending: isPending,
+    isContactLoading: isLoading,
     refetchContact: refetch
   }
 }

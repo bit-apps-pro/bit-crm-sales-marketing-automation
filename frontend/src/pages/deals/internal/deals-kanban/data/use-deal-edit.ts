@@ -13,7 +13,7 @@ export interface DealEditResponse {
 }
 
 export default function useDealEdit(dealId: number, enabled = true) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<
     Response<DealEditResponse>,
     Error,
     DealEditResponse
@@ -34,7 +34,7 @@ export default function useDealEdit(dealId: number, enabled = true) {
     hasLineItems: data?.hasLineItems ?? false,
     isDealEditError: isError,
     isDealEditFetching: isFetching,
-    isDealEditPending: isPending,
+    isDealEditLoading: isLoading,
     refetchDealEdit: refetch
   }
 }

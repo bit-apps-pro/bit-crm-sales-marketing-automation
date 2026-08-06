@@ -1,3 +1,4 @@
+import { LoadingOutlined } from '@ant-design/icons'
 import { __ } from '@common/helpers/i18nWrap'
 import useCallStore from '@components/features/calls/state/use-call-store'
 import ActivitiesBoard from '@features/activity-feed/activity-feed'
@@ -5,6 +6,7 @@ import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-fil
 import useInfiniteCalls from '@features/calls/data/use-calls'
 import CallCreateModal from '@features/calls/ui/call-create-modal'
 import CallEditModal from '@features/calls/ui/call-edit-modal'
+import If from '@utilities/If'
 import { Button, Input, Typography } from 'antd'
 import { type ChangeEvent, useState } from 'react'
 import { LuPlus, LuSearch } from 'react-icons/lu'
@@ -20,8 +22,15 @@ export default function CallsPage() {
   const status = searchParams.get('status') || ''
   const assignedTo = searchParams.get('assigned_to') || ''
 
-  const { calls, fetchNextPage, hasNextPage, isFetchingNextPage, isPendingCalls, totalCalls } =
-    useInfiniteCalls(module, 0, status, searchDebounced, assignedTo)
+  const {
+    calls,
+    fetchNextPage,
+    hasNextPage,
+    isCallsLoading,
+    isFetchingCalls,
+    isFetchingNextPage,
+    totalCalls
+  } = useInfiniteCalls(module, 0, status, searchDebounced, assignedTo)
 
   useDebounce(() => setSearchDebounced(search), 300, [search])
 
@@ -53,6 +62,9 @@ export default function CallsPage() {
           >
             {__('New Call')}
           </Button>
+          <If conditions={isFetchingCalls}>
+            <LoadingOutlined />
+          </If>
         </div>
 
         <div className="flex items-center gap-2">
@@ -72,7 +84,7 @@ export default function CallsPage() {
         activities={calls}
         activityType="call"
         hasMore={Boolean(hasNextPage)}
-        isLoading={isPendingCalls}
+        isLoading={isCallsLoading}
         isLoadingMore={isFetchingNextPage}
         onLoadMore={() => fetchNextPage()}
         total={totalCalls}

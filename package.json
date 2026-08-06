@@ -1,6 +1,6 @@
 {
   "name": "bit-apps",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "license": "ISC",
   "author": "bit-apps",
   "type": "module",
@@ -61,7 +61,6 @@
     "framer-motion": "^11.18.2",
     "human-id": "^4.1.3",
     "jotai": "^2.19.1",
-    "jotai-devtools": "^0.10.1",
     "lodash": "^4.18.1",
     "lucide-react": "^0.454.0",
     "mutative": "^1.3.0",
@@ -126,6 +125,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.14",
     "@types/loadable__component": "^5.13.10",
+    "@types/lodash": "^4.17.25",
     "@types/node": "^22.19.17",
     "@types/papaparse": "^5.5.2",
     "@types/react": "^18.3.28",

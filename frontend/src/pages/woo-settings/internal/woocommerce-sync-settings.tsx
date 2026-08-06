@@ -49,7 +49,7 @@ interface Props {
 
 export default function WoocommerceSyncSettings({ settingKey }: Props) {
   const [form] = Form.useForm()
-  const { isSettingsPending, isWooPluginActive, settings } = useWcSyncSettings(settingKey)
+  const { isSettingsLoading, isWooPluginActive, settings } = useWcSyncSettings(settingKey)
   const { isSaving, saveSettings } = useUpsertWcSyncSettings(settingKey)
   const saveTimer = useRef<ReturnType<typeof setTimeout>>()
 
@@ -80,7 +80,7 @@ export default function WoocommerceSyncSettings({ settingKey }: Props) {
     }, 1000)
   }
 
-  if (isSettingsPending) {
+  if (isSettingsLoading) {
     return (
       <div className="p-6">
         <Skeleton active paragraph={{ rows: 5 }} />

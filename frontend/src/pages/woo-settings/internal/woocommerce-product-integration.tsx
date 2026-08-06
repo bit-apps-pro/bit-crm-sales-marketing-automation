@@ -7,7 +7,7 @@ import { Skeleton, Switch, Typography } from 'antd'
 const { Text, Title } = Typography
 
 export default function WoocommerceProductIntegration() {
-  const { integrations, isIntegrationsPending } = useWooProductIntegration()
+  const { integrations, isIntegrationsLoading } = useWooProductIntegration()
   const { isUpdating, updateSettings } = useUpdateWooProductIntegration()
 
   const isWooPluginActive = integrations?.is_woo_plugin_active ?? false
@@ -20,7 +20,7 @@ export default function WoocommerceProductIntegration() {
     })
   }
 
-  if (isIntegrationsPending) {
+  if (isIntegrationsLoading) {
     return (
       <div className="p-6">
         <Skeleton active paragraph={{ rows: 3 }} />

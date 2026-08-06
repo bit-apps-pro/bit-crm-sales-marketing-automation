@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type TrashesIndex, type TrashesIndexPayload } from '../shared/trash-type'
 
 export default function useTrashes(payload: TrashesIndexPayload) {
-  const { data, isFetching, isPending, isRefetching, refetch } = useQuery<
+  const { data, isFetching, isLoading, isRefetching, refetch } = useQuery<
     Response<TrashesIndex>,
     Error,
     TrashesIndex
@@ -30,8 +30,8 @@ export default function useTrashes(payload: TrashesIndexPayload) {
 
   return {
     isFetchingTrashes: isFetching,
-    isPendingTrashes: isPending,
     isRefetchingTrashes: isRefetching,
+    isTrashesLoading: isLoading,
     refetchTrashes: refetch,
     totalTrashes: data?.total || 0,
     trashes: data?.data || []

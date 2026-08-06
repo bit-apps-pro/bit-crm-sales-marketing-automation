@@ -20,10 +20,10 @@ import InvoicePreview from './ui/invoice-preview'
 export default function Invoice() {
   const { id } = useParams()
   const numericId = Number(id)
-  const { contact, currencyData, deal, invoice, isInvoicePending, lineItems } = useInvoice(numericId)
+  const { contact, currencyData, deal, invoice, isInvoiceLoading, lineItems } = useInvoice(numericId)
   const { isSendingEmail, sendEmail } = useInvoiceSend()
 
-  if (isInvoicePending) {
+  if (isInvoiceLoading) {
     return <InvoicePreviewSkeleton />
   }
 
@@ -47,7 +47,7 @@ export default function Invoice() {
               to: '/invoices'
             },
             {
-              title: isInvoicePending ? <LoadingOutlined /> : `${invoice.invoice_prefix}-${invoice.id}`
+              title: isInvoiceLoading ? <LoadingOutlined /> : `${invoice.invoice_prefix}-${invoice.id}`
             }
           ]}
         />

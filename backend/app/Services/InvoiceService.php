@@ -187,8 +187,8 @@ class InvoiceService
         foreach ($requestLineItems as $item) {
             $unitPriceInDealCurrency = max(0, (float) ($item['unit_price'] ?? 0));
             $quantity = max(1, (int) ($item['quantity'] ?? LineItem::DEFAULT_QUANTITY));
-            $discountPercentage = max(0, min(100, (int) ($item['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
-            $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (int) ($item['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
+            $discountPercentage = max(0, min(100, (float) ($item['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
+            $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (float) ($item['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
 
             $unitPriceInHomeCurrency = $unitPriceInDealCurrency;
             if ($currency && $currency !== $homeCurrency) {
