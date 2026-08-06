@@ -34,7 +34,7 @@ export default function useLeads(searchData: SearchData, advancedFilterGroups: F
   const { setGroupErrors } = useAdvancedFilterActions()
   const { messageApi } = useContext(NotifyContext)
 
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<LeadResponse>,
     ResponseError,
     LeadResponse
@@ -78,7 +78,7 @@ export default function useLeads(searchData: SearchData, advancedFilterGroups: F
   return {
     isLeadsError: isError,
     isLeadsFetching: isFetching,
-    isLeadsPending: isPending,
+    isLeadsLoading: isLoading,
     leads: data?.data || [],
     refetchLeads: refetch,
     totalLeads: data?.total || 0

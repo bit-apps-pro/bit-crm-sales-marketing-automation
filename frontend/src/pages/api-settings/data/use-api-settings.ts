@@ -12,7 +12,7 @@ interface UseApiSettingsParams {
 }
 
 export default function useApiSettings({ page, perPage }: UseApiSettingsParams) {
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<ApiSettingsIndexType>,
     Error,
     ApiSettingsIndexType
@@ -30,8 +30,8 @@ export default function useApiSettings({ page, perPage }: UseApiSettingsParams) 
 
   return {
     apiSettings: data?.settings,
+    isApiSettingsLoading: isLoading,
     isFetchingApiSettings: isFetching,
-    isPendingApiSettings: isPending,
     refetchApiSettings: refetch,
     total: data?.users?.total,
     users: data?.users?.data || []

@@ -17,7 +17,7 @@ interface ImapResType {
 }
 
 export default function useImapSettings() {
-  const { data, isFetching, isPending } = useQuery<ImapResType>({
+  const { data, isFetching, isLoading } = useQuery<ImapResType>({
     enabled: checkCapability(CAPABILITIES.SETTING.MENU),
     queryFn: () => queryRequest('imaps/list', undefined, undefined, 'GET'),
     queryKey: ['imap_list']
@@ -26,7 +26,7 @@ export default function useImapSettings() {
   return {
     imaps: data?.data || [],
     isImapsFetching: isFetching,
-    isImapsPending: isPending,
+    isImapsLoading: isLoading,
     totalImaps: data?.data?.length || 0
   }
 }

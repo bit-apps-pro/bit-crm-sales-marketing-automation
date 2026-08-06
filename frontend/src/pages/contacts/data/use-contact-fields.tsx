@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type ContactFieldsResponseType } from '../shared/types'
 
 export default function useContactFields() {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery({
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery({
     queryFn: ({ signal }) =>
       queryRequest<ContactFieldsResponseType>('contacts/table-fields', {}, undefined, 'GET', { signal }),
     queryKey: ['contact', 'table-fields'],
@@ -17,7 +17,7 @@ export default function useContactFields() {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
     totalFetchedFields: data?.fields?.length || 0,

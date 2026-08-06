@@ -26,7 +26,7 @@ export default function EntityQuickCreateModal({
   const module = useEntityQuickCreateModule()
   const open = useIsEntityQuickCreateOpen()
 
-  const { fields, isFieldsPending } = useRequiredModuleFields(module)
+  const { fields, isFieldsLoading } = useRequiredModuleFields(module)
   const { isStoringPending, storeEntity } = useStoreEntity(form, module)
 
   const handleClose = () => {
@@ -43,7 +43,7 @@ export default function EntityQuickCreateModal({
       systemDefinedFieldsValues
     })
 
-    if (data?.id && entityForm) entityForm.setFieldValue(fieldKey, data.id)
+    if (data?.id && entityForm) entityForm.setFieldValue(fieldKey, String(data.id))
     handleClose()
   }
 
@@ -52,7 +52,7 @@ export default function EntityQuickCreateModal({
       centered
       confirmLoading={isStoringPending}
       destroyOnHidden
-      okButtonProps={{ disabled: isStoringPending || isFieldsPending }}
+      okButtonProps={{ disabled: isStoringPending || isFieldsLoading }}
       okText={__('Create')}
       onCancel={handleClose}
       onOk={handleSubmit}
@@ -71,10 +71,10 @@ export default function EntityQuickCreateModal({
         capitalize(module)
       )}
     >
-      <If conditions={isFieldsPending}>
+      <If conditions={isFieldsLoading}>
         <EntityQuickCreateSkeleton />
       </If>
-      <If conditions={!isFieldsPending && open}>
+      <If conditions={!isFieldsLoading && open}>
         <EntityQuickCreateForm currencyData={currencyData} fields={fields} form={form} />
       </If>
     </Modal>

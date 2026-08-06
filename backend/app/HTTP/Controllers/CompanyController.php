@@ -152,6 +152,13 @@ final class CompanyController
     {
         $validated = $request->validated();
         $companyId = $validated['company_id'];
+
+        $company = Company::findOne(['id' => $companyId, 'is_trash' => 0]);
+
+        if (empty($company)) {
+            return Response::error(__('Company not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
         $tag = Tag::findOne(['module' => Company::MODULE_NAME, 'slug' => $validated['title']]);
 
         unset($validated['company_id']);
@@ -215,6 +222,19 @@ final class CompanyController
 
         $companyIds = $validated['company_ids'];
         $tagIds = $validated['tag_ids'];
+
+        $existingCompanies = Company::whereIn('id', $companyIds)
+            ->where('is_trash', 0)
+            ->select(['id'])
+            ->get();
+
+        $companyIds = empty($existingCompanies) ? [] : array_map('intval', $existingCompanies->pluck('id')->toArray());
+
+        if (empty($companyIds)) {
+            return Response::error(__('Company not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $dataToInsert = [];
 
         if (\count($companyIds) && \count($tagIds)) {
             $existingRecords = TagEntity::select(['entity_id', 'tag_id'])

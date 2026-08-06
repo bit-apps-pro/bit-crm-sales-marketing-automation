@@ -23,7 +23,7 @@ export default function useTags({
   sortBy,
   sortOrder
 }: SearchParamsType) {
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<TagResponse>,
     Response<string>,
     TagResponse
@@ -48,7 +48,7 @@ export default function useTags({
   }
   return {
     isFetchingTags: isFetching,
-    isPendingTags: isPending,
+    isTagsLoading: isLoading,
     refetchTags: refetch,
     tags: data?.data || [],
     total: data?.total

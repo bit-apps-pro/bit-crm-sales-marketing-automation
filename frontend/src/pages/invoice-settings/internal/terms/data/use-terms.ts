@@ -17,7 +17,7 @@ interface UseTermsParams {
 }
 
 export default function useTerms({ page, perPage }: UseTermsParams) {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<
     Response<PaginatedTerms>,
     Error,
     PaginatedTerms
@@ -31,7 +31,7 @@ export default function useTerms({ page, perPage }: UseTermsParams) {
   return {
     isTermsError: isError,
     isTermsFetching: isFetching,
-    isTermsPending: isPending,
+    isTermsLoading: isLoading,
     refetchTerms: refetch,
     terms: data?.data || [],
     total: data?.total ?? 0

@@ -11,7 +11,7 @@ interface SearchParamsType {
 }
 
 export default function useTags({ page, perPage, searchTerm }: SearchParamsType) {
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<TagsDataType>,
     Error,
     TagsDataType
@@ -27,7 +27,7 @@ export default function useTags({ page, perPage, searchTerm }: SearchParamsType)
 
   return {
     isFetchingTags: isFetching,
-    isPendingTags: isPending,
+    isTagsLoading: isLoading,
     refetchTags: refetch,
     tags: data?.data || [],
     total: data?.total

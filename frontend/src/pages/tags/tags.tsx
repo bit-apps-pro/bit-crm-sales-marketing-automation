@@ -44,7 +44,7 @@ export default function Tags() {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { isFetchingTags, isPendingTags, refetchTags, tags, total } = useTags(debouncedQueryParams)
+  const { isFetchingTags, isTagsLoading, refetchTags, tags, total } = useTags(debouncedQueryParams)
 
   const { handleModal } = useTagStoreActions()
 
@@ -103,7 +103,7 @@ export default function Tags() {
             />
           </div>
         </div>
-        <TagsTable isFetchingTags={isFetchingTags} isPendingTags={isPendingTags} tags={tags} />
+        <TagsTable isFetchingTags={isFetchingTags} isTagsLoading={isTagsLoading} tags={tags} />
         <div className="flex justify-center py-5">
           <TagsTablePagination totalTags={total || 0} />
         </div>

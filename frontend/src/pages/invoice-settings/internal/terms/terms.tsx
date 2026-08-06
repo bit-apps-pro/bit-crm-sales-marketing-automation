@@ -21,7 +21,7 @@ export default function Terms() {
   const queryParams = useMemo(() => ({ page, perPage }), [page, perPage])
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { isTermsFetching, isTermsPending, terms, total } = useTerms(debouncedQueryParams)
+  const { isTermsLoading, terms, total } = useTerms(debouncedQueryParams)
   const { handleModal } = useTermsStoreActions()
 
   const handleCreateModalOpen = () => {
@@ -43,7 +43,7 @@ export default function Terms() {
           {__('New Term')}
         </Button>
       </div>
-      <TermsTable data={terms} loading={isTermsFetching || isTermsPending} />
+      <TermsTable data={terms} loading={isTermsLoading} />
       <div className="flex justify-center py-5">
         <Pagination total={total} />
       </div>

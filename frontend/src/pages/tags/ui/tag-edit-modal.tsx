@@ -22,7 +22,7 @@ export default function TagEditModal({ refetchTags }: TagEditModalProps) {
   const { messageApi } = useContext(NotifyContext)
   const isEditModalOpen = useIsEditModalOpen()
   const { handleModal, setEditModalOpen } = useTagStoreActions()
-  const { isFetchingTag, tag } = useTag(Number(searchParams.get('id')))
+  const { isTagLoading, tag } = useTag(Number(searchParams.get('id')))
 
   useEffect(() => {
     if (!searchParams.has('modal') || !searchParams.has('id') || searchParams.get('id') === '0') {
@@ -70,8 +70,8 @@ export default function TagEditModal({ refetchTags }: TagEditModalProps) {
   return (
     <Modal
       destroyOnHidden
-      loading={isFetchingTag}
-      okButtonProps={{ disabled: isFetchingTag, loading: isUpdatingTag }}
+      loading={isTagLoading}
+      okButtonProps={{ disabled: isTagLoading, loading: isUpdatingTag }}
       okText={__('Update')}
       onCancel={handleClose}
       onOk={handleSubmit}

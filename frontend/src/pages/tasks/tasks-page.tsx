@@ -1,9 +1,11 @@
+import { LoadingOutlined } from '@ant-design/icons'
 import { __ } from '@common/helpers/i18nWrap'
 import useTaskStore from '@components/features/tasks/state/use-task-store'
 import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-filter-page'
 import useInfiniteTasks from '@features/tasks/data/use-tasks'
 import TaskCreateModal from '@features/tasks/ui/task-create-modal'
 import TaskEditModal from '@features/tasks/ui/task-edit-modal'
+import If from '@utilities/If'
 import { Button, Input, Typography } from 'antd'
 import { type ChangeEvent, useState } from 'react'
 import { LuPlus, LuSearch } from 'react-icons/lu'
@@ -22,8 +24,15 @@ export default function TasksPage() {
   const priority = searchParams.get('priority') || ''
   const assignedTo = searchParams.get('assigned_to') || ''
 
-  const { fetchNextPage, hasNextPage, isFetchingNextPage, isPendingTasks, tasks, total } =
-    useInfiniteTasks(module, 0, status, searchDebounced, priority, assignedTo)
+  const {
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isFetchingTasks,
+    isTasksLoading,
+    tasks,
+    total
+  } = useInfiniteTasks(module, 0, status, searchDebounced, priority, assignedTo)
 
   useDebounce(() => setSearchDebounced(search), 300, [search])
   const handleSearchTermChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +63,9 @@ export default function TasksPage() {
           >
             {__('New Task')}
           </Button>
+          <If conditions={isFetchingTasks}>
+            <LoadingOutlined />
+          </If>
         </div>
 
         <div className="flex items-center gap-2">
@@ -73,7 +85,7 @@ export default function TasksPage() {
         activities={tasks}
         activityType="task"
         hasMore={Boolean(hasNextPage)}
-        isLoading={isPendingTasks}
+        isLoading={isTasksLoading}
         isLoadingMore={isFetchingNextPage}
         onLoadMore={() => fetchNextPage()}
         total={total}

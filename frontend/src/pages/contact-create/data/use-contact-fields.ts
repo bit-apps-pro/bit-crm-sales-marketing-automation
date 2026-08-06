@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type ContactFieldsResponseType } from '../shared/contact-create-types'
 
 export default function useContactFields() {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery<
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<
     Response<ContactFieldsResponseType>,
     Error,
     ContactFieldsResponseType & { columnSettings?: { column_size: number } }
@@ -43,7 +43,7 @@ export default function useContactFields() {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
     totalFetchedFields: data?.fields?.length || 0

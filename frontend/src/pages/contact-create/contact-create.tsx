@@ -31,8 +31,8 @@ const ContactCreate = () => {
   const [tagIds, setTagIds] = useState<number[]>([])
   const [newTagTitles, setNewTagTitles] = useState<string[]>([])
   const [form] = Form.useForm()
-  const { columnSettings, fields, isFieldsFetching } = useContactFields()
-  const { isTagsPending, refetchTags, tags } = useTags({ module: MODULES.CONTACT })
+  const { columnSettings, fields, isFieldsLoading } = useContactFields()
+  const { isTagsLoading, refetchTags, tags } = useTags({ module: MODULES.CONTACT })
   const [clientPortalAccessEnabled, setClientPortalAccessEnabled] = useState(false)
   const companyId = searchParams.get('companyId') || ''
   const { isCreateAndAddPending, isCreatePending, storeContact } = useStoreContact(form)
@@ -112,7 +112,7 @@ const ContactCreate = () => {
       <Breadcrumb items={BREADCRUMB_ITEMS} />
 
       <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
-        {isFieldsFetching ? (
+        {isFieldsLoading ? (
           <EntityCreateSkeleton />
         ) : (
           <div className="col-span-2 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
@@ -164,7 +164,7 @@ const ContactCreate = () => {
           <div className="rounded-md border border-solid border-[#EBEAFF] bg-white px-4 pb-6 pt-4 dark:border-neutral-700 dark:bg-neutral-900">
             <Typography.Title level={5}>{__('Tags')}</Typography.Title>
             <EntityTags
-              loading={isTagsPending}
+              loading={isTagsLoading}
               onAddTag={handleAddTag}
               onRemoveTag={handleRemoveTag}
               options={tagOptions}

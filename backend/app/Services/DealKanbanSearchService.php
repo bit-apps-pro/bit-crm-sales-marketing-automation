@@ -33,6 +33,7 @@ class DealKanbanSearchService
 
         $dealTable = Config::withDBPrefix('deals');
         $dealTableAlias = self::DEAL_TABLE_ALIAS;
+        $customFieldKeys = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_KEYS, [], self::MODULE);
         $customFieldsSelect = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_COLUMNS, '', self::MODULE);
         $customFieldsJoin = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_JOIN, '', self::MODULE);
         $companyTableJoin = $this->getCompanyTableJoin();
@@ -43,13 +44,14 @@ class DealKanbanSearchService
         $ownerNameSelect = $this->getOwnerNameSelect();
         $tagsFilter = $this->filterByTags($args['tags'], $dealTableAlias);
         [$searchFilter, $searchBindings] = $this->filterBySearchTerm($args['searchTerm'], $dealTableAlias);
-        [$advancedFilter, $advancedFilterBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? []);
+        [$advancedFilter, $advancedFilterBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? [], $this->allowedColumns($customFieldKeys));
         $havingClause = $advancedFilter;
         $havingBindings = $advancedFilterBindings;
 
         $select = $this->generateSelectClause($dealTableAlias, $customFieldsSelect, $companyNameSelect, $contactNameSelect, $ownerNameSelect);
         $whereConditions = $this->generateWhereConditions($dealTableAlias, $tagsFilter, $searchFilter);
-        $orderBy = "ORDER BY {$dealTableAlias}.{$args['sortBy']} {$args['sortOrder']}";
+        $sortBy = $this->sanitizeSortColumn($args['sortBy']);
+        $orderBy = "ORDER BY `{$dealTableAlias}`.`{$sortBy}` {$args['sortOrder']}";
         $limit = "LIMIT {$args['perPage']}";
 
         $unionQueries = [];
@@ -170,15 +172,48 @@ class DealKanbanSearchService
         return [$filter, $bindings];
     }
 
-    private function advancedFilters(array $filters): array
+    private function advancedFilters(array $filters, array $allowedColumns): array
     {
         if (empty($filters)) {
             return [null, []];
         }
 
-        $advancedFilterService = new AdvancedFilterService(Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_KEYS, [], self::MODULE));
+        $advancedFilterService = new AdvancedFilterService($allowedColumns);
 
         return $advancedFilterService->applyAdvancedFilters($filters);
+    }
+
+    /**
+     * Real deal columns plus registered custom fields: every identifier the HAVING
+     * clause may name, since it references the select aliases unqualified.
+     */
+    private function allowedColumns(array $customFieldKeys): array
+    {
+        return array_merge(
+            (new Deal())->getFillable(),
+            ['id', 'created_at', 'updated_at'],
+            $customFieldKeys
+        );
+    }
+
+    /**
+     * Restricts sorting to real deal columns.
+     *
+     * Unlike the table view this clause qualifies the column with the deals table
+     * alias, so the custom field select aliases are not sortable here and must stay
+     * out of the list. The column is interpolated into the ORDER BY clause of a raw
+     * query, so an unknown value must never reach it.
+     *
+     * @param mixed $sortBy
+     */
+    private function sanitizeSortColumn($sortBy): string
+    {
+        $sortableColumns = array_merge(
+            (new Deal())->getFillable(),
+            ['id', 'created_at', 'updated_at']
+        );
+
+        return \in_array($sortBy, $sortableColumns, true) ? $sortBy : 'id';
     }
 
     private function validateArguments(array $args): bool

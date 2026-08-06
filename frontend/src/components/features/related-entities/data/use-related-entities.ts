@@ -33,7 +33,7 @@ export default function useRelatedEntities({
   sortOrder
 }: SearchData) {
   const { id } = useParams<{ id: string }>()
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<
     Response<EntityResponse>,
     Error,
     EntityResponse
@@ -70,7 +70,7 @@ export default function useRelatedEntities({
     entities: data?.data || [],
     isEntitiesError: isError,
     isEntitiesFetching: isFetching,
-    isEntitiesPending: isPending,
+    isEntitiesLoading: isLoading,
     refetchEntities: refetch,
     totalEntities: data?.total || 0
   }

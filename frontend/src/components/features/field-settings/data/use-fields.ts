@@ -9,7 +9,7 @@ import { type FieldsResponseType } from '../shared/field-types'
 export default function useFields(module: string) {
   const { endPoint, queryKeys } = MODULE_FIELD_CONFIG[module]
 
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery<
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<
     Response<FieldsResponseType>,
     Error,
     FieldsResponseType & { columnSettings?: { column_size: number } }
@@ -48,7 +48,7 @@ export default function useFields(module: string) {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
     totalFetchedFields: data?.fields?.length || 0

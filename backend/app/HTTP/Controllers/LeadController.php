@@ -153,6 +153,13 @@ final class LeadController
         $validated = $request->validated();
 
         $leadId = $validated['lead_id'];
+
+        $lead = Lead::findOne(['id' => $leadId, 'is_trash' => 0]);
+
+        if (empty($lead)) {
+            return Response::error(__('Lead not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
         $tag = Tag::findOne(['module' => Lead::MODULE_NAME, 'slug' => $validated['title']]);
 
         unset($validated['lead_id']);
@@ -216,6 +223,19 @@ final class LeadController
 
         $leadIds = $validated['lead_ids'];
         $tagIds = $validated['tag_ids'];
+
+        $existingLeads = Lead::whereIn('id', $leadIds)
+            ->where('is_trash', 0)
+            ->select(['id'])
+            ->get();
+
+        $leadIds = empty($existingLeads) ? [] : array_map('intval', $existingLeads->pluck('id')->toArray());
+
+        if (empty($leadIds)) {
+            return Response::error(__('Lead not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $dataToInsert = [];
 
         if (\count($leadIds) && \count($tagIds)) {
             $existingRecords = TagEntity::select(['entity_id', 'tag_id'])

@@ -13,7 +13,7 @@ interface TagResType {
 }
 
 export default function useCompanyModuleTags() {
-  const { data, isFetching, isPending, refetch } = useQuery<TagResType>({
+  const { data, isFetching, isLoading, refetch } = useQuery<TagResType>({
     queryFn: ({ signal }: { signal: AbortSignal }) =>
       queryRequest('tags-by-module', undefined, { module: MODULES.COMPANY }, 'GET', { signal }),
     queryKey: ['company_tags', MODULES.COMPANY]
@@ -21,8 +21,8 @@ export default function useCompanyModuleTags() {
 
   return {
     companyModuleTags: data?.data || [],
-    isPending,
     isTagsFetching: isFetching,
+    isTagsLoading: isLoading,
     refetchTags: refetch
   }
 }

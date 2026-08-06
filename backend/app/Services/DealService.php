@@ -93,9 +93,9 @@ class DealService implements EntityDataInterface, EntityFieldsInterface
         }
 
         $id = $validated['id'];
-        $deal = new Deal($id);
+        $deal = Deal::findOne(['id' => $id, 'is_trash' => 0]);
 
-        if (!$deal->id) {
+        if (empty($deal)) {
             return ['success' => false, 'errors' => [__('Deal not found!', 'bit-crm-sales-marketing-automation')]];
         }
 

@@ -22,7 +22,7 @@ interface InvoicesParams {
 }
 
 export default function useInvoices(searchData: InvoicesParams) {
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<InvoiceResType>,
     Error,
     InvoiceResType
@@ -43,7 +43,7 @@ export default function useInvoices(searchData: InvoicesParams) {
     invoices: data?.data || [],
     isInvoiceError: isError,
     isInvoiceFetching: isFetching,
-    isInvoicePending: isPending,
+    isInvoiceLoading: isLoading,
     pageSize: data?.per_page || 0,
     refetchInvoice: refetch,
     totalInvoice: data?.total || 0

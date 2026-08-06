@@ -1,3 +1,4 @@
+import { LoadingOutlined } from '@ant-design/icons'
 import { __ } from '@common/helpers/i18nWrap'
 import useMeetingStore from '@components/features/meetings/state/use-meeting-store'
 import ActivitiesBoard from '@features/activity-feed/activity-feed'
@@ -5,6 +6,7 @@ import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-fil
 import useInfiniteMeetings from '@features/meetings/data/use-meetings'
 import MeetingCreateModal from '@features/meetings/ui/meeting-create-modal'
 import MeetingEditModal from '@features/meetings/ui/meeting-edit-modal'
+import If from '@utilities/If'
 import { Button, Input, Typography } from 'antd'
 import { type ChangeEvent, useState } from 'react'
 import { LuPlus, LuSearch } from 'react-icons/lu'
@@ -20,8 +22,15 @@ export default function MeetingsPage() {
   const status = searchParams.get('status') || ''
   const assignedTo = searchParams.get('assigned_to') || ''
 
-  const { fetchNextPage, hasNextPage, isFetchingNextPage, isPendingMeetings, meetings, total } =
-    useInfiniteMeetings(module, 0, status, searchDebounced, assignedTo)
+  const {
+    fetchNextPage,
+    hasNextPage,
+    isFetchingMeetings,
+    isFetchingNextPage,
+    isMeetingsLoading,
+    meetings,
+    total
+  } = useInfiniteMeetings(module, 0, status, searchDebounced, assignedTo)
 
   useDebounce(() => setSearchDebounced(search), 300, [search])
 
@@ -53,6 +62,9 @@ export default function MeetingsPage() {
           >
             {__('New Meeting')}
           </Button>
+          <If conditions={isFetchingMeetings}>
+            <LoadingOutlined />
+          </If>
         </div>
 
         <div className="flex items-center gap-2">
@@ -72,7 +84,7 @@ export default function MeetingsPage() {
         activities={meetings}
         activityType="meeting"
         hasMore={Boolean(hasNextPage)}
-        isLoading={isPendingMeetings}
+        isLoading={isMeetingsLoading}
         isLoadingMore={isFetchingNextPage}
         onLoadMore={() => fetchNextPage()}
         total={total}

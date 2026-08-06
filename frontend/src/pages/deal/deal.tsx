@@ -41,8 +41,8 @@ const tabLabel = (icon: ReactNode, text: string, count?: string) => (
 )
 export default function Deal() {
   const { id: dealId } = useParams<{ id: string }>()
-  const { columnSettings, fields, isFieldsPending } = useDealFields()
-  const { deal, isDealError, isDealPending } = useDeal(dealId || 0)
+  const { columnSettings, fields, isFieldsLoading } = useDealFields()
+  const { deal, isDealError, isDealLoading } = useDeal(dealId || 0)
   const { tags } = useTags({ module: MODULES.DEAL })
   const { attachmentCount, callCount, linkCount, meetingCount, noteCount, taskCount } =
     useEntityRelatedListsCount({ entityId: Number(dealId), module: MODULES.DEAL })
@@ -54,7 +54,7 @@ export default function Deal() {
 
   return (
     <div className="space-y-5 px-6 py-4">
-      {isFieldsPending || isDealPending || !deal ? (
+      {isFieldsLoading || isDealLoading || !deal ? (
         <EntitySkeleton />
       ) : (
         <>
@@ -63,7 +63,7 @@ export default function Deal() {
               items={[
                 { title: __('Deals'), to: '/deals' },
                 {
-                  title: isDealPending ? (
+                  title: isDealLoading ? (
                     <LoadingOutlined />
                   ) : (
                     renderFullName(undefined, undefined, deal?.name)

@@ -7,7 +7,7 @@ interface PrefixResponse {
 }
 
 export default function usePrefix() {
-  const { data, isError, isPending } = useQuery<Response<PrefixResponse>, Error, string>({
+  const { data, isError, isLoading } = useQuery<Response<PrefixResponse>, Error, string>({
     queryFn: ({ signal }) => queryRequest('invoices/prefix', undefined, undefined, 'GET', { signal }),
     queryKey: ['invoices', 'prefix'],
     retry: false,
@@ -16,7 +16,7 @@ export default function usePrefix() {
 
   return {
     isPrefixError: isError,
-    isPrefixPending: isPending,
+    isPrefixLoading: isLoading,
     prefix: data
   }
 }

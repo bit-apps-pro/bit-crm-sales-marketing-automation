@@ -33,7 +33,7 @@ export default function useContacts(
   const { setGroupErrors } = useAdvancedFilterActions()
   const { messageApi } = useContext(NotifyContext)
 
-  const { data, error, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, error, isError, isFetching, isLoading, refetch } = useQuery<
     Response<ContactResponse>,
     ResponseError,
     ContactResponse
@@ -78,7 +78,7 @@ export default function useContacts(
     contacts: data?.data || [],
     isContactsError: isError,
     isContactsFetching: isFetching,
-    isContactsPending: isPending,
+    isContactsLoading: isLoading,
     refetchContacts: refetch,
     totalContacts: data?.total || 0
   }

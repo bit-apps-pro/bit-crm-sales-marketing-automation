@@ -13,7 +13,7 @@ export default function TagsModal() {
   const [form] = useForm<{ tags: number[] }>()
   const { isTagEntityStoring, storeTagEntity } = useSaveTagEntities(form)
   const { deleteTagEntity, isTagEntityDeleting } = useDeleteTagEntities(form)
-  const { isTagsFetching, isTagsPending, tags } = useTags({
+  const { isTagsLoading, tags } = useTags({
     module: MODULES.COMPANY
   })
 
@@ -72,7 +72,7 @@ export default function TagsModal() {
               ]}
             >
               <Select
-                loading={isTagsFetching || isTagsPending}
+                loading={isTagsLoading}
                 mode="multiple"
                 options={tags?.map(tag => ({ label: tag.title, value: tag.id }))}
               />

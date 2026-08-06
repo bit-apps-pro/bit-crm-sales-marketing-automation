@@ -25,8 +25,8 @@ final class BitAppsCrmLineItemsTableMigration extends Migration
                 $table->string('product_code')->nullable();
                 $table->string('product_source')->nullable();
                 $table->bigint('quantity')->defaultValue(1);
-                $table->bigint('discount_percentage')->defaultValue(0);
-                $table->bigint('tax_rate')->defaultValue(0);
+                $table->decimal('discount_percentage', 8, 4)->defaultValue(0);
+                $table->decimal('tax_rate', 8, 4)->defaultValue(0);
                 $table->string('unit_price_in_home_currency')->nullable();
                 $table->string('unit_price_in_deal_currency')->nullable();
                 $table->string('total_price_in_home_currency')->nullable();

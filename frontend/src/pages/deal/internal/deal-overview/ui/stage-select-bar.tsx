@@ -10,12 +10,12 @@ import StageSelectBarSkeleton from './stage-select-bar-skeleton'
 
 export default function StageSelectBar({ deal }: StageSelectBarProps) {
   const { stage: currentStage } = deal ?? {}
-  const { isStagesFetching, isStagesPending, stages } = useStages()
+  const { isStagesLoading, stages } = useStages()
   const { isUpdatingStage, updateDealStage } = useUpdateDealStage()
   const { handleModal } = useUpdateDealStageActionsStore()
   const { clearStore } = useDealsKanbanActionsStore()
 
-  if (isStagesPending || isStagesFetching) return <StageSelectBarSkeleton />
+  if (isStagesLoading) return <StageSelectBarSkeleton />
 
   const handleStageClick = async (stageKey: string) => {
     if (stageKey === currentStage || isUpdatingStage) {

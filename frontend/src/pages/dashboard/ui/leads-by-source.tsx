@@ -38,20 +38,20 @@ export default function LeadsBySource({ leadCountBySource }: LeadCountBySourcePr
 
   return (
     <DashboardCard>
-      <div className="mb-4 flex items-start justify-between">
-        <div>
+      <div className="mb-4">
+        <div className="flex items-center justify-between">
           <Typography.Title className="mb-0" level={3}>
             {__('Leads by Source')}
           </Typography.Title>
-          <Typography.Text className="mb-4 text-[#9090A8]">
-            {__('Breakdown by acquisition source')}
-          </Typography.Text>
+          <Link to="/leads">
+            <Button className="rounded-full" size="small" type="text">
+              {__('View all')}
+            </Button>
+          </Link>
         </div>
-        <Link to="/leads">
-          <Button className="rounded-full" size="small" type="text">
-            {__('View all')}
-          </Button>
-        </Link>
+        <Typography.Text className="w-ufll mb-4 text-[#9090A8]">
+          {__('Breakdown by acquisition source')}
+        </Typography.Text>
       </div>
       {leadCountBySource.length === 0 ? (
         <>

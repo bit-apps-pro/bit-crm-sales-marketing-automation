@@ -18,7 +18,7 @@ export default function TagsModal() {
   const [form] = useForm<{ tags: number[] }>()
   const { isTagEntityStoring, storeTagEntity } = useStoreTagEntity(form)
   const { deleteTagEntity, isTagEntityDeleting } = useDeleteTagEntity(form)
-  const { isTagsFetching, isTagsPending, tags } = useTags({
+  const { isTagsLoading, tags } = useTags({
     module: MODULES.CONTACT
   })
   const selectedContactKeys = useContactStoreSelectedKeys()
@@ -87,7 +87,7 @@ export default function TagsModal() {
                 }
               ]}
             >
-              <Select loading={isTagsFetching || isTagsPending} mode="multiple" options={options} />
+              <Select loading={isTagsLoading} mode="multiple" options={options} />
             </Form.Item>
           </Form>
         </div>

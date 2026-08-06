@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type Stage } from '../../stages/shared/types'
 
 export default function useArchivedStages() {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<Response<Stage[]>, Error, Stage[]>({
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<Response<Stage[]>, Error, Stage[]>({
     queryFn: ({ signal }) =>
       queryRequest('deals/stages/archived', undefined, undefined, 'GET', { signal }),
     queryKey: ['deals', 'stages', 'archived'],
@@ -16,7 +16,7 @@ export default function useArchivedStages() {
     archivedStages: data || [],
     isArchivedStagesError: isError,
     isArchivedStagesFetching: isFetching,
-    isArchivedStagesPending: isPending,
+    isArchivedStagesLoading: isLoading,
     refetchArchivedStages: refetch
   }
 }

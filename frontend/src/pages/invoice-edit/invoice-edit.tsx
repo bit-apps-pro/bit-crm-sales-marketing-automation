@@ -13,8 +13,7 @@ import InvoiceFormLayout from '../invoice-create/shared/invoice-form-layout'
 
 export default function InvoiceEdit() {
   const { id } = useParams()
-  const { contact, currencyData, deal, invoice, isInvoiceFetching, isInvoicePending, lineItems } =
-    useInvoice(Number(id))
+  const { contact, currencyData, deal, invoice, isInvoiceLoading, lineItems } = useInvoice(Number(id))
   const { clearStore, setInvoiceData } = useInvoiceCreateStoreActions()
   const {
     clearStore: clearLineItemsStore,
@@ -31,7 +30,7 @@ export default function InvoiceEdit() {
   }, [clearStore, clearLineItemsStore])
 
   useEffect(() => {
-    if (!invoice || isInvoicePending || isInvoiceFetching) return
+    if (!invoice || isInvoiceLoading) return
 
     setTaxOption(invoice.tax_option as TaxOption)
     setLineItems(lineItems)
@@ -55,8 +54,7 @@ export default function InvoiceEdit() {
   }, [
     form,
     invoice,
-    isInvoicePending,
-    isInvoiceFetching,
+    isInvoiceLoading,
     contact,
     currencyData,
     deal,
@@ -68,7 +66,7 @@ export default function InvoiceEdit() {
     setGrossDiscountType
   ])
 
-  if (isInvoicePending || isInvoiceFetching) return <InvoiceSkeleton />
+  if (isInvoiceLoading) return <InvoiceSkeleton />
 
   return (
     <InvoiceFormLayout form={form} mode="edit">

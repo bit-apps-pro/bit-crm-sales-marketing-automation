@@ -44,7 +44,7 @@ export default function Leads() {
   )
 
   const leadActiveFilters = activeFilters[MODULES.LEAD] || []
-  const { fields, isFieldsFetching, isFieldsPending, orders, visibleColumns } = useLeadFields()
+  const { fields, isFieldsLoading, orders, visibleColumns } = useLeadFields()
 
   const queryParams = useMemo(
     () => ({
@@ -60,7 +60,7 @@ export default function Leads() {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { isLeadsFetching, isLeadsPending, leads, totalLeads } = useLeads(
+  const { isLeadsFetching, isLeadsLoading, leads, totalLeads } = useLeads(
     debouncedQueryParams,
     leadActiveFilters
   )
@@ -132,11 +132,7 @@ export default function Leads() {
             <SearchInput placeholder={__('Search by name or email')} />
           </div>
         </div>
-        <LeadsTable
-          fieldList={fieldList}
-          isLoading={isLeadsFetching || isLeadsPending || isFieldsPending || isFieldsFetching}
-          leads={leads}
-        />
+        <LeadsTable fieldList={fieldList} isLoading={isLeadsLoading || isFieldsLoading} leads={leads} />
         <div className="flex justify-center py-5">
           <Pagination total={totalLeads} />
         </div>

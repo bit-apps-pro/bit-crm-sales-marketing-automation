@@ -7,7 +7,7 @@ interface ResponseType {
 }
 
 export default function useCompanyFields() {
-  const { data, isFetching } = useQuery({
+  const { data, isFetching, isLoading } = useQuery({
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('companies/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['company', 'fields'],
@@ -18,7 +18,8 @@ export default function useCompanyFields() {
     companyCustomFields: data?.customFields || [],
     companyFields: data?.fields || [],
     companySystemDefinedFields: data?.systemDefinedFields || [],
-    isCompanyFieldsFetching: isFetching
+    isCompanyFieldsFetching: isFetching,
+    isCompanyFieldsLoading: isLoading
   }
 }
 

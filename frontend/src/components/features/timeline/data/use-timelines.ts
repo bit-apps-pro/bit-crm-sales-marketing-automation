@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type TimelineItemType, type TimelinesPayloadType } from '../shared/timeline-types'
 
 export default function useTimelines(params: TimelinesPayloadType) {
-  const { data, isFetching, isPending, refetch } = useQuery({
+  const { data, isFetching, isLoading, refetch } = useQuery({
     queryFn: () =>
       queryRequest<TimelineItemType[]>('activity-logs/index', undefined, { ...params }, 'GET'),
     queryKey: ['activity-logs', 'index', params.entity_id, params.module]
@@ -12,7 +12,7 @@ export default function useTimelines(params: TimelinesPayloadType) {
 
   return {
     isTimelinesFetching: isFetching,
-    isTimelinesPending: isPending,
+    isTimelinesLoading: isLoading,
     refetchTimelines: refetch,
     timelines: data?.data || []
   }

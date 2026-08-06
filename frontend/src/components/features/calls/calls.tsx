@@ -57,9 +57,9 @@ export default function Calls({ entityId, fields, module }: CallsProps) {
     calls,
     fetchNextPage,
     hasNextPage,
+    isCallsLoading,
     isFetchingCalls,
     isFetchingNextPage,
-    isPendingCalls,
     isRefetchingCalls,
     totalCalls
   } = useInfiniteCalls(module, entityId, status, searchDebounced, assignedTo)
@@ -96,7 +96,7 @@ export default function Calls({ entityId, fields, module }: CallsProps) {
         activities={calls}
         activityType="call"
         hasMore={Boolean(hasNextPage)}
-        isLoading={isPendingCalls}
+        isLoading={isCallsLoading}
         isLoadingMore={isFetchingNextPage}
         onLoadMore={() => fetchNextPage()}
         total={totalCalls}

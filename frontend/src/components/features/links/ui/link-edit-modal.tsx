@@ -17,7 +17,7 @@ interface LinkEditModalProps {
 export default function LinkEditModal({ fieldOptions }: LinkEditModalProps) {
   const { handleModal, isEditModalOpen, setEditModalOpen } = useLinkStore()
   const [searchParams, setSearchParams] = useSearchParams()
-  const { isFetchingLink, link } = useLink(Number(searchParams.get('id')))
+  const { isLoadingLink, link } = useLink(Number(searchParams.get('id')))
   const [form] = Form.useForm()
   const { isUpdatingLink, updateLink } = useUpdateLink(form)
 
@@ -66,7 +66,7 @@ export default function LinkEditModal({ fieldOptions }: LinkEditModalProps) {
       centered
       confirmLoading={isUpdatingLink}
       destroyOnHidden
-      loading={isFetchingLink}
+      loading={isLoadingLink}
       okButtonProps={{ disabled: isUpdatingLink }}
       okText={__('Update')}
       onCancel={handleClose}

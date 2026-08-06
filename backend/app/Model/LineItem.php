@@ -62,8 +62,8 @@ class LineItem extends Model
         'created_at'          => 'siteTimeZone',
         'updated_at'          => 'siteTimeZone',
         'quantity'            => 'int',
-        'discount_percentage' => 'int',
-        'tax_rate'            => 'int',
+        'discount_percentage' => 'float',
+        'tax_rate'            => 'float',
     ];
 
     protected function castToSiteTimeZone($value)

@@ -9,12 +9,11 @@ import useRevokeApiKey from '../data/use-revoke-api-key'
 import { type ApiKeyType, type ApiUserRowType } from '../shared/api-settings-type'
 
 interface ApiKeyTableProps {
-  isFetchingApiKeys: boolean
-  isPendingApiKeys: boolean
+  isLoadingApiKeys: boolean
   users: ApiUserRowType[]
 }
 
-export default function ApiKeyTable({ isFetchingApiKeys, isPendingApiKeys, users }: ApiKeyTableProps) {
+export default function ApiKeyTable({ isLoadingApiKeys, users }: ApiKeyTableProps) {
   const { revokeApiKey } = useRevokeApiKey()
 
   const columns: ColumnsType<ApiUserRowType> = useMemo(
@@ -125,7 +124,7 @@ export default function ApiKeyTable({ isFetchingApiKeys, isPendingApiKeys, users
           />
         )
       }}
-      loading={isFetchingApiKeys || isPendingApiKeys}
+      loading={isLoadingApiKeys}
       pagination={false}
       rowKey="id"
       size="small"

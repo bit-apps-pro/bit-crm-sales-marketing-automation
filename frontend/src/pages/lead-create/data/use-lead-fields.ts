@@ -10,7 +10,7 @@ interface ResponseType {
 }
 
 export default function useLeadFields() {
-  const { data, isFetching, isPending, isSuccess, refetch } = useQuery<
+  const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<
     Response<ResponseType>,
     Error,
     ResponseType & { columnSettings?: { column_size: number } }
@@ -49,7 +49,7 @@ export default function useLeadFields() {
     fields: data?.fields || [],
     isFetchSuccess: isSuccess,
     isFieldsFetching: isFetching,
-    isFieldsPending: isPending,
+    isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
     totalFetchedFields: data?.fields?.length || 0

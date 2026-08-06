@@ -47,7 +47,7 @@ export default function RelatedEntities({
   const sortBy = searchParams.get('sortBy') || ''
   const sortOrder = searchParams.get('sortOrder') || ''
 
-  const { fields, isFieldsPending, orders, visibleColumns } = useRelatedEntityFields(
+  const { fields, isFieldsLoading, orders, visibleColumns } = useRelatedEntityFields(
     entity,
     relatedEntity
   )
@@ -66,7 +66,7 @@ export default function RelatedEntities({
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { entities, isEntitiesPending, totalEntities } = useRelatedEntities(debouncedQueryParams)
+  const { entities, isEntitiesLoading, totalEntities } = useRelatedEntities(debouncedQueryParams)
 
   useEffect(() => {
     if (fields.length !== 0) {
@@ -129,7 +129,7 @@ export default function RelatedEntities({
         entity={entity}
         entityId={entityId}
         fields={fieldList}
-        isLoading={isEntitiesPending || isFieldsPending}
+        isLoading={isEntitiesLoading || isFieldsLoading}
         relatedEntity={relatedEntity}
       />
       <div className="flex justify-center py-3">

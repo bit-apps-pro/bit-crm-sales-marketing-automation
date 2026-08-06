@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type IntegrationSettingsResponse } from '../shared/types'
 
 export default function useWooProductIntegration() {
-  const { data, isPending } = useQuery<
+  const { data, isLoading } = useQuery<
     Response<IntegrationSettingsResponse>,
     Error,
     IntegrationSettingsResponse
@@ -18,7 +18,7 @@ export default function useWooProductIntegration() {
 
   return {
     integrations: data,
-    isIntegrationsPending: isPending,
+    isIntegrationsLoading: isLoading,
     isWooEnabled: data?.enable_woo_products && data?.is_woo_plugin_active
   }
 }

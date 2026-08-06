@@ -58,7 +58,7 @@ export default function Meetings({ entityId, fields, module }: MeetingsProps) {
     hasNextPage,
     isFetchingMeetings,
     isFetchingNextPage,
-    isPendingMeetings,
+    isMeetingsLoading,
     isRefetchingMeetings,
     meetings,
     total
@@ -96,7 +96,7 @@ export default function Meetings({ entityId, fields, module }: MeetingsProps) {
         activities={meetings}
         activityType="meeting"
         hasMore={Boolean(hasNextPage)}
-        isLoading={isPendingMeetings}
+        isLoading={isMeetingsLoading}
         isLoadingMore={isFetchingNextPage}
         onLoadMore={() => fetchNextPage()}
         total={total}

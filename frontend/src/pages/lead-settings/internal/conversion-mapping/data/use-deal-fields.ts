@@ -13,17 +13,20 @@ interface ProcessedFields extends DealFieldsResponse {
 }
 
 export default function useDealFields() {
-  const { data, isFetching } = useQuery<Response<DealFieldsResponse>, Error, ProcessedFields>({
-    queryFn: ({ signal }) => queryRequest('deals/fields', {}, undefined, 'GET', { signal }),
-    queryKey: ['lead-conversion', 'deal-fields'],
-    select: processedFields
-  })
+  const { data, isFetching, isLoading } = useQuery<Response<DealFieldsResponse>, Error, ProcessedFields>(
+    {
+      queryFn: ({ signal }) => queryRequest('deals/fields', {}, undefined, 'GET', { signal }),
+      queryKey: ['lead-conversion', 'deal-fields'],
+      select: processedFields
+    }
+  )
 
   return {
     dealCustomFields: data?.customFields || [],
     dealFields: data?.fields || [],
     dealSystemDefinedFields: data?.systemDefinedFields || [],
-    isDealFieldsFetching: isFetching
+    isDealFieldsFetching: isFetching,
+    isDealFieldsLoading: isLoading
   }
 }
 

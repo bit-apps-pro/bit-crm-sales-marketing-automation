@@ -48,6 +48,7 @@ class CustomFieldUpdateTest extends BaseTestCase
 
         $this->call($this->method, $this->updateRoute, [
             'id'       => $record['id'],
+            'module'   => 'lead',
             'label'    => 'Custom Field 1 Updated',
             'status'   => true,
             'required' => false

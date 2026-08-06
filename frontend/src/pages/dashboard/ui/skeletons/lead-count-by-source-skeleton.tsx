@@ -7,17 +7,14 @@ export default function LeadCountBySourceSkeleton() {
   return (
     <DashboardCard>
       <CardHeaderSkeleton withAction />
-      <div className="flex justify-center">
-        <Skeleton.Avatar active className="!h-56 !w-56" shape="circle" />
+      <div className="flex items-center justify-center">
+        <Skeleton.Node active className="w-full" />
       </div>
       <div className="mt-5 flex flex-col gap-3">
         {Array.from({ length: 4 }).map((_, index) => (
-          <div className="flex items-center justify-between" key={index}>
-            <div className="flex items-center gap-2">
-              <Skeleton.Avatar active shape="square" size="small" />
-              <Skeleton.Input active size="small" />
-            </div>
-            <Skeleton.Input active className="!w-[32px]" size="small" />
+          <div className="flex items-center justify-between gap-2" key={index}>
+            <Skeleton.Input active className="!h-4 !min-h-0 !min-w-[96px]" size="small" />
+            <Skeleton.Input active className="!h-4 !min-h-0 !w-8 !min-w-0" size="small" />
           </div>
         ))}
       </div>

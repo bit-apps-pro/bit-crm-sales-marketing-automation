@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type ResponseDataType } from '../shared/currency-types'
 
 export default function useCurrencies() {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<
     Response<ResponseDataType>,
     Error,
     ResponseDataType
@@ -21,7 +21,7 @@ export default function useCurrencies() {
     homeCurrencyCode: data?.homeCurrency,
     isCurrenciesError: isError,
     isCurrenciesFetching: isFetching,
-    isCurrenciesPending: isPending,
+    isCurrenciesLoading: isLoading,
     refetchCurrencies: refetch
   }
 }

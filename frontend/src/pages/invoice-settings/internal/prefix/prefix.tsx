@@ -8,14 +8,14 @@ import PrefixSkeleton from './prefix-skeleton'
 
 export default function Prefix() {
   const [form] = Form.useForm()
-  const { isPrefixPending, prefix } = usePrefix()
+  const { isPrefixLoading, prefix } = usePrefix()
   const { isUpdatePending, upsertPrefix } = useUpsertPrefix()
 
   useEffect(() => {
-    if (!isPrefixPending && prefix) {
+    if (!isPrefixLoading && prefix) {
       form.setFieldsValue({ prefix })
     }
-  }, [prefix, isPrefixPending, form])
+  }, [prefix, isPrefixLoading, form])
 
   const handleFinish = async (values: { prefix: string }) => {
     await upsertPrefix({ setting_key: 'invoice_prefix', setting_value: values })
@@ -23,7 +23,7 @@ export default function Prefix() {
 
   return (
     <div className="max-w-2xl rounded-lg border border-solid border-[#EBEAFF] p-4 dark:border-neutral-700">
-      {isPrefixPending ? (
+      {isPrefixLoading ? (
         <PrefixSkeleton />
       ) : (
         <Form form={form} layout="vertical" onFinish={handleFinish}>

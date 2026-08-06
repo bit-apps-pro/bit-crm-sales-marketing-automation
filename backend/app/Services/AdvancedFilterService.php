@@ -32,11 +32,20 @@ class AdvancedFilterService
 
     private const FILTER_OPERATORS_WITHOUT_VALUE = ['is_empty', 'is_not_empty'];
 
-    private $customFieldsKeys;
+    /**
+     * Column identifiers a filter is allowed to reference, keyed for lookup.
+     *
+     * Holds the module's real columns plus its registered custom fields. Filter
+     * conditions are concatenated into a raw query as bare identifiers, so a key
+     * outside this list must never reach the SQL.
+     *
+     * @var array<string, int>
+     */
+    private $allowedFieldKeys;
 
-    public function __construct(array $customFieldsKeys = [])
+    public function __construct(array $allowedFieldKeys = [])
     {
-        $this->customFieldsKeys = array_flip($customFieldsKeys);
+        $this->allowedFieldKeys = array_flip($allowedFieldKeys);
     }
 
     /**
@@ -66,10 +75,6 @@ class AdvancedFilterService
             // Each item in the OR group represents an AND condition
             foreach ($orGroup as $filter) {
                 if (!$this->isValidFilter($filter)) {
-                    continue;
-                }
-
-                if (($filter['is_custom'] ?? false) && !isset($this->customFieldsKeys[$filter['field_key']])) {
                     continue;
                 }
 
@@ -108,6 +113,10 @@ class AdvancedFilterService
         $operator = $filter['operator'];
         $value = $filter['value'] ?? null;
         $fieldType = $filter['field_type'];
+
+        if (!isset($this->allowedFieldKeys[$fieldKey])) {
+            return [null, []];
+        }
 
         if (!$this->isValidOperator($fieldType, $operator)) {
             return [null, []];
@@ -442,8 +451,19 @@ class AdvancedFilterService
                && \in_array($operator, self::FILTER_OPERATORS[$fieldType]);
     }
 
+    /**
+     * Resolves a submitted field key to the column the query can filter on.
+     *
+     * Modules that only expose a company through a joined select alias filter by
+     * the foreign key instead. A module owning a real column of that name (leads
+     * store the company as plain text) keeps its own column.
+     */
     private function mapFieldKey(string $fieldKey): string
     {
+        if (isset($this->allowedFieldKeys[$fieldKey])) {
+            return $fieldKey;
+        }
+
         $mapping = [
             'company_name' => 'company_id',
         ];

@@ -91,6 +91,13 @@ final class ImapController
             return Response::error(__('Imap settings not found!', 'bit-crm-sales-marketing-automation'));
         }
 
+        if (
+            $imapSetting->visibility === ImapSetting::VISIBILITY_PRIVATE
+            && (int) $imapSetting->created_by !== get_current_user_id()
+        ) {
+            return Response::error(__('Imap settings not found!', 'bit-crm-sales-marketing-automation'));
+        }
+
         $imapSetting->app_password = Hash::decrypt($imapSetting->app_password);
         $imapSetting->is_private = $imapSetting->visibility === ImapSetting::VISIBILITY_PRIVATE ? 'yes' : 'no';
 

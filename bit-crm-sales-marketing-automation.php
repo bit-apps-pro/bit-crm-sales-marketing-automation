@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Bit CRM: Leads, Contacts, Deals & Invoices
  * Description:  WordPress CRM to manage contacts, leads, deals, and invoices and run your whole sales pipeline right from your WordPress dashboard.
- * Version:      1.0.0
+ * Version:      1.0.4
  * Author:       Bit Apps
  * Author URI:   https://bitapps.pro
  * Text Domain:  bit-crm-sales-marketing-automation

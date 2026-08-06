@@ -10,13 +10,11 @@ if (!defined('ABSPATH')) {
 
 final class BitAppsCrmPluginOptions extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        if (!Config::getOption('installed', null)) {
-            Config::addOption('db_version', Config::DB_VERSION, true);
-            Config::addOption('installed', time(), true);
-            Config::addOption('version', Config::VERSION, true);
-        }
+        Config::updateOption('db_version', Config::DB_VERSION, true);
+        Config::updateOption('installed', time(), true);
+        Config::updateOption('version', Config::VERSION, true);
     }
 
     public function down()

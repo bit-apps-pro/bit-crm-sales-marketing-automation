@@ -41,7 +41,7 @@ const tabLabel = (icon: ReactNode, text: string, count?: string) => (
 
 const Lead = () => {
   const { id: leadId } = useParams()
-  const { columnSettings, fields, isFieldsPending } = useLeadFields()
+  const { columnSettings, fields, isFieldsLoading } = useLeadFields()
   const { isLeadError, isLeadPending, lead, refetchLead } = useLead(leadId)
   const { refetchTags, tags } = useTags({ module: MODULES.LEAD })
   const { attachmentCount, callCount, linkCount, meetingCount, noteCount, taskCount } =
@@ -54,7 +54,7 @@ const Lead = () => {
 
   return (
     <div className="space-y-5 p-6">
-      {isFieldsPending || isLeadPending || !lead ? (
+      {isFieldsLoading || isLeadPending || !lead ? (
         <EntitySkeleton />
       ) : (
         <>

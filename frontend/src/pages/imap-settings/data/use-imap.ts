@@ -9,19 +9,16 @@ import useImapStore from '../state/use-imap-store'
 
 export default function useImap(id: number) {
   const { isEditModalOpen } = useImapStore()
-  const { data, error, isError, isPending } = useQuery<Response<ImapType>, Error, ImapType>({
+  const { data, isLoading } = useQuery<Response<ImapType>, Error, ImapType>({
     enabled: isEditModalOpen && checkCapability(CAPABILITIES.SETTING.IMAP),
     queryFn: ({ signal }) => queryRequest(`imaps/edit/${id}`, {}, undefined, 'GET', { signal }),
     queryKey: ['imap', 'edit', id],
+    retry: false,
     select: res => res.data
   })
 
-  if (isError) {
-    console.error(error)
-  }
-
   return {
     imap: data,
-    isFetchingImap: isPending
+    isImapLoading: isLoading
   }
 }

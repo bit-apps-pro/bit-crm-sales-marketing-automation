@@ -49,7 +49,7 @@ export default function Contacts() {
 
   const contactActiveFilters = activeFilters[MODULES.CONTACT] || []
 
-  const { fields, isFieldsFetching, isFieldsPending, orders, visibleColumns } = useContactFields()
+  const { fields, isFieldsFetching, isFieldsLoading, orders, visibleColumns } = useContactFields()
 
   const queryParams = useMemo(
     () => ({
@@ -65,7 +65,7 @@ export default function Contacts() {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { contacts, isContactsFetching, isContactsPending, totalContacts } = useContacts(
+  const { contacts, isContactsLoading, totalContacts } = useContacts(
     debouncedQueryParams,
     contactActiveFilters
   )
@@ -151,7 +151,7 @@ export default function Contacts() {
         <ContactsTable
           contacts={contacts}
           fieldList={fieldList}
-          isLoading={isContactsFetching || isContactsPending || isFieldsPending || isFieldsFetching}
+          isLoading={isContactsLoading || isFieldsLoading}
         />
 
         <div className="flex justify-center py-5">

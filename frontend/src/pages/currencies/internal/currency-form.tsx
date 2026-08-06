@@ -31,7 +31,7 @@ export default function CurrencyForm({
   isEdit = false,
   isHome = false
 }: CurrencyFormProps) {
-  const { currencyOptions, currencyStaticData, isCurrencyStaticDataPending } = useCurrencyStaticData()
+  const { currencyOptions, currencyStaticData, isCurrencyStaticDataLoading } = useCurrencyStaticData()
 
   const selectedCurrency = useWatch('currency', form) || defaultCurrency
   const decimalPlaces = useWatch('decimal_places', form)
@@ -85,7 +85,7 @@ export default function CurrencyForm({
     }
   }
 
-  if (isCurrencyStaticDataPending) {
+  if (isCurrencyStaticDataLoading) {
     return <CurrencyFormSkeleton quantity={isEdit ? 3 : 4} />
   }
 

@@ -28,7 +28,7 @@ export default function Attachments({ entityId, module }: AttachmentsProps) {
   const { handleModal } = useAttachmentFeatureStore()
   const page = searchParams.get('page') || 1
   const perPage = searchParams.get('perPage') || 20
-  const { attachments, isFetchingAttachments, isRefetchingAttachments, total } = useAttachments(
+  const { attachments, isAttachmentsLoading, isfetchingAttachments, total } = useAttachments(
     module,
     entityId,
     page,
@@ -55,7 +55,7 @@ export default function Attachments({ entityId, module }: AttachmentsProps) {
               {__('New')}
             </Button>
           </If>
-          <If conditions={isFetchingAttachments || isRefetchingAttachments}>
+          <If conditions={isfetchingAttachments}>
             <LoadingOutlined />
           </If>
         </div>
@@ -63,7 +63,7 @@ export default function Attachments({ entityId, module }: AttachmentsProps) {
         <SearchInput placeholder={__('Search by file name')} queryKey="search" />
       </div>
       <div>
-        <AttachmentTable attachments={attachments} loading={isFetchingAttachments} />
+        <AttachmentTable attachments={attachments} loading={isAttachmentsLoading} />
         <div className="flex justify-center py-2">
           <Pagination defaultPerPage={20} pageSizeOptions={[20, 50, 100]} size="small" total={total} />
         </div>

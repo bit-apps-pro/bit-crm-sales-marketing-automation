@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type Stage } from '../shared/types'
 
 export default function useStages() {
-  const { data, isError, isFetching, isPending, refetch } = useQuery<Response<Stage[]>, Error, Stage[]>({
+  const { data, isError, isFetching, isLoading, refetch } = useQuery<Response<Stage[]>, Error, Stage[]>({
     queryFn: ({ signal }) => queryRequest('deals/stages', undefined, undefined, 'GET', { signal }),
     queryKey: ['deals', 'stages'],
     select: res => res.data
@@ -14,7 +14,7 @@ export default function useStages() {
   return {
     isStagesError: isError,
     isStagesFetching: isFetching,
-    isStagesPending: isPending,
+    isStagesLoading: isLoading,
     refetchStages: refetch,
     stages: data || []
   }

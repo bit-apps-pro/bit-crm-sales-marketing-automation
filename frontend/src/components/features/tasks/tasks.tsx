@@ -59,8 +59,8 @@ export default function Tasks({ entityId, fields, module }: TasksProps) {
     hasNextPage,
     isFetchingNextPage,
     isFetchingTasks,
-    isPendingTasks,
     isRefetchingTasks,
+    isTasksLoading,
     tasks,
     total
   } = useInfiniteTasks(module, entityId, status, searchDebounced, priority, assignedTo)
@@ -97,7 +97,7 @@ export default function Tasks({ entityId, fields, module }: TasksProps) {
         activities={tasks}
         activityType="task"
         hasMore={Boolean(hasNextPage)}
-        isLoading={isPendingTasks}
+        isLoading={isTasksLoading}
         isLoadingMore={isFetchingNextPage}
         onLoadMore={() => fetchNextPage()}
         total={total}

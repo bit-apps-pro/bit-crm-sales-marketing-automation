@@ -18,7 +18,7 @@ export default function Imports() {
   const page = Number(searchParams.get('page') || 1)
   const perPage = Number(searchParams.get('perPage') || 10)
 
-  const { importsData, isImportsDataFetching, isImportsDataPending, totalImportsData } = useImportsData({
+  const { importsData, isImportsDataLoading, totalImportsData } = useImportsData({
     module,
     page,
     perPage
@@ -43,7 +43,7 @@ export default function Imports() {
           <Typography.Title className="mb-0" level={4}>
             {__('Imports history')}
           </Typography.Title>
-          <If conditions={isImportsDataPending}>
+          <If conditions={isImportsDataLoading}>
             <LoadingOutlined />
           </If>
         </div>
@@ -57,7 +57,7 @@ export default function Imports() {
           value={module || undefined}
         />
       </div>
-      <ImportsTable importsData={importsData} loading={isImportsDataFetching || isImportsDataPending} />
+      <ImportsTable importsData={importsData} loading={isImportsDataLoading} />
       <div className="flex justify-center p-2">
         <Pagination total={totalImportsData} />
       </div>

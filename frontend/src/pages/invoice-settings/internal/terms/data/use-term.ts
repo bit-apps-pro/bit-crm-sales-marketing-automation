@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { type Term } from '../shared/types'
 
 export default function useTerm(key: string) {
-  const { data, isError, isFetching, isPending } = useQuery<Response<Term>, Error, Term>({
+  const { data, isError, isFetching, isLoading } = useQuery<Response<Term>, Error, Term>({
     enabled: !!key,
     queryFn: ({ signal }) =>
       queryRequest(`invoices/terms/${key}`, undefined, undefined, 'GET', { signal }),
@@ -14,7 +14,7 @@ export default function useTerm(key: string) {
   return {
     isTermError: isError,
     isTermFetching: isFetching,
-    isTermPending: isPending,
+    isTermLoading: isLoading,
     term: data
   }
 }

@@ -54,8 +54,8 @@ const generateFieldOptions = (fields: FieldItem[]) => {
 
 export default function DealsKanban({ searchData }: DealsKanbanProps) {
   const lastSyncedDealsRef = useRef<Deal[]>([])
-  const { isStagesFetching, isStagesPending } = useDealStages()
-  const { deals, isDealsPending: isLoading, stageStatistics } = useDeals(searchData)
+  const { isStagesLoading } = useDealStages()
+  const { deals, isDealsLoading: isLoading, stageStatistics } = useDeals(searchData)
   const { loadMoreStageDeals } = useLoadMoreStageDeals()
   const fieldList = useFieldListStore()
   const isFieldListLoading = useIsFieldListLoadingStore()
@@ -135,7 +135,7 @@ export default function DealsKanban({ searchData }: DealsKanbanProps) {
     }
   }, [stageStatistics, searchData.perPage, stages, setStageStatistics, setStageTotalDeals])
 
-  if (isLoading || isFieldListLoading || isStagesFetching || isStagesPending) {
+  if (isLoading || isFieldListLoading || isStagesLoading) {
     return <KanbanColumnSkeleton />
   }
 

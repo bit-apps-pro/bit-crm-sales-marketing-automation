@@ -30,7 +30,6 @@ use BitApps\Crm\HTTP\Controllers\PluginInstallerController;
 use BitApps\Crm\HTTP\Controllers\SettingsController;
 use BitApps\Crm\HTTP\Controllers\TagController;
 use BitApps\Crm\HTTP\Controllers\TrashController;
-use BitApps\Crm\HTTP\Controllers\WooCommerceHistoricalSyncController;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -122,8 +121,6 @@ Route::group(
         Route::get('settings/integration/show', [IntegrationSettingsController::class, 'show']);
         Route::post('settings/integration/upsert', [IntegrationSettingsController::class, 'upsert']);
 
-        Route::post('woocommerce/historical-sync/trigger', [WooCommerceHistoricalSyncController::class, 'trigger']);
-        Route::get('woocommerce/historical-sync/progress', [WooCommerceHistoricalSyncController::class, 'progress']);
 
         Route::post('tags/store', [TagController::class, 'store']);
         Route::post('tags/index', [TagController::class, 'index']);
@@ -210,7 +207,6 @@ Route::group(
         Route::post('invoices/send', [InvoiceController::class, 'sendInvoice']);
         Route::get('invoices/prefix', [InvoiceController::class, 'invoicePrefix']);
         Route::get('invoices/deals/{id}', [InvoiceController::class, 'invoicesByDeal']);
-        Route::get('invoices/line-items/{id}', [InvoiceController::class, 'lineItems']);
         Route::get('invoices/{id}', [InvoiceController::class, 'show']);
         Route::post('invoices/{id}', [InvoiceController::class, 'update']);
         Route::post('invoices/{id}/status', [InvoiceController::class, 'updateStatus']);

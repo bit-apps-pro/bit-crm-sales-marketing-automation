@@ -8,7 +8,7 @@ import { type TagItemType } from '../shared/tag-types'
 export default function useTag(id: number) {
   const isEditModalOpen = useIsEditModalOpen()
 
-  const { data, error, isError, isPending } = useQuery<Response<TagItemType>, Error, TagItemType>({
+  const { data, error, isError, isLoading } = useQuery<Response<TagItemType>, Error, TagItemType>({
     enabled: isEditModalOpen && id > 0,
     queryFn: () => queryRequest(`tags/edit/${id}`, {}, undefined, 'GET'),
     queryKey: ['tag', id],
@@ -20,7 +20,7 @@ export default function useTag(id: number) {
   }
 
   return {
-    isFetchingTag: isPending,
+    isTagLoading: isLoading,
     tag: data
   }
 }

@@ -11,7 +11,7 @@ export default function useAttachments(
   perPage: number | string,
   search: string
 ) {
-  const { data, error, isError, isPending, isRefetching } = useQuery<
+  const { data, error, isError, isFetching, isLoading } = useQuery<
     Response<AttachmentsIndexType>,
     Error,
     AttachmentsIndexType
@@ -48,8 +48,8 @@ export default function useAttachments(
   return {
     attachments: data?.data || [],
     currentPage: data?.current_page || 1,
-    isFetchingAttachments: isPending,
-    isRefetchingAttachments: isRefetching,
+    isAttachmentsLoading: isLoading,
+    isfetchingAttachments: isFetching,
     pageSize: data?.per_page || 0,
     total: data?.total || 0
   }

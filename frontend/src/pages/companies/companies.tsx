@@ -47,7 +47,7 @@ export default function Companies() {
   }, [tagParam])
   const companyActiveFilters = activeFilters[MODULES.COMPANY] || []
 
-  const { fields, isFieldsFetching, isFieldsPending, orders, visibleColumns } = useCompanyFields()
+  const { fields, isFieldsLoading, orders, visibleColumns } = useCompanyFields()
 
   const queryParams = useMemo(
     () => ({
@@ -63,7 +63,7 @@ export default function Companies() {
 
   const debouncedQueryParams = useDebounceState<typeof queryParams>(queryParams, 300)
 
-  const { companies, isCompaniesFetching, isCompaniesPending, totalCompanies } = useCompanies(
+  const { companies, isCompaniesFetching, isCompaniesLoading, totalCompanies } = useCompanies(
     debouncedQueryParams,
     companyActiveFilters
   )
@@ -139,7 +139,7 @@ export default function Companies() {
         <CompaniesTable
           companies={companies}
           fieldList={fieldList}
-          isLoading={isCompaniesFetching || isCompaniesPending || isFieldsPending || isFieldsFetching}
+          isLoading={isCompaniesLoading || isFieldsLoading}
         />
 
         <div className="flex justify-center py-5">
