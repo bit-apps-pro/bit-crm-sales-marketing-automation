@@ -1,3 +1,4 @@
+import { isRtl } from '@common/helpers/direction'
 import { cn } from '@common/helpers/globalHelpers'
 import { ARROW_WIDTH } from '@pages/deal/shared/constants'
 import { type StageButtonProps } from '@pages/deal/shared/deal-types'
@@ -41,8 +42,11 @@ export default function StageButton({
         }}
       >
         <span
-          className="truncate px-2 text-center"
-          style={{ marginLeft: isFirst ? '0' : `${ARROW_WIDTH / 2}px` }}
+          className="inline-block truncate px-2 text-center"
+          style={{
+            marginLeft: isFirst ? '0' : `${ARROW_WIDTH / 2}px`,
+            transform: isRtl() ? 'scaleX(-1)' : undefined
+          }}
         >
           {stage.name}
         </span>

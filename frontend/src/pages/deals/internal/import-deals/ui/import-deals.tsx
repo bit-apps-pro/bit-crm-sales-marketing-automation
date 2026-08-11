@@ -158,7 +158,7 @@ export default function ImportDeals({ customFields, systemDefinedFields }: Impor
     <>
       <Button
         aria-label={__('Import Deals')}
-        className="rounded-l-full text-sm text-gray-500 dark:text-gray-400"
+        className="rounded-s-full text-sm text-gray-500 dark:text-gray-400"
         icon={<LuDownload />}
         onClick={() => handleModal(true)}
       >

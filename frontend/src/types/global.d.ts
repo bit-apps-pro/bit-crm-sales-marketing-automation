@@ -35,6 +35,7 @@ declare const SERVER_VARIABLES: {
   }
   isPro: string
   isProExist?: string
+  isRtl?: string
   key?: string
   loggedInUserName: string
   nonce: string
@@ -55,6 +56,7 @@ declare const SERVER_VARIABLES: {
   slug: string
   timeFormat: string
   timeZone: string
+  translations?: Record<string, string>
   uploadBaseUrl: string
   version: string
 }

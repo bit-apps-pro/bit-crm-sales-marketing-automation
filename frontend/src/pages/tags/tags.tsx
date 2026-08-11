@@ -94,7 +94,7 @@ export default function Tags() {
             <ModuleFilter excludeModules={[MODULES.INVOICE]} />
             <AntInput
               allowClear
-              className="ml-auto w-52 rounded-full"
+              className="ms-auto w-52 rounded-full"
               defaultValue={searchTerm}
               onChange={handleSearchChange}
               placeholder={__('Search')}

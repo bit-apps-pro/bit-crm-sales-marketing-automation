@@ -26,7 +26,7 @@ export default function ProWorkflowLogsAlert({ featureName }: ProFeatureAlertPro
             <Typography.Text className="mb-2 block text-xs text-gray-500 dark:text-gray-400">
               {__('Enter the number of days to retain workflow logs.')}
             </Typography.Text>
-            <ul className="mb-6 mt-1 list-disc space-y-1 pl-4 text-xs text-gray-400 dark:text-gray-500">
+            <ul className="mb-6 mt-1 list-disc space-y-1 ps-4 text-xs text-gray-400 dark:text-gray-500">
               <li>{__('Entering 30 will remove logs older than 30 days.')}</li>
               <li>{__('Entering 0 will keep all logs indefinitely.')}</li>
             </ul>

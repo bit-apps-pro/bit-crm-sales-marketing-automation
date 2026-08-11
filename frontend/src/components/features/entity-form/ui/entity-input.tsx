@@ -1,4 +1,5 @@
 import { MODULES } from '@common/constants/modules'
+import { dividerOrientation } from '@common/helpers/direction'
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
@@ -37,7 +38,12 @@ export default function EntityInput({
 
   if (type === 'section') {
     return (
-      <Divider className="mb-0 mt-4 first:mt-0" key={fieldKey} orientation="left" orientationMargin="0">
+      <Divider
+        className="mb-0 mt-4 first:mt-0"
+        key={fieldKey}
+        orientation={dividerOrientation}
+        orientationMargin="0"
+      >
         {__(label)}
       </Divider>
     )

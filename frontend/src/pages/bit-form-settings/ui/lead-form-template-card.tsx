@@ -21,7 +21,7 @@ export default function LeadFormTemplateCard({
       aria-checked={isDisabled ? false : isSelected}
       aria-disabled={isDisabled || undefined}
       className={cn(
-        'flex h-full w-full flex-col gap-2 rounded-[14px] border border-solid bg-transparent p-3 text-left transition',
+        'flex h-full w-full flex-col gap-2 rounded-[14px] border border-solid bg-transparent p-3 text-start transition',
         isSelected ? 'border-primary' : 'border-[#E5E3FE] dark:border-neutral-700',
         isDisabled ? 'cursor-default border-dashed opacity-60' : 'cursor-pointer'
       )}

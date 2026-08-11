@@ -1,15 +1,20 @@
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem, type Order } from '@features/field-settings/shared/field-types'
+import { type Stage } from '@pages/deal-settings/ui/stages/shared/types'
+import { useDealsKanbanActionsStore } from '@pages/deals/internal/deals-kanban/state/use-deals-kanban-store'
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 interface DealFieldsResponse {
   fields: FieldItem[]
   orders: Order[]
+  stages: Stage[]
   visible_columns: string[]
 }
 
 export default function useDealFields() {
+  const { setStages } = useDealsKanbanActionsStore()
   const { data, isFetching, isLoading, isSuccess, refetch } = useQuery<
     Response<DealFieldsResponse>,
     Error,
@@ -17,8 +22,13 @@ export default function useDealFields() {
   >({
     queryFn: ({ signal }) => queryRequest('deals/table-fields', {}, undefined, 'GET', { signal }),
     queryKey: ['deals', 'table-fields'],
-    select: processedFields
+    select: processedFields,
+    staleTime: 5 * 60 * 1000
   })
+
+  useEffect(() => {
+    if (data?.stages?.length) setStages(data.stages)
+  }, [data?.stages, setStages])
 
   return {
     fields: data?.fields || [],
@@ -27,6 +37,7 @@ export default function useDealFields() {
     isFieldsLoading: isLoading,
     orders: data?.orders || [],
     refetchFields: refetch,
+    stages: data?.stages || [],
     totalFetchedFields: data?.fields?.length || 0,
     visibleColumns: data?.visible_columns || []
   }
@@ -36,11 +47,12 @@ function processedFields(res: { data: DealFieldsResponse }) {
   const fields: FieldItem[] = res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
   const orders = res?.data?.orders
   const visibleColumns = res?.data?.visible_columns || ['name', 'amount', 'probability', 'stage']
+  const stages = res?.data?.stages || []
 
   const mergedFields = addVisibilityFlag(fields, visibleColumns)
 
   if (!orders?.length) {
-    return { fields: mergedFields, orders: [], visible_columns: visibleColumns }
+    return { fields: mergedFields, orders: [], stages, visible_columns: visibleColumns }
   }
 
   const fieldsNotInOrders = mergedFields.filter(
@@ -55,6 +67,7 @@ function processedFields(res: { data: DealFieldsResponse }) {
   return {
     fields: [...sortedFields, ...fieldsNotInOrders],
     orders: sortedOrder,
+    stages,
     visible_columns: visibleColumns
   }
 }

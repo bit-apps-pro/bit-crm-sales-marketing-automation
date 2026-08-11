@@ -1,3 +1,4 @@
+import { drawerPlacement } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import { type FieldOptionsType } from '@features/notes/shared/note-types'
 import QuillEditor from '@features/quill-editor'
@@ -115,6 +116,7 @@ export default function EmailComposeDrawer({
       }
       onClose={handleClose}
       open={isComposeOpen}
+      placement={drawerPlacement}
       title={__('Compose Email')}
       width={720}
     >

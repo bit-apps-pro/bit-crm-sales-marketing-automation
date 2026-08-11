@@ -2,6 +2,7 @@ import { CaretRightOutlined, LoadingOutlined } from '@ant-design/icons'
 import CAPABILITIES from '@common/constants/capabilities'
 import { MODULES } from '@common/constants/modules'
 import { checkCapability } from '@common/helpers/capabilityHelper'
+import { isRtl } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import Timeline from '@features/timeline'
 import Breadcrumb from '@utilities/breadcrumb/breadcrumb'
@@ -77,7 +78,13 @@ export default function Invoice() {
               bordered={false}
               className="bg-white dark:bg-neutral-900"
               defaultActiveKey={['timeline']}
-              expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+              expandIcon={({ isActive }) =>
+                isRtl() ? (
+                  <CaretRightOutlined rotate={isActive ? -90 : 0} />
+                ) : (
+                  <CaretRightOutlined rotate={isActive ? 90 : 0} />
+                )
+              }
               items={[
                 {
                   children: <Timeline entityId={numericId} module={MODULES.INVOICE} />,

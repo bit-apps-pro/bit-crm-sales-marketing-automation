@@ -42,7 +42,7 @@ export default function InvoiceStats({ invoiceStatusOverview }: InvoiceStatsProp
                 showInfo={false}
                 strokeColor="#6E62E5"
               />
-              <Typography.Text className="col-span-1 text-right text-sm">{item.total}</Typography.Text>
+              <Typography.Text className="col-span-1 text-end text-sm">{item.total}</Typography.Text>
             </div>
           ))}
         </div>

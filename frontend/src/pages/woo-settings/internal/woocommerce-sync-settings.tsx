@@ -101,9 +101,9 @@ export default function WoocommerceSyncSettings({ settingKey }: Props) {
             {__('WooCommerce Sync')}
           </Title>
           <If conditions={isSaving}>
-            <div className="ml-2 flex items-center">
+            <div className="ms-2 flex items-center">
               <LuLoader />
-              <Text className="ml-2 text-xs" type="secondary">
+              <Text className="ms-2 text-xs" type="secondary">
                 {__('Saving...')}
               </Text>
             </div>

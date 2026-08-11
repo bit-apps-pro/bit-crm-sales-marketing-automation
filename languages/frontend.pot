@@ -1,0 +1,5047 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"POT-Creation-Date: Tue Aug 11 2026 16:09:12 GMT+0600 (Bangladesh Standard "
+"Time)\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: frontend/src/common/constants/field-types.ts:5
+#: frontend/src/pages/product-settings/product-settings.tsx:6
+#: frontend/src/pages/product-settings/product-settings.tsx:7
+msgid "Text"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:9
+msgid "Text Multi-Line"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:13
+#: frontend/src/pages/product-settings/product-settings.tsx:11
+#: frontend/src/pages/product-settings/product-settings.tsx:12
+#: frontend/src/pages/product-settings/product-settings.tsx:13
+msgid "Number"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:17
+msgid "Select"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:21
+msgid "Multi Select"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:25
+msgid "Radio"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:29
+msgid "Checkbox"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:33
+#: frontend/src/components/features/attachments/ui/attachment-table.tsx:103
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:28
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:83
+#: frontend/src/components/features/links/ui/link-table.tsx:70
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:34
+msgid "Date"
+msgstr ""
+
+#: frontend/src/common/constants/field-types.ts:37
+msgid "Section (Divider)"
+msgstr ""
+
+#: frontend/src/common/constants/invoice-status.ts:14
+#: frontend/src/pages/invoices/shared/status-config.ts:5
+msgid "Draft"
+msgstr ""
+
+#: frontend/src/common/constants/invoice-status.ts:15
+#: frontend/src/pages/invoices/shared/status-config.ts:9
+msgid "Sent"
+msgstr ""
+
+#: frontend/src/common/constants/invoice-status.ts:16
+#: frontend/src/pages/invoices/shared/status-config.ts:7
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:12
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-summary.tsx:16
+msgid "Paid"
+msgstr ""
+
+#: frontend/src/common/constants/invoice-status.ts:17
+#: frontend/src/pages/invoices/shared/status-config.ts:8
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:13
+msgid "Partially Paid"
+msgstr ""
+
+#: frontend/src/common/constants/invoice-status.ts:18
+#: frontend/src/pages/invoices/shared/status-config.ts:6
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:11
+msgid "Overdue"
+msgstr ""
+
+#: frontend/src/common/constants/modules.ts:24
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:65
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:18
+msgid "Lead"
+msgstr ""
+
+#: frontend/src/common/constants/modules.ts:25
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:9
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:15
+#: frontend/src/pages/deals/shared/constants.ts:27
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:89
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:21
+#: frontend/src/pages/lead/ui/conversion-form.tsx:12
+msgid "Contact"
+msgstr ""
+
+#: frontend/src/common/constants/modules.ts:26
+#: frontend/src/pages/contacts/shared/constants.ts:20
+#: frontend/src/pages/deals/shared/constants.ts:20
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:113
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:24
+#: frontend/src/pages/lead/ui/conversion-form.tsx:13
+msgid "Company"
+msgstr ""
+
+#: frontend/src/common/constants/modules.ts:27
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:10
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:134
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:137
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:27
+#: frontend/src/pages/lead/ui/conversion-form.tsx:16
+msgid "Deal"
+msgstr ""
+
+#: frontend/src/common/constants/modules.ts:28
+msgid "Product"
+msgstr ""
+
+#: frontend/src/common/constants/modules.ts:29
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:11
+#: frontend/src/pages/dashboard/ui/invoice-stats.tsx:18
+msgid "Invoice"
+msgstr ""
+
+#: frontend/src/common/helpers/generate-lookup-fields-options.ts:40
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/shared/helpers.ts:35
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:84
+msgid "System Defined Fields"
+msgstr ""
+
+#: frontend/src/common/helpers/generate-lookup-fields-options.ts:69
+#: frontend/src/components/features/form-builder/ui/add-new-field-modal/add-new-field-modal.tsx:26
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/shared/helpers.ts:45
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:96
+msgid "Custom Fields"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/data/use-delete-activity.ts:23
+msgid "Item deleted successfully."
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/data/use-status-update-activity.ts:28
+msgid "Status updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/shared/activity-constants.ts:10
+msgid "Low"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/shared/activity-constants.ts:11
+msgid "Medium"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/shared/activity-constants.ts:12
+msgid "High"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/shared/activity-constants.ts:16
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:203
+msgid "All"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/shared/activity-constants.ts:17
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:108
+#: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:11
+msgid "Pending"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/shared/activity-constants.ts:18
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:108
+#: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:9
+msgid "Completed"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:12
+msgid "All Calls"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:13
+msgid "All Meetings"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:14
+msgid "All Tasks"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:19
+msgid "Calls will appear here once they are added."
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:20
+msgid "No calls yet"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:23
+msgid "Meetings will appear here once they are added."
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:24
+msgid "No meetings yet"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:27
+msgid "Tasks will appear here once they are added."
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activities.tsx:28
+msgid "No tasks yet"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-actions.tsx:29
+msgid "Mark as incomplete"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-actions.tsx:29
+msgid "Mark as completed"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-actions.tsx:35
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:53
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:49
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:64
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:41
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:140
+#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:48
+#: frontend/src/pages/Invoice/ui/invoice-actions.tsx:45
+msgid "Edit"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-actions.tsx:41
+#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:52
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:62
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:98
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:56
+#: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:52
+#: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:63
+#: frontend/src/components/utilities/ContextMenu/ContextMenuStory.tsx:46
+#: frontend/src/components/utilities/ContextMenu/ContextMenuStory.tsx:57
+#: frontend/src/components/utilities/DropDown/DropDown.stories.tsx:20
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/company-bulk-operations-dropdown.tsx:47
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-company-popup.tsx:19
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-modal.tsx:31
+#: frontend/src/pages/company/ui/actions.tsx:24
+#: frontend/src/pages/company/ui/delete-modal.tsx:35
+#: frontend/src/pages/contact/ui/actions.tsx:29
+#: frontend/src/pages/contact/ui/delete-modal.tsx:35
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/contact-bulk-operations.tsx:48
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/delete-modal.tsx:30
+#: frontend/src/pages/contacts/ui/delete-contact-popup.tsx:19
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:30
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:48
+#: frontend/src/pages/deal/ui/actions.tsx:24
+#: frontend/src/pages/deal/ui/delete-modal.tsx:36
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/deal-bulk-operations-dropdown.tsx:48
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-deal-popup.tsx:19
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-modal.tsx:38
+#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:63
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:52
+#: frontend/src/pages/Invoice/ui/invoice-actions.tsx:66
+#: frontend/src/pages/invoices/shared/invoice-bulk-operations/ui/trash-modal.tsx:39
+#: frontend/src/pages/invoices/ui/delete-invoice-popup.tsx:22
+#: frontend/src/pages/lead/ui/actions.tsx:35
+#: frontend/src/pages/lead/ui/delete-modal.tsx:35
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/delete-modal.tsx:30
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/lead-bulk-operations.tsx:60
+#: frontend/src/pages/leads/ui/delete-lead-popup.tsx:19
+#: frontend/src/pages/tags/internal/tag-bulk-operations/ui/trash-modal.tsx:32
+msgid "Delete"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:59
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:107
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-company-popup.tsx:25
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-modal.tsx:38
+#: frontend/src/pages/company/ui/delete-modal.tsx:42
+#: frontend/src/pages/contact/ui/delete-modal.tsx:42
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/delete-modal.tsx:37
+#: frontend/src/pages/contacts/ui/delete-contact-popup.tsx:25
+#: frontend/src/pages/deal/ui/delete-modal.tsx:43
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-deal-popup.tsx:25
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-modal.tsx:45
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:60
+#: frontend/src/pages/invoices/shared/invoice-bulk-operations/ui/trash-modal.tsx:46
+#: frontend/src/pages/invoices/ui/delete-invoice-popup.tsx:28
+#: frontend/src/pages/lead/ui/delete-modal.tsx:42
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/delete-modal.tsx:37
+#: frontend/src/pages/leads/ui/delete-lead-popup.tsx:25
+#: frontend/src/pages/tags/internal/tag-bulk-operations/ui/trash-modal.tsx:39
+#: frontend/src/pages/tags/ui/tags-table.tsx:124
+msgid "Confirm Deletion"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:64
+msgid "Are you sure you want to delete this?"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:12
+#: frontend/src/components/features/calls/ui/call-form.tsx:61
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:61
+#: frontend/src/components/features/tasks/ui/task-form.tsx:50
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:29
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:66
+#: frontend/src/pages/tags/internal/tag-form.tsx:31
+#: frontend/src/pages/tags/ui/tags-table.tsx:92
+#: frontend/src/pages/workflows/workflows.tsx:8
+msgid "Module"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:14
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:22
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:24
+#: frontend/src/pages/data-management/internal/imports/imports.tsx:55
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:136
+msgid "Filter by module"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:16
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:9
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:98
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:124
+#: frontend/src/pages/product-settings/product-settings.tsx:14
+#: frontend/src/pages/products/products.tsx:10
+#: frontend/src/pages/workflows/workflows.tsx:11
+msgid "Status"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:16
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:11
+msgid "Filter by status"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:17
+msgid "Assigned to"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:17
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:16
+msgid "Filter by user"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:23
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:23
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:91
+#: frontend/src/components/features/tasks/ui/task-form.tsx:108
+msgid "Priority"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:25
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:25
+msgid "Filter by priority"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:15
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:65
+#: frontend/src/components/features/calls/ui/call-form.tsx:106
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:106
+#: frontend/src/components/features/tasks/ui/task-form.tsx:95
+msgid "Assigned To"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note-create-modal.tsx:64
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:119
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:105
+#: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:61
+#: frontend/src/components/utilities/ContextMenu/ContextMenuStory.tsx:55
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:58
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:110
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:49
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:51
+msgid "Cancel"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note-create-modal.tsx:72
+#: frontend/src/components/features/calls/ui/call-create-modal.tsx:82
+#: frontend/src/components/features/entity-emails/ui/empty-imap-select.tsx:16
+#: frontend/src/components/features/entity-quick-create/entity-quick-create-modal.tsx:56
+#: frontend/src/components/features/links/ui/link-create-modal.tsx:53
+#: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:81
+#: frontend/src/components/features/notes/ui/note-create-modal.tsx:71
+#: frontend/src/components/features/tasks/ui/task-create-modal.tsx:91
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:47
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:94
+#: frontend/src/pages/company-create/company-create.tsx:138
+#: frontend/src/pages/contact-create/contact-create.tsx:151
+#: frontend/src/pages/deal-create/deal-create.tsx:222
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:54
+#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:58
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-create-modal.tsx:55
+#: frontend/src/pages/lead-create/lead-create.tsx:139
+#: frontend/src/pages/tags/ui/tag-create-modal.tsx:76
+msgid "Create"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note-create-modal.tsx:82
+#: frontend/src/components/features/notes/ui/note-create-modal.tsx:83
+msgid "Create Note"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note-form.tsx:32
+msgid "Note is required"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:95
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:28
+#: frontend/src/components/features/links/ui/link-table.tsx:86
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:50
+#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:28
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:97
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-company-popup.tsx:16
+#: frontend/src/pages/contacts/ui/delete-contact-popup.tsx:16
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:61
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:61
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:90
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:102
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:70
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:118
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-deal-popup.tsx:16
+#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:57
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:116
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:49
+#: frontend/src/pages/invoices/ui/delete-invoice-popup.tsx:19
+#: frontend/src/pages/leads/ui/delete-lead-popup.tsx:16
+#: frontend/src/pages/tags/ui/tags-table.tsx:113
+msgid "No"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:96
+msgid "Are you sure you want to delete this note?"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:127
+#: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:65
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:42
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:42
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:36
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:107
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:275
+msgid "Save"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-note.tsx:139
+msgid "Edit Note"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:39
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:44
+msgid "Select an activity"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:42
+msgid "Choose an activity from the list to view its notes."
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:56
+#: frontend/src/components/features/notes/notes.tsx:91
+#: frontend/src/pages/company/company.tsx:150
+#: frontend/src/pages/contact/contact.tsx:164
+#: frontend/src/pages/deal/deal.tsx:157
+#: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:36
+#: frontend/src/pages/lead/lead.tsx:158
+#: frontend/src/pages/lead/ui/conversion-form.tsx:63
+msgid "Notes"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:66
+msgid "Add Note"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:47
+msgid "Choose an activity from the list to view its details and attachments."
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:71
+msgid "Client Portal"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:74
+#: frontend/src/pages/imap-settings/ui/imap-item.tsx:29
+msgid "Shared"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:74
+msgid "Not shared"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:81
+#: frontend/src/components/features/calls/ui/call-form.tsx:93
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:93
+#: frontend/src/components/features/tasks/ui/task-form.tsx:82
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:82
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:180
+msgid "Due Date"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:136
+msgid "Attachements"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/advanced-filter.tsx:60
+msgid "Advanced Filter"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/advanced-filter.tsx:77
+#: frontend/src/components/utilities/filter-button.tsx:20
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:52
+msgid "Advanced Filters"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:138
+msgid "Add Filter"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:142
+msgid "OR"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:151
+msgid "Add OR Group"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:159
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:123
+msgid "Clear All"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:162
+msgid "Apply Filters"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:21
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:53
+msgid "Is"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:22
+msgid "Is after"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:23
+msgid "Is before"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:24
+msgid "Is on or after"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:25
+msgid "Is on or before"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:26
+msgid "Is between"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:27
+msgid "Is not between"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:28
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:34
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:40
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:49
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:55
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:63
+msgid "Is empty"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:29
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:35
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:41
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:50
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:56
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:64
+msgid "Is not empty"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:32
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:38
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:59
+msgid "Contains"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:33
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:44
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:60
+msgid "Equals"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:39
+msgid "Does not contain"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:45
+msgid "Greater than"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:46
+msgid "Less than"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:47
+msgid "Greater than or equal"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:48
+msgid "Less than or equal"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:54
+msgid "Is not"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:61
+msgid "Starts with"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/shared/constants.ts:62
+msgid "Ends with"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-condition-input.tsx:25
+msgid "Select condition"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-select-input.tsx:41
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:87
+msgid "Select field"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:60
+msgid "Start date"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:60
+msgid "End date"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:72
+msgid "Select date"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:104
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:43
+msgid "Select options"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:116
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:141
+msgid "Enter value"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:130
+msgid "Select option"
+msgstr ""
+
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:161
+#: frontend/src/components/utilities/input-select-option/input-select-option.tsx:47
+msgid "Value"
+msgstr ""
+
+#: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:77
+msgid "Add Products to Deal"
+msgstr ""
+
+#: frontend/src/components/features/attachment-gallery/ui/attachment-gallery-file.tsx:20
+#: frontend/src/components/features/attachment-gallery/ui/attachment-gallery-image.tsx:39
+#: frontend/src/pages/Invoice/ui/invoice-actions.tsx:52
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-header.tsx:22
+msgid "Download"
+msgstr ""
+
+#: frontend/src/components/features/attachment-gallery/ui/attachment-gallery-image.tsx:45
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:8
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:10
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:11
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:61
+msgid "View"
+msgstr ""
+
+#: frontend/src/components/features/attachments/attachments.tsx:46
+#: frontend/src/pages/company/company.tsx:142
+#: frontend/src/pages/contact/contact.tsx:156
+#: frontend/src/pages/deal/deal.tsx:151
+#: frontend/src/pages/lead/lead.tsx:152
+#: frontend/src/pages/lead/ui/conversion-form.tsx:62
+msgid "Attachments"
+msgstr ""
+
+#: frontend/src/components/features/attachments/attachments.tsx:55
+#: frontend/src/components/features/calls/calls.tsx:83
+#: frontend/src/components/features/links/links.tsx:102
+#: frontend/src/components/features/meetings/meetings.tsx:83
+#: frontend/src/components/features/notes/notes.tsx:100
+#: frontend/src/components/features/related-entities/related-entities.tsx:93
+#: frontend/src/components/features/tasks/tasks.tsx:84
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:24
+#: frontend/src/pages/deal/internal/deal-invoices/deal-invoices.tsx:55
+#: frontend/src/pages/imap-settings/imap-settings.tsx:43
+msgid "New"
+msgstr ""
+
+#: frontend/src/components/features/attachments/attachments.tsx:63
+msgid "Search by file name"
+msgstr ""
+
+#: frontend/src/components/features/attachments/data/use-delete-attachment.ts:22
+msgid "Attachment deleted successfully"
+msgstr ""
+
+#: frontend/src/components/features/attachments/data/use-save-attachments.ts:31
+msgid "Attachment(s) created successfully"
+msgstr ""
+
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:29
+#: frontend/src/components/features/links/ui/link-table.tsx:87
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:51
+#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:33
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:99
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:63
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:63
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:92
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:104
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:78
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:126
+#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:58
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:115
+msgid "Yes"
+msgstr ""
+
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:31
+#: frontend/src/components/features/links/ui/link-table.tsx:89
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:53
+msgid "Are you sure to delete this?"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-create-modal.tsx:32
+msgid "Please select at least one file"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-create-modal.tsx:62
+msgid "Upload"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-create-modal.tsx:74
+msgid "Upload Attachments"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-table.tsx:76
+msgid "Preview image"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-table.tsx:92
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:24
+msgid "File"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-table.tsx:98
+msgid "Uploaded By"
+msgstr ""
+
+#: frontend/src/components/features/attachments/ui/attachment-table.tsx:108
+#: frontend/src/components/features/links/ui/link-table.tsx:96
+#: frontend/src/components/features/related-entities/ui/related-entities-table.tsx:196
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:10
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:11
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:61
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:107
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:120
+#: frontend/src/pages/companies/ui/companies-table.tsx:136
+#: frontend/src/pages/contacts/ui/contacts-columns.tsx:106
+#: frontend/src/pages/contacts/ui/contacts-table.tsx:140
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:76
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:114
+#: frontend/src/pages/deals/ui/deals-table.tsx:152
+#: frontend/src/pages/Invoice/ui/invoice-actions.tsx:92
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:224
+#: frontend/src/pages/leads/ui/leads-columns.tsx:125
+#: frontend/src/pages/leads/ui/leads-table.tsx:134
+#: frontend/src/pages/products/products.tsx:11
+#: frontend/src/pages/tags/ui/tags-table.tsx:133
+#: frontend/src/pages/workflows/workflows.tsx:12
+msgid "Actions"
+msgstr ""
+
+#: frontend/src/components/features/calls/calls.tsx:74
+#: frontend/src/pages/calls/calls-page.tsx:54
+#: frontend/src/pages/company/company.tsx:136
+#: frontend/src/pages/contact/contact.tsx:150
+#: frontend/src/pages/deal/deal.tsx:145
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:15
+#: frontend/src/pages/lead/lead.tsx:146
+msgid "Calls"
+msgstr ""
+
+#: frontend/src/components/features/calls/data/use-save-call.ts:35
+msgid "Call created successfully"
+msgstr ""
+
+#: frontend/src/components/features/calls/data/use-update-call.ts:36
+msgid "Call updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-create-modal.tsx:94
+msgid "Create Call"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-edit-modal.tsx:82
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:62
+#: frontend/src/components/features/links/ui/link-edit-modal.tsx:71
+#: frontend/src/components/features/meetings/ui/meeting-edit-modal.tsx:82
+#: frontend/src/components/features/notes/ui/note-edit-modal.tsx:85
+#: frontend/src/components/features/tasks/ui/task-edit-modal.tsx:84
+#: frontend/src/pages/company/internal/company-overview/company-overview.tsx:92
+#: frontend/src/pages/contact/internal/contact-overview/contact-overview.tsx:91
+#: frontend/src/pages/currencies/ui/home-currency-edit-modal.tsx:74
+#: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:182
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-modal.tsx:93
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:67
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:147
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-edit-modal.tsx:68
+#: frontend/src/pages/lead/internal/lead-overview/lead-overview.tsx:91
+#: frontend/src/pages/tags/ui/tag-edit-modal.tsx:75
+msgid "Update"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-edit-modal.tsx:94
+msgid "Update Call"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:63
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:63
+#: frontend/src/components/features/tasks/ui/task-form.tsx:52
+msgid "Please select module!"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:69
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:69
+#: frontend/src/components/features/tasks/ui/task-form.tsx:58
+msgid "Entity"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:71
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:71
+#: frontend/src/components/features/tasks/ui/task-form.tsx:60
+msgid "Please select entity!"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:81
+#: frontend/src/components/features/calls/ui/call-form.tsx:119
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:133
+#: frontend/src/components/features/links/ui/link-form.tsx:23
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:81
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:119
+#: frontend/src/components/features/notes/ui/note-form.tsx:65
+#: frontend/src/components/features/notes/ui/note-form.tsx:73
+#: frontend/src/components/features/tasks/ui/task-form.tsx:70
+#: frontend/src/components/features/tasks/ui/task-form.tsx:115
+msgid "Type # to access record field values."
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:82
+#: frontend/src/components/features/links/ui/link-form.tsx:16
+#: frontend/src/components/features/links/ui/link-table.tsx:39
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:82
+#: frontend/src/components/features/notes/ui/note-form.tsx:66
+#: frontend/src/components/features/tasks/ui/task-form.tsx:71
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:10
+#: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:58
+#: frontend/src/pages/tags/internal/tag-form.tsx:19
+#: frontend/src/pages/tags/ui/tags-table.tsx:84
+msgid "Title"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:84
+#: frontend/src/components/features/links/ui/link-form.tsx:18
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:84
+#: frontend/src/components/features/notes/ui/note-form.tsx:68
+#: frontend/src/components/features/tasks/ui/task-form.tsx:73
+msgid "Please input title!"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:87
+#: frontend/src/components/features/calls/ui/call-form.tsx:89
+#: frontend/src/components/features/links/ui/link-form.tsx:20
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:87
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:89
+#: frontend/src/components/features/notes/ui/note-form.tsx:70
+#: frontend/src/components/features/tasks/ui/task-form.tsx:76
+#: frontend/src/components/features/tasks/ui/task-form.tsx:78
+msgid "Input title"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:95
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:95
+#: frontend/src/components/features/tasks/ui/task-form.tsx:84
+msgid "Please select due date!"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:101
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:101
+#: frontend/src/components/features/tasks/ui/task-form.tsx:90
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:41
+msgid "Select date and time"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:109
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:109
+#: frontend/src/components/features/tasks/ui/task-form.tsx:98
+msgid "Please select assigned to!"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:120
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:120
+#: frontend/src/components/features/notes/ui/note-form.tsx:74
+#: frontend/src/components/features/tasks/ui/task-form.tsx:116
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
+msgid "Details"
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:128
+#: frontend/src/components/features/calls/ui/call-form.tsx:132
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:128
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:132
+#: frontend/src/components/features/tasks/ui/task-form.tsx:124
+#: frontend/src/components/features/tasks/ui/task-form.tsx:128
+msgid "Details..."
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:140
+msgid "Contact will have access to this call."
+msgstr ""
+
+#: frontend/src/components/features/calls/ui/call-form.tsx:141
+msgid "Only you and your team can see this call."
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:60
+msgid "Deal Field Overrides"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:65
+msgid "Type # to access Lead field values."
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:66
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:15
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:98
+msgid "Deal Name"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:68
+msgid "Deal name is required"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:72
+msgid "Enter deal name"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:97
+msgid "Value is required"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:104
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:13
+msgid "Select a field first"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:124
+msgid "Add Field Override"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:63
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:219
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:218
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:224
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:222
+msgid "Select an option"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-override-note.tsx:6
+msgid "Notes:"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-override-note.tsx:8
+msgid "Deals will be created with the first active stage"
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-override-note.tsx:9
+msgid ""
+"If the selected stage is not present, the first active stage will be "
+"assigned."
+msgstr ""
+
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-override-note.tsx:11
+msgid ""
+"For fields that are not selected here, the value will be applied based on "
+"lead conversion mapping."
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:32
+msgid "Quantity:"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:36
+msgid "Discount:"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:43
+msgid "Tax:"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:49
+msgid "Total Price:"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-summary.tsx:22
+msgid "Total Quantity"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-summary.tsx:28
+msgid "Subtotal"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list-summary.tsx:34
+msgid "Grand Total"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list.tsx:72
+msgid "Customize"
+msgstr ""
+
+#: frontend/src/components/features/deal-product-list/deal-product-list.tsx:72
+#: frontend/src/pages/deal-create/ui/amount-field-with-toggle.tsx:45
+msgid "Add Products"
+msgstr ""
+
+#: frontend/src/components/features/download-sample/download-sample.tsx:22
+msgid "Download Sample CSV"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/data/use-send-email.ts:44
+msgid "Email sent successfully"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:187
+msgid "Unable to display emails. No email found for this entity!"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:202
+msgid "Sent via CRM"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:205
+msgid "Filter Emails"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:218
+msgid "Select an Imap Account"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:235
+msgid "Sync Imap Emails"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:242
+msgid "Imap Syncing..."
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:247
+#: frontend/src/pages/contacts/contacts.tsx:147
+#: frontend/src/pages/leads/leads.tsx:132
+msgid "Search by name or email"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:256
+msgid "Compose"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:113
+#: frontend/src/pages/Invoice/invoice.tsx:66
+msgid "Send"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:120
+msgid "Compose Email"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:126
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:33
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:73
+msgid "Subject"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:128
+msgid "Please input subject!"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:130
+msgid "Enter email subject"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:134
+msgid "Message"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:136
+msgid "Please input message!"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:143
+msgid "Write your message..."
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:18
+#: frontend/src/pages/invoice-create/ui/business-information.tsx:16
+#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:24
+msgid "From"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:23
+msgid "To"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:77
+msgid "Attachment(s)"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:88
+msgid "Sent By"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/empty-imap-select.tsx:11
+msgid "No active Imap settings found"
+msgstr ""
+
+#: frontend/src/components/features/entity-form/shared/entity-form-helpers.ts:38
+msgid "%s is required"
+msgstr ""
+
+#: frontend/src/components/features/entity-form/shared/entity-form-helpers.ts:47
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: frontend/src/components/features/entity-form/shared/entity-form-helpers.ts:54
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: frontend/src/components/features/entity-form/ui/entity-input.tsx:118
+msgid "Enter number"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-audit-stamp.tsx:25
+msgid "by"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:38
+#: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:54
+#: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:72
+#: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:90
+msgid "Not set"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:63
+msgid "SKU"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:81
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:73
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:62
+msgid "Price"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-summary-meta.tsx:21
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:77
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:64
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:44
+msgid "Created"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-summary-meta.tsx:28
+msgid "Last Updated"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-tags.tsx:35
+msgid "Create Tag:"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-tags.tsx:43
+msgid "Attach tags"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-upcoming-activities.tsx:35
+msgid "Upcoming Activities"
+msgstr ""
+
+#: frontend/src/components/features/entity-overview/ui/entity-upcoming-activities.tsx:41
+msgid "No upcoming activities"
+msgstr ""
+
+#: frontend/src/components/features/entity-quick-create/entity-quick-create-modal.tsx:70
+msgid "Create %s"
+msgstr ""
+
+#: frontend/src/components/features/field-settings/data/use-upsert-column-settings.ts:28
+msgid "Column settings updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/field-settings/field-settings.tsx:92
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entity-settings-alert.tsx:22
+msgid "Fields"
+msgstr ""
+
+#: frontend/src/components/features/field-settings/field-settings.tsx:107
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entity-settings-alert.tsx:30
+msgid "Single Column"
+msgstr ""
+
+#: frontend/src/components/features/field-settings/field-settings.tsx:113
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entity-settings-alert.tsx:36
+msgid "Two Columns"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/data/use-update-field-settings.ts:35
+msgid "Could not update field setting"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:84
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:38
+msgid "Required"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:94
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:53
+msgid "Disabled"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:108
+msgid "Select Width"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/shared/constants.ts:7
+msgid "Half Width"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/shared/constants.ts:8
+msgid "Full Width"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/add-new-field-modal/add-new-field-modal.tsx:17
+#: frontend/src/components/features/form-builder/ui/add-new-field-modal/add-new-field-modal.tsx:24
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entity-settings-alert.tsx:24
+msgid "Add new custom field"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:32
+msgid "Add at least one option"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:51
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:66
+msgid "Edit field"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:66
+msgid "Edit Field"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:78
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:23
+#: frontend/src/components/utilities/input-select-option/input-select-option.tsx:38
+msgid "Label"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:81
+msgid "Label is required"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:79
+msgid "Edit Fields Group"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/field-renderer.tsx:20
+msgid "group"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/field-renderer.tsx:26
+msgid "custom"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/field-renderer.tsx:38
+msgid "section"
+msgstr ""
+
+#: frontend/src/components/features/links/data/use-save-link.ts:36
+msgid "Link created successfully"
+msgstr ""
+
+#: frontend/src/components/features/links/data/use-update-link.ts:36
+msgid "Link updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/links/links.tsx:93
+#: frontend/src/pages/company/company.tsx:158
+#: frontend/src/pages/contact/contact.tsx:172
+#: frontend/src/pages/deal/deal.tsx:163
+#: frontend/src/pages/lead/lead.tsx:164
+#: frontend/src/pages/lead/ui/conversion-form.tsx:64
+msgid "Links"
+msgstr ""
+
+#: frontend/src/components/features/links/shared/constants.ts:11
+#: frontend/src/components/features/notes/shared/constants.ts:13
+msgid "Recent First"
+msgstr ""
+
+#: frontend/src/components/features/links/shared/constants.ts:15
+#: frontend/src/components/features/notes/shared/constants.ts:17
+msgid "Recent Last"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-create-modal.tsx:65
+msgid "Create Link"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-edit-modal.tsx:83
+msgid "Update Link"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-form.tsx:24
+#: frontend/src/components/features/links/ui/link-table.tsx:59
+msgid "Link"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-form.tsx:26
+msgid "Please input link!"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-form.tsx:28
+msgid "Input link"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-form.tsx:30
+#: frontend/src/components/features/links/ui/link-table.tsx:44
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:50
+#: frontend/src/pages/product-settings/product-settings.tsx:10
+msgid "Description"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-form.tsx:31
+msgid "Input description"
+msgstr ""
+
+#: frontend/src/components/features/links/ui/link-table.tsx:65
+#: frontend/src/components/features/notes/internal/note-list-action-created-by.tsx:7
+msgid "Created By"
+msgstr ""
+
+#: frontend/src/components/features/lookup-field-select/lookup-field-select.tsx:105
+#: frontend/src/components/features/product-lookup-select/product-lookup-select.tsx:107
+msgid "Search and select"
+msgstr ""
+
+#: frontend/src/components/features/lookup-field-select/lookup-field-select.tsx:120
+msgid "Refreshing..."
+msgstr ""
+
+#: frontend/src/components/features/lookup-field-select/lookup-field-select.tsx:120
+msgid "Refresh"
+msgstr ""
+
+#: frontend/src/components/features/lookup-field-select/ui/add-new-button.tsx:29
+#: frontend/src/pages/deals/internal/deals-kanban/ui/kanban-column-footer.tsx:23
+msgid "Add New"
+msgstr ""
+
+#: frontend/src/components/features/lookup-field-select/ui/lookup-field-navigation.tsx:31
+msgid "View details"
+msgstr ""
+
+#: frontend/src/components/features/meetings/data/use-save-meeting.ts:36
+msgid "Meeting created successfully"
+msgstr ""
+
+#: frontend/src/components/features/meetings/data/use-update-meeting.ts:36
+msgid "Meeting updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/meetings/meetings.tsx:74
+#: frontend/src/pages/company/company.tsx:128
+#: frontend/src/pages/contact/contact.tsx:142
+#: frontend/src/pages/deal/deal.tsx:139
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:14
+#: frontend/src/pages/lead/lead.tsx:140
+#: frontend/src/pages/meetings/meetings-page.tsx:54
+msgid "Meetings"
+msgstr ""
+
+#: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:93
+msgid "Create Meeting"
+msgstr ""
+
+#: frontend/src/components/features/meetings/ui/meeting-edit-modal.tsx:94
+msgid "Update Meeting"
+msgstr ""
+
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:140
+msgid "Contact will have access to this meeting."
+msgstr ""
+
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:141
+msgid "Only you and your team can see this meeting."
+msgstr ""
+
+#: frontend/src/components/features/module-filter/module-filter.tsx:69
+msgid "Filter With Modules"
+msgstr ""
+
+#: frontend/src/components/features/notes/data/use-save-note.ts:68
+msgid "Note created successfully"
+msgstr ""
+
+#: frontend/src/components/features/notes/data/use-update-note.ts:74
+msgid "Note updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/notes/internal/note-list-action-date.tsx:7
+msgid "Creation Date"
+msgstr ""
+
+#: frontend/src/components/features/notes/ui/note-edit-modal.tsx:97
+msgid "Update Note"
+msgstr ""
+
+#: frontend/src/components/features/notes/ui/note-form.tsx:93
+msgid "Contact will have access to this note."
+msgstr ""
+
+#: frontend/src/components/features/notes/ui/note-form.tsx:94
+msgid "Only you and your team can see this note."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/data/use-install-plugin.ts:16
+msgid "Failed to install plugin"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/data/use-install-plugin.ts:19
+msgid "Plugin activated successfully"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/plugin-activation-guard.tsx:54
+msgid ""
+"You do not have permission to install plugins. Please contact the "
+"administrator to install the plugin."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:11
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:26
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:43
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:58
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:98
+msgid "Activate"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:12
+msgid ""
+"Bit Form plugin is installed but not activated. Please activate it to "
+"continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:13
+msgid "Bit Form Plugin Not Activated"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:16
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:33
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:48
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:63
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:98
+msgid "Install and Activate"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:17
+msgid ""
+"Bit Form plugin is required for this integration. Please install and "
+"activate it to continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:20
+msgid "Bit Form Plugin Not Installed"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:27
+msgid ""
+"Bit Integration plugin is installed but not activated. Please activate it "
+"to continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:30
+msgid "Bit Integration Plugin Not Activated"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:34
+msgid ""
+"Bit Integration plugin is required for this integration. Please install and "
+"activate it to continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:37
+msgid "Bit Integration Plugin Not Installed"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:44
+msgid ""
+"Bit Flows plugin is installed but not activated. Please activate it to "
+"continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:45
+msgid "Bit Flows Plugin Not Activated"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:49
+msgid ""
+"Bit Flows plugin is required for this integration. Please install and "
+"activate it to continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:52
+msgid "Bit Flows Plugin Not Installed"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:59
+msgid ""
+"Bit SMTP plugin is installed but not activated. Please activate it to "
+"continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:60
+msgid "Bit SMTP Plugin Not Activated"
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:64
+msgid ""
+"Bit SMTP plugin is required to configure SMTP settings. Please install and "
+"activate it to continue."
+msgstr ""
+
+#: frontend/src/components/features/plugin-activation-guard/shared/constants.ts:67
+msgid "Bit SMTP Plugin Not Installed"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:98
+msgid "Tax Calculation:"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:120
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:144
+msgid "Add Line Item"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:128
+msgid "Products:"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:132
+msgid "Total product quantity:"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:142
+msgid "Click \"Add Line Item\" to start adding products"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:18
+#: frontend/src/components/features/product-line-items/shared/options.tsx:21
+msgid "Woo"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:22
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:38
+msgid "Inactive"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:29
+#: frontend/src/components/features/product-line-items/shared/options.tsx:32
+msgid "Local"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:34
+#: frontend/src/components/utilities/module-select/module-select.tsx:16
+msgid "Pro"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:45
+#: frontend/src/components/features/product-line-items/shared/options.tsx:46
+#: frontend/src/pages/imap-settings/ui/imap-item.tsx:26
+msgid "Custom"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:55
+msgid "Tax Exclusive"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:56
+msgid "Tax Inclusive"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/options.tsx:57
+msgid "No Tax"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:57
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:50
+#: frontend/src/pages/product-settings/product-settings.tsx:6
+#: frontend/src/pages/products/products.tsx:6
+msgid "Product Name"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:88
+msgid "Quantity"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:105
+msgid "Discount"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:123
+#: frontend/src/pages/product-settings/product-settings.tsx:13
+msgid "Tax Rate"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:134
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:39
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:99
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-summary.tsx:15
+msgid "Total"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:74
+msgid "%"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:83
+msgid "Subtotal:"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:89
+msgid "Tax"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:89
+msgid "Included"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:89
+msgid "Added"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:96
+msgid "Gross Discount:"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:125
+msgid "Grand Total:"
+msgstr ""
+
+#: frontend/src/components/features/product-lookup-select/product-lookup-select.tsx:89
+msgid "Item name"
+msgstr ""
+
+#: frontend/src/components/features/product-lookup-select/product-lookup-select.tsx:142
+msgid "Source"
+msgstr ""
+
+#: frontend/src/components/features/quill-editor/quill-editor.tsx:46
+msgid "Attach selected file"
+msgstr ""
+
+#: frontend/src/components/features/quill-editor/quill-editor.tsx:49
+#: frontend/src/components/features/wp-media-uploader/wp-media-uploader.tsx:32
+msgid "Select or Upload Files"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/data/use-related-entity-fields.ts:58
+#: frontend/src/pages/contacts/data/use-contact-fields.tsx:39
+#: frontend/src/pages/leads/data/use-lead-fields.tsx:43
+msgid "Full Name"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/related-entities.tsx:119
+msgid "Detach (%s)"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:30
+msgid "Are you sure you want to detach the %s?"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:36
+#: frontend/src/components/features/related-entities/ui/detach-related-entity-modal.tsx:54
+msgid "Confirm Detach"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:38
+msgid "Detach company"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/detach-related-entity-modal.tsx:47
+msgid "Detach"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/detach-related-entity-modal.tsx:60
+msgid "This action will detach the selected %s."
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/related-entities-table-column-settings.tsx:112
+#: frontend/src/pages/companies/ui/companies-table-column-settings.tsx:104
+#: frontend/src/pages/contacts/internal/contacts-table-column-settings.tsx:104
+#: frontend/src/pages/deals/internal/deals-table-column-settings.tsx:101
+msgid "Table column settings"
+msgstr ""
+
+#: frontend/src/components/features/related-entities/ui/related-entities-table-column-settings.tsx:115
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:49
+#: frontend/src/pages/companies/ui/companies-table-column-settings.tsx:111
+#: frontend/src/pages/contacts/internal/contacts-table-column-settings.tsx:111
+#: frontend/src/pages/deals/internal/deals-table-column-settings.tsx:108
+#: frontend/src/pages/leads/internal/leads-table-column-settings.tsx:104
+msgid "Columns"
+msgstr ""
+
+#: frontend/src/components/features/table/table.tsx:62
+msgid "Searching"
+msgstr ""
+
+#: frontend/src/components/features/table/table.tsx:73
+msgid "No Data Found"
+msgstr ""
+
+#: frontend/src/components/features/table/ui/bulk-operations-dropdown/bulk-operations-dropdown.tsx:40
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/company-bulk-operations-dropdown.tsx:58
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/contact-bulk-operations.tsx:59
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/deal-bulk-operations-dropdown.tsx:59
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/lead-bulk-operations.tsx:71
+msgid "Bulk Actions"
+msgstr ""
+
+#: frontend/src/components/features/table/ui/table-column-dropdown.tsx:33
+#: frontend/src/pages/calls/calls-page.tsx:77
+#: frontend/src/pages/meetings/meetings-page.tsx:77
+#: frontend/src/pages/tags/tags.tsx:100
+#: frontend/src/pages/tasks/tasks-page.tsx:78
+msgid "Search"
+msgstr ""
+
+#: frontend/src/components/features/table/ui/table-header-row/table-header-row.tsx:86
+msgid "Open column filter dropdown"
+msgstr ""
+
+#: frontend/src/components/features/tag-filter/tag-filter.tsx:52
+msgid "Filter With Tags"
+msgstr ""
+
+#: frontend/src/components/features/tasks/data/use-save-task.ts:36
+msgid "Task created successfully"
+msgstr ""
+
+#: frontend/src/components/features/tasks/data/use-update-task.ts:36
+msgid "Task updated successfully"
+msgstr ""
+
+#: frontend/src/components/features/tasks/tasks.tsx:75
+#: frontend/src/pages/company/company.tsx:120
+#: frontend/src/pages/contact/contact.tsx:134
+#: frontend/src/pages/deal/deal.tsx:133
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:13
+#: frontend/src/pages/lead/lead.tsx:134
+#: frontend/src/pages/tasks/tasks-page.tsx:55
+msgid "Tasks"
+msgstr ""
+
+#: frontend/src/components/features/tasks/ui/task-create-modal.tsx:103
+msgid "Create Task"
+msgstr ""
+
+#: frontend/src/components/features/tasks/ui/task-edit-modal.tsx:96
+msgid "Update Task"
+msgstr ""
+
+#: frontend/src/components/features/tasks/ui/task-form.tsx:110
+msgid "Please select priority!"
+msgstr ""
+
+#: frontend/src/components/features/tasks/ui/task-form.tsx:112
+msgid "Select priority"
+msgstr ""
+
+#: frontend/src/components/features/wp-media-uploader/wp-media-uploader.tsx:59
+msgid "Add Attachments"
+msgstr ""
+
+#: frontend/src/components/utilities/activity-filter/ui/activity-filter.tsx:97
+msgid "Clear all Filters"
+msgstr ""
+
+#: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:18
+msgid "Component/ContextMenu"
+msgstr ""
+
+#: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:59
+#: frontend/src/components/utilities/ContextMenu/ContextMenuStory.tsx:53
+msgid "Are you sure delete this item?"
+msgstr ""
+
+#: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:77
+#: frontend/src/components/utilities/ContextMenu/ContextMenuStory.tsx:71
+msgid "Right Mouse Click Here"
+msgstr ""
+
+#: frontend/src/components/utilities/DropDown/DropDown.stories.tsx:11
+msgid "Component/DropDown"
+msgstr ""
+
+#: frontend/src/components/utilities/input-min-max/input-min-max.tsx:10
+msgid "Maximum"
+msgstr ""
+
+#: frontend/src/components/utilities/input-min-max/input-min-max.tsx:12
+msgid "Minimum"
+msgstr ""
+
+#: frontend/src/components/utilities/input-min-max/input-min-max.tsx:33
+msgid "Minimum value"
+msgstr ""
+
+#: frontend/src/components/utilities/input-min-max/input-min-max.tsx:52
+msgid "Maximum value"
+msgstr ""
+
+#: frontend/src/components/utilities/input-min-max/shared/helpers.ts:18
+msgid "Cannot exceed maximum"
+msgstr ""
+
+#: frontend/src/components/utilities/input-min-max/shared/helpers.ts:22
+msgid "Cannot be less than minimum"
+msgstr ""
+
+#: frontend/src/components/utilities/input-select-option/input-select-option.tsx:28
+msgid "Field value options"
+msgstr ""
+
+#: frontend/src/components/utilities/input-select-option/input-select-option.tsx:40
+msgid "label is required"
+msgstr ""
+
+#: frontend/src/components/utilities/input-select-option/input-select-option.tsx:49
+msgid "value is required"
+msgstr ""
+
+#: frontend/src/components/utilities/input-select-option/input-select-option.tsx:58
+msgid "New option"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.stories.tsx:12
+msgid "Outline Input"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.stories.tsx:13
+msgid "large"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.stories.tsx:18
+msgid "middle"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.stories.tsx:21
+msgid "small"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.stories.tsx:40
+msgid "Component/Input"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.test.tsx:11
+#: frontend/src/components/utilities/Input/Input.test.tsx:12
+#: frontend/src/components/utilities/Input/Input.test.tsx:13
+msgid "Tag name"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.test.tsx:17
+msgid "tag name"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.test.tsx:22
+#: frontend/src/components/utilities/Input/Input.test.tsx:23
+#: frontend/src/components/utilities/Input/Input.test.tsx:24
+msgid "Invalid message"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.test.tsx:27
+#: frontend/src/components/utilities/Input/Input.test.tsx:28
+msgid "Write tag name"
+msgstr ""
+
+#: frontend/src/components/utilities/Input/Input.test.tsx:32
+#: frontend/src/components/utilities/Input/Input.test.tsx:33
+msgid "This is value"
+msgstr ""
+
+#: frontend/src/components/utilities/load-more-select/load-more-select.tsx:37
+#: frontend/src/components/utilities/load-more-tree-select/load-more-tree-select.tsx:34
+msgid "Loading..."
+msgstr ""
+
+#: frontend/src/components/utilities/load-more-select/load-more-select.tsx:40
+#: frontend/src/components/utilities/load-more-tree-select/load-more-tree-select.tsx:37
+msgid "No data"
+msgstr ""
+
+#: frontend/src/components/utilities/module-select/module-select.tsx:27
+msgid "Select module"
+msgstr ""
+
+#: frontend/src/components/utilities/prev-next-navigation/prev-next-navigation.tsx:30
+msgid "previous record"
+msgstr ""
+
+#: frontend/src/components/utilities/prev-next-navigation/prev-next-navigation.tsx:34
+msgid "Prev"
+msgstr ""
+
+#: frontend/src/components/utilities/prev-next-navigation/prev-next-navigation.tsx:41
+msgid "next record"
+msgstr ""
+
+#: frontend/src/components/utilities/prev-next-navigation/prev-next-navigation.tsx:44
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:61
+msgid "Next"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:15
+msgid "Preserve Activity Logs"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:22
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:22
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:32
+msgid "Days"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:27
+msgid "Enter the number of days to retain activity logs."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:30
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:30
+msgid "Entering 30 will remove logs older than 30 days."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:31
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:31
+msgid "Entering 0 will keep all logs indefinitely."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:32
+msgid "Defaults to 30 days when not configured."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:34
+msgid ""
+"This permanently deletes record timeline history for leads, contacts, "
+"companies, deals, products and invoices."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:10
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:30
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:61
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:26
+#: frontend/src/pages/workflows/workflows.tsx:6
+msgid "Name"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:10
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:14
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:35
+#: frontend/src/pages/Invoice/shared/invoice-share-targets.ts:40
+msgid "Email"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:10
+msgid "Capabilities"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:17
+#: frontend/src/pages/crm-users/crm-users.tsx:5
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:110
+msgid "CRM Users"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:25
+msgid "Assign and manage plugin capabilities for existing WordPress users."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:28
+msgid "Users with the Administrator role have full access to the plugin by default."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:32
+msgid "Add User"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:32
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:166
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:186
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:165
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:185
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:165
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:185
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:172
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:192
+msgid "Import"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:38
+#: frontend/src/pages/companies/internal/export-companies/ui/export-companies.tsx:25
+#: frontend/src/pages/contacts/internal/export-contacts/ui/export-contacts.tsx:19
+#: frontend/src/pages/deals/internal/export-deals/ui/export-deals.tsx:24
+#: frontend/src/pages/leads/internal/export-leads/ui/export-leads.tsx:19
+msgid "Export"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:54
+msgid "Filter by Tag"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:57
+#: frontend/src/components/utilities/search-input/search-input.tsx:35
+msgid "Search by keyword"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entity-settings-alert.tsx:80
+#: frontend/src/pages/company-create/company-create.tsx:111
+#: frontend/src/pages/company-settings/company-settings.tsx:25
+#: frontend/src/pages/contact-create/contact-create.tsx:124
+#: frontend/src/pages/contact-settings/contact-settings.tsx:25
+#: frontend/src/pages/deal-create/deal-create.tsx:195
+#: frontend/src/pages/deal-settings/deal-settings.tsx:29
+#: frontend/src/pages/lead-create/lead-create.tsx:112
+#: frontend/src/pages/lead-settings/lead-settings.tsx:28
+msgid "Field Settings"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
+#: frontend/src/pages/tags/ui/tags-table.tsx:97
+msgid "Count"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
+msgid "Progress"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:17
+msgid "Exports history"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
+msgid "Event"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:11
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:65
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:88
+msgid "User"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:17
+#: frontend/src/pages/history/history.tsx:5
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:18
+msgid "History"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:29
+msgid "Start Date"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:29
+msgid "End Date"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:31
+msgid "Search history..."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-invoice-payments-alert.tsx:19
+#: frontend/src/pages/invoice-settings/internal/payments/payments.tsx:9
+#: frontend/src/pages/Invoice/ui/invoice-payment-panels/invoice-payment-panels.tsx:13
+msgid "Invoice Payments"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-invoice-payments-alert.tsx:25
+msgid "Accept invoice payments via WooCommerce"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-invoice-payments-alert.tsx:28
+msgid ""
+"Let customers pay invoices through the WooCommerce checkout using your "
+"store payment gateways."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:11
+msgid "Client"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:11
+msgid "Last Used"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:18
+#: frontend/src/pages/mcp-settings/mcp-settings.tsx:5
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:115
+msgid "MCP Server"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:24
+msgid "Enable MCP Server"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:26
+msgid ""
+"Let AI clients like Claude and ChatGPT work with your CRM data. Each "
+"connection is limited to the permissions of the user who approved it."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:38
+msgid "Connected Clients"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:8
+#: frontend/src/pages/Layout/ui/header/header.tsx:18
+msgid "Dashboard"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:9
+msgid "View & Edit"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:14
+msgid "First Name"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:14
+#: frontend/src/pages/contacts/shared/constants.ts:30
+#: frontend/src/pages/deals/shared/constants.ts:30
+msgid "Last Name"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:14
+msgid "Phone"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:15
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:23
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:144
+msgid "Amount"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:15
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:46
+msgid "Stage"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:22
+msgid "Module Permissions"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:25
+msgid ""
+"Set the default modules a client can access when you grant them portal "
+"access."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:73
+msgid "Contact Field Permissions"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:74
+msgid "Deal Field Permissions"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:93
+msgid "Permissions"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:94
+msgid "Clients"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:95
+msgid "White Label"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:15
+msgid "Preserve Flow Logs"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:27
+msgid "Enter the number of days to retain workflow logs."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:26
+msgid "Upgrade to Bit CRM Pro to unlock %s."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:27
+msgid "Upgrade to Bit CRM Pro to unlock this feature."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:38
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:43
+msgid "Pro Feature"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:56
+msgid "Unlock with Pro"
+msgstr ""
+
+#: frontend/src/pages/access-denied/access-denied.jsx:16
+msgid "Access Denied"
+msgstr ""
+
+#: frontend/src/pages/access-denied/access-denied.jsx:17
+msgid "Sorry, you are not authorized to access this page!"
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:30
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:120
+msgid "REST API"
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:38
+msgid ""
+"Application Passwords require HTTPS, or a local environment type. Keys "
+"cannot be used until that is resolved."
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:41
+msgid "Application Passwords are unavailable on this site"
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:50
+msgid "External API access"
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:53
+msgid "Allow external apps to access the CRM using an API key."
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:66
+msgid "Base URL"
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:79
+msgid "API documentation"
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:88
+msgid "Manage the API keys used to reach this site from outside WordPress."
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:91
+msgid "Expand a user to see the keys they hold. A user may hold more than one."
+msgstr ""
+
+#: frontend/src/pages/api-settings/api-settings.tsx:101
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:51
+msgid "Create API Key"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:47
+msgid "Done"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:51
+msgid "Copy your API key"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:57
+msgid ""
+"This key is shown only once. Copy it now — it cannot be retrieved again "
+"after you close this dialog."
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:60
+msgid "Copy it before closing"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:70
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:101
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:71
+msgid "Key name"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:75
+msgid "API key"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:82
+msgid "Use it as the password with HTTP Basic authentication."
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:90
+msgid "Please select a user"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:93
+msgid "Select a CRM user"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:103
+msgid "Please enter a name"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:105
+msgid "e.g. Zapier integration"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:109
+msgid ""
+"A key created for an administrator has full CRM access and cannot be "
+"limited by capabilities, because administrators bypass permission checks. "
+"To restrict what a key can do, create it for a non-administrator user."
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:112
+msgid "Choosing an administrator"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:27
+msgid "Administrator"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:40
+msgid "Keys"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:41
+msgid "API keys"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:48
+msgid "Manage"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:51
+msgid ""
+"Opens this user's WordPress profile in a new tab, where application "
+"passwords can be renamed or revoked."
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:89
+msgid "Never used"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:91
+msgid "Last used"
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:98
+msgid "Any integration using this key will stop working."
+msgstr ""
+
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:102
+msgid "Revoke this key?"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/bit-form-settings.tsx:12
+msgid "Bit Form Settings"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/data/use-create-lead-form.ts:40
+msgid "Failed to create the form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/data/use-toggle-form-status.ts:28
+msgid "Failed to update the form status"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/data/use-toggle-form-status.ts:34
+msgid "Form status updated"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/shared/constants.ts:11
+msgid "Name, email and message fields"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/shared/constants.ts:13
+msgid "Contact Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/shared/constants.ts:20
+msgid "More lead capture templates are on the way."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/shared/constants.ts:22
+msgid "More templates coming soon"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:29
+msgid "Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:42
+msgid "Shortcode"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:55
+msgid "Entries"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:81
+msgid "Published"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:87
+msgid "Edit form in Bit Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:97
+msgid "Edit integration in Bit Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:108
+msgid "Preview form in Bit Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:28
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:79
+msgid "Retry"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:32
+msgid "Failed to load forms from Bit Form."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:33
+#: frontend/src/pages/Invoice/shared/format-invoice-payment-error.ts:10
+msgid "Something went wrong"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:45
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:98
+msgid "Create form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:54
+msgid "Lead Capture forms"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:56
+msgid "Bit Form connected to Bit CRM."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:62
+msgid "No Bit Form forms are integrated with Bit CRM yet."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:21
+msgid "Open plugins page"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:24
+msgid "Check again"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:29
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:80
+msgid "Bit Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:34
+msgid ""
+"The installed Bit Form version does not support the CRM integration yet. "
+"Update Bit Form to the latest version to manage lead-capture forms from "
+"here."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:37
+msgid "Update Bit Form"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:43
+msgid "Building your form in the new Bit Form tab."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:92
+msgid "Close"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:110
+msgid "Open the form builder"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:114
+msgid ""
+"Your browser blocked the new tab. Open the form builder manually to "
+"continue."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:115
+msgid "Popup blocked"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:124
+msgid "Form title"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:127
+msgid "Title is required"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:128
+msgid "Title must be at most 50 characters"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:131
+msgid "e.g. Newsletter Signup"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:134
+msgid "Applied to every lead this form captures. Type to create a new tag."
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:135
+msgid "Lead tags"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:143
+msgid "Select or create tags (optional)"
+msgstr ""
+
+#: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:146
+msgid "Select a template"
+msgstr ""
+
+#: frontend/src/pages/calls/calls-page.tsx:63
+#: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:39
+msgid "New Call"
+msgstr ""
+
+#: frontend/src/pages/companies/companies.tsx:98
+#: frontend/src/pages/company-create/company-create.tsx:19
+#: frontend/src/pages/company/company.tsx:62
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:36
+#: frontend/src/pages/Layout/ui/header/header.tsx:21
+msgid "Companies"
+msgstr ""
+
+#: frontend/src/pages/companies/companies.tsx:104
+msgid "New Company"
+msgstr ""
+
+#: frontend/src/pages/companies/companies.tsx:135
+msgid "Search by name or website"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/data/use-delete-companies.ts:30
+msgid "Companies deleted successfully."
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/data/use-delete-tag-entities.ts:49
+#: frontend/src/pages/deals/internal/deal-bulk-operations/data/use-delete-tag-entities.ts:53
+msgid "Tags removed successfully"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/data/use-save-tag-entities.ts:48
+#: frontend/src/pages/deals/internal/deal-bulk-operations/data/use-save-tag-entities.ts:52
+msgid "Tags added successfully"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/company-bulk-operations-dropdown.tsx:33
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/contact-bulk-operations.tsx:34
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/deal-bulk-operations-dropdown.tsx:34
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/lead-bulk-operations.tsx:39
+msgid "Add tags"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/company-bulk-operations-dropdown.tsx:40
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/contact-bulk-operations.tsx:41
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/deal-bulk-operations-dropdown.tsx:41
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/lead-bulk-operations.tsx:46
+msgid "Remove tags"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-company-popup.tsx:17
+msgid "Are you sure you want to delete the company?"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-modal.tsx:44
+msgid ""
+"Are you sure you want to delete the selected companies? Deleted companies "
+"will be moved to the Trash."
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:55
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:71
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:51
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:71
+msgid "Add"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:55
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:71
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:51
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:71
+msgid "Remove"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:59
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:75
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:55
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:75
+msgid "Add Tag"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:59
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:75
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:55
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:75
+msgid "Remove Tag"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:65
+#: frontend/src/pages/company-create/company-create.tsx:147
+#: frontend/src/pages/company/internal/company-overview/company-overview.tsx:129
+#: frontend/src/pages/contact-create/contact-create.tsx:165
+#: frontend/src/pages/contact/internal/contact-overview/contact-overview.tsx:127
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:81
+#: frontend/src/pages/deal-create/deal-create.tsx:266
+#: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:235
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:61
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:16
+#: frontend/src/pages/lead-create/lead-create.tsx:148
+#: frontend/src/pages/lead/internal/lead-overview/lead-overview.tsx:128
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:81
+#: frontend/src/pages/tags/tags.tsx:70
+msgid "Tags"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:69
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:85
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:65
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:85
+msgid "Select at least one tag!"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/export-companies/ui/export-companies.tsx:20
+#: frontend/src/pages/companies/internal/export-companies/ui/export-companies.tsx:32
+#: frontend/src/pages/companies/internal/export-companies/ui/export-companies.tsx:34
+msgid "Export Companies"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:106
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:105
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:106
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:116
+msgid "CSV Header"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:115
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:114
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:115
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:82
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:106
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:130
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:126
+msgid "Select a field"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:124
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:123
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:124
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:132
+msgid "Map to Field"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:135
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:134
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:135
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:143
+msgid "Chosen file is empty!"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:161
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:198
+msgid "Import Companies"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:213
+msgid "If a company with the same name already exists"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:216
+msgid "Please select how to handle duplicate companies"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:227
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:226
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:232
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:230
+msgid "Click or drag csv file to this area to upload"
+msgstr ""
+
+#: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:228
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:227
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:233
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:231
+msgid "Support for a single upload."
+msgstr ""
+
+#: frontend/src/pages/companies/shared/constants.ts:5
+msgid "Skip existing companies"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/constants.ts:9
+msgid "Update existing companies"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/constants.ts:13
+#: frontend/src/pages/deals/shared/constants.ts:13
+msgid "Create new even if name exists"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/constants.ts:20
+msgid "Parent Company"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/constants.ts:21
+#: frontend/src/pages/contacts/shared/constants.ts:21
+#: frontend/src/pages/contacts/shared/constants.ts:28
+#: frontend/src/pages/deals/shared/constants.ts:21
+#: frontend/src/pages/deals/shared/constants.ts:28
+msgid "ID"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/constants.ts:23
+#: frontend/src/pages/contacts/shared/constants.ts:23
+#: frontend/src/pages/deals/shared/constants.ts:23
+msgid "Company Name"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/helpers.ts:5
+#: frontend/src/pages/deals/shared/helpers.ts:5
+msgid "The Name field must be mapped!"
+msgstr ""
+
+#: frontend/src/pages/companies/shared/helpers.ts:9
+msgid ""
+"You cannot map both Parent Company (ID) and Parent Company (Name) in the "
+"same import. Please choose one."
+msgstr ""
+
+#: frontend/src/pages/company-create/company-create.tsx:23
+#: frontend/src/pages/company-create/company-create.tsx:109
+msgid "Create Company"
+msgstr ""
+
+#: frontend/src/pages/company-create/company-create.tsx:129
+#: frontend/src/pages/contact-create/contact-create.tsx:142
+#: frontend/src/pages/deal-create/deal-create.tsx:213
+#: frontend/src/pages/lead-create/lead-create.tsx:130
+msgid "Create & Add Another"
+msgstr ""
+
+#: frontend/src/pages/company-settings/company-settings.tsx:15
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:35
+msgid "Company Settings"
+msgstr ""
+
+#: frontend/src/pages/company/company.tsx:64
+msgid "Company Details"
+msgstr ""
+
+#: frontend/src/pages/company/company.tsx:112
+#: frontend/src/pages/contact/contact.tsx:113
+#: frontend/src/pages/deal/deal.tsx:114
+#: frontend/src/pages/lead/lead.tsx:115
+msgid "Overview"
+msgstr ""
+
+#: frontend/src/pages/company/company.tsx:171
+#: frontend/src/pages/contact-create/contact-create.tsx:21
+#: frontend/src/pages/contact/contact.tsx:64
+#: frontend/src/pages/contacts/contacts.tsx:101
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:29
+#: frontend/src/pages/Layout/ui/header/header.tsx:20
+msgid "Contacts"
+msgstr ""
+
+#: frontend/src/pages/company/company.tsx:184
+#: frontend/src/pages/contact/contact.tsx:185
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:43
+#: frontend/src/pages/deal-create/deal-create.tsx:38
+#: frontend/src/pages/deal/deal.tsx:64
+#: frontend/src/pages/deals/deals.tsx:111
+#: frontend/src/pages/Layout/ui/header/header.tsx:22
+msgid "Deals"
+msgstr ""
+
+#: frontend/src/pages/company/internal/company-overview/company-overview.tsx:134
+#: frontend/src/pages/contact/internal/contact-overview/contact-overview.tsx:132
+#: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:252
+#: frontend/src/pages/Invoice/invoice.tsx:92
+#: frontend/src/pages/lead/internal/lead-overview/lead-overview.tsx:133
+msgid "Timeline"
+msgstr ""
+
+#: frontend/src/pages/company/internal/company-overview/data/use-update-company.ts:29
+msgid "Company updated successfully"
+msgstr ""
+
+#: frontend/src/pages/company/ui/delete-modal.tsx:48
+msgid "Are you sure you want to delete the company? This will be moved to Trash."
+msgstr ""
+
+#: frontend/src/pages/contact-create/contact-create.tsx:25
+#: frontend/src/pages/contact-create/contact-create.tsx:122
+msgid "Create Contact"
+msgstr ""
+
+#: frontend/src/pages/contact-settings/contact-settings.tsx:15
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:30
+msgid "Contact Settings"
+msgstr ""
+
+#: frontend/src/pages/contact/contact.tsx:126
+#: frontend/src/pages/deal/deal.tsx:127
+#: frontend/src/pages/lead/lead.tsx:128
+msgid "Emails"
+msgstr ""
+
+#: frontend/src/pages/contact/internal/contact-overview/data/use-update-contact.ts:30
+msgid "Contact updated successfully"
+msgstr ""
+
+#: frontend/src/pages/contact/ui/delete-modal.tsx:48
+msgid "Are you sure you want to delete the contact? This will be moved to Trash."
+msgstr ""
+
+#: frontend/src/pages/contacts/contacts.tsx:107
+msgid "New Contact"
+msgstr ""
+
+#: frontend/src/pages/contacts/contacts.tsx:119
+msgid "WooCommerce sync"
+msgstr ""
+
+#: frontend/src/pages/contacts/contacts.tsx:121
+msgid ""
+"Automatically add customers from WooCommerce orders to Bit CRM and "
+"optionally tag them by purchased products or coupon codes."
+msgstr ""
+
+#: frontend/src/pages/contacts/data/use-delete-contacts.ts:31
+msgid "Contacts deleted successfully."
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/data/use-delete-tag-entity.ts:41
+#: frontend/src/pages/deal/internal/deal-overview/data/use-delete-tag-entity.ts:32
+#: frontend/src/pages/leads/internal/lead-bulk-operations/data/use-delete-tag-entity.ts:41
+msgid "Tag removed successfully"
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/data/use-store-tag-entity.ts:40
+#: frontend/src/pages/leads/internal/lead-bulk-operations/data/use-store-tag-entity.ts:40
+msgid "Tag added successfully"
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/delete-modal.tsx:43
+msgid ""
+"Are you sure you want to delete the selected contacts? Deleted contacts "
+"will be moved to the Trash."
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/export-contacts/ui/export-contacts.tsx:14
+#: frontend/src/pages/contacts/internal/export-contacts/ui/export-contacts.tsx:26
+#: frontend/src/pages/contacts/internal/export-contacts/ui/export-contacts.tsx:28
+msgid "Export Contacts"
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:160
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:197
+msgid "Import Contacts"
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:212
+msgid "If a contact with the same email already exists"
+msgstr ""
+
+#: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:215
+msgid "Please select how to handle duplicate contacts"
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/constants.ts:5
+msgid "Skip existing contacts"
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/constants.ts:9
+msgid "Update existing contacts"
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/constants.ts:13
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:29
+msgid "Create new even if email exists"
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/constants.ts:27
+msgid "Reports To"
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/helpers.ts:5
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:148
+msgid "The Last Name field must be mapped!"
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/helpers.ts:9
+#: frontend/src/pages/deals/shared/helpers.ts:17
+msgid ""
+"You cannot map both Company (ID) and Company (Name) in the same import. "
+"Please choose one."
+msgstr ""
+
+#: frontend/src/pages/contacts/shared/helpers.ts:15
+msgid ""
+"You cannot map both Reports To (ID) and Reports To (Name) in the same "
+"import. Please choose one."
+msgstr ""
+
+#: frontend/src/pages/contacts/ui/delete-contact-popup.tsx:17
+msgid "Are you sure you want to delete the contact?"
+msgstr ""
+
+#: frontend/src/pages/currencies/currencies.tsx:28
+#: frontend/src/pages/currencies/currencies.tsx:42
+msgid "Currencies"
+msgstr ""
+
+#: frontend/src/pages/currencies/currencies.tsx:56
+msgid "Other Currencies"
+msgstr ""
+
+#: frontend/src/pages/currencies/currencies.tsx:63
+#: frontend/src/pages/currencies/ui/currency-create-modal/currency-create-modal.tsx:16
+msgid "Add Currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/data/use-setup-home-currency.ts:53
+msgid "Failed to setup home currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/data/use-setup-home-currency.ts:84
+msgid "Home currency setup successfully"
+msgstr ""
+
+#: frontend/src/pages/currencies/data/use-update-home-currency.ts:52
+msgid "Failed to update home currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/data/use-update-home-currency.ts:82
+msgid "Home currency updated successfully"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:101
+#: frontend/src/pages/currencies/ui/currencies-table/currencies-table.tsx:20
+msgid "Currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:105
+msgid "The currency field is required!"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:116
+msgid "Select Currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:124
+#: frontend/src/pages/currencies/ui/currencies-table/currencies-table.tsx:26
+msgid "Symbol"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:128
+msgid "The symbol field is required!"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:140
+msgid "Select Symbol"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:144
+msgid "Decimal Places"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:148
+msgid "The decimal places field is required!"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:153
+msgid "Select Decimal Places"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:157
+msgid "Digit Separators"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:161
+msgid "The digit separators field is required!"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:168
+msgid "Select Format"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:173
+#: frontend/src/pages/currencies/ui/currencies-table/currencies-table.tsx:40
+msgid "Exchange Rate"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:178
+msgid "the exchange rate field is required"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:186
+msgid "Enter exchange rate"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-form.tsx:201
+#: frontend/src/pages/currencies/ui/currencies-table/currencies-table.tsx:35
+msgid "Format Preview"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-setup-home.tsx:21
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:45
+msgid "Setup Home Currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-setup-home.tsx:29
+msgid ""
+"Set up your home currency to start managing multiple currencies in your "
+"CRM. This will be used as the base currency for all calculations."
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-setup-home.tsx:35
+msgid ""
+"Default home currency is USD if not set. Note that you can only change this "
+"once."
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/currency-setup-home.tsx:39
+msgid "Currency Management"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/home-currency-card.tsx:44
+msgid "Home Currency:"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/home-currency-card.tsx:48
+msgid "Format Preview:"
+msgstr ""
+
+#: frontend/src/pages/currencies/internal/home-currency-card.tsx:52
+msgid "Edit home currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/ui/currency-create-modal/currency-create-modal.tsx:18
+msgid "Multiple Currencies"
+msgstr ""
+
+#: frontend/src/pages/currencies/ui/currency-edit-modal/currency-edit-modal.tsx:16
+#: frontend/src/pages/currencies/ui/currency-edit-modal/currency-edit-modal.tsx:18
+msgid "Edit Currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/ui/home-currency-edit-modal.tsx:78
+msgid "Edit Home Currency"
+msgstr ""
+
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:52
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:62
+msgid "Home currency can only be set once and cannot be changed later."
+msgstr ""
+
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:66
+msgid "Are you sure you want to setup this home currency?"
+msgstr ""
+
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:69
+msgid "Setup"
+msgstr ""
+
+#: frontend/src/pages/dashboard/dashboard.tsx:60
+msgid "Welcome %s,"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/activity-row.tsx:24
+msgid "Due:"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/activity-row.tsx:26
+msgid "—"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/activity-row.tsx:30
+msgid "Assignee:"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/activity-row.tsx:31
+msgid "Unassigned"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/activity-section.tsx:26
+#: frontend/src/pages/dashboard/ui/invoice-stats.tsx:22
+#: frontend/src/pages/dashboard/ui/leads-by-source.tsx:48
+#: frontend/src/pages/dashboard/ui/top-products/top-products.tsx:17
+msgid "View all"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/activity-section.tsx:34
+msgid "No pending activities"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:127
+msgid "deals"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:180
+msgid "Deal Pipeline"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:183
+msgid "Track deals across each pipeline stage"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/invoice-stats.tsx:27
+msgid "Overview of invoice statuses"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/invoice-stats.tsx:31
+msgid "No invoices found"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/leads-by-source.tsx:44
+msgid "Leads by Source"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/leads-by-source.tsx:53
+msgid "Breakdown by acquisition source"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/pending-activities.tsx:14
+msgid "tasks"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/pending-activities.tsx:15
+msgid "calls"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/pending-activities.tsx:16
+msgid "meetings"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/pending-activities.tsx:22
+msgid "Pending Activities"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/pending-activities.tsx:25
+msgid "Track your upcoming activities."
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:22
+#: frontend/src/pages/Layout/ui/header/header.tsx:19
+#: frontend/src/pages/lead-create/lead-create.tsx:20
+#: frontend/src/pages/lead/lead.tsx:64
+#: frontend/src/pages/leads/leads.tsx:96
+msgid "Leads"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:50
+#: frontend/src/pages/deal/deal.tsx:169
+#: frontend/src/pages/deal/internal/deal-invoices/deal-invoices.tsx:51
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:98
+#: frontend/src/pages/Invoice/invoice.tsx:47
+#: frontend/src/pages/invoices/invoices.tsx:49
+#: frontend/src/pages/Layout/ui/header/header.tsx:23
+msgid "Invoices"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:59
+msgid "vs last month"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/top-products/top-products.tsx:10
+#: frontend/src/pages/dashboard/ui/top-products/top-products.tsx:14
+msgid "Top Products"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/top-products/top-products.tsx:21
+msgid "Your best selling products"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/top-products/top-products.tsx:23
+msgid "No products are added"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/tutorial.tsx:16
+msgid "Need Help?"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/tutorial.tsx:19
+msgid "Watch tutorial for a quick start."
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/tutorial.tsx:29
+msgid "Watch Tutorials"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:18
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:104
+msgid "Recycle Bin"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:24
+msgid "Imports"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:30
+msgid "Exports"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:36
+msgid "History Logs"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:42
+#: frontend/src/pages/data-management/internal/workflow-logs/workflow-logs.tsx:5
+msgid "Workflow Logs"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:56
+msgid "Data Management"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/activity-logs/activity-logs.tsx:5
+msgid "Activity Logs"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/exports/exports.tsx:5
+msgid "Export History"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/imports/imports.tsx:44
+msgid "Imports history"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:49
+msgid "Updated"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:54
+msgid "Skipped"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:62
+msgid "Are you sure to delete this import?"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:66
+msgid "Delete the import"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/data/use-restore-trash.ts:15
+msgid "Could not restore trash"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/data/use-restore-trash.ts:18
+msgid "Trash restored successfully"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:89
+msgid "Are you Confirm to delete permanently?"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:91
+msgid "Empty"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:93
+msgid "Empty trash"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:107
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:114
+msgid "Empty Trash"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:18
+msgid "Restore deleted items"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:20
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:41
+msgid "Restore"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:22
+msgid "Are you Confirm to Restore?"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:28
+msgid "Delete permanently"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:32
+msgid "Are you Confirm to Delete?"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:71
+msgid "Deleted By"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:81
+msgid "Deleted Time"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:91
+msgid "Are you sure to restore?"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:95
+msgid "Restore the item"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:103
+msgid "Are you sure to delete permanently?"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:107
+msgid "Delete the item"
+msgstr ""
+
+#: frontend/src/pages/deal-create/deal-create.tsx:42
+#: frontend/src/pages/deal-create/deal-create.tsx:193
+msgid "Create Deal"
+msgstr ""
+
+#: frontend/src/pages/deal-create/deal-create.tsx:273
+#: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:242
+msgid "Product List"
+msgstr ""
+
+#: frontend/src/pages/deal-create/deal-create.tsx:275
+#: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:244
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:12
+#: frontend/src/pages/products/products.tsx:14
+msgid "Products"
+msgstr ""
+
+#: frontend/src/pages/deal-create/ui/amount-field-with-toggle.tsx:40
+msgid "Enter Custom Amount / Select Product from List"
+msgstr ""
+
+#: frontend/src/pages/deal-create/ui/amount-field-with-toggle.tsx:50
+msgid "Products Added:"
+msgstr ""
+
+#: frontend/src/pages/deal-create/ui/amount-field-with-toggle.tsx:52
+msgid "items"
+msgstr ""
+
+#: frontend/src/pages/deal-create/ui/amount-field-with-toggle.tsx:52
+msgid "item"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/deal-settings.tsx:18
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:40
+msgid "Deal Settings"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/deal-settings.tsx:34
+msgid "Stage Settings"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/deal-settings.tsx:39
+#: frontend/src/pages/deal-settings/ui/archived-stages/archived-stages.tsx:29
+msgid "Archived Stages"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/archived-stages.tsx:43
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:68
+msgid "Unarchive"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/data/use-unarchive-stage.ts:37
+msgid "Failed to unarchive stage"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/data/use-unarchive-stage.ts:59
+msgid "Stage unarchived successfully"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:45
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:76
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:80
+msgid "Stage Name"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:50
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:84
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:86
+msgid "Probability (%)"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:60
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:99
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:97
+msgid "Deal Category"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:73
+msgid "Are you sure you want to unarchive this stage?"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:75
+msgid "This will make it available in the active stages list."
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:82
+msgid "Unarchive stage?"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:91
+msgid "Operations"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-archive-stage.ts:36
+msgid "Failed to archive stage"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-archive-stage.ts:58
+msgid "Stage archived successfully"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-save-stage.ts:47
+msgid "Failed to create stage"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-save-stage.ts:68
+msgid "Stage created successfully"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-update-sort-order.ts:18
+msgid "Failed to update sort order"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-update-sort-order.ts:21
+msgid "Sort order updated successfully"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-update-stage.ts:36
+msgid "Failed to update stage"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/data/use-update-stage.ts:61
+msgid "Stage updated successfully"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:66
+msgid "Create Stage"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:78
+msgid "Please input the stage name!"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:80
+msgid "Enter stage name"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:87
+msgid "Please input the probability!"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:90
+msgid "Probability must be a number between 0 and 100"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:96
+msgid "Enter probability"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:101
+msgid "Please select the deal category!"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:106
+msgid "Color"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table-editable-cell.tsx:58
+msgid "Please Input Stage Name!"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table-editable-cell.tsx:95
+msgid "Please Input %s!"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:116
+msgid "Archive"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:121
+msgid "If you archive this stage, all deals in this stage"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:123
+msgid "will also be hidden in the Kanban view."
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:130
+msgid "Are you sure you want to archive this stage?"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:147
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:74
+msgid "Operation"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/shared/constants.ts:4
+msgid "Open"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/shared/constants.ts:5
+msgid "Closed Won"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/shared/constants.ts:6
+msgid "Closed Lost"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/stages.tsx:53
+msgid "Stages"
+msgstr ""
+
+#: frontend/src/pages/deal-settings/ui/stages/stages.tsx:61
+msgid "New Stage"
+msgstr ""
+
+#: frontend/src/pages/deal/internal/deal-overview/data/use-delete-tag-entity.ts:27
+msgid "Could not remove tag."
+msgstr ""
+
+#: frontend/src/pages/deal/internal/deal-overview/data/use-update-deal.ts:43
+msgid "Deal updated successfully"
+msgstr ""
+
+#: frontend/src/pages/deal/internal/deal-overview/ui/deal-dates-info.tsx:21
+msgid "Start"
+msgstr ""
+
+#: frontend/src/pages/deal/internal/deal-overview/ui/deal-dates-info.tsx:30
+msgid "Closing"
+msgstr ""
+
+#: frontend/src/pages/deal/ui/delete-modal.tsx:49
+msgid "Are you sure you want to delete the deal? This will be moved to Trash."
+msgstr ""
+
+#: frontend/src/pages/deals/deals.tsx:116
+msgid "New Deal"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deal-bulk-operations/data/use-delete-deals.ts:28
+msgid "Deals deleted successfully."
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-deal-popup.tsx:17
+msgid "Are you sure you want to delete the deal?"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-modal.tsx:51
+msgid ""
+"Are you sure you want to permanently delete the selected deals? This action "
+"cannot be undone."
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/data/use-update-deal-stage.ts:28
+msgid "Failed to update deal stage"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:27
+#: frontend/src/pages/tasks/tasks-page.tsx:64
+msgid "New Task"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:33
+#: frontend/src/pages/meetings/meetings-page.tsx:63
+msgid "New Meeting"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:45
+msgid "New Attachment"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:51
+msgid "New Note"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:57
+msgid "New Link"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/kanban-column-header.tsx:78
+msgid "Deselect All"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/kanban-column-header.tsx:78
+msgid "Select All"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:28
+msgid "Input amount"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:33
+msgid "Closing Date"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:35
+msgid "Please input Closing Date!"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:48
+msgid "Please select Stage!"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-modal.tsx:105
+msgid "Update Deal Stage"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/export-deals/ui/export-deals.tsx:19
+#: frontend/src/pages/deals/internal/export-deals/ui/export-deals.tsx:31
+#: frontend/src/pages/deals/internal/export-deals/ui/export-deals.tsx:33
+msgid "Export Deals"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/import-deals/data/use-import-deals.ts:33
+msgid "Deals imported successfully"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:160
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:197
+msgid "Import Deals"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:205
+msgid ""
+"Note: Deals with invalid or missing stages in your CRM will be skipped "
+"during import."
+msgstr ""
+
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:220
+msgid "If a deal with the same name already exists"
+msgstr ""
+
+#: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:222
+msgid "Please select how to handle duplicate deals"
+msgstr ""
+
+#: frontend/src/pages/deals/shared/constants.ts:5
+msgid "Skip existing deals"
+msgstr ""
+
+#: frontend/src/pages/deals/shared/constants.ts:9
+msgid "Update existing deals"
+msgstr ""
+
+#: frontend/src/pages/deals/shared/helpers.ts:9
+msgid "The Stage field must be mapped!"
+msgstr ""
+
+#: frontend/src/pages/deals/shared/helpers.ts:13
+msgid "The Contact field must be mapped!"
+msgstr ""
+
+#: frontend/src/pages/deals/shared/helpers.ts:23
+msgid ""
+"You cannot map both Contact (ID) and Contact (Name) in the same import. "
+"Please choose one."
+msgstr ""
+
+#: frontend/src/pages/deals/ui/view-switch.tsx:29
+msgid "List"
+msgstr ""
+
+#: frontend/src/pages/deals/ui/view-switch.tsx:37
+msgid "Kanban"
+msgstr ""
+
+#: frontend/src/pages/general-settings/general-settings.tsx:11
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:15
+msgid "General Settings"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/business-settings.tsx:34
+msgid "You do not have permission to update business settings."
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/data/use-insert-business-settings.ts:19
+#: frontend/src/pages/general-settings/internal/business-settings/data/use-store-business-settings.ts:69
+msgid "Business settings inserted successfully"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/data/use-store-business-settings.ts:37
+msgid "Failed to insert business settings"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/data/use-update-business-settings.ts:38
+msgid "Failed to update business settings"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/data/use-update-business-settings.ts:63
+msgid "Business settings updated successfully"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-logo-upload.tsx:30
+msgid "Select Logo"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-logo-upload.tsx:34
+msgid "Select or Upload Logo"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-logo-upload.tsx:41
+msgid "File size exceeds 2MB. Please choose a smaller file."
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-logo-upload.tsx:57
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:23
+#: frontend/src/pages/invoice-create/ui/invoice-logo.tsx:12
+#: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:30
+msgid "Business Logo"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-logo-upload.tsx:64
+msgid "Remove Logo"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-logo-upload.tsx:83
+msgid "Upload Logo"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:26
+msgid ""
+"Upload your business logo (PNG, JPG, SVG, max 2MB). Recommended size: "
+"200x200px"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:32
+msgid "Business Details"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:37
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:38
+msgid "Business Name"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:39
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:40
+msgid "Business name is required"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:41
+msgid "Enter business name"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:46
+msgid "Email Address"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:49
+msgid "Email is required"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:50
+msgid "Please enter a valid email"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:53
+msgid "business@example.com"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:56
+msgid "Mobile Number"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:57
+msgid "+1 (555) 111-2222"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:60
+msgid "Fax"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:61
+msgid "Enter fax number"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:64
+msgid "Phone Number"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:65
+msgid "+1 (555) 000-0000"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:68
+msgid "Website"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:69
+msgid "https://example.com"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:73
+msgid "Business Address"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:76
+msgid "Street Address"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:77
+msgid "Enter street address"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:80
+msgid "City"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:81
+msgid "Enter city"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:84
+msgid "State"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:85
+msgid "Enter state"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:88
+msgid "Zip/Postal Code"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:89
+msgid "Enter zip code"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:92
+msgid "Country"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:93
+msgid "Enter country"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:105
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:66
+msgid "Save Changes"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/imap-settings.tsx:33
+msgid "IMAP Configurations"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:60
+msgid "Are you sure?"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:47
+msgid "Imap settings created successfully"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:62
+msgid "Create IMAP Settings"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:55
+msgid "Imap updated"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:71
+msgid "Update IMAP Settings"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:77
+msgid "Imap settings not found!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:12
+msgid "Title is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:17
+msgid "Platform"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:21
+msgid "Platform is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:28
+msgid "Gmail"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:29
+msgid "Zoho Mail"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:30
+msgid "Other"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:36
+msgid "Host"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:40
+msgid "Host is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:49
+msgid "Port"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:53
+msgid "Port is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:62
+msgid "encryption"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:66
+msgid "Encryption is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:73
+msgid "SSL"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:74
+msgid "TLS"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:80
+msgid "Username (Email)"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:88
+msgid "App Password"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:92
+msgid "Password is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:101
+msgid "If the settings are not private, other users can use them to fetch emails."
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:104
+msgid "Private Settings"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:108
+msgid "The private field is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-item.tsx:29
+msgid "Private"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/data/use-store-invoice.ts:21
+msgid "Failed to create invoice."
+msgstr ""
+
+#: frontend/src/pages/invoice-create/data/use-store-invoice.ts:24
+msgid "Invoice created successfully."
+msgstr ""
+
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:102
+msgid "Create Invoice"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:102
+msgid "Edit Invoice"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:110
+msgid "Payment settings"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:112
+msgid ""
+"Invoice payments are collected through WooCommerce. Enable \"Accept invoice "
+"payments via WooCommerce\" here so customers can pay this invoice at "
+"checkout."
+msgstr ""
+
+#: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:40
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:58
+#: frontend/src/pages/invoice-settings/internal/terms/terms.tsx:35
+msgid "Terms"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/business-information.tsx:74
+msgid "Add Business Settings"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:41
+msgid "Select a deal"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:65
+msgid "Contact Information"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:99
+msgid "Create New Deal"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-form.tsx:38
+#: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:32
+msgid "INVOICE"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-form.tsx:38
+msgid "EDIT INVOICE"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-form.tsx:55
+msgid "Please select a deal first to add product line items"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:38
+#: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:34
+msgid "Invoice Number:"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:41
+msgid "Invoice prefix is required"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:43
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:43
+msgid "Invoice prefix cannot contain spaces"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:48
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:38
+msgid "INV"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:52
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:162
+msgid "Invoice Date"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:54
+msgid "Invoice date is required"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:63
+msgid "Select Time"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:70
+msgid "Configure"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:84
+msgid "Due date is required"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-logo.tsx:24
+msgid "Add Logo"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:60
+msgid "Please add at least one line item to proceed."
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:67
+msgid ""
+"Business settings are not configured. Please set up your business "
+"information in Settings before creating an invoice."
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:158
+msgid "Create & Preview"
+msgstr ""
+
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:158
+msgid "Update & Preview"
+msgstr ""
+
+#: frontend/src/pages/invoice-edit/data/use-update-invoice.ts:22
+msgid "Failed to update invoice."
+msgstr ""
+
+#: frontend/src/pages/invoice-edit/data/use-update-invoice.ts:25
+msgid "Invoice updated successfully."
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:32
+msgid "Invoice Prefix"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:41
+msgid "Please provide an invoice prefix"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:52
+msgid "Enter the prefix that will appear before each invoice number."
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:55
+msgid "Example: entering INV will produce invoices like INV-0001."
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:56
+msgid "Maximum 10 characters allowed."
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/data/use-delete-term.ts:19
+msgid "Failed to delete term"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/data/use-delete-term.ts:22
+msgid "Term deleted successfully"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/data/use-save-term.ts:46
+msgid "Failed to create term"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/data/use-save-term.ts:67
+msgid "Term created successfully"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/data/use-update-term.ts:45
+msgid "Failed to update term"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/data/use-update-term.ts:69
+msgid "Term updated successfully"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/terms.tsx:43
+msgid "New Term"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-create-modal.tsx:67
+msgid "Create Term"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-edit-modal.tsx:80
+msgid "Update Term"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-form.tsx:14
+msgid "Term Name"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-form.tsx:16
+msgid "Please enter the term name"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-form.tsx:18
+msgid "Net"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-form.tsx:21
+msgid "Number of Days"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/term-form.tsx:23
+msgid "Please enter the number of days"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:50
+msgid "Are you sure you want to delete the term?"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:16
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:50
+msgid "Invoice Settings"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:26
+msgid "Prefix Settings"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:31
+msgid "Configure Payment Terms"
+msgstr ""
+
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:36
+msgid "Payments"
+msgstr ""
+
+#: frontend/src/pages/Invoice/data/use-invoice-send.ts:32
+msgid "Invoice sent successfully"
+msgstr ""
+
+#: frontend/src/pages/Invoice/data/use-invoice-share-link.ts:26
+msgid "Failed to generate share link"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:8
+msgid "Cancelled"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:10
+msgid "Failed"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:12
+msgid "Refunded"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-share-targets.ts:13
+msgid "You can view and pay your invoice here:"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-share-targets.ts:16
+msgid "Your invoice"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-share-targets.ts:22
+msgid "WhatsApp"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-share-targets.ts:28
+msgid "Telegram"
+msgstr ""
+
+#: frontend/src/pages/Invoice/shared/invoice-share-targets.ts:34
+msgid "Messenger"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-actions.tsx:59
+msgid "Mark as Paid"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:36
+msgid "Date:"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:38
+msgid "Due Date:"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:40
+msgid "Terms:"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:68
+msgid "Qty"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:74
+msgid "Discount (%)"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:83
+msgid "Tax Rate (%)"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-payment-panels/invoice-payment-panels.tsx:16
+msgid "Payment History"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:64
+msgid "Bill To"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-share-link-button.tsx:38
+msgid "Share Link"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-share-link-button.tsx:40
+msgid "Share invoice"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-share-link-button.tsx:42
+msgid "Anyone with this link can view and pay this invoice without logging in."
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-share-link-button.tsx:51
+msgid "Copied"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-share-link-button.tsx:51
+msgid "Copy"
+msgstr ""
+
+#: frontend/src/pages/Invoice/ui/invoice-share-link-button.tsx:55
+msgid "Or send it directly via"
+msgstr ""
+
+#: frontend/src/pages/invoices/invoices.tsx:54
+msgid "New Invoice"
+msgstr ""
+
+#: frontend/src/pages/invoices/shared/invoice-bulk-operations/ui/invoice-bulk-operations.tsx:25
+msgid "Delete Invoice"
+msgstr ""
+
+#: frontend/src/pages/invoices/shared/invoice-bulk-operations/ui/invoice-bulk-operations.tsx:25
+msgid "Delete Invoices"
+msgstr ""
+
+#: frontend/src/pages/invoices/shared/invoice-bulk-operations/ui/trash-modal.tsx:51
+msgid ""
+"Are you sure you want to delete the selected invoices? Deleted invoices "
+"will be moved to the Trash."
+msgstr ""
+
+#: frontend/src/pages/invoices/ui/delete-invoice-popup.tsx:20
+msgid "Are you sure you want to delete the invoice?"
+msgstr ""
+
+#: frontend/src/pages/invoices/ui/invoice-status-filter.tsx:31
+msgid "Filter With Statuses"
+msgstr ""
+
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:82
+msgid "Invoice Number"
+msgstr ""
+
+#: frontend/src/pages/invoices/ui/invoices-table.tsx:197
+msgid "Paid At"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:17
+msgid "Workflows"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:53
+#: frontend/src/pages/Layout/ui/header/more-option-button.tsx:66
+msgid "More"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/header/header.tsx:59
+#: frontend/src/pages/Layout/ui/header/more-option-button.tsx:15
+msgid "Settings"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/header/more-option-button.tsx:25
+msgid "Dark"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/header/more-option-button.tsx:25
+msgid "Light"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/Layout.tsx:21
+#: frontend/src/pages/settings-layout/settings-layout.tsx:14
+msgid "Loading"
+msgstr ""
+
+#: frontend/src/pages/lead-create/lead-create.tsx:24
+#: frontend/src/pages/lead-create/lead-create.tsx:110
+msgid "Create Lead"
+msgstr ""
+
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:244
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:10
+msgid "Field mapping"
+msgstr ""
+
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/data/use-save-mapping.ts:18
+msgid "Could not save conversion mapping."
+msgstr ""
+
+#: frontend/src/pages/lead-settings/internal/conversion-mapping/data/use-save-mapping.ts:21
+msgid "Conversion mapping saved successfully"
+msgstr ""
+
+#: frontend/src/pages/lead-settings/lead-settings.tsx:17
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:25
+msgid "Lead Settings"
+msgstr ""
+
+#: frontend/src/pages/lead-settings/lead-settings.tsx:33
+msgid "Conversion Mapping"
+msgstr ""
+
+#: frontend/src/pages/lead/data/use-convert-single-lead.ts:25
+msgid "Could not convert lead"
+msgstr ""
+
+#: frontend/src/pages/lead/data/use-convert-single-lead.ts:28
+msgid "Lead converted successfully."
+msgstr ""
+
+#: frontend/src/pages/lead/internal/lead-overview/data/use-update-lead.ts:29
+msgid "Lead updated successfully"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/actions.tsx:25
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:60
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/lead-bulk-operations.tsx:53
+msgid "Convert"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:38
+msgid "Convert Lead To"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:56
+msgid "Include Related Data"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:61
+msgid "Activities"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:72
+msgid "Move Related Data To"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:78
+msgid "Move Tags To"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:84
+msgid ""
+"Select owner for the converted records. Otherwise, the lead owner will be "
+"assigned automatically."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:87
+msgid "Owner of New Records"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-form.tsx:91
+msgid "The Lead owner will be assigned, by default."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:45
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:47
+msgid "Field Mapping"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:58
+msgid "Convert lead"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:73
+msgid "Convert Lead"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:77
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:79
+msgid "What happens during conversion:"
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:79
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:81
+msgid "New contacts, companies, deals are created via field mapping."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:81
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:83
+msgid "Optionally, a deal can be created and linked to the contact and company."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:83
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:85
+msgid "Leads are marked as converted but original data remains unchanged."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:84
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:86
+msgid "Related data moves to selected module (contact, company or deal)."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:85
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:87
+msgid "Tags can be copied to one or more modules."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/conversion-modal.tsx:86
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:88
+msgid "Lead owner assigned unless specified."
+msgstr ""
+
+#: frontend/src/pages/lead/ui/delete-modal.tsx:48
+msgid "Are you sure you want to delete the lead? This will be moved to Trash."
+msgstr ""
+
+#: frontend/src/pages/leads/data/use-delete-leads.ts:29
+msgid "Leads deleted successfully."
+msgstr ""
+
+#: frontend/src/pages/leads/internal/export-leads/ui/export-leads.tsx:14
+#: frontend/src/pages/leads/internal/export-leads/ui/export-leads.tsx:26
+#: frontend/src/pages/leads/internal/export-leads/ui/export-leads.tsx:28
+msgid "Export Leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:21
+msgid "Skip existing leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:25
+msgid "Update existing leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:167
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:204
+msgid "Import Leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:218
+msgid "If a lead with the same email already exists"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:220
+msgid "Please select how to handle duplicate leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/lead-bulk-operations/data/use-convert-leads.ts:22
+msgid "Could not convert leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/lead-bulk-operations/data/use-convert-leads.ts:25
+msgid "Leads converted successfully"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:75
+msgid "Convert Leads"
+msgstr ""
+
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/delete-modal.tsx:43
+msgid ""
+"Are you sure you want to delete the selected leads? Deleted leads will be "
+"moved to the Trash."
+msgstr ""
+
+#: frontend/src/pages/leads/leads.tsx:102
+msgid "New Lead"
+msgstr ""
+
+#: frontend/src/pages/leads/ui/delete-lead-popup.tsx:17
+msgid "Are you sure you want to delete the lead?"
+msgstr ""
+
+#: frontend/src/pages/onboarding/data/use-save-onboarding.ts:24
+msgid "Failed to complete onboarding"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:31
+msgid "Welcome to"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:31
+msgid "Bit CRM"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:34
+msgid "Tell us a bit about your business to personalize your CRM experience."
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:46
+msgid "Business Email"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:49
+msgid "Business email is required"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:50
+msgid "Enter a valid email"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-business-info.tsx:58
+msgid "Skip"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:15
+msgid ""
+"Install Bit Form to collect leads and sync them to Bit CRM as leads for "
+"FREE."
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:18
+msgid "Capture leads automatically"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:21
+msgid ""
+"Install Bit Integrations to capture WordPress events and sync them to your "
+"CRM as leads and contacts."
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:26
+msgid "Integrate with the WordPress ecosystem"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:29
+msgid ""
+"Install Bit SMTP to configure SMTP and make sure transactional emails reach "
+"your user's inboxes."
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:34
+msgid "Deliver emails to the inbox"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:51
+msgid "Almost done!"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:54
+msgid ""
+"Thanks for configuring your CRM. These solutions will help you manage your "
+"entire sales pipeline."
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:87
+msgid "Back"
+msgstr ""
+
+#: frontend/src/pages/onboarding/ui/step-install-plugins.tsx:96
+msgid "Complete Setup"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/others-integrations-settings.tsx:12
+msgid "Other Integrations Settings"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/others-integrations-settings.tsx:18
+msgid ""
+"Extend Bit CRM with these companion plugins. Install and activate a plugin "
+"to unlock its integration."
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/shared/constants.ts:15
+msgid ""
+"Build automated workflows visually and connect Bit CRM events to the apps "
+"your team already uses."
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/shared/constants.ts:20
+msgid "Bit Flows"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/shared/constants.ts:23
+msgid ""
+"Connect your favorite apps and automate repetitive workflows with 300+ "
+"popular integrations."
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/shared/constants.ts:28
+msgid "Bit Integration"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:30
+msgid "Status Unavailable"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:34
+msgid "Active"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:41
+msgid "Not Installed"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:71
+msgid "Could not check this plugin's status."
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:87
+msgid "Ready to use"
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:104
+msgid ""
+"You do not have permission to install or activate plugins. Please contact "
+"the administrator."
+msgstr ""
+
+#: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:110
+msgid "Administrator permission required"
+msgstr ""
+
+#: frontend/src/pages/portal-settings/portal-settings.tsx:5
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:105
+msgid "Portal Settings"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:7
+#: frontend/src/pages/products/products.tsx:7
+msgid "Product Code/SKU"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:8
+#: frontend/src/pages/products/products.tsx:8
+msgid "Product Type"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:8
+#: frontend/src/pages/product-settings/product-settings.tsx:9
+#: frontend/src/pages/product-settings/product-settings.tsx:14
+msgid "Dropdown"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:9
+msgid "Manufacturer / Brand"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:10
+msgid "Textarea"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:11
+#: frontend/src/pages/products/products.tsx:9
+msgid "Unit Price"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:12
+msgid "Cost Price"
+msgstr ""
+
+#: frontend/src/pages/product-settings/product-settings.tsx:17
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:45
+msgid "Product Settings"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:19
+msgid "General"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:54
+msgid "Entities"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:60
+msgid "IMAP Settings"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:65
+#: frontend/src/pages/smtp-settings/smtp-settings.tsx:12
+msgid "SMTP Settings"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:69
+msgid "Communication"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:75
+msgid "Woo Commerce"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:85
+msgid "Others"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:89
+msgid "Integrations"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:95
+msgid "Currency Settings"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:100
+msgid "Data management"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:124
+msgid "System"
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:17
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:22
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:27
+msgid "Not Set"
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:19
+msgid "Form Email Address"
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:24
+msgid "From Name"
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:29
+msgid "SMTP Username"
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:56
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:94
+msgid "Configure SMTP Settings"
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:59
+msgid ""
+"Bit SMTP is installed and active, but it hasn’t been configured yet. Please "
+"set up the SMTP settings to send emails."
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:62
+msgid "No SMTP Configuration Found."
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:74
+msgid "Bit SMTP is not enabled. Please enable it to send emails via SMTP."
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:81
+msgid ""
+"Email delivery for both Bit CRM and WordPress is currently handled via the "
+"Bit SMTP plugin."
+msgstr ""
+
+#: frontend/src/pages/smtp-settings/ui/smtp-description.tsx:98
+msgid "Bit SMTP Configuration"
+msgstr ""
+
+#: frontend/src/pages/tags/data/use-delete-tags.ts:30
+msgid "Tags deleted successfully."
+msgstr ""
+
+#: frontend/src/pages/tags/internal/tag-bulk-operations/ui/tags-bulk-operations.tsx:24
+msgid "Delete Tag"
+msgstr ""
+
+#: frontend/src/pages/tags/internal/tag-bulk-operations/ui/tags-bulk-operations.tsx:24
+msgid "Delete Tags"
+msgstr ""
+
+#: frontend/src/pages/tags/internal/tag-bulk-operations/ui/trash-modal.tsx:43
+msgid "Are you sure you want to delete these tags?"
+msgstr ""
+
+#: frontend/src/pages/tags/internal/tag-form.tsx:23
+msgid "The title field is required!"
+msgstr ""
+
+#: frontend/src/pages/tags/internal/tag-form.tsx:35
+msgid "The module field is required!"
+msgstr ""
+
+#: frontend/src/pages/tags/tags.tsx:81
+msgid "New Tag"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tag-create-modal.tsx:68
+msgid "Tag Created Successfully"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tag-create-modal.tsx:80
+msgid "Create New Tag"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tag-edit-modal.tsx:58
+msgid "Invalid tag ID"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tag-edit-modal.tsx:67
+msgid "Tag Updated Successfully"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tag-edit-modal.tsx:79
+msgid "Update Tag"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tags-table.tsx:114
+msgid "Are you sure you want to delete this tag?"
+msgstr ""
+
+#: frontend/src/pages/tags/ui/tags-table.tsx:128
+msgid "Delete tag"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/data/use-update-woo-product-integration.ts:54
+msgid "Integration settings updated successfully"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/data/use-upsert-wc-sync-settings.ts:22
+msgid "Failed to save settings"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/data/use-upsert-wc-sync-settings.ts:28
+msgid "Settings saved successfully"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-product-integration.tsx:35
+msgid "WooCommerce Product Integration"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-product-integration.tsx:45
+msgid "Enable WooCommerce Products"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-product-integration.tsx:47
+msgid ""
+"Allow selecting WooCommerce products in deal and invoice line items. "
+"Product source selection will be available when this is enabled."
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:101
+msgid "WooCommerce Sync"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:107
+msgid "Saving..."
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:126
+msgid "Automatically sync contacts from WooCommerce orders into the CRM."
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:127
+msgid "WooCommerce is not active. Install and activate WooCommerce to enable sync."
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:130
+msgid "Enable WooCommerce Sync"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:139
+msgid "Tag your contacts with the name of products they purchased."
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:141
+msgid "Tag Contact"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:154
+msgid "e.g. Product:"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:161
+msgid "Enter a tag prefix for product tags (e.g. Product: )"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:163
+msgid "Product tag prefix"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:172
+msgid "Include coupon codes as tags on the contact."
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:174
+msgid "Include Coupon as Tag"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:187
+msgid "e.g. Coupon:"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:194
+msgid "Enter a tag prefix for coupon tags (e.g. Coupon: )"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/internal/woocommerce-sync-settings.tsx:196
+msgid "Coupon tag prefix"
+msgstr ""
+
+#: frontend/src/pages/woo-settings/woo-settings.tsx:14
+msgid "WooCommerce Settings"
+msgstr ""
+
+#: frontend/src/pages/workflows/workflows.tsx:7
+msgid "Flows"
+msgstr ""
+
+#: frontend/src/pages/workflows/workflows.tsx:9
+msgid "Trigger"
+msgstr ""
+
+#: frontend/src/pages/workflows/workflows.tsx:10
+msgid "Created At"
+msgstr ""
+
+#: frontend/src/public-invoice/public-invoice-app.tsx:31
+msgid "Payment received. Thank you!"
+msgstr ""
+
+#: frontend/src/public-invoice/public-invoice-app.tsx:67
+msgid "Invoice not found"
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:14
+msgid "Awaiting Payment"
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:65
+msgid "Payment details are not available for this invoice yet."
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:69
+msgid "WooCommerce is not active, so online payment is unavailable."
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:73
+msgid "Online payment is currently unavailable for this invoice."
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-card-helpers.ts:77
+msgid "This invoice is not open for payment yet."
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-summary.tsx:17
+msgid "Due"
+msgstr ""
+
+#: frontend/src/public-invoice/ui/public-pay-card/public-pay-card.tsx:50
+msgid "There is no payable amount on this invoice yet."
+msgstr ""

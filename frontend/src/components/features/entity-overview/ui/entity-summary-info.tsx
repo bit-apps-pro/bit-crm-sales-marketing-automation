@@ -34,7 +34,9 @@ export default function EntitySummaryInfo({ entity }: { entity: EntitySummaryDat
             </Button>
           </If>
           <If conditions={!email}>
-            <p className="mb-0 text-sm text-slate-400 dark:text-neutral-500">{__('Not set')}</p>
+            <Typography.Text className="mb-0 text-sm text-slate-400 dark:text-neutral-500">
+              {__('Not set')}
+            </Typography.Text>
           </If>
         </span>
       </If>
@@ -44,11 +46,13 @@ export default function EntitySummaryInfo({ entity }: { entity: EntitySummaryDat
           <LuPhone className="shrink-0" />
           <If conditions={phone}>
             <Button className="p-0 hover:text-blue-500" href={`tel:${phone}`} type="link">
-              {phone}
+              <Typography.Text className="bidi-auto py-1">{phone}</Typography.Text>
             </Button>
           </If>
           <If conditions={!phone}>
-            <p className="mb-0 text-sm text-slate-400 dark:text-neutral-500">{__('Not set')}</p>
+            <Typography.Text className="mb-0 text-sm text-slate-400 dark:text-neutral-500">
+              {__('Not set')}
+            </Typography.Text>
           </If>
         </span>
       </If>
@@ -59,10 +63,14 @@ export default function EntitySummaryInfo({ entity }: { entity: EntitySummaryDat
             {__('SKU')}
           </span>
           <If conditions={sku}>
-            <p className="mb-0 text-sm font-medium text-slate-700 dark:text-neutral-200">{sku}</p>
+            <Typography.Text className="mb-0 text-sm font-medium text-slate-700 dark:text-neutral-200">
+              {sku}
+            </Typography.Text>
           </If>
           <If conditions={!sku}>
-            <p className="mb-0 text-sm text-slate-400 dark:text-neutral-500">{__('Not set')}</p>
+            <Typography.Text className="mb-0 text-sm text-slate-400 dark:text-neutral-500">
+              {__('Not set')}
+            </Typography.Text>
           </If>
         </div>
       </If>
@@ -73,10 +81,14 @@ export default function EntitySummaryInfo({ entity }: { entity: EntitySummaryDat
             {__('Price')}
           </span>
           <If conditions={price !== null}>
-            <p className="mb-0 text-sm font-medium text-slate-700 dark:text-neutral-200">{price}</p>
+            <Typography.Text className="mb-0 text-sm font-medium text-slate-700 dark:text-neutral-200">
+              {price}
+            </Typography.Text>
           </If>
           <If conditions={price === null}>
-            <p className="mb-0 text-sm text-slate-400 dark:text-neutral-500">{__('Not set')}</p>
+            <Typography.Text className="mb-0 text-sm text-slate-400 dark:text-neutral-500">
+              {__('Not set')}
+            </Typography.Text>
           </If>
         </div>
       </If>

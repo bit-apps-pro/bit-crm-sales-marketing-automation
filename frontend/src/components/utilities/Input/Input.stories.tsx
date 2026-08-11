@@ -6,7 +6,7 @@ import Input from './Input'
 export const Template: StoryFn<typeof Input> = args => (
   <div>
     <div className="flx ai-end mb-6">
-      <div className="mr-2">
+      <div className="me-2">
         <Input
           {...args}
           label={args.title || __('Outline Input')}
@@ -14,10 +14,10 @@ export const Template: StoryFn<typeof Input> = args => (
           size="large"
         />
       </div>
-      <div className="mr-2">
+      <div className="me-2">
         <Input {...args} placeholder={args.placeholder || __('middle')} size="middle" />
       </div>
-      <div className="mr-2">
+      <div className="me-2">
         <Input {...args} placeholder={args.placeholder || __('small')} size="small" />
       </div>
     </div>

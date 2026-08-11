@@ -29,12 +29,12 @@ export default function InvoiceSenderReceiverPreview({
         )}
         {businessSettings?.phone_number && (
           <Typography.Text className="block text-sm" type="secondary">
-            {businessSettings.phone_number}
+            <span dir="ltr">{businessSettings.phone_number}</span>
           </Typography.Text>
         )}
         {businessSettings?.mobile_number && (
           <Typography.Text className="block text-sm" type="secondary">
-            {businessSettings.mobile_number}
+            <span dir="ltr">{businessSettings.mobile_number}</span>
           </Typography.Text>
         )}
         {businessSettings?.email && (
@@ -62,7 +62,7 @@ export default function InvoiceSenderReceiverPreview({
       </div>
       <div>
         <Typography.Title level={5}>{__('Bill To')}</Typography.Title>
-        <Typography.Text strong>
+        <Typography.Text className="block" strong>
           {renderFullName(contact?.title, contact?.first_name, contact?.last_name)}
         </Typography.Text>
         <Typography.Text className="block text-sm" type="secondary">

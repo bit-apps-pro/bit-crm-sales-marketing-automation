@@ -205,7 +205,7 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
             className="flex flex-col items-end justify-between"
             style={{
               height: CHART_HEIGHT - CHART_PADDING_TOP - CHART_PADDING_BOTTOM,
-              paddingRight: 4,
+              paddingInlineEnd: 4,
               paddingTop: CHART_PADDING_TOP
             }}
           >

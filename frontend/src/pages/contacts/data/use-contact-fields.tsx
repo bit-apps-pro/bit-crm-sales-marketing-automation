@@ -10,7 +10,8 @@ export default function useContactFields() {
     queryFn: ({ signal }) =>
       queryRequest<ContactFieldsResponseType>('contacts/table-fields', {}, undefined, 'GET', { signal }),
     queryKey: ['contact', 'table-fields'],
-    select: processedFields
+    select: processedFields,
+    staleTime: 5 * 60 * 1000
   })
 
   return {

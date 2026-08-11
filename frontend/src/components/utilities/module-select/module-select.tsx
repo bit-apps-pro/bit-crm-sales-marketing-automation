@@ -12,7 +12,7 @@ const optionRender = (option: BaseOptionType) => {
       <span className="flex items-center gap-2">
         {option.label}
         <Tag className="flex items-center justify-center" color="gold">
-          <LuCrown className="mr-1" />
+          <LuCrown className="me-1" />
           <span>{__('Pro')}</span>
         </Tag>
       </span>

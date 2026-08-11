@@ -26,13 +26,13 @@ export default function ProEntitiesAlert({ columns, featureName }: ProEntitiesAl
           </div>
           <Space.Compact direction="horizontal" size="large">
             <Button
-              className="rounded-l-full text-sm text-gray-500 dark:text-gray-400"
+              className="rounded-s-full text-sm text-gray-500 dark:text-gray-400"
               icon={<LuFileDown size={14} />}
             >
               {__('Import')}
             </Button>
             <Button
-              className="rounded-r-full text-sm text-gray-500 dark:text-gray-400"
+              className="rounded-e-full text-sm text-gray-500 dark:text-gray-400"
               icon={<LuUpload size={14} />}
             >
               {__('Export')}

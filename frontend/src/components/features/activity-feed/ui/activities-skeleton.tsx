@@ -2,7 +2,7 @@ import { Skeleton } from 'antd'
 
 export default function ActivitiesSkeleton() {
   return (
-    <div className="h-full space-y-4 border-0 border-r border-solid border-[#EBEAFF] pr-7 dark:border-neutral-700">
+    <div className="h-full space-y-4 border-0 border-e border-solid border-[#EBEAFF] pe-7 dark:border-neutral-700">
       <div className="flex items-center gap-2">
         <Skeleton.Avatar active shape="square" size="small" />
         <Skeleton.Input active className="w-24" size="small" />

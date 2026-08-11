@@ -67,12 +67,35 @@ final class Plugin
     }
 
     /**
+     * Load the bundled translations.
+     *
+     * Required because the `.mo` files ship inside the plugin's own /languages
+     * folder. Core's just-in-time loading only searches WP_LANG_DIR/plugins,
+     * WP_LANG_DIR/themes, and `custom_paths` -- and `custom_paths` is populated
+     * exclusively by this function. The `Domain Path` header is build tooling
+     * metadata, never a runtime lookup path.
+     *
+     * The path must be RELATIVE to WP_PLUGIN_DIR: core builds the lookup as
+     * `WP_PLUGIN_DIR . '/' . trim($rel, '/')`, so an absolute path (what
+     * Config::get('ROOT_DIR') returns) yields a doubled, non-existent
+     * directory and the textdomain silently never loads.
+     */
+    public function localizationSetup()
+    {
+        load_plugin_textdomain(
+            'bit-crm-sales-marketing-automation',
+            false,
+            \dirname(Config::get('BASENAME')) . '/languages'
+        );
+    }
+
+    /**
      * Load the plugin.
      */
     public function loaded()
     {
         Hooks::doAction(Config::withPrefix('loaded'));
-
+        Hooks::addAction('init', [$this, 'localizationSetup']);
         Hooks::addAction('init', [$this, 'registerProviders'], 11);
 
         Hooks::addFilter('plugin_action_links_' . Config::get('BASENAME'), [new PluginPageActions(), 'renderActionLinks']);

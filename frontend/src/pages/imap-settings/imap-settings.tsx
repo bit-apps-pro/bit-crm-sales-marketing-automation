@@ -60,7 +60,7 @@ export default function ImapSettings() {
         <If conditions={imaps && imaps.total > imaps.per_page}>
           <Pagination
             align="end"
-            className="mr-6 mt-4"
+            className="me-6 mt-4"
             current={pageNo}
             onChange={handlePageChange}
             pageSize={imaps?.per_page}

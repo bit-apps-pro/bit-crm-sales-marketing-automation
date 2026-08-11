@@ -51,7 +51,7 @@ export default function Prefix() {
           <Typography.Text className="mb-2 block text-xs text-gray-500 dark:text-gray-400">
             {__('Enter the prefix that will appear before each invoice number.')}
           </Typography.Text>
-          <ul className="mb-6 mt-1 list-disc space-y-1 pl-4 text-xs text-gray-400 dark:text-gray-500">
+          <ul className="mb-6 mt-1 list-disc space-y-1 ps-4 text-xs text-gray-400 dark:text-gray-500">
             <li>{__('Example: entering INV will produce invoices like INV-0001.')}</li>
             <li>{__('Maximum 10 characters allowed.')}</li>
           </ul>

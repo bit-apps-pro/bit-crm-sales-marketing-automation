@@ -24,7 +24,7 @@ export default function ThemeToggle() {
       <div
         className={cn([
           'absolute z-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary shadow-md transition-all duration-300',
-          isDarkTheme ? 'left-11' : 'left-1'
+          isDarkTheme ? 'start-11' : 'start-1'
         ])}
       >
         {isDarkTheme ? (

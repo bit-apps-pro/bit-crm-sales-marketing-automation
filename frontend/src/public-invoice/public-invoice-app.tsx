@@ -1,4 +1,5 @@
 import NotifyContext from '@common/context/NotifyContext'
+import { direction } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import { componentsTokenLight, lightThemeConfig } from '@config/theme'
 import { mapInvoiceResponseToPreviewData } from '@pages/Invoice/shared/map-invoice-preview-data'
@@ -32,6 +33,7 @@ export default function PublicInvoiceApp() {
 
   return (
     <ConfigProvider
+      direction={direction}
       theme={{
         algorithm: defaultAlgorithm,
         components: componentsTokenLight,

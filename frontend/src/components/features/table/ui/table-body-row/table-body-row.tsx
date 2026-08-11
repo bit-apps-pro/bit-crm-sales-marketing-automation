@@ -24,7 +24,7 @@ export default function TableBodyRow<T>({ row }: TableBodyRowProps<T>) {
             className={cn([
               'max-w-80 truncate border border-solid border-slate-200 dark:border-slate-600',
               isSticky ? 'sticky z-20 bg-slate-50 px-2 py-1 dark:bg-slate-950' : 'px-2 py-1',
-              isSticky === 'right' ? 'right-0' : 'left-0'
+              isSticky === 'right' ? 'end-0' : 'start-0'
             ])}
             key={cell.id}
           >

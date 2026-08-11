@@ -10,7 +10,7 @@ import { useSearchParams } from 'react-router'
 
 const selectPrefix = (label: string) => (
   <div className="flex items-center">
-    <span className="min-w-12 text-left">{label}</span>
+    <span className="min-w-12 text-start">{label}</span>
     <span className="mx-1 text-xs text-gray-300">|</span>
   </div>
 )

@@ -1,3 +1,4 @@
+import { dividerOrientation } from '@common/helpers/direction'
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import EntityQuickCreateModal from '@features/entity-quick-create'
@@ -70,7 +71,11 @@ export default function EntityForm<T extends Store | undefined, Y extends BaseFi
 
             elements.push(
               <Fragment key={field.field_key}>
-                <Divider className="mb-0 mt-4 first:mt-0" orientation="left" orientationMargin="0">
+                <Divider
+                  className="mb-0 mt-4 first:mt-0"
+                  orientation={dividerOrientation}
+                  orientationMargin="0"
+                >
                   {__(field.label)}
                 </Divider>
                 <div className="grid grid-cols-2 gap-4">
@@ -96,7 +101,7 @@ export default function EntityForm<T extends Store | undefined, Y extends BaseFi
               <Divider
                 className="mb-0 mt-4 first:mt-0"
                 key={field.field_key}
-                orientation="left"
+                orientation={dividerOrientation}
                 orientationMargin="0"
               >
                 {__(field.label)}

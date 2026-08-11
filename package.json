@@ -1,6 +1,6 @@
 {
   "name": "bit-apps",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "ISC",
   "author": "bit-apps",
   "type": "module",
@@ -30,6 +30,8 @@
     "test:cover": "vitest --coverage",
     "test:e2e": "playwright test",
     "test:watch": "vitest --watch=true",
+    "translate": "pnpm potomatic --pot-file-path languages/bit-crm-sales-marketing-automation.pot --output-dir languages/ --po-file-prefix 'bit-crm-sales-marketing-automation-' --api-key $OPENAI_API_KEY -m 'gpt-4.1-mini' --abort-on-failure --target-languages",
+    "translate:all": "./bin/run_potomatic.sh",
     "ts-check": "tsc",
     "type-cov": "pnpx type-coverage -p ./tsconfig.json --strict --details",
     "update-ver": "pnpm bitapps-plugin-update-version --slug bit-crm-sales-marketing-automation"
@@ -177,6 +179,7 @@
     "lefthook": "^1.13.6",
     "msw": "^2.13.1",
     "postcss-csso": "^6.0.1",
+    "potomatic": "github:GravityKit/Potomatic#b0c247675a404dacd1428ce59a3fe7366404cc9c",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "rimraf": "^6.1.3",

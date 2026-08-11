@@ -44,7 +44,7 @@ export default function TableHeaderRow<T>({ headerGroup }: TableHeaderRowProps<T
             className={twMerge(
               'text-nowrap border border-solid border-slate-200 text-start dark:border-slate-600',
               isSticky ? 'sticky z-10 bg-slate-50 px-4 py-2 dark:bg-slate-950' : 'px-2 py-2',
-              isSticky === 'right' ? 'right-0' : 'left-0'
+              isSticky === 'right' ? 'end-0' : 'start-0'
             )}
             colSpan={header.colSpan}
             key={header.id}

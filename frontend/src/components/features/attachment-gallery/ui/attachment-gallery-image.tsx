@@ -34,7 +34,7 @@ export default function AttachmentGalleryImage({
           className="h-full w-full object-scale-down"
           src={attachment.media_url}
         />
-        <div className="absolute bottom-0 right-0 flex w-full translate-y-5 items-center justify-center rounded-b bg-slate-200 px-2 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-700">
+        <div className="absolute bottom-0 end-0 flex w-full translate-y-5 items-center justify-center rounded-b bg-slate-200 px-2 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-700">
           <DownloadMedia fileName={attachment.file_name} mediaId={attachment.media_id}>
             <Button className="w-6" icon={<LuDownload />} title={__('Download')} type="link" />
           </DownloadMedia>

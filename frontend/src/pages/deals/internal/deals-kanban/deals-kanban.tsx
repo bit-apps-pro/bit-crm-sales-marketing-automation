@@ -8,6 +8,7 @@ import MeetingCreateModal from '@features/meetings/ui/meeting-create-modal'
 import NoteCreateModal from '@features/notes/ui/note-create-modal'
 import TaskCreateModal from '@features/tasks/ui/task-create-modal'
 import { type Deal } from '@pages/deal/shared/deal-types'
+import useDealFields from '@pages/deals/data/use-deal-fields'
 import useDeals from '@pages/deals/data/use-deals'
 import {
   useFieldListStore,
@@ -19,7 +20,6 @@ import { Empty } from 'antd'
 import { useCallback, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router'
 
-import useDealStages from './data/use-deal-stages'
 import useLoadMoreStageDeals from './data/use-load-more-stage-deals'
 import { type DealsKanbanProps } from './shared/types'
 import {
@@ -54,7 +54,7 @@ const generateFieldOptions = (fields: FieldItem[]) => {
 
 export default function DealsKanban({ searchData }: DealsKanbanProps) {
   const lastSyncedDealsRef = useRef<Deal[]>([])
-  const { isStagesLoading } = useDealStages()
+  const { isFieldsLoading: isStagesLoading } = useDealFields()
   const { deals, isDealsLoading: isLoading, stageStatistics } = useDeals(searchData)
   const { loadMoreStageDeals } = useLoadMoreStageDeals()
   const fieldList = useFieldListStore()

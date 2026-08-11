@@ -16,7 +16,7 @@ export default function AdvancedFilterItem({
   shouldShowRemoveButton
 }: AdvancedFilterItemProps) {
   return (
-    <div className="flex items-start space-x-2">
+    <div className="flex items-start gap-2">
       <div className="flex-1">
         <FilterSelectInput
           error={errors?.field_key || false}

@@ -59,7 +59,7 @@ export default function Activities({
   }
 
   return (
-    <div className="flex h-full flex-col gap-4 border-0 border-r border-solid border-[#EBEAFF] pr-7 dark:border-neutral-700">
+    <div className="flex h-full flex-col gap-4 border-0 border-e border-solid border-[#EBEAFF] pe-7 dark:border-neutral-700">
       <div className="flex items-center gap-2">
         <LuNotepadText className="text-gray-500" />
         <Typography.Text type="secondary">

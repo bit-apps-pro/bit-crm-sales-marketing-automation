@@ -14,16 +14,16 @@ export default function ConversionMappingSkeleton() {
           <table className="w-full table-fixed border-collapse">
             <thead>
               <tr className="bg-gray-50 dark:bg-gray-700">
-                <th className="border-b border-r border-gray-300 px-2 py-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <th className="border-b border-e border-gray-300 px-2 py-2 text-start text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
                   {__('Lead')}
                 </th>
-                <th className="border-b border-r border-gray-300 px-2 py-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <th className="border-b border-e border-gray-300 px-2 py-2 text-start text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
                   {__('Contact')}
                 </th>
-                <th className="border-b border-r border-gray-300 px-2 py-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <th className="border-b border-e border-gray-300 px-2 py-2 text-start text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
                   {__('Company')}
                 </th>
-                <th className="border-b border-r border-gray-300 px-2 py-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <th className="border-b border-e border-gray-300 px-2 py-2 text-start text-sm font-semibold text-gray-700 dark:border-gray-600 dark:text-gray-200">
                   {__('Deal')}
                 </th>
               </tr>
@@ -34,10 +34,10 @@ export default function ConversionMappingSkeleton() {
                   className="dark:hover:bg-gray-750 bg-white hover:bg-gray-50 dark:bg-gray-800"
                   key={`skeleton-${index}`}
                 >
-                  <td className="border-b border-r border-gray-300 p-2 dark:border-gray-600">
+                  <td className="border-b border-e border-gray-300 p-2 dark:border-gray-600">
                     <Skeleton.Input active block style={{ height: 34 }} />
                   </td>
-                  <td className="border-b border-r border-gray-300 p-2 dark:border-gray-600">
+                  <td className="border-b border-e border-gray-300 p-2 dark:border-gray-600">
                     <Skeleton.Input active block style={{ height: 34 }} />
                   </td>
                   <td className="border-b border-gray-300 p-2 dark:border-gray-600">

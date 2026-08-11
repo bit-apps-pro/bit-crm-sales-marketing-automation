@@ -1,4 +1,5 @@
 import CAPABILITIES from '@common/constants/capabilities'
+import { isRtl } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import IntegrationSettingsNavigation from '@features/integration-settings-navigation'
 import {
@@ -91,7 +92,7 @@ export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormL
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <Breadcrumb
-            className="ml-2"
+            className="ms-2"
             items={[
               {
                 title: __('Invoices'),
@@ -128,7 +129,7 @@ export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormL
             <div
               style={{
                 transform: `scale(${scale})`,
-                transformOrigin: 'top left',
+                transformOrigin: isRtl() ? 'top right' : 'top left',
                 width: PAGE_WIDTH
               }}
             >

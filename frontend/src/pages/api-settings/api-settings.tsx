@@ -69,7 +69,13 @@ export default function ApiSettings() {
                 </Typography.Text>
               </Space>
               {/* TODO: point href at the published API documentation once it exists. */}
-              <Button icon={<LuExternalLink size={14} />} iconPosition="end" type="link">
+              <Button
+                href="https://bit-crm.com/docs/developer-docs/api/"
+                icon={<LuExternalLink size={14} />}
+                iconPosition="end"
+                target="_blank"
+                type="link"
+              >
                 {__('API documentation')}
               </Button>
             </div>

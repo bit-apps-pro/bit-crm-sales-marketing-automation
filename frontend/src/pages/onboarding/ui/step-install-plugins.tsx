@@ -80,7 +80,7 @@ export default function StepInstallPlugins({ finishing, onBack, onFinish }: Step
         <Button
           className="rounded-full"
           disabled={finishing}
-          icon={<LuArrowLeft />}
+          icon={<LuArrowLeft className="rtl-flip" />}
           onClick={onBack}
           type="text"
         >

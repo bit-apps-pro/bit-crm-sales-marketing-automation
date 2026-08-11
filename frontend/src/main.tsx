@@ -1,3 +1,4 @@
+import { applyDirection } from '@common/helpers/direction'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { lazy, StrictMode, Suspense } from 'react'
 import '@resource/styles/antd-reset.css'
@@ -28,6 +29,8 @@ const elm = document.querySelector(
   isPublicInvoicePage ? '#bit-crm-public-invoice-root' : '#bit-apps-root'
 )
 if (elm) {
+  applyDirection(elm)
+
   const root = createRoot(elm)
 
   root.render(
