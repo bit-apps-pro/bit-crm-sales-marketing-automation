@@ -24,7 +24,11 @@ class Config
 
     public const VAR_PREFIX = 'bit_crm_';
 
+<<<<<<< Updated upstream
     public const VERSION = '1.0.5';
+=======
+    public const VERSION = '1.0.6';
+>>>>>>> Stashed changes
 
     public const DB_VERSION = '1.0.1';
 

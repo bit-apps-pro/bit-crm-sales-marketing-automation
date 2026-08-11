@@ -1,6 +1,10 @@
 {
   "name": "bit-apps",
+<<<<<<< Updated upstream
   "version": "1.0.5",
+=======
+  "version": "1.0.6",
+>>>>>>> Stashed changes
   "license": "ISC",
   "author": "bit-apps",
   "type": "module",

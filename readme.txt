@@ -4,7 +4,11 @@ Tags: crm, contacts, leads, invoice, sales pipeline
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 8.2
+<<<<<<< Updated upstream
 Stable tag: 1.0.5
+=======
+Stable tag: 1.0.6
+>>>>>>> Stashed changes
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,6 +134,28 @@ An administrator can connect [Gmail](https://mail.google.com/) (imap.gmail.com),
 When a user sends an email or invoice, Bit CRM passes its recipient, subject, body, headers, and attachments to WordPress's `wp_mail`, which uses the site owner's configured mail service and the recipient's mail server. Those providers' terms and privacy policies apply; Bit CRM does not select a mail provider.
 
 == Changelog ==
+
+= v1.0.5 (August 10, 2026) =
+* Features:
+   * Translations: The plugin is now fully translatable and ships with Arabic, German, Spanish, and Brazilian Portuguese.
+   * Right-to-left languages: The whole CRM interface now mirrors for RTL locales, while directionally neutral text still reads left-to-right.
+* Improvements:
+   * Lists: Leads and other module list views load faster, needing fewer requests.
+   * Filters: Tag filters load their options when opened instead of on every page load.
+   * Fields: Changing a module's field settings now refreshes its list table right away.
+
+= v1.0.4 (August 6, 2026) =
+* Features:
+   * External API: Added endpoints for trashing records, bulk tag attach and detach, tags, notes, activities (tasks, meetings, calls), activity logs, and invoices including share links.
+* Improvements:
+   * Loading screens: Pages now show far fewer loading screens and settle into their content faster.
+* Security:
+   * Permissions: Added the missing capability checks on settings and WooCommerce sync.
+   * IMAP: Private mail accounts can no longer be edited by other users.
+* Fixed:
+   * Lists & Filters: Sorting and advanced filtering on Leads, Contacts, Companies, and Deals now ignore unknown columns instead of breaking the list.
+   * Tags: Attaching or detaching a tag now checks that the record still exists.
+   * Contacts: Contacts with an invalid stored date no longer break the contact page.
 
 = 1.0.0 =
 * Initial release.
