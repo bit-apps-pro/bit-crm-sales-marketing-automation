@@ -33,7 +33,7 @@ export default function ActivityNotes({ activityType, isValidSelection }: Activi
 
   if (!isValidSelection || id === 0) {
     return (
-      <div className="border-0 border-l border-solid border-[#EBEAFF] pl-7 dark:border-neutral-700">
+      <div className="border-0 border-s border-solid border-[#EBEAFF] ps-7 dark:border-neutral-700">
         <div className="flex min-h-full flex-col items-center justify-center text-center">
           <Typography.Title className="mb-2" level={5}>
             {__('Select an activity')}
@@ -47,7 +47,7 @@ export default function ActivityNotes({ activityType, isValidSelection }: Activi
   }
 
   return (
-    <div className="flex h-full flex-col space-y-5 border-0 border-l border-solid border-[#EBEAFF] pl-7 dark:border-neutral-700">
+    <div className="flex h-full flex-col space-y-5 border-0 border-s border-solid border-[#EBEAFF] ps-7 dark:border-neutral-700">
       <div className="flex min-h-0 flex-1 flex-col space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">

@@ -13,7 +13,8 @@ export default function useCompanyFields() {
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('companies/table-fields', {}, undefined, 'GET', { signal }),
     queryKey: ['company', 'table-fields'],
-    select: processedFields
+    select: processedFields,
+    staleTime: 5 * 60 * 1000
   })
 
   return {

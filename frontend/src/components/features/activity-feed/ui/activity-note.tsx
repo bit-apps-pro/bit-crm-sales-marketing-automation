@@ -70,14 +70,14 @@ export default function ActivityNote({ note }: ActivityNoteProps) {
   const menuTrigger = (
     <Dropdown
       arrow
-      className="!mr-0 !pr-0"
+      className="!me-0 !pe-0"
       menu={{ items }}
       onOpenChange={setIsMenuOpen}
       open={isMenuOpen}
       placement="bottomRight"
       trigger={['click']}
     >
-      <Button className="!mr-0 !pr-0" icon={<LuEllipsisVertical />} type="link" />
+      <Button className="!me-0 !pe-0" icon={<LuEllipsisVertical />} type="link" />
     </Dropdown>
   )
 

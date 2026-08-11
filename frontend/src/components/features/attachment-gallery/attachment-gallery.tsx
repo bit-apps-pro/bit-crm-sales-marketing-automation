@@ -55,10 +55,7 @@ export default function AttachmentGallery({ attachments }: { attachments: Attach
             setIsPreviewVisible(visible)
           },
           toolbarRender: (_, { actions: { onActive, onZoomIn, onZoomOut }, transform: { scale } }) => (
-            <Space
-              className="space-x-5 rounded-[100px] bg-black/20 px-8 py-2 text-lg dark:bg-white/10"
-              size={12}
-            >
+            <Space className="rounded-[100px] bg-black/20 px-8 py-2 text-lg dark:bg-white/10" size={32}>
               <LeftOutlined onClick={() => onActive?.(-1)} />
               <RightOutlined onClick={() => onActive?.(1)} />
               {imageAttachments[currentImageIndex] && (

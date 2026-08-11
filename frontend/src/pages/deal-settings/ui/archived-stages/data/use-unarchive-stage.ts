@@ -53,6 +53,7 @@ export default function useUnarchiveStage() {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['deals', 'stages'] })
+      queryClient.invalidateQueries({ queryKey: ['deals', 'table-fields'] })
     },
     onSuccess: response => {
       messageApi?.success(response.message || __('Stage unarchived successfully'))

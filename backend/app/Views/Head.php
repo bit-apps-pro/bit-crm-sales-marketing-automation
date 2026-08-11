@@ -96,6 +96,7 @@ class Head
             Config::withPrefix('localized_script'),
             [
                 'nonce'               => wp_create_nonce('wp_rest'),
+                'isRtl'               => is_rtl() ? '1' : '',
                 'rootURL'             => Config::get('ROOT_URI'),
                 'siteUrl'             => Config::get('SITE_URL'),
                 'siteBaseURL'         => is_multisite() ? network_site_url() : site_url(),
@@ -118,9 +119,9 @@ class Head
                 'onboardingCompleted' => Config::getOption(OnboardingController::KEY_ONBOARDING_COMPLETED, false),
             ]
         );
-        if (get_locale() !== 'en_US' && file_exists(Config::get('BASEDIR') . '/languages/generatedString.php')) {
-            include_once Config::get('BASEDIR') . '/languages/generatedString.php';
-            $frontendVars['translations'] = Config::withPrefix('i18n_strings');
+
+        if (get_locale() !== 'en_US' && file_exists(Config::get('ROOT_DIR') . '/languages/frontend-extracted-strings.php')) {
+            $frontendVars['translations'] = include Config::get('ROOT_DIR') . '/languages/frontend-extracted-strings.php';
         }
 
         return $frontendVars;

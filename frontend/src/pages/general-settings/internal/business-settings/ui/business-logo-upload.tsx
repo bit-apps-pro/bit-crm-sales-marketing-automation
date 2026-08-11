@@ -62,7 +62,7 @@ export default function BusinessLogoUpload({
             <If conditions={!disabled}>
               <Button
                 aria-label={__('Remove Logo')}
-                className="absolute -right-2 -top-2 shadow-md"
+                className="absolute -end-2 -top-2 shadow-md"
                 danger
                 disabled={disabled}
                 icon={<LuX />}

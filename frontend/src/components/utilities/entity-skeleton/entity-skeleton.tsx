@@ -18,7 +18,7 @@ export default function EntitySkeleton() {
       </section>
 
       <section className="mb-6 space-y-2 rounded-md">
-        <header className="sticky left-0 top-0 z-10 pb-4">
+        <header className="sticky start-0 top-0 z-10 pb-4">
           <div className="flex justify-start gap-2 border-b border-gray-200">
             {Array.from({ length: 4 }).map((_, i) => (
               <Skeleton.Input active className="border-b-2 border-transparent" key={i} size="small" />
@@ -52,7 +52,7 @@ export default function EntitySkeleton() {
                 <Skeleton.Input active size="small" />
                 <div className="space-y-4">
                   {Array.from({ length: 4 }).map((_, i) => (
-                    <div className="flex items-start space-x-3" key={i}>
+                    <div className="flex items-start gap-3" key={i}>
                       <Skeleton.Avatar active size="small" />
                       <div className="flex-1 space-y-1">
                         <div className="flex flex-col gap-2">

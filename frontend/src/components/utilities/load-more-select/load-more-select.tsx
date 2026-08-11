@@ -34,7 +34,7 @@ export default function LoadMoreSelect({
   const notFoundContent = props.loading ? (
     <div className="flex items-center justify-center py-2">
       <Spin size="small" />
-      <span className="ml-2">{__('Loading...')}</span>
+      <span className="ms-2">{__('Loading...')}</span>
     </div>
   ) : (
     props.notFoundContent || __('No data')

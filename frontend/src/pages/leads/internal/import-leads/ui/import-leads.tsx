@@ -165,7 +165,7 @@ export default function ImportLeads({ customFields, systemDefinedFields }: Impor
     <>
       <Button
         aria-label={__('Import Leads')}
-        className="rounded-l-full text-sm text-gray-500 dark:text-gray-400"
+        className="rounded-s-full text-sm text-gray-500 dark:text-gray-400"
         icon={<LuFileDown size={14} />}
         onClick={() => handleModal(true)}
       >

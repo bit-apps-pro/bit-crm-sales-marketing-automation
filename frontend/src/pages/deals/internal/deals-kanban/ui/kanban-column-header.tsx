@@ -66,7 +66,7 @@ export default function KanbanColumnHeader({ amount, count, ids, stage }: Kanban
         </div>
         <div
           className={cn(
-            'text-right transition duration-200',
+            'text-end transition duration-200',
             !selectedKeys.length && 'opacity-0 group-hover/column:opacity-100'
           )}
         >

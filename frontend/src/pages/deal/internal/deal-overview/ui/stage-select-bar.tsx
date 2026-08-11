@@ -1,3 +1,4 @@
+import { isRtl } from '@common/helpers/direction'
 import useStages from '@pages/deal-settings/ui/stages/data/use-stages'
 import { type StageSelectBarProps } from '@pages/deal/shared/deal-types'
 import useUpdateDealStage from '@pages/deals/internal/deals-kanban/data/use-update-deal-stage'
@@ -48,10 +49,11 @@ export default function StageSelectBar({ deal }: StageSelectBarProps) {
 
   return (
     <If conditions={stages && stages.length > 0}>
-      <div className="flex w-full overflow-x-auto">
+      <div className="flex w-full">
         <div
-          className="flex gap-[3px] border border-solid border-slate-200 p-[3px] dark:border-transparent"
-          style={{ minWidth: '100%' }}
+          className="flex gap-[3px] overflow-x-auto border border-solid border-slate-200 p-[3px] dark:border-transparent"
+          dir="ltr"
+          style={{ minWidth: '100%', transform: isRtl() ? 'scaleX(-1)' : undefined }}
         >
           {stages.map((stage, index) => {
             const isFirst = index === 0

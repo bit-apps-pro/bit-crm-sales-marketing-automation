@@ -14,7 +14,8 @@ export default function useLeadFields() {
     queryFn: ({ signal }) =>
       queryRequest<ResponseType>('leads/table-fields', {}, undefined, 'GET', { signal }),
     queryKey: ['lead', 'table-fields'],
-    select: processedFields
+    select: processedFields,
+    staleTime: 5 * 60 * 1000
   })
 
   return {

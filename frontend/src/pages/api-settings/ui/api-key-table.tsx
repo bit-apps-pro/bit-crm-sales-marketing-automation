@@ -115,7 +115,7 @@ export default function ApiKeyTable({ isLoadingApiKeys, users }: ApiKeyTableProp
       expandable={{
         expandedRowRender: user => (
           <Table<ApiKeyType>
-            className="ml-6"
+            className="ms-6"
             columns={keyColumns(user)}
             dataSource={user.keys}
             pagination={false}

@@ -1,3 +1,4 @@
+import { drawerPlacement } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import AttachmentGallery from '@features/attachment-gallery'
 import If from '@utilities/If'
@@ -46,6 +47,7 @@ export default function EmailView({ module }: { module: EntityModule }) {
       destroyOnHidden
       onClose={handleViewClose}
       open={isViewOpen && currentEmailData !== undefined}
+      placement={drawerPlacement}
       title={currentEmailData?.subject}
       width={720}
     >

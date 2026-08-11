@@ -22,7 +22,7 @@ export default function InvoicePreviewSkeleton() {
               <div>
                 <Skeleton.Image active style={{ height: 80, width: 128 }} />
               </div>
-              <div className="space-y-3 text-right">
+              <div className="space-y-3 text-end">
                 <Skeleton.Input active size="large" style={{ width: 150 }} />
                 <div className="space-y-2">
                   <Skeleton.Input active size="small" style={{ width: 200 }} />

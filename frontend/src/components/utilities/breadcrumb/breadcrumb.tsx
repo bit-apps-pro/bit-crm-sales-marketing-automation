@@ -12,7 +12,7 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[]
 }
 
-const Breadcrumb = ({ className = 'ml-2', items }: BreadcrumbProps) => {
+const Breadcrumb = ({ className = 'ms-2', items }: BreadcrumbProps) => {
   const breadcrumbItems = [
     {
       title: (

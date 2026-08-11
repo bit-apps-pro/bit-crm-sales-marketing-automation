@@ -17,7 +17,7 @@ export default function ActivityCard({ activity }: { activity: ActivityType }) {
   return (
     <button
       className={cn(
-        'block w-full cursor-pointer rounded-[16px] border border-solid bg-white p-4 text-left dark:bg-neutral-900',
+        'block w-full cursor-pointer rounded-[16px] border border-solid bg-white p-4 text-start dark:bg-neutral-900',
         activity.id == Number(id)
           ? 'border-primary dark:border-[#5C4DFF]'
           : 'border-[#EBEAFF] dark:border-neutral-700'

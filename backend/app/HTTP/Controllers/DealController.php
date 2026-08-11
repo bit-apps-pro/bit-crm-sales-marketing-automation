@@ -32,6 +32,7 @@ use BitApps\Crm\Services\CurrencyService;
 use BitApps\Crm\Services\DealKanbanSearchService;
 use BitApps\Crm\Services\DealSearchService;
 use BitApps\Crm\Services\DealService;
+use BitApps\Crm\Services\DealStageService;
 use BitApps\Crm\Services\ImportExportListService;
 use BitApps\Crm\Services\LineItemService;
 use BitApps\Crm\Services\SettingService;
@@ -211,11 +212,13 @@ final class DealController
     {
         $columnsOrder = SettingService::getSettingsValue(Deal::SETTINGS_KEYS['COLUMNS_ORDER']);
         $visibleColumns = SettingService::getSettingsValue(Deal::SETTINGS_KEYS['TABLE_VISIBLE_COLUMNS']);
+        $stages = (new DealStageService())->getAllStages(DealStageService::STATUS_ACTIVE);
 
         return Response::success(
             [
                 'fields'          => $this->dealService->fields(),
                 'orders'          => $columnsOrder,
+                'stages'          => array_values($stages),
                 'visible_columns' => $visibleColumns
             ]
         );

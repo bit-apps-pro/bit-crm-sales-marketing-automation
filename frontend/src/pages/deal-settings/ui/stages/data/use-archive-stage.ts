@@ -52,6 +52,7 @@ export default function useArchiveStage() {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['deals', 'stages'] })
+      queryClient.invalidateQueries({ queryKey: ['deals', 'table-fields'] })
     },
     onSuccess: () => {
       messageApi?.success(__('Stage archived successfully'))

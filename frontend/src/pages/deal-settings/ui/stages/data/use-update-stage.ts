@@ -55,6 +55,7 @@ export default function useUpdateStage() {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['deals', 'stages'] })
+      queryClient.invalidateQueries({ queryKey: ['deals', 'table-fields'] })
     },
     onSuccess: () => {
       messageApi?.success(__('Stage updated successfully'))

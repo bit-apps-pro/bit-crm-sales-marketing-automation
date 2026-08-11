@@ -3,17 +3,17 @@
 // eslint-disable-next-line no-restricted-imports
 import { __ as i18n_, sprintf as i18nsprintf } from '@wordpress/i18n'
 
-declare let bitapp: any
 declare let wp: any
-// declare var bitapp: any
 
-const __ = (text: string, domain = 'bitapp') => {
-  if (typeof bitapp !== 'undefined' && bitapp?.translations?.[text]) {
-    return bitapp?.translations[text]
+const __ = (text: string, domain = 'bit-crm-sales-marketing-automation') => {
+  if (SERVER_VARIABLES?.translations?.[text]) {
+    return SERVER_VARIABLES.translations[text]
   }
+
   if (typeof wp !== 'undefined' && !wp?.i18n) {
     return text
   }
+
   return i18n_(text, domain)
 }
 

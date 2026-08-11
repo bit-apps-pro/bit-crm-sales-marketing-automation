@@ -73,7 +73,7 @@ export default function AdvancedFilter<T extends BaseFieldItemType>({
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white">
           <LuFilter size={18} />
         </div>
-        <div className="mr-2 flex items-center gap-1">
+        <div className="me-2 flex items-center gap-1">
           <Typography.Text>{__('Advanced Filters')}</Typography.Text>
           <If conditions={totalFilterCount > 0}>
             <Tag className="m-0 text-xs" color="blue">

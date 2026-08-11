@@ -123,7 +123,7 @@ export default function ProductLineItems({
               {__('Clear All')}
             </Button>
           </Space>
-          <div className="flex gap-2 text-right">
+          <div className="flex gap-2 text-end">
             <Typography.Text type="secondary">
               {__('Products:')} {localLineItems.length}
             </Typography.Text>

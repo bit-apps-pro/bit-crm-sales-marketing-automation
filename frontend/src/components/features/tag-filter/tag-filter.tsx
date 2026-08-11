@@ -1,7 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
 import useTags from '@common/hooks/use-tags'
 import { Select } from 'antd'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router'
 
 export default function TagFilter({ module }: { module: string }) {
@@ -11,7 +11,12 @@ export default function TagFilter({ module }: { module: string }) {
     return tagParam ? tagParam.split(',').filter(Boolean) : []
   }, [tagParam])
 
-  const { isTagsFetching, tags } = useTags({ module })
+  const [open, setOpen] = useState(false)
+
+  const { isTagsFetching, tags } = useTags({
+    isEnabled: open || selectedTags.length !== 0,
+    module
+  })
 
   const tagOptions = useMemo(
     () =>
@@ -37,12 +42,12 @@ export default function TagFilter({ module }: { module: string }) {
     <Select
       allowClear
       className="w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
-      disabled={isTagsFetching}
       filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
       loading={isTagsFetching}
       maxTagCount="responsive"
       mode="multiple"
       onChange={handleFilterChange}
+      onOpenChange={setOpen}
       options={tagOptions}
       placeholder={__('Filter With Tags')}
       showSearch

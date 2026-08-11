@@ -27,6 +27,7 @@ interface ConfigType {
   IS_DEV: boolean
   IS_PRO: boolean
   IS_PRO_EXIST: boolean
+  IS_RTL: boolean
   KEY?: string
   NONCE: string
   ONBOARDING_COMPLETED: boolean
@@ -55,6 +56,7 @@ const config = {
   IS_DEV: true,
   IS_PRO: SERVER_VARIABLES?.isPro === '1',
   IS_PRO_EXIST: getServerVariable('isProExist', '0') === '1',
+  IS_RTL: SERVER_VARIABLES?.isRtl === '1',
   KEY: getServerVariable('key'),
   NONCE: getServerVariable('nonce', ''),
   ONBOARDING_COMPLETED: SERVER_VARIABLES?.onboardingCompleted === '1',

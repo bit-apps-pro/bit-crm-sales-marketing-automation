@@ -54,7 +54,6 @@ svg {
 }
 
 #bit-apps-root {
-  direction: ltr;
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -266,4 +265,72 @@ a:focus {
 
 .quill-mention-container {
   @apply z-[100000000] max-h-64 overflow-y-auto rounded-md border border-solid border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200;
+}
+
+/* antd renders modals, drawers, dropdowns, tooltips and pickers into portals
+   appended to <body>, outside #bit-apps-root and its `dir`. ConfigProvider
+   marks them with its own `-rtl` classes, so keying off those scopes the
+   direction to the plugin's overlays without touching the WordPress admin
+   markup they sit beside. */
+.ant-modal-root:has(.ant-modal-rtl),
+.ant-drawer-rtl,
+.ant-image-preview-root:has(.ant-image-preview-rtl),
+.ant-dropdown-rtl,
+.ant-select-dropdown-rtl,
+.ant-picker-dropdown-rtl,
+.ant-tooltip-rtl,
+.ant-popover-rtl,
+.ant-popconfirm-rtl,
+.ant-message-rtl,
+.ant-notification-rtl {
+  direction: rtl;
+}
+
+/* Opt-in mirror for icons whose meaning is tied to reading direction (back
+   arrows, drill-in chevrons). Applied per icon rather than to every svg,
+   because most icons -- logos, status glyphs, clocks -- must NOT flip.
+   The antd `-rtl` selectors cover icons inside drawers and modals: those
+   mount in portals outside the `dir` attribute, where only ConfigProvider's
+   class marks the direction. */
+[dir='rtl'] .rtl-flip,
+.ant-drawer-rtl .rtl-flip,
+.ant-modal-rtl .rtl-flip,
+.ant-popover-rtl .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Give each table cell its own bidi paragraph direction.
+
+   Values that read left-to-right in every locale -- phone numbers, emails,
+   URLs -- carry neutral characters at their edges: the leading `+` of
+   `+1 (579) 315-6675`, a trailing `?b=1` on a URL. The bidi algorithm
+   resolves neutrals against the paragraph direction, so in an RTL row they
+   migrate to the far end and the number renders as `1+ (579) 315-6675`.
+
+   `plaintext` derives each cell's direction from its own first strong
+   character instead of inheriting the row's, so a Latin value resolves LTR
+   and an Arabic one resolves RTL with nothing here knowing which column is
+   which. Columns are built from user-defined fields, so a custom
+   `contact_number` behaves like the built-in `phone` with no list to keep.
+
+   Note `isolate` does NOT fix this: it isolates the cell from its siblings
+   but still resolves the contents as RTL, leaving the `+` misplaced.
+
+   `.bidi-auto` applies this anywhere a stored field value is displayed --
+   detail panels, previews, headers. Table cells get it automatically, so a
+   grid needs no per-column markup, and tables rendered by WordPress or by
+   embedded rich text stay untouched. */
+[dir='rtl'] :is(.ant-table-cell, .bidi-auto),
+.ant-drawer-rtl :is(.ant-table-cell, .bidi-auto),
+.ant-modal-rtl :is(.ant-table-cell, .bidi-auto) {
+  unicode-bidi: plaintext;
+
+  /* Alignment has to be pinned alongside it. `plaintext` resolves a Latin
+     value's direction to LTR, and its line box then lays out from the LEFT
+     of the container -- so a phone number or an English name drifts to the
+     far side of the field it labels while Arabic values stay put. `start`
+     does not help (it resolves against that same per-element direction), so
+     name the RTL edge outright. A column's own `align` still wins over this:
+     rc-table sets that as an inline style. */
+  text-align: right;
 }

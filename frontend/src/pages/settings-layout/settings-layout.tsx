@@ -23,7 +23,7 @@ export default function SettingsLayout() {
   return (
     <AntLayout className="bg-transparent px-6 py-4" hasSider>
       <SettingsSidebar />
-      <Content className="min-h-[80vh] rounded-r-md border border-l-0 border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
+      <Content className="min-h-[80vh] rounded-e-md border border-s-0 border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
         <Suspense fallback={fallbackOf()} key={pathname}>
           <Outlet />
         </Suspense>

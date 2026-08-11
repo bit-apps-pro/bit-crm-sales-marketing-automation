@@ -3,6 +3,7 @@ import CAPABILITIES from '@common/constants/capabilities'
 import { MODULES } from '@common/constants/modules'
 import NotifyContext from '@common/context/NotifyContext'
 import { checkCapability } from '@common/helpers/capabilityHelper'
+import { isRtl } from '@common/helpers/direction'
 import { formatModuleFieldsValues } from '@common/helpers/format-module-fields-values'
 import { __ } from '@common/helpers/i18nWrap'
 import { type Response } from '@common/helpers/request'
@@ -104,7 +105,13 @@ export default function LeadOverview({
           bordered={false}
           className="bg-white dark:bg-neutral-900"
           defaultActiveKey={['tags', 'timeline']}
-          expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+          expandIcon={({ isActive }) =>
+            isRtl() ? (
+              <CaretRightOutlined rotate={isActive ? -90 : 0} />
+            ) : (
+              <CaretRightOutlined rotate={isActive ? 90 : 0} />
+            )
+          }
           items={[
             {
               children: (

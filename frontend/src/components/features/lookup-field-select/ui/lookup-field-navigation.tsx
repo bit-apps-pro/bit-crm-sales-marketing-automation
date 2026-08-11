@@ -24,7 +24,7 @@ export default function LookupFieldNavigation({ id, relatedModule }: LookupField
 
   return (
     <Link
-      className="absolute -bottom-6 right-0 flex items-center justify-start gap-1 text-primary"
+      className="absolute -bottom-6 end-0 flex items-center justify-start gap-1 text-primary"
       target="_blank"
       to={`/${MODULES_PLURAL[relatedModule]}/details/${id}`}
     >

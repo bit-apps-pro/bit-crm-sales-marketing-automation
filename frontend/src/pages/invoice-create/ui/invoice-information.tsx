@@ -48,7 +48,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
         <Input classNames={{ input: '!min-h-0' }} placeholder={__('INV')} suffix={'-{id}'} />
       </Form.Item>
       <Form.Item
-        className="ml-auto"
+        className="ms-auto"
         label={__('Invoice Date')}
         name="invoiceDate"
         rules={[{ message: __('Invoice date is required'), required: true }]}
@@ -78,7 +78,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
         />
       </Form.Item>
       <Form.Item
-        className="ml-auto"
+        className="ms-auto"
         label={__('Due Date')}
         name="dueDate"
         rules={[{ message: __('Due date is required'), required: true }]}

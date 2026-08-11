@@ -158,7 +158,7 @@ export default function ImportContacts({ customFields, systemDefinedFields }: Im
     <>
       <Button
         aria-label={__('Import Contacts')}
-        className="rounded-l-full text-sm text-gray-500 dark:text-gray-400"
+        className="rounded-s-full text-sm text-gray-500 dark:text-gray-400"
         icon={<LuFileDown size={14} />}
         onClick={() => handleModal(true)}
       >

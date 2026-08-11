@@ -156,7 +156,7 @@ export default function SettingsSidebar() {
   const pathKey = location.pathname.split('/').at(-1) ?? ''
 
   return (
-    <Sider className="w-52 rounded-l-md border border-solid border-[#EBEAFF] bg-white px-1 py-2 dark:border-neutral-700 dark:bg-neutral-900">
+    <Sider className="w-52 rounded-s-md border border-solid border-[#EBEAFF] bg-white px-1 py-2 dark:border-neutral-700 dark:bg-neutral-900">
       <Menu
         className="border-0 bg-transparent [&_.ant-menu-item]:rounded-full"
         items={menuItems}

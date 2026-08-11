@@ -191,7 +191,7 @@ function DealCard({ deal, isDragOverlay = false, stage }: DealCardProps) {
     >
       <div
         className={cn(
-          'pointer-events-auto absolute right-2 top-2 transition duration-200',
+          'pointer-events-auto absolute end-2 top-2 transition duration-200',
           !isSelected && 'opacity-0 group-hover/card:opacity-100'
         )}
       >
@@ -206,7 +206,7 @@ function DealCard({ deal, isDragOverlay = false, stage }: DealCardProps) {
 
       <div
         className={cn(
-          'absolute bottom-1 right-1 transition duration-200',
+          'absolute bottom-1 end-1 transition duration-200',
           isActionsOpen ? 'opacity-100' : 'opacity-0 group-hover/card:opacity-100'
         )}
       >

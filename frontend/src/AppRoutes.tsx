@@ -3,6 +3,7 @@ import CAPABILITIES from '@common/constants/capabilities'
 import NotifyContext from '@common/context/NotifyContext'
 import { $appConfig } from '@common/globalStates'
 import $navigate from '@common/globalStates/$navigate'
+import { direction } from '@common/helpers/direction'
 import { createAntDesignStyleContainer } from '@common/helpers/themeUtils'
 import { useAppEssentials } from '@common/hooks/use-app-essentials'
 import {
@@ -97,6 +98,7 @@ export default function AppRoutes() {
   return (
     <StyleProvider container={styleContainer} hashPriority="high" layer>
       <ConfigProvider
+        direction={direction}
         theme={{
           algorithm: themeAlgorithm,
           components: componentsToken,

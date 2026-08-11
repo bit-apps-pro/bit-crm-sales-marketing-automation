@@ -30,7 +30,7 @@ export default function PrevNextNavigation({
           title={__('previous record')}
           type="link"
         >
-          <ChevronLeft size={20} />
+          <ChevronLeft className="rtl-flip" size={20} />
           {__('Prev')}
         </Button>
       </Link>
@@ -42,7 +42,7 @@ export default function PrevNextNavigation({
           type="link"
         >
           {__('Next')}
-          <ChevronRight size={20} />
+          <ChevronRight className="rtl-flip" size={20} />
         </Button>
       </Link>
     </div>

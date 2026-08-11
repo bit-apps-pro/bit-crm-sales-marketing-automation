@@ -1,6 +1,7 @@
 import { CaretRightOutlined } from '@ant-design/icons'
 import { MODULES } from '@common/constants/modules'
 import { $appConfig } from '@common/globalStates'
+import { isRtl } from '@common/helpers/direction'
 import { formatModuleFieldsValues } from '@common/helpers/format-module-fields-values'
 import { __ } from '@common/helpers/i18nWrap'
 import useCurrencyData from '@common/hooks/use-currency-data'
@@ -243,7 +244,13 @@ const DealCreate = () => {
             bordered={false}
             className="bg-white dark:bg-neutral-900"
             defaultActiveKey={['tags', 'products']}
-            expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+            expandIcon={({ isActive }) =>
+              isRtl() ? (
+                <CaretRightOutlined rotate={isActive ? -90 : 0} />
+              ) : (
+                <CaretRightOutlined rotate={isActive ? 90 : 0} />
+              )
+            }
             items={[
               {
                 children: (
@@ -264,7 +271,7 @@ const DealCreate = () => {
                 label: (
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-slate-500">{__('Product List')}</span>
-                    <Tag className="mr-0" color="geekblue">
+                    <Tag className="me-0" color="geekblue">
                       {lineItems.length} {__('Products')}
                     </Tag>
                   </div>

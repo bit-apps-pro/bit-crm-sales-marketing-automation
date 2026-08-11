@@ -18,7 +18,7 @@ const ExportCompanies: FC<ExportCompaniesProps> = () => {
     <>
       <Button
         aria-label={__('Export Companies')}
-        className="rounded-r-full text-sm text-gray-500 dark:text-gray-400"
+        className="rounded-e-full text-sm text-gray-500 dark:text-gray-400"
         icon={<LuUpload />}
         onClick={() => setOpen(true)}
       >

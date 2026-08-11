@@ -11,7 +11,7 @@ import { MODULE_FIELD_CONFIG } from '../shared/module-field-config'
 type FieldSettingValue = Record<string, Record<string, unknown>>
 
 export default function useUpdateFieldSettings(module: string, form?: FormInstance) {
-  const { queryKeys, settingsKey } = MODULE_FIELD_CONFIG[module]
+  const { queryKeys, settingsKey, tableQueryKeys } = MODULE_FIELD_CONFIG[module]
   const queryClient = useQueryClient()
   const { messageApi } = useContext(NotifyContext)
 
@@ -36,6 +36,7 @@ export default function useUpdateFieldSettings(module: string, form?: FormInstan
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys })
+      queryClient.invalidateQueries({ queryKey: tableQueryKeys })
     }
   })
 

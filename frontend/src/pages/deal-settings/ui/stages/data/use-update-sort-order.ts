@@ -20,6 +20,7 @@ export default function useUpdateSortOrder() {
     onSuccess: () => {
       messageApi?.success(__('Sort order updated successfully'))
       queryClient.invalidateQueries({ queryKey: ['deals', 'stages'] })
+      queryClient.invalidateQueries({ queryKey: ['deals', 'table-fields'] })
     }
   })
 

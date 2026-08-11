@@ -2,7 +2,7 @@ import { Skeleton } from 'antd'
 
 export default function ActivityNotesSkeleton() {
   return (
-    <div className="h-full space-y-5 border-0 border-l border-solid border-[#EBEAFF] pl-7 dark:border-neutral-700">
+    <div className="h-full space-y-5 border-0 border-s border-solid border-[#EBEAFF] ps-7 dark:border-neutral-700">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
@@ -11,7 +11,7 @@ export default function ActivityNotesSkeleton() {
           </div>
           <Skeleton.Button active className="rounded-full" size="small" style={{ width: 90 }} />
         </div>
-        <div className="space-y-2 pr-1">
+        <div className="space-y-2 pe-1">
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               className="rounded border border-solid border-[#E5E3FE] p-3 dark:border-neutral-700"
