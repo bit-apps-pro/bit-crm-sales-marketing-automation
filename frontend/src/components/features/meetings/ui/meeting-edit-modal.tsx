@@ -20,7 +20,7 @@ export default function MeetingEditModal({ fieldOptions, variant }: MeetingEditM
   const { handleModal, isEditModalOpen, setEditModalOpen } = useMeetingStore()
   const [searchParams, setSearchParams] = useSearchParams()
   const { attachments, clearAttachments, setAttachments } = useAttachmentStore()
-  const { isFetchingMeeting, meeting } = useMeeting(Number(searchParams.get('id')))
+  const { isLoadingMeeting, meeting } = useMeeting(Number(searchParams.get('id')))
   const [form] = Form.useForm()
   const { isUpdatingMeeting, updateMeeting } = useUpdateMeeting(form)
 
@@ -58,26 +58,24 @@ export default function MeetingEditModal({ fieldOptions, variant }: MeetingEditM
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (meeting?.attachments && meeting.attachments.length > 0) {
+    if (isEditModalOpen && meeting?.attachments) {
       setAttachments(meeting.attachments)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [meeting?.id])
-
-  // The form instance outlives the modal, so antd keeps the previous values
-  // across reopens; sync them whenever fresh data arrives.
+  }, [isEditModalOpen, meeting?.id])
   useEffect(() => {
     if (isEditModalOpen && meeting) {
       form.setFieldsValue(meeting)
     }
-  }, [form, isEditModalOpen, meeting])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, isEditModalOpen, meeting?.id])
 
   return (
     <Modal
       centered
       confirmLoading={isUpdatingMeeting}
       destroyOnHidden
-      loading={isFetchingMeeting}
+      loading={isLoadingMeeting}
       okButtonProps={{ disabled: isUpdatingMeeting }}
       okText={__('Update')}
       onCancel={handleClose}

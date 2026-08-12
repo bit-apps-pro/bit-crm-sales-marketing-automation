@@ -9,6 +9,7 @@ const CAPABILITIES = {
   ATTACHMENT: {
     CREATE: 'bit_crm_attachment_create',
     DELETE: 'bit_crm_attachment_delete',
+    UPDATE: 'bit_crm_attachment_update',
     VIEW: 'bit_crm_attachment_view'
   },
   COMPANY: {

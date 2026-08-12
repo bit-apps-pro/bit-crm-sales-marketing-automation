@@ -64,7 +64,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Dashboard',
+            'name'       => __('Dashboard', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_dashboard',
             'slug'       => Config::SLUG . '#/',
         ];
@@ -75,7 +75,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Leads',
+            'name'       => __('Leads', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_lead_menu',
             'slug'       => Config::SLUG . '#/leads',
         ];
@@ -86,7 +86,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Contacts',
+            'name'       => __('Contacts', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_contact_menu',
             'slug'       => Config::SLUG . '#/contacts',
         ];
@@ -97,7 +97,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Companies',
+            'name'       => __('Companies', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_company_menu',
             'slug'       => Config::SLUG . '#/companies',
         ];
@@ -108,7 +108,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Deals',
+            'name'       => __('Deals', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_deal_menu',
             'slug'       => Config::SLUG . '#/deals',
         ];
@@ -119,7 +119,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Tags',
+            'name'       => __('Tags', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_tag_menu',
             'slug'       => Config::SLUG . '#/tags',
         ];
@@ -130,7 +130,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Invoices',
+            'name'       => __('Invoices', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_invoice_menu',
             'slug'       => Config::SLUG . '#/invoices',
         ];
@@ -141,7 +141,7 @@ final class Menu
         return [
             'parent'     => Config::SLUG,
             'type'       => 'submenu',
-            'name'       => 'Settings',
+            'name'       => __('Settings', 'bit-crm-sales-marketing-automation'),
             'capability' => 'bit_crm_setting_menu',
             'slug'       => Config::SLUG . '#/settings',
         ];

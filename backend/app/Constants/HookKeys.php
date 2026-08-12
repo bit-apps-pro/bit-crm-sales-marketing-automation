@@ -275,6 +275,15 @@ class HookKeys
     public const VALIDATE_SHARED_NOTE = 'bit_crm_validate_shared_note';
 
     /**
+     * Validates whether an attachment may be shared with a client. Mirrors
+     * VALIDATE_SHARED_NOTE: free defaults to allowing the share (null),
+     * pro enforces the portal user's attachments capability.
+     *
+     * apply_filters(?array $error, int $entityId): ?array
+     */
+    public const VALIDATE_SHARED_ATTACHMENT = 'bit_crm_validate_shared_attachment';
+
+    /**
      * Forces workflow triggers to execute inline instead of dispatching a
      * background process. Enabled while firing hooks from inside a background
      * worker (e.g. bulk lead conversion), where a nested loopback dispatch

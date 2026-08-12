@@ -100,6 +100,10 @@ class InvoicePdfService
         $pdfConfig = $this->getDefaultPdfConfig();
         $mpdf = new Mpdf($pdfConfig);
 
+        if (is_rtl()) {
+            $mpdf->SetDirectionality('rtl');
+        }
+
         $template = new InvoicePdfTemplate($data, $totals, $this->currencyService);
 
         $html = $template->render();
