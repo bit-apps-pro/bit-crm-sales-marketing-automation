@@ -131,6 +131,14 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
 
 == Changelog ==
 
+= v1.0.7 (August 12, 2026) =
+* Features:
+   * Translations: Added French (fr_FR) translations.
+* Improvements:
+   * Invoice PDF: Improved font and locale handling for more accurate invoice rendering.
+* Fixed:
+   * Invoice PDF: Fixed a formatting error in invoice totals text.
+   
 = v1.0.5 (August 10, 2026) =
 * Features:
    * Translations: The plugin is now fully translatable and ships with Arabic, German, Spanish, and Brazilian Portuguese.
