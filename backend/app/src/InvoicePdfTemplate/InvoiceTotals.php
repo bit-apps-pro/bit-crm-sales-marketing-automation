@@ -35,14 +35,14 @@ final class InvoiceTotals
     public function taxLabel(): string
     {
         if ($this->isExclusive) {
-            return 'Added';
+            return esc_html__('Added', 'bit-crm-sales-marketing-automation');
         }
 
         if ($this->isInclusive) {
-            return 'Included';
+            return esc_html__('Included', 'bit-crm-sales-marketing-automation');
         }
 
-        return 'No Tax';
+        return esc_html__('No Tax', 'bit-crm-sales-marketing-automation');
     }
 
     public function hasTax(): bool

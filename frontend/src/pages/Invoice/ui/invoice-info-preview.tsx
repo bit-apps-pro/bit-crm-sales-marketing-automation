@@ -31,9 +31,9 @@ export default function InvoiceInfoPreview({ data, logoUrl, termName }: InvoiceI
       <div className="text-end">
         <Typography.Title>{__('INVOICE')}</Typography.Title>
         <div className="grid grid-cols-2">
-          <Typography.Text>{__('Invoice Number: ')}</Typography.Text>
+          <Typography.Text>{__('Invoice Number:')} </Typography.Text>
           <Typography.Text>{displayNumber}</Typography.Text>
-          <Typography.Text>{__('Date: ')}</Typography.Text>
+          <Typography.Text>{__('Date:')} </Typography.Text>
           <Typography.Text>{data.invoiceDate ? formatDate(data.invoiceDate) : '-'}</Typography.Text>
           <Typography.Text>{__('Due Date:')}</Typography.Text>
           <Typography.Text>{data.dueDate ? formatDate(data.dueDate) : '-'}</Typography.Text>

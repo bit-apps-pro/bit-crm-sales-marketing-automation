@@ -79,7 +79,7 @@ class Capabilities
             self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'activity'),
             self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'note'),
             self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'link'),
-            self::generateCapabilitiesWithPrefix(['view', 'create', 'delete'], 'attachment')
+            self::generateCapabilitiesWithPrefix(['view', 'create', 'update', 'delete'], 'attachment')
         );
     }
 

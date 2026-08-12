@@ -12,6 +12,12 @@ class InvoicePdfTemplate
 
     private CurrencyService $currencyService;
 
+    private bool $isRtl;
+
+    private string $startAlign;
+
+    private string $endAlign;
+
     public function __construct(
         InvoiceData $data,
         InvoiceTotals $totals,
@@ -20,16 +26,23 @@ class InvoicePdfTemplate
         $this->data = $data;
         $this->totals = $totals;
         $this->currencyService = $currencyService;
+        $this->isRtl = is_rtl();
+        $this->startAlign = $this->isRtl ? 'right' : 'left';
+        $this->endAlign = $this->isRtl ? 'left' : 'right';
     }
 
     public function render(): string
     {
-        return $this->buildInvoiceHeader()
+        $direction = $this->isRtl ? 'rtl' : 'ltr';
+
+        return '<div style="direction: ' . $direction . '; text-align: ' . $this->startAlign . ';">'
+            . $this->buildInvoiceHeader()
             . $this->buildSenderReceiverSection()
             . $this->buildTopNotes()
             . $this->buildLineItemsTable()
             . $this->buildSummaryTable()
-            . $this->buildBottomNotes();
+            . $this->buildBottomNotes()
+            . '</div>';
     }
 
     private function escape(string $str): string
@@ -83,24 +96,24 @@ class InvoicePdfTemplate
         return '<table class="no-border" style="margin-bottom: 20px;">
             <tr>
                 <td class="half-width no-border" style="padding: 0;">' . $logoHtml . '</td>
-                <td class="half-width no-border text-right" style="padding: 0;">
-                    <h1>INVOICE</h1>
+                <td class="half-width no-border" style="padding: 0; text-align: ' . $this->endAlign . ';">
+                    <h1>' . esc_html__('INVOICE', 'bit-crm-sales-marketing-automation') . '</h1>
                     <table class="no-border" style="width: 100%;">
                         <tr>
-                            <td class="no-border text-right"><strong>Invoice Number: </strong></td>
-                            <td class="no-border text-right">' . $this->escape($invoiceNumber) . '</td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Invoice Number:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($invoiceNumber) . '</td>
                         </tr>
                         <tr>
-                            <td class="no-border text-right"><strong>Date: </strong></td>
-                            <td class="no-border text-right">' . $this->escape($invoiceDate) . '</td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Date:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($invoiceDate) . '</td>
                         </tr>
                         <tr>
-                            <td class="no-border text-right"><strong>Due Date: </strong></td>
-                            <td class="no-border text-right">' . $this->escape($dueDate) . '</td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Due Date:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($dueDate) . '</td>
                         </tr>
                         <tr>
-                            <td class="no-border text-right"><strong>Terms: </strong></td>
-                            <td class="no-border text-right">' . $this->escape($this->data->termName) . '</td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Terms:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($this->data->termName) . '</td>
                         </tr>
                     </table>
                 </td>
@@ -146,7 +159,7 @@ class InvoicePdfTemplate
             $html .= $this->escapeWithBreak($s['country']);
         }
 
-        return $html ?: 'Business information not configured';
+        return $html ?: esc_html__('Business information not configured', 'bit-crm-sales-marketing-automation');
     }
 
     private function buildContactInfo(): string
@@ -182,12 +195,12 @@ class InvoicePdfTemplate
         return '<table class="no-border" style="margin-bottom: 30px;">
             <tr>
                 <td class="half-width no-border">
-                    <h3>From</h3>
+                    <h3>' . esc_html__('From', 'bit-crm-sales-marketing-automation') . '</h3>
                     <br/>
                     <p>' . $this->buildBusinessInfo() . '</p>
                 </td>
                 <td class="half-width no-border">
-                    <h3>Bill To</h3>
+                    <h3>' . esc_html__('Bill To', 'bit-crm-sales-marketing-automation') . '</h3>
                     <br/>
                     <p>' . $this->buildContactInfo() . '</p>
                 </td>
@@ -203,12 +216,20 @@ class InvoicePdfTemplate
         $html = '<table class="items-table">
             <thead>
                 <tr style="background-color: #FAFAFB;">
-                    <th width="40%" style="padding: 10px">Product Name</th>
-                    <th class="text-right" style="padding: 10px;">Price (' . $symbol . ')</th>
-                    <th class="text-right" style="padding: 10px;">Qty</th>
-                    <th class="text-right" style="padding: 10px;">Discount (%)</th>'
-                    . ($hasTax ? '<th class="text-right" style="padding: 10px;">Tax (%)</th>' : '')
-                    . '<th class="text-right" style="padding: 10px;">Total (' . $symbol . ')</th>
+                    <th width="40%" style="padding: 10px">' . esc_html__('Product Name', 'bit-crm-sales-marketing-automation') . '</th>
+                    <th style="padding: 10px; text-align: ' . $this->endAlign . ';">' . \sprintf(
+            // translators: %s: currency symbol
+            esc_html__('Price (%s)', 'bit-crm-sales-marketing-automation'),
+            $symbol
+        ) . '</th>
+                    <th style="padding: 10px; text-align: ' . $this->endAlign . ';">' . esc_html__('Qty', 'bit-crm-sales-marketing-automation') . '</th>
+                    <th style="padding: 10px; text-align: ' . $this->endAlign . ';">' . esc_html__('Discount (%)', 'bit-crm-sales-marketing-automation') . '</th>'
+                    . ($hasTax ? '<th style="padding: 10px; text-align: ' . $this->endAlign . ';">' . esc_html__('Tax (%)', 'bit-crm-sales-marketing-automation') . '</th>' : '')
+                    . '<th style="padding: 10px; text-align: ' . $this->endAlign . ';">' . \sprintf(
+                        // translators: %s: currency symbol
+                        esc_html__('Total (%s)', 'bit-crm-sales-marketing-automation'),
+                        $symbol
+                    ) . '</th>
                 </tr>
             </thead>
             <tbody>';
@@ -231,11 +252,11 @@ class InvoicePdfTemplate
                     <strong>' . $this->escape($lineItem['product_name']) . '</strong>'
                     . (!empty($lineItem['description']) ? '<p class="description">' . $this->escape($lineItem['description']) . '</p>' : '')
                     . '</td>
-                <td style="text-align: right;">' . $this->formatCurrency($unitPrice, false) . '</td>
-                <td style="text-align: right;">' . $qtyFormatted . '</td>
-                <td style="text-align: right;">' . $this->escape((string) $discountPercentage) . '</td>'
-                . ($hasTax ? '<td style="text-align: right;">' . $this->escape((string) $taxRate) . '</td>' : '')
-                . '<td style="text-align: right;">' . $this->formatCurrency($lineTotal, false) . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($unitPrice, false) . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $qtyFormatted . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $this->escape((string) $discountPercentage) . '</td>'
+                . ($hasTax ? '<td style="text-align: ' . $this->endAlign . ';">' . $this->escape((string) $taxRate) . '</td>' : '')
+                . '<td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($lineTotal, false) . '</td>
             </tr>';
         }
 
@@ -244,34 +265,44 @@ class InvoicePdfTemplate
 
     private function buildSummaryTable(): string
     {
-        $html = '<table class="summary-table">
+        $summaryTableMargin = $this->isRtl ? 'margin-left: 0; margin-right: auto;' : 'margin-left: auto; margin-right: 0;';
+
+        $html = '<table class="summary-table" style="' . $summaryTableMargin . '">
             <tr>
-                <td>Subtotal:</td>
-                <td class="text-right">' . $this->formatCurrency($this->totals->subtotal) . '</td>
+                <td>' . esc_html__('Subtotal:', 'bit-crm-sales-marketing-automation') . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($this->totals->subtotal) . '</td>
             </tr>';
 
         if ($this->totals->hasTax()) {
             $html .= '<tr>
-                <td>Tax (' . $this->escape($this->totals->taxLabel()) . '):</td>
-                <td class="text-right">' . $this->formatCurrency($this->totals->totalTax) . '</td>
+                <td>' . \sprintf(
+                // translators: %s: tax label
+                esc_html__('Tax (%s):', 'bit-crm-sales-marketing-automation'),
+                $this->totals->taxLabel()
+            ) . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($this->totals->totalTax) . '</td>
             </tr>';
         }
 
         if ($this->totals->discount > 0) {
             $grossDiscountAmount = (float) ($this->data->invoice->gross_discount_amount ?? 0);
             $discountLabel = ($this->data->invoice->gross_discount_type ?? '') === 'rate'
-                ? 'Gross Discount (' . $grossDiscountAmount . '%):'
-                : 'Gross Discount:';
+                ? \sprintf(
+                    // translators: %s: gross discount amount
+                    esc_html__('Gross Discount (%s%%):', 'bit-crm-sales-marketing-automation'),
+                    $grossDiscountAmount
+                )
+                : esc_html__('Gross Discount:', 'bit-crm-sales-marketing-automation');
 
             $html .= '<tr>
                 <td>' . $this->escape($discountLabel) . '</td>
-                <td class="text-right">' . $this->formatCurrency($this->totals->discount) . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($this->totals->discount) . '</td>
             </tr>';
         }
 
         $html .= '<tr class="total-row">
-                <td><strong>Grand Total:</strong></td>
-                <td class="text-right"><strong>' . $this->formatCurrency($this->totals->grandTotal) . '</strong></td>
+                <td><strong>' . esc_html__('Grand Total:', 'bit-crm-sales-marketing-automation') . '</strong></td>
+                <td style="text-align: ' . $this->endAlign . ';"><strong>' . $this->formatCurrency($this->totals->grandTotal) . '</strong></td>
             </tr>
         </table>';
 

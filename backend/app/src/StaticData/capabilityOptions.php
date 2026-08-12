@@ -77,6 +77,7 @@ return [
     Attachment::MODULE_NAME => [
         ['label' => __('View', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_view'],
         ['label' => __('Create', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_create'],
+        ['label' => __('Update', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_update'],
         ['label' => __('Delete', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_attachment_delete'],
     ],
     Tag::MODULE_NAME => [

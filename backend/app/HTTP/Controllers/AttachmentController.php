@@ -3,12 +3,16 @@
 namespace BitApps\Crm\HTTP\Controllers;
 
 use BitApps\Crm\Config;
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
 use BitApps\Crm\HTTP\Requests\Attachment\DestroyRequest;
 use BitApps\Crm\HTTP\Requests\Attachment\IndexRequest;
 use BitApps\Crm\HTTP\Requests\Attachment\StoreRequest;
+use BitApps\Crm\HTTP\Requests\Attachment\UpdateRequest;
 use BitApps\Crm\Model\Attachment;
+use BitApps\Crm\Model\Contact;
+use BitApps\Crm\src\Capability;
 
 final class AttachmentController
 {
@@ -37,6 +41,26 @@ final class AttachmentController
     {
         $validated = $request->validated();
 
+        $isShared = !empty($validated['is_shared']);
+
+        if ($isShared) {
+            // Sharing is an update-level privilege, so storing pre-shared files
+            // needs the update capability on top of the create authorization.
+            if (!Capability::check('bit_crm_attachment_update')) {
+                return Response::error(__('You are not allowed to share attachments.', 'bit-crm-sales-marketing-automation'));
+            }
+
+            if ($validated['module'] !== Contact::MODULE_NAME) {
+                return Response::error(__('Only contact attachments can be shared with clients.', 'bit-crm-sales-marketing-automation'));
+            }
+
+            $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_ATTACHMENT, null, (int) $validated['entity_id']);
+
+            if ($error) {
+                return Response::error($error['errors'][0] ?? __('Failed to create attachment!', 'bit-crm-sales-marketing-automation'));
+            }
+        }
+
         $storedAttachments = Attachment::where('module', $validated['module'])
             ->where('entity_id', $validated['entity_id'])
             ->select(['id', 'media_id'])
@@ -53,6 +77,10 @@ final class AttachmentController
             'module'     => $validated['module'],
             'created_by' => get_current_user_id()
         ];
+
+        if ($isShared) {
+            $meta['attributes'] = ['is_shared' => true];
+        }
 
         $data = [];
         $skipCount = 0;
@@ -97,6 +125,41 @@ final class AttachmentController
         }
 
         return Response::error(__('Failed to create attachment!', 'bit-crm-sales-marketing-automation'));
+    }
+
+    public function update(UpdateRequest $request)
+    {
+        $validated = $request->validated();
+        $attachment = Attachment::findOne(['id' => $validated['id']]);
+
+        if (empty($attachment)) {
+            return Response::error(__('Attachment not found!', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $isShared = !empty($validated['is_shared']);
+
+        if ($isShared) {
+            if ($attachment->module !== Contact::MODULE_NAME) {
+                return Response::error(__('Only contact attachments can be shared with clients.', 'bit-crm-sales-marketing-automation'));
+            }
+
+            $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_ATTACHMENT, null, (int) $attachment->entity_id);
+
+            if ($error) {
+                return Response::error($error['errors'][0] ?? __('Failed to update attachment!', 'bit-crm-sales-marketing-automation'));
+            }
+        }
+
+        $attributes = (array) $attachment->attributes;
+        $attributes['is_shared'] = $isShared;
+
+        if ($attachment->update(['attributes' => $attributes, 'updated_by' => get_current_user_id()])) {
+            Hooks::doAction('bit_crm/attachment_updated', $attachment);
+
+            return Response::success($attachment);
+        }
+
+        return Response::error(__('Failed to update attachment!', 'bit-crm-sales-marketing-automation'));
     }
 
     public function destroy(DestroyRequest $request)

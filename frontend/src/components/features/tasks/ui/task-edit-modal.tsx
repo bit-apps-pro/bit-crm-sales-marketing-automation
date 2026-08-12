@@ -21,7 +21,7 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
   const [searchParams, setSearchParams] = useSearchParams()
   const { attachments, clearAttachments, setAttachments } = useAttachmentStore()
   const id = Number(searchParams.get('id')) || 0
-  const { isFetchingTask, task } = useTask(id)
+  const { isLoadingTask, task } = useTask(id)
   const [form] = Form.useForm()
   const { isUpdatingTask, updateTask } = useUpdateTask(form)
 
@@ -59,11 +59,11 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (task?.attachments && task.attachments.length > 0) {
+    if (isEditModalOpen && task?.attachments) {
       setAttachments(task.attachments)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [task?.id])
+  }, [isEditModalOpen, task?.id])
 
   // The form instance outlives the modal, so antd keeps the previous values
   // across reopens; sync them whenever fresh data arrives.
@@ -71,7 +71,8 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
     if (isEditModalOpen && task) {
       form.setFieldsValue(task)
     }
-  }, [form, isEditModalOpen, task])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, isEditModalOpen, task?.id])
 
   return (
     <Modal
@@ -79,7 +80,7 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
       centered
       confirmLoading={isUpdatingTask}
       destroyOnHidden
-      loading={isFetchingTask}
+      loading={isLoadingTask}
       okButtonProps={{ className: 'rounded-full', disabled: isUpdatingTask }}
       okText={__('Update')}
       onCancel={handleClose}

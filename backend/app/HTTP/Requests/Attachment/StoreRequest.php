@@ -23,6 +23,7 @@ class StoreRequest extends Request
             'attachments.*.file_size_in_bytes' => ['required', 'integer'],
             'entity_id'                        => ['required', 'integer'],
             'module'                           => ['required', 'string', 'sanitize:text', new ValidModuleRule()],
+            'is_shared'                        => ['nullable', 'boolean'],
         ];
     }
 }

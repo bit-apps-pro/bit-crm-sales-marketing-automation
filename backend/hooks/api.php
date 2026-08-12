@@ -160,6 +160,7 @@ Route::group(
 
         Route::get('attachments/index', [AttachmentController::class, 'index']);
         Route::post('attachments/store', [AttachmentController::class, 'store']);
+        Route::post('attachments/update', [AttachmentController::class, 'update']);
         Route::post('attachments/delete', [AttachmentController::class, 'destroy']);
 
         Route::get('notes/index', [NoteController::class, 'index']);

@@ -20,7 +20,7 @@ export default function CallEditModal({ fieldOptions, variant }: CallEditModalPr
   const { handleModal, isEditModalOpen, setEditModalOpen } = useCallStore()
   const [searchParams, setSearchParams] = useSearchParams()
   const { attachments, clearAttachments, setAttachments } = useAttachmentStore()
-  const { call, isFetchingCall } = useCall(Number(searchParams.get('id')))
+  const { call, isCallLoading } = useCall(Number(searchParams.get('id')))
   const [form] = Form.useForm()
   const { isUpdatingCall, updateCall } = useUpdateCall(form)
 
@@ -58,26 +58,27 @@ export default function CallEditModal({ fieldOptions, variant }: CallEditModalPr
   }, [searchParams, setEditModalOpen])
 
   useEffect(() => {
-    if (call?.attachments && call.attachments.length > 0) {
+    if (isEditModalOpen && call?.attachments) {
       setAttachments(call.attachments)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [call?.id])
+  }, [isEditModalOpen, call?.id])
 
   // The form instance outlives the modal, so antd keeps the previous values
-  // across reopens; sync them whenever fresh data arrives.
+  // across reopens; sync them
   useEffect(() => {
     if (isEditModalOpen && call) {
       form.setFieldsValue(call)
     }
-  }, [form, isEditModalOpen, call])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, isEditModalOpen, call?.id])
 
   return (
     <Modal
       centered
       confirmLoading={isUpdatingCall}
       destroyOnHidden
-      loading={isFetchingCall}
+      loading={isCallLoading}
       okButtonProps={{ disabled: isUpdatingCall }}
       okText={__('Update')}
       onCancel={handleClose}
