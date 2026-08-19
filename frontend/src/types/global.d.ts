@@ -14,6 +14,8 @@ declare module 'bitapps-dev-utils'
 declare let wp
 
 declare const SERVER_VARIABLES: {
+  /** Only present when the pro plugin is active and the assistant is set up. */
+  aiChatEnabled?: string
   ajaxURL: string
   apiURL: string
   assetsURL: string

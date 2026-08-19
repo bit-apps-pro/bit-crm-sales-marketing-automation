@@ -89,6 +89,27 @@ const navGroups = [
     title: __('Integrations')
   },
   {
+    /*
+      The two halves of the same story, kept together: the MCP server lets an
+      outside AI client reach this CRM, and the assistant is a model this CRM
+      reaches out to. Both are AI configuration, so neither belongs under
+      System where MCP previously sat on its own.
+    */
+    items: [
+      {
+        capability: CAPABILITIES.SETTING.INTEGRATION,
+        label: __('AI Assistant'),
+        path: '../settings/ai-assistant'
+      },
+      {
+        capability: CAPABILITIES.MCP.SERVER,
+        label: __('MCP Server'),
+        path: '../settings/mcp-server'
+      }
+    ],
+    title: __('AI')
+  },
+  {
     items: [
       {
         capability: CAPABILITIES.SETTING.CURRENCY,
@@ -109,11 +130,6 @@ const navGroups = [
         capability: CAPABILITIES.SETTING.USER,
         label: __('CRM Users'),
         path: '../settings/crm-users'
-      },
-      {
-        capability: CAPABILITIES.MCP.SERVER,
-        label: __('MCP Server'),
-        path: '../settings/mcp-server'
       },
       {
         capability: CAPABILITIES.SETTING.API,

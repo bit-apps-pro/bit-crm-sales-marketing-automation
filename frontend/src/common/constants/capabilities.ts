@@ -6,6 +6,9 @@ const CAPABILITIES = {
     VIEW: 'bit_crm_activity_view'
   },
   ADMINISTRATOR: 'administrator',
+  AI: {
+    CHAT: 'bit_crm_ai_chat'
+  },
   ATTACHMENT: {
     CREATE: 'bit_crm_attachment_create',
     DELETE: 'bit_crm_attachment_delete',

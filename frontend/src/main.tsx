@@ -15,7 +15,7 @@ import { createHashRouter, RouterProvider } from 'react-router'
 import '@resource/logo.svg?no-inline'
 
 import AppRoutes from './AppRoutes'
-import Devtools from './components/utilities/devtools'
+// import Devtools from './components/utilities/devtools'
 
 // Public shareable invoice page (no-login, token in URL). The PHP shell mounts
 // the same bundle on a frontend page and sets `publicInvoice`; everything else
@@ -43,7 +43,7 @@ if (elm) {
         ) : (
           <RouterProvider router={router} />
         )}
-        <Devtools reactQuery />
+        {/* <Devtools reactQuery /> */}
       </QueryClientProvider>
     </StrictMode>
   )
