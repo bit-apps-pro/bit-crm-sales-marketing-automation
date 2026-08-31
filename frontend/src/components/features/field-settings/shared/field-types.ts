@@ -10,6 +10,7 @@ export interface FieldItem {
   field_key: string
   group_fields?: Record<string, FieldItem>
   help_text?: string
+  hidden?: boolean
   id: number
   is_always_required?: boolean
   is_custom?: boolean

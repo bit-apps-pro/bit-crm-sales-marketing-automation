@@ -1,16 +1,12 @@
 import { __ } from '@common/helpers/i18nWrap'
-import { Typography } from 'antd'
+import SettingsPageHeader from '@utilities/settings-page-header'
 
 import BusinessSettings from './internal/business-settings'
 
 export default function GeneralSettings() {
   return (
     <div>
-      <div className="border-0 border-b border-solid border-[#EBEAFF] px-4 py-2 dark:border-neutral-700">
-        <Typography.Title className="mb-0" level={2}>
-          {__('General Settings')}
-        </Typography.Title>
-      </div>
+      <SettingsPageHeader title={__('General Settings')} />
       <div className="mx-6 my-2">
         <BusinessSettings />
       </div>

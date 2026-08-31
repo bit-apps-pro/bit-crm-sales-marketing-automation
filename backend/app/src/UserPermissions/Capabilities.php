@@ -31,7 +31,7 @@ class Capabilities
     /**
      * Generate CRUD capabilities.
      *
-     * @param string $module the moudle name to generate capabilities for
+     * @param string $module the module name to generate capabilities for
      *
      * @return array [ 'bit_crm_module_create', 'bit_crm_module_read', 'bit_crm_module_update', 'bit_crm_module_delete' ]
      */

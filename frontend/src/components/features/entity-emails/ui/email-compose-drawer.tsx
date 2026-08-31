@@ -2,15 +2,18 @@ import { drawerPlacement } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import { type FieldOptionsType } from '@features/notes/shared/note-types'
 import QuillEditor from '@features/quill-editor'
+import { FULL_TOOLBAR_CONFIG } from '@features/quill-editor/shared/toolbar-configs'
 import WpMediaUploader from '@features/wp-media-uploader'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import customizedRequiredMark from '@utilities/customized-required-mark'
 import If from '@utilities/If'
-import { Button, Drawer, Form, Input, Space } from 'antd'
+import { Button, Drawer, Form, Input, Space, Switch, Typography } from 'antd'
+import { useEffect, useState } from 'react'
 
 import useSendEmail from '../data/use-send-email'
 import { type EntityModule } from '../shared/types'
 import useEmailComposeStore from '../state/use-email-compose-store'
+import EmailRecipientField from './email-recipient-field'
 
 interface EmailComposeDrawerProps {
   email: string
@@ -18,17 +21,6 @@ interface EmailComposeDrawerProps {
   fieldOptions: FieldOptionsType[]
   module: EntityModule
 }
-
-const quillEditorToolbarConfig = [
-  [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  ['bold', 'italic', 'underline', 'strike'],
-  [{ align: [] }],
-  ['blockquote'],
-  [{ list: 'ordered' }, { list: 'bullet' }],
-  ['link'],
-  ['image'],
-  ['clean']
-]
 
 interface MentionItem {
   [key: string]: unknown
@@ -59,21 +51,45 @@ const getMentionOptions = (options: FieldOptionsType[]) => ({
   }
 })
 
+/** Reply subjects keep one "Re:" however many times a thread bounces. */
+const replySubject = (subject: string) => {
+  const trimmed = subject.trim()
+
+  return /^re:/i.test(trimmed) ? trimmed : `Re: ${trimmed}`
+}
+
 export default function EmailComposeDrawer({
   email,
   entityId,
   fieldOptions,
   module
 }: EmailComposeDrawerProps) {
-  const { handleComposeClose, isComposeOpen } = useEmailComposeStore()
+  const { handleComposeClose, isComposeOpen, replyTo } = useEmailComposeStore()
   const { attachments, clearAttachments } = useAttachmentStore()
   const [form] = Form.useForm()
+  const [isCcBccVisible, setIsCcBccVisible] = useState(false)
   const { isSendingEmail, sendEmail } = useSendEmail(form)
+
+  useEffect(() => {
+    if (replyTo) {
+      form.setFieldsValue({ subject: replySubject(replyTo.subject) })
+    }
+  }, [form, replyTo])
 
   const handleClose = () => {
     handleComposeClose()
     form.resetFields()
     clearAttachments()
+    setIsCcBccVisible(false)
+  }
+
+  const handleCcBccToggle = (checked: boolean) => {
+    // Clear on hide so a collapsed field is never silently sent.
+    if (!checked) {
+      form.setFieldsValue({ bcc: undefined, cc: undefined })
+    }
+
+    setIsCcBccVisible(checked)
   }
 
   const handleMessageChange = (html: string) => {
@@ -88,12 +104,14 @@ export default function EmailComposeDrawer({
       attachments,
       entity_email: email,
       entity_id: entityId,
-      module
+      module,
+      reply_to_id: replyTo?.id
     })
 
     handleComposeClose()
     form.resetFields()
     clearAttachments()
+    setIsCcBccVisible(false)
   }
 
   return (
@@ -117,11 +135,39 @@ export default function EmailComposeDrawer({
       onClose={handleClose}
       open={isComposeOpen}
       placement={drawerPlacement}
-      title={__('Compose Email')}
+      title={replyTo ? __('Reply') : __('Compose Email')}
       width={720}
     >
       <If conditions={isComposeOpen}>
-        <Form form={form} layout="vertical" requiredMark={customizedRequiredMark}>
+        <Form
+          className="[&_.ant-form-item]:mb-4"
+          form={form}
+          layout="vertical"
+          requiredMark={customizedRequiredMark}
+        >
+          <Form.Item label={__('To')}>
+            <Input disabled value={email} />
+            <div className="mt-2 flex items-center gap-2">
+              <Switch checked={isCcBccVisible} onChange={handleCcBccToggle} size="small" />
+              <Typography.Text className="text-xs" type="secondary">
+                {__('Add Cc / Bcc')}
+              </Typography.Text>
+            </div>
+          </Form.Item>
+          <If conditions={isCcBccVisible}>
+            <div className="grid gap-x-3 sm:grid-cols-2">
+              <EmailRecipientField
+                label={__('Cc')}
+                name="cc"
+                placeholder={__('Visible to all recipients')}
+              />
+              <EmailRecipientField
+                label={__('Bcc')}
+                name="bcc"
+                placeholder={__('Hidden from other recipients')}
+              />
+            </div>
+          </If>
           <Form.Item
             label={__('Subject')}
             name="subject"
@@ -141,7 +187,7 @@ export default function EmailComposeDrawer({
               minHeight={200}
               onChange={handleMessageChange}
               placeholder={__('Write your message...')}
-              toolbarConfig={quillEditorToolbarConfig}
+              toolbarConfig={FULL_TOOLBAR_CONFIG}
             />
           </Form.Item>
         </Form>

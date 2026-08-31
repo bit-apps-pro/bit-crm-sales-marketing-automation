@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
 import { useQuery } from '@tanstack/react-query'
@@ -13,7 +14,7 @@ export default function useContactFields() {
     queryFn: ({ signal }) => queryRequest('contacts/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['contacts', 'fields'],
     select: res => {
-      const fields = res?.data?.fields
+      const fields = filterHiddenFields(res?.data?.fields)
       const orders = res?.data?.orders
       const columnSettings = res?.data?.column_settings
 

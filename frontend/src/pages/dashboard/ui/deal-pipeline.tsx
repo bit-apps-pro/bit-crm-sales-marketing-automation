@@ -2,6 +2,7 @@ import { CalendarOutlined } from '@ant-design/icons'
 import { $appConfig } from '@common/globalStates'
 import { unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
+import { DATE_FORMAT as SITE_DATE_FORMAT } from '@config/date-format'
 import { generateCurrencyFormatPreview } from '@pages/currencies/shared/common-functions'
 import { DatePicker, Typography } from 'antd'
 import {
@@ -186,7 +187,7 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
         <RangePicker
           allowClear={false}
           className="w-64 flex-shrink-0 rounded-full"
-          format="DD MMM YYYY"
+          format={SITE_DATE_FORMAT}
           onChange={handleRangeChange}
           separator="–"
           suffixIcon={<CalendarOutlined className="text-[#9090A8]" />}

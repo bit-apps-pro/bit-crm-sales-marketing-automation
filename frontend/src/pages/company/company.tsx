@@ -5,6 +5,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import useEntityRelatedListsCount from '@common/hooks/use-entity-related-lists-count'
 import useTags from '@common/hooks/use-tags'
 import { ICONS } from '@common/icons'
+import AiSummaryButton from '@features/ai-chat/summary'
 import Attachments from '@features/attachments'
 import Calls from '@features/calls'
 import EntitySummaryCard from '@features/entity-overview/ui/entity-summary-card'
@@ -67,6 +68,7 @@ export default function Company() {
             />
 
             <div className="flex items-center gap-2">
+              <AiSummaryButton entityId={companyId} module={MODULES.COMPANY} name={company.name} />
               <PrevNextNavigation
                 module={MODULES.COMPANY}
                 nextId={company?.next_id}

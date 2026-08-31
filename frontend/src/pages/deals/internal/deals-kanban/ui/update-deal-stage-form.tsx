@@ -1,4 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
+import { DATE_TIME_FORMAT } from '@config/date-format'
 import { type Stage } from '@pages/deal-settings/ui/stages/shared/types'
 import { MAX_ALLOWED_AMOUNT } from '@pages/deal/shared/constants'
 import { DatePicker, type FormInstance, InputNumber, Select } from 'antd'
@@ -32,11 +33,11 @@ export default function UpdateDealStageForm({
       <Form.Item
         label={__('Closing Date')}
         name="closed_at"
-        rules={[{ message: __('Please input Closing Date!'), required: true }]}
+        rules={[{ message: __('Please input the closing date!'), required: true }]}
       >
         <DatePicker
           className="w-full"
-          format={'YYYY-MM-DD hh:mm A'}
+          format={DATE_TIME_FORMAT}
           minDate={createdAt ? dayjs(createdAt).startOf('day') : undefined}
           placeholder={__('Select date and time')}
           showTime={{ defaultValue: dayjs('12:00', 'hh:mm') }}

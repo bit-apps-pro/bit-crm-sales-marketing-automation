@@ -1,13 +1,8 @@
 import { __ } from '@common/helpers/i18nWrap'
 import QuillEditor from '@features/quill-editor'
+import { MINIMAL_TOOLBAR_CONFIG } from '@features/quill-editor/shared/toolbar-configs'
 import customizedRequiredMark from '@utilities/customized-required-mark'
 import { Form, type FormInstance } from 'antd'
-
-const quillEditorToolbarConfig = [
-  ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote'],
-  [{ list: 'ordered' }, { list: 'bullet' }]
-]
 
 interface ActivityNoteFromProps {
   detailsValue?: string
@@ -33,7 +28,7 @@ export default function ActivityNoteForm({ detailsValue, form, isEditing }: Acti
         <QuillEditor
           defaultValue={detailsValue ?? ''}
           onChange={handleDetailsChange}
-          toolbarConfig={quillEditorToolbarConfig}
+          toolbarConfig={MINIMAL_TOOLBAR_CONFIG}
         />
       </Form.Item>
     </Form>

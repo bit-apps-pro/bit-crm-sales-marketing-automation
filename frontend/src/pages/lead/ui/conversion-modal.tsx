@@ -76,7 +76,7 @@ export default function ConversionModal({
               <div>
                 <h4 className="font-semibold">{__('What happens during conversion:')}</h4>
                 <ul className="ms-4 mt-2 list-disc space-y-1">
-                  <li>{__('New contacts, companies, deals are created via field mapping.')}</li>
+                  <li>{__('New contacts, companies, and deals are created via field mapping.')}</li>
                   <li>
                     {__('Optionally, a deal can be created and linked to the contact and company.')}
                   </li>

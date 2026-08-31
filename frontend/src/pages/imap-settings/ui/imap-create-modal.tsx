@@ -49,6 +49,7 @@ export default function ImapCreateModal() {
 
   return (
     <Modal
+      centered
       destroyOnHidden
       okButtonProps={{
         'aria-label': 'IMAP settings save button',
@@ -59,6 +60,14 @@ export default function ImapCreateModal() {
       onCancel={handleClose}
       onOk={handleSubmit}
       open={isCreateModalOpen}
+      styles={{
+        body: {
+          marginInline: '-22px',
+          maxHeight: '70vh',
+          overflowY: 'auto',
+          paddingInline: '22px'
+        }
+      }}
       title={__('Create IMAP Settings')}
     >
       {isCreateModalOpen && <ImapForm form={form} />}

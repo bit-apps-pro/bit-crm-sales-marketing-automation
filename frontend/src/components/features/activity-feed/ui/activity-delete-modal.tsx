@@ -7,7 +7,11 @@ import { useEffect } from 'react'
 import { LuInfo } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 
-export default function ActivityDeleteModal() {
+interface ActivityDeleteModalProps {
+  adjacentId?: number
+}
+
+export default function ActivityDeleteModal({ adjacentId }: ActivityDeleteModalProps) {
   const [searchParams, setSearchParams] = useSearchParams()
   const id = Number(searchParams.get('id')) || 0
 
@@ -39,11 +43,20 @@ export default function ActivityDeleteModal() {
     if (!id) return
 
     await deleteActivity(id)
-    setSearchParams(prev => {
-      prev.delete('modal')
-      prev.delete('id')
-      return prev
-    })
+    setSearchParams(
+      prev => {
+        prev.delete('modal')
+
+        if (adjacentId) {
+          prev.set('id', String(adjacentId))
+        } else {
+          prev.delete('id')
+        }
+
+        return prev
+      },
+      { replace: true }
+    )
   }
 
   return (

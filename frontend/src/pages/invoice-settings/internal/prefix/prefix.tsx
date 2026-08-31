@@ -35,7 +35,6 @@ export default function Prefix() {
 
           <Form.Item
             className="mb-2 max-w-xs"
-            initialValue={__('INV')}
             name="prefix"
             rules={[
               { message: __('Please provide an invoice prefix'), required: true },

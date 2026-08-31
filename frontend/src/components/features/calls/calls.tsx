@@ -2,7 +2,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
-import ActivitiesBoard from '@features/activity-feed/activity-feed'
+import ActivityFeed from '@features/activity-feed/activity-feed'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import If from '@utilities/If'
 import SearchInput from '@utilities/search-input'
@@ -92,7 +92,7 @@ export default function Calls({ entityId, fields, module }: CallsProps) {
           <SearchInput queryKey="search" />
         </div>
       </div>
-      <ActivitiesBoard
+      <ActivityFeed
         activities={calls}
         activityType="call"
         hasMore={Boolean(hasNextPage)}

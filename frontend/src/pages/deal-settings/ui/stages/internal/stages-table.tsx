@@ -171,6 +171,7 @@ export default function StagesTable({ data, form }: { data: Stage[]; form: FormI
   return (
     <Table<Stage>
       bordered
+      className="isolate"
       columns={mergedColumns}
       components={{
         body: {

@@ -1,6 +1,7 @@
 import { MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
+import { DATE_FORMAT } from '@config/date-format'
 import LookupFieldSelect from '@features/lookup-field-select'
 import If from '@utilities/If'
 import { DatePicker, Input, Select, Typography } from 'antd'
@@ -56,6 +57,7 @@ export default function FilterValueInput({
           return (
             <DatePicker.RangePicker
               className="w-full"
+              format={DATE_FORMAT}
               onChange={handleRangeChange}
               placeholder={[__('Start date'), __('End date')]}
               status={error ? 'error' : undefined}
@@ -67,7 +69,7 @@ export default function FilterValueInput({
         return (
           <DatePicker
             className="w-full"
-            format="YYYY-MM-DD"
+            format={DATE_FORMAT}
             onChange={handleValueChange}
             placeholder={__('Select date')}
             status={error ? 'error' : undefined}

@@ -251,6 +251,28 @@ a:focus {
   border-color: #424242 !important;
 }
 
+/* Snow spaces button groups 15px apart, which pushes the toolbar onto a second
+ * row inside narrow popovers once the color pickers are added. 8px still reads
+ * as a group separation but keeps the minimal toolbar on one row.
+ */
+.ql-toolbar.ql-snow .ql-formats {
+  margin-right: 8px;
+}
+
+/* Color/background swatch grid: snow paints the default swatches #fff (background
+ * picker) and #000 (color picker) and uses a #000 hover border, all of which
+ * disappear against the dark panel. Give every swatch a faint outline and a
+ * light hover/selected border so the full palette stays visible.
+ */
+.dark .ql-snow .ql-color-picker .ql-picker-item {
+  border-color: #52525b;
+}
+
+.dark .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover,
+.dark .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected {
+  border-color: #e5e5e5;
+}
+
 .mention.mention {
   @apply dark:bg-slate-600 dark:text-white;
 }

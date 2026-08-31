@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem, type Order } from '@features/field-settings/shared/field-types'
@@ -44,7 +45,9 @@ export default function useDealFields() {
 }
 
 function processedFields(res: { data: DealFieldsResponse }) {
-  const fields: FieldItem[] = res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
+  const fields: FieldItem[] = filterHiddenFields(
+    res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup)
+  )
   const orders = res?.data?.orders
   const visibleColumns = res?.data?.visible_columns || ['name', 'amount', 'probability', 'stage']
   const stages = res?.data?.stages || []

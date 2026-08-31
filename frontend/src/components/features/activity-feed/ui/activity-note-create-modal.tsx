@@ -57,7 +57,7 @@ export default function ActivityNoteCreateModal({
   return (
     <Popover
       content={
-        <div className="w-80 space-y-3">
+        <div className="w-96 space-y-3">
           <ActivityNoteForm form={form} />
           <Space className="flex justify-end">
             <Button className="rounded-full" onClick={handleCancel}>

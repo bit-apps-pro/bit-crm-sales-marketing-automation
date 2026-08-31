@@ -1,7 +1,7 @@
 import { LoadingOutlined } from '@ant-design/icons'
 import { __ } from '@common/helpers/i18nWrap'
 import useMeetingStore from '@components/features/meetings/state/use-meeting-store'
-import ActivitiesBoard from '@features/activity-feed/activity-feed'
+import ActivityFeed from '@features/activity-feed/activity-feed'
 import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-filter-page'
 import useInfiniteMeetings from '@features/meetings/data/use-meetings'
 import MeetingCreateModal from '@features/meetings/ui/meeting-create-modal'
@@ -80,7 +80,7 @@ export default function MeetingsPage() {
           />
         </div>
       </div>
-      <ActivitiesBoard
+      <ActivityFeed
         activities={meetings}
         activityType="meeting"
         hasMore={Boolean(hasNextPage)}

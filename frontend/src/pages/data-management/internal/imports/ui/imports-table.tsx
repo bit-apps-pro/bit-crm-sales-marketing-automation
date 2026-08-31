@@ -59,7 +59,7 @@ export default function ImportsTable({ importsData, loading }: ImportsTableProps
         render: (_, record) => (
           <Popconfirm
             cancelText={__('No')}
-            description={__('Are you sure to delete this import?')}
+            description={__('Are you sure you want to delete this import?')}
             okText={__('Yes')}
             onConfirm={() => handleDelete(record.id)}
             placement="topRight"

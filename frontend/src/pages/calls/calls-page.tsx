@@ -1,7 +1,7 @@
 import { LoadingOutlined } from '@ant-design/icons'
 import { __ } from '@common/helpers/i18nWrap'
 import useCallStore from '@components/features/calls/state/use-call-store'
-import ActivitiesBoard from '@features/activity-feed/activity-feed'
+import ActivityFeed from '@features/activity-feed/activity-feed'
 import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-filter-page'
 import useInfiniteCalls from '@features/calls/data/use-calls'
 import CallCreateModal from '@features/calls/ui/call-create-modal'
@@ -80,7 +80,7 @@ export default function CallsPage() {
           />
         </div>
       </div>
-      <ActivitiesBoard
+      <ActivityFeed
         activities={calls}
         activityType="call"
         hasMore={Boolean(hasNextPage)}

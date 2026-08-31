@@ -1,6 +1,7 @@
 import { MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import QuillEditor from '@features/quill-editor'
+import { MINIMAL_TOOLBAR_CONFIG } from '@features/quill-editor/shared/toolbar-configs'
 import ShareWithContact from '@features/share-with-contact'
 import WpMediaUploader from '@features/wp-media-uploader'
 import customizedRequiredMark from '@utilities/customized-required-mark'
@@ -47,12 +48,6 @@ const getMentionOptions = (options: FieldOptionsType[]) => ({
   }
 })
 
-const quillEditorToolbarConfig = [
-  ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote'],
-  [{ list: 'ordered' }, { list: 'bullet' }]
-]
-
 export default function NoteForm({ detailsValue, entityId, fieldOptions, form, module }: NoteFormProps) {
   const handleDetailsChange = (html: string) => {
     form.setFieldsValue({ details: html })
@@ -79,7 +74,7 @@ export default function NoteForm({ detailsValue, entityId, fieldOptions, form, m
             includeMention={true}
             mentionOptions={getMentionOptions(fieldOptions)}
             onChange={handleDetailsChange}
-            toolbarConfig={quillEditorToolbarConfig}
+            toolbarConfig={MINIMAL_TOOLBAR_CONFIG}
           />
         </Form.Item>
         <Form.Item hidden name="details">

@@ -7,6 +7,7 @@ export interface BaseFieldItemType {
   field_key: string
   group_fields?: Record<string, BaseFieldItemType>
   help_text?: string
+  hidden?: boolean
   id?: number | string
   is_custom?: boolean
   label: string

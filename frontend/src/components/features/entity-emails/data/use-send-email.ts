@@ -9,10 +9,13 @@ import { useContext } from 'react'
 
 export interface SendEmailPayload {
   attachments?: Attachment[]
+  bcc?: string[]
+  cc?: string[]
   entity_email: string
   entity_id: number
   message: string
   module: string
+  reply_to_id?: number
   subject: string
 }
 

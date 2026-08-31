@@ -25,6 +25,10 @@ final class BitAppsCrmEmailsTableMigration extends Migration
                 $table->text('subject')->nullable();
                 $table->longtext('body')->nullable();
                 $table->string('email_direction');
+                $table->string('from_email')->nullable();
+                $table->longtext('to_emails')->nullable();
+                $table->longtext('cc')->nullable();
+                $table->longtext('bcc')->nullable();
                 $table->bigint('imap_id')->unsigned()->nullable();
                 $table->string('sent_from')->nullable();
                 $table->longtext('attachments')->nullable();

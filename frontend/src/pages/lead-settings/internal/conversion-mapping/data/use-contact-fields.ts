@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { useQuery } from '@tanstack/react-query'
@@ -24,7 +25,9 @@ export default function useContactFields() {
 }
 
 function processedFields(res: { data: ResponseType }) {
-  const allFields: FieldItem[] = res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
+  const allFields: FieldItem[] = filterHiddenFields(
+    res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup)
+  )
 
   const fields = allFields?.filter(
     field =>

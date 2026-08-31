@@ -32,6 +32,19 @@ class HookKeys
     public const REGISTERED_MODULES = 'bit_crm_registered_modules';
 
     /**
+     * Filters the module => view-capability map used to authorize read access
+     * to a module's records. The pro plugin appends its own modules (e.g.
+     * product => bit_crm_product_view) through this hook.
+     *
+     * A module absent from this map carries no record-level view capability.
+     * Callers must decide what that means for them -- see
+     * ModuleService::moduleViewCapability().
+     *
+     * apply_filters(array $moduleViewCapabilities): array
+     */
+    public const MODULE_VIEW_CAPABILITIES = 'bit_crm_module_view_capabilities';
+
+    /**
      * Resolves the Model instance for a given module name.
      *
      * apply_filters(Model|false $instance, string $module): Model|false

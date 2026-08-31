@@ -1,6 +1,7 @@
 import PAGINATION from '@common/constants/pagination'
 import { __ } from '@common/helpers/i18nWrap'
 import Pagination from '@utilities/pagination/pagination'
+import SettingsPageHeader from '@utilities/settings-page-header'
 import { Alert, Button, Space, Switch, Typography } from 'antd'
 import { useState } from 'react'
 import { LuExternalLink, LuPlus } from 'react-icons/lu'
@@ -25,11 +26,7 @@ export default function ApiSettings() {
 
   return (
     <div>
-      <div className="border-0 border-b border-solid border-[#E5E3FE] px-4 py-2 dark:border-neutral-700">
-        <Typography.Title className="mb-0" level={2}>
-          {__('REST API')}
-        </Typography.Title>
-      </div>
+      <SettingsPageHeader title={__('REST API')} />
 
       <div className="mx-6 my-2">
         <Space className="w-full" direction="vertical" size="large">

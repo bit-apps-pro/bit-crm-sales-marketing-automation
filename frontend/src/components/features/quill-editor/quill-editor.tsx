@@ -3,13 +3,50 @@ import { __ } from '@common/helpers/i18nWrap'
 import 'quill/dist/quill.snow.css'
 import { type WPMediaAttachment } from '@features/wp-media-uploader/wp-media-uploader'
 import Quill, { type QuillOptions } from 'quill'
-import 'quill-mention/autoregister'
-import { type MentionOption } from 'quill-mention'
+import { Mention, MentionBlot, type MentionOption } from 'quill-mention'
 import { AlignStyle } from 'quill/formats/align'
 import { type ToolbarConfig } from 'quill/modules/toolbar'
 import { useEffect, useLayoutEffect, useRef } from 'react'
 
 Quill.register(AlignStyle, true)
+
+/* Registered explicitly rather than via the `quill-mention/autoregister` side-effect
+ * import: the package declares no `sideEffects` field, so a bare import is only kept
+ * by bundler convention, and import sorting shuffles its position on every lint pass.
+ */
+Quill.register({ 'blots/mention': MentionBlot, 'modules/mention': Mention })
+
+/* Browsers serialize inline colors as `rgb(...)`, but `wp_kses_post` rejects any
+ * CSS value containing `(` (see safecss_filter_attr; only url/var/calc are carved
+ * out). Colors would be silently stripped on save, so rewrite them to hex, which
+ * passes kses untouched. Mirrors Quill's own ColorAttributor.value().
+ */
+const STYLE_ATTRIBUTE_PATTERN = /(\s)style="([^"]*)"/gi
+const RGB_COLOR_PATTERN =
+  /rgba?\(\s*(\d{1,3})\s*[\s,]\s*(\d{1,3})\s*[\s,]\s*(\d{1,3})\s*(?:[\s,/]+[\d.%]+\s*)?\)/gi
+
+const toHexComponent = (value: string) =>
+  `00${Math.min(Number.parseInt(value, 10), 255).toString(16)}`.slice(-2)
+
+export function normalizeRgbColorsToHex(html: string) {
+  /* Scoped to real style attributes (preceded by whitespace inside a tag) so
+   * that `rgb(...)` typed by the user as plain text, or appearing inside a URL,
+   * is left untouched.
+   */
+  return html.replaceAll(
+    STYLE_ATTRIBUTE_PATTERN,
+    (_attribute: string, leadingSpace: string, declarations: string) => {
+      // Alpha is dropped: kses rejects 8-digit hex and Quill's palette is opaque.
+      const hexDeclarations = declarations.replaceAll(
+        RGB_COLOR_PATTERN,
+        (_match: string, red: string, green: string, blue: string) =>
+          `#${toHexComponent(red)}${toHexComponent(green)}${toHexComponent(blue)}`
+      )
+
+      return `${leadingSpace}style="${hexDeclarations}"`
+    }
+  )
+}
 
 interface EditorType {
   defaultValue?: string
@@ -126,7 +163,9 @@ export default function QuillEditor({
       )
 
       quill.on(Quill.events.TEXT_CHANGE, () => {
-        onChangeRef.current?.(quill.getLength() <= 1 ? '' : quill.root.innerHTML)
+        onChangeRef.current?.(
+          quill.getLength() <= 1 ? '' : normalizeRgbColorsToHex(quill.root.innerHTML)
+        )
       })
 
       if (minHeight !== undefined) {

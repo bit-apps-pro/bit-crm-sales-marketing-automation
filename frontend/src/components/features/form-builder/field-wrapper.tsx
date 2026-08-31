@@ -23,6 +23,7 @@ export default function FieldWrapper<T extends BaseFieldType>({
   const {
     field_key: fieldKey,
     group_fields: groupField,
+    hidden,
     is_always_required: isAlwaysRequired,
     is_custom: isCustom,
     is_editable: isEditable,
@@ -44,7 +45,7 @@ export default function FieldWrapper<T extends BaseFieldType>({
     await updateFieldSettings(values)
   }
 
-  const handleStateChange = (value: boolean, type: 'required' | 'status') => {
+  const handleStateChange = (value: boolean, type: 'hidden' | 'required' | 'status') => {
     return handleUpdateSettings({ [fieldKey]: { [type]: value } })
   }
 
@@ -53,6 +54,11 @@ export default function FieldWrapper<T extends BaseFieldType>({
   }
 
   const editable = isEditable === undefined ? true : isEditable
+  const isDisabled = status === false
+  // Never lock both switches at once, or a field saved as disabled + required
+  // could not be recovered from the UI.
+  const lockRequired = Boolean(hidden) || isDisabled
+  const lockDisabled = Boolean(hidden) || (Boolean(required) && !isDisabled)
 
   return (
     <div
@@ -85,6 +91,7 @@ export default function FieldWrapper<T extends BaseFieldType>({
             </Typography.Text>
             <Switch
               defaultChecked={required}
+              disabled={lockRequired}
               onChange={value => handleStateChange(value, 'required')}
               size="small"
             />
@@ -94,8 +101,19 @@ export default function FieldWrapper<T extends BaseFieldType>({
               {__('Disabled')}
             </Typography.Text>
             <Switch
-              defaultChecked={status === undefined ? false : !status}
+              defaultChecked={isDisabled}
+              disabled={lockDisabled}
               onChange={value => handleStateChange(!value, 'status')}
+              size="small"
+            />
+          </div>
+          <div className="flex items-center justify-center gap-2 px-1">
+            <Typography.Text className="light:text-slate-700 mb-0 text-xs" ellipsis={true}>
+              {__('Hidden')}
+            </Typography.Text>
+            <Switch
+              defaultChecked={Boolean(hidden)}
+              onChange={value => handleStateChange(value, 'hidden')}
               size="small"
             />
           </div>

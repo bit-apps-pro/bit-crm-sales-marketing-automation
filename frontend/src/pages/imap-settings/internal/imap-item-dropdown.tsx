@@ -86,7 +86,7 @@ export default function ImapItemDropdown({ id }: { id: number }) {
       placement="bottom"
       trigger={['click']}
     >
-      <Button data-testid="imapItemDropdown" onClick={() => setOpen(!open)} type="link">
+      <Button className="px-1" data-testid="imapItemDropdown" onClick={() => setOpen(!open)} type="link">
         <MoreOutlined />
       </Button>
     </Dropdown>

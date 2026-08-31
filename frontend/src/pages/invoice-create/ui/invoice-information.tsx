@@ -1,8 +1,8 @@
 import { __ } from '@common/helpers/i18nWrap'
+import { DATE_FORMAT } from '@config/date-format'
 import { Button, type FormInstance, Input, Select } from 'antd'
 import { DatePicker, Form } from 'antd'
 import dayjs from 'dayjs'
-import { useEffect } from 'react'
 import { LuSettings } from 'react-icons/lu'
 import { Link } from 'react-router'
 
@@ -18,12 +18,6 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
   const { isTermsLoading, terms } = useInvoiceTerms()
   const invoiceDate = Form.useWatch('invoiceDate', form)
   const invoiceTermKey = Form.useWatch('invoiceTerm', form)
-
-  useEffect(() => {
-    form.setFieldValue('invoiceDate', dayjs())
-    form.setFieldValue('invoicePrefix', form.getFieldValue('invoicePrefix') || 'INV')
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   function handleTermChange(value: string, option?: TermsOptions | TermsOptions[]) {
     if (option === undefined || Array.isArray(option)) return
@@ -45,7 +39,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
           }
         ]}
       >
-        <Input classNames={{ input: '!min-h-0' }} placeholder={__('INV')} suffix={'-{id}'} />
+        <Input classNames={{ input: '!min-h-0' }} placeholder="INV" suffix={'-{id}'} />
       </Form.Item>
       <Form.Item
         className="ms-auto"
@@ -53,7 +47,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
         name="invoiceDate"
         rules={[{ message: __('Invoice date is required'), required: true }]}
       >
-        <DatePicker className="w-full" format={'YYYY-MM-DD'} />
+        <DatePicker className="w-full" format={DATE_FORMAT} />
       </Form.Item>
       <Form.Item label={__('Terms')} name="invoiceTerm">
         <Select
@@ -86,7 +80,7 @@ export default function InvoiceInformation({ form }: InvoiceInformationProps) {
         <DatePicker
           className="w-full"
           disabled={!invoiceDate}
-          format={'YYYY-MM-DD'}
+          format={DATE_FORMAT}
           minDate={dayjs(invoiceDate)}
           onChange={() => {
             form.setFieldValue('invoiceTerm', 'custom')

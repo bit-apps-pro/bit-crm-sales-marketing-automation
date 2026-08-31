@@ -1,8 +1,10 @@
 import { $appConfig } from '@common/globalStates'
 import { useLineItemsStoreActions } from '@features/product-line-items/state/use-line-items-store'
+import useBusinessSettings from '@pages/general-settings/internal/business-settings/data/use-business-settings'
 import usePrefix from '@pages/invoice-settings/internal/prefix/data/use-prefix'
-import InvoiceSkeleton from '@utilities/invoice-skeleton/invoice-skeleton'
+import InvoiceFormSkeleton from '@utilities/invoice-skeleton/invoice-form-skeleton'
 import { Form } from 'antd'
+import dayjs from 'dayjs'
 import { useAtomValue } from 'jotai'
 import { useEffect } from 'react'
 
@@ -15,8 +17,11 @@ export default function InvoiceCreate() {
   const { clearStore, setCurrencyData } = useInvoiceCreateStoreActions()
   const { clearStore: clearLineItemsStore } = useLineItemsStoreActions()
   const { isPrefixLoading, prefix } = usePrefix()
+  const { isBusinessSettingsLoading } = useBusinessSettings()
   const { homeCurrencyData } = useAtomValue($appConfig)
   const isDealSelected = useDealInformationSelect().isDealSelected
+
+  const isInvoiceFormLoading = isBusinessSettingsLoading || isPrefixLoading
 
   useEffect(
     () => () => {
@@ -30,18 +35,20 @@ export default function InvoiceCreate() {
     if (!isDealSelected) {
       setCurrencyData(homeCurrencyData)
     }
-    if (prefix) {
+  }, [setCurrencyData, homeCurrencyData, isDealSelected])
+
+  useEffect(() => {
+    if (isInvoiceFormLoading) return
+    if (!form.isFieldTouched('invoiceDate')) {
+      form.setFieldValue('invoiceDate', dayjs())
+    }
+    if (!form.isFieldTouched('invoicePrefix')) {
       form.setFieldValue('invoicePrefix', prefix)
     }
-  }, [form, prefix, setCurrencyData, homeCurrencyData, isDealSelected])
-
-  if (isPrefixLoading) {
-    return <InvoiceSkeleton />
-  }
-
+  }, [form, isInvoiceFormLoading, prefix])
   return (
-    <InvoiceFormLayout form={form} mode="create">
-      <InvoiceForm form={form} mode="create" />
+    <InvoiceFormLayout form={form} isLoading={isInvoiceFormLoading} mode="create">
+      {isInvoiceFormLoading ? <InvoiceFormSkeleton /> : <InvoiceForm form={form} mode="create" />}
     </InvoiceFormLayout>
   )
 }

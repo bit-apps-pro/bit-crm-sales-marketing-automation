@@ -6,6 +6,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import useEntityRelatedListsCount from '@common/hooks/use-entity-related-lists-count'
 import useTags from '@common/hooks/use-tags'
 import { ICONS } from '@common/icons'
+import AiSummaryButton from '@features/ai-chat/summary'
 import Attachments from '@features/attachments'
 import Calls from '@features/calls'
 import EntityEmails from '@features/entity-emails'
@@ -68,6 +69,11 @@ const Contact = () => {
               ]}
             />
             <div className="flex items-center gap-2">
+              <AiSummaryButton
+                entityId={contactId}
+                module={MODULES.CONTACT}
+                name={renderFullName(contact?.title, contact?.first_name, contact.last_name)}
+              />
               <PrevNextNavigation
                 module={MODULES.CONTACT}
                 nextId={contact?.next_id}

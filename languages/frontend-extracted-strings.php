@@ -148,7 +148,7 @@ return [
 
     'Due Date' => __('Due Date', 'bit-crm-sales-marketing-automation'),
 
-    'Attachements' => __('Attachements', 'bit-crm-sales-marketing-automation'),
+    'Attachments' => __('Attachments', 'bit-crm-sales-marketing-automation'),
 
     'Advanced Filter' => __('Advanced Filter', 'bit-crm-sales-marketing-automation'),
 
@@ -240,13 +240,18 @@ return [
 
     'Open AI settings' => __('Open AI settings', 'bit-crm-sales-marketing-automation'),
 
+    /* translators: %s: placeholder value */
+    'Give me an AI summary of %s.' => __('Give me an AI summary of %s.', 'bit-crm-sales-marketing-automation'),
+
+    'Ask the AI assistant to summarize this record' => __('Ask the AI assistant to summarize this record', 'bit-crm-sales-marketing-automation'),
+
+    'AI Summary' => __('AI Summary', 'bit-crm-sales-marketing-automation'),
+
     'Add Products to Deal' => __('Add Products to Deal', 'bit-crm-sales-marketing-automation'),
 
     'Download' => __('Download', 'bit-crm-sales-marketing-automation'),
 
     'View' => __('View', 'bit-crm-sales-marketing-automation'),
-
-    'Attachments' => __('Attachments', 'bit-crm-sales-marketing-automation'),
 
     'New' => __('New', 'bit-crm-sales-marketing-automation'),
 
@@ -256,9 +261,13 @@ return [
 
     'Attachment(s) created successfully' => __('Attachment(s) created successfully', 'bit-crm-sales-marketing-automation'),
 
-    'Yes' => __('Yes', 'bit-crm-sales-marketing-automation'),
+    'The attachment will be removed from this record. This can’t be undone, but the file itself stays in your Media Library.' => __('The attachment will be removed from this record. This can’t be undone, but the file itself stays in your Media Library.', 'bit-crm-sales-marketing-automation'),
 
-    'Are you sure to delete this?' => __('Are you sure to delete this?', 'bit-crm-sales-marketing-automation'),
+    'Delete this attachment?' => __('Delete this attachment?', 'bit-crm-sales-marketing-automation'),
+
+    'Delete attachment' => __('Delete attachment', 'bit-crm-sales-marketing-automation'),
+
+    'Download attachment' => __('Download attachment', 'bit-crm-sales-marketing-automation'),
 
     'Please select at least one file' => __('Please select at least one file', 'bit-crm-sales-marketing-automation'),
 
@@ -380,7 +389,21 @@ return [
 
     'Send' => __('Send', 'bit-crm-sales-marketing-automation'),
 
+    'Reply' => __('Reply', 'bit-crm-sales-marketing-automation'),
+
     'Compose Email' => __('Compose Email', 'bit-crm-sales-marketing-automation'),
+
+    'To' => __('To', 'bit-crm-sales-marketing-automation'),
+
+    'Add Cc / Bcc' => __('Add Cc / Bcc', 'bit-crm-sales-marketing-automation'),
+
+    'Cc' => __('Cc', 'bit-crm-sales-marketing-automation'),
+
+    'Visible to all recipients' => __('Visible to all recipients', 'bit-crm-sales-marketing-automation'),
+
+    'Bcc' => __('Bcc', 'bit-crm-sales-marketing-automation'),
+
+    'Hidden from other recipients' => __('Hidden from other recipients', 'bit-crm-sales-marketing-automation'),
 
     'Subject' => __('Subject', 'bit-crm-sales-marketing-automation'),
 
@@ -394,9 +417,13 @@ return [
 
     'Write your message...' => __('Write your message...', 'bit-crm-sales-marketing-automation'),
 
+    'Type a valid email address to add it' => __('Type a valid email address to add it', 'bit-crm-sales-marketing-automation'),
+
     'From' => __('From', 'bit-crm-sales-marketing-automation'),
 
-    'To' => __('To', 'bit-crm-sales-marketing-automation'),
+    'Hide quoted text' => __('Hide quoted text', 'bit-crm-sales-marketing-automation'),
+
+    'Show quoted text' => __('Show quoted text', 'bit-crm-sales-marketing-automation'),
 
     'Attachment(s)' => __('Attachment(s)', 'bit-crm-sales-marketing-automation'),
 
@@ -450,6 +477,8 @@ return [
 
     'Disabled' => __('Disabled', 'bit-crm-sales-marketing-automation'),
 
+    'Hidden' => __('Hidden', 'bit-crm-sales-marketing-automation'),
+
     'Select Width' => __('Select Width', 'bit-crm-sales-marketing-automation'),
 
     'Half Width' => __('Half Width', 'bit-crm-sales-marketing-automation'),
@@ -467,6 +496,8 @@ return [
     'Label' => __('Label', 'bit-crm-sales-marketing-automation'),
 
     'Label is required' => __('Label is required', 'bit-crm-sales-marketing-automation'),
+
+    'Hide' => __('Hide', 'bit-crm-sales-marketing-automation'),
 
     'Edit Fields Group' => __('Edit Fields Group', 'bit-crm-sales-marketing-automation'),
 
@@ -501,6 +532,8 @@ return [
     'Input description' => __('Input description', 'bit-crm-sales-marketing-automation'),
 
     'Created By' => __('Created By', 'bit-crm-sales-marketing-automation'),
+
+    'Yes' => __('Yes', 'bit-crm-sales-marketing-automation'),
 
     'Search and select' => __('Search and select', 'bit-crm-sales-marketing-automation'),
 
@@ -1094,7 +1127,7 @@ return [
 
     'Click or drag csv file to this area to upload' => __('Click or drag csv file to this area to upload', 'bit-crm-sales-marketing-automation'),
 
-    'Support for a single upload.' => __('Support for a single upload.', 'bit-crm-sales-marketing-automation'),
+    'Supports a single upload.' => __('Supports a single upload.', 'bit-crm-sales-marketing-automation'),
 
     'Skip existing companies' => __('Skip existing companies', 'bit-crm-sales-marketing-automation'),
 
@@ -1220,7 +1253,7 @@ return [
 
     'Exchange Rate' => __('Exchange Rate', 'bit-crm-sales-marketing-automation'),
 
-    'the exchange rate field is required' => __('the exchange rate field is required', 'bit-crm-sales-marketing-automation'),
+    'The exchange rate field is required!' => __('The exchange rate field is required!', 'bit-crm-sales-marketing-automation'),
 
     'Enter exchange rate' => __('Enter exchange rate', 'bit-crm-sales-marketing-automation'),
 
@@ -1301,11 +1334,11 @@ return [
 
     'Your best selling products' => __('Your best selling products', 'bit-crm-sales-marketing-automation'),
 
-    'No products are added' => __('No products are added', 'bit-crm-sales-marketing-automation'),
+    'No products added' => __('No products added', 'bit-crm-sales-marketing-automation'),
 
     'Need Help?' => __('Need Help?', 'bit-crm-sales-marketing-automation'),
 
-    'Watch tutorial for a quick start.' => __('Watch tutorial for a quick start.', 'bit-crm-sales-marketing-automation'),
+    'Watch the tutorial for a quick start.' => __('Watch the tutorial for a quick start.', 'bit-crm-sales-marketing-automation'),
 
     'Watch Tutorials' => __('Watch Tutorials', 'bit-crm-sales-marketing-automation'),
 
@@ -1331,7 +1364,7 @@ return [
 
     'Skipped' => __('Skipped', 'bit-crm-sales-marketing-automation'),
 
-    'Are you sure to delete this import?' => __('Are you sure to delete this import?', 'bit-crm-sales-marketing-automation'),
+    'Are you sure you want to delete this import?' => __('Are you sure you want to delete this import?', 'bit-crm-sales-marketing-automation'),
 
     'Delete the import' => __('Delete the import', 'bit-crm-sales-marketing-automation'),
 
@@ -1339,7 +1372,7 @@ return [
 
     'Trash restored successfully' => __('Trash restored successfully', 'bit-crm-sales-marketing-automation'),
 
-    'Are you Confirm to delete permanently?' => __('Are you Confirm to delete permanently?', 'bit-crm-sales-marketing-automation'),
+    'Are you sure you want to delete these items permanently?' => __('Are you sure you want to delete these items permanently?', 'bit-crm-sales-marketing-automation'),
 
     'Empty' => __('Empty', 'bit-crm-sales-marketing-automation'),
 
@@ -1351,21 +1384,21 @@ return [
 
     'Restore' => __('Restore', 'bit-crm-sales-marketing-automation'),
 
-    'Are you Confirm to Restore?' => __('Are you Confirm to Restore?', 'bit-crm-sales-marketing-automation'),
+    'Are you sure you want to restore the selected items?' => __('Are you sure you want to restore the selected items?', 'bit-crm-sales-marketing-automation'),
 
     'Delete permanently' => __('Delete permanently', 'bit-crm-sales-marketing-automation'),
 
-    'Are you Confirm to Delete?' => __('Are you Confirm to Delete?', 'bit-crm-sales-marketing-automation'),
+    'Are you sure you want to delete the selected items?' => __('Are you sure you want to delete the selected items?', 'bit-crm-sales-marketing-automation'),
 
     'Deleted By' => __('Deleted By', 'bit-crm-sales-marketing-automation'),
 
     'Deleted Time' => __('Deleted Time', 'bit-crm-sales-marketing-automation'),
 
-    'Are you sure to restore?' => __('Are you sure to restore?', 'bit-crm-sales-marketing-automation'),
+    'Are you sure you want to restore this?' => __('Are you sure you want to restore this?', 'bit-crm-sales-marketing-automation'),
 
     'Restore the item' => __('Restore the item', 'bit-crm-sales-marketing-automation'),
 
-    'Are you sure to delete permanently?' => __('Are you sure to delete permanently?', 'bit-crm-sales-marketing-automation'),
+    'Are you sure you want to delete this permanently?' => __('Are you sure you want to delete this permanently?', 'bit-crm-sales-marketing-automation'),
 
     'Delete the item' => __('Delete the item', 'bit-crm-sales-marketing-automation'),
 
@@ -1441,8 +1474,6 @@ return [
 
     'Color' => __('Color', 'bit-crm-sales-marketing-automation'),
 
-    'Please Input Stage Name!' => __('Please Input Stage Name!', 'bit-crm-sales-marketing-automation'),
-
     /* translators: %s: placeholder value */
     'Please Input %s!' => __('Please Input %s!', 'bit-crm-sales-marketing-automation'),
 
@@ -1504,7 +1535,7 @@ return [
 
     'Closing Date' => __('Closing Date', 'bit-crm-sales-marketing-automation'),
 
-    'Please input Closing Date!' => __('Please input Closing Date!', 'bit-crm-sales-marketing-automation'),
+    'Please input the closing date!' => __('Please input the closing date!', 'bit-crm-sales-marketing-automation'),
 
     'Please select Stage!' => __('Please select Stage!', 'bit-crm-sales-marketing-automation'),
 
@@ -1622,6 +1653,10 @@ return [
 
     'Are you sure?' => __('Are you sure?', 'bit-crm-sales-marketing-automation'),
 
+    'Generate a Google app password' => __('Generate a Google app password', 'bit-crm-sales-marketing-automation'),
+
+    'Generate a Zoho app password' => __('Generate a Zoho app password', 'bit-crm-sales-marketing-automation'),
+
     'Imap settings created successfully' => __('Imap settings created successfully', 'bit-crm-sales-marketing-automation'),
 
     'Create IMAP Settings' => __('Create IMAP Settings', 'bit-crm-sales-marketing-automation'),
@@ -1631,6 +1666,10 @@ return [
     'Update IMAP Settings' => __('Update IMAP Settings', 'bit-crm-sales-marketing-automation'),
 
     'Imap settings not found!' => __('Imap settings not found!', 'bit-crm-sales-marketing-automation'),
+
+    'Read guide' => __('Read guide', 'bit-crm-sales-marketing-automation'),
+
+    'Not sure how to configure IMAP settings?' => __('Not sure how to configure IMAP settings?', 'bit-crm-sales-marketing-automation'),
 
     'Title is required!' => __('Title is required!', 'bit-crm-sales-marketing-automation'),
 
@@ -1707,8 +1746,6 @@ return [
     'Invoice prefix is required' => __('Invoice prefix is required', 'bit-crm-sales-marketing-automation'),
 
     'Invoice prefix cannot contain spaces' => __('Invoice prefix cannot contain spaces', 'bit-crm-sales-marketing-automation'),
-
-    'INV' => __('INV', 'bit-crm-sales-marketing-automation'),
 
     'Invoice Date' => __('Invoice Date', 'bit-crm-sales-marketing-automation'),
 
@@ -1904,7 +1941,7 @@ return [
 
     'What happens during conversion:' => __('What happens during conversion:', 'bit-crm-sales-marketing-automation'),
 
-    'New contacts, companies, deals are created via field mapping.' => __('New contacts, companies, deals are created via field mapping.', 'bit-crm-sales-marketing-automation'),
+    'New contacts, companies, and deals are created via field mapping.' => __('New contacts, companies, and deals are created via field mapping.', 'bit-crm-sales-marketing-automation'),
 
     'Optionally, a deal can be created and linked to the contact and company.' => __('Optionally, a deal can be created and linked to the contact and company.', 'bit-crm-sales-marketing-automation'),
 
@@ -1938,9 +1975,15 @@ return [
 
     'Convert Leads' => __('Convert Leads', 'bit-crm-sales-marketing-automation'),
 
+    'New contacts, companies, deals are created via field mapping.' => __('New contacts, companies, deals are created via field mapping.', 'bit-crm-sales-marketing-automation'),
+
     'Are you sure you want to delete the selected leads? Deleted leads will be moved to the Trash.' => __('Are you sure you want to delete the selected leads? Deleted leads will be moved to the Trash.', 'bit-crm-sales-marketing-automation'),
 
     'New Lead' => __('New Lead', 'bit-crm-sales-marketing-automation'),
+
+    'Capture with forms' => __('Capture with forms', 'bit-crm-sales-marketing-automation'),
+
+    'Automatically create leads in Bit CRM from website form submissions and optionally tag them by the form they came from.' => __('Automatically create leads in Bit CRM from website form submissions and optionally tag them by the form they came from.', 'bit-crm-sales-marketing-automation'),
 
     'Are you sure you want to delete the lead?' => __('Are you sure you want to delete the lead?', 'bit-crm-sales-marketing-automation'),
 

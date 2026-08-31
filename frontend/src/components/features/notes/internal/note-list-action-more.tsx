@@ -50,7 +50,7 @@ export default function NoteListActionMore({ id }: { id: number }) {
           cancelText={__('No')}
           okText={__('Yes')}
           onConfirm={handleDelete}
-          title={__('Are you sure to delete this?')}
+          title={__('Are you sure you want to delete this?')}
         >
           <Button danger icon={<LuTrash2 />} size="small" type="link">
             {__('Delete')}

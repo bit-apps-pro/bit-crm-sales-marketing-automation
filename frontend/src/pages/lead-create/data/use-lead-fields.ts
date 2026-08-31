@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem, type Order } from '@features/field-settings/shared/field-types'
@@ -19,7 +20,7 @@ export default function useLeadFields() {
       queryRequest<ResponseType>('leads/fields', {}, undefined, 'GET', { signal }),
     queryKey: ['leads', 'fields'],
     select: res => {
-      const fields = res?.data?.fields
+      const fields = filterHiddenFields(res?.data?.fields)
       const orders = res?.data?.orders
       const columnSettings = res?.data?.column_settings
 

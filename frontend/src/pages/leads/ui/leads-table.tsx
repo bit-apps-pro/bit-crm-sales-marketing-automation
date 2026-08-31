@@ -1,7 +1,7 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { renderFullName } from '@common/helpers/entity-helpers'
-import { unslugify } from '@common/helpers/globalHelpers'
+import { formatDate, unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
@@ -76,6 +76,9 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
                   </div>
                 </Link>
               )
+            }
+            if (field.type === 'date') {
+              return formatDate(text)
             }
             if (field.type === 'select' || field.type === 'radio') {
               return unslugify(text)

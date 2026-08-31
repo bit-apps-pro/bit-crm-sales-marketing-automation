@@ -17,6 +17,10 @@ class Email extends Model
         'subject',
         'body',
         'email_direction',
+        'from_email',
+        'to_emails',
+        'cc',
+        'bcc',
         'imap_id',
         'sent_from',
         'attachments',
@@ -26,5 +30,8 @@ class Email extends Model
 
     protected $casts = [
         'attachments' => 'array',
+        'to_emails'   => 'array',
+        'cc'          => 'array',
+        'bcc'         => 'array',
     ];
 }

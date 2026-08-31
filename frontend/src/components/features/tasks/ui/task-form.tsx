@@ -1,6 +1,7 @@
 import { getFilteredModuleOptions, MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
+import { DATE_TIME_FORMAT } from '@config/date-format'
 import { PRIORITY_OPTIONS } from '@features/activity-feed/shared/activity-constants'
 import LookupFieldSelect from '@features/lookup-field-select'
 import WpMediaUploader from '@features/wp-media-uploader'
@@ -85,7 +86,7 @@ export default function TaskForm({
         >
           <DatePicker
             className="w-full"
-            format={'YYYY-MM-DD hh:mm A'}
+            format={DATE_TIME_FORMAT}
             minDate={dayjs().startOf('day')}
             placeholder={__('Select date and time')}
             showTime={{ defaultValue: dayjs('12:00', 'hh:mm') }}

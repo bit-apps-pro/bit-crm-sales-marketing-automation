@@ -57,9 +57,11 @@ class CompanyService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
+
         if (empty($systemDefinedFieldsValues['currency'])) {
             $systemDefinedFieldsValues['currency'] = CurrencyHelper::getHomeCurrency();
         }
+
         Connection::startTransaction();
 
         try {

@@ -57,6 +57,7 @@ export default function ImapEditModal() {
 
   return (
     <Modal
+      centered
       destroyOnHidden
       loading={isImapLoading}
       okButtonProps={{
@@ -68,6 +69,14 @@ export default function ImapEditModal() {
       onCancel={handleClose}
       onOk={handleSubmit}
       open={isEditModalOpen}
+      styles={{
+        body: {
+          marginInline: '-22px',
+          maxHeight: '70vh',
+          overflowY: 'auto',
+          paddingInline: '22px'
+        }
+      }}
       title={__('Update IMAP Settings')}
     >
       {isEditModalOpen &&

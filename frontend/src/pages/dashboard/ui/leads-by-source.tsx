@@ -49,7 +49,7 @@ export default function LeadsBySource({ leadCountBySource }: LeadCountBySourcePr
             </Button>
           </Link>
         </div>
-        <Typography.Text className="w-ufll mb-4 text-[#9090A8]">
+        <Typography.Text className="mb-4 w-full text-[#9090A8]">
           {__('Breakdown by acquisition source')}
         </Typography.Text>
       </div>

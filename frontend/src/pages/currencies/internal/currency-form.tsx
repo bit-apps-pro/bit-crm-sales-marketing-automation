@@ -175,7 +175,7 @@ export default function CurrencyForm({
             required
             rules={[
               {
-                message: __('the exchange rate field is required'),
+                message: __('The exchange rate field is required!'),
                 required: !isHome
               }
             ]}

