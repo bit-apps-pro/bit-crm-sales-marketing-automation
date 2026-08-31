@@ -136,18 +136,20 @@ export function calculateTotalTax(lineItems: LineItem[], taxOption: TaxOption): 
 }
 
 export function formatLineItems(lineItems: LineItem[]) {
-  const formattedLineItems = lineItems?.map(item => ({
-    description: item.description,
-    discount_percentage: item.discount_percentage || 0,
-    id: item.id,
-    product_code: item.product_code,
-    product_id: item.product_id,
-    product_name: item.product_name,
-    product_source: item.product_source || '',
-    quantity: item.quantity,
-    tax_rate: item.tax_rate || 0,
-    unit_price: item.unit_price_in_deal_currency || 0
-  }))
+  const formattedLineItems = lineItems
+    ?.filter(item => item.product_name)
+    ?.map(item => ({
+      description: item.description,
+      discount_percentage: item.discount_percentage || 0,
+      id: item.id,
+      product_code: item.product_code,
+      product_id: item.product_id,
+      product_name: item.product_name,
+      product_source: item.product_source || '',
+      quantity: item.quantity,
+      tax_rate: item.tax_rate || 0,
+      unit_price: item.unit_price_in_deal_currency || 0
+    }))
 
   return formattedLineItems
 }

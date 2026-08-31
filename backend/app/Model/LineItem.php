@@ -19,6 +19,8 @@ class LineItem extends Model
 
     public const SOURCE_WOOCOMMERCE = 'woo_commerce_product';
 
+    public const SOURCE_FLUENT_CART = 'fluent_cart_product';
+
     public const SOURCE_CUSTOM = 'custom';
 
     public const TAX_EXCLUSIVE = 'exclusive';

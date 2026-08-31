@@ -1,7 +1,7 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import { __ } from '@common/helpers/i18nWrap'
 import useDebounceState from '@common/hooks/useDebounceState'
-import { PRODUCT_SOURCE } from '@features/product-line-items/shared/constants'
+import { PRODUCT_SOURCE, VARIANT_TREE_SOURCES } from '@features/product-line-items/shared/constants'
 import { getProductSourceOptions } from '@features/product-line-items/shared/options'
 import LoadMoreSelect from '@utilities/load-more-select'
 import LoadMoreTreeSelect from '@utilities/load-more-tree-select'
@@ -17,6 +17,7 @@ export default function ProductLookupSelect({
   allowCustomSource = false,
   className,
   disabled = false,
+  enableFluentCartProducts = false,
   enableWooProducts = false,
   name,
   onNameChange,
@@ -29,7 +30,14 @@ export default function ProductLookupSelect({
   const debouncedSearch = useDebounceState(searchTerm, 300)
 
   const isCustomSource = productSource === PRODUCT_SOURCE.CUSTOM
-  const sourceOptions = getProductSourceOptions(enableWooProducts, allowCustomSource)
+  // Whether the options arrive as a variant tree depends on the selected source,
+  // not on which plugin-backed sources happen to be enabled.
+  const usesVariantTree = VARIANT_TREE_SOURCES.includes(productSource)
+  const sourceOptions = getProductSourceOptions({
+    allowCustomSource,
+    fluentCartEnabled: enableFluentCartProducts,
+    wooEnabled: enableWooProducts
+  })
   const allSourcesDisabled = sourceOptions.every(opt => opt.disabled)
 
   const {
@@ -108,7 +116,7 @@ export default function ProductLookupSelect({
       showSearch: true
     }
 
-    if (enableWooProducts) {
+    if (usesVariantTree) {
       return (
         <LoadMoreTreeSelect
           {...commonProps}
@@ -120,8 +128,7 @@ export default function ProductLookupSelect({
           treeDefaultExpandAll
           value={getDisplayValue(value, treeData, {
             fallback: name,
-            source: productSource,
-            wooEnabled: enableWooProducts
+            source: productSource
           })}
         />
       )

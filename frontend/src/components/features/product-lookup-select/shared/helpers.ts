@@ -1,4 +1,4 @@
-import { PRODUCT_SOURCE } from '@features/product-line-items/shared/constants'
+import { VARIANT_TREE_SOURCES } from '@features/product-line-items/shared/constants'
 import { type DefaultOptionType } from 'antd/es/select'
 import { type DataNode } from 'antd/es/tree'
 
@@ -13,10 +13,9 @@ export const getDisplayValue = (
   settings: {
     fallback?: string
     source: string
-    wooEnabled: boolean
   }
 ): null | number | string | undefined => {
-  if (settings.source !== PRODUCT_SOURCE.WOO_COMMERCE || !settings.wooEnabled) {
+  if (!VARIANT_TREE_SOURCES.includes(settings.source)) {
     return value
   }
 

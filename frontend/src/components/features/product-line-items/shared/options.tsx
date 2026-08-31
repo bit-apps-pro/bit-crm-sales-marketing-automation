@@ -11,30 +11,64 @@ interface ProductSourceOption {
   value: (typeof PRODUCT_SOURCE)[keyof typeof PRODUCT_SOURCE]
 }
 
-export function getProductSourceOptions(wooEnabled: boolean, allowCustomSource = false) {
+interface ProductSourceOptionsParams {
+  allowCustomSource?: boolean
+  fluentCartEnabled?: boolean
+  wooEnabled?: boolean
+}
+
+interface SourceTag {
+  color?: string
+  text: string
+}
+
+function sourceOptionLabel(label: string, tag?: SourceTag): ReactNode {
+  return (
+    <span className="flex items-center justify-between gap-2">
+      {label}
+      {tag && (
+        <Tag color={tag.color} style={{ marginInlineEnd: 0 }}>
+          {tag.text}
+        </Tag>
+      )}
+    </span>
+  )
+}
+
+/**
+ * Tag explaining why a plugin-backed source is unavailable: in the free plugin
+ * neither FluentCart nor Local can ever be used, so the upgrade prompt wins
+ * over "Inactive".
+ */
+function unavailableTag(requiresPro: boolean): SourceTag {
+  return requiresPro ? { color: 'gold', text: __('Pro') } : { text: __('Inactive') }
+}
+
+export function getProductSourceOptions({
+  allowCustomSource = false,
+  fluentCartEnabled = false,
+  wooEnabled = false
+}: ProductSourceOptionsParams) {
   const options: ProductSourceOption[] = [
     {
       disabled: !wooEnabled,
       label: __('Woo'),
-      optionLabel: (
-        <span className="flex items-center justify-between gap-2">
-          {__('Woo')}
-          {!wooEnabled && <Tag style={{ marginInlineEnd: 0 }}>{__('Inactive')}</Tag>}
-        </span>
-      ),
+      optionLabel: sourceOptionLabel(__('Woo'), wooEnabled ? undefined : unavailableTag(false)),
       value: PRODUCT_SOURCE.WOO_COMMERCE
+    },
+    {
+      disabled: !fluentCartEnabled,
+      label: __('FluentCart'),
+      optionLabel: sourceOptionLabel(
+        __('FluentCart'),
+        fluentCartEnabled ? undefined : unavailableTag(true)
+      ),
+      value: PRODUCT_SOURCE.FLUENT_CART
     },
     {
       disabled: true,
       label: __('Local'),
-      optionLabel: (
-        <span className="flex items-center justify-between gap-2">
-          {__('Local')}
-          <Tag color="gold" style={{ marginInlineEnd: 0 }}>
-            {__('Pro')}
-          </Tag>
-        </span>
-      ),
+      optionLabel: sourceOptionLabel(__('Local'), unavailableTag(true)),
       value: PRODUCT_SOURCE.LOCAL
     }
   ]
@@ -43,7 +77,7 @@ export function getProductSourceOptions(wooEnabled: boolean, allowCustomSource =
     options.push({
       disabled: false,
       label: __('Custom'),
-      optionLabel: <span className="flex items-center justify-between gap-2">{__('Custom')}</span>,
+      optionLabel: sourceOptionLabel(__('Custom')),
       value: PRODUCT_SOURCE.CUSTOM
     })
   }
