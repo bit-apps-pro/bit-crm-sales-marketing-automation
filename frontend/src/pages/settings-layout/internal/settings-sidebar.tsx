@@ -77,6 +77,11 @@ const navGroups = [
       },
       {
         capability: CAPABILITIES.SETTING.INTEGRATION,
+        label: __('FluentCart'),
+        path: '../settings/fluent-cart-settings'
+      },
+      {
+        capability: CAPABILITIES.SETTING.INTEGRATION,
         label: __('Bit Form'),
         path: '../settings/bit-form-settings'
       },

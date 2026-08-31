@@ -11,6 +11,7 @@ export interface ProductLookupSelectProps {
   allowCustomSource?: boolean
   className?: string
   disabled?: boolean
+  enableFluentCartProducts?: boolean
   enableWooProducts?: boolean
   name?: string
   onNameChange?: (name: string) => void

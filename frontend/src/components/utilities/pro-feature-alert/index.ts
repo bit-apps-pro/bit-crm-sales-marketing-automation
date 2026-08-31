@@ -4,6 +4,7 @@ export { default as ProCrmUsersAlert } from './internal/mocks/pro-crm-users-aler
 export { default as ProEntitiesAlert } from './internal/mocks/pro-entities-alert'
 export { default as ProEntitySettingsAlert } from './internal/mocks/pro-entity-settings-alert'
 export { default as ProExportListAlert } from './internal/mocks/pro-export-list-alert'
+export { default as ProFluentCartSettingsAlert } from './internal/mocks/pro-fluent-cart-settings-alert'
 export { default as ProHistoryAlert } from './internal/mocks/pro-history-alert'
 export { default as ProInvoicePaymentsAlert } from './internal/mocks/pro-invoice-payments-alert'
 export { default as ProMcpSettingsAlert } from './internal/mocks/pro-mcp-settings-alert'

@@ -6,110 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /* THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY. */
 return [
-    'Changelog' => __('Changelog', 'bit-crm-sales-marketing-automation'),
-
-    'Join Our Facebook Community' => __('Join Our Facebook Community', 'bit-crm-sales-marketing-automation'),
-
-    'Connect, share, and grow with like-minded individuals' => __('Connect, share, and grow with like-minded individuals', 'bit-crm-sales-marketing-automation'),
-
-    'Exclusive Content' => __('Exclusive Content', 'bit-crm-sales-marketing-automation'),
-
-    'Daily Discussion' => __('Daily Discussion', 'bit-crm-sales-marketing-automation'),
-
-    'Special Events' => __('Special Events', 'bit-crm-sales-marketing-automation'),
-
-    'Join Now' => __('Join Now', 'bit-crm-sales-marketing-automation'),
-
-    'License & Activation' => __('License & Activation', 'bit-crm-sales-marketing-automation'),
-
-    'Dev Version On' => __('Dev Version On', 'bit-crm-sales-marketing-automation'),
-
-    'Version' => __('Version', 'bit-crm-sales-marketing-automation'),
-
-    'Code Name:' => __('Code Name:', 'bit-crm-sales-marketing-automation'),
-
-    'Pro Version' => __('Pro Version', 'bit-crm-sales-marketing-automation'),
-
-    'Not Activated' => __('Not Activated', 'bit-crm-sales-marketing-automation'),
-
-    'Buy Pro Version' => __('Buy Pro Version', 'bit-crm-sales-marketing-automation'),
-
-    'Deactivate License' => __('Deactivate License', 'bit-crm-sales-marketing-automation'),
-
-    'Activate License' => __('Activate License', 'bit-crm-sales-marketing-automation'),
-
-    'Please ensure that your product subscription is valid. If needed, try deactivating and reactivating your license.' => __('Please ensure that your product subscription is valid. If needed, try deactivating and reactivating your license.', 'bit-crm-sales-marketing-automation'),
-
-    'For further assistance, feel free to reach out to our live support or email us at support@bitapps.pro .' => __('For further assistance, feel free to reach out to our live support or email us at support@bitapps.pro .', 'bit-crm-sales-marketing-automation'),
-
-    'Your license is invalid, try reactivate' => __('Your license is invalid, try reactivate', 'bit-crm-sales-marketing-automation'),
-
-    'Manage license' => __('Manage license', 'bit-crm-sales-marketing-automation'),
-
-    'Please update your license to ensure you receive the latest security updates and bug fixes. 
-          Using an outdated or unofficial license may leave your system vulnerable to security breaches and data leaks. 
-          We cannot take responsibility for issues arising from such scenarios. For your safety, always download from the official Bit Apps server.' => __('Please update your license to ensure you receive the latest security updates and bug fixes. 
-          Using an outdated or unofficial license may leave your system vulnerable to security breaches and data leaks. 
-          We cannot take responsibility for issues arising from such scenarios. For your safety, always download from the official Bit Apps server.', 'bit-crm-sales-marketing-automation'),
-
-    'Your license is invalid' => __('Your license is invalid', 'bit-crm-sales-marketing-automation'),
-
-    /* translators: %s: placeholder value */
-    'Plugin Update Required (%s)' => __('Plugin Update Required (%s)', 'bit-crm-sales-marketing-automation'),
-
-    'Please update both Free and Pro plugins to the latest version. Keeping them the same is crucial to avoid potential issues.' => __('Please update both Free and Pro plugins to the latest version. Keeping them the same is crucial to avoid potential issues.', 'bit-crm-sales-marketing-automation'),
-
-    'Updating...' => __('Updating...', 'bit-crm-sales-marketing-automation'),
-
-    'Update Now' => __('Update Now', 'bit-crm-sales-marketing-automation'),
-
-    'Checking updates' => __('Checking updates', 'bit-crm-sales-marketing-automation'),
-
-    'New version available' => __('New version available', 'bit-crm-sales-marketing-automation'),
-
-    'Please update to the latest version to ensure plugin security and optimal performance. Stay safe and enjoy the enhanced features!' => __('Please update to the latest version to ensure plugin security and optimal performance. Stay safe and enjoy the enhanced features!', 'bit-crm-sales-marketing-automation'),
-
-    'is up to date' => __('is up to date', 'bit-crm-sales-marketing-automation'),
-
-    'WordPress CRM to manage contacts, leads, deals, and invoices and run your whole sales pipeline right from your WordPress dashboard.' => __('WordPress CRM to manage contacts, leads, deals, and invoices and run your whole sales pipeline right from your WordPress dashboard.', 'bit-crm-sales-marketing-automation'),
-
-    'Zapier Alternative in WordPress Unlimited Task.' => __('Zapier Alternative in WordPress Unlimited Task.', 'bit-crm-sales-marketing-automation'),
-
-    'An social media management plugin for WordPress, that allows you to share your post to different social media platform, schedule post, manage social media account and many more feature.' => __('An social media management plugin for WordPress, that allows you to share your post to different social media platform, schedule post, manage social media account and many more feature.', 'bit-crm-sales-marketing-automation'),
-
-    'Cash Back' => __('Cash Back', 'bit-crm-sales-marketing-automation'),
-
-    'Hi' => __('Hi', 'bit-crm-sales-marketing-automation'),
-
-    'We want your feedback!' => __('We want your feedback!', 'bit-crm-sales-marketing-automation'),
-
-    'Write a review' => __('Write a review', 'bit-crm-sales-marketing-automation'),
-
-    /* translators: %s: placeholder value */
-    'of your experience with %s, and we\'ll send you a' => __('of your experience with %s, and we\'ll send you a', 'bit-crm-sales-marketing-automation'),
-
-    '$10 Cash back' => __('$10 Cash back', 'bit-crm-sales-marketing-automation'),
-
-    'to say thanks!' => __('to say thanks!', 'bit-crm-sales-marketing-automation'),
-
-    'To claim your cash back, simply reply to support with a screenshot or link of your review.' => __('To claim your cash back, simply reply to support with a screenshot or link of your review.', 'bit-crm-sales-marketing-automation'),
-
-    'Review Now' => __('Review Now', 'bit-crm-sales-marketing-automation'),
-
-    'Improvement' => __('Improvement', 'bit-crm-sales-marketing-automation'),
-
-    'Allow the collection of diagnostic data and error reports to enhance the application\'s performance. Please review our' => __('Allow the collection of diagnostic data and error reports to enhance the application\'s performance. Please review our', 'bit-crm-sales-marketing-automation'),
-
-    'Privacy Policy' => __('Privacy Policy', 'bit-crm-sales-marketing-automation'),
-
-    'for more information.' => __('for more information.', 'bit-crm-sales-marketing-automation'),
-
-    'Recommended Plugins' => __('Recommended Plugins', 'bit-crm-sales-marketing-automation'),
-
-    'Support' => __('Support', 'bit-crm-sales-marketing-automation'),
-
-    'About' => __('About', 'bit-crm-sales-marketing-automation'),
-
     'Text' => __('Text', 'bit-crm-sales-marketing-automation'),
 
     'Text Multi-Line' => __('Text Multi-Line', 'bit-crm-sales-marketing-automation'),
@@ -324,6 +220,26 @@ return [
 
     'Value' => __('Value', 'bit-crm-sales-marketing-automation'),
 
+    'Close assistant' => __('Close assistant', 'bit-crm-sales-marketing-automation'),
+
+    'Ask AI' => __('Ask AI', 'bit-crm-sales-marketing-automation'),
+
+    'AI Assistant' => __('AI Assistant', 'bit-crm-sales-marketing-automation'),
+
+    'Shrink' => __('Shrink', 'bit-crm-sales-marketing-automation'),
+
+    'Full screen' => __('Full screen', 'bit-crm-sales-marketing-automation'),
+
+    'Close' => __('Close', 'bit-crm-sales-marketing-automation'),
+
+    'The assistant is not set up yet' => __('The assistant is not set up yet', 'bit-crm-sales-marketing-automation'),
+
+    'Once an AI provider and API key are set up, you can ask about your leads, contacts, companies, deals and invoices right here.' => __('Once an AI provider and API key are set up, you can ask about your leads, contacts, companies, deals and invoices right here.', 'bit-crm-sales-marketing-automation'),
+
+    'Ask a site administrator to set it up under Settings → AI Assistant.' => __('Ask a site administrator to set it up under Settings → AI Assistant.', 'bit-crm-sales-marketing-automation'),
+
+    'Open AI settings' => __('Open AI settings', 'bit-crm-sales-marketing-automation'),
+
     'Add Products to Deal' => __('Add Products to Deal', 'bit-crm-sales-marketing-automation'),
 
     'Download' => __('Download', 'bit-crm-sales-marketing-automation'),
@@ -343,22 +259,6 @@ return [
     'Yes' => __('Yes', 'bit-crm-sales-marketing-automation'),
 
     'Are you sure to delete this?' => __('Are you sure to delete this?', 'bit-crm-sales-marketing-automation'),
-
-    'This contact doesn\'t have access to the client portal.' => __('This contact doesn\'t have access to the client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Sharing is disabled for this client.' => __('Sharing is disabled for this client.', 'bit-crm-sales-marketing-automation'),
-
-    'Attachment shared with contact' => __('Attachment shared with contact', 'bit-crm-sales-marketing-automation'),
-
-    'Attachment is no longer shared' => __('Attachment is no longer shared', 'bit-crm-sales-marketing-automation'),
-
-    'Share with contact' => __('Share with contact', 'bit-crm-sales-marketing-automation'),
-
-    'Checking client portal access…' => __('Checking client portal access…', 'bit-crm-sales-marketing-automation'),
-
-    'The uploaded files will be visible in the client portal.' => __('The uploaded files will be visible in the client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Share the uploaded files with this contact in the client portal.' => __('Share the uploaded files with this contact in the client portal.', 'bit-crm-sales-marketing-automation'),
 
     'Please select at least one file' => __('Please select at least one file', 'bit-crm-sales-marketing-automation'),
 
@@ -413,8 +313,6 @@ return [
     'Contact will have access to this call.' => __('Contact will have access to this call.', 'bit-crm-sales-marketing-automation'),
 
     'Only you and your team can see this call.' => __('Only you and your team can see this call.', 'bit-crm-sales-marketing-automation'),
-
-    'What\'s new' => __('What\'s new', 'bit-crm-sales-marketing-automation'),
 
     'Deal Field Overrides' => __('Deal Field Overrides', 'bit-crm-sales-marketing-automation'),
 
@@ -546,16 +444,6 @@ return [
 
     'Two Columns' => __('Two Columns', 'bit-crm-sales-marketing-automation'),
 
-    'Could not delete field' => __('Could not delete field', 'bit-crm-sales-marketing-automation'),
-
-    'Field deleted successfully' => __('Field deleted successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to add custom field' => __('Failed to add custom field', 'bit-crm-sales-marketing-automation'),
-
-    'Custom field added successfully' => __('Custom field added successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Could not update field' => __('Could not update field', 'bit-crm-sales-marketing-automation'),
-
     'Could not update field setting' => __('Could not update field setting', 'bit-crm-sales-marketing-automation'),
 
     'Required' => __('Required', 'bit-crm-sales-marketing-automation'),
@@ -568,37 +456,17 @@ return [
 
     'Full Width' => __('Full Width', 'bit-crm-sales-marketing-automation'),
 
-    'Add at least one option' => __('Add at least one option', 'bit-crm-sales-marketing-automation'),
-
     'Add new custom field' => __('Add new custom field', 'bit-crm-sales-marketing-automation'),
 
-    'Add' => __('Add', 'bit-crm-sales-marketing-automation'),
-
-    'Type' => __('Type', 'bit-crm-sales-marketing-automation'),
-
-    'Type is required' => __('Type is required', 'bit-crm-sales-marketing-automation'),
-
-    'Label' => __('Label', 'bit-crm-sales-marketing-automation'),
-
-    'Label is required' => __('Label is required', 'bit-crm-sales-marketing-automation'),
-
-    'Tooltip will be shown when hovering over info icon' => __('Tooltip will be shown when hovering over info icon', 'bit-crm-sales-marketing-automation'),
-
-    'Tooltip' => __('Tooltip', 'bit-crm-sales-marketing-automation'),
-
-    'Help text will be shown below the field' => __('Help text will be shown below the field', 'bit-crm-sales-marketing-automation'),
-
-    'Help Text' => __('Help Text', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure to delete this field?' => __('Are you sure to delete this field?', 'bit-crm-sales-marketing-automation'),
-
-    'Delete the field' => __('Delete the field', 'bit-crm-sales-marketing-automation'),
-
-    'Delete field' => __('Delete field', 'bit-crm-sales-marketing-automation'),
+    'Add at least one option' => __('Add at least one option', 'bit-crm-sales-marketing-automation'),
 
     'Edit field' => __('Edit field', 'bit-crm-sales-marketing-automation'),
 
     'Edit Field' => __('Edit Field', 'bit-crm-sales-marketing-automation'),
+
+    'Label' => __('Label', 'bit-crm-sales-marketing-automation'),
+
+    'Label is required' => __('Label is required', 'bit-crm-sales-marketing-automation'),
 
     'Edit Fields Group' => __('Edit Fields Group', 'bit-crm-sales-marketing-automation'),
 
@@ -724,13 +592,15 @@ return [
 
     'Click "Add Line Item" to start adding products' => __('Click "Add Line Item" to start adding products', 'bit-crm-sales-marketing-automation'),
 
-    'Woo' => __('Woo', 'bit-crm-sales-marketing-automation'),
+    'Pro' => __('Pro', 'bit-crm-sales-marketing-automation'),
 
     'Inactive' => __('Inactive', 'bit-crm-sales-marketing-automation'),
 
-    'Local' => __('Local', 'bit-crm-sales-marketing-automation'),
+    'Woo' => __('Woo', 'bit-crm-sales-marketing-automation'),
 
-    'Pro' => __('Pro', 'bit-crm-sales-marketing-automation'),
+    'FluentCart' => __('FluentCart', 'bit-crm-sales-marketing-automation'),
+
+    'Local' => __('Local', 'bit-crm-sales-marketing-automation'),
 
     'Custom' => __('Custom', 'bit-crm-sales-marketing-automation'),
 
@@ -793,8 +663,6 @@ return [
 
     'Columns' => __('Columns', 'bit-crm-sales-marketing-automation'),
 
-    'Configure in Portal Settings → Clients' => __('Configure in Portal Settings → Clients', 'bit-crm-sales-marketing-automation'),
-
     'Searching' => __('Searching', 'bit-crm-sales-marketing-automation'),
 
     'No Data Found' => __('No Data Found', 'bit-crm-sales-marketing-automation'),
@@ -821,15 +689,17 @@ return [
 
     'Select priority' => __('Select priority', 'bit-crm-sales-marketing-automation'),
 
-    'Leave' => __('Leave', 'bit-crm-sales-marketing-automation'),
-
-    'Leave without saving?' => __('Leave without saving?', 'bit-crm-sales-marketing-automation'),
-
-    'You have unsaved changes that will be lost if you leave. Are you sure you want to continue?' => __('You have unsaved changes that will be lost if you leave. Are you sure you want to continue?', 'bit-crm-sales-marketing-automation'),
-
     'Add Attachments' => __('Add Attachments', 'bit-crm-sales-marketing-automation'),
 
     'Clear all Filters' => __('Clear all Filters', 'bit-crm-sales-marketing-automation'),
+
+    'Component/ContextMenu' => __('Component/ContextMenu', 'bit-crm-sales-marketing-automation'),
+
+    'Are you sure delete this item?' => __('Are you sure delete this item?', 'bit-crm-sales-marketing-automation'),
+
+    'Right Mouse Click Here' => __('Right Mouse Click Here', 'bit-crm-sales-marketing-automation'),
+
+    'Component/DropDown' => __('Component/DropDown', 'bit-crm-sales-marketing-automation'),
 
     'Maximum' => __('Maximum', 'bit-crm-sales-marketing-automation'),
 
@@ -899,6 +769,26 @@ return [
 
     'This permanently deletes record timeline history for leads, contacts, companies, deals, products and invoices.' => __('This permanently deletes record timeline history for leads, contacts, companies, deals, products and invoices.', 'bit-crm-sales-marketing-automation'),
 
+    'Enable AI Assistant' => __('Enable AI Assistant', 'bit-crm-sales-marketing-automation'),
+
+    'Adds a chat button to every CRM screen. It can read and change records strictly within what the person asking is allowed to do, and reports each change once it has been made.' => __('Adds a chat button to every CRM screen. It can read and change records strictly within what the person asking is allowed to do, and reports each change once it has been made.', 'bit-crm-sales-marketing-automation'),
+
+    'Connection' => __('Connection', 'bit-crm-sales-marketing-automation'),
+
+    'Provider' => __('Provider', 'bit-crm-sales-marketing-automation'),
+
+    'Claude' => __('Claude', 'bit-crm-sales-marketing-automation'),
+
+    'Model' => __('Model', 'bit-crm-sales-marketing-automation'),
+
+    'API key' => __('API key', 'bit-crm-sales-marketing-automation'),
+
+    'Test' => __('Test', 'bit-crm-sales-marketing-automation'),
+
+    'Answers' => __('Answers', 'bit-crm-sales-marketing-automation'),
+
+    'Thoroughness' => __('Thoroughness', 'bit-crm-sales-marketing-automation'),
+
     'Name' => __('Name', 'bit-crm-sales-marketing-automation'),
 
     'Email' => __('Email', 'bit-crm-sales-marketing-automation'),
@@ -928,6 +818,14 @@ return [
     'Progress' => __('Progress', 'bit-crm-sales-marketing-automation'),
 
     'Exports history' => __('Exports history', 'bit-crm-sales-marketing-automation'),
+
+    'FluentCart Settings' => __('FluentCart Settings', 'bit-crm-sales-marketing-automation'),
+
+    'FluentCart Product Integration' => __('FluentCart Product Integration', 'bit-crm-sales-marketing-automation'),
+
+    'Enable FluentCart Products' => __('Enable FluentCart Products', 'bit-crm-sales-marketing-automation'),
+
+    'Allow selecting FluentCart products in deal and invoice line items. Product source selection will be available when this is enabled.' => __('Allow selecting FluentCart products in deal and invoice line items. Product source selection will be available when this is enabled.', 'bit-crm-sales-marketing-automation'),
 
     'Event' => __('Event', 'bit-crm-sales-marketing-automation'),
 
@@ -1034,8 +932,6 @@ return [
 
     'Key name' => __('Key name', 'bit-crm-sales-marketing-automation'),
 
-    'API key' => __('API key', 'bit-crm-sales-marketing-automation'),
-
     'Use it as the password with HTTP Basic authentication.' => __('Use it as the password with HTTP Basic authentication.', 'bit-crm-sales-marketing-automation'),
 
     'Please select a user' => __('Please select a user', 'bit-crm-sales-marketing-automation'),
@@ -1124,8 +1020,6 @@ return [
 
     'Building your form in the new Bit Form tab.' => __('Building your form in the new Bit Form tab.', 'bit-crm-sales-marketing-automation'),
 
-    'Close' => __('Close', 'bit-crm-sales-marketing-automation'),
-
     'Open the form builder' => __('Open the form builder', 'bit-crm-sales-marketing-automation'),
 
     'Your browser blocked the new tab. Open the form builder manually to continue.' => __('Your browser blocked the new tab. Open the form builder manually to continue.', 'bit-crm-sales-marketing-automation'),
@@ -1170,6 +1064,8 @@ return [
 
     'Are you sure you want to delete the selected companies? Deleted companies will be moved to the Trash.' => __('Are you sure you want to delete the selected companies? Deleted companies will be moved to the Trash.', 'bit-crm-sales-marketing-automation'),
 
+    'Add' => __('Add', 'bit-crm-sales-marketing-automation'),
+
     'Remove' => __('Remove', 'bit-crm-sales-marketing-automation'),
 
     'Add Tag' => __('Add Tag', 'bit-crm-sales-marketing-automation'),
@@ -1180,21 +1076,7 @@ return [
 
     'Select at least one tag!' => __('Select at least one tag!', 'bit-crm-sales-marketing-automation'),
 
-    'No companies available to export.' => __('No companies available to export.', 'bit-crm-sales-marketing-automation'),
-
-    'Could not export csv.' => __('Could not export csv.', 'bit-crm-sales-marketing-automation'),
-
     'Export Companies' => __('Export Companies', 'bit-crm-sales-marketing-automation'),
-
-    'Settings' => __('Settings', 'bit-crm-sales-marketing-automation'),
-
-    'Leave blank or 0 for no limit' => __('Leave blank or 0 for no limit', 'bit-crm-sales-marketing-automation'),
-
-    'Limit' => __('Limit', 'bit-crm-sales-marketing-automation'),
-
-    'Leave blank or 0 for no offset' => __('Leave blank or 0 for no offset', 'bit-crm-sales-marketing-automation'),
-
-    'Offset' => __('Offset', 'bit-crm-sales-marketing-automation'),
 
     'CSV Header' => __('CSV Header', 'bit-crm-sales-marketing-automation'),
 
@@ -1258,8 +1140,6 @@ return [
 
     'Contact updated successfully' => __('Contact updated successfully', 'bit-crm-sales-marketing-automation'),
 
-    'Client Portal Access' => __('Client Portal Access', 'bit-crm-sales-marketing-automation'),
-
     'Are you sure you want to delete the contact? This will be moved to Trash.' => __('Are you sure you want to delete the contact? This will be moved to Trash.', 'bit-crm-sales-marketing-automation'),
 
     'New Contact' => __('New Contact', 'bit-crm-sales-marketing-automation'),
@@ -1300,85 +1180,15 @@ return [
 
     'Are you sure you want to delete the contact?' => __('Are you sure you want to delete the contact?', 'bit-crm-sales-marketing-automation'),
 
-    'Failed to assign capabilities.' => __('Failed to assign capabilities.', 'bit-crm-sales-marketing-automation'),
-
-    'Capabilities assigned successfully.' => __('Capabilities assigned successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Create Capability' => __('Create Capability', 'bit-crm-sales-marketing-automation'),
-
-    'Existing User' => __('Existing User', 'bit-crm-sales-marketing-automation'),
-
-    'Create New User' => __('Create New User', 'bit-crm-sales-marketing-automation'),
-
-    'A new WordPress user will be created and assigned the selected (CRM) capabilities.' => __('A new WordPress user will be created and assigned the selected (CRM) capabilities.', 'bit-crm-sales-marketing-automation'),
-
-    'Username' => __('Username', 'bit-crm-sales-marketing-automation'),
-
-    'Username is required!' => __('Username is required!', 'bit-crm-sales-marketing-automation'),
-
-    'Email is required!' => __('Email is required!', 'bit-crm-sales-marketing-automation'),
-
-    'Enter a valid email!' => __('Enter a valid email!', 'bit-crm-sales-marketing-automation'),
-
-    'Email address' => __('Email address', 'bit-crm-sales-marketing-automation'),
-
-    'Password' => __('Password', 'bit-crm-sales-marketing-automation'),
-
-    'Password is required!' => __('Password is required!', 'bit-crm-sales-marketing-automation'),
-
-    'Confirm Password' => __('Confirm Password', 'bit-crm-sales-marketing-automation'),
-
-    'Confirm Password is required!' => __('Confirm Password is required!', 'bit-crm-sales-marketing-automation'),
-
-    'Passwords do not match!' => __('Passwords do not match!', 'bit-crm-sales-marketing-automation'),
-
-    'Select an existing user from your site and assign capabilities.' => __('Select an existing user from your site and assign capabilities.', 'bit-crm-sales-marketing-automation'),
-
-    'Select User' => __('Select User', 'bit-crm-sales-marketing-automation'),
-
-    'User is required!' => __('User is required!', 'bit-crm-sales-marketing-automation'),
-
-    'Update Capability' => __('Update Capability', 'bit-crm-sales-marketing-automation'),
-
-    '(Task, Meeting, Call)' => __('(Task, Meeting, Call)', 'bit-crm-sales-marketing-automation'),
-
-    'Please select at least one capability!' => __('Please select at least one capability!', 'bit-crm-sales-marketing-automation'),
-
-    'Plugin capabilities' => __('Plugin capabilities', 'bit-crm-sales-marketing-automation'),
-
-    'Hide' => __('Hide', 'bit-crm-sales-marketing-automation'),
-
-    'No capabilities assigned' => __('No capabilities assigned', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure to remove capabilities from this user?' => __('Are you sure to remove capabilities from this user?', 'bit-crm-sales-marketing-automation'),
-
-    'Remove capabilities' => __('Remove capabilities', 'bit-crm-sales-marketing-automation'),
-
-    'Note:' => __('Note:', 'bit-crm-sales-marketing-automation'),
-
-    'Menu access is granted automatically for modules where the user has at least one capability.' => __('Menu access is granted automatically for modules where the user has at least one capability.', 'bit-crm-sales-marketing-automation'),
-
     'Currencies' => __('Currencies', 'bit-crm-sales-marketing-automation'),
 
     'Other Currencies' => __('Other Currencies', 'bit-crm-sales-marketing-automation'),
 
     'Add Currency' => __('Add Currency', 'bit-crm-sales-marketing-automation'),
 
-    'Failed to create currency' => __('Failed to create currency', 'bit-crm-sales-marketing-automation'),
-
-    'Currency created successfully' => __('Currency created successfully', 'bit-crm-sales-marketing-automation'),
-
     'Failed to setup home currency' => __('Failed to setup home currency', 'bit-crm-sales-marketing-automation'),
 
     'Home currency setup successfully' => __('Home currency setup successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to update currency status' => __('Failed to update currency status', 'bit-crm-sales-marketing-automation'),
-
-    'Currency status updated successfully' => __('Currency status updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to update currency' => __('Failed to update currency', 'bit-crm-sales-marketing-automation'),
-
-    'Currency updated successfully' => __('Currency updated successfully', 'bit-crm-sales-marketing-automation'),
 
     'Failed to update home currency' => __('Failed to update home currency', 'bit-crm-sales-marketing-automation'),
 
@@ -1513,17 +1323,7 @@ return [
 
     'Activity Logs' => __('Activity Logs', 'bit-crm-sales-marketing-automation'),
 
-    'Failed to update activity log settings' => __('Failed to update activity log settings', 'bit-crm-sales-marketing-automation'),
-
-    'Activity log settings updated successfully' => __('Activity log settings updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter a valid number of days' => __('Please enter a valid number of days', 'bit-crm-sales-marketing-automation'),
-
     'Export History' => __('Export History', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure to delete this export?' => __('Are you sure to delete this export?', 'bit-crm-sales-marketing-automation'),
-
-    'Delete the export' => __('Delete the export', 'bit-crm-sales-marketing-automation'),
 
     'Imports history' => __('Imports history', 'bit-crm-sales-marketing-automation'),
 
@@ -1568,8 +1368,6 @@ return [
     'Are you sure to delete permanently?' => __('Are you sure to delete permanently?', 'bit-crm-sales-marketing-automation'),
 
     'Delete the item' => __('Delete the item', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow log settings updated successfully' => __('Workflow log settings updated successfully', 'bit-crm-sales-marketing-automation'),
 
     'Create Deal' => __('Create Deal', 'bit-crm-sales-marketing-automation'),
 
@@ -1712,8 +1510,6 @@ return [
 
     'Update Deal Stage' => __('Update Deal Stage', 'bit-crm-sales-marketing-automation'),
 
-    'Deals exported successfully' => __('Deals exported successfully', 'bit-crm-sales-marketing-automation'),
-
     'Export Deals' => __('Export Deals', 'bit-crm-sales-marketing-automation'),
 
     'Deals imported successfully' => __('Deals imported successfully', 'bit-crm-sales-marketing-automation'),
@@ -1822,8 +1618,6 @@ return [
 
     'Save Changes' => __('Save Changes', 'bit-crm-sales-marketing-automation'),
 
-    'System' => __('System', 'bit-crm-sales-marketing-automation'),
-
     'IMAP Configurations' => __('IMAP Configurations', 'bit-crm-sales-marketing-automation'),
 
     'Are you sure?' => __('Are you sure?', 'bit-crm-sales-marketing-automation'),
@@ -1869,6 +1663,8 @@ return [
     'Username (Email)' => __('Username (Email)', 'bit-crm-sales-marketing-automation'),
 
     'App Password' => __('App Password', 'bit-crm-sales-marketing-automation'),
+
+    'Password is required!' => __('Password is required!', 'bit-crm-sales-marketing-automation'),
 
     'If the settings are not private, other users can use them to fetch emails.' => __('If the settings are not private, other users can use them to fetch emails.', 'bit-crm-sales-marketing-automation'),
 
@@ -1938,20 +1734,6 @@ return [
 
     'Invoice updated successfully.' => __('Invoice updated successfully.', 'bit-crm-sales-marketing-automation'),
 
-    'Saving...' => __('Saving...', 'bit-crm-sales-marketing-automation'),
-
-    'WooCommerce is not active. Install and activate WooCommerce to accept payments.' => __('WooCommerce is not active. Install and activate WooCommerce to accept payments.', 'bit-crm-sales-marketing-automation'),
-
-    'Store currency:' => __('Store currency:', 'bit-crm-sales-marketing-automation'),
-
-    'CRM home currency:' => __('CRM home currency:', 'bit-crm-sales-marketing-automation'),
-
-    'Invoice amounts are converted to the store currency at checkout using your CRM exchange rate, and each payment keeps the rate it was charged at.' => __('Invoice amounts are converted to the store currency at checkout using your CRM exchange rate, and each payment keeps the rate it was charged at.', 'bit-crm-sales-marketing-automation'),
-
-    'Your WooCommerce store currency is not configured in the CRM currencies, so payments cannot be reconciled with invoices. Add it as a CRM currency with an exchange rate (or set it as your CRM home currency) to enable invoice payments.' => __('Your WooCommerce store currency is not configured in the CRM currencies, so payments cannot be reconciled with invoices. Add it as a CRM currency with an exchange rate (or set it as your CRM home currency) to enable invoice payments.', 'bit-crm-sales-marketing-automation'),
-
-    'Unsupported store currency:' => __('Unsupported store currency:', 'bit-crm-sales-marketing-automation'),
-
     'Invoice Prefix' => __('Invoice Prefix', 'bit-crm-sales-marketing-automation'),
 
     'Please provide an invoice prefix' => __('Please provide an invoice prefix', 'bit-crm-sales-marketing-automation'),
@@ -2004,12 +1786,6 @@ return [
 
     'Failed to generate share link' => __('Failed to generate share link', 'bit-crm-sales-marketing-automation'),
 
-    'Could not update payment settings' => __('Could not update payment settings', 'bit-crm-sales-marketing-automation'),
-
-    'Payment settings updated successfully' => __('Payment settings updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Percentage' => __('Percentage', 'bit-crm-sales-marketing-automation'),
-
     'Cancelled' => __('Cancelled', 'bit-crm-sales-marketing-automation'),
 
     'Failed' => __('Failed', 'bit-crm-sales-marketing-automation'),
@@ -2040,31 +1816,7 @@ return [
 
     'Tax Rate (%)' => __('Tax Rate (%)', 'bit-crm-sales-marketing-automation'),
 
-    'Payment Settings' => __('Payment Settings', 'bit-crm-sales-marketing-automation'),
-
     'Payment History' => __('Payment History', 'bit-crm-sales-marketing-automation'),
-
-    'Customers choosing partial payment must pay at least this value.' => __('Customers choosing partial payment must pay at least this value.', 'bit-crm-sales-marketing-automation'),
-
-    'Customers will only see the full payment option on the shared invoice.' => __('Customers will only see the full payment option on the shared invoice.', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to load payment settings' => __('Failed to load payment settings', 'bit-crm-sales-marketing-automation'),
-
-    'Partial payments' => __('Partial payments', 'bit-crm-sales-marketing-automation'),
-
-    'Allow customers to pay less than the total due amount.' => __('Allow customers to pay less than the total due amount.', 'bit-crm-sales-marketing-automation'),
-
-    'Minimum partial payment' => __('Minimum partial payment', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to load payments' => __('Failed to load payments', 'bit-crm-sales-marketing-automation'),
-
-    'Charged:' => __('Charged:', 'bit-crm-sales-marketing-automation'),
-
-    'Woo order:' => __('Woo order:', 'bit-crm-sales-marketing-automation'),
-
-    'No payments yet' => __('No payments yet', 'bit-crm-sales-marketing-automation'),
-
-    'Due' => __('Due', 'bit-crm-sales-marketing-automation'),
 
     'Bill To' => __('Bill To', 'bit-crm-sales-marketing-automation'),
 
@@ -2099,6 +1851,8 @@ return [
     'Workflows' => __('Workflows', 'bit-crm-sales-marketing-automation'),
 
     'More' => __('More', 'bit-crm-sales-marketing-automation'),
+
+    'Settings' => __('Settings', 'bit-crm-sales-marketing-automation'),
 
     'Dark' => __('Dark', 'bit-crm-sales-marketing-automation'),
 
@@ -2166,8 +1920,6 @@ return [
 
     'Leads deleted successfully.' => __('Leads deleted successfully.', 'bit-crm-sales-marketing-automation'),
 
-    'No leads available to export.' => __('No leads available to export.', 'bit-crm-sales-marketing-automation'),
-
     'Export Leads' => __('Export Leads', 'bit-crm-sales-marketing-automation'),
 
     'Skip existing leads' => __('Skip existing leads', 'bit-crm-sales-marketing-automation'),
@@ -2191,136 +1943,6 @@ return [
     'New Lead' => __('New Lead', 'bit-crm-sales-marketing-automation'),
 
     'Are you sure you want to delete the lead?' => __('Are you sure you want to delete the lead?', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to revoke connection' => __('Failed to revoke connection', 'bit-crm-sales-marketing-automation'),
-
-    'Connection revoked' => __('Connection revoked', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to save settings' => __('Failed to save settings', 'bit-crm-sales-marketing-automation'),
-
-    'Settings saved successfully' => __('Settings saved successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Connected as' => __('Connected as', 'bit-crm-sales-marketing-automation'),
-
-    'Scope' => __('Scope', 'bit-crm-sales-marketing-automation'),
-
-    'Never' => __('Never', 'bit-crm-sales-marketing-automation'),
-
-    'The client will lose access immediately and has to be connected again to restore it.' => __('The client will lose access immediately and has to be connected again to restore it.', 'bit-crm-sales-marketing-automation'),
-
-    'Revoke' => __('Revoke', 'bit-crm-sales-marketing-automation'),
-
-    'Revoke this connection?' => __('Revoke this connection?', 'bit-crm-sales-marketing-automation'),
-
-    'Connected clients' => __('Connected clients', 'bit-crm-sales-marketing-automation'),
-
-    'No AI client has connected yet.' => __('No AI client has connected yet.', 'bit-crm-sales-marketing-automation'),
-
-    'Claude.ai' => __('Claude.ai', 'bit-crm-sales-marketing-automation'),
-
-    'One click is enough: Claude opens with the name and URL pre-filled. Click Add, then approve access when Claude asks you to sign in.' => __('One click is enough: Claude opens with the name and URL pre-filled. Click Add, then approve access when Claude asks you to sign in.', 'bit-crm-sales-marketing-automation'),
-
-    'Connect to Claude' => __('Connect to Claude', 'bit-crm-sales-marketing-automation'),
-
-    'Click Connect to Claude above, or follow the steps to add it by hand.' => __('Click Connect to Claude above, or follow the steps to add it by hand.', 'bit-crm-sales-marketing-automation'),
-
-    'On claude.ai (or the mobile app), open Settings → Connectors and click Add custom connector.' => __('On claude.ai (or the mobile app), open Settings → Connectors and click Add custom connector.', 'bit-crm-sales-marketing-automation'),
-
-    'Name it Bit CRM and paste this URL as the server URL:' => __('Name it Bit CRM and paste this URL as the server URL:', 'bit-crm-sales-marketing-automation'),
-
-    'Click Add, then approve access when Claude asks you to sign in. No token is needed.' => __('Click Add, then approve access when Claude asks you to sign in. No token is needed.', 'bit-crm-sales-marketing-automation'),
-
-    'Claude Desktop & Cowork' => __('Claude Desktop & Cowork', 'bit-crm-sales-marketing-automation'),
-
-    'One click is enough: connectors belong to your Claude account, so one approved on claude.ai appears in Desktop and Cowork too.' => __('One click is enough: connectors belong to your Claude account, so one approved on claude.ai appears in Desktop and Cowork too.', 'bit-crm-sales-marketing-automation'),
-
-    'Click Connect to Claude above. Connectors belong to your Claude account, so one added on claude.ai appears in Desktop and Cowork too.' => __('Click Connect to Claude above. Connectors belong to your Claude account, so one added on claude.ai appears in Desktop and Cowork too.', 'bit-crm-sales-marketing-automation'),
-
-    'Or add it inside the app: open Settings → Connectors, click Add, then select Add custom connector.' => __('Or add it inside the app: open Settings → Connectors, click Add, then select Add custom connector.', 'bit-crm-sales-marketing-automation'),
-
-    'Name it Bit CRM and paste this URL as the Remote MCP server URL:' => __('Name it Bit CRM and paste this URL as the Remote MCP server URL:', 'bit-crm-sales-marketing-automation'),
-
-    'Leave the OAuth Client ID and Secret fields empty, then click Add.' => __('Leave the OAuth Client ID and Secret fields empty, then click Add.', 'bit-crm-sales-marketing-automation'),
-
-    'Back in the Connectors list, click Connect next to Bit CRM and approve access when asked to sign in. No token is needed.' => __('Back in the Connectors list, click Connect next to Bit CRM and approve access when asked to sign in. No token is needed.', 'bit-crm-sales-marketing-automation'),
-
-    'Claude Code' => __('Claude Code', 'bit-crm-sales-marketing-automation'),
-
-    'Run this in a terminal to add the server:' => __('Run this in a terminal to add the server:', 'bit-crm-sales-marketing-automation'),
-
-    'Sign in with this command, or run /mcp inside Claude Code, select bit-crm and choose Authenticate. Either way a browser opens with the approval screen and Claude Code stores the credentials automatically:' => __('Sign in with this command, or run /mcp inside Claude Code, select bit-crm and choose Authenticate. Either way a browser opens with the approval screen and Claude Code stores the credentials automatically:', 'bit-crm-sales-marketing-automation'),
-
-    'Prefer a config file? Add this to a project .mcp.json instead, then authenticate with the login command above:' => __('Prefer a config file? Add this to a project .mcp.json instead, then authenticate with the login command above:', 'bit-crm-sales-marketing-automation'),
-
-    'ChatGPT' => __('ChatGPT', 'bit-crm-sales-marketing-automation'),
-
-    'Create in ChatGPT' => __('Create in ChatGPT', 'bit-crm-sales-marketing-automation'),
-
-    'Click Create in ChatGPT above. It opens the New Plugin form (the URL is not pre-filled, so keep this page open to copy it).' => __('Click Create in ChatGPT above. It opens the New Plugin form (the URL is not pre-filled, so keep this page open to copy it).', 'bit-crm-sales-marketing-automation'),
-
-    'Enter a name, e.g. Bit CRM.' => __('Enter a name, e.g. Bit CRM.', 'bit-crm-sales-marketing-automation'),
-
-    'Paste this URL as the Server URL:' => __('Paste this URL as the Server URL:', 'bit-crm-sales-marketing-automation'),
-
-    'Choose OAuth as the Authentication method.' => __('Choose OAuth as the Authentication method.', 'bit-crm-sales-marketing-automation'),
-
-    'Tick "I understand and want to continue", click Create, then approve access when ChatGPT asks you to sign in. No token is needed.' => __('Tick "I understand and want to continue", click Create, then approve access when ChatGPT asks you to sign in. No token is needed.', 'bit-crm-sales-marketing-automation'),
-
-    'If the form does not appear, enable Developer mode first under Settings → Security and login → Developer mode.' => __('If the form does not appear, enable Developer mode first under Settings → Security and login → Developer mode.', 'bit-crm-sales-marketing-automation'),
-
-    'Codex CLI' => __('Codex CLI', 'bit-crm-sales-marketing-automation'),
-
-    'Run this in a terminal. Codex detects OAuth and opens the approval page in your browser, so approve access there and you are done:' => __('Run this in a terminal. Codex detects OAuth and opens the approval page in your browser, so approve access there and you are done:', 'bit-crm-sales-marketing-automation'),
-
-    'Sign in. This opens a browser with the approval screen. No token or header is needed:' => __('Sign in. This opens a browser with the approval screen. No token or header is needed:', 'bit-crm-sales-marketing-automation'),
-
-    'Grok' => __('Grok', 'bit-crm-sales-marketing-automation'),
-
-    'Open Grok Connectors' => __('Open Grok Connectors', 'bit-crm-sales-marketing-automation'),
-
-    'Click Open Grok Connectors above. It opens the Skills and Connectors page.' => __('Click Open Grok Connectors above. It opens the Skills and Connectors page.', 'bit-crm-sales-marketing-automation'),
-
-    'Click New Connector, then select Custom.' => __('Click New Connector, then select Custom.', 'bit-crm-sales-marketing-automation'),
-
-    'Enter a name, e.g. Bit CRM, and paste this URL as the Server URL:' => __('Enter a name, e.g. Bit CRM, and paste this URL as the Server URL:', 'bit-crm-sales-marketing-automation'),
-
-    'Click Add Connector, then approve access when Grok asks you to sign in.' => __('Click Add Connector, then approve access when Grok asks you to sign in.', 'bit-crm-sales-marketing-automation'),
-
-    'Cursor' => __('Cursor', 'bit-crm-sales-marketing-automation'),
-
-    'One click is enough: click Install in the dialog Cursor opens, then approve access when the browser asks you to sign in.' => __('One click is enough: click Install in the dialog Cursor opens, then approve access when the browser asks you to sign in.', 'bit-crm-sales-marketing-automation'),
-
-    'Add to Cursor' => __('Add to Cursor', 'bit-crm-sales-marketing-automation'),
-
-    'Add this to ~/.cursor/mcp.json:' => __('Add this to ~/.cursor/mcp.json:', 'bit-crm-sales-marketing-automation'),
-
-    'Cursor will show Needs login next to the server. Click it, then approve access in the browser.' => __('Cursor will show Needs login next to the server. Click it, then approve access in the browser.', 'bit-crm-sales-marketing-automation'),
-
-    'Others' => __('Others', 'bit-crm-sales-marketing-automation'),
-
-    'Any MCP client that supports Streamable HTTP with OAuth can connect.' => __('Any MCP client that supports Streamable HTTP with OAuth can connect.', 'bit-crm-sales-marketing-automation'),
-
-    'Add a new MCP server or custom connector in your client and paste this URL:' => __('Add a new MCP server or custom connector in your client and paste this URL:', 'bit-crm-sales-marketing-automation'),
-
-    'Pick OAuth if it asks for an authentication method, then approve access when your client opens the sign-in page. No token or API key is needed.' => __('Pick OAuth if it asks for an authentication method, then approve access when your client opens the sign-in page. No token or API key is needed.', 'bit-crm-sales-marketing-automation'),
-
-    'Connect an AI client' => __('Connect an AI client', 'bit-crm-sales-marketing-automation'),
-
-    'Permalink settings' => __('Permalink settings', 'bit-crm-sales-marketing-automation'),
-
-    'OAuth discovery needs pretty permalinks. While the permalink structure is set to Plain, WordPress cannot serve the /.well-known/ URLs that AI clients read to find this server, and connecting will fail.' => __('OAuth discovery needs pretty permalinks. While the permalink structure is set to Plain, WordPress cannot serve the /.well-known/ URLs that AI clients read to find this server, and connecting will fail.', 'bit-crm-sales-marketing-automation'),
-
-    'Pretty permalinks are required' => __('Pretty permalinks are required', 'bit-crm-sales-marketing-automation'),
-
-    'OAuth requires HTTPS. Claude and ChatGPT will refuse to connect to a site served over plain HTTP.' => __('OAuth requires HTTPS. Claude and ChatGPT will refuse to connect to a site served over plain HTTP.', 'bit-crm-sales-marketing-automation'),
-
-    'HTTPS is required' => __('HTTPS is required', 'bit-crm-sales-marketing-automation'),
-
-    'Clients authenticate with OAuth: they discover this server, send you to a WordPress sign-in and consent screen, and receive a token bound to your account. Everything an AI client can do is limited to your own CRM permissions.' => __('Clients authenticate with OAuth: they discover this server, send you to a WordPress sign-in and consent screen, and receive a token bound to your account. Everything an AI client can do is limited to your own CRM permissions.', 'bit-crm-sales-marketing-automation'),
-
-    'Or add it manually' => __('Or add it manually', 'bit-crm-sales-marketing-automation'),
-
-    'If a connection fails and another MCP plugin is active on this site, try disabling it: two plugins answering OAuth discovery on one site can confuse clients.' => __('If a connection fails and another MCP plugin is active on this site, try disabling it: two plugins answering OAuth discovery on one site can confuse clients.', 'bit-crm-sales-marketing-automation'),
 
     'Failed to complete onboarding' => __('Failed to complete onboarding', 'bit-crm-sales-marketing-automation'),
 
@@ -2384,87 +2006,7 @@ return [
 
     'Administrator permission required' => __('Administrator permission required', 'bit-crm-sales-marketing-automation'),
 
-    'Add Client' => __('Add Client', 'bit-crm-sales-marketing-automation'),
-
-    'Delete Client' => __('Delete Client', 'bit-crm-sales-marketing-automation'),
-
-    'Delete Clients' => __('Delete Clients', 'bit-crm-sales-marketing-automation'),
-
-    'Create Client' => __('Create Client', 'bit-crm-sales-marketing-automation'),
-
-    'Override default capabilities' => __('Override default capabilities', 'bit-crm-sales-marketing-automation'),
-
-    'Customize what this client can access instead of inheriting portal defaults.' => __('Customize what this client can access instead of inheriting portal defaults.', 'bit-crm-sales-marketing-automation'),
-
-    'Edit Capabilities' => __('Edit Capabilities', 'bit-crm-sales-marketing-automation'),
-
-    'Display Name' => __('Display Name', 'bit-crm-sales-marketing-automation'),
-
-    'capabilities' => __('capabilities', 'bit-crm-sales-marketing-automation'),
-
-    'Confirm Delete' => __('Confirm Delete', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure you want to remove portal access for the selected clients?' => __('Are you sure you want to remove portal access for the selected clients?', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to update contact field permissions.' => __('Failed to update contact field permissions.', 'bit-crm-sales-marketing-automation'),
-
-    'Contact field permissions updated successfully.' => __('Contact field permissions updated successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to update deal field permissions.' => __('Failed to update deal field permissions.', 'bit-crm-sales-marketing-automation'),
-
-    'Deal field permissions updated successfully.' => __('Deal field permissions updated successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to save permissions.' => __('Failed to save permissions.', 'bit-crm-sales-marketing-automation'),
-
-    'Permissions saved successfully.' => __('Permissions saved successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Control which contact fields clients can view and edit in the portal.' => __('Control which contact fields clients can view and edit in the portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Field Name' => __('Field Name', 'bit-crm-sales-marketing-automation'),
-
-    'View access for this field is locked and can\'t be changed' => __('View access for this field is locked and can\'t be changed', 'bit-crm-sales-marketing-automation'),
-
-    'View Access' => __('View Access', 'bit-crm-sales-marketing-automation'),
-
-    'Edit access for this field is locked and can\'t be changed' => __('Edit access for this field is locked and can\'t be changed', 'bit-crm-sales-marketing-automation'),
-
-    'Edit Access' => __('Edit Access', 'bit-crm-sales-marketing-automation'),
-
-    'Control which deal fields clients can view in the portal.' => __('Control which deal fields clients can view in the portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Set the default modules a client can access when you grant them portal access. You can adjust this per client later.' => __('Set the default modules a client can access when you grant them portal access. You can adjust this per client later.', 'bit-crm-sales-marketing-automation'),
-
-    'Client Portal Link' => __('Client Portal Link', 'bit-crm-sales-marketing-automation'),
-
-    'Share this link with your clients so they can access the client portal.' => __('Share this link with your clients so they can access the client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to save white label settings.' => __('Failed to save white label settings.', 'bit-crm-sales-marketing-automation'),
-
-    'White label settings saved successfully.' => __('White label settings saved successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'White Label Settings' => __('White Label Settings', 'bit-crm-sales-marketing-automation'),
-
-    'Replace branding with your own across the client portal' => __('Replace branding with your own across the client portal', 'bit-crm-sales-marketing-automation'),
-
-    'Use business settings' => __('Use business settings', 'bit-crm-sales-marketing-automation'),
-
-    'Automatically pull the logo and name from your business profile' => __('Automatically pull the logo and name from your business profile', 'bit-crm-sales-marketing-automation'),
-
-    'Set up your business settings first.' => __('Set up your business settings first.', 'bit-crm-sales-marketing-automation'),
-
-    'Portal Logo' => __('Portal Logo', 'bit-crm-sales-marketing-automation'),
-
-    'Portal Name' => __('Portal Name', 'bit-crm-sales-marketing-automation'),
-
-    'Portal name is required' => __('Portal name is required', 'bit-crm-sales-marketing-automation'),
-
-    'Enter portal name' => __('Enter portal name', 'bit-crm-sales-marketing-automation'),
-
     'Portal Settings' => __('Portal Settings', 'bit-crm-sales-marketing-automation'),
-
-    'Create Product' => __('Create Product', 'bit-crm-sales-marketing-automation'),
-
-    'Product Settings' => __('Product Settings', 'bit-crm-sales-marketing-automation'),
 
     'Product Code/SKU' => __('Product Code/SKU', 'bit-crm-sales-marketing-automation'),
 
@@ -2480,43 +2022,7 @@ return [
 
     'Cost Price' => __('Cost Price', 'bit-crm-sales-marketing-automation'),
 
-    'Product updated successfully' => __('Product updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure you want to delete the product? This will be moved to Trash.' => __('Are you sure you want to delete the product? This will be moved to Trash.', 'bit-crm-sales-marketing-automation'),
-
-    'Failed to update product status' => __('Failed to update product status', 'bit-crm-sales-marketing-automation'),
-
-    'Product status updated successfully' => __('Product status updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Products exported successfully' => __('Products exported successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Export Products' => __('Export Products', 'bit-crm-sales-marketing-automation'),
-
-    'Products imported successfully' => __('Products imported successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Skip existing products' => __('Skip existing products', 'bit-crm-sales-marketing-automation'),
-
-    'Update existing products' => __('Update existing products', 'bit-crm-sales-marketing-automation'),
-
-    'The Product Code/SKU field must be mapped!' => __('The Product Code/SKU field must be mapped!', 'bit-crm-sales-marketing-automation'),
-
-    'Import Products' => __('Import Products', 'bit-crm-sales-marketing-automation'),
-
-    'If a product with the same Product code/SKU already exists' => __('If a product with the same Product code/SKU already exists', 'bit-crm-sales-marketing-automation'),
-
-    'Please select how to handle duplicate products' => __('Please select how to handle duplicate products', 'bit-crm-sales-marketing-automation'),
-
-    'Products deleted successfully.' => __('Products deleted successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure you want to delete the selected products? Deleted products will be moved to the Trash.' => __('Are you sure you want to delete the selected products? Deleted products will be moved to the Trash.', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure you want to delete the product?' => __('Are you sure you want to delete the product?', 'bit-crm-sales-marketing-automation'),
-
-    'Add Product' => __('Add Product', 'bit-crm-sales-marketing-automation'),
-
-    'WooCommerce line items' => __('WooCommerce line items', 'bit-crm-sales-marketing-automation'),
-
-    'Enable WooCommerce products so they can be selected when adding line items to deals and invoices.' => __('Enable WooCommerce products so they can be selected when adding line items to deals and invoices.', 'bit-crm-sales-marketing-automation'),
+    'Product Settings' => __('Product Settings', 'bit-crm-sales-marketing-automation'),
 
     'General' => __('General', 'bit-crm-sales-marketing-automation'),
 
@@ -2530,13 +2036,17 @@ return [
 
     'Woo Commerce' => __('Woo Commerce', 'bit-crm-sales-marketing-automation'),
 
+    'Others' => __('Others', 'bit-crm-sales-marketing-automation'),
+
     'Integrations' => __('Integrations', 'bit-crm-sales-marketing-automation'),
+
+    'AI' => __('AI', 'bit-crm-sales-marketing-automation'),
 
     'Currency Settings' => __('Currency Settings', 'bit-crm-sales-marketing-automation'),
 
     'Data management' => __('Data management', 'bit-crm-sales-marketing-automation'),
 
-    'License' => __('License', 'bit-crm-sales-marketing-automation'),
+    'System' => __('System', 'bit-crm-sales-marketing-automation'),
 
     'Not Set' => __('Not Set', 'bit-crm-sales-marketing-automation'),
 
@@ -2588,6 +2098,10 @@ return [
 
     'Integration settings updated successfully' => __('Integration settings updated successfully', 'bit-crm-sales-marketing-automation'),
 
+    'Failed to save settings' => __('Failed to save settings', 'bit-crm-sales-marketing-automation'),
+
+    'Settings saved successfully' => __('Settings saved successfully', 'bit-crm-sales-marketing-automation'),
+
     'WooCommerce Product Integration' => __('WooCommerce Product Integration', 'bit-crm-sales-marketing-automation'),
 
     'Enable WooCommerce Products' => __('Enable WooCommerce Products', 'bit-crm-sales-marketing-automation'),
@@ -2595,6 +2109,8 @@ return [
     'Allow selecting WooCommerce products in deal and invoice line items. Product source selection will be available when this is enabled.' => __('Allow selecting WooCommerce products in deal and invoice line items. Product source selection will be available when this is enabled.', 'bit-crm-sales-marketing-automation'),
 
     'WooCommerce Sync' => __('WooCommerce Sync', 'bit-crm-sales-marketing-automation'),
+
+    'Saving...' => __('Saving...', 'bit-crm-sales-marketing-automation'),
 
     'Automatically sync contacts from WooCommerce orders into the CRM.' => __('Automatically sync contacts from WooCommerce orders into the CRM.', 'bit-crm-sales-marketing-automation'),
 
@@ -2624,563 +2140,11 @@ return [
 
     'WooCommerce Settings' => __('WooCommerce Settings', 'bit-crm-sales-marketing-automation'),
 
-    'Failed to save workflow.' => __('Failed to save workflow.', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow saved successfully.' => __('Workflow saved successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Webhook test request failed.' => __('Webhook test request failed.', 'bit-crm-sales-marketing-automation'),
-
-    'Webhook test succeeded. HTTP' => __('Webhook test succeeded. HTTP', 'bit-crm-sales-marketing-automation'),
-
-    'Webhook test failed. HTTP' => __('Webhook test failed. HTTP', 'bit-crm-sales-marketing-automation'),
-
-    'Task' => __('Task', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter title!' => __('Please enter title!', 'bit-crm-sales-marketing-automation'),
-
-    'Enter title' => __('Enter title', 'bit-crm-sales-marketing-automation'),
-
-    'Relative date' => __('Relative date', 'bit-crm-sales-marketing-automation'),
-
-    'Set automatically when the automation creates the' => __('Set automatically when the automation creates the', 'bit-crm-sales-marketing-automation'),
-
-    'Fixed date' => __('Fixed date', 'bit-crm-sales-marketing-automation'),
-
-    'Always the exact calendar date and time you pick.' => __('Always the exact calendar date and time you pick.', 'bit-crm-sales-marketing-automation'),
-
-    'Enter 0 for an immediate due date.' => __('Enter 0 for an immediate due date.', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter an amount!' => __('Please enter an amount!', 'bit-crm-sales-marketing-automation'),
-
-    'Please select a unit!' => __('Please select a unit!', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter due date!' => __('Please enter due date!', 'bit-crm-sales-marketing-automation'),
-
-    'Select due date' => __('Select due date', 'bit-crm-sales-marketing-automation'),
-
-    'Note Title' => __('Note Title', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter a note title!' => __('Please enter a note title!', 'bit-crm-sales-marketing-automation'),
-
-    'Enter note title' => __('Enter note title', 'bit-crm-sales-marketing-automation'),
-
-    'Note Details' => __('Note Details', 'bit-crm-sales-marketing-automation'),
-
-    'Grant Portal Access' => __('Grant Portal Access', 'bit-crm-sales-marketing-automation'),
-
-    'Enable to allow the contact to log in to the client portal' => __('Enable to allow the contact to log in to the client portal', 'bit-crm-sales-marketing-automation'),
-
-    'The contact will receive an invitation email to access the client portal.' => __('The contact will receive an invitation email to access the client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'You must enable this before proceeding' => __('You must enable this before proceeding', 'bit-crm-sales-marketing-automation'),
-
-    'Revoke Portal Access' => __('Revoke Portal Access', 'bit-crm-sales-marketing-automation'),
-
-    'Enable to remove the contact\'s access to the client portal' => __('Enable to remove the contact\'s access to the client portal', 'bit-crm-sales-marketing-automation'),
-
-    'The contact will lose access to the client portal immediately.' => __('The contact will lose access to the client portal immediately.', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter an email subject!' => __('Please enter an email subject!', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter an email body!' => __('Please enter an email body!', 'bit-crm-sales-marketing-automation'),
-
-    'Tags to add' => __('Tags to add', 'bit-crm-sales-marketing-automation'),
-
-    'Tags to remove' => __('Tags to remove', 'bit-crm-sales-marketing-automation'),
-
-    'You must confirm before proceeding' => __('You must confirm before proceeding', 'bit-crm-sales-marketing-automation'),
-
-    'Confirm Trash' => __('Confirm Trash', 'bit-crm-sales-marketing-automation'),
-
-    'Please select a stage!' => __('Please select a stage!', 'bit-crm-sales-marketing-automation'),
-
-    'Select a stage' => __('Select a stage', 'bit-crm-sales-marketing-automation'),
-
-    'Select value' => __('Select value', 'bit-crm-sales-marketing-automation'),
-
-    'Select values' => __('Select values', 'bit-crm-sales-marketing-automation'),
-
-    'Enter value or # to insert a field' => __('Enter value or # to insert a field', 'bit-crm-sales-marketing-automation'),
-
-    'Enter a value' => __('Enter a value', 'bit-crm-sales-marketing-automation'),
-
-    'Add field' => __('Add field', 'bit-crm-sales-marketing-automation'),
-
-    'GET' => __('GET', 'bit-crm-sales-marketing-automation'),
-
-    'POST' => __('POST', 'bit-crm-sales-marketing-automation'),
-
-    'PUT' => __('PUT', 'bit-crm-sales-marketing-automation'),
-
-    'PATCH' => __('PATCH', 'bit-crm-sales-marketing-automation'),
-
-    'DELETE' => __('DELETE', 'bit-crm-sales-marketing-automation'),
-
-    'JSON (application/json)' => __('JSON (application/json)', 'bit-crm-sales-marketing-automation'),
-
-    'Form (application/x-www-form-urlencoded)' => __('Form (application/x-www-form-urlencoded)', 'bit-crm-sales-marketing-automation'),
-
-    'Entity Data' => __('Entity Data', 'bit-crm-sales-marketing-automation'),
-
-    'URL' => __('URL', 'bit-crm-sales-marketing-automation'),
-
-    'Please enter a URL' => __('Please enter a URL', 'bit-crm-sales-marketing-automation'),
-
-    'URL must start with http:// or https://' => __('URL must start with http:// or https://', 'bit-crm-sales-marketing-automation'),
-
-    'The endpoint that will receive the HTTP request.' => __('The endpoint that will receive the HTTP request.', 'bit-crm-sales-marketing-automation'),
-
-    'https://example.com/webhook' => __('https://example.com/webhook', 'bit-crm-sales-marketing-automation'),
-
-    'HTTP Method' => __('HTTP Method', 'bit-crm-sales-marketing-automation'),
-
-    'Please select a method' => __('Please select a method', 'bit-crm-sales-marketing-automation'),
-
-    'The HTTP verb used for the request.' => __('The HTTP verb used for the request.', 'bit-crm-sales-marketing-automation'),
-
-    'Select method' => __('Select method', 'bit-crm-sales-marketing-automation'),
-
-    'Maximum seconds to wait for a response before the request is cancelled. Defaults to 30.' => __('Maximum seconds to wait for a response before the request is cancelled. Defaults to 30.', 'bit-crm-sales-marketing-automation'),
-
-    'Timeout (seconds)' => __('Timeout (seconds)', 'bit-crm-sales-marketing-automation'),
-
-    'Headers' => __('Headers', 'bit-crm-sales-marketing-automation'),
-
-    'Custom HTTP headers sent with the request, e.g. Authorization or Content-Type.' => __('Custom HTTP headers sent with the request, e.g. Authorization or Content-Type.', 'bit-crm-sales-marketing-automation'),
-
-    'Key required' => __('Key required', 'bit-crm-sales-marketing-automation'),
-
-    'Key' => __('Key', 'bit-crm-sales-marketing-automation'),
-
-    'Value required' => __('Value required', 'bit-crm-sales-marketing-automation'),
-
-    'Add Header' => __('Add Header', 'bit-crm-sales-marketing-automation'),
-
-    'Query Parameters' => __('Query Parameters', 'bit-crm-sales-marketing-automation'),
-
-    'Key-value pairs appended to the URL as a query string (?key=value). Type # to insert field values from the triggering record.' => __('Key-value pairs appended to the URL as a query string (?key=value). Type # to insert field values from the triggering record.', 'bit-crm-sales-marketing-automation'),
-
-    'Value or #field' => __('Value or #field', 'bit-crm-sales-marketing-automation'),
-
-    'Add Parameter' => __('Add Parameter', 'bit-crm-sales-marketing-automation'),
-
-    'Send as' => __('Send as', 'bit-crm-sales-marketing-automation'),
-
-    'Controls the Content-Type header and how the body is encoded before sending.' => __('Controls the Content-Type header and how the body is encoded before sending.', 'bit-crm-sales-marketing-automation'),
-
-    'Body' => __('Body', 'bit-crm-sales-marketing-automation'),
-
-    'For GET requests, body fields are appended to the URL as query parameters.' => __('For GET requests, body fields are appended to the URL as query parameters.', 'bit-crm-sales-marketing-automation'),
-
-    'Choose what data to include in the request body.' => __('Choose what data to include in the request body.', 'bit-crm-sales-marketing-automation'),
-
-    'Body fields will be appended to the URL as query parameters (?key=value).' => __('Body fields will be appended to the URL as query parameters (?key=value).', 'bit-crm-sales-marketing-automation'),
-
-    'All fields from the triggering record (contact, lead, or company) will be sent as the request body.' => __('All fields from the triggering record (contact, lead, or company) will be sent as the request body.', 'bit-crm-sales-marketing-automation'),
-
-    'Body Fields' => __('Body Fields', 'bit-crm-sales-marketing-automation'),
-
-    'Key-value pairs to include in the body. Type # to insert field values from the triggering record.' => __('Key-value pairs to include in the body. Type # to insert field values from the triggering record.', 'bit-crm-sales-marketing-automation'),
-
-    'Add Field' => __('Add Field', 'bit-crm-sales-marketing-automation'),
-
-    'Test Webhook' => __('Test Webhook', 'bit-crm-sales-marketing-automation'),
-
-    'Ok' => __('Ok', 'bit-crm-sales-marketing-automation'),
-
-    'Delete this node?' => __('Delete this node?', 'bit-crm-sales-marketing-automation'),
-
-    'Add Trigger' => __('Add Trigger', 'bit-crm-sales-marketing-automation'),
-
-    'If Condition' => __('If Condition', 'bit-crm-sales-marketing-automation'),
-
-    'Please configure a trigger first before adding conditions.' => __('Please configure a trigger first before adding conditions.', 'bit-crm-sales-marketing-automation'),
-
-    'Delay Type' => __('Delay Type', 'bit-crm-sales-marketing-automation'),
-
-    'Preset Duration' => __('Preset Duration', 'bit-crm-sales-marketing-automation'),
-
-    'Custom Duration' => __('Custom Duration', 'bit-crm-sales-marketing-automation'),
-
-    'Wait for' => __('Wait for', 'bit-crm-sales-marketing-automation'),
-
-    'Please select a delay duration!' => __('Please select a delay duration!', 'bit-crm-sales-marketing-automation'),
-
-    'Select duration' => __('Select duration', 'bit-crm-sales-marketing-automation'),
-
-    'Select a trigger to start your workflow.' => __('Select a trigger to start your workflow.', 'bit-crm-sales-marketing-automation'),
-
-    'Please select a module!' => __('Please select a module!', 'bit-crm-sales-marketing-automation'),
-
-    'Select a module' => __('Select a module', 'bit-crm-sales-marketing-automation'),
+    'Flows' => __('Flows', 'bit-crm-sales-marketing-automation'),
 
     'Trigger' => __('Trigger', 'bit-crm-sales-marketing-automation'),
 
-    'Please select a trigger!' => __('Please select a trigger!', 'bit-crm-sales-marketing-automation'),
-
-    'Select a trigger' => __('Select a trigger', 'bit-crm-sales-marketing-automation'),
-
-    'Please select at least one tag!' => __('Please select at least one tag!', 'bit-crm-sales-marketing-automation'),
-
-    'Select tags' => __('Select tags', 'bit-crm-sales-marketing-automation'),
-
-    'Match Mode' => __('Match Mode', 'bit-crm-sales-marketing-automation'),
-
-    'Match Any Tag' => __('Match Any Tag', 'bit-crm-sales-marketing-automation'),
-
-    'Match All Tags' => __('Match All Tags', 'bit-crm-sales-marketing-automation'),
-
-    'Apply' => __('Apply', 'bit-crm-sales-marketing-automation'),
-
-    'Convert the triggered lead to a contact, company, and optionally a deal.' => __('Convert the triggered lead to a contact, company, and optionally a deal.', 'bit-crm-sales-marketing-automation'),
-
-    'Add selected tags to entities of the chosen module.' => __('Add selected tags to entities of the chosen module.', 'bit-crm-sales-marketing-automation'),
-
-    'Add Tags' => __('Add Tags', 'bit-crm-sales-marketing-automation'),
-
-    'Create a note for the record when this step is reached.' => __('Create a note for the record when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Automatically create a task when this step is reached.' => __('Automatically create a task when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Meeting' => __('Meeting', 'bit-crm-sales-marketing-automation'),
-
-    'Automatically create a meeting when this step is reached.' => __('Automatically create a meeting when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Call' => __('Call', 'bit-crm-sales-marketing-automation'),
-
-    'Automatically create a call when this step is reached.' => __('Automatically create a call when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Remove selected tags from entities of the chosen module.' => __('Remove selected tags from entities of the chosen module.', 'bit-crm-sales-marketing-automation'),
-
-    'Remove Tags' => __('Remove Tags', 'bit-crm-sales-marketing-automation'),
-
-    'Send an automated email when this step is reached.' => __('Send an automated email when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Send Email' => __('Send Email', 'bit-crm-sales-marketing-automation'),
-
-    'Move the deal to a specific stage when this step is reached.' => __('Move the deal to a specific stage when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Update one or more fields on the triggered record.' => __('Update one or more fields on the triggered record.', 'bit-crm-sales-marketing-automation'),
-
-    'Update Field' => __('Update Field', 'bit-crm-sales-marketing-automation'),
-
-    'Move the triggered entity (lead, contact, or company) to trash when this step is reached.' => __('Move the triggered entity (lead, contact, or company) to trash when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Trash Entity' => __('Trash Entity', 'bit-crm-sales-marketing-automation'),
-
-    'Grant the triggered contact access to the client portal.' => __('Grant the triggered contact access to the client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Grant Client Portal Access' => __('Grant Client Portal Access', 'bit-crm-sales-marketing-automation'),
-
-    'Remove the triggered contact\'s access to the client portal.' => __('Remove the triggered contact\'s access to the client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Revoke Client Portal Access' => __('Revoke Client Portal Access', 'bit-crm-sales-marketing-automation'),
-
-    'Send an HTTP request to an external URL when this step is reached.' => __('Send an HTTP request to an external URL when this step is reached.', 'bit-crm-sales-marketing-automation'),
-
-    'Webhook' => __('Webhook', 'bit-crm-sales-marketing-automation'),
-
-    'Pause the workflow for a set amount of time.' => __('Pause the workflow for a set amount of time.', 'bit-crm-sales-marketing-automation'),
-
-    'Delay' => __('Delay', 'bit-crm-sales-marketing-automation'),
-
-    'Define conditions to filter the workflow execution.' => __('Define conditions to filter the workflow execution.', 'bit-crm-sales-marketing-automation'),
-
-    'Create two branches based on a condition - one for true, one for false.' => __('Create two branches based on a condition - one for true, one for false.', 'bit-crm-sales-marketing-automation'),
-
-    'If-Else Condition' => __('If-Else Condition', 'bit-crm-sales-marketing-automation'),
-
-    'Action' => __('Action', 'bit-crm-sales-marketing-automation'),
-
-    'End' => __('End', 'bit-crm-sales-marketing-automation'),
-
-    'Condition' => __('Condition', 'bit-crm-sales-marketing-automation'),
-
-    'Convert to contact' => __('Convert to contact', 'bit-crm-sales-marketing-automation'),
-
-    'Trash entity' => __('Trash entity', 'bit-crm-sales-marketing-automation'),
-
-    '1 condition' => __('1 condition', 'bit-crm-sales-marketing-automation'),
-
-    '5 Minutes' => __('5 Minutes', 'bit-crm-sales-marketing-automation'),
-
-    '15 Minutes' => __('15 Minutes', 'bit-crm-sales-marketing-automation'),
-
-    '30 Minutes' => __('30 Minutes', 'bit-crm-sales-marketing-automation'),
-
-    '1 Hour' => __('1 Hour', 'bit-crm-sales-marketing-automation'),
-
-    '3 Hours' => __('3 Hours', 'bit-crm-sales-marketing-automation'),
-
-    '12 Hours' => __('12 Hours', 'bit-crm-sales-marketing-automation'),
-
-    '1 Day' => __('1 Day', 'bit-crm-sales-marketing-automation'),
-
-    '3 Days' => __('3 Days', 'bit-crm-sales-marketing-automation'),
-
-    '7 Days' => __('7 Days', 'bit-crm-sales-marketing-automation'),
-
-    'Minutes' => __('Minutes', 'bit-crm-sales-marketing-automation'),
-
-    'Hours' => __('Hours', 'bit-crm-sales-marketing-automation'),
-
-    'Company Created' => __('Company Created', 'bit-crm-sales-marketing-automation'),
-
-    'Company Updated' => __('Company Updated', 'bit-crm-sales-marketing-automation'),
-
-    'Company Tag Added' => __('Company Tag Added', 'bit-crm-sales-marketing-automation'),
-
-    'Company Tag Removed' => __('Company Tag Removed', 'bit-crm-sales-marketing-automation'),
-
-    'Contact Created' => __('Contact Created', 'bit-crm-sales-marketing-automation'),
-
-    'Contact Updated' => __('Contact Updated', 'bit-crm-sales-marketing-automation'),
-
-    'Contact Tag Added' => __('Contact Tag Added', 'bit-crm-sales-marketing-automation'),
-
-    'Contact Tag Removed' => __('Contact Tag Removed', 'bit-crm-sales-marketing-automation'),
-
-    'Deal Created' => __('Deal Created', 'bit-crm-sales-marketing-automation'),
-
-    'Deal Updated' => __('Deal Updated', 'bit-crm-sales-marketing-automation'),
-
-    'Deal Stage Updated' => __('Deal Stage Updated', 'bit-crm-sales-marketing-automation'),
-
-    'Deal Tag Added' => __('Deal Tag Added', 'bit-crm-sales-marketing-automation'),
-
-    'Deal Tag Removed' => __('Deal Tag Removed', 'bit-crm-sales-marketing-automation'),
-
-    'Lead Created' => __('Lead Created', 'bit-crm-sales-marketing-automation'),
-
-    'Lead Updated' => __('Lead Updated', 'bit-crm-sales-marketing-automation'),
-
-    'Lead Tag Added' => __('Lead Tag Added', 'bit-crm-sales-marketing-automation'),
-
-    'Lead Tag Removed' => __('Lead Tag Removed', 'bit-crm-sales-marketing-automation'),
-
-    'Product Created' => __('Product Created', 'bit-crm-sales-marketing-automation'),
-
-    'Product Updated' => __('Product Updated', 'bit-crm-sales-marketing-automation'),
-
-    'Product Tag Added' => __('Product Tag Added', 'bit-crm-sales-marketing-automation'),
-
-    'Product Tag Removed' => __('Product Tag Removed', 'bit-crm-sales-marketing-automation'),
-
-    'END' => __('END', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow' => __('Workflow', 'bit-crm-sales-marketing-automation'),
-
-    'At least one condition is required.' => __('At least one condition is required.', 'bit-crm-sales-marketing-automation'),
-
-    'Node' => __('Node', 'bit-crm-sales-marketing-automation'),
-
-    'True' => __('True', 'bit-crm-sales-marketing-automation'),
-
-    'False' => __('False', 'bit-crm-sales-marketing-automation'),
-
-    'Status/Results' => __('Status/Results', 'bit-crm-sales-marketing-automation'),
-
-    'No node results' => __('No node results', 'bit-crm-sales-marketing-automation'),
-
-    'Log History' => __('Log History', 'bit-crm-sales-marketing-automation'),
-
-    'Refreshing' => __('Refreshing', 'bit-crm-sales-marketing-automation'),
-
     'Created At' => __('Created At', 'bit-crm-sales-marketing-automation'),
-
-    'Executed Nodes Count' => __('Executed Nodes Count', 'bit-crm-sales-marketing-automation'),
-
-    'Tools' => __('Tools', 'bit-crm-sales-marketing-automation'),
-
-    'Add Action or Tool' => __('Add Action or Tool', 'bit-crm-sales-marketing-automation'),
-
-    'Select a tool or action to configure and add to your workflow.' => __('Select a tool or action to configure and add to your workflow.', 'bit-crm-sales-marketing-automation'),
-
-    'Search options...' => __('Search options...', 'bit-crm-sales-marketing-automation'),
-
-    'Saving' => __('Saving', 'bit-crm-sales-marketing-automation'),
-
-    'Unsaved changes' => __('Unsaved changes', 'bit-crm-sales-marketing-automation'),
-
-    'Saved' => __('Saved', 'bit-crm-sales-marketing-automation'),
-
-    'Logs' => __('Logs', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow created successfully' => __('Workflow created successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow details updated' => __('Workflow details updated', 'bit-crm-sales-marketing-automation'),
-
-    'Email every new lead right away and create a follow-up task due in two days.' => __('Email every new lead right away and create a follow-up task due in two days.', 'bit-crm-sales-marketing-automation'),
-
-    'Thanks for reaching out — we\'ve received your details and someone from our team will contact you shortly.' => __('Thanks for reaching out — we\'ve received your details and someone from our team will contact you shortly.', 'bit-crm-sales-marketing-automation'),
-
-    'Thanks for reaching out!' => __('Thanks for reaching out!', 'bit-crm-sales-marketing-automation'),
-
-    'Check in with this lead about their inquiry.' => __('Check in with this lead about their inquiry.', 'bit-crm-sales-marketing-automation'),
-
-    'Follow up with new lead' => __('Follow up with new lead', 'bit-crm-sales-marketing-automation'),
-
-    'Lead Welcome & Follow-up' => __('Lead Welcome & Follow-up', 'bit-crm-sales-marketing-automation'),
-
-    'Schedule a discovery call for the deal owner as soon as a deal is created, so no deal sits without a next step.' => __('Schedule a discovery call for the deal owner as soon as a deal is created, so no deal sits without a next step.', 'bit-crm-sales-marketing-automation'),
-
-    'Get on a call to understand the requirements, budget, and timeline, then plan the next steps.' => __('Get on a call to understand the requirements, budget, and timeline, then plan the next steps.', 'bit-crm-sales-marketing-automation'),
-
-    'Discovery call for new deal' => __('Discovery call for new deal', 'bit-crm-sales-marketing-automation'),
-
-    'New Deal Discovery Call' => __('New Deal Discovery Call', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow name is required!' => __('Workflow name is required!', 'bit-crm-sales-marketing-automation'),
-
-    'Enter workflow name' => __('Enter workflow name', 'bit-crm-sales-marketing-automation'),
-
-    'Cannot be changed once created' => __('Cannot be changed once created', 'bit-crm-sales-marketing-automation'),
-
-    'Create Workflow' => __('Create Workflow', 'bit-crm-sales-marketing-automation'),
-
-    'Are you sure you want to delete the workflow?' => __('Are you sure you want to delete the workflow?', 'bit-crm-sales-marketing-automation'),
-
-    'Pick a module and trigger, then build the flow yourself.' => __('Pick a module and trigger, then build the flow yourself.', 'bit-crm-sales-marketing-automation'),
-
-    'Start from Scratch' => __('Start from Scratch', 'bit-crm-sales-marketing-automation'),
-
-    'Flows' => __('Flows', 'bit-crm-sales-marketing-automation'),
-
-    'Search by name' => __('Search by name', 'bit-crm-sales-marketing-automation'),
-
-    'Calls will appear here once they are shared with you.' => __('Calls will appear here once they are shared with you.', 'bit-crm-sales-marketing-automation'),
-
-    'Meetings will appear here once they are shared with you.' => __('Meetings will appear here once they are shared with you.', 'bit-crm-sales-marketing-automation'),
-
-    'Go to Settings' => __('Go to Settings', 'bit-crm-sales-marketing-automation'),
-
-    'For your security, please change your temporary password from Account Settings.' => __('For your security, please change your temporary password from Account Settings.', 'bit-crm-sales-marketing-automation'),
-
-    'Logout' => __('Logout', 'bit-crm-sales-marketing-automation'),
-
-    'Sign-in failed. Please try again.' => __('Sign-in failed. Please try again.', 'bit-crm-sales-marketing-automation'),
-
-    'Sign-up failed. Please try again.' => __('Sign-up failed. Please try again.', 'bit-crm-sales-marketing-automation'),
-
-    'Account created. Check your email for your temporary password.' => __('Account created. Check your email for your temporary password.', 'bit-crm-sales-marketing-automation'),
-
-    'Welcome back' => __('Welcome back', 'bit-crm-sales-marketing-automation'),
-
-    'Sign in to your client portal' => __('Sign in to your client portal', 'bit-crm-sales-marketing-automation'),
-
-    'Username or email' => __('Username or email', 'bit-crm-sales-marketing-automation'),
-
-    'Enter your username or email.' => __('Enter your username or email.', 'bit-crm-sales-marketing-automation'),
-
-    'Enter your password.' => __('Enter your password.', 'bit-crm-sales-marketing-automation'),
-
-    'Remember me' => __('Remember me', 'bit-crm-sales-marketing-automation'),
-
-    'Forgot password?' => __('Forgot password?', 'bit-crm-sales-marketing-automation'),
-
-    'Sign in' => __('Sign in', 'bit-crm-sales-marketing-automation'),
-
-    'Don\'t have an account?' => __('Don\'t have an account?', 'bit-crm-sales-marketing-automation'),
-
-    'Create account' => __('Create account', 'bit-crm-sales-marketing-automation'),
-
-    'Sign in to your account' => __('Sign in to your account', 'bit-crm-sales-marketing-automation'),
-
-    'Join the client portal' => __('Join the client portal', 'bit-crm-sales-marketing-automation'),
-
-    'We\'ll email you a temporary password to sign in.' => __('We\'ll email you a temporary password to sign in.', 'bit-crm-sales-marketing-automation'),
-
-    'Enter your email address.' => __('Enter your email address.', 'bit-crm-sales-marketing-automation'),
-
-    'Enter a valid email address.' => __('Enter a valid email address.', 'bit-crm-sales-marketing-automation'),
-
-    'Already have an account?' => __('Already have an account?', 'bit-crm-sales-marketing-automation'),
-
-    'Loading…' => __('Loading…', 'bit-crm-sales-marketing-automation'),
-
-    'Edit contact details' => __('Edit contact details', 'bit-crm-sales-marketing-automation'),
-
-    'Edit Contact' => __('Edit Contact', 'bit-crm-sales-marketing-automation'),
-
-    'Pending Meetings' => __('Pending Meetings', 'bit-crm-sales-marketing-automation'),
-
-    'Pending Calls' => __('Pending Calls', 'bit-crm-sales-marketing-automation'),
-
-    'Total Deals' => __('Total Deals', 'bit-crm-sales-marketing-automation'),
-
-    'Total Contacts' => __('Total Contacts', 'bit-crm-sales-marketing-automation'),
-
-    'Welcome' => __('Welcome', 'bit-crm-sales-marketing-automation'),
-
-    'Unable to load dashboard statistics.' => __('Unable to load dashboard statistics.', 'bit-crm-sales-marketing-automation'),
-
-    'No statistics available' => __('No statistics available', 'bit-crm-sales-marketing-automation'),
-
-    'Unpaid' => __('Unpaid', 'bit-crm-sales-marketing-automation'),
-
-    'No invoices yet' => __('No invoices yet', 'bit-crm-sales-marketing-automation'),
-
-    'Your invoices will appear here once they are issued.' => __('Your invoices will appear here once they are issued.', 'bit-crm-sales-marketing-automation'),
-
-    'Pay Now' => __('Pay Now', 'bit-crm-sales-marketing-automation'),
-
-    'No notes found' => __('No notes found', 'bit-crm-sales-marketing-automation'),
-
-    'Unable to load portal session.' => __('Unable to load portal session.', 'bit-crm-sales-marketing-automation'),
-
-    'User Information' => __('User Information', 'bit-crm-sales-marketing-automation'),
-
-    'Not available' => __('Not available', 'bit-crm-sales-marketing-automation'),
-
-    'Security Status' => __('Security Status', 'bit-crm-sales-marketing-automation'),
-
-    'Password already updated' => __('Password already updated', 'bit-crm-sales-marketing-automation'),
-
-    'Password change recommended' => __('Password change recommended', 'bit-crm-sales-marketing-automation'),
-
-    'Security Tips' => __('Security Tips', 'bit-crm-sales-marketing-automation'),
-
-    'A few simple habits can keep your client portal account safer over time.' => __('A few simple habits can keep your client portal account safer over time.', 'bit-crm-sales-marketing-automation'),
-
-    'Use a password that you do not reuse on other websites or apps.' => __('Use a password that you do not reuse on other websites or apps.', 'bit-crm-sales-marketing-automation'),
-
-    'Avoid sharing portal login details through email or chat threads.' => __('Avoid sharing portal login details through email or chat threads.', 'bit-crm-sales-marketing-automation'),
-
-    'Update your password immediately if you suspect someone else accessed it.' => __('Update your password immediately if you suspect someone else accessed it.', 'bit-crm-sales-marketing-automation'),
-
-    'Update Password' => __('Update Password', 'bit-crm-sales-marketing-automation'),
-
-    'Use a strong password that is unique to this client portal.' => __('Use a strong password that is unique to this client portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Your email address is used as your portal sign-in identity.' => __('Your email address is used as your portal sign-in identity.', 'bit-crm-sales-marketing-automation'),
-
-    'Enter the password you currently use to sign in to the portal.' => __('Enter the password you currently use to sign in to the portal.', 'bit-crm-sales-marketing-automation'),
-
-    'Current Password' => __('Current Password', 'bit-crm-sales-marketing-automation'),
-
-    'Current password is required' => __('Current password is required', 'bit-crm-sales-marketing-automation'),
-
-    'Enter current password' => __('Enter current password', 'bit-crm-sales-marketing-automation'),
-
-    'Choose at least 8 characters and avoid reusing old or shared passwords.' => __('Choose at least 8 characters and avoid reusing old or shared passwords.', 'bit-crm-sales-marketing-automation'),
-
-    'New Password' => __('New Password', 'bit-crm-sales-marketing-automation'),
-
-    'New password is required' => __('New password is required', 'bit-crm-sales-marketing-automation'),
-
-    'Password must be at least 8 characters' => __('Password must be at least 8 characters', 'bit-crm-sales-marketing-automation'),
-
-    'Create a new password' => __('Create a new password', 'bit-crm-sales-marketing-automation'),
-
-    'Repeat the new password exactly to confirm the change.' => __('Repeat the new password exactly to confirm the change.', 'bit-crm-sales-marketing-automation'),
-
-    'Confirm password is required' => __('Confirm password is required', 'bit-crm-sales-marketing-automation'),
-
-    'Passwords do not match' => __('Passwords do not match', 'bit-crm-sales-marketing-automation'),
-
-    'Confirm new password' => __('Confirm new password', 'bit-crm-sales-marketing-automation'),
-
-    'Could not start payment' => __('Could not start payment', 'bit-crm-sales-marketing-automation'),
 
     'Payment received. Thank you!' => __('Payment received. Thank you!', 'bit-crm-sales-marketing-automation'),
 
@@ -3196,31 +2160,7 @@ return [
 
     'This invoice is not open for payment yet.' => __('This invoice is not open for payment yet.', 'bit-crm-sales-marketing-automation'),
 
-    'Payment history' => __('Payment history', 'bit-crm-sales-marketing-automation'),
-
-    'Charged' => __('Charged', 'bit-crm-sales-marketing-automation'),
-
-    'Date unavailable' => __('Date unavailable', 'bit-crm-sales-marketing-automation'),
-
-    'Choose Payment Amount' => __('Choose Payment Amount', 'bit-crm-sales-marketing-automation'),
-
-    'Full Payment' => __('Full Payment', 'bit-crm-sales-marketing-automation'),
-
-    'Pay the full outstanding balance now.' => __('Pay the full outstanding balance now.', 'bit-crm-sales-marketing-automation'),
-
-    'Partial Payment' => __('Partial Payment', 'bit-crm-sales-marketing-automation'),
-
-    'Pay part of the balance and keep the invoice open.' => __('Pay part of the balance and keep the invoice open.', 'bit-crm-sales-marketing-automation'),
-
-    'Partial payment amount' => __('Partial payment amount', 'bit-crm-sales-marketing-automation'),
-
-    'Enter an amount between' => __('Enter an amount between', 'bit-crm-sales-marketing-automation'),
-
-    'and' => __('and', 'bit-crm-sales-marketing-automation'),
-
-    'You will be charged in' => __('You will be charged in', 'bit-crm-sales-marketing-automation'),
-
-    'at checkout, converted at the current exchange rate.' => __('at checkout, converted at the current exchange rate.', 'bit-crm-sales-marketing-automation'),
+    'Due' => __('Due', 'bit-crm-sales-marketing-automation'),
 
     'There is no payable amount on this invoice yet.' => __('There is no payable amount on this invoice yet.', 'bit-crm-sales-marketing-automation')
 ];

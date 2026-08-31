@@ -53,6 +53,7 @@ const DealCreate = lazy(() => import('@pages/deal-create'))
 const ProductSettings = lazy(() => import('@pages/product-settings'))
 const Products = lazy(() => import('@pages/products'))
 const WooSettings = lazy(() => import('@pages/woo-settings'))
+const FluentCartSettings = lazy(() => import('@pages/fluent-cart-settings'))
 const BitFormSettings = lazy(() => import('@pages/bit-form-settings'))
 const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations-settings'))
 const McpSettings = lazy(() => import('@pages/mcp-settings'))
@@ -231,6 +232,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="woo-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
+                      <FluentCartSettings />
+                    </ProtectedRoute>
+                  }
+                  path="fluent-cart-settings"
                 />
                 <Route
                   element={

@@ -1,6 +1,7 @@
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import { type Product } from '@common/types/product'
+import useFluentCartProductIntegration from '@pages/fluent-cart-settings/data/use-fluent-cart-product-integration'
 import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
 import If from '@utilities/If'
 import { Badge, Button, Select, Space, Typography } from 'antd'
@@ -38,9 +39,11 @@ export default function ProductLineItems({
   const taxOption = useTaxOptionSelect()
   const { setTaxOption } = useLineItemsStoreActions()
   const { isWooEnabled } = useWooProductIntegration()
+  const { isFluentCartEnabled } = useFluentCartProductIntegration()
 
   const getDefaultProductSource = () => {
     if (isWooEnabled) return PRODUCT_SOURCE.WOO_COMMERCE
+    if (isFluentCartEnabled) return PRODUCT_SOURCE.FLUENT_CART
     return allowCustomSource ? PRODUCT_SOURCE.CUSTOM : ''
   }
 

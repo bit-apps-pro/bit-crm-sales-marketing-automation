@@ -59,7 +59,9 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
-        $systemDefinedFieldsValues['currency'] = $validated['currency'] ?? CurrencyHelper::getHomeCurrency();
+        if (empty($systemDefinedFieldsValues['currency'])) {
+            $systemDefinedFieldsValues['currency'] = CurrencyHelper::getHomeCurrency();
+        }
         $clientPortalEnabled = $validated['clientPortal'] ?? false;
 
         if ($clientPortalEnabled && empty($systemDefinedFieldsValues['email'])) {
