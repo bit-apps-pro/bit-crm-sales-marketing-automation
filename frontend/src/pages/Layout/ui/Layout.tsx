@@ -2,6 +2,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 import { $appConfig } from '@common/globalStates'
 import { __ } from '@common/helpers/i18nWrap'
 import { Global, ThemeProvider } from '@emotion/react'
+import AiChat from '@features/ai-chat'
 import globalCssInJs from '@resource/globalCssInJs'
 import OfflineBanner from '@utilities/OfflineBanner'
 import { Layout as AntLayout, Space, theme } from 'antd'
@@ -57,6 +58,8 @@ export default function Layout() {
           </Suspense>
         </Content>
       </AntLayout>
+
+      <AiChat />
     </ThemeProvider>
   )
 }

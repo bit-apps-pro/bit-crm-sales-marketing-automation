@@ -56,6 +56,7 @@ const WooSettings = lazy(() => import('@pages/woo-settings'))
 const BitFormSettings = lazy(() => import('@pages/bit-form-settings'))
 const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations-settings'))
 const McpSettings = lazy(() => import('@pages/mcp-settings'))
+const AiSettings = lazy(() => import('@pages/ai-settings'))
 const Currencies = lazy(() => import('@pages/currencies'))
 const InvoiceCreate = lazy(() => import('@pages/invoice-create'))
 const Invoices = lazy(() => import('@pages/invoices'))
@@ -302,6 +303,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="mcp-server"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
+                      <AiSettings />
+                    </ProtectedRoute>
+                  }
+                  path="ai-assistant"
                 />
               </Route>
 

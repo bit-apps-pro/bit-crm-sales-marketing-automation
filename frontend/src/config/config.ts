@@ -17,6 +17,7 @@ const getServerVariable: GetServerVariableType = (key, fallback) => {
 }
 
 interface ConfigType {
+  AI_CHAT_ENABLED: boolean
   AJAX_URL: string
   API_URL: string
   CAPABILITIES: string[]
@@ -46,6 +47,8 @@ interface ConfigType {
 }
 
 const config = {
+  // Absent entirely without the pro plugin, so it defaults to off.
+  AI_CHAT_ENABLED: getServerVariable('aiChatEnabled', '0') === '1',
   AJAX_URL: getServerVariable('ajaxURL', 'http://bit-crm.site/wp-admin/admin-ajax.php'),
   API_URL: getServerVariable('apiURL'),
   CAPABILITIES: getServerVariable('capabilities', []),
