@@ -1,4 +1,4 @@
-import { formatDateTime } from '@common/helpers/globalHelpers'
+import { cn, formatDateTime } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import {
   type ActivityPriority,
@@ -17,6 +17,7 @@ interface ActivityProps {
   activity?: ActivityData
   activityType: ActivityTypeValue
   isLoading: boolean
+  isPlaceholderData?: boolean
 }
 
 interface DetailRow {
@@ -32,7 +33,12 @@ const PRIORITY_COLORS: Record<ActivityPriority, string> = {
   medium: 'orange'
 }
 
-export default function Activity({ activity, activityType, isLoading }: ActivityProps) {
+export default function Activity({
+  activity,
+  activityType,
+  isLoading,
+  isPlaceholderData = false
+}: ActivityProps) {
   if (isLoading) {
     return <ActivitySkeleton />
   }
@@ -60,7 +66,24 @@ export default function Activity({ activity, activityType, isLoading }: Activity
       value: <Typography.Text strong>{activity.entity_name}</Typography.Text>
     },
     {
-      icon: <LuUser />,
+      icon: (
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="m19 16-3 3" />
+          <path d="M2 21a8 8 0 0 1 12.664-6.5" />
+          <path d="M22 19h-6l3 3" />
+          <circle cx="10" cy="8" r="5" />
+        </svg>
+      ),
       key: 'assignee',
       label: __('Assigned To'),
       value: <Typography.Text strong>{activity.assignee}</Typography.Text>
@@ -98,7 +121,12 @@ export default function Activity({ activity, activityType, isLoading }: Activity
   ].filter(Boolean) as DetailRow[]
 
   return (
-    <div className="col-span-2 h-full min-h-0 space-y-7 overflow-y-auto">
+    <div
+      className={cn(
+        'col-span-2 h-full min-h-0 space-y-7 overflow-y-auto transition-opacity',
+        isPlaceholderData && 'opacity-60'
+      )}
+    >
       <div className="flex min-w-0">
         <div className="flex w-full min-w-0 items-start gap-2">
           <Typography.Title className="mb-0 min-w-0 flex-1" level={3}>
@@ -133,7 +161,7 @@ export default function Activity({ activity, activityType, isLoading }: Activity
       <div>
         <div className="flex items-center gap-1">
           <LuPaperclip />
-          <Typography.Text>{`${__('Attachements')} (${activity?.attachments?.length || 0})`}</Typography.Text>
+          <Typography.Text>{`${__('Attachments')} (${activity?.attachments?.length || 0})`}</Typography.Text>
         </div>
         <div>
           {activity?.attachments && (

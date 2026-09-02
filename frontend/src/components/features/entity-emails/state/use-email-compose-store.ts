@@ -1,19 +1,26 @@
 import { create } from 'zustand'
 
+export interface ReplyTarget {
+  id: number
+  subject: string
+}
+
 interface EmailComposeStore {
   handleComposeClose: () => void
-  handleComposeOpen: () => void
+  handleComposeOpen: (replyTo?: ReplyTarget) => void
   isComposeOpen: boolean
+  replyTo: ReplyTarget | undefined
 }
 
 const useEmailComposeStore = create<EmailComposeStore>(set => ({
   handleComposeClose: () => {
-    set({ isComposeOpen: false })
+    set({ isComposeOpen: false, replyTo: undefined })
   },
-  handleComposeOpen: () => {
-    set({ isComposeOpen: true })
+  handleComposeOpen: replyTo => {
+    set({ isComposeOpen: true, replyTo })
   },
-  isComposeOpen: false
+  isComposeOpen: false,
+  replyTo: undefined
 }))
 
 export default useEmailComposeStore

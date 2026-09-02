@@ -225,7 +225,7 @@ export default function ImportCompanies({ customFields, systemDefinedFields }: I
                 <InboxOutlined />
               </p>
               <p className="ant-upload-text">{__('Click or drag csv file to this area to upload')}</p>
-              <p className="ant-upload-hint">{__('Support for a single upload.')}</p>
+              <p className="ant-upload-hint">{__('Supports a single upload.')}</p>
             </Upload.Dragger>
           )}
         </If>

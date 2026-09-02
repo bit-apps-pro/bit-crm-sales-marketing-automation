@@ -364,11 +364,14 @@ final class InvoiceController
     public function invoicePrefix(PrefixRequest $request)
     {
         $setting = Setting::findOne(['setting_key' => Invoice::SETTINGS_KEYS['PREFIX']]);
-        if (empty($setting)) {
-            return Response::error(__('Invoice prefix setting not found!', 'bit-crm-sales-marketing-automation'));
-        }
 
-        return Response::success($setting->setting_value ?? '');
+        $stored = $setting->setting_value ?? [];
+        $prefix = \is_array($stored) ? ($stored['prefix'] ?? '') : $stored;
+        $prefix = \is_string($prefix) ? trim($prefix) : '';
+
+        return Response::success(
+            ['prefix' => $prefix !== '' ? $prefix : Invoice::DEFAULT_PREFIX]
+        );
     }
 
     public function invoicesByDeal(InvoiceByDealRequest $request)

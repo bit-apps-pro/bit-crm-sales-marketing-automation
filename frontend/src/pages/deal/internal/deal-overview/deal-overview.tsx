@@ -169,7 +169,7 @@ export default function DealOverview({ columnSettings, deal, fields, tags }: Dea
   return (
     <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
       <div className="col-span-2 rounded-md border border-solid border-[#E5E3FE] bg-white dark:border-neutral-700 dark:bg-transparent">
-        <div className="sticky top-0 z-10 space-y-2 rounded-t-md border-0 bg-white py-2 dark:bg-transparent">
+        <div className="sticky top-0 z-10 space-y-2 rounded-t-md border-0 bg-white py-2 dark:bg-neutral-900">
           <div className="flex items-center justify-between px-4">
             <DealDatesInfo closedAt={deal?.closed_at} createdAt={deal?.created_at} />
             <Button

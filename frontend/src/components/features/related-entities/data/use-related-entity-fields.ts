@@ -1,4 +1,5 @@
 import { MODULES } from '@common/constants/modules'
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import { __ } from '@common/helpers/i18nWrap'
 import { type Response } from '@common/helpers/request'
 import queryRequest from '@common/helpers/request'
@@ -63,7 +64,7 @@ const CONTACT_FULL_NAME_FIELD: FieldItem = {
 }
 
 function processedFields(res: ResponseType, relatedEntity: string): ProcessedFieldsResult {
-  const fields: FieldItem[] = res?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
+  const fields: FieldItem[] = filterHiddenFields(res?.fields?.filter(isNotSection)?.flatMap(flatGroup))
   const orders = res?.orders
 
   const defaultVisibleColumns =

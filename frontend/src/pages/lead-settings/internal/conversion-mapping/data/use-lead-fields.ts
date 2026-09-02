@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem, type Order } from '@features/field-settings/shared/field-types'
 import { useQuery } from '@tanstack/react-query'
@@ -23,7 +24,9 @@ export default function useLeadFields() {
 }
 
 function processedFields(res: { data: ResponseType }) {
-  const allField: FieldItem[] = res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
+  const allField: FieldItem[] = filterHiddenFields(
+    res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup)
+  )
 
   const fields = allField?.filter(
     field => !['company_name', 'last_name', 'owner_id'].includes(field.field_key)

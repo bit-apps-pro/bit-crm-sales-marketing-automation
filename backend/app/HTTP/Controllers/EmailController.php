@@ -53,7 +53,7 @@ final class EmailController
                 $entityNameExpr = "''";
         }
 
-        $emailsQuery = Email::select(['id', 'email_uid', 'entity_email', 'email_date', 'subject', 'email_direction', 'sent_from'])
+        $emailsQuery = Email::select(['id', 'email_uid', 'entity_email', 'email_date', 'subject', 'email_direction', 'from_email', 'to_emails', 'cc', 'bcc', 'sent_from'])
             ->selectRaw("(SELECT display_name FROM {$wpUsersTable} WHERE ID = created_by) AS sender_name")
             ->selectRaw("(SELECT username FROM {$imapSettingsTable} WHERE id = %d) AS imap_username", [$validated['imap_id']])
             ->when(

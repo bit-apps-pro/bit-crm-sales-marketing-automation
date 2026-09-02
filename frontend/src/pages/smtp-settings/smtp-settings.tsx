@@ -1,17 +1,13 @@
 import { __ } from '@common/helpers/i18nWrap'
 import PluginActivationGuard from '@features/plugin-activation-guard'
-import { Typography } from 'antd'
+import SettingsPageHeader from '@utilities/settings-page-header'
 
 import SmtpDescription from './ui/smtp-description'
 
 export default function SmtpSettings() {
   return (
     <div>
-      <div className="border-0 border-b border-solid border-[#E5E3FE] px-4 py-2 dark:border-neutral-700">
-        <Typography.Title className="mb-0" level={2}>
-          {__('SMTP Settings')}
-        </Typography.Title>
-      </div>
+      <SettingsPageHeader title={__('SMTP Settings')} />
 
       <div className="mx-6 my-2">
         <PluginActivationGuard slug="bit-smtp">

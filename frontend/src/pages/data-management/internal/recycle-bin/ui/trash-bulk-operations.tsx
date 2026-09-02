@@ -15,21 +15,25 @@ export default function TrashBulkOperations({
 
   const showRestoreConfirm = () => {
     modal.confirm({
+      cancelButtonProps: { className: 'rounded-full' },
       content: __('Restore deleted items'),
-      icon: <LuInfo size={18} />,
+      icon: <LuInfo className="me-3 mt-0.5 shrink-0" size={18} />,
+      okButtonProps: { className: 'rounded-full' },
       okText: __('Restore'),
       onOk: () => onRestore(selectedIds),
-      title: __('Are you Confirm to Restore?')
+      title: __('Are you sure you want to restore the selected items?')
     })
   }
 
   const showDeleteConfirm = () => {
     modal.confirm({
+      cancelButtonProps: { className: 'rounded-full' },
       content: __('Delete permanently'),
-      icon: <LuInfo size={18} />,
+      icon: <LuInfo className="me-3 mt-0.5 shrink-0" size={18} />,
+      okButtonProps: { className: 'rounded-full' },
       okText: __('Delete'),
       onOk: () => onDelete(selectedIds),
-      title: __('Are you Confirm to Delete?')
+      title: __('Are you sure you want to delete the selected items?')
     })
   }
 

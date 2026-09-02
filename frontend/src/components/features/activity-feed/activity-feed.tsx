@@ -1,7 +1,6 @@
 import { type ActivityType, type ActivityTypeValue } from '@features/activity-feed/shared/activity-types'
-import useActivity from '@pages/tasks/data/use-activity'
-import { useSearchParams } from 'react-router'
 
+import useActivitySelection from './data/use-activity-selection'
 import Activities from './ui/activities'
 import Activity from './ui/activity'
 import ActivityDeleteModal from './ui/activity-delete-modal'
@@ -26,10 +25,8 @@ export default function ActivityFeed({
   onLoadMore,
   total
 }: ActivityFeedProps) {
-  const [searchParams] = useSearchParams()
-  const id = Number(searchParams.get('id')) || 0
-  const { activity, isLoading: isLoadingActivity } = useActivity(id)
-  const isValidSelection = Boolean(activity) && activity?.type === activityType
+  const { activity, adjacentId, isLoadingActivity, isPlaceholderData, isValidSelection } =
+    useActivitySelection({ activities, activityType, isLoading })
 
   return (
     <div className="grid h-full min-h-0 flex-1 grid-cols-4 grid-rows-1 items-stretch gap-5 overflow-hidden rounded-[16px] border border-solid border-[#EBEAFF] bg-white p-7 dark:border-neutral-700 dark:bg-neutral-900">
@@ -43,10 +40,15 @@ export default function ActivityFeed({
         total={total}
       />
       <div className="col-span-3 grid h-full min-h-0 grid-cols-3 grid-rows-1 gap-5">
-        <Activity activity={activity} activityType={activityType} isLoading={isLoadingActivity} />
+        <Activity
+          activity={activity}
+          activityType={activityType}
+          isLoading={isLoadingActivity}
+          isPlaceholderData={isPlaceholderData}
+        />
         <ActivityNotes activityType={activityType} isValidSelection={isValidSelection} />
       </div>
-      <ActivityDeleteModal />
+      <ActivityDeleteModal adjacentId={adjacentId} />
     </div>
   )
 }

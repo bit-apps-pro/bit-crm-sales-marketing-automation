@@ -3,7 +3,7 @@ import { useLineItemsStoreActions } from '@features/product-line-items/state/use
 import { useInvoiceCreateStoreActions } from '@pages/invoice-create/state/use-invoice-create-store'
 import InvoiceForm from '@pages/invoice-create/ui/invoice-form'
 import useInvoice from '@pages/Invoice/data/use-invoice'
-import InvoiceSkeleton from '@utilities/invoice-skeleton/invoice-skeleton'
+import InvoiceFormSkeleton from '@utilities/invoice-skeleton/invoice-form-skeleton'
 import { Form } from 'antd'
 import dayjs from 'dayjs'
 import { useEffect } from 'react'
@@ -66,11 +66,9 @@ export default function InvoiceEdit() {
     setGrossDiscountType
   ])
 
-  if (isInvoiceLoading) return <InvoiceSkeleton />
-
   return (
-    <InvoiceFormLayout form={form} mode="edit">
-      <InvoiceForm form={form} mode="edit" />
+    <InvoiceFormLayout form={form} isLoading={isInvoiceLoading} mode="edit">
+      {isInvoiceLoading ? <InvoiceFormSkeleton /> : <InvoiceForm form={form} mode="edit" />}
     </InvoiceFormLayout>
   )
 }

@@ -1,4 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
+import { DATE_FORMAT } from '@config/date-format'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { MAX_ALLOWED_AMOUNT } from '@pages/deal/shared/constants'
 import { Checkbox, DatePicker, Input, InputNumber, Radio, Select } from 'antd'
@@ -31,7 +32,7 @@ export default function DealFieldInput({ field, ...props }: DealFieldInputProps)
     }
 
     case 'date': {
-      return <DatePicker className="w-full" {...props} />
+      return <DatePicker className="w-full" format={DATE_FORMAT} {...props} />
     }
 
     case 'multi-select': {

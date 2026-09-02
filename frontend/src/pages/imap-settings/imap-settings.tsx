@@ -3,7 +3,8 @@ import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
 import If from '@utilities/If'
-import { Button, Pagination, Typography } from 'antd'
+import SettingsPageHeader from '@utilities/settings-page-header'
+import { Button, Pagination } from 'antd'
 import { LuPlus } from 'react-icons/lu'
 import { useNavigate, useParams, useSearchParams } from 'react-router'
 
@@ -28,10 +29,7 @@ export default function ImapSettings() {
 
   return (
     <div className="">
-      <div className="flex items-center gap-2 border-0 border-b border-solid border-[#E5E3FE] px-4 py-2 dark:border-neutral-700">
-        <Typography.Title className="mb-0" level={3}>
-          {__('IMAP Configurations')}
-        </Typography.Title>
+      <SettingsPageHeader title={__('IMAP Configurations')}>
         <If conditions={checkCapability(CAPABILITIES.SETTING.IMAP)}>
           <Button
             className="rounded-full"
@@ -46,12 +44,12 @@ export default function ImapSettings() {
         <If conditions={isRefetchingImaps}>
           <LoadingOutlined />
         </If>
-      </div>
+      </SettingsPageHeader>
 
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="mt-6 flex gap-4">
+      <div className="mt-4 px-4">
+        <div>
           {isImapsLoading && checkCapability(CAPABILITIES.SETTING.IMAP) ? (
-            <ImapSkeleton quantity={3} />
+            <ImapSkeleton quantity={5} />
           ) : (
             <ImapList imaps={imaps?.data || []} />
           )}

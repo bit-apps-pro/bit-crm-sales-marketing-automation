@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import { __ } from '@common/helpers/i18nWrap'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
@@ -27,7 +28,9 @@ export default function useContactFields() {
 }
 
 function processedFields(res: { data: ContactFieldsResponseType }) {
-  const fields: FieldItem[] = res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
+  const fields: FieldItem[] = filterHiddenFields(
+    res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup)
+  )
   const orders = res?.data?.orders
   const visibleColumns = res?.data?.visible_columns || ['full_name', 'email', 'first_name', 'last_name']
 

@@ -21,7 +21,7 @@ import useEmails, { type Email } from './data/use-emails'
 import useImapSettings, { type Imap } from './data/use-imap-settings'
 import useSyncImap from './data/use-sync-imap'
 import { MAIL_DIRECTION } from './shared/constants'
-import { type EntityModule } from './shared/types'
+import { type EntityModule, type FormattedEmailData } from './shared/types'
 import useEmailComposeStore from './state/use-email-compose-store'
 import EmailComposeDrawer from './ui/email-compose-drawer'
 import EmailView from './ui/email-view'
@@ -34,26 +34,47 @@ const sentBy = (email: Email) => {
     return email.sender_name ?? ''
   }
 
-  return email.email_direction === MAIL_DIRECTION.SENT ? email.imap_username : email.entity_name
+  if (email.email_direction === MAIL_DIRECTION.RECEIVED) {
+    return email.entity_name
+  }
+
+  return email.from_email || email.imap_username
 }
 
-const formatEmails = (emails: Email[]) =>
+/*
+ * Who the mail was addressed to. Rows synced before the To header was stored
+ * fall back to the old inference (the entity for sent mail, the mailbox for
+ * received). With the header present, a contact that was only copied shows
+ * the real recipient here rather than themselves.
+ */
+const receivedBy = (email: Email) => {
+  if (email.to_emails?.length) {
+    return email.to_emails.join(', ')
+  }
+
+  return email.email_direction === MAIL_DIRECTION.RECEIVED ? email.imap_username : email.entity_email
+}
+
+const formatEmails = (emails: Email[]): FormattedEmailData[] =>
   emails.map(email => {
     const entityName = email.entity_name.trim()
 
     return {
+      bcc: email.bcc ?? [],
+      cc: email.cc ?? [],
       emailDate: formatDateTime(email.email_date),
       emailDirection: email.email_direction,
       entityEmail: email.entity_email,
       entityName: entityName,
+      fromEmail: email.from_email ?? '',
       id: email.id,
       imapUsername: email.imap_username,
       key: email.id,
-      receivedBy:
-        email.email_direction === MAIL_DIRECTION.RECEIVED ? email.imap_username : email.entity_email,
+      receivedBy: receivedBy(email),
       sentBy: sentBy(email),
       status: email.email_direction,
-      subject: email.subject
+      subject: email.subject,
+      toEmails: email.to_emails ?? []
     }
   })
 
@@ -104,7 +125,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
   const sortBy = searchParams.get('sortBy') || ''
   const sortOrder = searchParams.get('sortOrder') || ''
   const pluginSlug = config.PLUGIN_SLUG
-  const source = searchParams.get('source') || pluginSlug
+  const source = searchParams.get('source') || 'all'
   const { messageApi } = useContext(NotifyContext)
 
   const { imaps, isImapsFetching, isImapsLoading, totalImaps } = useImapSettings()
@@ -249,7 +270,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
               className="rounded-full"
               disabled={!email}
               icon={<LuPenLine size={14} />}
-              onClick={handleComposeOpen}
+              onClick={() => handleComposeOpen()}
               size="large"
               type="primary"
             >

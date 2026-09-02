@@ -55,7 +55,7 @@ const getInputNode = (inputType: InputType, dataIndex: string) => {
               name="name"
               rules={[
                 {
-                  message: __('Please Input Stage Name!'),
+                  message: __('Please input the stage name!'),
                   required: true
                 }
               ]}

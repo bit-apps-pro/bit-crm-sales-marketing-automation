@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Mon Aug 31 2026 14:33:57 GMT+0600 (Bangladesh Standard "
+"POT-Creation-Date: Mon Aug 31 2026 16:25:36 GMT+0600 (Bangladesh Standard "
 "Time)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -41,8 +41,8 @@ msgstr ""
 
 #: frontend/src/common/constants/field-types.ts:33
 #: frontend/src/components/features/attachments/ui/attachment-table.tsx:103
-#: frontend/src/components/features/entity-emails/ui/email-view.tsx:28
-#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:83
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:73
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:90
 #: frontend/src/components/features/links/ui/link-table.tsx:70
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
@@ -110,7 +110,7 @@ msgstr ""
 
 #: frontend/src/common/constants/modules.ts:27
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:10
-#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:134
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:135
 #: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:137
 #: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:27
 #: frontend/src/pages/lead/ui/conversion-form.tsx:16
@@ -161,18 +161,18 @@ msgid "High"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/shared/activity-constants.ts:16
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:203
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:224
 msgid "All"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/shared/activity-constants.ts:17
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:108
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:136
 #: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:11
 msgid "Pending"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/shared/activity-constants.ts:18
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:108
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:136
 #: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:9
 msgid "Completed"
 msgstr ""
@@ -224,7 +224,7 @@ msgstr ""
 #: frontend/src/components/features/activity-feed/ui/activity-actions.tsx:35
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:53
 #: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:49
-#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:64
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:87
 #: frontend/src/components/features/notes/internal/note-list-action-more.tsx:41
 #: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:140
 #: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:48
@@ -233,9 +233,10 @@ msgid "Edit"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-actions.tsx:41
-#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:52
+#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:65
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:62
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:98
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:37
 #: frontend/src/components/features/notes/internal/note-list-action-more.tsx:56
 #: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:52
 #: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:63
@@ -252,8 +253,8 @@ msgstr ""
 #: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/contact-bulk-operations.tsx:48
 #: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/delete-modal.tsx:30
 #: frontend/src/pages/contacts/ui/delete-contact-popup.tsx:19
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:30
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:48
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:34
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:52
 #: frontend/src/pages/deal/ui/actions.tsx:24
 #: frontend/src/pages/deal/ui/delete-modal.tsx:36
 #: frontend/src/pages/deals/internal/deal-bulk-operations/ui/deal-bulk-operations-dropdown.tsx:48
@@ -273,7 +274,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:59
+#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:72
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:107
 #: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-company-popup.tsx:25
 #: frontend/src/pages/companies/internal/company-bulk-operations/ui/delete-modal.tsx:38
@@ -295,14 +296,16 @@ msgstr ""
 msgid "Confirm Deletion"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:64
+#: frontend/src/components/features/activity-feed/ui/activity-delete-modal.tsx:77
+#: frontend/src/components/features/links/ui/link-table.tsx:89
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:53
 msgid "Are you sure you want to delete this?"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:12
-#: frontend/src/components/features/calls/ui/call-form.tsx:61
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:61
-#: frontend/src/components/features/tasks/ui/task-form.tsx:50
+#: frontend/src/components/features/calls/ui/call-form.tsx:62
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:62
+#: frontend/src/components/features/tasks/ui/task-form.tsx:51
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:29
@@ -317,13 +320,13 @@ msgstr ""
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:22
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:24
 #: frontend/src/pages/data-management/internal/imports/imports.tsx:55
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:136
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:138
 msgid "Filter by module"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:16
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:9
-#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:98
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:106
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:124
 #: frontend/src/pages/product-settings/product-settings.tsx:14
 #: frontend/src/pages/products/products.tsx:10
@@ -347,8 +350,8 @@ msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:23
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:23
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:91
-#: frontend/src/components/features/tasks/ui/task-form.tsx:108
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:114
+#: frontend/src/components/features/tasks/ui/task-form.tsx:109
 msgid "Priority"
 msgstr ""
 
@@ -358,16 +361,17 @@ msgid "Filter by priority"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:15
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:65
-#: frontend/src/components/features/calls/ui/call-form.tsx:106
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:106
-#: frontend/src/components/features/tasks/ui/task-form.tsx:95
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:88
+#: frontend/src/components/features/calls/ui/call-form.tsx:107
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:107
+#: frontend/src/components/features/tasks/ui/task-form.tsx:96
 msgid "Assigned To"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-note-create-modal.tsx:64
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:119
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:105
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:28
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:123
 #: frontend/src/components/utilities/ContextMenu/ContextMenu.stories.tsx:61
 #: frontend/src/components/utilities/ContextMenu/ContextMenuStory.tsx:55
 #: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:58
@@ -391,7 +395,7 @@ msgstr ""
 #: frontend/src/pages/contact-create/contact-create.tsx:151
 #: frontend/src/pages/deal-create/deal-create.tsx:222
 #: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:54
-#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:58
+#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:59
 #: frontend/src/pages/invoice-settings/internal/terms/ui/term-create-modal.tsx:55
 #: frontend/src/pages/lead-create/lead-create.tsx:139
 #: frontend/src/pages/tags/ui/tag-create-modal.tsx:76
@@ -403,12 +407,11 @@ msgstr ""
 msgid "Create Note"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity-note-form.tsx:32
+#: frontend/src/components/features/activity-feed/ui/activity-note-form.tsx:27
 msgid "Note is required"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:95
-#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:28
 #: frontend/src/components/features/links/ui/link-table.tsx:86
 #: frontend/src/components/features/notes/internal/note-list-action-more.tsx:50
 #: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:28
@@ -423,7 +426,7 @@ msgstr ""
 #: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:118
 #: frontend/src/pages/deals/internal/deal-bulk-operations/ui/delete-deal-popup.tsx:16
 #: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:57
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:116
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:154
 #: frontend/src/pages/invoice-settings/internal/terms/ui/terms-table.tsx:49
 #: frontend/src/pages/invoices/ui/delete-invoice-popup.tsx:19
 #: frontend/src/pages/leads/ui/delete-lead-popup.tsx:16
@@ -450,7 +453,7 @@ msgid "Edit Note"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:39
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:44
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:50
 msgid "Select an activity"
 msgstr ""
 
@@ -460,11 +463,11 @@ msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:56
 #: frontend/src/components/features/notes/notes.tsx:91
-#: frontend/src/pages/company/company.tsx:150
-#: frontend/src/pages/contact/contact.tsx:164
-#: frontend/src/pages/deal/deal.tsx:157
+#: frontend/src/pages/company/company.tsx:152
+#: frontend/src/pages/contact/contact.tsx:170
+#: frontend/src/pages/deal/deal.tsx:160
 #: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:36
-#: frontend/src/pages/lead/lead.tsx:158
+#: frontend/src/pages/lead/lead.tsx:164
 #: frontend/src/pages/lead/ui/conversion-form.tsx:63
 msgid "Notes"
 msgstr ""
@@ -473,34 +476,40 @@ msgstr ""
 msgid "Add Note"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:47
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:53
 msgid "Choose an activity from the list to view its details and attachments."
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:71
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:94
 msgid "Client Portal"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:74
-#: frontend/src/pages/imap-settings/ui/imap-item.tsx:29
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:97
+#: frontend/src/pages/imap-settings/ui/imap-item.tsx:34
 msgid "Shared"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:74
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:97
 msgid "Not shared"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:81
-#: frontend/src/components/features/calls/ui/call-form.tsx:93
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:93
-#: frontend/src/components/features/tasks/ui/task-form.tsx:82
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:82
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:104
+#: frontend/src/components/features/calls/ui/call-form.tsx:94
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:94
+#: frontend/src/components/features/tasks/ui/task-form.tsx:83
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:76
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:180
 msgid "Due Date"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:136
-msgid "Attachements"
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:164
+#: frontend/src/components/features/attachments/attachments.tsx:46
+#: frontend/src/pages/company/company.tsx:144
+#: frontend/src/pages/contact/contact.tsx:162
+#: frontend/src/pages/deal/deal.tsx:154
+#: frontend/src/pages/lead/lead.tsx:158
+#: frontend/src/pages/lead/ui/conversion-form.tsx:62
+msgid "Attachments"
 msgstr ""
 
 #: frontend/src/components/features/advanced-filter/advanced-filter.tsx:60
@@ -526,7 +535,7 @@ msgid "Add OR Group"
 msgstr ""
 
 #: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:159
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:126
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:138
 msgid "Clear All"
 msgstr ""
 
@@ -634,33 +643,33 @@ msgstr ""
 msgid "Select field"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:60
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:62
 msgid "Start date"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:60
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:62
 msgid "End date"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:72
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:74
 msgid "Select date"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:104
-#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:43
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:106
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:44
 msgid "Select options"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:116
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:141
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:118
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:143
 msgid "Enter value"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:130
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:132
 msgid "Select option"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:161
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:163
 #: frontend/src/components/utilities/input-select-option/input-select-option.tsx:47
 msgid "Value"
 msgstr ""
@@ -713,6 +722,18 @@ msgstr ""
 msgid "Open AI settings"
 msgstr ""
 
+#: frontend/src/components/features/ai-chat/summary/ai-summary-button.tsx:47
+msgid "Give me an AI summary of %s."
+msgstr ""
+
+#: frontend/src/components/features/ai-chat/summary/ai-summary-button.tsx:55
+msgid "Ask the AI assistant to summarize this record"
+msgstr ""
+
+#: frontend/src/components/features/ai-chat/summary/ai-summary-button.tsx:61
+msgid "AI Summary"
+msgstr ""
+
 #: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:77
 msgid "Add Products to Deal"
 msgstr ""
@@ -732,15 +753,6 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: frontend/src/components/features/attachments/attachments.tsx:46
-#: frontend/src/pages/company/company.tsx:142
-#: frontend/src/pages/contact/contact.tsx:156
-#: frontend/src/pages/deal/deal.tsx:151
-#: frontend/src/pages/lead/lead.tsx:152
-#: frontend/src/pages/lead/ui/conversion-form.tsx:62
-msgid "Attachments"
-msgstr ""
-
 #: frontend/src/components/features/attachments/attachments.tsx:55
 #: frontend/src/components/features/calls/calls.tsx:83
 #: frontend/src/components/features/links/links.tsx:102
@@ -750,7 +762,7 @@ msgstr ""
 #: frontend/src/components/features/tasks/tasks.tsx:84
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entities-alert.tsx:24
 #: frontend/src/pages/deal/internal/deal-invoices/deal-invoices.tsx:55
-#: frontend/src/pages/imap-settings/imap-settings.tsx:43
+#: frontend/src/pages/imap-settings/imap-settings.tsx:41
 msgid "New"
 msgstr ""
 
@@ -766,26 +778,22 @@ msgstr ""
 msgid "Attachment(s) created successfully"
 msgstr ""
 
-#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:29
-#: frontend/src/components/features/links/ui/link-table.tsx:87
-#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:51
-#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:33
-#: frontend/src/pages/api-settings/ui/api-key-table.tsx:99
-#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:63
-#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:63
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:92
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:104
-#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:78
-#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:126
-#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:58
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:115
-msgid "Yes"
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:31
+msgid ""
+"The attachment will be removed from this record. This can’t be undone, but "
+"the file itself stays in your Media Library."
 msgstr ""
 
-#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:31
-#: frontend/src/components/features/links/ui/link-table.tsx:89
-#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:53
-msgid "Are you sure to delete this?"
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:40
+msgid "Delete this attachment?"
+msgstr ""
+
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:42
+msgid "Delete attachment"
+msgstr ""
+
+#: frontend/src/components/features/attachments/internal/attachment-list-actions.tsx:49
+msgid "Download attachment"
 msgstr ""
 
 #: frontend/src/components/features/attachments/ui/attachment-create-modal.tsx:32
@@ -823,16 +831,16 @@ msgstr ""
 #: frontend/src/pages/api-settings/ui/api-key-table.tsx:61
 #: frontend/src/pages/api-settings/ui/api-key-table.tsx:107
 #: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:120
-#: frontend/src/pages/companies/ui/companies-table.tsx:136
+#: frontend/src/pages/companies/ui/companies-table.tsx:140
 #: frontend/src/pages/contacts/ui/contacts-columns.tsx:106
-#: frontend/src/pages/contacts/ui/contacts-table.tsx:140
+#: frontend/src/pages/contacts/ui/contacts-table.tsx:144
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:76
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:114
-#: frontend/src/pages/deals/ui/deals-table.tsx:152
+#: frontend/src/pages/deals/ui/deals-table.tsx:157
 #: frontend/src/pages/Invoice/ui/invoice-actions.tsx:92
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:224
 #: frontend/src/pages/leads/ui/leads-columns.tsx:125
-#: frontend/src/pages/leads/ui/leads-table.tsx:134
+#: frontend/src/pages/leads/ui/leads-table.tsx:137
 #: frontend/src/pages/products/products.tsx:11
 #: frontend/src/pages/tags/ui/tags-table.tsx:133
 #: frontend/src/pages/workflows/workflows.tsx:12
@@ -841,11 +849,11 @@ msgstr ""
 
 #: frontend/src/components/features/calls/calls.tsx:74
 #: frontend/src/pages/calls/calls-page.tsx:54
-#: frontend/src/pages/company/company.tsx:136
-#: frontend/src/pages/contact/contact.tsx:150
-#: frontend/src/pages/deal/deal.tsx:145
+#: frontend/src/pages/company/company.tsx:138
+#: frontend/src/pages/contact/contact.tsx:156
+#: frontend/src/pages/deal/deal.tsx:148
 #: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:15
-#: frontend/src/pages/lead/lead.tsx:146
+#: frontend/src/pages/lead/lead.tsx:152
 msgid "Calls"
 msgstr ""
 
@@ -872,7 +880,7 @@ msgstr ""
 #: frontend/src/pages/currencies/ui/home-currency-edit-modal.tsx:74
 #: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:182
 #: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-modal.tsx:93
-#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:67
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:68
 #: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:147
 #: frontend/src/pages/invoice-settings/internal/terms/ui/term-edit-modal.tsx:68
 #: frontend/src/pages/lead/internal/lead-overview/lead-overview.tsx:91
@@ -884,111 +892,111 @@ msgstr ""
 msgid "Update Call"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:63
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:63
-#: frontend/src/components/features/tasks/ui/task-form.tsx:52
+#: frontend/src/components/features/calls/ui/call-form.tsx:64
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:64
+#: frontend/src/components/features/tasks/ui/task-form.tsx:53
 msgid "Please select module!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:69
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:69
-#: frontend/src/components/features/tasks/ui/task-form.tsx:58
+#: frontend/src/components/features/calls/ui/call-form.tsx:70
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:70
+#: frontend/src/components/features/tasks/ui/task-form.tsx:59
 msgid "Entity"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:71
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:71
-#: frontend/src/components/features/tasks/ui/task-form.tsx:60
+#: frontend/src/components/features/calls/ui/call-form.tsx:72
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:72
+#: frontend/src/components/features/tasks/ui/task-form.tsx:61
 msgid "Please select entity!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:81
-#: frontend/src/components/features/calls/ui/call-form.tsx:119
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:133
+#: frontend/src/components/features/calls/ui/call-form.tsx:82
+#: frontend/src/components/features/calls/ui/call-form.tsx:120
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:179
 #: frontend/src/components/features/links/ui/link-form.tsx:23
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:81
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:119
-#: frontend/src/components/features/notes/ui/note-form.tsx:65
-#: frontend/src/components/features/notes/ui/note-form.tsx:73
-#: frontend/src/components/features/tasks/ui/task-form.tsx:70
-#: frontend/src/components/features/tasks/ui/task-form.tsx:115
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:82
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:120
+#: frontend/src/components/features/notes/ui/note-form.tsx:60
+#: frontend/src/components/features/notes/ui/note-form.tsx:68
+#: frontend/src/components/features/tasks/ui/task-form.tsx:71
+#: frontend/src/components/features/tasks/ui/task-form.tsx:116
 msgid "Type # to access record field values."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:82
+#: frontend/src/components/features/calls/ui/call-form.tsx:83
 #: frontend/src/components/features/links/ui/link-form.tsx:16
 #: frontend/src/components/features/links/ui/link-table.tsx:39
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:82
-#: frontend/src/components/features/notes/ui/note-form.tsx:66
-#: frontend/src/components/features/tasks/ui/task-form.tsx:71
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:83
+#: frontend/src/components/features/notes/ui/note-form.tsx:61
+#: frontend/src/components/features/tasks/ui/task-form.tsx:72
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:10
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:33
 #: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:58
 #: frontend/src/pages/tags/internal/tag-form.tsx:19
 #: frontend/src/pages/tags/ui/tags-table.tsx:84
 msgid "Title"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:84
+#: frontend/src/components/features/calls/ui/call-form.tsx:85
 #: frontend/src/components/features/links/ui/link-form.tsx:18
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:84
-#: frontend/src/components/features/notes/ui/note-form.tsx:68
-#: frontend/src/components/features/tasks/ui/task-form.tsx:73
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:85
+#: frontend/src/components/features/notes/ui/note-form.tsx:63
+#: frontend/src/components/features/tasks/ui/task-form.tsx:74
 msgid "Please input title!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:87
-#: frontend/src/components/features/calls/ui/call-form.tsx:89
+#: frontend/src/components/features/calls/ui/call-form.tsx:88
+#: frontend/src/components/features/calls/ui/call-form.tsx:90
 #: frontend/src/components/features/links/ui/link-form.tsx:20
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:87
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:89
-#: frontend/src/components/features/notes/ui/note-form.tsx:70
-#: frontend/src/components/features/tasks/ui/task-form.tsx:76
-#: frontend/src/components/features/tasks/ui/task-form.tsx:78
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:88
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:90
+#: frontend/src/components/features/notes/ui/note-form.tsx:65
+#: frontend/src/components/features/tasks/ui/task-form.tsx:77
+#: frontend/src/components/features/tasks/ui/task-form.tsx:79
 msgid "Input title"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:95
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:95
-#: frontend/src/components/features/tasks/ui/task-form.tsx:84
+#: frontend/src/components/features/calls/ui/call-form.tsx:96
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:96
+#: frontend/src/components/features/tasks/ui/task-form.tsx:85
 msgid "Please select due date!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:101
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:101
-#: frontend/src/components/features/tasks/ui/task-form.tsx:90
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:41
+#: frontend/src/components/features/calls/ui/call-form.tsx:102
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:102
+#: frontend/src/components/features/tasks/ui/task-form.tsx:91
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:42
 msgid "Select date and time"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:109
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:109
-#: frontend/src/components/features/tasks/ui/task-form.tsx:98
+#: frontend/src/components/features/calls/ui/call-form.tsx:110
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:110
+#: frontend/src/components/features/tasks/ui/task-form.tsx:99
 msgid "Please select assigned to!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:120
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:120
-#: frontend/src/components/features/notes/ui/note-form.tsx:74
-#: frontend/src/components/features/tasks/ui/task-form.tsx:116
+#: frontend/src/components/features/calls/ui/call-form.tsx:121
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:121
+#: frontend/src/components/features/notes/ui/note-form.tsx:69
+#: frontend/src/components/features/tasks/ui/task-form.tsx:117
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
 msgid "Details"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:128
-#: frontend/src/components/features/calls/ui/call-form.tsx:132
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:128
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:132
-#: frontend/src/components/features/tasks/ui/task-form.tsx:124
-#: frontend/src/components/features/tasks/ui/task-form.tsx:128
+#: frontend/src/components/features/calls/ui/call-form.tsx:129
+#: frontend/src/components/features/calls/ui/call-form.tsx:133
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:129
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:133
+#: frontend/src/components/features/tasks/ui/task-form.tsx:125
+#: frontend/src/components/features/tasks/ui/task-form.tsx:129
 msgid "Details..."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:140
+#: frontend/src/components/features/calls/ui/call-form.tsx:141
 msgid "Contact will have access to this call."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:141
+#: frontend/src/components/features/calls/ui/call-form.tsx:142
 msgid "Only you and your team can see this call."
 msgstr ""
 
@@ -1019,7 +1027,7 @@ msgid "Value is required"
 msgstr ""
 
 #: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:104
-#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:13
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:14
 msgid "Select a field first"
 msgstr ""
 
@@ -1027,7 +1035,7 @@ msgstr ""
 msgid "Add Field Override"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:63
+#: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:64
 #: frontend/src/pages/companies/internal/import-companies/ui/import-companies.tsx:219
 #: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:218
 #: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:224
@@ -1096,94 +1104,134 @@ msgstr ""
 msgid "Download Sample CSV"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/data/use-send-email.ts:44
+#: frontend/src/components/features/entity-emails/data/use-send-email.ts:47
 msgid "Email sent successfully"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:187
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:208
 msgid "Unable to display emails. No email found for this entity!"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:202
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:223
 msgid "Sent via CRM"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:205
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:226
 msgid "Filter Emails"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:218
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:239
 msgid "Select an Imap Account"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:235
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:256
 msgid "Sync Imap Emails"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:242
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:263
 msgid "Imap Syncing..."
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:247
-#: frontend/src/pages/contacts/contacts.tsx:147
-#: frontend/src/pages/leads/leads.tsx:132
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:268
+#: frontend/src/pages/contacts/contacts.tsx:151
+#: frontend/src/pages/leads/leads.tsx:144
 msgid "Search by name or email"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/entity-emails.tsx:256
+#: frontend/src/components/features/entity-emails/entity-emails.tsx:277
 msgid "Compose"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:113
-#: frontend/src/pages/Invoice/invoice.tsx:66
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:131
+#: frontend/src/pages/Invoice/invoice.tsx:68
 msgid "Send"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:120
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:138
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:117
+msgid "Reply"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:138
 msgid "Compose Email"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:126
-#: frontend/src/components/features/entity-emails/ui/email-view.tsx:33
-#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:73
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:148
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:49
+msgid "To"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:153
+msgid "Add Cc / Bcc"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:160
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:57
+msgid "Cc"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:162
+msgid "Visible to all recipients"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:165
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:65
+msgid "Bcc"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:167
+msgid "Hidden from other recipients"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:172
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:78
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:80
 msgid "Subject"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:128
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:174
 msgid "Please input subject!"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:130
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:176
 msgid "Enter email subject"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:134
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:180
 msgid "Message"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:136
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:182
 msgid "Please input message!"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:143
+#: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:189
 msgid "Write your message..."
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-view.tsx:18
+#: frontend/src/components/features/entity-emails/ui/email-recipient-field.tsx:43
+msgid "Type a valid email address to add it"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:44
 #: frontend/src/pages/invoice-create/ui/business-information.tsx:16
 #: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:24
 msgid "From"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-view.tsx:23
-msgid "To"
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:150
+msgid "Hide quoted text"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/email-view.tsx:77
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:150
+msgid "Show quoted text"
+msgstr ""
+
+#: frontend/src/components/features/entity-emails/ui/email-view.tsx:168
 msgid "Attachment(s)"
 msgstr ""
 
-#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:88
+#: frontend/src/components/features/entity-emails/ui/emails-table.tsx:96
 msgid "Sent By"
 msgstr ""
 
@@ -1203,7 +1251,7 @@ msgstr ""
 msgid "Please enter a valid URL"
 msgstr ""
 
-#: frontend/src/components/features/entity-form/ui/entity-input.tsx:118
+#: frontend/src/components/features/entity-form/ui/entity-input.tsx:126
 msgid "Enter number"
 msgstr ""
 
@@ -1282,17 +1330,21 @@ msgstr ""
 msgid "Could not update field setting"
 msgstr ""
 
-#: frontend/src/components/features/form-builder/field-wrapper.tsx:84
-#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:38
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:90
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:45
 msgid "Required"
 msgstr ""
 
-#: frontend/src/components/features/form-builder/field-wrapper.tsx:94
-#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:53
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:101
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:61
 msgid "Disabled"
 msgstr ""
 
-#: frontend/src/components/features/form-builder/field-wrapper.tsx:108
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:112
+msgid "Hidden"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/field-wrapper.tsx:126
 msgid "Select Width"
 msgstr ""
 
@@ -1315,7 +1367,7 @@ msgid "Add at least one option"
 msgstr ""
 
 #: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:51
-#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:66
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:89
 msgid "Edit field"
 msgstr ""
 
@@ -1324,7 +1376,7 @@ msgid "Edit Field"
 msgstr ""
 
 #: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:78
-#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:23
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:29
 #: frontend/src/components/utilities/input-select-option/input-select-option.tsx:38
 msgid "Label"
 msgstr ""
@@ -1333,7 +1385,11 @@ msgstr ""
 msgid "Label is required"
 msgstr ""
 
-#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:79
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:76
+msgid "Hide"
+msgstr ""
+
+#: frontend/src/components/features/form-builder/ui/edit-fields-group-modal.tsx:102
 msgid "Edit Fields Group"
 msgstr ""
 
@@ -1358,10 +1414,10 @@ msgid "Link updated successfully"
 msgstr ""
 
 #: frontend/src/components/features/links/links.tsx:93
-#: frontend/src/pages/company/company.tsx:158
-#: frontend/src/pages/contact/contact.tsx:172
-#: frontend/src/pages/deal/deal.tsx:163
-#: frontend/src/pages/lead/lead.tsx:164
+#: frontend/src/pages/company/company.tsx:160
+#: frontend/src/pages/contact/contact.tsx:178
+#: frontend/src/pages/deal/deal.tsx:166
+#: frontend/src/pages/lead/lead.tsx:170
 #: frontend/src/pages/lead/ui/conversion-form.tsx:64
 msgid "Links"
 msgstr ""
@@ -1413,6 +1469,21 @@ msgstr ""
 msgid "Created By"
 msgstr ""
 
+#: frontend/src/components/features/links/ui/link-table.tsx:87
+#: frontend/src/components/features/notes/internal/note-list-action-more.tsx:51
+#: frontend/src/components/features/related-entities/ui/detach-related-entities-popup.tsx:33
+#: frontend/src/pages/api-settings/ui/api-key-table.tsx:99
+#: frontend/src/pages/currencies/ui/home-currency-setup-modal.tsx:63
+#: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:63
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:92
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:104
+#: frontend/src/pages/deal-settings/ui/archived-stages/internal/archived-stages-table.tsx:78
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table.tsx:126
+#: frontend/src/pages/imap-settings/internal/imap-item-dropdown.tsx:58
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:153
+msgid "Yes"
+msgstr ""
+
 #: frontend/src/components/features/lookup-field-select/lookup-field-select.tsx:105
 #: frontend/src/components/features/product-lookup-select/product-lookup-select.tsx:115
 msgid "Search and select"
@@ -1444,11 +1515,11 @@ msgid "Meeting updated successfully"
 msgstr ""
 
 #: frontend/src/components/features/meetings/meetings.tsx:74
-#: frontend/src/pages/company/company.tsx:128
-#: frontend/src/pages/contact/contact.tsx:142
-#: frontend/src/pages/deal/deal.tsx:139
+#: frontend/src/pages/company/company.tsx:130
+#: frontend/src/pages/contact/contact.tsx:148
+#: frontend/src/pages/deal/deal.tsx:142
 #: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:14
-#: frontend/src/pages/lead/lead.tsx:140
+#: frontend/src/pages/lead/lead.tsx:146
 #: frontend/src/pages/meetings/meetings-page.tsx:54
 msgid "Meetings"
 msgstr ""
@@ -1461,11 +1532,11 @@ msgstr ""
 msgid "Update Meeting"
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:140
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:141
 msgid "Contact will have access to this meeting."
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:141
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:142
 msgid "Only you and your team can see this meeting."
 msgstr ""
 
@@ -1489,11 +1560,11 @@ msgstr ""
 msgid "Update Note"
 msgstr ""
 
-#: frontend/src/components/features/notes/ui/note-form.tsx:93
+#: frontend/src/components/features/notes/ui/note-form.tsx:88
 msgid "Contact will have access to this note."
 msgstr ""
 
-#: frontend/src/components/features/notes/ui/note-form.tsx:94
+#: frontend/src/components/features/notes/ui/note-form.tsx:89
 msgid "Only you and your team can see this note."
 msgstr ""
 
@@ -1607,24 +1678,24 @@ msgstr ""
 msgid "Bit SMTP Plugin Not Installed"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:101
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:111
 msgid "Tax Calculation:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:123
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:147
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:135
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:159
 msgid "Add Line Item"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:131
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:143
 msgid "Products:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:135
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:147
 msgid "Total product quantity:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:145
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:157
 msgid "Click \"Add Line Item\" to start adding products"
 msgstr ""
 
@@ -1656,7 +1727,7 @@ msgstr ""
 
 #: frontend/src/components/features/product-line-items/shared/options.tsx:79
 #: frontend/src/components/features/product-line-items/shared/options.tsx:80
-#: frontend/src/pages/imap-settings/ui/imap-item.tsx:26
+#: frontend/src/pages/imap-settings/ui/imap-item.tsx:31
 msgid "Custom"
 msgstr ""
 
@@ -1735,18 +1806,18 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: frontend/src/components/features/quill-editor/quill-editor.tsx:46
+#: frontend/src/components/features/quill-editor/quill-editor.tsx:83
 msgid "Attach selected file"
 msgstr ""
 
-#: frontend/src/components/features/quill-editor/quill-editor.tsx:49
+#: frontend/src/components/features/quill-editor/quill-editor.tsx:86
 #: frontend/src/components/features/wp-media-uploader/wp-media-uploader.tsx:32
 msgid "Select or Upload Files"
 msgstr ""
 
-#: frontend/src/components/features/related-entities/data/use-related-entity-fields.ts:58
-#: frontend/src/pages/contacts/data/use-contact-fields.tsx:39
-#: frontend/src/pages/leads/data/use-lead-fields.tsx:43
+#: frontend/src/components/features/related-entities/data/use-related-entity-fields.ts:59
+#: frontend/src/pages/contacts/data/use-contact-fields.tsx:42
+#: frontend/src/pages/leads/data/use-lead-fields.tsx:46
 msgid "Full Name"
 msgstr ""
 
@@ -1832,11 +1903,11 @@ msgid "Task updated successfully"
 msgstr ""
 
 #: frontend/src/components/features/tasks/tasks.tsx:75
-#: frontend/src/pages/company/company.tsx:120
-#: frontend/src/pages/contact/contact.tsx:134
-#: frontend/src/pages/deal/deal.tsx:133
+#: frontend/src/pages/company/company.tsx:122
+#: frontend/src/pages/contact/contact.tsx:140
+#: frontend/src/pages/deal/deal.tsx:136
 #: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:13
-#: frontend/src/pages/lead/lead.tsx:134
+#: frontend/src/pages/lead/lead.tsx:140
 #: frontend/src/pages/tasks/tasks-page.tsx:55
 msgid "Tasks"
 msgstr ""
@@ -1849,11 +1920,11 @@ msgstr ""
 msgid "Update Task"
 msgstr ""
 
-#: frontend/src/components/features/tasks/ui/task-form.tsx:110
+#: frontend/src/components/features/tasks/ui/task-form.tsx:111
 msgid "Please select priority!"
 msgstr ""
 
-#: frontend/src/components/features/tasks/ui/task-form.tsx:112
+#: frontend/src/components/features/tasks/ui/task-form.tsx:113
 msgid "Select priority"
 msgstr ""
 
@@ -2146,13 +2217,13 @@ msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-entity-settings-alert.tsx:80
 #: frontend/src/pages/company-create/company-create.tsx:111
-#: frontend/src/pages/company-settings/company-settings.tsx:25
+#: frontend/src/pages/company-settings/company-settings.tsx:21
 #: frontend/src/pages/contact-create/contact-create.tsx:124
-#: frontend/src/pages/contact-settings/contact-settings.tsx:25
+#: frontend/src/pages/contact-settings/contact-settings.tsx:21
 #: frontend/src/pages/deal-create/deal-create.tsx:195
-#: frontend/src/pages/deal-settings/deal-settings.tsx:29
+#: frontend/src/pages/deal-settings/deal-settings.tsx:25
 #: frontend/src/pages/lead-create/lead-create.tsx:112
-#: frontend/src/pages/lead-settings/lead-settings.tsx:28
+#: frontend/src/pages/lead-settings/lead-settings.tsx:24
 msgid "Field Settings"
 msgstr ""
 
@@ -2285,13 +2356,13 @@ msgid "Phone"
 msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:15
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:23
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:24
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:144
 msgid "Amount"
 msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:15
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:46
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:47
 msgid "Stage"
 msgstr ""
 
@@ -2358,46 +2429,46 @@ msgstr ""
 msgid "Sorry, you are not authorized to access this page!"
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:30
+#: frontend/src/pages/api-settings/api-settings.tsx:29
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:141
 msgid "REST API"
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:38
+#: frontend/src/pages/api-settings/api-settings.tsx:35
 msgid ""
 "Application Passwords require HTTPS, or a local environment type. Keys "
 "cannot be used until that is resolved."
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:41
+#: frontend/src/pages/api-settings/api-settings.tsx:38
 msgid "Application Passwords are unavailable on this site"
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:50
+#: frontend/src/pages/api-settings/api-settings.tsx:47
 msgid "External API access"
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:53
+#: frontend/src/pages/api-settings/api-settings.tsx:50
 msgid "Allow external apps to access the CRM using an API key."
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:66
+#: frontend/src/pages/api-settings/api-settings.tsx:63
 msgid "Base URL"
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:79
+#: frontend/src/pages/api-settings/api-settings.tsx:76
 msgid "API documentation"
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:88
+#: frontend/src/pages/api-settings/api-settings.tsx:85
 msgid "Manage the API keys used to reach this site from outside WordPress."
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:91
+#: frontend/src/pages/api-settings/api-settings.tsx:88
 msgid "Expand a user to see the keys they hold. A user may hold more than one."
 msgstr ""
 
-#: frontend/src/pages/api-settings/api-settings.tsx:101
+#: frontend/src/pages/api-settings/api-settings.tsx:98
 #: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:51
 msgid "Create API Key"
 msgstr ""
@@ -2495,7 +2566,7 @@ msgstr ""
 msgid "Revoke this key?"
 msgstr ""
 
-#: frontend/src/pages/bit-form-settings/bit-form-settings.tsx:12
+#: frontend/src/pages/bit-form-settings/bit-form-settings.tsx:10
 msgid "Bit Form Settings"
 msgstr ""
 
@@ -2667,7 +2738,7 @@ msgstr ""
 
 #: frontend/src/pages/companies/companies.tsx:98
 #: frontend/src/pages/company-create/company-create.tsx:19
-#: frontend/src/pages/company/company.tsx:62
+#: frontend/src/pages/company/company.tsx:63
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:36
 #: frontend/src/pages/Layout/ui/header/header.tsx:21
 msgid "Companies"
@@ -2677,7 +2748,7 @@ msgstr ""
 msgid "New Company"
 msgstr ""
 
-#: frontend/src/pages/companies/companies.tsx:135
+#: frontend/src/pages/companies/companies.tsx:139
 msgid "Search by name or website"
 msgstr ""
 
@@ -2832,7 +2903,7 @@ msgstr ""
 #: frontend/src/pages/contacts/internal/import-contacts/ui/import-contacts.tsx:227
 #: frontend/src/pages/deals/internal/import-deals/ui/import-deals.tsx:233
 #: frontend/src/pages/leads/internal/import-leads/ui/import-leads.tsx:231
-msgid "Support for a single upload."
+msgid "Supports a single upload."
 msgstr ""
 
 #: frontend/src/pages/companies/shared/constants.ts:5
@@ -2889,36 +2960,36 @@ msgstr ""
 msgid "Create & Add Another"
 msgstr ""
 
-#: frontend/src/pages/company-settings/company-settings.tsx:15
+#: frontend/src/pages/company-settings/company-settings.tsx:14
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:35
 msgid "Company Settings"
 msgstr ""
 
-#: frontend/src/pages/company/company.tsx:64
+#: frontend/src/pages/company/company.tsx:65
 msgid "Company Details"
 msgstr ""
 
-#: frontend/src/pages/company/company.tsx:112
-#: frontend/src/pages/contact/contact.tsx:113
-#: frontend/src/pages/deal/deal.tsx:114
-#: frontend/src/pages/lead/lead.tsx:115
+#: frontend/src/pages/company/company.tsx:114
+#: frontend/src/pages/contact/contact.tsx:119
+#: frontend/src/pages/deal/deal.tsx:117
+#: frontend/src/pages/lead/lead.tsx:121
 msgid "Overview"
 msgstr ""
 
-#: frontend/src/pages/company/company.tsx:171
+#: frontend/src/pages/company/company.tsx:173
 #: frontend/src/pages/contact-create/contact-create.tsx:21
-#: frontend/src/pages/contact/contact.tsx:64
+#: frontend/src/pages/contact/contact.tsx:65
 #: frontend/src/pages/contacts/contacts.tsx:101
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:29
 #: frontend/src/pages/Layout/ui/header/header.tsx:20
 msgid "Contacts"
 msgstr ""
 
-#: frontend/src/pages/company/company.tsx:184
-#: frontend/src/pages/contact/contact.tsx:185
+#: frontend/src/pages/company/company.tsx:186
+#: frontend/src/pages/contact/contact.tsx:191
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:43
 #: frontend/src/pages/deal-create/deal-create.tsx:38
-#: frontend/src/pages/deal/deal.tsx:64
+#: frontend/src/pages/deal/deal.tsx:65
 #: frontend/src/pages/deals/deals.tsx:111
 #: frontend/src/pages/Layout/ui/header/header.tsx:22
 msgid "Deals"
@@ -2927,7 +2998,7 @@ msgstr ""
 #: frontend/src/pages/company/internal/company-overview/company-overview.tsx:134
 #: frontend/src/pages/contact/internal/contact-overview/contact-overview.tsx:132
 #: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:252
-#: frontend/src/pages/Invoice/invoice.tsx:92
+#: frontend/src/pages/Invoice/invoice.tsx:94
 #: frontend/src/pages/lead/internal/lead-overview/lead-overview.tsx:133
 msgid "Timeline"
 msgstr ""
@@ -2945,14 +3016,14 @@ msgstr ""
 msgid "Create Contact"
 msgstr ""
 
-#: frontend/src/pages/contact-settings/contact-settings.tsx:15
+#: frontend/src/pages/contact-settings/contact-settings.tsx:14
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:30
 msgid "Contact Settings"
 msgstr ""
 
-#: frontend/src/pages/contact/contact.tsx:126
-#: frontend/src/pages/deal/deal.tsx:127
-#: frontend/src/pages/lead/lead.tsx:128
+#: frontend/src/pages/contact/contact.tsx:132
+#: frontend/src/pages/deal/deal.tsx:130
+#: frontend/src/pages/lead/lead.tsx:134
 msgid "Emails"
 msgstr ""
 
@@ -3057,16 +3128,16 @@ msgstr ""
 msgid "Are you sure you want to delete the contact?"
 msgstr ""
 
-#: frontend/src/pages/currencies/currencies.tsx:28
-#: frontend/src/pages/currencies/currencies.tsx:42
+#: frontend/src/pages/currencies/currencies.tsx:27
+#: frontend/src/pages/currencies/currencies.tsx:37
 msgid "Currencies"
 msgstr ""
 
-#: frontend/src/pages/currencies/currencies.tsx:56
+#: frontend/src/pages/currencies/currencies.tsx:49
 msgid "Other Currencies"
 msgstr ""
 
-#: frontend/src/pages/currencies/currencies.tsx:63
+#: frontend/src/pages/currencies/currencies.tsx:56
 #: frontend/src/pages/currencies/ui/currency-create-modal/currency-create-modal.tsx:16
 msgid "Add Currency"
 msgstr ""
@@ -3143,7 +3214,7 @@ msgid "Exchange Rate"
 msgstr ""
 
 #: frontend/src/pages/currencies/internal/currency-form.tsx:178
-msgid "the exchange rate field is required"
+msgid "The exchange rate field is required!"
 msgstr ""
 
 #: frontend/src/pages/currencies/internal/currency-form.tsx:186
@@ -3245,15 +3316,15 @@ msgstr ""
 msgid "No pending activities"
 msgstr ""
 
-#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:127
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:128
 msgid "deals"
 msgstr ""
 
-#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:180
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:181
 msgid "Deal Pipeline"
 msgstr ""
 
-#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:183
+#: frontend/src/pages/dashboard/ui/deal-pipeline.tsx:184
 msgid "Track deals across each pipeline stage"
 msgstr ""
 
@@ -3296,16 +3367,16 @@ msgstr ""
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:22
 #: frontend/src/pages/Layout/ui/header/header.tsx:19
 #: frontend/src/pages/lead-create/lead-create.tsx:20
-#: frontend/src/pages/lead/lead.tsx:64
-#: frontend/src/pages/leads/leads.tsx:96
+#: frontend/src/pages/lead/lead.tsx:65
+#: frontend/src/pages/leads/leads.tsx:97
 msgid "Leads"
 msgstr ""
 
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:50
-#: frontend/src/pages/deal/deal.tsx:169
+#: frontend/src/pages/deal/deal.tsx:172
 #: frontend/src/pages/deal/internal/deal-invoices/deal-invoices.tsx:51
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:98
-#: frontend/src/pages/Invoice/invoice.tsx:47
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:84
+#: frontend/src/pages/Invoice/invoice.tsx:49
 #: frontend/src/pages/invoices/invoices.tsx:49
 #: frontend/src/pages/Layout/ui/header/header.tsx:23
 msgid "Invoices"
@@ -3325,7 +3396,7 @@ msgid "Your best selling products"
 msgstr ""
 
 #: frontend/src/pages/dashboard/ui/top-products/top-products.tsx:23
-msgid "No products are added"
+msgid "No products added"
 msgstr ""
 
 #: frontend/src/pages/dashboard/ui/tutorial.tsx:16
@@ -3333,36 +3404,36 @@ msgid "Need Help?"
 msgstr ""
 
 #: frontend/src/pages/dashboard/ui/tutorial.tsx:19
-msgid "Watch tutorial for a quick start."
+msgid "Watch the tutorial for a quick start."
 msgstr ""
 
 #: frontend/src/pages/dashboard/ui/tutorial.tsx:29
 msgid "Watch Tutorials"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:18
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:104
+#: frontend/src/pages/data-management/data-management.tsx:19
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:106
 msgid "Recycle Bin"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:24
+#: frontend/src/pages/data-management/data-management.tsx:25
 msgid "Imports"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:30
+#: frontend/src/pages/data-management/data-management.tsx:31
 msgid "Exports"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:36
+#: frontend/src/pages/data-management/data-management.tsx:37
 msgid "History Logs"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:42
+#: frontend/src/pages/data-management/data-management.tsx:43
 #: frontend/src/pages/data-management/internal/workflow-logs/workflow-logs.tsx:5
 msgid "Workflow Logs"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:56
+#: frontend/src/pages/data-management/data-management.tsx:55
 msgid "Data Management"
 msgstr ""
 
@@ -3387,7 +3458,7 @@ msgid "Skipped"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:62
-msgid "Are you sure to delete this import?"
+msgid "Are you sure you want to delete this import?"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:66
@@ -3402,42 +3473,42 @@ msgstr ""
 msgid "Trash restored successfully"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:89
-msgid "Are you Confirm to delete permanently?"
-msgstr ""
-
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:91
-msgid "Empty"
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:90
+msgid "Are you sure you want to delete these items permanently?"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:93
+msgid "Empty"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:95
 msgid "Empty trash"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:107
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:114
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:109
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:116
 msgid "Empty Trash"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:18
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:19
 msgid "Restore deleted items"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:20
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:41
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:22
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:45
 msgid "Restore"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:22
-msgid "Are you Confirm to Restore?"
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:24
+msgid "Are you sure you want to restore the selected items?"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:28
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:31
 msgid "Delete permanently"
 msgstr ""
 
-#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:32
-msgid "Are you Confirm to Delete?"
+#: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-bulk-operations.tsx:36
+msgid "Are you sure you want to delete the selected items?"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:71
@@ -3449,7 +3520,7 @@ msgid "Deleted Time"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:91
-msgid "Are you sure to restore?"
+msgid "Are you sure you want to restore this?"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:95
@@ -3457,7 +3528,7 @@ msgid "Restore the item"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:103
-msgid "Are you sure to delete permanently?"
+msgid "Are you sure you want to delete this permanently?"
 msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:107
@@ -3497,16 +3568,16 @@ msgstr ""
 msgid "item"
 msgstr ""
 
-#: frontend/src/pages/deal-settings/deal-settings.tsx:18
+#: frontend/src/pages/deal-settings/deal-settings.tsx:17
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:40
 msgid "Deal Settings"
 msgstr ""
 
-#: frontend/src/pages/deal-settings/deal-settings.tsx:34
+#: frontend/src/pages/deal-settings/deal-settings.tsx:30
 msgid "Stage Settings"
 msgstr ""
 
-#: frontend/src/pages/deal-settings/deal-settings.tsx:39
+#: frontend/src/pages/deal-settings/deal-settings.tsx:35
 #: frontend/src/pages/deal-settings/ui/archived-stages/archived-stages.tsx:29
 msgid "Archived Stages"
 msgstr ""
@@ -3595,6 +3666,7 @@ msgid "Create Stage"
 msgstr ""
 
 #: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:78
+#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table-editable-cell.tsx:58
 msgid "Please input the stage name!"
 msgstr ""
 
@@ -3620,10 +3692,6 @@ msgstr ""
 
 #: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:106
 msgid "Color"
-msgstr ""
-
-#: frontend/src/pages/deal-settings/ui/stages/internal/stages-table-editable-cell.tsx:58
-msgid "Please Input Stage Name!"
 msgstr ""
 
 #: frontend/src/pages/deal-settings/ui/stages/internal/stages-table-editable-cell.tsx:95
@@ -3743,19 +3811,19 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:28
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:29
 msgid "Input amount"
 msgstr ""
 
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:33
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:34
 msgid "Closing Date"
 msgstr ""
 
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:35
-msgid "Please input Closing Date!"
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:36
+msgid "Please input the closing date!"
 msgstr ""
 
-#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:48
+#: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:49
 msgid "Please select Stage!"
 msgstr ""
 
@@ -3822,7 +3890,7 @@ msgstr ""
 msgid "Kanban"
 msgstr ""
 
-#: frontend/src/pages/general-settings/general-settings.tsx:11
+#: frontend/src/pages/general-settings/general-settings.tsx:9
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:15
 msgid "General Settings"
 msgstr ""
@@ -3992,11 +4060,11 @@ msgid "Enter country"
 msgstr ""
 
 #: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:105
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:66
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:65
 msgid "Save Changes"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/imap-settings.tsx:33
+#: frontend/src/pages/imap-settings/imap-settings.tsx:32
 msgid "IMAP Configurations"
 msgstr ""
 
@@ -4004,11 +4072,19 @@ msgstr ""
 msgid "Are you sure?"
 msgstr ""
 
+#: frontend/src/pages/imap-settings/shared/constants.ts:10
+msgid "Generate a Google app password"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/shared/constants.ts:14
+msgid "Generate a Zoho app password"
+msgstr ""
+
 #: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:47
 msgid "Imap settings created successfully"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:62
+#: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:71
 msgid "Create IMAP Settings"
 msgstr ""
 
@@ -4016,95 +4092,103 @@ msgstr ""
 msgid "Imap updated"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:71
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:80
 msgid "Update IMAP Settings"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:77
+#: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:86
 msgid "Imap settings not found!"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:12
-msgid "Title is required!"
-msgstr ""
-
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:17
-msgid "Platform"
-msgstr ""
-
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:21
-msgid "Platform is required!"
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:24
+msgid "Read guide"
 msgstr ""
 
 #: frontend/src/pages/imap-settings/ui/imap-form.tsx:28
-msgid "Gmail"
+msgid "Not sure how to configure IMAP settings?"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:29
-msgid "Zoho Mail"
-msgstr ""
-
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:30
-msgid "Other"
-msgstr ""
-
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:36
-msgid "Host"
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:35
+msgid "Title is required!"
 msgstr ""
 
 #: frontend/src/pages/imap-settings/ui/imap-form.tsx:40
-msgid "Host is required!"
+msgid "Platform"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:49
-msgid "Port"
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:44
+msgid "Platform is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:51
+msgid "Gmail"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:52
+msgid "Zoho Mail"
 msgstr ""
 
 #: frontend/src/pages/imap-settings/ui/imap-form.tsx:53
+msgid "Other"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:59
+msgid "Host"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:63
+msgid "Host is required!"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:72
+msgid "Port"
+msgstr ""
+
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:76
 msgid "Port is required!"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:62
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:85
 msgid "encryption"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:66
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:89
 msgid "Encryption is required!"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:73
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:96
 msgid "SSL"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:74
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:97
 msgid "TLS"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:80
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:103
 msgid "Username (Email)"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:88
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:126
 msgid "App Password"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:92
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:130
 msgid "Password is required!"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:101
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:139
 msgid "If the settings are not private, other users can use them to fetch emails."
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:104
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:142
 msgid "Private Settings"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-form.tsx:108
+#: frontend/src/pages/imap-settings/ui/imap-form.tsx:146
 msgid "The private field is required!"
 msgstr ""
 
-#: frontend/src/pages/imap-settings/ui/imap-item.tsx:29
+#: frontend/src/pages/imap-settings/ui/imap-item.tsx:34
 msgid "Private"
 msgstr ""
 
@@ -4116,19 +4200,19 @@ msgstr ""
 msgid "Invoice created successfully."
 msgstr ""
 
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:102
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:88
 msgid "Create Invoice"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:102
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:88
 msgid "Edit Invoice"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:110
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:96
 msgid "Payment settings"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:112
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:98
 msgid ""
 "Invoice payments are collected through WooCommerce. Enable \"Accept invoice "
 "payments via WooCommerce\" here so customers can pay this invoice at "
@@ -4136,7 +4220,7 @@ msgid ""
 msgstr ""
 
 #: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:40
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:58
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:52
 #: frontend/src/pages/invoice-settings/internal/terms/terms.tsx:35
 msgid "Terms"
 msgstr ""
@@ -4170,43 +4254,38 @@ msgstr ""
 msgid "Please select a deal first to add product line items"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:38
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:32
 #: frontend/src/pages/Invoice/ui/invoice-info-preview.tsx:34
 msgid "Invoice Number:"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:41
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:35
 msgid "Invoice prefix is required"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:43
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:43
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:37
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:42
 msgid "Invoice prefix cannot contain spaces"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:48
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:38
-msgid "INV"
-msgstr ""
-
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:52
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:46
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:162
 msgid "Invoice Date"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:54
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:48
 msgid "Invoice date is required"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:63
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:57
 msgid "Select Time"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:70
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:64
 msgid "Configure"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:84
+#: frontend/src/pages/invoice-create/ui/invoice-information.tsx:78
 msgid "Due date is required"
 msgstr ""
 
@@ -4244,19 +4323,19 @@ msgstr ""
 msgid "Invoice Prefix"
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:41
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:40
 msgid "Please provide an invoice prefix"
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:52
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:51
 msgid "Enter the prefix that will appear before each invoice number."
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:55
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:54
 msgid "Example: entering INV will produce invoices like INV-0001."
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:56
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:55
 msgid "Maximum 10 characters allowed."
 msgstr ""
 
@@ -4320,20 +4399,20 @@ msgstr ""
 msgid "Are you sure you want to delete the term?"
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/invoice-settings.tsx:16
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:15
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:50
 msgid "Invoice Settings"
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/invoice-settings.tsx:26
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:22
 msgid "Prefix Settings"
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/invoice-settings.tsx:31
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:27
 msgid "Configure Payment Terms"
 msgstr ""
 
-#: frontend/src/pages/invoice-settings/invoice-settings.tsx:36
+#: frontend/src/pages/invoice-settings/invoice-settings.tsx:32
 msgid "Payments"
 msgstr ""
 
@@ -4494,7 +4573,7 @@ msgid "Light"
 msgstr ""
 
 #: frontend/src/pages/Layout/ui/Layout.tsx:22
-#: frontend/src/pages/settings-layout/settings-layout.tsx:14
+#: frontend/src/pages/settings-layout/settings-layout.tsx:25
 msgid "Loading"
 msgstr ""
 
@@ -4516,12 +4595,12 @@ msgstr ""
 msgid "Conversion mapping saved successfully"
 msgstr ""
 
-#: frontend/src/pages/lead-settings/lead-settings.tsx:17
+#: frontend/src/pages/lead-settings/lead-settings.tsx:16
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:25
 msgid "Lead Settings"
 msgstr ""
 
-#: frontend/src/pages/lead-settings/lead-settings.tsx:33
+#: frontend/src/pages/lead-settings/lead-settings.tsx:29
 msgid "Conversion Mapping"
 msgstr ""
 
@@ -4596,8 +4675,7 @@ msgid "What happens during conversion:"
 msgstr ""
 
 #: frontend/src/pages/lead/ui/conversion-modal.tsx:79
-#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:81
-msgid "New contacts, companies, deals are created via field mapping."
+msgid "New contacts, companies, and deals are created via field mapping."
 msgstr ""
 
 #: frontend/src/pages/lead/ui/conversion-modal.tsx:81
@@ -4672,14 +4750,28 @@ msgstr ""
 msgid "Convert Leads"
 msgstr ""
 
+#: frontend/src/pages/leads/internal/lead-bulk-operations/ui/conversion-modal.tsx:81
+msgid "New contacts, companies, deals are created via field mapping."
+msgstr ""
+
 #: frontend/src/pages/leads/internal/lead-bulk-operations/ui/delete-modal.tsx:43
 msgid ""
 "Are you sure you want to delete the selected leads? Deleted leads will be "
 "moved to the Trash."
 msgstr ""
 
-#: frontend/src/pages/leads/leads.tsx:102
+#: frontend/src/pages/leads/leads.tsx:103
 msgid "New Lead"
+msgstr ""
+
+#: frontend/src/pages/leads/leads.tsx:113
+msgid "Capture with forms"
+msgstr ""
+
+#: frontend/src/pages/leads/leads.tsx:115
+msgid ""
+"Automatically create leads in Bit CRM from website form submissions and "
+"optionally tag them by the form they came from."
 msgstr ""
 
 #: frontend/src/pages/leads/ui/delete-lead-popup.tsx:17
@@ -4766,11 +4858,11 @@ msgstr ""
 msgid "Complete Setup"
 msgstr ""
 
-#: frontend/src/pages/others-integrations-settings/others-integrations-settings.tsx:12
+#: frontend/src/pages/others-integrations-settings/others-integrations-settings.tsx:11
 msgid "Other Integrations Settings"
 msgstr ""
 
-#: frontend/src/pages/others-integrations-settings/others-integrations-settings.tsx:18
+#: frontend/src/pages/others-integrations-settings/others-integrations-settings.tsx:15
 msgid ""
 "Extend Bit CRM with these companion plugins. Install and activate a plugin "
 "to unlock its integration."
@@ -4882,7 +4974,7 @@ msgid "IMAP Settings"
 msgstr ""
 
 #: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:65
-#: frontend/src/pages/smtp-settings/smtp-settings.tsx:12
+#: frontend/src/pages/smtp-settings/smtp-settings.tsx:10
 msgid "SMTP Settings"
 msgstr ""
 
@@ -5107,7 +5199,7 @@ msgstr ""
 msgid "Coupon tag prefix"
 msgstr ""
 
-#: frontend/src/pages/woo-settings/woo-settings.tsx:14
+#: frontend/src/pages/woo-settings/woo-settings.tsx:12
 msgid "WooCommerce Settings"
 msgstr ""
 

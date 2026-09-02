@@ -6,6 +6,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import useEntityRelatedListsCount from '@common/hooks/use-entity-related-lists-count'
 import useTags from '@common/hooks/use-tags'
 import { ICONS } from '@common/icons'
+import AiSummaryButton from '@features/ai-chat/summary'
 import Attachments from '@features/attachments'
 import Calls from '@features/calls'
 import EntityEmails from '@features/entity-emails'
@@ -68,6 +69,11 @@ const Lead = () => {
               ]}
             />
             <div className="flex items-center gap-2">
+              <AiSummaryButton
+                entityId={leadId}
+                module={MODULES.LEAD}
+                name={renderFullName(lead?.title, lead?.first_name, lead.last_name)}
+              />
               <PrevNextNavigation
                 module={MODULES.LEAD}
                 nextId={lead?.next_id}

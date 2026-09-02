@@ -20,7 +20,7 @@ export default function TopProducts() {
           <Typography.Text className="mb-4 text-[#9090A8]">
             {__('Your best selling products')}
           </Typography.Text>
-          <Empty description={__('No products are added')} />
+          <Empty description={__('No products added')} />
         </div>
       </LockedOverlay>
     </DashboardCard>

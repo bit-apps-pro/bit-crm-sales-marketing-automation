@@ -10,8 +10,12 @@ import {
 import { mapEditorStateToPreviewData } from '@pages/Invoice/shared/map-invoice-preview-data'
 import InvoicePreview from '@pages/Invoice/ui/invoice-preview'
 import Breadcrumb from '@utilities/breadcrumb/breadcrumb'
+import InvoicePreviewSkeleton from '@utilities/invoice-skeleton/invoice-preview-skeleton'
+import useInvoicePageScale, {
+  INVOICE_PAGE_WIDTH
+} from '@utilities/invoice-skeleton/use-invoice-page-scale'
 import { Card, Form, type FormInstance } from 'antd'
-import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { type ReactNode } from 'react'
 
 import {
   useContactInformationSelect,
@@ -27,22 +31,17 @@ import InvoiceSubmitButton from '../ui/invoice-submit-button'
 interface InvoiceFormLayoutProps {
   children: ReactNode
   form: FormInstance
+  isLoading?: boolean
   mode: 'create' | 'edit'
 }
 
-const PAGE_WIDTH = 794
-const PAGE_HEIGHT = 1123
-
-function calculateScale(containerWidth: number, containerHeight: number) {
-  if (!containerWidth || !containerHeight) return 1
-  const scaleW = containerWidth / PAGE_WIDTH
-  const scaleH = containerHeight / PAGE_HEIGHT
-  return Math.min(scaleW, scaleH, 1) // clamp to 1 so it doesn't upscale
-}
-
-export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormLayoutProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const [scale, setScale] = useState(1)
+export default function InvoiceFormLayout({
+  children,
+  form,
+  isLoading = false,
+  mode
+}: InvoiceFormLayoutProps) {
+  const { containerRef, scale } = useInvoicePageScale()
 
   const topSectionNotes = useInvoiceTopSectionNotesSelect()
   const bottomSectionNotes = useInvoiceBottomSectionNotesSelect()
@@ -59,19 +58,6 @@ export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormL
   const invoiceDate = Form.useWatch('invoiceDate', form)
   const dueDate = Form.useWatch('dueDate', form)
   const invoiceTerm = Form.useWatch('invoiceTerm', form)
-
-  useEffect(() => {
-    const element = containerRef.current
-    if (!element) return
-
-    const ro = new ResizeObserver(([entry]) => {
-      const { height, width } = entry.contentRect
-      setScale(calculateScale(width, height))
-    })
-
-    ro.observe(element)
-    return () => ro.disconnect()
-  }, [])
 
   const previewData = mapEditorStateToPreviewData({
     bottomSectionNotes,
@@ -118,24 +104,28 @@ export default function InvoiceFormLayout({ children, form, mode }: InvoiceFormL
           </div>
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <Card className="border border-solid border-[#EBEAFF] lg:col-span-2 dark:border-neutral-700 dark:bg-neutral-900">
+          <Card className="border border-[#EBEAFF] shadow-none lg:col-span-2 dark:border-neutral-700 dark:bg-neutral-900">
             {children}
           </Card>
-          <div
-            className="lg:sticky lg:top-4 lg:self-start"
-            ref={containerRef}
-            style={{ aspectRatio: '210 / 297' }}
-          >
+          {isLoading ? (
+            <InvoicePreviewSkeleton />
+          ) : (
             <div
-              style={{
-                transform: `scale(${scale})`,
-                transformOrigin: isRtl() ? 'top right' : 'top left',
-                width: PAGE_WIDTH
-              }}
+              className="lg:sticky lg:top-4 lg:self-start"
+              ref={containerRef}
+              style={{ aspectRatio: '210 / 297' }}
             >
-              <InvoicePreview data={previewData} />
+              <div
+                style={{
+                  transform: `scale(${scale})`,
+                  transformOrigin: isRtl() ? 'top right' : 'top left',
+                  width: INVOICE_PAGE_WIDTH
+                }}
+              >
+                <InvoicePreview data={previewData} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

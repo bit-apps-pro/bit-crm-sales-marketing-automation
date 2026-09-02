@@ -50,10 +50,11 @@ export default function EmailsTable({ emails, isLoading }: EmailsTableProps) {
     () => [
       {
         dataIndex: 'subject',
+        ellipsis: true,
         key: 'subject',
         render: (_: unknown, record: FormattedEmailData) => (
           <div
-            className="group flex h-full w-full cursor-pointer flex-col hover:text-blue-500"
+            className="group flex w-96 cursor-pointer flex-col hover:text-blue-500"
             onClick={() => handleEmailView(record?.id)}
             onKeyDown={e => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -64,10 +65,16 @@ export default function EmailsTable({ emails, isLoading }: EmailsTableProps) {
             role="button"
             tabIndex={0}
           >
-            <Typography.Title className="mb-0 group-hover:text-blue-400" level={5}>
+            <Typography.Title
+              className="mb-0 group-hover:text-blue-400"
+              ellipsis={{ tooltip: record?.subject }}
+              level={5}
+            >
               {record?.subject}
             </Typography.Title>
-            <Typography.Text>{record?.receivedBy}</Typography.Text>
+            <Typography.Text ellipsis={{ tooltip: record?.receivedBy }} type="secondary">
+              {record?.receivedBy}
+            </Typography.Text>
           </div>
         ),
         title: __('Subject')
@@ -84,6 +91,7 @@ export default function EmailsTable({ emails, isLoading }: EmailsTableProps) {
       },
       {
         dataIndex: 'sentBy',
+        ellipsis: true,
         key: 'sentBy',
         title: __('Sent By')
       },

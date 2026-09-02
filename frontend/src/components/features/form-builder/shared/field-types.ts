@@ -1,5 +1,6 @@
 export interface UpdateCustomFieldPayloadType {
   help_text?: string
+  hidden?: boolean
   id: number
   label?: string
   max?: number
@@ -31,6 +32,7 @@ export interface FieldOption {
 export interface CustomFieldType {
   attributes: {
     help_text?: string
+    hidden?: boolean
     max?: number
     min?: number
     options?: FieldOption[]
@@ -51,6 +53,7 @@ export interface BaseFieldType {
   default_value?: string
   field_key: string
   group_fields?: Record<string, BaseFieldType>
+  hidden?: boolean
   id: number
   is_always_required?: boolean
   is_custom?: boolean

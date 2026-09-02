@@ -7,6 +7,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import useEntityRelatedListsCount from '@common/hooks/use-entity-related-lists-count'
 import useTags from '@common/hooks/use-tags'
 import { ICONS } from '@common/icons'
+import AiSummaryButton from '@features/ai-chat/summary'
 import Attachments from '@features/attachments'
 import Calls from '@features/calls/calls'
 import EntityEmails from '@features/entity-emails'
@@ -72,6 +73,7 @@ export default function Deal() {
               ]}
             />
             <div className="flex items-center gap-2">
+              <AiSummaryButton entityId={dealId} module={MODULES.DEAL} name={deal.name} />
               <PrevNextNavigation
                 module={MODULES.DEAL}
                 nextId={deal?.next_id}
@@ -98,6 +100,7 @@ export default function Deal() {
             <Tabs
               activeKey={activeTab}
               animated
+              destroyOnHidden
               items={[
                 {
                   capability: CAPABILITIES.DEAL.VIEW,

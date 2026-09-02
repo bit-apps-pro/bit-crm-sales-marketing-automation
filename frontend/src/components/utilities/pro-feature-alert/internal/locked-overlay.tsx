@@ -17,6 +17,11 @@ export default function LockedOverlay({
   featureName,
   showIcon = true
 }: LockedOverlayProps) {
+  // The mock behind the banner can be much taller than the viewport, so the banner is stuck
+  // to the app scroller and sized to its visible area instead of being centred across the
+  // whole mock. 129px = 32px admin bar + 4px layout margin/border + 64px header above the
+  // scroller, 8px margin/border below it, and 17px settings padding/border above the overlay.
+  // `max-h-full` keeps short overlays (e.g. invoice panels) centred exactly as before.
   return (
     <div className={cn('relative', className)}>
       <div
@@ -32,8 +37,10 @@ export default function LockedOverlay({
       >
         {children}
       </div>
-      <div className="absolute inset-0 flex items-center justify-center p-4">
-        <ProBanner featureName={featureName} showIcon={showIcon} />
+      <div className="absolute inset-0">
+        <div className="sticky top-0 flex h-[calc(100vh-129px)] max-h-full items-center justify-center p-4">
+          <ProBanner featureName={featureName} showIcon={showIcon} />
+        </div>
       </div>
     </div>
   )

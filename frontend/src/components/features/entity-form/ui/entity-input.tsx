@@ -3,6 +3,7 @@ import { dividerOrientation } from '@common/helpers/direction'
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
+import { DATE_FORMAT } from '@config/date-format'
 import LookupFieldSelect from '@features/lookup-field-select'
 import LookupField from '@utilities/lookup-field'
 import { Checkbox, DatePicker, Divider, Form, Input, InputNumber, Radio, Select } from 'antd'
@@ -75,7 +76,14 @@ export default function EntityInput({
       }
 
       case 'date': {
-        return <DatePicker className="w-full" disabled={disabled} name={name || fieldKey} />
+        return (
+          <DatePicker
+            className="w-full"
+            disabled={disabled}
+            format={DATE_FORMAT}
+            name={name || fieldKey}
+          />
+        )
       }
 
       case 'lookup_autocomplete': {

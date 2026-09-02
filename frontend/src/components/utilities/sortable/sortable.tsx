@@ -51,7 +51,7 @@ const Sortable = ({ children, items, onSortChange, orders }: Props<FieldItem[], 
   }
 
   return (
-    <div className="space-y-5">
+    <div className="isolate space-y-5">
       <DndContext
         collisionDetection={closestCenter}
         modifiers={[restrictToVerticalAxis, restrictToParentElement]}

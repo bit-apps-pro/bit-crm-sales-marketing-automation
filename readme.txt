@@ -4,7 +4,7 @@ Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -224,6 +224,23 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
 
 == Changelog ==
 
+= 1.1.0 (August 31, 2026) =
+* Features:
+   * Emails: Cc and Bcc can be added when composing, and emails can be replied to from the email view, threaded under the original with the earlier message quoted below.
+   * AI assistant (Pro): An AI Summary button on record pages, replies that stream in with a Stop button, and any OpenAI-compatible provider such as xAI, DeepSeek or OpenRouter can now be used alongside Claude, OpenAI and Gemini.
+   * Fields: Any field can now be hidden, removing it from forms, lists, filters and the client portal while keeping its saved values.
+   * Text editor: Text and background colors can now be chosen and are kept when saved.
+* Improvements:
+   * Dates: Date pickers and date columns now follow the date and time format set in WordPress.
+   * Activities: Tasks, meetings and calls open on the first item, move to a neighbour after a delete and switch between items without a loading flash.
+* Security:
+   * Permissions: Attachment downloads, related-record lookups, invoice term options and sample CSV downloads now check the right capability, and portal sign-up no longer reveals whether an email belongs to a contact.
+   * CSV export: Values that begin with a formula character are escaped so spreadsheets do not run them.
+* Fixed:
+   * Emails: Synced emails now show their real sender and recipients, including Cc and Bcc.
+   * Invoices: Line items must have a product name and unit price, the prefix defaults to INV when none is saved and the invoice date defaults to today.
+   * Currency: Records created with a blank currency now use the home currency.
+
 = 1.0.9 (August 24, 2026) =
 * Features:
    * FluentCart customer sync (Pro): FluentCart buyers now become CRM contacts as orders come in, with automatic product and coupon tags, optional tag prefixes, and a background backfill of orders placed before sync was switched on.
@@ -279,5 +296,5 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
 
 == Upgrade Notice ==
 
-= 1.0.9 =
-Adds FluentCart customer sync and FluentCart products as deal and invoice line items in Pro, with a new FluentCart settings page, and stops blank line items being saved.
+= 1.1.0 =
+Adds Cc, Bcc and replies to email, hidden fields, color in text editor, and an AI summary button, streaming replies and OpenAI-compatible providers in Pro, and tightens permission checks on downloads, exports and related-record lookups.

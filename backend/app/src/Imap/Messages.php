@@ -89,6 +89,33 @@ class Messages
         return $this->imapClientInstance->getSentMessageByUid($uid);
     }
 
+    /**
+     * Flatten an address header attribute (to, cc, bcc) to plain addresses.
+     *
+     * Sync runs with setFetchBody(false), which skips the body but still
+     * fetches headers, so these are populated on the light pass. BCC is
+     * usually absent: the sending MTA strips it from every delivered copy and
+     * it survives only in our own sent copy.
+     *
+     * @param mixed $attribute
+     *
+     * @return string[]
+     */
+    private function addressList($attribute): array
+    {
+        $addresses = [];
+
+        foreach ($attribute->toArray() as $address) {
+            $mail = \is_object($address) && !empty($address->mail) ? strtolower(trim($address->mail)) : '';
+
+            if ($mail !== '') {
+                $addresses[$mail] = true;
+            }
+        }
+
+        return array_keys($addresses);
+    }
+
     private function formatMessages(array $messages)
     {
         $storedMessageIds = ImapService::getStoredMessageIds($this->email, $this->imapSettingsId);
@@ -101,13 +128,26 @@ class Messages
                 continue;
             }
 
+            $from = strtolower(trim((string) ($message->get('from')->first()->mail ?? '')));
+
+            /*
+             * The real headers are stored because entity_email alone cannot
+             * say who the mail was addressed to: Gmail's IMAP search matches
+             * a contact that was only copied, so the same message is synced
+             * for the To recipient and every Cc recipient alike, and only the
+             * headers tell them apart in the timeline.
+             */
             $data = [
                 'email_uid'       => $message->uid,
                 'entity_email'    => $this->email,
                 'email_date'      => $message->get('date')->first()->format('Y-m-d H:i:s'),
                 'subject'         => $message->get('subject')->first(),
-                'email_direction' => $message->get('from')->first()->mail === $this->email
+                'email_direction' => $from === strtolower(trim($this->email))
                 ? CommonConstant::EMAIL_DIRECTION_RECEIVED : CommonConstant::EMAIL_DIRECTION_SENT,
+                'from_email' => $from,
+                'to_emails'  => $this->addressList($message->get('to')),
+                'cc'         => $this->addressList($message->get('cc')),
+                'bcc'        => $this->addressList($message->get('bcc')),
                 'imap_id'    => $this->imapSettingsId,
                 'message_id' => $messageId,
             ];

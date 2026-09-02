@@ -112,12 +112,16 @@ export default function Companies() {
         </div>
 
         <Space.Compact direction="horizontal" size="large">
-          <ImportCompanies customFields={customFields} systemDefinedFields={systemDefinedFields} />
-          <ExportCompanies
-            customFields={customFields}
-            systemDefinedFields={systemDefinedFields}
-            totalCompanies={totalCompanies}
-          />
+          <If conditions={checkCapability(CAPABILITIES.COMPANY.IMPORT)}>
+            <ImportCompanies customFields={customFields} systemDefinedFields={systemDefinedFields} />
+          </If>
+          <If conditions={checkCapability(CAPABILITIES.COMPANY.EXPORT)}>
+            <ExportCompanies
+              customFields={customFields}
+              systemDefinedFields={systemDefinedFields}
+              totalCompanies={totalCompanies}
+            />
+          </If>
         </Space.Compact>
       </div>
 

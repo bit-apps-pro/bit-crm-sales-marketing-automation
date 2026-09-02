@@ -18,18 +18,22 @@ interface QueryParam {
 
 export interface Email {
   attachments?: Attachment[]
+  bcc?: string[]
   body?: string
+  cc?: string[]
   email_date: string
   email_direction: string
   email_uid: number
   entity_email: string
   entity_name: string
+  from_email?: null | string
   id: number
   imap_id: number
   imap_username: string
   sender_name?: string
   sent_from?: string
   subject: string
+  to_emails?: null | string[]
 }
 
 interface EmailsResType {

@@ -86,7 +86,7 @@ export default function LinkTable({ links, loading }: { links?: LinkType[]; load
                 cancelText={__('No')}
                 okText={__('Yes')}
                 onConfirm={() => handleDelete(record.id!)}
-                title={__('Are you sure to delete this?')}
+                title={__('Are you sure you want to delete this?')}
               >
                 <Button danger icon={<LuTrash2 />} size="small" type="link" />
               </Popconfirm>

@@ -1,4 +1,8 @@
 import { applyDirection } from '@common/helpers/direction'
+// Registers the dayjs plugins that formats converted from the site's WordPress
+// date setting rely on. Imported for the side effect only, and before anything
+// that renders a picker.
+import '@config/dayjs-setup'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { lazy, StrictMode, Suspense } from 'react'
 import '@resource/styles/antd-reset.css'

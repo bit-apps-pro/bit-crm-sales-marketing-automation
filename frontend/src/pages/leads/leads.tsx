@@ -8,6 +8,7 @@ import useDebounceState from '@common/hooks/useDebounceState'
 import AdvancedFilter from '@features/advanced-filter'
 import { useActiveFilters } from '@features/advanced-filter/state/use-advance-filter-persist-store'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
+import IntegrationSettingsNavigation from '@features/integration-settings-navigation'
 import TagFilter from '@features/tag-filter'
 import If from '@utilities/If'
 import Pagination from '@utilities/pagination'
@@ -108,13 +109,24 @@ export default function Leads() {
           </If>
         </div>
         <div className="flex flex-wrap items-center justify-end gap-2">
+          <IntegrationSettingsNavigation
+            label={__('Capture with forms')}
+            to="/settings/bit-form-settings"
+            tooltip={__(
+              'Automatically create leads in Bit CRM from website form submissions and optionally tag them by the form they came from.'
+            )}
+          />
           <Space.Compact direction="horizontal" size="large">
-            <ImportLeads customFields={customFields} systemDefinedFields={systemDefinedFields} />
-            <ExportLeads
-              customFields={customFields}
-              systemDefinedFields={systemDefinedFields}
-              totalLeads={totalLeads}
-            />
+            <If conditions={checkCapability(CAPABILITIES.LEAD.IMPORT)}>
+              <ImportLeads customFields={customFields} systemDefinedFields={systemDefinedFields} />
+            </If>
+            <If conditions={checkCapability(CAPABILITIES.LEAD.EXPORT)}>
+              <ExportLeads
+                customFields={customFields}
+                systemDefinedFields={systemDefinedFields}
+                totalLeads={totalLeads}
+              />
+            </If>
           </Space.Compact>
         </div>
       </div>

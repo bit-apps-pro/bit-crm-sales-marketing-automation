@@ -17,6 +17,12 @@ export default function EditFieldsGroupModal<T extends BaseFieldType>({
     setIsModalOpen(open)
   }
 
+  // Never lock both switches at once, or a field saved as disabled + required
+  // could not be recovered from the UI.
+  const lockRequired = ({ hidden, status }: T) => Boolean(hidden) || status === false
+  const lockDisabled = ({ hidden, required, status }: T) =>
+    Boolean(hidden) || (Boolean(required) && status !== false)
+
   const columns: TableColumnsType<T> = [
     {
       dataIndex: 'label',
@@ -24,12 +30,13 @@ export default function EditFieldsGroupModal<T extends BaseFieldType>({
     },
     {
       align: 'center',
-      render: ({ field_key: fieldKey, required }: T) => (
+      render: (field: T) => (
         <Switch
-          defaultChecked={!!required}
+          defaultChecked={!!field.required}
+          disabled={lockRequired(field)}
           onChange={value =>
             onStateChange({
-              [fieldKey]: { required: value }
+              [field.field_key]: { required: value }
             })
           }
           size="small"
@@ -39,18 +46,34 @@ export default function EditFieldsGroupModal<T extends BaseFieldType>({
     },
     {
       align: 'center',
-      render: ({ field_key: fieldKey, status }: T) => (
+      render: (field: T) => (
         <Switch
-          defaultChecked={status === undefined ? false : !status}
+          defaultChecked={field.status === false}
+          disabled={lockDisabled(field)}
           onChange={value =>
             onStateChange({
-              [fieldKey]: { status: !value }
+              [field.field_key]: { status: !value }
             })
           }
           size="small"
         />
       ),
       title: __('Disabled')
+    },
+    {
+      align: 'center',
+      render: ({ field_key: fieldKey, hidden }: T) => (
+        <Switch
+          defaultChecked={Boolean(hidden)}
+          onChange={value =>
+            onStateChange({
+              [fieldKey]: { hidden: value }
+            })
+          }
+          size="small"
+        />
+      ),
+      title: __('Hide')
     }
   ]
 

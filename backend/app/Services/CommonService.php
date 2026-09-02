@@ -114,6 +114,10 @@ class CommonService
         $required = [];
 
         foreach ($fields as $field) {
+            if (!empty($field['hidden'])) {
+                continue;
+            }
+
             $groupFields = $field['group_fields'] ?? [];
 
             if (!empty($groupFields)) {

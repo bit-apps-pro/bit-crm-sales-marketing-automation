@@ -12,12 +12,13 @@ const { Link } = Typography
 
 export default function DownloadMedia({ children, className, fileName, mediaId }: DownloadMediaProps) {
   const { API_URL, NONCE } = config
-  const action = 'download-media'
 
-  const uri = new URL(`${API_URL}/${action}`)
+  // The free plugin serves attachments from the admin route only; the client
+  // portal and its `client-portal/media/download-media` endpoint ship with pro.
+  const uri = new URL(`${API_URL}/download-media`)
   uri.searchParams.append('mediaId', mediaId.toString())
   uri.searchParams.append('fileName', fileName)
-  uri.searchParams.append('_wpnonce', NONCE)
+  uri.searchParams.append('_wpnonce', SERVER_VARIABLES?.nonce || NONCE)
 
   return (
     <Link className={className} href={uri.href} rel="noopener noreferrer" target="_blank">

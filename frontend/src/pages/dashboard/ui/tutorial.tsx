@@ -16,7 +16,7 @@ export default function Tutorial() {
               {__('Need Help?')}
             </Typography.Title>
             <Typography.Text className="mb-0 block break-words text-[#9090A8]">
-              {__('Watch tutorial for a quick start.')}
+              {__('Watch the tutorial for a quick start.')}
             </Typography.Text>
           </div>
           <div className="order-3 2xl:order-none">

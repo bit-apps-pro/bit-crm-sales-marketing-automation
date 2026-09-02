@@ -1,6 +1,6 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
-import { unslugify } from '@common/helpers/globalHelpers'
+import { formatDate, unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
@@ -75,6 +75,10 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
 
             if (field.field_key === 'owner_id' && record?.owner_name) {
               return record.owner_name
+            }
+
+            if (field.type === 'date') {
+              return formatDate(text)
             }
 
             if (field.type === 'select' || field.type === 'radio') {

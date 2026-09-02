@@ -86,8 +86,10 @@ export default function RecycleBin() {
 
   const showDeleteAllConfirm = () => {
     modal.confirm({
-      content: __('Are you Confirm to delete permanently?'),
-      icon: <LuInfo size={18} />,
+      cancelButtonProps: { className: 'rounded-full' },
+      content: __('Are you sure you want to delete these items permanently?'),
+      icon: <LuInfo className="me-3 mt-0.5 shrink-0" size={18} />,
+      okButtonProps: { className: 'rounded-full' },
       okText: __('Empty'),
       onOk: () => handleEmptyTrash(),
       title: __('Empty trash')

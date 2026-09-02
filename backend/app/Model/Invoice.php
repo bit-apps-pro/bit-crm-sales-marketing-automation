@@ -14,6 +14,8 @@ class Invoice extends Model
         'PREFIX' => 'invoice_prefix',
     ];
 
+    public const DEFAULT_PREFIX = 'INV';
+
     public const STATUS_DRAFT = 'draft';
 
     public const STATUS_OVERDUE = 'overdue';

@@ -7,7 +7,7 @@ import If from '@utilities/If'
 import ThemeToggle from '@utilities/theme-toggle'
 import { Button, Layout } from 'antd'
 import { LuSettings } from 'react-icons/lu'
-import { Link, useLocation, useNavigate } from 'react-router'
+import { Link, useHref, useLocation } from 'react-router'
 
 import HeaderMoreDropdown from './header-more-dropdown'
 import HeaderNavItem from './header-nav-item'
@@ -24,9 +24,9 @@ const navItems = [
 ]
 
 export default function Header() {
-  const navigate = useNavigate()
   const location = useLocation()
   const isSettingsActive = location.pathname.startsWith('/settings')
+  const settingsHref = useHref('/settings')
 
   return (
     <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-6 py-5">
@@ -62,8 +62,8 @@ export default function Header() {
               isSettingsActive && 'border-none bg-primary'
             ])}
             classNames={{ icon: ' flex items-center' }}
+            href={settingsHref}
             icon={<LuSettings className={isSettingsActive ? 'text-white' : 'text-gray-500'} size={18} />}
-            onClick={() => navigate('/settings')}
             shape="circle"
           />
         </If>

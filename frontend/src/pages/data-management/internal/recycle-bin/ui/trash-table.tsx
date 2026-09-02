@@ -88,7 +88,7 @@ export default function TrashTable({ isLoading, onDelete, onRestore, trashes }: 
             <If conditions={checkCapability(CAPABILITIES.SETTING.DATA_MANAGEMENT)}>
               <Popconfirm
                 cancelText={__('No')}
-                description={__('Are you sure to restore?')}
+                description={__('Are you sure you want to restore this?')}
                 okText={__('Yes')}
                 onConfirm={() => onRestore([record.id])}
                 placement="topRight"
@@ -100,7 +100,7 @@ export default function TrashTable({ isLoading, onDelete, onRestore, trashes }: 
             <If conditions={checkCapability(CAPABILITIES.SETTING.DATA_MANAGEMENT)}>
               <Popconfirm
                 cancelText={__('No')}
-                description={__('Are you sure to delete permanently?')}
+                description={__('Are you sure you want to delete this permanently?')}
                 okText={__('Yes')}
                 onConfirm={() => onDelete([record.id])}
                 placement="topRight"

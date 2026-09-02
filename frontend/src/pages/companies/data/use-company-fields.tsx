@@ -1,3 +1,4 @@
+import { filterHiddenFields } from '@common/helpers/filter-hidden-fields'
 import queryRequest from '@common/helpers/request'
 import { type FieldItem, type Order } from '@features/field-settings/shared/field-types'
 import { useQuery } from '@tanstack/react-query'
@@ -30,7 +31,9 @@ export default function useCompanyFields() {
 }
 
 function processedFields(res: { data: ResponseType }) {
-  const fields: FieldItem[] = res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup) || []
+  const fields: FieldItem[] = filterHiddenFields(
+    res?.data?.fields?.filter(isNotSection)?.flatMap(flatGroup)
+  )
   const orders = res?.data?.orders
   const visibleColumns = res?.data?.visible_columns || ['name', 'phone', 'website']
 

@@ -123,12 +123,16 @@ export default function Contacts() {
             )}
           />
           <Space.Compact direction="horizontal" size="large">
-            <ImportContacts customFields={customFields} systemDefinedFields={systemDefinedFields} />
-            <ExportContacts
-              customFields={customFields}
-              systemDefinedFields={systemDefinedFields}
-              totalContacts={totalContacts}
-            />
+            <If conditions={checkCapability(CAPABILITIES.CONTACT.IMPORT)}>
+              <ImportContacts customFields={customFields} systemDefinedFields={systemDefinedFields} />
+            </If>
+            <If conditions={checkCapability(CAPABILITIES.CONTACT.EXPORT)}>
+              <ExportContacts
+                customFields={customFields}
+                systemDefinedFields={systemDefinedFields}
+                totalContacts={totalContacts}
+              />
+            </If>
           </Space.Compact>
         </div>
       </div>

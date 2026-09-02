@@ -112,7 +112,7 @@ export default function ActivityNote({ note }: ActivityNoteProps) {
           <Popover
             content={
               isEditOpen && (
-                <div className="w-80 space-y-3" key={note.id}>
+                <div className="w-96 space-y-3" key={note.id}>
                   <ActivityNoteForm detailsValue={note.details} form={form} isEditing />
                   <Space className="flex justify-end">
                     <Button className="rounded-full" onClick={handleEditCancel}>
@@ -143,7 +143,7 @@ export default function ActivityNote({ note }: ActivityNoteProps) {
           </Popover>
         </Popconfirm>
       </div>
-      <Typography.Text className="text-xs">
+      <Typography.Text className="text-xs" type="secondary">
         {note?.created_at && formatDateTime(note.created_at)}
       </Typography.Text>
     </div>

@@ -122,8 +122,12 @@ export default function Deals() {
           </If>
         </div>
         <Space.Compact direction="horizontal" size="large">
-          <ImportDeals customFields={customFields} systemDefinedFields={systemDefinedFields} />
-          <ExportDeals customFields={customFields} systemDefinedFields={systemDefinedFields} />
+          <If conditions={checkCapability(CAPABILITIES.DEAL.IMPORT)}>
+            <ImportDeals customFields={customFields} systemDefinedFields={systemDefinedFields} />
+          </If>
+          <If conditions={checkCapability(CAPABILITIES.DEAL.EXPORT)}>
+            <ExportDeals customFields={customFields} systemDefinedFields={systemDefinedFields} />
+          </If>
         </Space.Compact>
       </div>
       <div className="mt-4 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">

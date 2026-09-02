@@ -38,6 +38,8 @@ const CAPABILITIES = {
     CREATE: 'bit_crm_deal_create',
     DELETE: 'bit_crm_deal_delete',
     EMAILS: 'bit_crm_deal_emails',
+    EXPORT: 'bit_crm_deal_export',
+    IMPORT: 'bit_crm_deal_import',
     MENU: 'bit_crm_deal_menu',
     UPDATE: 'bit_crm_deal_update',
     VIEW: 'bit_crm_deal_view'
@@ -92,6 +94,8 @@ const CAPABILITIES = {
   PRODUCT: {
     CREATE: 'bit_crm_product_create',
     DELETE: 'bit_crm_product_delete',
+    EXPORT: 'bit_crm_product_export',
+    IMPORT: 'bit_crm_product_import',
     MENU: 'bit_crm_product_menu',
     UPDATE: 'bit_crm_product_update',
     VIEW: 'bit_crm_product_view'

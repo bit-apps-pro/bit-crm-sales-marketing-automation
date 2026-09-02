@@ -45,7 +45,7 @@ export default function ActivityCard({ activity }: { activity: ActivityType }) {
       <div className="mt-4 flex items-center justify-between border-0 border-t border-dashed border-[#EBEAFF] pt-4 dark:border-neutral-700">
         <div className="flex items-center gap-1">
           <LuUserRound />
-          <Typography.Text type="secondary">{activity.assignee}</Typography.Text>
+          <Typography.Text type="secondary">{activity.entity_name}</Typography.Text>
         </div>
         <div className="flex gap-3">
           <div className="flex items-center gap-1">

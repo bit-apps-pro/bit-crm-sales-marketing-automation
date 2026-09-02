@@ -12,7 +12,7 @@ import { LuPlus, LuSearch } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 import { useDebounce } from 'react-use'
 
-import ActivitiesBoard from '../../components/features/activity-feed/activity-feed'
+import ActivityFeed from '../../components/features/activity-feed/activity-feed'
 
 export default function TasksPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -81,7 +81,7 @@ export default function TasksPage() {
           />
         </div>
       </div>
-      <ActivitiesBoard
+      <ActivityFeed
         activities={tasks}
         activityType="task"
         hasMore={Boolean(hasNextPage)}

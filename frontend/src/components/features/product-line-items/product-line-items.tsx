@@ -4,8 +4,8 @@ import { type Product } from '@common/types/product'
 import useFluentCartProductIntegration from '@pages/fluent-cart-settings/data/use-fluent-cart-product-integration'
 import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
 import If from '@utilities/If'
-import { Badge, Button, Select, Space, Typography } from 'antd'
-import { lazy, useCallback, useEffect } from 'react'
+import { Badge, Button, Select, Skeleton, Space, Typography } from 'antd'
+import { lazy, Suspense, useCallback, useEffect } from 'react'
 import { LuPlus, LuTrash2 } from 'react-icons/lu'
 
 import { PRODUCT_SOURCE } from './shared/constants'
@@ -27,6 +27,16 @@ import {
 import ProductSummary from './ui/product-summary'
 
 const ProductLineItemsTable = lazy(() => import('./ui/product-line-items-table'))
+
+function LineItemsTableFallback() {
+  return (
+    <div className="space-y-2">
+      <Skeleton.Input active block size="large" />
+      <Skeleton.Input active block size="large" />
+      <Skeleton.Input active block size="large" />
+    </div>
+  )
+}
 
 export default function ProductLineItems({
   allowCustomSource = false,
@@ -108,15 +118,17 @@ export default function ProductLineItems({
       </div>
 
       <If conditions={localLineItems.length > 0}>
-        <ProductLineItemsTable
-          allowCustomSource={allowCustomSource}
-          calculateLineTotal={calculateLineTotal}
-          currencyData={currencyData}
-          lineItems={localLineItems}
-          onRemove={handleRemove}
-          onSelectProduct={handleSelectProduct}
-          onUpdate={handleUpdate}
-        />
+        <Suspense fallback={<LineItemsTableFallback />}>
+          <ProductLineItemsTable
+            allowCustomSource={allowCustomSource}
+            calculateLineTotal={calculateLineTotal}
+            currencyData={currencyData}
+            lineItems={localLineItems}
+            onRemove={handleRemove}
+            onSelectProduct={handleSelectProduct}
+            onUpdate={handleUpdate}
+          />
+        </Suspense>
         <div className="flex items-center justify-between">
           <Space>
             <Button icon={<LuPlus />} onClick={handleAddLineItem} type="dashed">

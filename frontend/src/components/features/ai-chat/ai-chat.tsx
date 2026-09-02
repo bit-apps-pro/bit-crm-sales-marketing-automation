@@ -1,9 +1,10 @@
 import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import ChatShell from './internal/chat-shell'
 import SetupNotice from './internal/setup-notice'
+import useAiChatCommandStore from './state/use-ai-chat-command-store'
 
 /**
  * Free-plugin stand-in for the AI assistant.
@@ -16,6 +17,21 @@ import SetupNotice from './internal/setup-notice'
  */
 export default function AiChat() {
   const [open, setOpen] = useState(false)
+
+  /*
+    A record page asking for a summary opens the panel here too, so the person
+    lands on the notice rather than on nothing. The request itself is ignored:
+    there is no conversation to start it in.
+  */
+  const { command } = useAiChatCommandStore()
+  const handledSeq = useRef(0)
+
+  useEffect(() => {
+    if (!command || command.seq === handledSeq.current) return
+
+    handledSeq.current = command.seq
+    setOpen(true)
+  }, [command])
 
   /*
     The capability is never granted to a role in the free plugin — it is
