@@ -39,6 +39,7 @@ interface ConfigType {
   PRODUCT_NAME: string
   ROOT_URL: string
   ROUTE_PREFIX: string
+  SAMPLE_DATA_STATUS: NonNullable<(typeof SERVER_VARIABLES)['sampleDataStatus']>
   SITE_BASE_URL: string
   SITE_URL?: string
   TIME_FORMAT: string
@@ -70,6 +71,7 @@ const config = {
   PRODUCT_NAME: 'Bit CRM',
   ROOT_URL: getServerVariable('rootURL', 'http://.local'),
   ROUTE_PREFIX: getServerVariable('routePrefix', 'bit_crm_'),
+  SAMPLE_DATA_STATUS: SERVER_VARIABLES?.sampleDataStatus ?? 'dismissed',
   SITE_BASE_URL: getServerVariable('siteBaseURL'),
   SITE_URL: getServerVariable('siteUrl'),
   TIME_FORMAT: getServerVariable('timeFormat'),

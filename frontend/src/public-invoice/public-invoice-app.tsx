@@ -4,12 +4,12 @@ import { __ } from '@common/helpers/i18nWrap'
 import { componentsTokenLight, lightThemeConfig } from '@config/theme'
 import { mapInvoiceResponseToPreviewData } from '@pages/Invoice/shared/map-invoice-preview-data'
 import InvoicePreview from '@pages/Invoice/ui/invoice-preview'
-import InvoicePreviewSkeleton from '@utilities/invoice-preview-skeleton/invoice-preview-skeleton'
 import { ConfigProvider, Empty, message, notification, theme } from 'antd'
 import { useEffect, useMemo } from 'react'
 
 import usePublicInvoice from './data/use-public-invoice'
 import PublicPayCard from './ui/public-pay-card'
+import InvoiceSkeleton from './ui/public-pay-card/internal/invoice-skeleton'
 
 const { defaultAlgorithm } = theme
 
@@ -53,11 +53,7 @@ function PublicInvoiceContent() {
   const { invoiceData, isInvoiceError, isInvoiceLoading } = usePublicInvoice()
 
   if (isInvoiceLoading && !isInvoiceError) {
-    return (
-      <div className="mx-auto max-w-4xl p-6">
-        <InvoicePreviewSkeleton />
-      </div>
-    )
+    return <InvoiceSkeleton />
   }
 
   if (isInvoiceError || !invoiceData) {

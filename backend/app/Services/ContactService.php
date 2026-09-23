@@ -16,6 +16,7 @@ use BitApps\Crm\HTTP\Requests\Contact\TrashRequest;
 use BitApps\Crm\HTTP\Requests\Contact\UpdateRequest;
 use BitApps\Crm\Interfaces\EntityDataInterface;
 use BitApps\Crm\Interfaces\EntityFieldsInterface;
+use BitApps\Crm\Model\Company;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Tag;
@@ -327,9 +328,11 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             if (\is_array($pagination) && isset($pagination['pageNo'], $pagination['perPage'])) {
                 $paginatedContacts = $contacts->paginate($pagination['pageNo'], $pagination['perPage']);
 
+                $companyCurrencies = $this->getLinkedCompanyCurrencies($paginatedContacts['data']);
+
                 $options = [];
                 foreach ($paginatedContacts['data'] as $contact) {
-                    $options[] = $this->buildOption($contact, $columnSelect);
+                    $options[] = $this->buildOption($contact, $columnSelect, $companyCurrencies);
                 }
 
                 $paginatedContacts['data'] = $options;
@@ -338,10 +341,11 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             }
 
             $allContacts = $contacts->get();
+            $companyCurrencies = $this->getLinkedCompanyCurrencies($allContacts);
             $options = [];
 
             foreach ($allContacts as $contact) {
-                $options[] = $this->buildOption($contact, $columnSelect);
+                $options[] = $this->buildOption($contact, $columnSelect, $companyCurrencies);
             }
 
             return $options;
@@ -369,7 +373,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
             return false;
         }
 
-        return $this->buildOption($contact, $columnSelect);
+        return $this->buildOption($contact, $columnSelect, $this->getLinkedCompanyCurrencies([$contact]));
     }
 
     public function getDisplayName(array $data): string
@@ -574,7 +578,7 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
         return array_merge($existingTagIds, $newInsertedTagIds);
     }
 
-    private function buildOption($contact, array $columnSelect): array
+    private function buildOption($contact, array $columnSelect, array $companyCurrencies = []): array
     {
         $option = [
             'value' => $contact->id,
@@ -588,10 +592,61 @@ class ContactService implements EntityDataInterface, EntityFieldsInterface
                     $data[$column] = $contact->{$column};
                 }
             }
+
+            if (!empty($contact->company_id) && !empty($companyCurrencies[$contact->company_id])) {
+                $data['company_currency'] = $companyCurrencies[$contact->company_id];
+            }
+
             $option['data'] = $data;
         }
 
         return $option;
+    }
+
+    /**
+     * Resolves the currency of every company linked to the given contacts in a single query.
+     *
+     * Returned as a company id => currency map so option building stays free of per-row queries.
+     * A failure degrades to an empty map: the option list is still usable and the frontend falls
+     * back to the contact's own currency.
+     *
+     * @param array|object $contacts
+     *
+     * @return array<int, string>
+     */
+    private function getLinkedCompanyCurrencies($contacts): array
+    {
+        $companyIds = [];
+        foreach ($contacts as $contact) {
+            if (!empty($contact->company_id)) {
+                $companyIds[] = (int) $contact->company_id;
+            }
+        }
+
+        $companyIds = array_values(array_unique($companyIds));
+
+        if (empty($companyIds)) {
+            return [];
+        }
+
+        try {
+            $companies = Company::select('id', 'currency')->whereIn('id', $companyIds)->get();
+        } catch (Throwable $th) {
+            return [];
+        }
+
+        if (empty($companies)) {
+            return [];
+        }
+
+        $currencies = [];
+        foreach ($companies as $company) {
+            if (!empty($company->currency)) {
+                $currencies[(int) $company->id] = $company->currency;
+            }
+        }
+
+        return $currencies;
     }
 
     private function validateArguments(array $args): bool

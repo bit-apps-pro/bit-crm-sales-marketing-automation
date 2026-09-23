@@ -12,6 +12,7 @@ import { Outlet, useLocation } from 'react-router'
 
 import Header from './header'
 import cls from './Layout.module.css'
+import SampleDataPromptModal from './sample-data-prompt-modal'
 
 const { useToken } = theme
 const { Content } = AntLayout
@@ -60,6 +61,7 @@ export default function Layout() {
       </AntLayout>
 
       <AiChat />
+      <SampleDataPromptModal />
     </ThemeProvider>
   )
 }

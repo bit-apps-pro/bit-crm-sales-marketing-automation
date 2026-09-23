@@ -12,6 +12,7 @@ use BitApps\Crm\Services\ActivityLogService;
 use BitApps\Crm\Services\CrmUserService;
 use BitApps\Crm\Services\InvoicePublicPageService;
 use BitApps\Crm\Services\InvoiceService;
+use BitApps\Crm\Services\PrivacyService;
 use BitApps\Crm\Services\WooCommerceContactSyncService;
 use BitApps\Crm\src\ExternalApi\ExternalApiGuard;
 use DateTime;
@@ -32,7 +33,11 @@ class HookProvider
         // Priority 0: must run before redirect_canonical's 404-permalink
         // guessing, which would otherwise redirect the unregistered
         // /bit-crm/invoice path to a similarly named post.
-        Hooks::addAction('template_redirect', [new InvoicePublicPageService(), 'maybeRenderPage'], 0);
+        $invoicePublicPage = new InvoicePublicPageService();
+        Hooks::addAction('template_redirect', [$invoicePublicPage, 'maybeRenderPage'], 0);
+        // Registered at boot, not inside maybeRenderPage(): core initialises the
+        // admin bar on template_redirect priority 0 too, and runs first.
+        Hooks::addFilter('show_admin_bar', [$invoicePublicPage, 'maybeHideAdminBar']);
 
         Hooks::addAction('bit_crm_invoices_overdue_check', [InvoiceService::class, 'runOverdueInvoiceCheck']);
 
@@ -48,6 +53,8 @@ class HookProvider
         Hooks::addAction('bit_crm_activity_log_cleanup', [ActivityLogService::class, 'activityLogCleanup']);
 
         $this->scheduleActivityLogCleanup();
+
+        $this->registerPrivacyHooks();
 
         if (Config::getEnv('CLI_ACTIVE')) {
             include_once __DIR__ . '/../../../cli/RegisterCommands.php';
@@ -106,24 +113,6 @@ class HookProvider
     }
 
     /**
-     * TODO: check later why it's happening and if this the correct way to fix it.
-     * Let CRM users reach wp-admin on WooCommerce sites.
-     *
-     * WooCommerce redirects anyone lacking `edit_posts`, `manage_woocommerce`
-     * or `view_admin_dashboard` to the my-account page on every admin_init.
-     * CRM capabilities are granted per user without any of those, so a
-     * CRM-only user would be bounced before ever reaching the CRM menu.
-     *
-     * @param bool $prevent
-     *
-     * @return bool
-     */
-    public function allowCrmUsersAdminAccess($prevent)
-    {
-        return current_user_can(CrmUserService::ESSENTIAL_CAPABILITIES[0]) ? false : $prevent;
-    }
-
-    /**
      * Helps to register App hooks.
      */
     protected function loadAppAjaxHooks()
@@ -158,6 +147,18 @@ class HookProvider
         if (!wp_next_scheduled('bit_crm_activity_log_cleanup')) {
             wp_schedule_event(time(), 'daily', 'bit_crm_activity_log_cleanup');
         }
+    }
+
+    /**
+     * Tools → Export / Erase Personal Data and the Settings → Privacy policy guide.
+     */
+    private function registerPrivacyHooks(): void
+    {
+        $privacy = new PrivacyService();
+
+        Hooks::addFilter('wp_privacy_personal_data_exporters', [$privacy, 'registerExporter']);
+        Hooks::addFilter('wp_privacy_personal_data_erasers', [$privacy, 'registerEraser']);
+        Hooks::addAction('admin_init', [$privacy, 'addPrivacyPolicyContent']);
     }
 
     private function registerWooCommerceHooks(): void

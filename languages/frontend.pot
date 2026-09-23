@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Mon Aug 31 2026 16:25:36 GMT+0600 (Bangladesh Standard "
+"POT-Creation-Date: Wed Sep 23 2026 16:39:32 GMT+0600 (Bangladesh Standard "
 "Time)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -833,14 +833,14 @@ msgstr ""
 #: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:120
 #: frontend/src/pages/companies/ui/companies-table.tsx:140
 #: frontend/src/pages/contacts/ui/contacts-columns.tsx:106
-#: frontend/src/pages/contacts/ui/contacts-table.tsx:144
+#: frontend/src/pages/contacts/ui/contacts-table.tsx:156
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:76
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:114
 #: frontend/src/pages/deals/ui/deals-table.tsx:157
 #: frontend/src/pages/Invoice/ui/invoice-actions.tsx:92
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:224
 #: frontend/src/pages/leads/ui/leads-columns.tsx:125
-#: frontend/src/pages/leads/ui/leads-table.tsx:137
+#: frontend/src/pages/leads/ui/leads-table.tsx:140
 #: frontend/src/pages/products/products.tsx:11
 #: frontend/src/pages/tags/ui/tags-table.tsx:133
 #: frontend/src/pages/workflows/workflows.tsx:12
@@ -2799,6 +2799,7 @@ msgstr ""
 
 #: frontend/src/pages/companies/internal/company-bulk-operations/ui/tags-modal.tsx:55
 #: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:71
+#: frontend/src/pages/dashboard/ui/sample-data-notice.tsx:38
 #: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:51
 #: frontend/src/pages/leads/internal/lead-bulk-operations/ui/tags-modal.tsx:71
 msgid "Remove"
@@ -3285,8 +3286,16 @@ msgstr ""
 msgid "Setup"
 msgstr ""
 
-#: frontend/src/pages/dashboard/dashboard.tsx:60
+#: frontend/src/pages/dashboard/dashboard.tsx:61
 msgid "Welcome %s,"
+msgstr ""
+
+#: frontend/src/pages/dashboard/data/use-remove-sample-data.ts:19
+msgid "Failed to remove sample data."
+msgstr ""
+
+#: frontend/src/pages/dashboard/data/use-remove-sample-data.ts:22
+msgid "Sample data removed successfully."
 msgstr ""
 
 #: frontend/src/pages/dashboard/ui/activity-row.tsx:24
@@ -3364,6 +3373,30 @@ msgstr ""
 msgid "Track your upcoming activities."
 msgstr ""
 
+#: frontend/src/pages/dashboard/ui/sample-data-notice.tsx:27
+msgid "Keep"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/sample-data-notice.tsx:28
+msgid ""
+"All sample records are deleted permanently, including anything you added to "
+"them."
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/sample-data-notice.tsx:32
+msgid "Delete all"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/sample-data-notice.tsx:35
+msgid "Remove sample data?"
+msgstr ""
+
+#: frontend/src/pages/dashboard/ui/sample-data-notice.tsx:43
+msgid ""
+"You're exploring with sample data. Remove it when you're ready to add your "
+"own contacts and deals."
+msgstr ""
+
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:22
 #: frontend/src/pages/Layout/ui/header/header.tsx:19
 #: frontend/src/pages/lead-create/lead-create.tsx:20
@@ -3411,29 +3444,33 @@ msgstr ""
 msgid "Watch Tutorials"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:19
+#: frontend/src/pages/data-management/data-management.tsx:20
 #: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:106
 msgid "Recycle Bin"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:25
+#: frontend/src/pages/data-management/data-management.tsx:26
 msgid "Imports"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:31
+#: frontend/src/pages/data-management/data-management.tsx:32
 msgid "Exports"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:37
+#: frontend/src/pages/data-management/data-management.tsx:38
 msgid "History Logs"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:43
+#: frontend/src/pages/data-management/data-management.tsx:44
 #: frontend/src/pages/data-management/internal/workflow-logs/workflow-logs.tsx:5
 msgid "Workflow Logs"
 msgstr ""
 
-#: frontend/src/pages/data-management/data-management.tsx:55
+#: frontend/src/pages/data-management/data-management.tsx:50
+msgid "Uninstall"
+msgstr ""
+
+#: frontend/src/pages/data-management/data-management.tsx:62
 msgid "Data Management"
 msgstr ""
 
@@ -3533,6 +3570,25 @@ msgstr ""
 
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:107
 msgid "Delete the item"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/uninstall/data/use-update-uninstall-setting.ts:51
+msgid "Uninstall preference saved"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/uninstall/uninstall.tsx:25
+msgid "Plugin Uninstall"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/uninstall/uninstall.tsx:30
+msgid "Erase all plugin data on deletion"
+msgstr ""
+
+#: frontend/src/pages/data-management/internal/uninstall/uninstall.tsx:32
+msgid ""
+"When you delete Bit CRM from the Plugins screen, every contact, lead, "
+"company, deal, invoice, note, setting and log is permanently removed. "
+"Deactivating keeps everything. This cannot be undone."
 msgstr ""
 
 #: frontend/src/pages/deal-create/deal-create.tsx:42
@@ -4550,6 +4606,14 @@ msgstr ""
 msgid "Paid At"
 msgstr ""
 
+#: frontend/src/pages/Layout/data/use-sample-data-prompt.ts:17
+msgid "Failed to add sample data."
+msgstr ""
+
+#: frontend/src/pages/Layout/data/use-sample-data-prompt.ts:19
+msgid "Sample data added successfully."
+msgstr ""
+
 #: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:17
 msgid "Workflows"
 msgstr ""
@@ -4572,9 +4636,51 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
-#: frontend/src/pages/Layout/ui/Layout.tsx:22
+#: frontend/src/pages/Layout/ui/Layout.tsx:23
 #: frontend/src/pages/settings-layout/settings-layout.tsx:25
 msgid "Loading"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:22
+msgid "Add your own leads, contacts and deals."
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:25
+msgid "Start from scratch"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:28
+msgid "Explore with ready-made example records."
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:31
+msgid "Import sample data"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:83
+msgid "Import & continue"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:83
+msgid "Continue"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:89
+msgid "How do you want to start?"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:93
+msgid "Choose how you want to begin. You can change your data anytime."
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:97
+msgid "Starting point"
+msgstr ""
+
+#: frontend/src/pages/Layout/ui/sample-data-prompt-modal.tsx:148
+msgid ""
+"Sample data is clearly tagged and can be removed anytime from the "
+"dashboard. You'll only see this once."
 msgstr ""
 
 #: frontend/src/pages/lead-create/lead-create.tsx:24
@@ -5219,7 +5325,7 @@ msgstr ""
 msgid "Payment received. Thank you!"
 msgstr ""
 
-#: frontend/src/public-invoice/public-invoice-app.tsx:67
+#: frontend/src/public-invoice/public-invoice-app.tsx:63
 msgid "Invoice not found"
 msgstr ""
 

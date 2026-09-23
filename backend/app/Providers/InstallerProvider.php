@@ -5,6 +5,7 @@ namespace BitApps\Crm\Providers;
 use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Installer;
+use BitApps\Crm\Services\UninstallSettingService;
 
 final class InstallerProvider
 {
@@ -84,9 +85,11 @@ final class InstallerProvider
 
     public static function drop()
     {
+        $erase = (new UninstallSettingService())->isEraseEnabled();
+
         return [
             'path'       => self::migrationsPath(),
-            'migrations' => self::getMigrationsClass(),
+            'migrations' => $erase ? self::getMigrationsClass() : [],
         ];
     }
 

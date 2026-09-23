@@ -78,7 +78,7 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
             }
 
             if (field.type === 'date') {
-              return formatDate(text)
+              return !text || text.startsWith('0000-00-00') ? '' : formatDate(text)
             }
 
             if (field.type === 'select' || field.type === 'radio') {

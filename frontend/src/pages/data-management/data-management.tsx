@@ -9,6 +9,7 @@ import ActivityLogs from './internal/activity-logs'
 import Exports from './internal/exports'
 import Imports from './internal/imports'
 import RecycleBin from './internal/recycle-bin'
+import Uninstall from './internal/uninstall'
 import WorkflowLogs from './internal/workflow-logs'
 
 const tabs = [
@@ -41,6 +42,12 @@ const tabs = [
     children: <WorkflowLogs />,
     key: 'workflow',
     label: __('Workflow Logs')
+  },
+  {
+    capability: CAPABILITIES.SETTING.DATA_MANAGEMENT,
+    children: <Uninstall />,
+    key: 'uninstall',
+    label: __('Uninstall')
   }
 ]
 

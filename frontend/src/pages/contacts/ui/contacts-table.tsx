@@ -82,11 +82,23 @@ export default function ContactsTable({ contacts, fieldList, isLoading }: Contac
             }
 
             if (field.type === 'date') {
-              return formatDate(text)
+              return !text || text.startsWith('0000-00-00') ? '' : formatDate(text)
             }
 
             if (field.type === 'select' || field.type === 'radio') {
               return unslugify(text)
+            }
+
+            if (field.field_key === 'company_id') {
+              return record.company_name
+            }
+
+            if (field.field_key === 'owner_id') {
+              return record.owner_name || ''
+            }
+
+            if (field.field_key === 'parent_id') {
+              return record.parent_name || ''
             }
 
             let parsedValue: string | string[] = text

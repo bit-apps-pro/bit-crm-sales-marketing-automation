@@ -12,6 +12,7 @@ interface AppConfigType {
   isWpMenuCollapsed: boolean
   onboardingCompleted: boolean
   preferNodeDetailsInDrawer: boolean
+  sampleDataStatus: typeof config.SAMPLE_DATA_STATUS
 }
 
 const $appConfig = atomWithStorage(
@@ -23,7 +24,8 @@ const $appConfig = atomWithStorage(
     isSidebarCollapsed: false,
     isWpMenuCollapsed: false,
     onboardingCompleted: config.ONBOARDING_COMPLETED,
-    preferNodeDetailsInDrawer: false
+    preferNodeDetailsInDrawer: false,
+    sampleDataStatus: config.SAMPLE_DATA_STATUS
   },
   {
     getItem: (key: string) => {
@@ -34,7 +36,8 @@ const $appConfig = atomWithStorage(
         ...(savedValue as Partial<AppConfigType>),
         homeCurrencyData: config.HOME_CURRENCY_DATA,
         isPro: config.IS_PRO,
-        onboardingCompleted: config.ONBOARDING_COMPLETED
+        onboardingCompleted: config.ONBOARDING_COMPLETED,
+        sampleDataStatus: config.SAMPLE_DATA_STATUS
       }
     },
     removeItem: (key: string) => {

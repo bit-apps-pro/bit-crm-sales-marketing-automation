@@ -6,6 +6,7 @@ use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPKit\Helpers\DateTimeHelper;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\HTTP\Controllers\OnboardingController;
+use BitApps\Crm\Services\SampleDataService;
 
 class Head
 {
@@ -30,13 +31,17 @@ class Head
     {
         $manifest = self::readManifest();
 
-        if (empty($manifest[$entry])) {
+        $files = empty($manifest[$entry])
+            ? self::discoverEntryStyles($entry)
+            : self::collectEntryStyles($manifest, $entry);
+
+        if (empty($files)) {
             return false;
         }
 
         $assetURI = Config::get('ASSET_URI');
 
-        foreach (self::collectEntryStyles($manifest, $entry) as $index => $file) {
+        foreach ($files as $index => $file) {
             // No version query string: Vite's preload helper skips a chunk's CSS only
             // when an existing <link href> matches exactly, and `?ver=` breaks that
             // match -- leaving it to append a second <link> for the same stylesheet.
@@ -73,9 +78,7 @@ class Head
         } else {
             // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion -- Intentional; see note below.
             wp_enqueue_script($slug . '-index-MODULE', Config::get('ASSET_URI') . "/main-{$codeName}.js", [], ''); // WARNING: Do not add version in production, it may cause unexpected behavior.
-            if (!self::enqueueEntryStyles($slug . '-styles', 'src/main.tsx')) {
-                wp_enqueue_style($slug . '-styles', Config::get('ASSET_URI') . "/main-{$slug}-ba-assets-{$codeName}.css", null, $version, 'screen');
-            }
+            self::enqueueEntryStyles($slug . '-styles', 'src/main.tsx');
         }
 
         wp_localize_script(Config::SLUG . '-index-MODULE', Config::VAR_PREFIX, self::createConfigVariable());
@@ -117,6 +120,7 @@ class Head
                 'currentUserId'       => get_current_user_id(),
                 'loggedInUserName'    => wp_get_current_user()->display_name ?: wp_get_current_user()->user_login,
                 'onboardingCompleted' => Config::getOption(OnboardingController::KEY_ONBOARDING_COMPLETED, false),
+                'sampleDataStatus'    => (new SampleDataService())->getStatus(),
             ]
         );
 
@@ -125,6 +129,72 @@ class Head
         }
 
         return $frontendVars;
+    }
+
+    /**
+     * Fallback used when the build manifest is missing from the deployed
+     * package: enqueue every stylesheet in the assets folder.
+     *
+     * The manifest is the only thing that maps an entry to its full CSS set. In
+     * the pro build Rollup hoists what the `main` and `portal` entries share --
+     * Tailwind's utilities and antd's base styles -- into a common chunk with a
+     * hashed name, leaving `main-*.css` holding only a few KB of module CSS. So
+     * enqueueing just `main-*.css` without the manifest ships a page whose
+     * utility classes never apply. Loading every stylesheet costs at most the
+     * portal entry's CSS on non-portal pages, which is far cheaper than the
+     * unstyled page it replaces.
+     *
+     * Ordering matches the manifest path: the shared chunk (the base other
+     * rules build on) sorts before the `main-`/`portal-` entry CSS.
+     *
+     * @param string $entry Manifest key, used to keep the entry's own CSS last
+     *
+     * @return array
+     */
+    private static function discoverEntryStyles($entry)
+    {
+        $assetDir = Config::get('ASSET_DIR');
+        $found = glob($assetDir . '/*.css');
+
+        if (empty($found)) {
+            return [];
+        }
+
+        // Vite names each entry's CSS after the rollup input key, not the file:
+        // `src/main.tsx` -> `main-*.css`, `src/portal/main.tsx` -> `portal-*.css`.
+        // basename() alone would map both to "main".
+        $entryName = strpos((string) $entry, 'portal/') !== false ? 'portal' : 'main';
+
+        // Anything matching a *different* entry belongs to that entry alone and
+        // must not load here.
+        $otherEntries = array_diff(['main', 'portal'], [$entryName]);
+
+        $shared = [];
+        $entryStyles = [];
+
+        foreach ($found as $path) {
+            $file = basename($path);
+
+            if (strpos($file, $entryName . '-') === 0) {
+                $entryStyles[] = $file;
+
+                continue;
+            }
+
+            foreach ($otherEntries as $other) {
+                if (strpos($file, $other . '-') === 0) {
+                    continue 2;
+                }
+            }
+
+            // Everything left is a shared chunk: the base other rules build on.
+            $shared[] = $file;
+        }
+
+        sort($shared);
+        sort($entryStyles);
+
+        return array_merge($shared, $entryStyles);
     }
 
     /**

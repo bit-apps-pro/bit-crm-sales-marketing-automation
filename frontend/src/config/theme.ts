@@ -13,7 +13,7 @@ export const lightThemeConfig: Partial<AliasToken> = {
   boxShadowSecondary:
     '0 0 0 1px rgba(0,0,0,0.05), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05)',
   colorError: '#ff6264',
-  colorInfo: '#051020',
+  colorLink: '#051020',
   // colorPrimary: '#ff246d',
   // colorSuccess: '#00ff7d',
   // colorWarning: '#ffc041',
@@ -42,7 +42,7 @@ export const darkThemeConfig = {
   borderRadiusSM: 8,
   borderRadiusXS: 4,
   colorError: '#ff6264',
-  colorInfo: '#ffffff',
+  colorLink: '#ffffff',
   colorPrimary: '#6E62E5',
   colorPrimaryBorderHover: 'red',
   colorPrimaryHover: '#5A4EE0',

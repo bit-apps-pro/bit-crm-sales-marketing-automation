@@ -27,9 +27,11 @@ use BitApps\Crm\HTTP\Controllers\LinkController;
 use BitApps\Crm\HTTP\Controllers\NoteController;
 use BitApps\Crm\HTTP\Controllers\OnboardingController;
 use BitApps\Crm\HTTP\Controllers\PluginInstallerController;
+use BitApps\Crm\HTTP\Controllers\SampleDataController;
 use BitApps\Crm\HTTP\Controllers\SettingsController;
 use BitApps\Crm\HTTP\Controllers\TagController;
 use BitApps\Crm\HTTP\Controllers\TrashController;
+use BitApps\Crm\HTTP\Controllers\UninstallSettingController;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -111,6 +113,9 @@ Route::group(
         Route::post('settings/business/store', [BusinessSettingsController::class, 'store']);
         Route::post('settings/business/update', [BusinessSettingsController::class, 'update']);
         Route::get('settings/business/show', [BusinessSettingsController::class, 'show']);
+
+        Route::get('settings/uninstall/show', [UninstallSettingController::class, 'show']);
+        Route::post('settings/uninstall/update', [UninstallSettingController::class, 'update']);
 
         Route::get('settings/external-api/index', [ExternalApiController::class, 'index']);
         Route::post('settings/external-api/update', [ExternalApiController::class, 'updateSettings']);
@@ -221,6 +226,10 @@ Route::group(
         Route::post('bit-form/create-form', [BitFormIntegrationController::class, 'createForm']);
 
         Route::post('onboarding/store', [OnboardingController::class, 'store']);
+
+        Route::post('sample-data/seed', [SampleDataController::class, 'seed']);
+        Route::post('sample-data/dismiss', [SampleDataController::class, 'dismiss']);
+        Route::post('sample-data/remove', [SampleDataController::class, 'remove']);
 
         Route::get('dashboard/index', [DashboardController::class, 'index']);
     }

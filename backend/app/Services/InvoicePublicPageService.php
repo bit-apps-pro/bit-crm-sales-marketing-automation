@@ -7,6 +7,7 @@ use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Views\Head;
+use BitApps\Crm\Views\PublicPageAssets;
 
 /**
  * Serves the public (no-login) shareable invoice page.
@@ -84,7 +85,11 @@ class InvoicePublicPageService
         echo '</head><body class="bit-crm-public-invoice">';
         echo '<noscript>' . esc_html__('You need to enable JavaScript to view this invoice.', 'bit-crm-sales-marketing-automation') . '</noscript>';
         echo '<div id="bit-crm-public-invoice-root"></div>';
-        wp_footer();
+        // Not wp_footer(): other plugins print markup there (cart drawers,
+        // checkout modals, the admin bar) whose stylesheets this page drops,
+        // so it would render unstyled below the app. Only WordPress's own
+        // script/style pipeline runs, which PublicPageAssets filters.
+        wp_print_footer_scripts();
         echo '</body></html>';
 
         exit;
@@ -119,19 +124,16 @@ class InvoicePublicPageService
     }
 
     /**
-     * Removes theme / block styles so they cannot fight the app's own styles.
+     * show_admin_bar filter — the shell prints only the plugin's own assets,
+     * so the bar would render as an unstyled list. Hidden on this page only.
+     *
+     * @param mixed $showAdminBar
+     *
+     * @return mixed
      */
-    public function dequeueThemeAssets(): void
+    public function maybeHideAdminBar($showAdminBar)
     {
-        wp_dequeue_style('style');
-        wp_deregister_style('style');
-        wp_dequeue_style('child-style');
-        wp_deregister_style('child-style');
-        wp_dequeue_style('wp-block-library');
-        wp_dequeue_style('wp-block-library-theme');
-        wp_dequeue_style('wc-blocks-style');
-        wp_dequeue_style('classic-theme-styles');
-        wp_dequeue_style('global-styles');
+        return $this->isPublicInvoiceRequest() ? false : $showAdminBar;
     }
 
     /**
@@ -157,7 +159,8 @@ class InvoicePublicPageService
         $version = Config::VERSION;
         $scriptHandle = $slug . '-index-MODULE';
 
-        Hooks::addAction('wp_enqueue_scripts', [$this, 'dequeueThemeAssets'], PHP_INT_MAX);
+        // Theme and third-party assets must not reach the app shell (see PublicPageAssets).
+        PublicPageAssets::restrictToPlugin();
         Hooks::addFilter('script_loader_tag', [$this, 'updateScriptAttributes'], 0);
 
         wp_enqueue_style($slug . '-googleapis-PRECONNECT', 'https://fonts.googleapis.com', [], $version);
@@ -173,9 +176,7 @@ class InvoicePublicPageService
             // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion -- hashed via build code name, mirrors Head::addHeadScripts()
             wp_enqueue_script($scriptHandle, Config::get('ASSET_URI') . "/main-{$codeName}.js", [], null); // WARNING: Do not add version in production, it may cause unexpected behavior.
 
-            if (!Head::enqueueEntryStyles($slug . '-styles', 'src/main.tsx')) {
-                wp_enqueue_style($slug . '-styles', Config::get('ASSET_URI') . "/main-{$slug}-ba-assets-{$codeName}.css", null, $version, 'screen');
-            }
+            Head::enqueueEntryStyles($slug . '-styles', 'src/main.tsx');
         }
 
         wp_localize_script($scriptHandle, Config::VAR_PREFIX, $this->configVariables($invoiceId, $token));

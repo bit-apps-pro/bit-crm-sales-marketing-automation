@@ -1288,6 +1288,10 @@ return [
     /* translators: %s: placeholder value */
     'Welcome %s,' => __('Welcome %s,', 'bit-crm-sales-marketing-automation'),
 
+    'Failed to remove sample data.' => __('Failed to remove sample data.', 'bit-crm-sales-marketing-automation'),
+
+    'Sample data removed successfully.' => __('Sample data removed successfully.', 'bit-crm-sales-marketing-automation'),
+
     'Due:' => __('Due:', 'bit-crm-sales-marketing-automation'),
 
     '—' => __('—', 'bit-crm-sales-marketing-automation'),
@@ -1324,6 +1328,16 @@ return [
 
     'Track your upcoming activities.' => __('Track your upcoming activities.', 'bit-crm-sales-marketing-automation'),
 
+    'Keep' => __('Keep', 'bit-crm-sales-marketing-automation'),
+
+    'All sample records are deleted permanently, including anything you added to them.' => __('All sample records are deleted permanently, including anything you added to them.', 'bit-crm-sales-marketing-automation'),
+
+    'Delete all' => __('Delete all', 'bit-crm-sales-marketing-automation'),
+
+    'Remove sample data?' => __('Remove sample data?', 'bit-crm-sales-marketing-automation'),
+
+    'You\'re exploring with sample data. Remove it when you\'re ready to add your own contacts and deals.' => __('You\'re exploring with sample data. Remove it when you\'re ready to add your own contacts and deals.', 'bit-crm-sales-marketing-automation'),
+
     'Leads' => __('Leads', 'bit-crm-sales-marketing-automation'),
 
     'Invoices' => __('Invoices', 'bit-crm-sales-marketing-automation'),
@@ -1351,6 +1365,8 @@ return [
     'History Logs' => __('History Logs', 'bit-crm-sales-marketing-automation'),
 
     'Workflow Logs' => __('Workflow Logs', 'bit-crm-sales-marketing-automation'),
+
+    'Uninstall' => __('Uninstall', 'bit-crm-sales-marketing-automation'),
 
     'Data Management' => __('Data Management', 'bit-crm-sales-marketing-automation'),
 
@@ -1401,6 +1417,14 @@ return [
     'Are you sure you want to delete this permanently?' => __('Are you sure you want to delete this permanently?', 'bit-crm-sales-marketing-automation'),
 
     'Delete the item' => __('Delete the item', 'bit-crm-sales-marketing-automation'),
+
+    'Uninstall preference saved' => __('Uninstall preference saved', 'bit-crm-sales-marketing-automation'),
+
+    'Plugin Uninstall' => __('Plugin Uninstall', 'bit-crm-sales-marketing-automation'),
+
+    'Erase all plugin data on deletion' => __('Erase all plugin data on deletion', 'bit-crm-sales-marketing-automation'),
+
+    'When you delete Bit CRM from the Plugins screen, every contact, lead, company, deal, invoice, note, setting and log is permanently removed. Deactivating keeps everything. This cannot be undone.' => __('When you delete Bit CRM from the Plugins screen, every contact, lead, company, deal, invoice, note, setting and log is permanently removed. Deactivating keeps everything. This cannot be undone.', 'bit-crm-sales-marketing-automation'),
 
     'Create Deal' => __('Create Deal', 'bit-crm-sales-marketing-automation'),
 
@@ -1885,6 +1909,10 @@ return [
 
     'Paid At' => __('Paid At', 'bit-crm-sales-marketing-automation'),
 
+    'Failed to add sample data.' => __('Failed to add sample data.', 'bit-crm-sales-marketing-automation'),
+
+    'Sample data added successfully.' => __('Sample data added successfully.', 'bit-crm-sales-marketing-automation'),
+
     'Workflows' => __('Workflows', 'bit-crm-sales-marketing-automation'),
 
     'More' => __('More', 'bit-crm-sales-marketing-automation'),
@@ -1896,6 +1924,26 @@ return [
     'Light' => __('Light', 'bit-crm-sales-marketing-automation'),
 
     'Loading' => __('Loading', 'bit-crm-sales-marketing-automation'),
+
+    'Add your own leads, contacts and deals.' => __('Add your own leads, contacts and deals.', 'bit-crm-sales-marketing-automation'),
+
+    'Start from scratch' => __('Start from scratch', 'bit-crm-sales-marketing-automation'),
+
+    'Explore with ready-made example records.' => __('Explore with ready-made example records.', 'bit-crm-sales-marketing-automation'),
+
+    'Import sample data' => __('Import sample data', 'bit-crm-sales-marketing-automation'),
+
+    'Import & continue' => __('Import & continue', 'bit-crm-sales-marketing-automation'),
+
+    'Continue' => __('Continue', 'bit-crm-sales-marketing-automation'),
+
+    'How do you want to start?' => __('How do you want to start?', 'bit-crm-sales-marketing-automation'),
+
+    'Choose how you want to begin. You can change your data anytime.' => __('Choose how you want to begin. You can change your data anytime.', 'bit-crm-sales-marketing-automation'),
+
+    'Starting point' => __('Starting point', 'bit-crm-sales-marketing-automation'),
+
+    'Sample data is clearly tagged and can be removed anytime from the dashboard. You\'ll only see this once.' => __('Sample data is clearly tagged and can be removed anytime from the dashboard. You\'ll only see this once.', 'bit-crm-sales-marketing-automation'),
 
     'Create Lead' => __('Create Lead', 'bit-crm-sales-marketing-automation'),
 
