@@ -28,9 +28,9 @@ class Config
 
     public const DB_VERSION = '1.0.4';
 
-    public const REQUIRED_PHP_VERSION = '7.4';
+    public const REQUIRED_PHP_VERSION = '8.2';
 
-    public const REQUIRED_WP_VERSION = '5.0';
+    public const REQUIRED_WP_VERSION = '5.8';
 
     public const API_VERSION = '1.0';
 
