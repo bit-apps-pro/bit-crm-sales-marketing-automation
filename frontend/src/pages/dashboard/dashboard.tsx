@@ -14,6 +14,7 @@ import DealPipeline from './ui/deal-pipeline'
 import InvoiceStats from './ui/invoice-stats'
 import LeadsBySource from './ui/leads-by-source'
 import PendingActivities from './ui/pending-activities'
+import SampleDataNotice from './ui/sample-data-notice'
 import StatCards from './ui/stat-cards'
 import TopProducts from './ui/top-products'
 import Tutorial from './ui/tutorial'
@@ -61,6 +62,7 @@ export default function Dashboard() {
         </Typography.Title>
       </div>
       <div className="flex flex-col gap-5">
+        <SampleDataNotice />
         <StatCards stats={stats} />
         <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-10">
           <If conditions={checkCapability(CAPABILITIES.ACTIVITY.VIEW)}>

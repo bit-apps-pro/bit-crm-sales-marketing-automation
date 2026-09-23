@@ -4,7 +4,7 @@ Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -183,6 +183,10 @@ Yes. Use the built-in Import tool to bring contacts, leads, companies and deals 
 
 No. Deleted records go to the recycle bin, where you can restore them or permanently remove them when you choose.
 
+= Does Bit CRM support GDPR data requests? =
+
+Yes. Bit CRM plugs into the built-in WordPress privacy tools. Use Tools → Export Personal Data to hand someone a copy of every lead, contact, deal, invoice, note, activity, attachment, link and stored email tied to their email address, and Tools → Erase Personal Data to remove it: leads and contacts are permanently deleted (bypassing the recycle bin), stored emails are removed, and contacts with deals are anonymized in place so deals and invoices stay intact as business records. Suggested wording for your privacy policy appears under Settings → Privacy → Policy Guide.
+
 = Will Bit CRM slow down my site? =
 
 No. Bit CRM only runs in the WordPress admin, and heavy operations such as imports, bulk conversions, IMAP fetching and store syncing run as background jobs rather than during page loads.
@@ -223,6 +227,23 @@ An administrator can connect [Gmail](https://mail.google.com/) (imap.gmail.com),
 When a user sends an email or invoice, Bit CRM passes its recipient, subject, body, headers and attachments to WordPress's `wp_mail`, which uses the site owner's configured mail service and the recipient's mail server. Those providers' terms and privacy policies apply. Bit CRM does not select a mail provider.
 
 == Changelog ==
+
+= 1.2.0 (September 13, 2026) =
+* Features:
+   * Privacy: Bit CRM now works with the WordPress privacy tools. Export Personal Data returns every lead, contact, deal, invoice, note, activity, attachment, link and stored email tied to an email address, Erase Personal Data permanently deletes those leads, contacts and emails and anonymizes contacts that have deals so deals and invoices stay intact, and suggested wording appears in the Privacy Policy Guide.
+   * Privacy (Pro): Exports also include invoice payments, and erasure also removes custom field values, workflow logs and the client portal login.
+   * Sample data: New installs are asked whether to start from scratch or import sample companies, contacts, leads, deals, tasks, meetings, calls, notes and links, and a dashboard notice removes the sample data in one click.
+   * Uninstall: Deleting the plugin now keeps your data unless "Erase all plugin data on deletion" is switched on under Settings, Data Management, which then removes every table and option.
+   * MCP server (Pro): AI clients can look up each module's fields, options, deal stages and custom fields, read and write custom field values, update only the fields they pass, set a deal's currency and create or update invoices exactly as the invoice form does.
+* Improvements:
+   * Emails: Links inside an opened email open in a new tab.
+* Security:
+   * Emails: The body of a synced email is sanitized before it is stored and shown, the same way a composed message is.
+* Fixed:
+   * Public pages: The shared invoice page and the client portal no longer break when a page builder or theme injects its own styles, as only the plugin's own styles and scripts are loaded there and the admin bar is hidden on the invoice page.
+   * Deals: Choosing a contact now sets the deal currency from the contact's company, falling back to the contact's own currency.
+   * Lists: Owner, company and parent company columns show names instead of ids, the deals list links its company again and blank dates are shown empty instead of a zero date.
+   * Workflows (Pro): The workflow editor no longer breaks on a step with an unrecognised type.
 
 = 1.1.0 (August 31, 2026) =
 * Features:
@@ -296,5 +317,5 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
 
 == Upgrade Notice ==
 
-= 1.1.0 =
-Adds Cc, Bcc and replies to email, hidden fields, color in text editor, and an AI summary button, streaming replies and OpenAI-compatible providers in Pro, and tightens permission checks on downloads, exports and related-record lookups.
+= 1.2.0 =
+Adds WordPress privacy tool support for exporting and erasing personal data, a sample data offer for new installs, an opt-in erase-on-uninstall switch, and MCP field discovery, custom fields and form-accurate invoices in Pro. Note: deleting the plugin now keeps your data unless the new switch is on.

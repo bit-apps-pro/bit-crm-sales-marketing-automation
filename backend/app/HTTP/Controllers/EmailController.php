@@ -114,6 +114,12 @@ final class EmailController
         return Response::success($emails);
     }
 
+    /**
+     * The body is fetched from IMAP the first time a mail is opened and kept.
+     * It is the sender's HTML, rendered inside wp-admin, so it is filtered
+     * before it is stored. wp_kses_post is the same filter SendRequest applies
+     * to a composed message.
+     */
     public function view(ViewRequest $request)
     {
         $validated = $request->validated();
@@ -134,7 +140,7 @@ final class EmailController
             return Response::error(__('Failed to fetch email body!', 'bit-crm-sales-marketing-automation'));
         }
 
-        $email->body = $emailBody;
+        $email->body = wp_kses_post($emailBody);
 
         try {
             $email->save();

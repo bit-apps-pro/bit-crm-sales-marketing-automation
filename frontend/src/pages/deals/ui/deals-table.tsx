@@ -73,7 +73,7 @@ export default function DealsTable({ deals, fieldList, isLoading }: DealsTablePr
               return <Link to={`details/${record.id}`}>{record.name}</Link>
             }
 
-            if (field.field_key === 'company_name' && record.company_id && record.company_name) {
+            if (field.field_key === 'company_id' && record.company_id && record.company_name) {
               return <Link to={`/companies/details/${record.company_id}`}>{record.company_name}</Link>
             }
 
@@ -86,7 +86,7 @@ export default function DealsTable({ deals, fieldList, isLoading }: DealsTablePr
             }
 
             if (field.type === 'date') {
-              return formatDate(text)
+              return !text || text.startsWith('0000-00-00') ? '' : formatDate(text)
             }
 
             if (field.type === 'select' || field.type === 'radio') {

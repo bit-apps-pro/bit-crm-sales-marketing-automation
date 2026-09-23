@@ -38,6 +38,7 @@ export interface LeadType {
   lead_status?: string
   next_id: null | number
   owner_id?: number
+  owner_name?: string
   phone?: string
   previous_id: null | number
   shipping_city?: string

@@ -226,6 +226,17 @@ class HookKeys
     public const PUBLIC_INVOICE_CONFIG_VARIABLES = 'bit_crm_public_invoice_config_variables';
 
     /**
+     * Asset handles that may print on the plugin's standalone pages (public
+     * invoice page, client portal) besides the plugin's own. Those pages
+     * print only handles prefixed with the plugin slug, their dependencies
+     * and the handles returned here — every other theme/plugin stylesheet
+     * and script is dropped so it cannot restyle the app.
+     *
+     * apply_filters(array $handles): array
+     */
+    public const PUBLIC_PAGE_ASSET_HANDLES = 'bit_crm_public_page_asset_handles';
+
+    /**
      * Adds validation rules for `customFieldsValues` to entity store/update
      * request classes.
      *
@@ -326,4 +337,50 @@ class HookKeys
      * apply_filters(int $maxPerWindow): int
      */
     public const EXTERNAL_API_RATE_LIMIT = 'bit_crm_external_api_rate_limit';
+
+    // -------------------------------------------------------------------------
+    // Privacy tools (Tools → Export / Erase Personal Data).
+    //
+    // The free plugin registers one WordPress personal-data exporter and one
+    // eraser (Services\Privacy\*) covering every table it owns. These hooks
+    // let the pro plugin and third parties cover the data they own for the
+    // same person, keyed — like WordPress itself — by email address.
+    // -------------------------------------------------------------------------
+
+    /**
+     * Extends the personal-data export of an email address with additional
+     * groups. $groups is a list of WordPress exporter items, each shaped
+     * ['group_id', 'group_label', 'group_description', 'item_id',
+     *  'data' => [['name' => label, 'value' => value], …]].
+     * $context carries the located record ids keyed by module
+     * ('contact', 'lead', 'deal', 'invoice' => int[]) plus the current 'page'.
+     * The filter runs for every page WordPress asks for; return $groups
+     * unchanged on pages you have nothing to add to.
+     *
+     * apply_filters(array $groups, string $email, array $context): array
+     */
+    public const PRIVACY_EXPORT_GROUPS = 'bit_crm_privacy_export_groups';
+
+    /**
+     * Fired right before the eraser deletes or anonymizes a batch of records,
+     * while they can still be resolved by id. $strategy is
+     * PersonalDataEraser::STRATEGY_DELETE (rows and their related records are
+     * about to be removed) or STRATEGY_ANONYMIZE (rows are kept, personal
+     * columns are blanked). Listeners remove the personal data they hold for
+     * those records themselves.
+     *
+     * do_action(string $module, int[] $entityIds, string $strategy, string $email)
+     */
+    public const PRIVACY_ERASE_ENTITIES = 'bit_crm_privacy_erase_entities';
+
+    /**
+     * Filters the eraser result before it is handed back to WordPress, so
+     * listeners can append their own messages or flag data they retained.
+     * Shaped ['items_removed' => bool, 'items_retained' => bool,
+     * 'messages' => string[], 'done' => bool]; $context is the same
+     * module => ids map as PRIVACY_EXPORT_GROUPS.
+     *
+     * apply_filters(array $response, string $email, array $context): array
+     */
+    public const PRIVACY_ERASURE_RESPONSE = 'bit_crm_privacy_erasure_response';
 }

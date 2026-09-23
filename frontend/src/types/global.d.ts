@@ -52,6 +52,7 @@ declare const SERVER_VARIABLES: {
   }
   rootURL: string
   routePrefix: string
+  sampleDataStatus?: 'dismissed' | 'pending' | 'removed' | 'seeded'
   settings: string
   siteBaseURL: string
   siteUrl: string

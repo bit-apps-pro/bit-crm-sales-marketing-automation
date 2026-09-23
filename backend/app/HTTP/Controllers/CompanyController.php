@@ -122,7 +122,7 @@ final class CompanyController
                     'page'                 => $page,
                     'sortBy'               => !empty($validatedData['sortBy']) ? $validatedData['sortBy'] : 'id',
                     'sortOrder'            => !empty($validatedData['sortOrder']) ? $validatedData['sortOrder'] : 'desc',
-                    'searchTerm'           => $validatedData['searchTerm'],
+                    'searchTerm'           => $validatedData['searchTerm'] ?? '',
                     'filters'              => !empty($validatedData['filters']) ? $validatedData['filters'] : [],
                     'tags'                 => !empty($validatedData['tags']) ? $validatedData['tags'] : [],
                     'advancedFilterGroups' => $validatedData['advancedFilterGroups'] ?? [],

@@ -98,7 +98,7 @@ final class LeadController
                     'offset'               => $offset,
                     'sortBy'               => !empty($validatedData['sortBy']) ? $validatedData['sortBy'] : 'id',
                     'sortOrder'            => !empty($validatedData['sortOrder']) ? $validatedData['sortOrder'] : 'desc',
-                    'searchTerm'           => $validatedData['searchTerm'],
+                    'searchTerm'           => $validatedData['searchTerm'] ?? '',
                     'filters'              => !empty($validatedData['filters']) ? $validatedData['filters'] : [],
                     'tags'                 => !empty($validatedData['tags']) ? $validatedData['tags'] : [],
                     'ids'                  => !empty($validatedData['ids']) ? $validatedData['ids'] : [],

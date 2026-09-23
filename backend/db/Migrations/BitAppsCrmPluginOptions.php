@@ -19,27 +19,33 @@ final class BitAppsCrmPluginOptions extends Migration
 
     public function down()
     {
-        $pluginOptions = [
-            Config::withPrefix('db_version'),
-            Config::withPrefix('installed'),
-            Config::withPrefix('version'),
-            Config::withPrefix('secret_key'),
+        $patterns = [
+            DB::esc_like(Config::VAR_PREFIX) . '%',
+            DB::esc_like('wp_' . Config::VAR_PREFIX) . '%',
         ];
+
+        $optionNames = DB::get_col(
+            DB::prepare(
+                'SELECT option_name FROM `' . DB::wpPrefix() . 'options` WHERE option_name LIKE %s OR option_name LIKE %s',
+                $patterns
+            )
+        );
+
+        if (!$optionNames) {
+            return;
+        }
 
         DB::query(
             DB::prepare(
-                'DELETE FROM `' . DB::wpPrefix() . 'options` WHERE option_name in ('
-                    . implode(
-                        ',',
-                        array_map(
-                            function () {
-                                return '%s';
-                            },
-                            $pluginOptions
-                        )
-                    ) . ')',
-                $pluginOptions
+                'DELETE FROM `' . DB::wpPrefix() . 'options` WHERE option_name LIKE %s OR option_name LIKE %s',
+                $patterns
             )
         );
+
+        if (function_exists('wp_cache_delete_multiple')) {
+            wp_cache_delete_multiple($optionNames, 'options');
+            wp_cache_delete('alloptions', 'options');
+            wp_cache_delete('notoptions', 'options');
+        }
     }
 }

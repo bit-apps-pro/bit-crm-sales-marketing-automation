@@ -78,7 +78,10 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
               )
             }
             if (field.type === 'date') {
-              return formatDate(text)
+              return !text || text.startsWith('0000-00-00') ? '' : formatDate(text)
+            }
+            if (field.field_key === 'owner_id') {
+              return record.owner_name || ''
             }
             if (field.type === 'select' || field.type === 'radio') {
               return unslugify(text)
