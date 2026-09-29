@@ -245,7 +245,7 @@ final class CommonController
             return;
         }
 
-        $existingOptionValues = array_column($options['data'], 'value');
+        $existingOptionValues = $this->collectOptionValues($options['data']);
 
         if (\in_array($selectedValue, $existingOptionValues)) {
             return;
@@ -261,5 +261,35 @@ final class CommonController
         } catch (Throwable $th) {
             return;
         }
+    }
+
+    /**
+     * Every value already on the page, including the children of a variant
+     * tree.
+     *
+     * A source that groups variants under a parent (WooCommerce, FluentCart,
+     * SureCart) keeps the selectable values one level down, so a top-level
+     * scan would not see the selected one and would prepend a second copy of
+     * it -- leaving the tree with two nodes sharing a key.
+     */
+    private function collectOptionValues(array $options): array
+    {
+        $values = [];
+
+        foreach ($options as $option) {
+            if (!\is_array($option)) {
+                continue;
+            }
+
+            if (isset($option['value'])) {
+                $values[] = $option['value'];
+            }
+
+            if (!empty($option['children']) && \is_array($option['children'])) {
+                $values = array_merge($values, $this->collectOptionValues($option['children']));
+            }
+        }
+
+        return $values;
     }
 }

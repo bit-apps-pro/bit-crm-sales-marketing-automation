@@ -14,6 +14,7 @@ interface ProductSourceOption {
 interface ProductSourceOptionsParams {
   allowCustomSource?: boolean
   fluentCartEnabled?: boolean
+  sureCartEnabled?: boolean
   wooEnabled?: boolean
 }
 
@@ -37,7 +38,7 @@ function sourceOptionLabel(label: string, tag?: SourceTag): ReactNode {
 
 /**
  * Tag explaining why a plugin-backed source is unavailable: in the free plugin
- * neither FluentCart nor Local can ever be used, so the upgrade prompt wins
+ * neither FluentCart, SureCart nor Local can ever be used, so the upgrade prompt wins
  * over "Inactive".
  */
 function unavailableTag(requiresPro: boolean): SourceTag {
@@ -47,6 +48,7 @@ function unavailableTag(requiresPro: boolean): SourceTag {
 export function getProductSourceOptions({
   allowCustomSource = false,
   fluentCartEnabled = false,
+  sureCartEnabled = false,
   wooEnabled = false
 }: ProductSourceOptionsParams) {
   const options: ProductSourceOption[] = [
@@ -64,6 +66,12 @@ export function getProductSourceOptions({
         fluentCartEnabled ? undefined : unavailableTag(true)
       ),
       value: PRODUCT_SOURCE.FLUENT_CART
+    },
+    {
+      disabled: !sureCartEnabled,
+      label: __('SureCart'),
+      optionLabel: sourceOptionLabel(__('SureCart'), sureCartEnabled ? undefined : unavailableTag(true)),
+      value: PRODUCT_SOURCE.SURE_CART
     },
     {
       disabled: true,

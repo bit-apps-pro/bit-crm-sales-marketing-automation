@@ -50,9 +50,9 @@ final class AllowedRoutes
      *   settings/upsert, settings/business/*, settings/integration/*,
      *   onboarding/store, download-media, woocommerce/historical-sync/*.
      *
-     * - UI-shaped endpoints (table-fields, fieldsWithOrder, ...). They return
-     *   admin table configuration, so publishing them freezes internal shapes
-     *   into a contract that cannot then be refactored.
+     * - Table configuration endpoints (table-fields). Field metadata endpoints
+     *   for contacts, leads, companies, and deals are explicitly published below
+     *   and require bit_crm_menu through their Request authorization.
      *
      * - emails/send and invoices/send (send outbound mail from the site),
      *   attachments/store (file ingestion) and trashes/delete, trashes/empty
@@ -62,6 +62,7 @@ final class AllowedRoutes
      */
     private const ROUTES = [
         // Contacts
+        ['method' => 'GET', 'path' => 'contacts/fields'],
         ['method' => 'POST', 'path' => 'contacts/store'],
         ['method' => 'POST', 'path' => 'contacts/search'],
         ['method' => 'GET', 'path' => 'contacts/{id}'],
@@ -73,6 +74,7 @@ final class AllowedRoutes
         ['method' => 'POST', 'path' => 'contacts/detach-tags'],
 
         // Leads
+        ['method' => 'GET', 'path' => 'leads/fields'],
         ['method' => 'POST', 'path' => 'leads/store'],
         ['method' => 'POST', 'path' => 'leads/search'],
         ['method' => 'GET', 'path' => 'leads/{id}'],
@@ -84,6 +86,7 @@ final class AllowedRoutes
         ['method' => 'POST', 'path' => 'leads/detach-tags'],
 
         // Companies
+        ['method' => 'GET', 'path' => 'companies/fields'],
         ['method' => 'POST', 'path' => 'companies/store'],
         ['method' => 'POST', 'path' => 'companies/search'],
         ['method' => 'GET', 'path' => 'companies/{id}'],
@@ -95,6 +98,7 @@ final class AllowedRoutes
         ['method' => 'POST', 'path' => 'companies/detach-tags'],
 
         // Deals
+        ['method' => 'GET', 'path' => 'deals/fields'],
         ['method' => 'POST', 'path' => 'deals/store'],
         ['method' => 'POST', 'path' => 'deals/search'],
         ['method' => 'GET', 'path' => 'deals/{id}'],
@@ -136,6 +140,8 @@ final class AllowedRoutes
         ['method' => 'GET', 'path' => 'invoices/{id}'],
         ['method' => 'POST', 'path' => 'invoices/{id}'],
         ['method' => 'POST', 'path' => 'invoices/{id}/status'],
+        ['method' => 'POST', 'path' => 'invoices/{id}/manual-payment'],
+        ['method' => 'GET', 'path' => 'invoices/{id}/payments'],
         ['method' => 'POST', 'path' => 'invoices/trash'],
         ['method' => 'GET', 'path' => 'invoices/deals/{id}'],
         ['method' => 'GET', 'path' => 'invoices/download'],

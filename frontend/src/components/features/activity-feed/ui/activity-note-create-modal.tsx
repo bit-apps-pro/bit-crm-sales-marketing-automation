@@ -56,8 +56,14 @@ export default function ActivityNoteCreateModal({
 
   return (
     <Popover
+      // The trigger sits at the right of the activity panel. rc-trigger only flips a
+      // placement that does not fit, it never slides one, so on a phone the panel hung
+      // off the right edge; `shiftX` lets it slide back into the viewport. The content
+      // width above is capped to the viewport for the same reason -- a popover gives
+      // `max-w-full` nothing to resolve against.
+      align={{ overflow: { adjustX: true, adjustY: true, shiftX: true } }}
       content={
-        <div className="w-96 space-y-3">
+        <div className="w-[min(24rem,calc(100vw-3rem))] space-y-3">
           <ActivityNoteForm form={form} />
           <Space className="flex justify-end">
             <Button className="rounded-full" onClick={handleCancel}>

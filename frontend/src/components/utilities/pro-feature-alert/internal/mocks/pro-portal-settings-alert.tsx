@@ -1,8 +1,17 @@
 import { __ } from '@common/helpers/i18nWrap'
 import { Button, Checkbox, Tabs, Typography } from 'antd'
+import { type ReactNode } from 'react'
+import { LuPalette, LuShieldCheck, LuUsers } from 'react-icons/lu'
 
 import { type ProFeatureAlertProps } from '../../shared/type'
 import LockedOverlay from '../locked-overlay'
+
+const tabLabel = (icon: ReactNode, text: string) => (
+  <span className="flex items-center gap-1.5">
+    {icon}
+    {text}
+  </span>
+)
 
 const MODULES = [
   { checked: true, label: __('Dashboard'), permission: __('View') },
@@ -90,9 +99,13 @@ export default function ProPortalSettingsAlert({ featureName }: ProFeatureAlertP
           className="mx-6 my-2"
           defaultActiveKey="permissions"
           items={[
-            { children: <PermissionsMock />, key: 'permissions', label: __('Permissions') },
-            { key: 'clients', label: __('Clients') },
-            { key: 'white-label', label: __('White Label') }
+            {
+              children: <PermissionsMock />,
+              key: 'permissions',
+              label: tabLabel(<LuShieldCheck />, __('Permissions'))
+            },
+            { key: 'clients', label: tabLabel(<LuUsers />, __('Clients')) },
+            { key: 'white-label', label: tabLabel(<LuPalette />, __('White Label')) }
           ]}
         />
       </div>

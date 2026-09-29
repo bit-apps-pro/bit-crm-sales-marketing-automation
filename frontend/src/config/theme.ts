@@ -75,6 +75,20 @@ export const darkThemeConfig = {
   // controlOutline: '#ffaace33'
 }
 
+/**
+ * Heading scale below the `md` breakpoint. antd's defaults (38/30/24/20/16) are sized for
+ * desktop and crowd a phone-width page header next to its action buttons. Applied as theme
+ * tokens rather than CSS so every Typography.Title -- including those portalled into modals
+ * and drawers -- picks it up, while Tailwind classes set on a title still take precedence.
+ */
+export const smallScreenTypographyTokens: Partial<AliasToken> = {
+  fontSizeHeading1: 28,
+  fontSizeHeading2: 24,
+  fontSizeHeading3: 20,
+  fontSizeHeading4: 17,
+  fontSizeHeading5: 15
+}
+
 export const componentsTokenLight: ThemeConfig['components'] = {
   Checkbox: {
     borderRadiusSM: 4

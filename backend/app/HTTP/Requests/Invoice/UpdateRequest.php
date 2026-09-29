@@ -4,6 +4,7 @@ namespace BitApps\Crm\HTTP\Requests\Invoice;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Rules\Common\NumberBetweenRule;
+use BitApps\Crm\Rules\Common\ProductIdRule;
 use BitApps\Crm\src\Capability;
 
 class UpdateRequest extends Request
@@ -41,7 +42,7 @@ class UpdateRequest extends Request
             'line_items.*.product_code'        => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.product_source'      => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.description'         => ['nullable', 'string', 'sanitize:text'],
-            'line_items.*.product_id'          => ['nullable', 'integer'],
+            'line_items.*.product_id'          => ['nullable', new ProductIdRule()],
         ];
     }
 }

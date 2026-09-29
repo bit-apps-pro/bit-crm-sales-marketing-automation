@@ -44,7 +44,8 @@ class DealSearchService
         $companyNameSelect = $this->getCompanyNameSelect();
         $ownerTableJoin = $this->getOwnerTableJoin();
         $ownerNameSelect = $this->getOwnerNameSelect();
-        $select = "SELECT {$dealTableAlias}.*" . $contactNameSelect . $companyNameSelect . $ownerNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
+        $dealColumnsSelect = (new EntityColumnsSelectBuilder())->buildSelect($dealTable, $dealTableAlias, $customFieldKeys);
+        $select = "SELECT {$dealColumnsSelect}" . $contactNameSelect . $companyNameSelect . $ownerNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
 
         $baseQuery = "
         {$select}

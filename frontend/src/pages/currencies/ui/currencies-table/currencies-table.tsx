@@ -49,7 +49,7 @@ export default function CurrenciesTable({ currencies }: CurrenciesTableProps) {
       dataSource={currencies}
       pagination={false}
       rowKey="currency"
-      scroll={{ x: 800 }}
+      scroll={{ x: 'max-content' }}
       size="small"
     />
   )

@@ -59,7 +59,7 @@ export default function Deal() {
         <EntitySkeleton />
       ) : (
         <>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <Breadcrumb
               items={[
                 { title: __('Deals'), to: '/deals' },
@@ -72,7 +72,7 @@ export default function Deal() {
                 }
               ]}
             />
-            <div className="flex items-center gap-2">
+            <div className="ms-auto flex items-center gap-2">
               <AiSummaryButton entityId={dealId} module={MODULES.DEAL} name={deal.name} />
               <PrevNextNavigation
                 module={MODULES.DEAL}
@@ -83,7 +83,7 @@ export default function Deal() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <EntitySummaryCard
                 actions={<Actions id={dealId} />}
                 entity={{

@@ -245,7 +245,7 @@ export default function InvoicesTable({ invoices, isDealView = false, isLoading 
       pagination={false}
       rowKey="id"
       rowSelection={invoices.length > 0 ? rowSelection : undefined}
-      scroll={{ x: '100%', y: tableScrollY }}
+      scroll={{ x: 'max-content', y: tableScrollY }}
       size="small"
       virtual
     />

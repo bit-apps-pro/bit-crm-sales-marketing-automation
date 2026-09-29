@@ -3,6 +3,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import FieldSettings from '@features/field-settings'
 import SettingsPageHeader from '@utilities/settings-page-header'
 import SettingsTabs from '@utilities/settings-tabs'
+import { LuArchive, LuKanban, LuTextCursorInput } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 
 import ArchivedStages from './ui/archived-stages'
@@ -21,16 +22,19 @@ export default function DealSettings() {
         items={[
           {
             children: <FieldSettings module={MODULES.DEAL} />,
+            icon: <LuTextCursorInput />,
             key: 'field-settings',
             label: __('Field Settings')
           },
           {
             children: <Stages />,
+            icon: <LuKanban />,
             key: 'stages',
             label: __('Stage Settings')
           },
           {
             children: <ArchivedStages />,
+            icon: <LuArchive />,
             key: 'archived-stages',
             label: __('Archived Stages')
           }

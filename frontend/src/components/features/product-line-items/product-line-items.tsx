@@ -1,7 +1,8 @@
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
-import { type Product } from '@common/types/product'
+import { type ProductOptionData } from '@components/features/product-lookup-select/shared/types'
 import useFluentCartProductIntegration from '@pages/fluent-cart-settings/data/use-fluent-cart-product-integration'
+import useSureCartProductIntegration from '@pages/surecart-settings/data/use-surecart-product-integration'
 import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
 import If from '@utilities/If'
 import { Badge, Button, Select, Skeleton, Space, Typography } from 'antd'
@@ -50,10 +51,12 @@ export default function ProductLineItems({
   const { setTaxOption } = useLineItemsStoreActions()
   const { isWooEnabled } = useWooProductIntegration()
   const { isFluentCartEnabled } = useFluentCartProductIntegration()
+  const { isSureCartEnabled } = useSureCartProductIntegration()
 
   const getDefaultProductSource = () => {
     if (isWooEnabled) return PRODUCT_SOURCE.WOO_COMMERCE
     if (isFluentCartEnabled) return PRODUCT_SOURCE.FLUENT_CART
+    if (isSureCartEnabled) return PRODUCT_SOURCE.SURE_CART
     return allowCustomSource ? PRODUCT_SOURCE.CUSTOM : ''
   }
 
@@ -78,7 +81,7 @@ export default function ProductLineItems({
   )
 
   const handleSelectProduct = useCallback(
-    (id: string, productData: Product) => {
+    (id: string, productData: ProductOptionData) => {
       setLocalLineItems(prev => selectProduct(prev, id, productData, currencyData))
     },
     [currencyData, setLocalLineItems]
@@ -129,8 +132,10 @@ export default function ProductLineItems({
             onUpdate={handleUpdate}
           />
         </Suspense>
-        <div className="flex items-center justify-between">
-          <Space>
+        {/* Wraps on a narrow screen: kept on one line, the buttons take the row and the
+            counts are squeezed to a few pixels wide, one letter per line. */}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <Space wrap>
             <Button icon={<LuPlus />} onClick={handleAddLineItem} type="dashed">
               {__('Add Line Item')}
             </Button>
@@ -138,7 +143,7 @@ export default function ProductLineItems({
               {__('Clear All')}
             </Button>
           </Space>
-          <div className="flex gap-2 text-end">
+          <div className="flex flex-wrap items-center gap-2 text-end">
             <Typography.Text type="secondary">
               {__('Products:')} {localLineItems.length}
             </Typography.Text>

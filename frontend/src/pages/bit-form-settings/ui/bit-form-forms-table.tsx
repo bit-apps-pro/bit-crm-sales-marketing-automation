@@ -18,6 +18,9 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
   const { isToggling, toggleFormStatus, togglingFormId } = useToggleFormStatus()
   const tableScrollY = useTableScrollHeight(400)
 
+  // Every column carries a width: with `scroll.y` antd lays the table out fixed, and
+  // width-less columns split the leftover space -- on a phone each one shrank to its
+  // first letter behind the ellipsis instead of the table scrolling sideways.
   const columns = useMemo<ColumnsType<BitFormListItem>>(
     () => [
       {
@@ -26,7 +29,8 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
           showTitle: true
         },
         key: 'formName',
-        title: __('Form')
+        title: __('Form'),
+        width: 200
       },
       {
         dataIndex: 'shortcode',
@@ -39,7 +43,8 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
             {shortcode}
           </Typography.Text>
         ),
-        title: __('Shortcode')
+        title: __('Shortcode'),
+        width: 200
       },
       {
         dataIndex: 'entriesCount',
@@ -52,7 +57,8 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
             {entriesCount}
           </a>
         ),
-        title: __('Entries')
+        title: __('Entries'),
+        width: 90
       },
       {
         dataIndex: 'createdAt',
@@ -61,7 +67,8 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
         },
         key: 'createdAt',
         render: (createdAt: string) => formatDateTime(createdAt),
-        title: __('Created')
+        title: __('Created'),
+        width: 220
       },
       {
         align: 'center',
@@ -78,9 +85,11 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
             size="small"
           />
         ),
-        title: __('Published')
+        title: __('Published'),
+        width: 110
       },
       {
+        fixed: 'right',
         key: 'actions',
         render: (_, item) => (
           <Space>
@@ -118,7 +127,7 @@ export default function BitFormFormsTable({ forms, loading }: BitFormFormsTableP
           </Space>
         ),
         title: __('Actions'),
-        width: 100
+        width: 120
       }
     ],
     [isToggling, toggleFormStatus, togglingFormId]

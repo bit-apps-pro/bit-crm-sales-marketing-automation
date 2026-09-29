@@ -262,6 +262,7 @@ export default function ConversionMapping() {
           columns={columns}
           dataSource={dataSource}
           pagination={false}
+          scroll={{ x: 'max-content' }}
           size="small"
           tableLayout="fixed"
         />

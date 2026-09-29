@@ -1,9 +1,13 @@
 import NotifyContext from '@common/context/NotifyContext'
 import { direction } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
-import { componentsTokenLight, lightThemeConfig } from '@config/theme'
+import useBreakpoint from '@common/hooks/use-breakpoint'
+import { componentsTokenLight, lightThemeConfig, smallScreenTypographyTokens } from '@config/theme'
 import { mapInvoiceResponseToPreviewData } from '@pages/Invoice/shared/map-invoice-preview-data'
 import InvoicePreview from '@pages/Invoice/ui/invoice-preview'
+import useInvoicePageScale, {
+  INVOICE_PAGE_WIDTH
+} from '@utilities/invoice-skeleton/use-invoice-page-scale'
 import { ConfigProvider, Empty, message, notification, theme } from 'antd'
 import { useEffect, useMemo } from 'react'
 
@@ -16,6 +20,7 @@ const { defaultAlgorithm } = theme
 export default function PublicInvoiceApp() {
   const [notificationApi, contextHolderNotification] = notification.useNotification()
   const [messageApi, contextHolderMessage] = message.useMessage()
+  const isMdUp = useBreakpoint('md')
   const notifyContextValue = useMemo(
     () => ({ messageApi, notificationApi }),
     [messageApi, notificationApi]
@@ -37,7 +42,7 @@ export default function PublicInvoiceApp() {
       theme={{
         algorithm: defaultAlgorithm,
         components: componentsTokenLight,
-        token: lightThemeConfig
+        token: isMdUp ? lightThemeConfig : { ...lightThemeConfig, ...smallScreenTypographyTokens }
       }}
     >
       <NotifyContext.Provider value={notifyContextValue}>
@@ -51,6 +56,7 @@ export default function PublicInvoiceApp() {
 
 function PublicInvoiceContent() {
   const { invoiceData, isInvoiceError, isInvoiceLoading } = usePublicInvoice()
+  const { containerRef, scale } = useInvoicePageScale()
 
   if (isInvoiceLoading && !isInvoiceError) {
     return <InvoiceSkeleton />
@@ -76,12 +82,26 @@ function PublicInvoiceContent() {
   return (
     <div className="min-h-screen bg-slate-100 py-6 lg:py-8">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-3 sm:px-4 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
-        <div className="order-2 min-w-0 overflow-x-auto lg:order-1">
-          <InvoicePreview
-            businessSettings={invoiceData.business_settings}
-            data={previewData}
-            termName={invoiceData.term_name}
-          />
+        {/*
+          The same A4 fitting as the admin invoice page: the page renders at its designed
+          794px width and `zoom` shrinks it to the column. Left to reflow, a phone
+          squeezed the preview's columns until addresses and dates broke every few
+          letters and the line items scrolled sideways inside the page.
+        */}
+        <div
+          className="order-2 mx-auto w-full min-w-0 lg:order-1"
+          ref={containerRef}
+          // Capped at the page width: the preview never upscales, so a wider column
+          // would leave empty space beside and below it.
+          style={{ aspectRatio: '210 / 297', maxWidth: INVOICE_PAGE_WIDTH }}
+        >
+          <div style={{ width: INVOICE_PAGE_WIDTH, zoom: scale }}>
+            <InvoicePreview
+              businessSettings={invoiceData.business_settings}
+              data={previewData}
+              termName={invoiceData.term_name}
+            />
+          </div>
         </div>
         <aside className="order-1 lg:sticky lg:top-6 lg:order-2">
           <PublicPayCard

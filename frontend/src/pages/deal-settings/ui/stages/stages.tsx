@@ -48,8 +48,8 @@ export default function Stages() {
 
   return (
     <div>
-      <div className="flex items-center gap-2 rounded-t-md border border-b-0 border-solid border-[#EBEAFF] bg-white p-2 dark:border-neutral-700 dark:bg-neutral-900">
-        <Typography.Title className="mb-0" level={4}>
+      <div className="flex flex-wrap items-center gap-2 rounded-t-md border border-b-0 border-solid border-[#EBEAFF] bg-white p-2 dark:border-neutral-700 dark:bg-neutral-900">
+        <Typography.Title className="mb-0 whitespace-nowrap" level={4}>
           {__('Stages')}
         </Typography.Title>
         <Button

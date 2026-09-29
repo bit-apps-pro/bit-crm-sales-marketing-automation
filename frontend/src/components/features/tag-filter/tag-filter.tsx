@@ -41,7 +41,7 @@ export default function TagFilter({ module }: { module: string }) {
   return (
     <Select
       allowClear
-      className="w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
+      className="w-full sm:w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
       filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
       loading={isTagsFetching}
       maxTagCount="responsive"

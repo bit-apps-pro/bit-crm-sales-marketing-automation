@@ -11,6 +11,10 @@ import '@resource/styles/global.css'
 import '@resource/styles/utilities.sass'
 import '@resource/styles/variables.css'
 import '@resource/styles/onboarding-fullscreen.css'
+// Must come after the commons wp-css-reset: it overrides that file's desktop-only
+// fixed-height admin frame so the app can scroll normally on small screens.
+import '@resource/styles/responsive-shell.css'
+import '@resource/styles/responsive-overlays.css'
 import { createRoot } from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router'
 // Emits assets/logo.svg under a stable, unhashed name (see the assetFileNames

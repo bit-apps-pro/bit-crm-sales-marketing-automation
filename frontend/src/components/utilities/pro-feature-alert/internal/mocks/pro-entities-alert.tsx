@@ -1,7 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
 import FilterButton from '@utilities/filter-button'
 import { Button, Input, Space, Typography } from 'antd'
-import { LuChevronDown, LuColumns2, LuFileDown, LuPlus, LuUpload } from 'react-icons/lu'
+import { LuChevronDown, LuColumns2, LuFileDown, LuFileUp, LuPlus } from 'react-icons/lu'
 
 import { type ProFeatureAlertProps } from '../../shared/type'
 import LockedOverlay from '../locked-overlay'
@@ -33,7 +33,7 @@ export default function ProEntitiesAlert({ columns, featureName }: ProEntitiesAl
             </Button>
             <Button
               className="rounded-e-full text-sm text-gray-500 dark:text-gray-400"
-              icon={<LuUpload size={14} />}
+              icon={<LuFileUp size={14} />}
             >
               {__('Export')}
             </Button>
@@ -48,13 +48,13 @@ export default function ProEntitiesAlert({ columns, featureName }: ProEntitiesAl
             >
               {__('Columns')}
             </Button>
-            <div className="flex items-center gap-2">
+            <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
               <FilterButton activeFilterCount={0} title={__('Advanced Filters')} />
               <div className="flex h-10 items-center gap-1 rounded-full border border-solid border-[#E5E3FE] bg-white px-4 dark:border-[#3F3A86] dark:bg-transparent">
                 <Typography.Text>{__('Filter by Tag')}</Typography.Text>
                 <LuChevronDown size={14} />
               </div>
-              <Input className="w-52 rounded-full" placeholder={__('Search by keyword')} />
+              <Input className="w-full rounded-full sm:w-52" placeholder={__('Search by keyword')} />
             </div>
           </div>
           <TableMock columns={columns} />

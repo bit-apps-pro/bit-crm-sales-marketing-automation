@@ -12,7 +12,7 @@ PARENT_DIR="$(dirname "$SCRIPT_DIR")"
 
 cd "$PARENT_DIR" || exit 1
 
-echo "Extracting language codes from existing .mo files..."
+echo "Extracting language codes from existing .po files..."
 LANG_CODES=$("$SCRIPT_DIR"/get_language_codes.sh)
 
 if [ -z "$LANG_CODES" ]; then
@@ -43,7 +43,7 @@ for lang in $LANG_CODES; do
         --abort-on-failure
 
     if [ $? -eq 0 ]; then
-        wp i18n make-mo "$LANGUAGE_DIR/bit-crm-sales-marketing-automation-$lang.po" "$LANGUAGE_DIR/"
+        wp i18n make-php "$LANGUAGE_DIR/bit-crm-sales-marketing-automation-$lang.po" "$LANGUAGE_DIR/"
         echo "Successfully processed language: $lang"
     else
         echo "Error processing language: $lang"

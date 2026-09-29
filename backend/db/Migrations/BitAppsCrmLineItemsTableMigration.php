@@ -20,7 +20,9 @@ final class BitAppsCrmLineItemsTableMigration extends Migration
                 $table->id();
                 $table->bigint('entity_id')->unsigned();
                 $table->string('module');
-                $table->bigint('product_id')->unsigned()->nullable();
+                // String, not int: external catalogues key on their own ids
+                // and SureCart's are UUIDs.
+                $table->string('product_id')->nullable();
                 $table->string('product_name')->nullable();
                 $table->string('product_code')->nullable();
                 $table->string('product_source')->nullable();

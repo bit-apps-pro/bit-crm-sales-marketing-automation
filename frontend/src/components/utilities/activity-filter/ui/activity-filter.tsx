@@ -15,7 +15,7 @@ const selectPrefix = (label: string) => (
   </div>
 )
 
-export default function ActivityFilter({ filters, title }: ActivityFilterProps) {
+export default function ActivityFilter({ className, compact, filters, title }: ActivityFilterProps) {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const activeFilterCount = useMemo(
@@ -111,8 +111,8 @@ export default function ActivityFilter({ filters, title }: ActivityFilterProps) 
       placement="bottomRight"
       trigger="click"
     >
-      <span>
-        <FilterButton activeFilterCount={activeFilterCount} title={title} />
+      <span className={className}>
+        <FilterButton activeFilterCount={activeFilterCount} compact={compact} title={title} />
       </span>
     </Popover>
   )

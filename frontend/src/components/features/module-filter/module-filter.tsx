@@ -56,7 +56,7 @@ export default function ModuleFilter({ excludeModules = [] }: ModuleFilterProps)
   return (
     <ModuleSelect
       allowClear
-      className="min-w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
+      className="w-full sm:w-auto sm:min-w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
       filterOption={(input, option) =>
         String(option?.label ?? '')
           .toLowerCase()

@@ -20,15 +20,15 @@ export default function ProHistoryAlert({ featureName }: ProFeatureAlertProps) {
           <div className="flex flex-wrap items-center justify-end gap-2 p-3">
             <Select
               allowClear
-              className="w-48 [&_.ant-select-selector]:rounded-full"
+              className="w-full sm:w-48 [&_.ant-select-selector]:rounded-full"
               placeholder={__('Filter by module')}
             />
             <RangePicker
               allowClear
-              className="w-64 rounded-full"
+              className="w-full rounded-full sm:w-64"
               placeholder={[__('Start Date'), __('End Date')]}
             />
-            <Input className="w-52 rounded-full" placeholder={__('Search history...')} />
+            <Input className="w-full rounded-full sm:w-52" placeholder={__('Search history...')} />
           </div>
           <TableMock columns={COLUMNS} />
         </div>

@@ -6,11 +6,13 @@ import $navigate from '@common/globalStates/$navigate'
 import { direction } from '@common/helpers/direction'
 import { createAntDesignStyleContainer } from '@common/helpers/themeUtils'
 import { useAppEssentials } from '@common/hooks/use-app-essentials'
+import useBreakpoint from '@common/hooks/use-breakpoint'
 import {
   componentsTokenDark,
   componentsTokenLight,
   darkThemeConfig,
-  lightThemeConfig
+  lightThemeConfig,
+  smallScreenTypographyTokens
 } from '@config/theme'
 import Layout from '@pages/Layout'
 import SettingsLayout from '@pages/settings-layout'
@@ -54,6 +56,7 @@ const ProductSettings = lazy(() => import('@pages/product-settings'))
 const Products = lazy(() => import('@pages/products'))
 const WooSettings = lazy(() => import('@pages/woo-settings'))
 const FluentCartSettings = lazy(() => import('@pages/fluent-cart-settings'))
+const SureCartSettings = lazy(() => import('@pages/surecart-settings'))
 const BitFormSettings = lazy(() => import('@pages/bit-form-settings'))
 const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations-settings'))
 const McpSettings = lazy(() => import('@pages/mcp-settings'))
@@ -77,7 +80,14 @@ export default function AppRoutes() {
   const [navigateUrl, setNavigateUrl] = useAtom($navigate)
   const navigate = useNavigate()
   const { isDarkTheme } = useAtomValue($appConfig)
-  const themeTokens = isDarkTheme ? darkThemeConfig : lightThemeConfig
+  const isMdUp = useBreakpoint('md')
+  const themeTokens = useMemo(
+    () => ({
+      ...(isDarkTheme ? darkThemeConfig : lightThemeConfig),
+      ...(isMdUp ? {} : smallScreenTypographyTokens)
+    }),
+    [isDarkTheme, isMdUp]
+  )
   const themeAlgorithm = isDarkTheme ? darkAlgorithm : defaultAlgorithm
   const componentsToken = isDarkTheme ? componentsTokenDark : componentsTokenLight
   const [notificationApi, contextHolderNotification] = notification.useNotification()
@@ -244,6 +254,14 @@ export default function AppRoutes() {
                 <Route
                   element={
                     <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
+                      <SureCartSettings />
+                    </ProtectedRoute>
+                  }
+                  path="surecart-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
                       <BitFormSettings />
                     </ProtectedRoute>
                   }
@@ -315,7 +333,7 @@ export default function AppRoutes() {
                 />
                 <Route
                   element={
-                    <ProtectedRoute capability={CAPABILITIES.SETTING.INTEGRATION}>
+                    <ProtectedRoute capability={CAPABILITIES.AI.CHAT}>
                       <AiSettings />
                     </ProtectedRoute>
                   }

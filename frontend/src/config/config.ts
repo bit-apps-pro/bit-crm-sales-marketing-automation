@@ -25,6 +25,7 @@ interface ConfigType {
   DATE_FORMAT: string
   FREE_VERSION: string
   HOME_CURRENCY_DATA: CurrencyItemType
+  HOME_URL: string
   IS_DEV: boolean
   IS_PRO: boolean
   IS_PRO_EXIST: boolean
@@ -37,6 +38,7 @@ interface ConfigType {
   PRO_SLUG?: string
   PRO_VERSION?: string
   PRODUCT_NAME: string
+  PUBLIC_URL_PREFIX: string
   ROOT_URL: string
   ROUTE_PREFIX: string
   SAMPLE_DATA_STATUS: NonNullable<(typeof SERVER_VARIABLES)['sampleDataStatus']>
@@ -57,6 +59,7 @@ const config = {
   DATE_FORMAT: getServerVariable('dateFormat'),
   FREE_VERSION: getServerVariable('version'),
   HOME_CURRENCY_DATA: getServerVariable('homeCurrencyData'),
+  HOME_URL: getServerVariable('homeURL'),
   IS_DEV: true,
   IS_PRO: SERVER_VARIABLES?.isPro === '1',
   IS_PRO_EXIST: getServerVariable('isProExist', '0') === '1',
@@ -69,6 +72,7 @@ const config = {
   PRO_SLUG: getServerVariable('proSlug'),
   PRO_VERSION: getServerVariable('proPluginVersion'),
   PRODUCT_NAME: 'Bit CRM',
+  PUBLIC_URL_PREFIX: getServerVariable('publicUrlPrefix'),
   ROOT_URL: getServerVariable('rootURL', 'http://.local'),
   ROUTE_PREFIX: getServerVariable('routePrefix', 'bit_crm_'),
   SAMPLE_DATA_STATUS: SERVER_VARIABLES?.sampleDataStatus ?? 'dismissed',

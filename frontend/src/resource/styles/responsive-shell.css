@@ -1,0 +1,70 @@
+/* Mobile shell overrides for the WordPress admin frame.
+ *
+ * The shared reset (@resource/styles/wp-css-reset.css, synced from the commons) pins the
+ * admin content area to exactly one desktop viewport:
+ *
+ *   #wpbody-content { position: sticky; overflow: hidden; height: calc(100vh - 32px); top: 32px }
+ *
+ * That is right on desktop -- the app owns the viewport and scrolls internally -- but on
+ * a phone it breaks three ways at once:
+ *
+ *   1. 32px is the DESKTOP admin bar. Below 782px WordPress renders it 46px tall, so the
+ *      box is 14px too long and its bottom is pushed off-screen.
+ *   2. `overflow: hidden` clips everything past one viewport height instead of letting it
+ *      scroll, which is why pages appear to end mid-content.
+ *   3. WordPress switches the admin bar to `position: fixed` on mobile, so a `sticky`
+ *      child offset by `top: 32px` no longer lines up under it.
+ *
+ * Below the WP breakpoint we hand the page back to normal document flow: natural height,
+ * visible overflow, static position. The app then grows as tall as its content and the
+ * page scrolls the way every other mobile page does, instead of scrolling inside a
+ * fixed-height box nested in a scrolling page.
+ *
+ * This file is imported AFTER the commons reset in main.tsx, so these rules win. The
+ * commons copy is a synced submodule artifact and must not be hand-edited; keeping the
+ * override here also keeps the change scoped to Bit CRM.
+ *
+ * 782px is WordPress's own admin breakpoint, not Tailwind's -- it has to match the point
+ * where WP itself reflows the admin chrome, which is what these rules are compensating
+ * for.
+ */
+
+@media screen and (width <= 782px) {
+  #wpbody-content {
+    position: static;
+    height: auto;
+    overflow: visible;
+    top: 0;
+  }
+
+  /* The app root inherits the same one-viewport assumption.
+
+     Deliberately `height: auto` with NO `min-height`: `html, body` are both `height:
+     100%`, so a `min-height` here would hold the shell open to a full viewport on a
+     short page (a list with three rows) and leave a band of empty background below the
+     content. Letting it size to its content means a short page is short and a long one
+     scrolls, which is what the release to normal flow was for. */
+  #bit-apps-root {
+    height: auto;
+    overflow: visible;
+  }
+
+  /* The flip side of sizing to content: on a short page the WordPress page background
+     shows below the shell. `#wpcontent` ends short of the viewport, so wp-admin's grey
+     `body` shows as a strip under it; paint the body the commons-reset `#wpcontent`
+     colour so the two read as one surface. In dark mode both are light and read as a
+     white band, so Layout.tsx's `.dark` on <html> switches them to the shell's dark
+     surface. */
+  body {
+    background: #f5f8ff;
+  }
+
+  html.dark,
+  html.dark body,
+  html.dark #wpcontent {
+    background: #111;
+  }
+
+  /* The onboarding fullscreen mode hides the admin bar entirely and sizes itself to the
+     viewport; its phone rules live in onboarding-fullscreen.css. */
+}

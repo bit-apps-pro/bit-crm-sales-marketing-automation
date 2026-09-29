@@ -40,7 +40,8 @@ class CompanySearchService
         $tagsFilter = $this->filterByTags($args['tags']);
         [$searchFilter, $searchBindings] = $this->filterBySearchTerm($args['searchTerm']);
         [$advancedFilters, $advancedFiltersBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? [], $allowedColumns);
-        $select = "SELECT {$companyTableAlias}.*" . $ownerNameSelect . $parentNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
+        $companyColumnsSelect = (new EntityColumnsSelectBuilder())->buildSelect($companyTable, $companyTableAlias, $customFieldKeys);
+        $select = "SELECT {$companyColumnsSelect}" . $ownerNameSelect . $parentNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
 
         $baseQuery = "
         {$select}

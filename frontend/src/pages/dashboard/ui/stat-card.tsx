@@ -48,7 +48,10 @@ export default function StatCard({
         </div>
 
         <div className="mt-5">
-          <Statistic value={value} valueStyle={{ fontSize: 42, fontWeight: 700, lineHeight: 1 }} />
+          <Statistic
+            value={value}
+            valueStyle={{ fontSize: 'clamp(30px, 7vw, 42px)', fontWeight: 700, lineHeight: 1 }}
+          />
           {changePercent !== undefined && (
             <div className="mt-1.5 flex items-center gap-1 text-[13px]">
               {trend === 'up' && <LuArrowUpRight className="text-green-500" size={14} />}

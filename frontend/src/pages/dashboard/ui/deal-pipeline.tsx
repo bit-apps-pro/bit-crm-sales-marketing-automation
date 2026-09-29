@@ -186,7 +186,7 @@ export default function DealPipeline({ dealPipeline }: DealPipelineProps) {
         </div>
         <RangePicker
           allowClear={false}
-          className="w-64 flex-shrink-0 rounded-full"
+          className="w-full flex-shrink-0 rounded-full sm:w-64"
           format={SITE_DATE_FORMAT}
           onChange={handleRangeChange}
           separator="–"

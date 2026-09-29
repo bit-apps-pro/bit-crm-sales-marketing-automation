@@ -16,8 +16,8 @@ export default function AdvancedFilterItem({
   shouldShowRemoveButton
 }: AdvancedFilterItemProps) {
   return (
-    <div className="flex items-start gap-2">
-      <div className="flex-1">
+    <div className="flex flex-wrap items-start gap-2 sm:flex-nowrap">
+      <div className="min-w-[8rem] flex-1 basis-full sm:basis-0">
         <FilterSelectInput
           error={errors?.field_key || false}
           filter={filter}
@@ -25,7 +25,7 @@ export default function AdvancedFilterItem({
           onUpdate={onUpdate}
         />
       </div>
-      <div className="flex-1">
+      <div className="min-w-[8rem] flex-1 basis-full sm:basis-0">
         <FilterConditionInput
           error={errors?.operator || false}
           filter={filter}
@@ -33,7 +33,7 @@ export default function AdvancedFilterItem({
           onUpdate={onUpdate}
         />
       </div>
-      <div className="flex-1">
+      <div className="min-w-[8rem] flex-1 basis-full sm:basis-0">
         <FilterValueInput
           error={errors?.value || false}
           filter={filter}

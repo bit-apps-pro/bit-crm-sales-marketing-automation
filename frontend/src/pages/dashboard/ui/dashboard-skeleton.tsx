@@ -22,7 +22,7 @@ export default function DashboardSkeleton() {
           ))}
         </div>
         <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-10">
-          <div className="w-full md:col-span-3">
+          <div className="w-full lg:col-span-3">
             <PendingActivitiesSkeleton />
           </div>
           <div className="col-span-1 flex flex-col gap-5 lg:col-span-5">
@@ -32,7 +32,7 @@ export default function DashboardSkeleton() {
               <InvoiceTopProductsSkeleton />
             </div>
           </div>
-          <div className="w-full space-y-5 md:col-span-2">
+          <div className="w-full space-y-5 lg:col-span-2">
             <LeadCountBySourceSkeleton />
             <TutorialSkeleton />
           </div>

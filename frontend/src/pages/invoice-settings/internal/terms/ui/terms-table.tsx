@@ -82,6 +82,7 @@ export default function TermsTable({ data, loading }: TermsTable) {
       loading={loading}
       pagination={false}
       rowKey="key"
+      scroll={{ x: 'max-content' }}
       size="small"
       tableLayout="fixed"
     />

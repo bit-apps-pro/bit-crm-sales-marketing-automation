@@ -24,7 +24,7 @@ export default function EntitySummaryCard({
   entity: EntitySummaryData
 }) {
   return (
-    <div className="col-span-2 flex h-full w-full justify-between gap-4 rounded-md border border-solid border-[#EBEAFF] bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900">
+    <div className="flex h-full w-full flex-col justify-between gap-4 rounded-md border border-solid border-[#EBEAFF] bg-white p-4 md:col-span-2 md:flex-row dark:border-neutral-700 dark:bg-neutral-900">
       <EntitySummaryInfo entity={entity} />
       <div className="flex flex-col justify-between gap-2">
         <EntitySummaryMeta entity={entity} />

@@ -71,6 +71,9 @@ export default function TagsTable({ isTagsLoading, tags }: TagsTablePropsType) {
     setSelectedKeys(newSelectedRowKeys)
   }
 
+  // Every column carries a width, as in the other list tables: with `scroll.y` antd lays
+  // the table out fixed, and width-less columns just split the viewport -- on a phone
+  // that wrapped the title and module mid-word instead of scrolling sideways.
   const columns = useMemo(
     () => [
       {
@@ -81,7 +84,8 @@ export default function TagsTable({ isTagsLoading, tags }: TagsTablePropsType) {
           if (sortBy !== 'title') return
           return sortOrder === 'asc' ? ('ascend' as const) : ('descend' as const)
         })(),
-        title: __('Title')
+        title: __('Title'),
+        width: 200
       },
       {
         dataIndex: 'module',
@@ -89,15 +93,18 @@ export default function TagsTable({ isTagsLoading, tags }: TagsTablePropsType) {
         render: (module: string) => {
           return <span className="capitalize">{module}</span>
         },
-        title: __('Module')
+        title: __('Module'),
+        width: 140
       },
       {
         dataIndex: 'count',
         key: 'count',
-        title: __('Count')
+        title: __('Count'),
+        width: 100
       },
       {
         dataIndex: 'actions',
+        fixed: 'right' as const,
         key: 'actions',
         render: (_: unknown, record: TagItemType) => (
           <div>

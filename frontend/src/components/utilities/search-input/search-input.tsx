@@ -29,7 +29,7 @@ export default function SearchInput({ queryKey = 'searchTerm', ...props }: Searc
   return (
     <Input
       allowClear
-      className="w-52 rounded-full"
+      className="w-full rounded-full sm:w-52"
       name="search"
       onChange={handleSearchChange}
       placeholder={__('Search by keyword')}

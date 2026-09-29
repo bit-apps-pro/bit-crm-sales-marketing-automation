@@ -6,6 +6,26 @@
   border: 2px solid var(--border-20);
 }
 
+/* On small screens the shell stops being a fixed-height viewport box (see
+   responsive-shell.css) and grows with its content, so the page scrolls instead of the
+   shell's interior. `overflow: hidden` has to go with it -- kept, it would clip the
+   now-taller content it used to contain.
+
+   No `min-height` to replace the `height`: the parents are all `height: 100%`, so a
+   floor here would keep the bordered card a full viewport tall on a short page and draw
+   an empty panel under the content.
+
+   The margin is also desktop-only: 10px on the right and none on the left reads as a
+   misalignment once the shell spans a narrow screen, so it becomes an even inline
+   margin. */
+@media screen and (width <= 782px) {
+  .layoutWrp {
+    height: auto;
+    margin: 3px 6px 7px;
+    overflow: visible;
+  }
+}
+
 .layoutWrp[color-scheme='dark'] {
   background-color: #111 !important;
 }

@@ -64,7 +64,7 @@ export default function AdvancedFilter<T extends BaseFieldItemType>({
     >
       <div
         className={cn([
-          'flex h-10 cursor-pointer items-center gap-1 rounded-full border border-solid bg-white px-1 dark:bg-transparent',
+          'flex h-10 shrink-0 grow cursor-pointer items-center gap-1 rounded-full border border-solid bg-white px-1 sm:grow-0 dark:bg-transparent',
           isErrorsPresent
             ? 'border-red-500 dark:border-red-500'
             : 'border-[#EBEAFF] dark:border-neutral-700'
@@ -74,7 +74,7 @@ export default function AdvancedFilter<T extends BaseFieldItemType>({
           <LuFilter size={18} />
         </div>
         <div className="me-2 flex items-center gap-1">
-          <Typography.Text>{__('Advanced Filters')}</Typography.Text>
+          <Typography.Text className="whitespace-nowrap">{__('Advanced Filters')}</Typography.Text>
           <If conditions={totalFilterCount > 0}>
             <Tag className="m-0 text-xs" color="blue">
               {totalFilterCount}

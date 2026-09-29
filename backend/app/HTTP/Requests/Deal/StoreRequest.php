@@ -6,6 +6,7 @@ use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
 use BitApps\Crm\Rules\Common\NumberBetweenRule;
+use BitApps\Crm\Rules\Common\ProductIdRule;
 use BitApps\Crm\src\Capability;
 
 class StoreRequest extends Request
@@ -35,7 +36,7 @@ class StoreRequest extends Request
             'lineItems.*.product_code'             => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.product_source'           => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.description'              => ['nullable', 'string', 'sanitize:text'],
-            'lineItems.*.product_id'               => ['nullable', 'integer'],
+            'lineItems.*.product_id'               => ['nullable', new ProductIdRule()],
         ];
 
         return Hooks::applyFilter(HookKeys::CUSTOM_FIELD_VALUES_RULES, $rules);

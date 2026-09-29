@@ -23,3 +23,24 @@ body.bit-crm-onboarding-fullscreen {
 html.wp-toolbar:has(body.bit-crm-onboarding-fullscreen) {
   padding-top: 0 !important;
 }
+
+/* Below WordPress's admin breakpoint the steps are taller than a phone screen, so the
+   desktop lock above (a one-viewport box with the body scroll turned off) would leave the
+   Next / Complete Setup buttons out of reach. Hand the page back to normal scrolling, and
+   drop the 46px inset WordPress keeps for the admin bar hidden above. `dvh` tracks the
+   mobile browser's collapsing toolbar, where `vh` would overshoot it. */
+@media screen and (width <= 782px) {
+  body.bit-crm-onboarding-fullscreen {
+    overflow: auto;
+  }
+
+  body.bit-crm-onboarding-fullscreen #wpbody {
+    padding-top: 0 !important;
+  }
+
+  body.bit-crm-onboarding-fullscreen #wpbody-content {
+    height: auto !important;
+    min-height: 100dvh;
+    padding-bottom: 0;
+  }
+}

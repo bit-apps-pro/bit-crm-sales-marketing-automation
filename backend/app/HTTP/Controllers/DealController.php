@@ -15,6 +15,7 @@ use BitApps\Crm\HTTP\Requests\Deal\AttachTagsRequest;
 use BitApps\Crm\HTTP\Requests\Deal\DetachTagRequest;
 use BitApps\Crm\HTTP\Requests\Deal\DetachTagsRequest;
 use BitApps\Crm\HTTP\Requests\Deal\EditRequest;
+use BitApps\Crm\HTTP\Requests\Deal\FieldsWithOrderRequest;
 use BitApps\Crm\HTTP\Requests\Deal\ImportRequest;
 use BitApps\Crm\HTTP\Requests\Deal\SearchRequest;
 use BitApps\Crm\HTTP\Requests\Deal\ShowDealContactCurrencyRequest;
@@ -194,7 +195,7 @@ final class DealController
         return Response::success($result['data'])->message($result['message']);
     }
 
-    public function fieldsWithOrder()
+    public function fieldsWithOrder(FieldsWithOrderRequest $request)
     {
         $fieldsOrder = SettingService::getSettingsValue(Deal::SETTINGS_KEYS['FIELDS_ORDER']);
         $columnSettings = SettingService::getSettingsValue(Deal::SETTINGS_KEYS['COLUMNS_SETTINGS']);

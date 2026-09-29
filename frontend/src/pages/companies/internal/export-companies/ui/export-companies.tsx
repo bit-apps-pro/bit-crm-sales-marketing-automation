@@ -3,7 +3,7 @@ import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { ProBanner } from '@utilities/pro-feature-alert'
 import { Button, Modal } from 'antd'
 import { type FC, useState } from 'react'
-import { LuUpload } from 'react-icons/lu'
+import { LuFileUp } from 'react-icons/lu'
 
 interface ExportCompaniesProps {
   customFields: FieldItem[]
@@ -19,7 +19,7 @@ const ExportCompanies: FC<ExportCompaniesProps> = () => {
       <Button
         aria-label={__('Export Companies')}
         className="rounded-e-full text-sm text-gray-500 dark:text-gray-400"
-        icon={<LuUpload />}
+        icon={<LuFileUp />}
         onClick={() => setOpen(true)}
       >
         {__('Export')}

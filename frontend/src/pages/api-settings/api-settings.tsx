@@ -58,15 +58,16 @@ export default function ApiSettings() {
           </div>
 
           {apiSettings?.baseUrl && (
-            <div className="flex items-center justify-between gap-4">
-              <Space direction="vertical" size={0}>
+            <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <Space className="min-w-0" direction="vertical" size={0}>
                 <Typography.Text strong>{__('Base URL')}</Typography.Text>
-                <Typography.Text code copyable>
+                <Typography.Text className="break-all" code copyable>
                   {apiSettings.baseUrl}
                 </Typography.Text>
               </Space>
               {/* TODO: point href at the published API documentation once it exists. */}
               <Button
+                className="max-sm:px-0"
                 href="https://bit-crm.com/docs/developer-docs/api/"
                 icon={<LuExternalLink size={14} />}
                 iconPosition="end"
@@ -79,7 +80,7 @@ export default function ApiSettings() {
           )}
 
           <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-            <div className="flex items-center justify-between gap-4 p-3">
+            <div className="flex flex-col items-start gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <div className="flex flex-col">
                 <Typography.Text className="text-base" strong>
                   {__('Manage the API keys used to reach this site from outside WordPress.')}
@@ -89,7 +90,7 @@ export default function ApiSettings() {
                 </Typography.Text>
               </div>
               <Button
-                className="rounded-full"
+                className="w-full shrink-0 rounded-full sm:w-auto"
                 icon={<LuPlus />}
                 onClick={() => setCreateModalOpen(true)}
                 size="large"

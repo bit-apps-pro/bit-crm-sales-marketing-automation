@@ -1,17 +1,22 @@
 import { __ } from '@common/helpers/i18nWrap'
-import { ProBanner } from '@utilities/pro-feature-alert'
+import { type CollapseProps } from 'antd'
+
+import InvoicePaymentsPanel from '../invoice-payments-panel'
+import { type InvoicePaymentPanelsArgs } from './invoice-payment-panels-types'
 
 /**
- * Free variant — collecting invoice payments (WooCommerce checkout, share
- * links, partial payments) is a pro feature, so the sidebar shows a single
- * upgrade prompt in place of the payment panels.
+ * Free variant — the payment ledger is free, so the sidebar shows the real
+ * payment history (manual settlements recorded with "Mark as Paid"). What
+ * stays pro is collecting money: the payment settings panel (partial and
+ * recurring payments) and the related-invoices panel of a recurring series.
  */
-export default function getInvoicePaymentPanels() {
+export default function getInvoicePaymentPanels({
+  currencyData,
+  invoiceId
+}: InvoicePaymentPanelsArgs): NonNullable<CollapseProps['items']> {
   return [
     {
-      children: (
-        <ProBanner className="px-2 py-4" featureName={__('Invoice Payments')} showIcon={false} />
-      ),
+      children: <InvoicePaymentsPanel currencyData={currencyData} invoiceId={invoiceId} />,
       key: 'payments',
       label: <span className="text-slate-500">{__('Payment History')}</span>
     }

@@ -21,6 +21,8 @@ class LineItem extends Model
 
     public const SOURCE_FLUENT_CART = 'fluent_cart_product';
 
+    public const SOURCE_SURECART = 'surecart_product';
+
     public const SOURCE_CUSTOM = 'custom';
 
     public const TAX_EXCLUSIVE = 'exclusive';

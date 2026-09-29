@@ -205,6 +205,7 @@ export default function ImportContacts({ customFields, systemDefinedFields }: Im
                 columns={columns}
                 dataSource={dataSource}
                 pagination={false}
+                scroll={{ x: 'max-content' }}
                 tableLayout="fixed"
               />
               <Form.Item

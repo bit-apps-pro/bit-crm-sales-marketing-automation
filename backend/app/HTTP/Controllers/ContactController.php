@@ -13,6 +13,7 @@ use BitApps\Crm\HTTP\Requests\Contact\AttachTagRequest;
 use BitApps\Crm\HTTP\Requests\Contact\AttachTagsRequest;
 use BitApps\Crm\HTTP\Requests\Contact\DetachTagRequest;
 use BitApps\Crm\HTTP\Requests\Contact\DetachTagsRequest;
+use BitApps\Crm\HTTP\Requests\Contact\FieldsWithOrderRequest;
 use BitApps\Crm\HTTP\Requests\Contact\ImportRequest;
 use BitApps\Crm\HTTP\Requests\Contact\SearchRequest;
 use BitApps\Crm\HTTP\Requests\Contact\ShowRequest;
@@ -43,7 +44,7 @@ final class ContactController
         $this->contactService = new ContactService();
     }
 
-    public function fieldsWithOrder()
+    public function fieldsWithOrder(FieldsWithOrderRequest $request)
     {
         $fieldsOrder = SettingService::getSettingsValue(Contact::SETTINGS_KEYS['FIELDS_ORDER']);
         $columnSettings = SettingService::getSettingsValue(Contact::SETTINGS_KEYS['COLUMNS_SETTINGS']);

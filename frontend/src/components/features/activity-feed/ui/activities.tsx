@@ -58,8 +58,13 @@ export default function Activities({
     return <ActivitiesSkeleton />
   }
 
+  /*
+    Stacked below `lg`: the divider moves from the inline edge to the block end, and the
+    panel takes a viewport-relative height so its inner scroller still has room
+    (`h-full` against an auto-height parent would collapse it).
+  */
   return (
-    <div className="flex h-full flex-col gap-4 border-0 border-e border-solid border-[#EBEAFF] pe-7 dark:border-neutral-700">
+    <div className="flex max-h-[60vh] flex-col gap-4 border-0 border-b border-solid border-[#EBEAFF] pb-5 lg:h-full lg:max-h-none lg:border-b-0 lg:border-e lg:pb-0 lg:pe-7 dark:border-neutral-700">
       <div className="flex items-center gap-2">
         <LuNotepadText className="text-gray-500" />
         <Typography.Text type="secondary">

@@ -7,6 +7,8 @@ use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\RequestType;
 use BitApps\Crm\Deps\BitApps\WPKit\Migration\MigrationHelper;
 use BitApps\Crm\Deps\BitApps\WPKit\Utils\Capabilities;
+use BitApps\Crm\Deps\BitApps\WPTelemetry\Telemetry\Telemetry;
+use BitApps\Crm\Deps\BitApps\WPTelemetry\Telemetry\TelemetryConfig;
 use BitApps\Crm\HTTP\Middleware\LoggedInMiddleware;
 use BitApps\Crm\Providers\HookProvider;
 use BitApps\Crm\Providers\InstallerProvider;
@@ -69,7 +71,8 @@ final class Plugin
     /**
      * Load the bundled translations.
      *
-     * Required because the `.mo` files ship inside the plugin's own /languages
+     * Required because the `.l10n.php` files (generated from the `.po` sources by
+     * `pnpm i18n`; WP 6.5+ loads them in place of `.mo`) ship inside the plugin's own /languages
      * folder. Core's just-in-time loading only searches WP_LANG_DIR/plugins,
      * WP_LANG_DIR/themes, and `custom_paths` -- and `custom_paths` is populated
      * exclusively by this function. The `Domain Path` header is build tooling
@@ -94,6 +97,8 @@ final class Plugin
      */
     public function loaded()
     {
+        $this->initWPTelemetry();
+
         Hooks::doAction(Config::withPrefix('loaded'));
         Hooks::addAction('init', [$this, 'localizationSetup']);
         Hooks::addAction('init', [$this, 'registerProviders'], 11);
@@ -101,6 +106,22 @@ final class Plugin
         Hooks::addFilter('plugin_action_links_' . Config::get('BASENAME'), [new PluginPageActions(), 'renderActionLinks']);
 
         $this->maybeMigrateDB();
+    }
+
+    public function initWPTelemetry()
+    {
+        TelemetryConfig::setSlug(Config::SLUG);
+        TelemetryConfig::setTitle(Config::TITLE);
+        TelemetryConfig::setVersion(Config::VERSION);
+        TelemetryConfig::setPrefix(Config::VAR_PREFIX);
+        TelemetryConfig::setServerBaseUrl(Config::TELEMETRY_SERVER_BASE_URL);
+
+        if (Config::getEnv('DEV')) {
+            return;
+        }
+
+        Telemetry::report()->init();
+        Telemetry::feedback()->init();
     }
 
     public function middlewares()

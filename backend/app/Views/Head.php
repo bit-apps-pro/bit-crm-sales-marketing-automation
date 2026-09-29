@@ -6,6 +6,7 @@ use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPKit\Helpers\DateTimeHelper;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\HTTP\Controllers\OnboardingController;
+use BitApps\Crm\Services\PublicUrlPrefixService;
 use BitApps\Crm\Services\SampleDataService;
 
 class Head
@@ -103,6 +104,8 @@ class Head
                 'rootURL'             => Config::get('ROOT_URI'),
                 'siteUrl'             => Config::get('SITE_URL'),
                 'siteBaseURL'         => is_multisite() ? network_site_url() : site_url(),
+                'homeURL'             => untrailingslashit(home_url()),
+                'publicUrlPrefix'     => (new PublicUrlPrefixService())->getPrefix(),
                 'assetsURL'           => Config::get('ASSET_URI'),
                 'baseURL'             => Config::get('ADMIN_URL') . 'admin.php?page=' . Config::SLUG . '#',
                 'ajaxURL'             => admin_url('admin-ajax.php'),

@@ -87,8 +87,10 @@ export default function FieldSettings({ module }: FieldSettingsPropsType) {
 
   return (
     <div className="light:bg-slate-100 space-y-2 rounded-lg">
-      <div className="flex items-center gap-5">
-        <Typography.Title className="mb-0" level={4}>
+      {/* Title + "Add new custom field" + the column-size toggle need ~560px; they wrap
+          onto separate lines rather than compressing the heading to one letter per line. */}
+      <div className="flex flex-wrap items-center gap-3 sm:gap-5">
+        <Typography.Title className="mb-0 whitespace-nowrap" level={4}>
           {__('Fields')}
         </Typography.Title>
 

@@ -56,7 +56,10 @@ export default function EntityForm<T extends Store | undefined, Y extends BaseFi
         const flushCurrentSection = () => {
           if (currentSectionFields.length > 0) {
             elements.push(
-              <div className="grid grid-cols-2 gap-4" key={`section-fields-${sectionIndex}`}>
+              <div
+                className="grid grid-cols-1 gap-4 md:grid-cols-2"
+                key={`section-fields-${sectionIndex}`}
+              >
                 {currentSectionFields}
               </div>
             )
@@ -78,7 +81,7 @@ export default function EntityForm<T extends Store | undefined, Y extends BaseFi
                 >
                   {__(field.label)}
                 </Divider>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {Object.values(field.group_fields).map(field => (
                     <EntityInput
                       currencyData={currencyData}

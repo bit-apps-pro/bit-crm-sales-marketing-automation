@@ -35,6 +35,7 @@ declare const SERVER_VARIABLES: {
     symbol: string
     thousand_separator: string
   }
+  homeURL: string
   isPro: string
   isProExist?: string
   isRtl?: string
@@ -50,6 +51,7 @@ declare const SERVER_VARIABLES: {
     id: number
     token: string
   }
+  publicUrlPrefix: string
   rootURL: string
   routePrefix: string
   sampleDataStatus?: 'dismissed' | 'pending' | 'removed' | 'seeded'

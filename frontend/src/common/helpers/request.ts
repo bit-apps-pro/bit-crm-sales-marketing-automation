@@ -48,6 +48,13 @@ const replaceUndefined = (_: string, value: unknown) => (value === undefined ? n
 
 const PRO_ACTION_PREFIX = 'pro_'
 
+/**
+ * Routes the shared plugin-commons code calls with a `pro_` prefix but which
+ * Bit CRM serves from the free plugin. The prefix is stripped and the call
+ * always goes to the free namespace, even when pro is active.
+ */
+const FREE_OWNED_ROUTES = new Set(['plugin-improvement'])
+
 export default async function queryRequest<T>(
   action: string,
   data?: any | FormData | null | Record<string, unknown> | undefined, // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -59,7 +66,8 @@ export default async function queryRequest<T>(
   const { API_URL, NONCE, PRO_API_URL } = config
   const isProPrefixedAction = action.startsWith(PRO_ACTION_PREFIX)
   const route = isProPrefixedAction ? action.slice(PRO_ACTION_PREFIX.length) : action
-  const baseUrl = (isPro || isProPrefixedAction) && PRO_API_URL ? PRO_API_URL : API_URL
+  const useProNamespace = (isPro || isProPrefixedAction) && !FREE_OWNED_ROUTES.has(route)
+  const baseUrl = useProNamespace && PRO_API_URL ? PRO_API_URL : API_URL
   const uri = new URL(`${baseUrl}/${route}`, `${window.location.protocol}//${window.location.host}`)
 
   // append query params in url

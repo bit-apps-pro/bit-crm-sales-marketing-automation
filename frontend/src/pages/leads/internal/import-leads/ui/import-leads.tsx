@@ -212,6 +212,7 @@ export default function ImportLeads({ customFields, systemDefinedFields }: Impor
                 columns={columns}
                 dataSource={dataSource}
                 pagination={false}
+                scroll={{ x: 'max-content' }}
               />
               <Form.Item
                 initialValue="skip"

@@ -102,8 +102,8 @@ const CompanyCreate = () => {
         {isFieldsLoading ? (
           <EntityCreateSkeleton />
         ) : (
-          <div className="col-span-2 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-            <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-md border-0 border-b border-solid border-[#EBEAFF] bg-white px-4 py-2 dark:border-neutral-700 dark:bg-neutral-900">
+          <div className="rounded-md border border-solid border-[#EBEAFF] bg-white md:col-span-2 dark:border-neutral-700 dark:bg-neutral-900">
+            <div className="sticky top-0 z-10 flex flex-wrap items-center justify-between gap-2 rounded-t-md border-0 border-b border-solid border-[#EBEAFF] bg-white px-4 py-2 dark:border-neutral-700 dark:bg-neutral-900">
               <div className="flex items-center gap-2">
                 <Typography.Title className="mb-0" level={4}>
                   {__('Create Company')}
@@ -119,7 +119,7 @@ const CompanyCreate = () => {
                   </Link>
                 </Tooltip>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="ms-auto flex items-center gap-1">
                 <Button
                   className="rounded-full"
                   loading={isCreateAndAddPending}

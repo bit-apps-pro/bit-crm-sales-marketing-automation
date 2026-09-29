@@ -5,11 +5,11 @@ PARENT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$PARENT_DIR" || exit 1
 
 LANGUAGE_DIR="$PARENT_DIR/languages"
-PATTERN="bit-crm-sales-marketing-automation-(.*).mo"
+PATTERN="bit-crm-sales-marketing-automation-(.*)\.po$"
 
 LANG_CODES=()
 
-for file in "$LANGUAGE_DIR"/bit-crm-sales-marketing-automation-*.mo; do
+for file in "$LANGUAGE_DIR"/bit-crm-sales-marketing-automation-*.po; do
     if [[ -f "$file" ]]; then
         if [[ $(basename "$file") =~ $PATTERN ]]; then
             lang_code="${BASH_REMATCH[1]}"

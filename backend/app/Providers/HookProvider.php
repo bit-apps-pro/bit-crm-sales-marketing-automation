@@ -3,6 +3,7 @@
 namespace BitApps\Crm\Providers;
 
 use BitApps\Crm\Config;
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\RequestType;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Router\Router;
@@ -13,6 +14,7 @@ use BitApps\Crm\Services\CrmUserService;
 use BitApps\Crm\Services\InvoicePublicPageService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\Services\PrivacyService;
+use BitApps\Crm\Services\TelemetryService;
 use BitApps\Crm\Services\WooCommerceContactSyncService;
 use BitApps\Crm\src\ExternalApi\ExternalApiGuard;
 use DateTime;
@@ -28,11 +30,15 @@ class HookProvider
         Hooks::addAction('rest_api_init', [$this, 'loadAppApiHooks']);
         Hooks::addFilter('rest_pre_dispatch', [ExternalApiGuard::class, 'handle'], 10, 3);
         Hooks::addFilter('safe_style_css', [$this, 'allowStyleProperties']);
+        $telemetryService = new TelemetryService();
+        Hooks::addFilter(HookKeys::TELEMETRY_ADDITIONAL_DATA, [$telemetryService, 'filterTrackingData']);
+        Hooks::addFilter(Config::withPrefix('telemetry_notice_heading'), [$telemetryService, 'getNoticeHeading']);
+        Hooks::addFilter(Config::withPrefix('telemetry_notice_description'), [$telemetryService, 'getNoticeDescription']);
         $this->registerWooCommerceHooks();
 
         // Priority 0: must run before redirect_canonical's 404-permalink
         // guessing, which would otherwise redirect the unregistered
-        // /bit-crm/invoice path to a similarly named post.
+        // /<prefix>/invoice path to a similarly named post.
         $invoicePublicPage = new InvoicePublicPageService();
         Hooks::addAction('template_redirect', [$invoicePublicPage, 'maybeRenderPage'], 0);
         // Registered at boot, not inside maybeRenderPage(): core initialises the

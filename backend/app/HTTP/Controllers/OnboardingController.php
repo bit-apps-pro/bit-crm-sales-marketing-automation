@@ -5,6 +5,7 @@ namespace BitApps\Crm\HTTP\Controllers;
 use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
 use BitApps\Crm\Deps\BitApps\WPKit\Utils\Capabilities;
+use BitApps\Crm\Deps\BitApps\WPTelemetry\Telemetry\Telemetry;
 use BitApps\Crm\HTTP\Requests\Onboarding\StoreRequest;
 use BitApps\Crm\Services\BusinessSettingService;
 use BitApps\Crm\src\Queue\InstallPluginsProcess;
@@ -29,6 +30,7 @@ final class OnboardingController
             }
 
             $this->installPlugins($validated['plugins'] ?? []);
+            $this->applyTrackingConsent($validated['allowTracking'] ?? null);
 
             Config::updateOption(self::KEY_ONBOARDING_COMPLETED, true);
         } catch (Throwable $th) {
@@ -60,6 +62,19 @@ final class OnboardingController
         }
 
         return null;
+    }
+
+    /**
+     * Opts in like the Support page checkbox. Unchecked or absent changes
+     * nothing, so the activation notice can still ask later.
+     */
+    private function applyTrackingConsent(?bool $allowTracking): void
+    {
+        if (!$allowTracking) {
+            return;
+        }
+
+        Telemetry::report()->trackingOptIn();
     }
 
     private function installPlugins(array $slugs): void

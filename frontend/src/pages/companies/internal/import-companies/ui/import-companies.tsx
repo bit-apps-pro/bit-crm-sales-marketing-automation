@@ -26,7 +26,7 @@ import {
 } from 'antd'
 import Papa from 'papaparse'
 import { useContext, useMemo, useState } from 'react'
-import { LuDownload } from 'react-icons/lu'
+import { LuFileDown } from 'react-icons/lu'
 
 import useImportCompanies from '../data/use-import-companies'
 
@@ -160,7 +160,7 @@ export default function ImportCompanies({ customFields, systemDefinedFields }: I
       <Button
         aria-label={__('Import Companies')}
         className="rounded-s-full text-sm text-gray-500 dark:text-gray-400"
-        icon={<LuDownload />}
+        icon={<LuFileDown />}
         onClick={() => handleModal(true)}
       >
         {__('Import')}
@@ -206,6 +206,7 @@ export default function ImportCompanies({ customFields, systemDefinedFields }: I
                 columns={columns}
                 dataSource={dataSource}
                 pagination={false}
+                scroll={{ x: 'max-content' }}
                 tableLayout="fixed"
               />
               <Form.Item

@@ -1,5 +1,4 @@
 import CAPABILITIES from '@common/constants/capabilities'
-import { isRtl } from '@common/helpers/direction'
 import { __ } from '@common/helpers/i18nWrap'
 import IntegrationSettingsNavigation from '@features/integration-settings-navigation'
 import {
@@ -76,7 +75,7 @@ export default function InvoiceFormLayout({
   return (
     <div className="px-6 py-4">
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <Breadcrumb
             className="ms-2"
             items={[
@@ -89,7 +88,7 @@ export default function InvoiceFormLayout({
               }
             ]}
           />
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {mode === 'edit' && (
               <IntegrationSettingsNavigation
                 capability={CAPABILITIES.SETTING.INVOICE}
@@ -104,7 +103,7 @@ export default function InvoiceFormLayout({
           </div>
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <Card className="border border-[#EBEAFF] shadow-none lg:col-span-2 dark:border-neutral-700 dark:bg-neutral-900">
+          <Card className="border border-[#EBEAFF] shadow-none lg:col-span-2 dark:border-neutral-700 dark:bg-neutral-900 max-sm:[&>.ant-card-body]:p-4">
             {children}
           </Card>
           {isLoading ? (
@@ -115,13 +114,10 @@ export default function InvoiceFormLayout({
               ref={containerRef}
               style={{ aspectRatio: '210 / 297' }}
             >
-              <div
-                style={{
-                  transform: `scale(${scale})`,
-                  transformOrigin: isRtl() ? 'top right' : 'top left',
-                  width: INVOICE_PAGE_WIDTH
-                }}
-              >
+              {/* `zoom`, not `transform: scale()`: a transform leaves the layout box at
+                  full A4 height, so below `lg` -- where the preview stacks under the form
+                  -- the container kept ~1100px for a ~450px page. */}
+              <div style={{ width: INVOICE_PAGE_WIDTH, zoom: scale }}>
                 <InvoicePreview data={previewData} />
               </div>
             </div>

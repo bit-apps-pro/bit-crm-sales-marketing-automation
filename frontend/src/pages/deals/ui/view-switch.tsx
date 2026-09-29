@@ -19,9 +19,12 @@ export default function ViewSwitch() {
   }
 
   return (
-    <Space.Compact className="rounded-full" direction="horizontal" size="large">
+    <Space.Compact className="w-full rounded-full sm:w-auto" direction="horizontal" size="large">
       <Button
-        className={cn('rounded-s-full text-sm', view !== 'table' && 'text-gray-500 dark:text-gray-400')}
+        className={cn(
+          'flex-1 rounded-s-full text-sm sm:flex-none',
+          view !== 'table' && 'text-gray-500 dark:text-gray-400'
+        )}
         icon={<LuList />}
         onClick={() => handleViewChange('table')}
         type={view === 'table' ? 'primary' : 'default'}
@@ -29,7 +32,10 @@ export default function ViewSwitch() {
         {__('List')}
       </Button>
       <Button
-        className={cn('rounded-e-full text-sm', view !== 'kanban' && 'text-gray-500 dark:text-gray-400')}
+        className={cn(
+          'flex-1 rounded-e-full text-sm sm:flex-none',
+          view !== 'kanban' && 'text-gray-500 dark:text-gray-400'
+        )}
         icon={<LuKanban />}
         onClick={() => handleViewChange('kanban')}
         type={view === 'kanban' ? 'primary' : 'default'}

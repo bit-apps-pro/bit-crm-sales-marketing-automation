@@ -11,7 +11,7 @@ import useSaveOnboarding from './data/use-save-onboarding'
 import StepBusinessInfo from './ui/step-business-info'
 import StepInstallPlugins, { DEFAULT_PLUGIN_SLUGS } from './ui/step-install-plugins'
 
-const INITIAL_VALUES = { plugins: DEFAULT_PLUGIN_SLUGS }
+const INITIAL_VALUES = { allowTracking: false, plugins: DEFAULT_PLUGIN_SLUGS }
 
 const STEPS = [
   { image: onboardingImage1, key: 'business' },
@@ -19,6 +19,7 @@ const STEPS = [
 ] as const
 
 export interface OnboardingType {
+  allowTracking: boolean
   email?: string
   name?: string
   plugins: string[]
@@ -56,8 +57,8 @@ export default function Onboarding() {
   }, [currentStep])
 
   const handleFinish = async () => {
-    const { email, name, plugins = [] } = form.getFieldsValue(true)
-    await saveOnboarding({ email, name, plugins })
+    const { allowTracking = false, email, name, plugins = [] } = form.getFieldsValue(true)
+    await saveOnboarding({ allowTracking, email, name, plugins })
   }
 
   const stepContent: Record<(typeof STEPS)[number]['key'], ReactNode> = {
@@ -75,8 +76,8 @@ export default function Onboarding() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 sm:p-6 dark:bg-neutral-950">
-      <div className="flex w-full max-w-[880px] flex-col sm:gap-6">
+    <div className="flex min-h-dvh items-center justify-center bg-slate-50 p-3 sm:p-6 dark:bg-neutral-950">
+      <div className="flex w-full max-w-[880px] flex-col gap-3 sm:gap-6">
         <div className="flex flex-col gap-1">
           <Progress percent={percent} showInfo={false} strokeColor={token.colorPrimary} />
         </div>
@@ -88,7 +89,7 @@ export default function Onboarding() {
           preserve
           requiredMark={customizedRequiredMark}
         >
-          <div className="grid h-full grid-cols-1 gap-6 rounded-[20px] bg-white p-6 md:grid-cols-2 md:gap-[35px] md:p-[35px] dark:bg-neutral-900">
+          <div className="rounded-2xl grid h-full grid-cols-1 gap-6 bg-white p-5 sm:rounded-[20px] sm:p-6 md:grid-cols-2 md:gap-[35px] md:p-[35px] dark:bg-neutral-900">
             <img
               alt={activeStep.key}
               className="hidden w-full rounded-[14px] object-cover md:block md:min-h-full"

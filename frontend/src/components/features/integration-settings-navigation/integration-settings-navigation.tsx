@@ -22,13 +22,16 @@ export default function IntegrationSettingsNavigation({
   return (
     <Tooltip title={tooltip}>
       <Link to={to}>
+        {/* Below `sm` the page header wraps its actions onto their own row, and this link
+            only fits beside the Import | Export group once it drops the icon and most of
+            the button padding; at full size it takes a row of its own. */}
         <Button
-          className="rounded-full text-sm font-normal text-gray-500 dark:text-gray-400"
+          className="rounded-full text-sm font-normal text-gray-500 max-sm:!px-1 max-sm:!text-[11px] dark:text-gray-400"
           type="text"
         >
           <span className="inline-flex items-center gap-1">
             {label}
-            <LuSquareArrowUpRight size={14} />
+            <LuSquareArrowUpRight className="max-sm:hidden" size={14} />
           </span>
         </Button>
       </Link>

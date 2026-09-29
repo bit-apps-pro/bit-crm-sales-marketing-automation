@@ -59,7 +59,7 @@ const Lead = () => {
         <EntitySkeleton />
       ) : (
         <>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <Breadcrumb
               items={[
                 { title: __('Leads'), to: '/leads' },
@@ -68,7 +68,7 @@ const Lead = () => {
                 }
               ]}
             />
-            <div className="flex items-center gap-2">
+            <div className="ms-auto flex items-center gap-2">
               <AiSummaryButton
                 entityId={leadId}
                 module={MODULES.LEAD}
@@ -82,7 +82,7 @@ const Lead = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <EntitySummaryCard
                 actions={<Actions id={leadId} />}
                 entity={{

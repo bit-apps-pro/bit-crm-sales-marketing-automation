@@ -9,11 +9,18 @@ import PublicPayCardHeader from './internal/public-pay-card-header'
 import { getDownloadUrl, getUnavailablePaymentReason } from './internal/public-pay-card-helpers'
 import { type PublicPayCardProps } from './internal/public-pay-card-types'
 import PublicPaySummary from './internal/public-pay-summary'
+import PublicPaymentHistory from './internal/public-payment-history'
 
+/**
+ * Free variant — no "Pay now": collecting money online is pro. The history
+ * is still shown because the ledger is free, so a customer can see the
+ * settlements recorded against their invoice.
+ */
 export default function PublicPayCard({
   currencyData: currencyDataProp,
   isPayable,
   isWooActive,
+  payments,
   status,
   summary,
   wooPayment
@@ -50,6 +57,8 @@ export default function PublicPayCard({
             {__('There is no payable amount on this invoice yet.')}
           </p>
         ) : undefined}
+
+        <PublicPaymentHistory formatAmount={formatAmount} payments={payments} />
       </div>
     </Card>
   )

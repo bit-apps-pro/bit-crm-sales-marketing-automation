@@ -211,7 +211,7 @@ class CommonService
         return $rules;
     }
 
-    private static function resolveUserDisplayName($userId): ?string
+    public static function resolveUserDisplayName($userId): ?string
     {
         if (empty($userId) || !is_numeric($userId)) {
             return null;

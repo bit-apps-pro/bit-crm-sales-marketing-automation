@@ -25,5 +25,5 @@ export default function ActivityListFilterPage({ showPriority = false }: { showP
       placeholder: __('Filter by priority')
     })
 
-  return <ActivityFilter filters={filters} />
+  return <ActivityFilter className="w-full sm:w-auto" filters={filters} />
 }
