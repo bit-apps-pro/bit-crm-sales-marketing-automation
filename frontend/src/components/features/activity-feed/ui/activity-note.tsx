@@ -112,7 +112,7 @@ export default function ActivityNote({ note }: ActivityNoteProps) {
           <Popover
             content={
               isEditOpen && (
-                <div className="w-96 space-y-3" key={note.id}>
+                <div className="w-96 max-w-full space-y-3" key={note.id}>
                   <ActivityNoteForm detailsValue={note.details} form={form} isEditing />
                   <Space className="flex justify-end">
                     <Button className="rounded-full" onClick={handleEditCancel}>

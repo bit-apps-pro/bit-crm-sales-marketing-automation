@@ -3,6 +3,7 @@
 namespace BitApps\Crm\Services\Privacy;
 
 use BitApps\Crm\Constants\HookKeys;
+use BitApps\Crm\Deps\BitApps\WPKit\Helpers\JSON;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Model\Activity;
 use BitApps\Crm\Model\Attachment;
@@ -10,6 +11,7 @@ use BitApps\Crm\Model\Company;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
+use BitApps\Crm\Model\InvoicePayment;
 use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Model\LineItem;
 use BitApps\Crm\Model\Link;
@@ -70,6 +72,7 @@ class PersonalDataExporter
                     $this->buildLeadItems($locator),
                     $this->buildDealItems($locator),
                     $this->buildInvoiceItems($locator),
+                    $this->buildInvoicePaymentItems($locator),
                     $this->buildRelatedItems($locator)
                 );
             }
@@ -203,6 +206,51 @@ class PersonalDataExporter
                 __('Invoices raised on the deals above.', 'bit-crm-sales-marketing-automation'),
                 'invoice-' . $record['id'],
                 $data
+            );
+        }
+
+        return $items;
+    }
+
+    /**
+     * Payments recorded against the located invoices: manual settlements an
+     * admin entered and, with pro, provider-collected ones.
+     */
+    private function buildInvoicePaymentItems(PersonalDataLocator $locator): array
+    {
+        $ids = $locator->getInvoiceIds();
+
+        if (empty($ids)) {
+            return [];
+        }
+
+        $rows = InvoicePayment::where('module', Invoice::MODULE_NAME)
+            ->whereIn('entity_id', $ids)
+            ->orderBy('id')
+            ->asc()
+            ->get();
+        $items = [];
+
+        foreach ($this->toRecords($rows) as $record) {
+            $details = JSON::maybeDecode($record['provider_data'] ?? null, true);
+            $details = \is_array($details) ? $details : [];
+
+            $items[] = $this->formatter->buildItem(
+                'invoice-payments',
+                __('CRM Invoice Payments', 'bit-crm-sales-marketing-automation'),
+                __('Payments recorded against the invoices above.', 'bit-crm-sales-marketing-automation'),
+                'invoice-payment-' . $record['id'],
+                $this->formatter->buildPairs([
+                    __('Invoice', 'bit-crm-sales-marketing-automation')            => '#' . $record['entity_id'],
+                    __('Payment provider', 'bit-crm-sales-marketing-automation')   => $record['provider'] ?? '',
+                    __('Provider reference', 'bit-crm-sales-marketing-automation') => $record['provider_ref'] ?? '',
+                    __('Amount', 'bit-crm-sales-marketing-automation')             => trim($this->formatter->formatNumber($record['amount'] ?? '') . ' ' . ($record['currency'] ?? '')),
+                    __('Status', 'bit-crm-sales-marketing-automation')             => $record['status'] ?? '',
+                    __('Paid at', 'bit-crm-sales-marketing-automation')            => $record['paid_at'] ?? '',
+                    __('Reference', 'bit-crm-sales-marketing-automation')          => $details[InvoicePayment::DATA_REFERENCE] ?? '',
+                    __('Note', 'bit-crm-sales-marketing-automation')               => $this->formatter->formatText($details[InvoicePayment::DATA_NOTE] ?? ''),
+                    __('Created', 'bit-crm-sales-marketing-automation')            => $record['created_at'] ?? '',
+                ])
             );
         }
 

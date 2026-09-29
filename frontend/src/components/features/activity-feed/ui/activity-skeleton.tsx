@@ -2,7 +2,7 @@ import { Divider, Skeleton } from 'antd'
 
 export default function ActivitySkeleton() {
   return (
-    <div className="col-span-2 space-y-7">
+    <div className="space-y-7 lg:col-span-2">
       <div className="flex items-center justify-between gap-2">
         <div className="flex w-full items-center justify-between gap-2">
           <Skeleton.Input active className="w-full" size="default" />

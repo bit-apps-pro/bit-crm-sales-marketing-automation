@@ -69,7 +69,7 @@ export default function Tasks({ entityId, fields, module }: TasksProps) {
 
   return (
     <div className="flex h-[80vh] min-h-0 flex-col space-y-5">
-      <div className="flex shrink-0 justify-between gap-2 pt-1">
+      <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 pt-1">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={5}>
             {__('Tasks')}
@@ -88,7 +88,10 @@ export default function Tasks({ entityId, fields, module }: TasksProps) {
             <LoadingOutlined />
           </If>
         </div>
-        <div className="flex items-center justify-between gap-2">
+        {/* `contents` below `sm`: the filter and search join the header row, so the filter
+            fits beside the title and New button while the full-width search wraps onto
+            its own line. */}
+        <div className="contents sm:flex sm:flex-wrap sm:items-center sm:gap-2">
           <ActivityListFilter showPriority />
           <SearchInput queryKey="search" />
         </div>

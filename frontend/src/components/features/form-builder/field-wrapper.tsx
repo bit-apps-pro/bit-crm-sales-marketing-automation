@@ -67,21 +67,35 @@ export default function FieldWrapper<T extends BaseFieldType>({
       {...attributes}
       className={cn(
         fieldStyle.field,
-        'group relative m-0 flex cursor-auto items-center gap-2 rounded border border-solid border-[#EBEAFF] bg-white p-1 pe-4 transition-shadow first:mt-4 dark:border-neutral-700 dark:bg-neutral-900',
+        // `min-w-0` lets the label inside `children` shrink and ellipsise instead of
+        // being wrung out a character per line when the row runs out of width.
+        'group relative m-0 flex min-w-0 cursor-auto items-center gap-2 rounded border border-solid border-[#EBEAFF] bg-white p-1 pe-4 transition-shadow first:mt-4 dark:border-neutral-700 dark:bg-neutral-900',
         isDragging && 'shadow-lg',
         type === 'section' && 'mt-4'
       )}
     >
-      <Button type="text" {...listeners} className="cursor-grab p-1 text-slate-500 hover:text-slate-800">
+      <Button
+        type="text"
+        {...listeners}
+        className="shrink-0 cursor-grab p-1 text-slate-500 hover:text-slate-800"
+      >
         <LuGripVertical size={14} />
       </Button>
 
       {children}
 
+      {/* The switches, width select and row actions add up to well over a phone's width,
+          and they are hover-revealed (opacity 0 until focus/hover) yet still take part in
+          layout. They must therefore be the part that gives way -- `min-w-0` plus an
+          internal scroll -- because anything that holds its width here is taken out of
+          the field name's share and the label collapses to an ellipsis.
+
+          Explicitly NOT `shrink-0`: that pins ~400px of invisible controls and starves
+          the label, which is the bug this row had. */}
       <div
         className={cn(
           fieldStyle.fieldAction,
-          'flex items-center justify-end gap-1 transition-opacity duration-200'
+          'scroller thin ms-auto flex min-w-0 items-center justify-end gap-1 overflow-x-auto transition-opacity duration-200'
         )}
       >
         <If conditions={Boolean(!isCustom && !isAlwaysRequired && !groupField && type !== 'section')}>

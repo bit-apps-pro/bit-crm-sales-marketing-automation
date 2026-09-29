@@ -17,7 +17,9 @@ export const paymentStatusConfig: Record<InvoicePaymentStatus, { label: string }
  * when there is nothing to cross out (no refund, or the row's own status
  * already tells the story — e.g. fully `refunded`).
  */
-export function getPaymentRefund(payment: InvoicePaymentItem) {
+export function getPaymentRefund(
+  payment: Pick<InvoicePaymentItem, 'amount' | 'refunded_amount' | 'status'>
+) {
   const refunded = Number(payment.refunded_amount ?? 0)
 
   if (payment.status !== 'completed' || !(refunded > 0)) return
@@ -27,8 +29,15 @@ export function getPaymentRefund(payment: InvoicePaymentItem) {
   return { net: Math.max(0, original - refunded), original, refunded }
 }
 
+const badgeBase = 'shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold'
+
+/** A badge that carries a label, not a status — what collected a payment ("Manual", "WooCommerce"). */
+export function neutralBadgeClass(): string {
+  return `${badgeBase} bg-slate-100 text-slate-600 dark:bg-neutral-700 dark:text-slate-300`
+}
+
 export function paymentStatusBadgeClass(status: InvoicePaymentStatus): string {
-  const base = 'shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold'
+  const base = badgeBase
 
   if (status === 'completed') {
     return `${base} bg-[#ecfdf5] text-[#15803d] dark:bg-[#052e1c] dark:text-[#86efac]`

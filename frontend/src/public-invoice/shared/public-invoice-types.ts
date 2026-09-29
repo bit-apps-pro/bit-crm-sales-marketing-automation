@@ -7,9 +7,9 @@ import {
   type InvoiceType
 } from '@pages/invoice-create/shared/invoice-create-types'
 import {
-  type InvoicePaymentItem,
   type InvoicePaymentSummary,
-  type MinimumPaymentType
+  type MinimumPaymentType,
+  type PublicPaymentItem
 } from '@pages/Invoice/shared/invoice-payment-types'
 
 /** Availability-only variant of the Woo payment context on the public page. */
@@ -31,7 +31,7 @@ export interface PublicInvoiceResponse {
   minimum_payment_value: number
   partial_payment_allowed: boolean
   payment_summary: InvoicePaymentSummary | null
-  payments: InvoicePaymentItem[]
+  payments: PublicPaymentItem[]
   term_name?: string
   woo_payment?: PublicWooPayment
 }

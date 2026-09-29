@@ -229,6 +229,8 @@ class DealKanbanSearchService
         $dealTableAlias = self::DEAL_TABLE_ALIAS;
         $customFieldsJoin = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_JOIN, '', self::MODULE);
         $customFieldsSelect = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_COLUMNS, '', self::MODULE);
+        $customFieldKeys = Hooks::applyFilter(HookKeys::CUSTOM_FIELDS_KEYS, [], self::MODULE);
+        $dealColumnsSelect = (new EntityColumnsSelectBuilder())->buildSelect($dealTable, $dealTableAlias, $customFieldKeys);
 
         $whereConditions = "{$dealTableAlias}.status = 1 AND {$dealTableAlias}.is_trash = 0";
 
@@ -251,7 +253,7 @@ class DealKanbanSearchService
                 COALESCE(SUM(CAST(stage_data.home_currency_amount AS DECIMAL(17, 2))), 0) as total_amount
             FROM (
                 SELECT
-                    {$dealTableAlias}.*, {$customFieldsSelect}
+                    {$dealColumnsSelect}, {$customFieldsSelect}
                 FROM {$dealTable} {$dealTableAlias}
                 {$customFieldsJoin}
                 WHERE {$whereConditions}

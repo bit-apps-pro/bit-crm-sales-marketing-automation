@@ -30,9 +30,12 @@ interface SettingRowProps {
 function SettingRow({ control, description, disabled, title }: SettingRowProps) {
   return (
     <div
-      className={`flex items-center justify-between gap-6 border-0 border-b border-solid border-[#E5E3FE] px-6 py-4 last:border-b-0 dark:border-neutral-700 ${disabled ? 'opacity-50' : ''}`}
+      className={`flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-0 border-b border-solid border-[#E5E3FE] px-4 py-4 last:border-b-0 sm:px-6 dark:border-neutral-700 ${disabled ? 'opacity-50' : ''}`}
     >
-      <div className="flex-1">
+      {/* The text keeps a floor and the row wraps: without it a wide control (toggle +
+          prefix input) took the whole row on a phone and squeezed the title and
+          description to one letter per line. */}
+      <div className="min-w-[160px] flex-1">
         <Text className="block font-medium">{title}</Text>
         <Text className="block text-sm" type="secondary">
           {description}

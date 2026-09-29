@@ -9,7 +9,7 @@ export default function EntityCreateSkeleton() {
       <Divider />
       <div className="space-y-6">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div className="grid w-full grid-cols-2 gap-4" key={i}>
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2" key={i}>
             <div className="space-y-2">
               <Skeleton.Input active size="small" style={{ height: 16, width: 100 }} />
               <Skeleton.Input active className="w-full" size="large" />

@@ -149,6 +149,7 @@ export default function InvoiceSubmitButton({ form, mode }: InvoiceSubmitButtonP
         </If>
         <Button
           className="rounded-full"
+          disabled={mode === 'create' && !dealInformation.isDealSelected}
           icon={<LuPlus />}
           loading={isPending && pendingWithPreview.current}
           onClick={() => handleSubmitForm(true)}

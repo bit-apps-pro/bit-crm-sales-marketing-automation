@@ -100,8 +100,8 @@ export default function RecycleBin() {
     <>
       {contextHolder}
       <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-        <div className="flex justify-between gap-2 p-2">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-wrap justify-between gap-2 p-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Typography.Title className="mb-0" level={4}>
               {__('Recycle Bin')}
             </Typography.Title>
@@ -130,10 +130,10 @@ export default function RecycleBin() {
               <LoadingOutlined />
             </If>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <ModuleSelect
               allowClear
-              className="w-36 [&_.ant-select-selector]:rounded-full"
+              className="w-full sm:w-36 [&_.ant-select-selector]:rounded-full"
               onChange={value => handleFilterChange('module', value)}
               placeholder={__('Filter by module')}
               popupMatchSelectWidth={false}
@@ -141,7 +141,7 @@ export default function RecycleBin() {
             />
             <DatePicker.RangePicker
               allowClear
-              className="w-64 rounded-full"
+              className="w-full rounded-full sm:w-64"
               format="YYYY-MM-DD"
               onChange={(_, dateStringArray) => {
                 let dateString = ''

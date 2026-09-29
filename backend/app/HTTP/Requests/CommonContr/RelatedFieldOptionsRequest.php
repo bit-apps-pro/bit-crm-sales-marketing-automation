@@ -3,6 +3,7 @@
 namespace BitApps\Crm\HTTP\Requests\CommonContr;
 
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Request\Request;
+use BitApps\Crm\Rules\Common\ProductIdRule;
 use BitApps\Crm\Rules\ValidModuleRule;
 use BitApps\Crm\Services\ModuleService;
 
@@ -28,7 +29,7 @@ class RelatedFieldOptionsRequest extends Request
             'pageNo'        => ['nullable', 'integer'],
             'perPage'       => ['nullable', 'integer'],
             'searchTerm'    => ['nullable', 'string', 'sanitize:text'],
-            'selectedValue' => ['nullable', 'integer'],
+            'selectedValue' => ['nullable', new ProductIdRule()],
             'entityId'      => ['nullable', 'integer'],
             'args'          => ['nullable', 'array']
         ];

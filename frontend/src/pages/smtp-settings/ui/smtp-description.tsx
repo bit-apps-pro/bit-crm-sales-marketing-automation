@@ -1,4 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
+import useBreakpoint from '@common/hooks/use-breakpoint'
 import { type PluginInfo } from '@features/plugin-activation-guard/shared/types'
 import If from '@utilities/If'
 import { Alert, Button, Descriptions, Typography } from 'antd'
@@ -47,6 +48,7 @@ const isEnabled = (config: Config) => {
 
 export default function SmtpDescription({ data }: { data: PluginInfo }) {
   const config = getConfig(data)
+  const isSmUp = useBreakpoint('sm')
 
   if (!config) {
     return (
@@ -83,19 +85,28 @@ export default function SmtpDescription({ data }: { data: PluginInfo }) {
           )}
         </Typography.Text>
       </If>
+      <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <Typography.Text className="text-lg" strong>
+          {__('Bit SMTP Configuration')}
+        </Typography.Text>
+        <Button
+          className="w-full shrink-0 rounded-full sm:w-auto"
+          href={data?.url}
+          size="large"
+          target="_blank"
+          type="primary"
+        >
+          {__('Configure SMTP Settings')}
+        </Button>
+      </div>
       <Descriptions
         bordered
-        className="mt-4"
+        className="mt-4 [&_.ant-descriptions-item-content]:break-words"
         // eslint-disable-next-line translate-obj-prop/translate-obj-prop
-        classNames={{ label: 'lg:max-w-16', title: 'text-lg' }}
+        classNames={{ label: 'lg:max-w-16' }}
         column={1}
-        extra={
-          <Button className="rounded-full" href={data?.url} size="large" target="_blank" type="primary">
-            {__('Configure SMTP Settings')}
-          </Button>
-        }
         items={getItems(config)}
-        title={__('Bit SMTP Configuration')}
+        layout={isSmUp ? 'horizontal' : 'vertical'}
       />
     </div>
   )

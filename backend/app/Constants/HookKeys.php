@@ -206,11 +206,30 @@ class HookKeys
     public const ENTITY_RELATED_MODELS = 'bit_crm_entity_related_models';
 
     /**
-     * Payment block of the public (token-guarded) invoice payload. The free
-     * plugin always supplies the "payment unavailable" defaults — invoice
-     * payment is a pro feature, so free responses must force the unavailable
-     * state regardless of what the database rows say. The pro plugin's
-     * InvoicePaymentHooks replaces the block with live payment data.
+     * Extends the admin payment-history payload (`GET invoices/{id}/payments`).
+     * Free supplies the ledger: `payments` (display rows) and `summary`
+     * (total/paid/due). The pro plugin merges the checkout side its panels
+     * need — partial/recurring settings, provider context and options,
+     * `is_payable`, `provider_locked` — and may replace `summary` with one
+     * computed by its provider-bound service (partial-payment minimum).
+     * Listeners may decorate the `payments` rows in place (pro relabels
+     * provider rows with the provider's real name) but must not re-query
+     * them: the rows are already loaded and shaped, so read them from $data.
+     * $details is null when the invoice could not be totalled — leave $data
+     * alone then.
+     *
+     * apply_filters(array $data, Invoice $invoice, ?array $details): array
+     */
+    public const INVOICE_PAYMENTS_DATA = 'bit_crm_invoice_payments_data';
+
+    /**
+     * Payment block of the public (token-guarded) invoice payload. Free
+     * supplies the ledger half — `payments` (settled rows in the public
+     * shape) and `payment_summary` — plus "checkout unavailable" defaults for
+     * the rest, since collecting a payment online is a pro feature and the
+     * shared payment columns must never enable it by themselves. The pro
+     * plugin's InvoicePaymentHooks merges the live checkout data over those
+     * defaults; like INVOICE_PAYMENTS_DATA it must not resupply `payments`.
      *
      * apply_filters(array $paymentData, Invoice $invoice, array $details): array
      */
@@ -337,6 +356,21 @@ class HookKeys
      * apply_filters(int $maxPerWindow): int
      */
     public const EXTERNAL_API_RATE_LIMIT = 'bit_crm_external_api_rate_limit';
+
+    /**
+     * Extends the `additional_data` block of the opt-in wp-telemetry report
+     * (fired by the bundled library, not by plugin code). Counts and slugs only.
+     *
+     * apply_filters(array $additionalData): array
+     */
+    public const TELEMETRY_ADDITIONAL_DATA = 'bit_crm_telemetry_additional_data';
+
+    /**
+     * Filters the whole wp-telemetry report last; pro adds its `pro` block here.
+     *
+     * apply_filters(array $report): array
+     */
+    public const TELEMETRY_DATA = 'bit_crm_telemetry_data';
 
     // -------------------------------------------------------------------------
     // Privacy tools (Tools → Export / Erase Personal Data).

@@ -1,5 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
-import { type Product } from '@common/types/product'
+import { type ProductOptionData } from '@components/features/product-lookup-select/shared/types'
 import { type CurrencyItemType } from '@pages/currencies/shared/currency-types'
 
 import { PRODUCT_SOURCE, TAX } from './constants'
@@ -65,7 +65,7 @@ export function clearLineItemProduct(
 export function selectProduct(
   lineItems: LineItem[],
   lineItemId: string,
-  productData: Product,
+  productData: ProductOptionData,
   currencyData?: CurrencyItemType
 ): LineItem[] {
   let price = Number(productData.price) || 0

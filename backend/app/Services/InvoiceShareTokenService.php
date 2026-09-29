@@ -60,7 +60,7 @@ class InvoiceShareTokenService
                 'id'                    => (int) $invoice->id,
                 self::TOKEN_QUERY_PARAM => $this->ensureToken($invoice),
             ],
-            home_url('/' . InvoicePublicPageService::PATH)
+            (new PublicUrlPrefixService())->buildUrl(InvoicePublicPageService::PAGE_SLUG)
         );
 
         return (string) Hooks::applyFilter(self::SHARE_URL_FILTER, $url, $invoice);

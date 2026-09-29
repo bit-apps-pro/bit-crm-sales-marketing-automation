@@ -8,9 +8,10 @@ use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
 use BitApps\Crm\HTTP\Requests\InvoiceShare\PublicShowRequest;
 use BitApps\Crm\HTTP\Requests\InvoiceShare\ShareLinkRequest;
 use BitApps\Crm\Model\Invoice;
-use BitApps\Crm\Model\LineItem;
+use BitApps\Crm\Model\InvoicePayment;
 use BitApps\Crm\Model\Setting;
 use BitApps\Crm\Services\BusinessSettingService;
+use BitApps\Crm\Services\InvoiceLedgerService;
 use BitApps\Crm\Services\InvoicePdfService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\Services\InvoiceShareTokenService;
@@ -22,16 +23,16 @@ use Throwable;
  * Invoice sharing — a FREE feature: the admin Share Link action and the
  * token-guarded public view/download endpoints behind the shareable page.
  *
- * Paying a shared invoice is a PRO feature. The public payload therefore
- * always carries the "payment unavailable" defaults here (regardless of what
- * the database rows say — the payment columns are shared schema and must not
- * enable the feature by themselves); the pro plugin replaces the block with
- * live payment data through HookKeys::PUBLIC_INVOICE_PAYMENT_DATA.
+ * The public payload's payment block has two halves. The ledger half is
+ * free and real: the settled payments (in a public shape) and the
+ * total/paid/due summary. The checkout half — paying online, partial and
+ * recurring settings — is pro, so free fills it with "unavailable" defaults
+ * regardless of what the invoice's payment columns say (that shared schema
+ * must never enable the feature by itself); the pro plugin merges the live
+ * checkout data over them through HookKeys::PUBLIC_INVOICE_PAYMENT_DATA.
  */
 final class InvoiceShareController
 {
-    private const DEFAULT_CURRENCY_DECIMALS = 2;
-
     public function shareLink(ShareLinkRequest $request)
     {
         $validated = $request->validated();
@@ -81,7 +82,7 @@ final class InvoiceShareController
 
         $paymentData = Hooks::applyFilter(
             HookKeys::PUBLIC_INVOICE_PAYMENT_DATA,
-            $this->unavailablePaymentData($invoice, $details),
+            array_merge($this->ledgerPaymentData($invoice, $details), $this->checkoutUnavailableData($invoice)),
             $invoice,
             $details
         );
@@ -133,15 +134,27 @@ final class InvoiceShareController
     }
 
     /**
-     * Payment block of the public payload without the pro plugin: online
-     * payment is unavailable, no history, no partial settings — the totals
-     * summary is still real so the page can show total/due.
+     * Ledger half of the public payment block: what was paid and what is
+     * due. Free-owned in both editions; pro never resupplies these keys.
      */
-    private function unavailablePaymentData(Invoice $invoice, array $details): array
+    private function ledgerPaymentData(Invoice $invoice, array $details): array
+    {
+        $ledger = new InvoiceLedgerService();
+        $payments = $ledger->getPayments((int) $invoice->id);
+
+        return [
+            'payments'        => $this->publicPaymentRows($payments),
+            'payment_summary' => $ledger->getDisplayPaymentSummary($invoice, $details, $payments),
+        ];
+    }
+
+    /**
+     * Checkout half of the public payment block without the pro plugin:
+     * online payment unavailable, no partial or recurring settings.
+     */
+    private function checkoutUnavailableData(Invoice $invoice): array
     {
         return [
-            'payments'                => [],
-            'payment_summary'         => $this->fallbackPaymentSummary($invoice, $details),
             'partial_payment_allowed' => false,
             'minimum_payment_type'    => Invoice::MINIMUM_PAYMENT_TYPE_AMOUNT,
             'minimum_payment_value'   => 0,
@@ -155,34 +168,36 @@ final class InvoiceShareController
     }
 
     /**
-     * Totals-only summary (no payment history exists without pro). Shape
-     * mirrors the pro InvoicePaymentService::getPaymentSummary().
+     * Only the payment fields the public page renders, and only settled rows.
+     * A pending row is an abandoned checkout, not money; the admin's note,
+     * who recorded a manual row and the provider/ledger references are
+     * bookkeeping for the merchant, never for an anonymous visitor.
+     *
+     * @param array $payments display rows from InvoiceLedgerService::getPayments()
      */
-    private function fallbackPaymentSummary(Invoice $invoice, array $details): ?array
+    private function publicPaymentRows(array $payments): array
     {
-        try {
-            $decimalsRaw = $details['currency_data']['decimal_places'] ?? self::DEFAULT_CURRENCY_DECIMALS;
-            $decimals = is_numeric($decimalsRaw)
-                ? max(0, min(LineItem::MONETARY_PRECISION, (int) $decimalsRaw))
-                : self::DEFAULT_CURRENCY_DECIMALS;
+        $public = [];
 
-            $totals = (new InvoicePdfService())->calculateTotals($invoice, $details['line_items']);
-            $total = round($totals->grandTotal, $decimals);
-            $paid = $invoice->status === Invoice::STATUS_PAID ? $total : 0.0;
+        foreach ($payments as $payment) {
+            if (($payment['status'] ?? '') === InvoicePayment::STATUS_PENDING) {
+                continue;
+            }
 
-            return [
-                'total'                  => $total,
-                'paid'                   => $paid,
-                'due'                    => max(0.0, round($total - $paid, $decimals)),
-                'minimum_payment_amount' => 0,
-                'currency'               => (string) ($details['currency_data']['currency'] ?? ''),
-                'decimal_places'         => $decimals,
+            $public[] = [
+                'id'               => $payment['id'],
+                'amount'           => $payment['amount'],
+                'currency'         => $payment['currency'],
+                'status'           => $payment['status'],
+                'paid_at'          => $payment['paid_at'],
+                'is_manual'        => $payment['is_manual'],
+                'charged_amount'   => $payment['charged_amount'],
+                'charged_currency' => $payment['charged_currency'],
+                'refunded_amount'  => $payment['refunded_amount'],
             ];
-        } catch (Throwable $th) {
-            Logger::error($th);
-
-            return null;
         }
+
+        return $public;
     }
 
     private function resolvePublicInvoice(array $validated): ?Invoice

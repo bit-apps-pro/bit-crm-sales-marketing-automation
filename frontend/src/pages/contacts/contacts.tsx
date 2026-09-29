@@ -114,7 +114,7 @@ export default function Contacts() {
           </If>
         </div>
 
-        <div className="flex flex-wrap items-center justify-end gap-2">
+        <div className="flex flex-wrap items-center justify-end gap-1 sm:gap-2">
           <IntegrationSettingsNavigation
             label={__('WooCommerce sync')}
             to="/settings/woo-settings"
@@ -138,14 +138,14 @@ export default function Contacts() {
       </div>
 
       <div className="mt-4 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-        <div className="flex flex-wrap items-center justify-between gap-4 p-3">
+        <div className="flex flex-wrap items-center gap-2 p-3 sm:justify-between sm:gap-4">
           <div className="flex items-center gap-2">
             <ContactsTableColumnSettings orders={orders} visibleColumns={visibleColumns} />
             <If conditions={selectedContactKeys.length !== 0}>
               <ContactBulkOperations />
             </If>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="contents sm:flex sm:flex-wrap sm:items-center sm:gap-2">
             <AdvancedFilter<FieldItem> fields={fieldList} module={MODULES.CONTACT} />
             <TagFilter module={MODULES.CONTACT} />
             <SearchInput placeholder={__('Search by name or email')} />

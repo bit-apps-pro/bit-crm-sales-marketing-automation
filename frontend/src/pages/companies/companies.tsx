@@ -92,7 +92,7 @@ export default function Companies() {
 
   return (
     <div className="px-6 py-4 dark:bg-transparent">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
             {__('Companies')}
@@ -126,14 +126,14 @@ export default function Companies() {
       </div>
 
       <div className="mt-4 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-        <div className="flex flex-wrap items-center justify-between gap-4 p-3">
+        <div className="flex flex-wrap items-center gap-2 p-3 sm:justify-between sm:gap-4">
           <div className="flex items-center gap-2">
             <CompaniesTableColumnSettings orders={orders} visibleColumns={visibleColumns} />
             <If conditions={selectedKeys.length !== 0}>
               <CompanyBulkOperations />
             </If>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="contents sm:flex sm:flex-wrap sm:items-center sm:gap-2">
             <AdvancedFilter<FieldItem> fields={fieldList} module={MODULES.COMPANY} />
             <TagFilter module={MODULES.COMPANY} />
             <SearchInput placeholder={__('Search by name or website')} />

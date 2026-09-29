@@ -78,7 +78,7 @@ export default function ProductSummary({
 
   return (
     <div className="flex justify-end">
-      <div className="w-[300px] space-y-2 border-t pt-4">
+      <div className="w-full space-y-2 border-t pt-4 sm:w-[300px]">
         <div className="flex items-center justify-between text-sm">
           <span>{__('Subtotal:')}</span>
           <span className="font-medium">{generateCurrencyFormatPreview(currencyData, subtotal)}</span>

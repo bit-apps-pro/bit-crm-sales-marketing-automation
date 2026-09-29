@@ -19,7 +19,7 @@ export default function ProCrmUsersAlert({ featureName }: ProFeatureAlertProps) 
         </div>
 
         <div className="px-4 py-4">
-          <div className="mb-4 flex items-center justify-between gap-4">
+          <div className="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div className="flex flex-col">
               <Typography.Text className="text-base" strong>
                 {__('Assign and manage plugin capabilities for existing WordPress users.')}
@@ -28,7 +28,12 @@ export default function ProCrmUsersAlert({ featureName }: ProFeatureAlertProps) 
                 {__('Users with the Administrator role have full access to the plugin by default.')}
               </Typography.Text>
             </div>
-            <Button className="rounded-full" icon={<LuPlus />} size="large" type="primary">
+            <Button
+              className="w-full shrink-0 rounded-full sm:w-auto"
+              icon={<LuPlus />}
+              size="large"
+              type="primary"
+            >
               {__('Add User')}
             </Button>
           </div>

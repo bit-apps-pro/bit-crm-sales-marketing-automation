@@ -16,6 +16,7 @@ use BitApps\Crm\HTTP\Requests\Lead\ConvertRequest;
 use BitApps\Crm\HTTP\Requests\Lead\ConvertSingleRequest;
 use BitApps\Crm\HTTP\Requests\Lead\DetachTagRequest;
 use BitApps\Crm\HTTP\Requests\Lead\DetachTagsRequest;
+use BitApps\Crm\HTTP\Requests\Lead\FieldsWithOrderRequest;
 use BitApps\Crm\HTTP\Requests\Lead\ImportRequest;
 use BitApps\Crm\HTTP\Requests\Lead\SearchRequest;
 use BitApps\Crm\HTTP\Requests\Lead\ShowRequest;
@@ -125,7 +126,7 @@ final class LeadController
         return Response::success($result['data'])->message($result['message']);
     }
 
-    public function fieldsWithOrder()
+    public function fieldsWithOrder(FieldsWithOrderRequest $request)
     {
         $fieldsOrder = SettingService::getSettingsValue(Lead::SETTINGS_KEYS['FIELDS_ORDER']);
         $columnSettings = SettingService::getSettingsValue(Lead::SETTINGS_KEYS['COLUMNS_SETTINGS']);

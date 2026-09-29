@@ -45,7 +45,7 @@ export default function Activity({
 
   if (!activity || activity.type !== activityType) {
     return (
-      <div className="col-span-2 flex h-full flex-1 flex-col items-center justify-center">
+      <div className="flex min-h-40 flex-1 flex-col items-center justify-center lg:col-span-2 lg:h-full">
         <Typography.Title className="" level={5}>
           {__('Select an activity')}
         </Typography.Title>
@@ -123,7 +123,9 @@ export default function Activity({
   return (
     <div
       className={cn(
-        'col-span-2 h-full min-h-0 space-y-7 overflow-y-auto transition-opacity',
+        // Stacked below `lg`; see activity-feed.tsx. Capped rather than `h-full` so the
+        // detail pane cannot push the list and notes off the bottom of a phone screen.
+        'max-h-[60vh] min-h-0 space-y-7 overflow-y-auto transition-opacity lg:col-span-2 lg:h-full lg:max-h-none',
         isPlaceholderData && 'opacity-60'
       )}
     >

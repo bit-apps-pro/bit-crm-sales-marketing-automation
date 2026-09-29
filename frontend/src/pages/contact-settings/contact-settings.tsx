@@ -3,6 +3,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import FieldSettings from '@features/field-settings'
 import SettingsPageHeader from '@utilities/settings-page-header'
 import SettingsTabs from '@utilities/settings-tabs'
+import { LuTextCursorInput } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 
 export default function ContactSettings() {
@@ -17,6 +18,7 @@ export default function ContactSettings() {
         items={[
           {
             children: <FieldSettings module={MODULES.CONTACT} />,
+            icon: <LuTextCursorInput />,
             key: 'field-settings',
             label: __('Field Settings')
           }

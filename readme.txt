@@ -1,10 +1,10 @@
-=== Bit CRM - Sales CRM Manage Lead, Contact, Deal, Invoice, Client Portal & WooCommerce Sync ===
+=== Bit CRM: Sales CRM Manage Lead, Contact, Deal, Invoice, Client Portal & Collect Payment ===
 Contributors: bitpressadmin
 Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
-Requires at least: 5.8
+Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -218,7 +218,7 @@ Bit CRM stores your CRM records in your own WordPress database. The connections 
 
 = Google Fonts =
 
-Bit CRM admin pages load the "Outfit" font from [Google Fonts](https://fonts.google.com/) (fonts.googleapis.com and fonts.gstatic.com), sending the administrator's IP address, user-agent and request data, but no CRM records. See Google's [Terms](https://policies.google.com/terms) and [Privacy Policy](https://policies.google.com/privacy).
+Bit CRM loads the "Outfit" font from [Google Fonts](https://fonts.google.com/) (fonts.googleapis.com and fonts.gstatic.com) on its admin pages and on the visitor-facing pages it serves — the shared public invoice page and the client portal — sending the viewer's IP address, user-agent and request data, but no CRM records. See Google's [Terms](https://policies.google.com/terms) and [Privacy Policy](https://policies.google.com/privacy).
 
 = Email and IMAP providers =
 
@@ -226,7 +226,33 @@ An administrator can connect [Gmail](https://mail.google.com/) (imap.gmail.com),
 
 When a user sends an email or invoice, Bit CRM passes its recipient, subject, body, headers and attachments to WordPress's `wp_mail`, which uses the site owner's configured mail service and the recipient's mail server. Those providers' terms and privacy policies apply. Bit CRM does not select a mail provider.
 
+== Privacy and Usage Data ==
+
+Bit CRM respects your privacy. Usage tracking is disabled by default and only enabled when an administrator opts in. If enabled, Bit CRM may send anonymous usage and environment information to Bit Apps to help improve the plugin.
+
+No CRM records or personal customer data are collected. For more details about data handling, please review our:
+
+* [Privacy Policy](https://bit-crm.com/privacy-policy/)
+* [Terms of Service](https://bit-crm.com/terms-and-conditions/)
+
 == Changelog ==
+
+= 1.3.0 (September 29, 2026) =
+* Features:
+   * SureCart (Pro): SureCart buyers now sync as CRM contacts as purchases come in, with product and coupon tags, optional tag prefixes and a background backfill of earlier purchases, and SureCart products can be added as deal and invoice line items from a new SureCart settings page.
+   * Invoices: Mark as Paid now records the payment with its date, reference and note, and the payment history and paid and due totals show on the invoice page and the shared invoice page without Pro.
+   * Invoices: Choosing a deal on a new invoice now copies its line items, tax setting and discounts, and asks before replacing any edits you already made.
+   * CRM roles (Pro): Users can be given a built-in role such as Sales Manager, Lead Manager or Invoice Manager, or a custom role you create, with extra capabilities added on top.
+   * Client portal (Pro): The bit-crm part of client portal and shared invoice links can now be changed under Portal Settings.
+   * Usage tracking: Usage statistics can be shared by opting in during onboarding, from a notice or on the Support page, and are off by default.
+* Improvements:
+   * Mobile and tablet responsive: The whole CRM, the client portal and the shared invoice page are now fully responsive on phones and tablets, with a mobile menu, a settings page picker and invoice previews that fit the screen.
+   * External API: Added endpoints for reading the fields of leads, contacts, companies and deals, and for recording and listing invoice payments.
+* Security:
+   * Permissions: Field lists for leads, contacts, companies and deals now require access to Bit CRM, and AI assistant and MCP server settings (Pro) follow their own capabilities instead of the integration settings one.
+* Fixed:
+   * Lists: Record counts and pagination no longer show zero when a custom field shares its name with a built-in field such as Description.
+   * Line items: A selected WooCommerce or FluentCart product variant no longer appears twice in the product picker when editing a deal or invoice.
 
 = 1.2.0 (September 13, 2026) =
 * Features:
@@ -251,6 +277,7 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
    * AI assistant (Pro): An AI Summary button on record pages, replies that stream in with a Stop button, and any OpenAI-compatible provider such as xAI, DeepSeek or OpenRouter can now be used alongside Claude, OpenAI and Gemini.
    * Fields: Any field can now be hidden, removing it from forms, lists, filters and the client portal while keeping its saved values.
    * Text editor: Text and background colors can now be chosen and are kept when saved.
+   * Translations: Added Italian and Dutch.
 * Improvements:
    * Dates: Date pickers and date columns now follow the date and time format set in WordPress.
    * Activities: Tasks, meetings and calls open on the first item, move to a neighbour after a delete and switch between items without a loading flash.
@@ -268,7 +295,7 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
    * FluentCart products (Pro): FluentCart products and their variants can now be added as deal and invoice line items, with price and tax taken from the store.
    * Settings: A new FluentCart page under Settings, where customer sync and FluentCart line items are switched on or off.
 * Fixed:
-   * Line items: Blank line items are no longer saved with a deal or invoice.
+   * Line items: Blank line items are no longer saved with an invoice.
 
 = 1.0.8 (August 19, 2026) =
 * Features:
@@ -317,5 +344,5 @@ When a user sends an email or invoice, Bit CRM passes its recipient, subject, bo
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-Adds WordPress privacy tool support for exporting and erasing personal data, a sample data offer for new installs, an opt-in erase-on-uninstall switch, and MCP field discovery, custom fields and form-accurate invoices in Pro. Note: deleting the plugin now keeps your data unless the new switch is on.
+= 1.3.0 =
+Adds SureCart sync and products, CRM roles and a custom portal URL prefix in Pro, plus recorded invoice payments and mobile layouts. Requires WordPress 6.5 or later.

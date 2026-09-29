@@ -168,6 +168,9 @@ class ContactSystemDefinedFields
                     ['label' => 'External Referral', 'value' => 'external_referral'],
                     ['label' => 'Online Store', 'value' => 'online_store'],
                     ['label' => 'Facebook', 'value' => 'facebook'],
+                    ['label' => 'WooCommerce', 'value' => 'woocommerce'],
+                    ['label' => 'FluentCart', 'value' => 'fluentcart'],
+                    ['label' => 'SureCart', 'value' => 'surecart'],
                 ],
                 'is_always_required' => false
             ],

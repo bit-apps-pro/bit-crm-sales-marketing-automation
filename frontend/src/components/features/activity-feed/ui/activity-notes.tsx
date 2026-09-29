@@ -46,8 +46,9 @@ export default function ActivityNotes({ activityType, isValidSelection }: Activi
     )
   }
 
+  // See activities.tsx: stacked below `lg`, the divider becomes a top border.
   return (
-    <div className="flex h-full flex-col space-y-5 border-0 border-s border-solid border-[#EBEAFF] ps-7 dark:border-neutral-700">
+    <div className="flex max-h-[60vh] flex-col space-y-5 border-0 border-t border-solid border-[#EBEAFF] pt-5 lg:h-full lg:max-h-none lg:border-s lg:border-t-0 lg:ps-7 lg:pt-0 dark:border-neutral-700">
       <div className="flex min-h-0 flex-1 flex-col space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">

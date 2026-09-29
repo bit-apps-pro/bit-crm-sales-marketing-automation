@@ -28,8 +28,21 @@ export default function ActivityFeed({
   const { activity, adjacentId, isLoadingActivity, isPlaceholderData, isValidSelection } =
     useActivitySelection({ activities, activityType, isLoading })
 
+  /*
+    Desktop is a fixed-height master/detail board: four columns in one row, each panel
+    scrolling internally inside `overflow-hidden`.
+
+    Below `lg` that inverts. The three panels stack and the container grows with them
+    (auto height, visible overflow), so the page scrolls rather than each panel -- three
+    independently scrolling regions inside a scrolling page is unusable on touch.
+    `grid-rows-1` has to go too: with stacked children it would force all three into a
+    single row's height and crush them.
+
+    `lg` rather than `md` because this is a four-across layout; at 768px the columns are
+    still too narrow to read.
+  */
   return (
-    <div className="grid h-full min-h-0 flex-1 grid-cols-4 grid-rows-1 items-stretch gap-5 overflow-hidden rounded-[16px] border border-solid border-[#EBEAFF] bg-white p-7 dark:border-neutral-700 dark:bg-neutral-900">
+    <div className="grid min-h-0 flex-1 grid-cols-1 items-stretch gap-5 overflow-visible rounded-[16px] border border-solid border-[#EBEAFF] bg-white p-4 sm:p-7 lg:h-full lg:grid-cols-4 lg:grid-rows-1 lg:overflow-hidden dark:border-neutral-700 dark:bg-neutral-900">
       <Activities
         activities={activities}
         activityType={activityType}
@@ -39,7 +52,7 @@ export default function ActivityFeed({
         onLoadMore={onLoadMore}
         total={total}
       />
-      <div className="col-span-3 grid h-full min-h-0 grid-cols-3 grid-rows-1 gap-5">
+      <div className="grid min-h-0 grid-cols-1 gap-5 lg:col-span-3 lg:h-full lg:grid-cols-3 lg:grid-rows-1">
         <Activity
           activity={activity}
           activityType={activityType}

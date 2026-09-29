@@ -119,7 +119,7 @@ export default function CurrencyForm({
       </Form.Item>
 
       <If conditions={selectedCurrency && currencyStaticData[selectedCurrency]}>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           <Form.Item
             label={__('Symbol')}
             name="symbol"

@@ -36,14 +36,15 @@ class ModuleService
      * catalogues mirror products the store already publishes. Nothing here
      * exposes contacts, leads, companies or deals.
      *
-     * 'fluent_cart_product' is registered by the pro plugin, so it is listed by
-     * name rather than by class constant. Keep this list closed: adding a
-     * module here removes its access check.
+     * The pro-registered catalogues are listed by name rather than by class
+     * constant. Keep this list closed: adding a module here removes its access
+     * check.
      */
     public const CAPABILITY_EXEMPT_MODULES = [
         UserService::MODULE_NAME,
         WooCommerceProductService::MODULE_NAME,
         'fluent_cart_product',
+        'surecart_product',
     ];
 
     public const MODULE_VIEW_CAPABILITIES = [

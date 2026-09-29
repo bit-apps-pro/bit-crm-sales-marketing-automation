@@ -54,7 +54,7 @@ export default function EmailsTable({ emails, isLoading }: EmailsTableProps) {
         key: 'subject',
         render: (_: unknown, record: FormattedEmailData) => (
           <div
-            className="group flex w-96 cursor-pointer flex-col hover:text-blue-500"
+            className="group flex w-full max-w-96 cursor-pointer flex-col hover:text-blue-500"
             onClick={() => handleEmailView(record?.id)}
             onKeyDown={e => {
               if (e.key === 'Enter' || e.key === ' ') {

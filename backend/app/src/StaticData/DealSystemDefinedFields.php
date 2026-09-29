@@ -83,6 +83,9 @@ class DealSystemDefinedFields
                     ['label' => 'External Referral', 'value' => 'external-referral'],
                     ['label' => 'Online Store', 'value' => 'online-store'],
                     ['label' => 'Facebook', 'value' => 'facebook'],
+                    ['label' => 'WooCommerce', 'value' => 'woocommerce'],
+                    ['label' => 'FluentCart', 'value' => 'fluentcart'],
+                    ['label' => 'SureCart', 'value' => 'surecart'],
                 ],
                 'is_always_required' => false
             ],

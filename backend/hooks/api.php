@@ -26,6 +26,7 @@ use BitApps\Crm\HTTP\Controllers\LeadController;
 use BitApps\Crm\HTTP\Controllers\LinkController;
 use BitApps\Crm\HTTP\Controllers\NoteController;
 use BitApps\Crm\HTTP\Controllers\OnboardingController;
+use BitApps\Crm\HTTP\Controllers\PluginImprovementController;
 use BitApps\Crm\HTTP\Controllers\PluginInstallerController;
 use BitApps\Crm\HTTP\Controllers\SampleDataController;
 use BitApps\Crm\HTTP\Controllers\SettingsController;
@@ -216,6 +217,8 @@ Route::group(
         Route::get('invoices/{id}', [InvoiceController::class, 'show']);
         Route::post('invoices/{id}', [InvoiceController::class, 'update']);
         Route::post('invoices/{id}/status', [InvoiceController::class, 'updateStatus']);
+        Route::post('invoices/{id}/manual-payment', [InvoiceController::class, 'recordManualPayment']);
+        Route::get('invoices/{id}/payments', [InvoiceController::class, 'payments']);
         Route::post('invoices/{id}/share-link', [InvoiceShareController::class, 'shareLink']);
 
         Route::get('plugins/info', [PluginInstallerController::class, 'pluginInfo']);
@@ -226,6 +229,9 @@ Route::group(
         Route::post('bit-form/create-form', [BitFormIntegrationController::class, 'createForm']);
 
         Route::post('onboarding/store', [OnboardingController::class, 'store']);
+
+        Route::get('plugin-improvement', [PluginImprovementController::class, 'getOpt']);
+        Route::post('plugin-improvement', [PluginImprovementController::class, 'updateOpt']);
 
         Route::post('sample-data/seed', [SampleDataController::class, 'seed']);
         Route::post('sample-data/dismiss', [SampleDataController::class, 'dismiss']);

@@ -15,10 +15,11 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
-            'name'      => ['nullable', 'string', 'sanitize:text'],
-            'email'     => ['nullable', 'email', 'sanitize:email'],
-            'plugins'   => ['nullable', 'array'],
-            'plugins.*' => ['nullable', 'string', 'sanitize:text'],
+            'name'          => ['nullable', 'string', 'sanitize:text'],
+            'email'         => ['nullable', 'email', 'sanitize:email'],
+            'plugins'       => ['nullable', 'array'],
+            'plugins.*'     => ['nullable', 'string', 'sanitize:text'],
+            'allowTracking' => ['nullable', 'boolean'],
         ];
     }
 }

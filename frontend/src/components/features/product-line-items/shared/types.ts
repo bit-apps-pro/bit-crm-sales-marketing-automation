@@ -1,4 +1,4 @@
-import { type Product } from '@common/types/product'
+import { type ProductOptionData } from '@components/features/product-lookup-select/shared/types'
 import { type CurrencyItemType } from '@pages/currencies/shared/currency-types'
 
 export interface LineItem {
@@ -8,7 +8,8 @@ export interface LineItem {
   id: string
   module?: string
   product_code?: string
-  product_id?: number
+  /** VARCHAR since db 1.0.5: a CRM id, or an external one such as a SureCart price UUID. */
+  product_id?: number | string
   product_name?: string
   product_source: string
   quantity: number
@@ -25,7 +26,7 @@ export interface ProductLineItemsTableProps {
   currencyData: CurrencyItemType
   lineItems: LineItem[]
   onRemove: (id: string) => void
-  onSelectProduct: (lineItemId: string, productData: Product, dealCurrency?: string) => void
+  onSelectProduct: (lineItemId: string, productData: ProductOptionData, dealCurrency?: string) => void
   onUpdate: (id: string, field: keyof LineItem, value: number | string | undefined) => void
   productSource?: string
 }

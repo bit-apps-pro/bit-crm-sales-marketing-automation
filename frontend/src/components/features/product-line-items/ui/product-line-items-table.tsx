@@ -1,8 +1,8 @@
 import { __ } from '@common/helpers/i18nWrap'
-import { type Product } from '@common/types/product'
 import ProductLookupSelect from '@components/features/product-lookup-select/product-lookup-select'
 import { generateCurrencyFormatPreview } from '@pages/currencies/shared/common-functions'
 import useFluentCartProductIntegration from '@pages/fluent-cart-settings/data/use-fluent-cart-product-integration'
+import useSureCartProductIntegration from '@pages/surecart-settings/data/use-surecart-product-integration'
 import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
 import { Button, InputNumber, Table, type TableColumnsType } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
@@ -23,6 +23,7 @@ export default function ProductLineItemsTable({
 }: ProductLineItemsTableProps) {
   const { isWooEnabled } = useWooProductIntegration()
   const { isFluentCartEnabled } = useFluentCartProductIntegration()
+  const { isSureCartEnabled } = useSureCartProductIntegration()
   const taxOption = useTaxOptionSelect()
 
   const columns: TableColumnsType<LineItem> = [
@@ -35,12 +36,13 @@ export default function ProductLineItemsTable({
             allowCustomSource={allowCustomSource}
             className="w-full"
             enableFluentCartProducts={isFluentCartEnabled}
+            enableSureCartProducts={isSureCartEnabled}
             enableWooProducts={isWooEnabled}
             name={record.product_name}
             onNameChange={value => onUpdate(record.id, 'product_name', value)}
             onSelect={option => {
               if (option.data) {
-                onSelectProduct(record.id, option.data as Product)
+                onSelectProduct(record.id, option.data)
               }
             }}
             onSourceChange={value => onUpdate(record.id, 'product_source', value)}

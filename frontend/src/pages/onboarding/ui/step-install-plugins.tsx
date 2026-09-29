@@ -1,7 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
 import { Button, Checkbox, Form, Typography } from 'antd'
 import { type ReactNode } from 'react'
-import { LuArrowLeft, LuPlug, LuShieldCheck, LuUsers } from 'react-icons/lu'
+import { LuArrowLeft, LuPlug, LuUsers } from 'react-icons/lu'
 
 interface PluginOption {
   description: string
@@ -24,14 +24,6 @@ const PLUGINS: PluginOption[] = [
     icon: <LuPlug />,
     slug: 'bit-integrations',
     title: __('Integrate with the WordPress ecosystem')
-  },
-  {
-    description: __(
-      "Install Bit SMTP to configure SMTP and make sure transactional emails reach your user's inboxes."
-    ),
-    icon: <LuShieldCheck />,
-    slug: 'bit-smtp',
-    title: __('Deliver emails to the inbox')
   }
 ]
 
@@ -57,7 +49,7 @@ export default function StepInstallPlugins({ finishing, onBack, onFinish }: Step
         </Typography.Text>
         <Form.Item name="plugins" noStyle>
           <Checkbox.Group className="w-full">
-            <div className="flex w-full flex-col gap-1">
+            <div className="flex w-full flex-col gap-4 sm:gap-1">
               {PLUGINS.map(plugin => (
                 <div className="flex items-start justify-between gap-5" key={plugin.slug}>
                   <div className="flex flex-col gap-1.5 leading-tight">
@@ -68,15 +60,37 @@ export default function StepInstallPlugins({ finishing, onBack, onFinish }: Step
                       {plugin.description}
                     </Typography.Text>
                   </div>
-                  <Checkbox className="" value={plugin.slug} />
+                  <Checkbox className="shrink-0" value={plugin.slug} />
                 </div>
               ))}
             </div>
           </Checkbox.Group>
         </Form.Item>
+
+        <div className="-mx-3 mt-3 flex items-start justify-between gap-5 rounded-[14px] border border-solid border-primary px-[11px] py-2.5 dark:border-[#5C4DFF]">
+          <div className="flex flex-col gap-1.5 leading-tight">
+            <Typography.Title className="mb-0" level={5}>
+              {__('Help us make Bit CRM better')}
+            </Typography.Title>
+            <Typography.Text className="text-sm" type="secondary">
+              {__('Share non-sensitive diagnostic data and usage info. No CRM records are shared')}
+              {' - '}
+              <Typography.Link
+                href="https://bit-crm.com/privacy-policy/"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                {__('what we collect')}
+              </Typography.Link>
+            </Typography.Text>
+          </div>
+          <Form.Item name="allowTracking" noStyle valuePropName="checked">
+            <Checkbox />
+          </Form.Item>
+        </div>
       </div>
 
-      <div className="flex items-center justify-between gap-3 pt-6">
+      <div className="flex items-center justify-between gap-3 pt-2 sm:pt-6">
         <Button
           className="rounded-full"
           disabled={finishing}

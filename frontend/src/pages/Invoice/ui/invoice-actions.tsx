@@ -7,28 +7,21 @@ import TrashModal from '@pages/invoices/shared/invoice-bulk-operations/ui/trash-
 import { useInvoiceKeysStoreActions } from '@pages/invoices/state/use-selected-invoice-keys-store'
 import { Button, Dropdown } from 'antd'
 import { type MenuItemType } from 'antd/es/menu/interface'
+import { useState } from 'react'
 import { LuCheck, LuChevronDown, LuDownload, LuPenLine, LuTrash2 } from 'react-icons/lu'
 import { useNavigate, useParams } from 'react-router'
 
 import DownloadPdf from '../data/download-pdf'
-import useUpdateInvoiceStatus from '../data/use-update-invoice-status'
+import MarkAsPaidModal from './mark-as-paid-modal'
 
 type CapableMenuItem = MenuItemType & { capability: string }
 
 export default function InvoiceActions({ status }: { status?: string }) {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { updateInvoiceStatus } = useUpdateInvoiceStatus()
   const { setTrashModalOpen } = useInvoiceBulkOperationsStoreActions()
   const { setSelectedKeys } = useInvoiceKeysStoreActions()
-
-  const handleMarkAsPaid = () => {
-    if (!id) return
-    updateInvoiceStatus({
-      id: id,
-      status: INVOICE_STATUS.PAID
-    })
-  }
+  const [isMarkAsPaidOpen, setMarkAsPaidOpen] = useState(false)
 
   const handleDelete = () => {
     if (!id) return
@@ -53,11 +46,11 @@ export default function InvoiceActions({ status }: { status?: string }) {
     },
     {
       capability: CAPABILITIES.INVOICE.UPDATE,
-      disabled: status === INVOICE_STATUS.PAID,
+      disabled: status === INVOICE_STATUS.PAID || status === INVOICE_STATUS.DRAFT,
       icon: <LuCheck size={14} />,
       key: 'statusUpdate',
       label: <span>{__('Mark as Paid')}</span>,
-      onClick: () => handleMarkAsPaid()
+      onClick: () => setMarkAsPaidOpen(true)
     },
     {
       capability: CAPABILITIES.INVOICE.DELETE,
@@ -94,6 +87,11 @@ export default function InvoiceActions({ status }: { status?: string }) {
         </Button>
       </Dropdown>
       <TrashModal onSuccess={() => navigate('../invoices')} />
+      <MarkAsPaidModal
+        invoiceId={Number(id)}
+        onClose={() => setMarkAsPaidOpen(false)}
+        open={isMarkAsPaidOpen}
+      />
     </>
   )
 }

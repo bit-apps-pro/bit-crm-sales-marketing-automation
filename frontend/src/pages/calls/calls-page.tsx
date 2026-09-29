@@ -48,7 +48,7 @@ export default function CallsPage() {
 
   return (
     <div className="flex h-full flex-col px-6 py-4 dark:bg-transparent">
-      <div className="mb-4 flex items-center justify-between py-1">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 py-1">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
             {__('Calls')}
@@ -67,11 +67,11 @@ export default function CallsPage() {
           </If>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
           <ActivityListFilterPage />
           <Input
             allowClear
-            className="w-52 rounded-full"
+            className="w-full rounded-full sm:w-52"
             defaultValue={search}
             onChange={handleSearchTermChange}
             placeholder={__('Search')}

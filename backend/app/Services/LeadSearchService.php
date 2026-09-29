@@ -40,7 +40,8 @@ class LeadSearchService
         [$advancedFilters, $advancedFiltersBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? [], $allowedColumns);
         $ownerTableJoin = $this->getOwnerTableJoin();
         $ownerNameSelect = $this->getOwnerNameSelect();
-        $select = "SELECT {$leadTableAlias}.*" . $ownerNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
+        $leadColumnsSelect = (new EntityColumnsSelectBuilder())->buildSelect($leadTable, $leadTableAlias, $customFieldKeys);
+        $select = "SELECT {$leadColumnsSelect}" . $ownerNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
 
         $baseQuery = "
         {$select}

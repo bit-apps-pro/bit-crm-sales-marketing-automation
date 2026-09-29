@@ -633,6 +633,8 @@ return [
 
     'FluentCart' => __('FluentCart', 'bit-crm-sales-marketing-automation'),
 
+    'SureCart' => __('SureCart', 'bit-crm-sales-marketing-automation'),
+
     'Local' => __('Local', 'bit-crm-sales-marketing-automation'),
 
     'Custom' => __('Custom', 'bit-crm-sales-marketing-automation'),
@@ -917,6 +919,14 @@ return [
     'Clients' => __('Clients', 'bit-crm-sales-marketing-automation'),
 
     'White Label' => __('White Label', 'bit-crm-sales-marketing-automation'),
+
+    'SureCart Settings' => __('SureCart Settings', 'bit-crm-sales-marketing-automation'),
+
+    'SureCart Product Integration' => __('SureCart Product Integration', 'bit-crm-sales-marketing-automation'),
+
+    'Enable SureCart Products' => __('Enable SureCart Products', 'bit-crm-sales-marketing-automation'),
+
+    'Allow selecting SureCart products in deal and invoice line items. Product source selection will be available when this is enabled.' => __('Allow selecting SureCart products in deal and invoice line items. Product source selection will be available when this is enabled.', 'bit-crm-sales-marketing-automation'),
 
     'Preserve Flow Logs' => __('Preserve Flow Logs', 'bit-crm-sales-marketing-automation'),
 
@@ -1753,7 +1763,13 @@ return [
 
     'Add Business Settings' => __('Add Business Settings', 'bit-crm-sales-marketing-automation'),
 
+    'Changing the deal will replace the invoice line items, taxes, and discounts. Any edits to these will be lost.' => __('Changing the deal will replace the invoice line items, taxes, and discounts. Any edits to these will be lost.', 'bit-crm-sales-marketing-automation'),
+
+    'Replace invoice line items?' => __('Replace invoice line items?', 'bit-crm-sales-marketing-automation'),
+
     'Select a deal' => __('Select a deal', 'bit-crm-sales-marketing-automation'),
+
+    'Unable to load the selected deal. Please try again.' => __('Unable to load the selected deal. Please try again.', 'bit-crm-sales-marketing-automation'),
 
     'Contact Information' => __('Contact Information', 'bit-crm-sales-marketing-automation'),
 
@@ -1847,6 +1863,10 @@ return [
 
     'Failed to generate share link' => __('Failed to generate share link', 'bit-crm-sales-marketing-automation'),
 
+    'Could not record the payment' => __('Could not record the payment', 'bit-crm-sales-marketing-automation'),
+
+    'Payment recorded successfully' => __('Payment recorded successfully', 'bit-crm-sales-marketing-automation'),
+
     'Cancelled' => __('Cancelled', 'bit-crm-sales-marketing-automation'),
 
     'Failed' => __('Failed', 'bit-crm-sales-marketing-automation'),
@@ -1879,6 +1899,20 @@ return [
 
     'Payment History' => __('Payment History', 'bit-crm-sales-marketing-automation'),
 
+    'Failed to load payments' => __('Failed to load payments', 'bit-crm-sales-marketing-automation'),
+
+    'Reference:' => __('Reference:', 'bit-crm-sales-marketing-automation'),
+
+    'Payment reference:' => __('Payment reference:', 'bit-crm-sales-marketing-automation'),
+
+    'Charged:' => __('Charged:', 'bit-crm-sales-marketing-automation'),
+
+    'Note:' => __('Note:', 'bit-crm-sales-marketing-automation'),
+
+    'No payments yet' => __('No payments yet', 'bit-crm-sales-marketing-automation'),
+
+    'Due' => __('Due', 'bit-crm-sales-marketing-automation'),
+
     'Bill To' => __('Bill To', 'bit-crm-sales-marketing-automation'),
 
     'Share Link' => __('Share Link', 'bit-crm-sales-marketing-automation'),
@@ -1892,6 +1926,26 @@ return [
     'Copy' => __('Copy', 'bit-crm-sales-marketing-automation'),
 
     'Or send it directly via' => __('Or send it directly via', 'bit-crm-sales-marketing-automation'),
+
+    'Record Payment' => __('Record Payment', 'bit-crm-sales-marketing-automation'),
+
+    'This invoice has nothing left to pay.' => __('This invoice has nothing left to pay.', 'bit-crm-sales-marketing-automation'),
+
+    'Records a payment you received outside the online checkout. It settles the invoice in full.' => __('Records a payment you received outside the online checkout. It settles the invoice in full.', 'bit-crm-sales-marketing-automation'),
+
+    'Amount to record' => __('Amount to record', 'bit-crm-sales-marketing-automation'),
+
+    'Payment Date' => __('Payment Date', 'bit-crm-sales-marketing-automation'),
+
+    'Please select the payment date!' => __('Please select the payment date!', 'bit-crm-sales-marketing-automation'),
+
+    'Reference' => __('Reference', 'bit-crm-sales-marketing-automation'),
+
+    'e.g. cheque number or transaction ID' => __('e.g. cheque number or transaction ID', 'bit-crm-sales-marketing-automation'),
+
+    'Note' => __('Note', 'bit-crm-sales-marketing-automation'),
+
+    'Optional note about this payment' => __('Optional note about this payment', 'bit-crm-sales-marketing-automation'),
 
     'New Invoice' => __('New Invoice', 'bit-crm-sales-marketing-automation'),
 
@@ -1913,15 +1967,17 @@ return [
 
     'Sample data added successfully.' => __('Sample data added successfully.', 'bit-crm-sales-marketing-automation'),
 
-    'Workflows' => __('Workflows', 'bit-crm-sales-marketing-automation'),
-
-    'More' => __('More', 'bit-crm-sales-marketing-automation'),
+    'Menu' => __('Menu', 'bit-crm-sales-marketing-automation'),
 
     'Settings' => __('Settings', 'bit-crm-sales-marketing-automation'),
+
+    'More' => __('More', 'bit-crm-sales-marketing-automation'),
 
     'Dark' => __('Dark', 'bit-crm-sales-marketing-automation'),
 
     'Light' => __('Light', 'bit-crm-sales-marketing-automation'),
+
+    'Workflows' => __('Workflows', 'bit-crm-sales-marketing-automation'),
 
     'Loading' => __('Loading', 'bit-crm-sales-marketing-automation'),
 
@@ -2059,13 +2115,15 @@ return [
 
     'Integrate with the WordPress ecosystem' => __('Integrate with the WordPress ecosystem', 'bit-crm-sales-marketing-automation'),
 
-    'Install Bit SMTP to configure SMTP and make sure transactional emails reach your user\'s inboxes.' => __('Install Bit SMTP to configure SMTP and make sure transactional emails reach your user\'s inboxes.', 'bit-crm-sales-marketing-automation'),
-
-    'Deliver emails to the inbox' => __('Deliver emails to the inbox', 'bit-crm-sales-marketing-automation'),
-
     'Almost done!' => __('Almost done!', 'bit-crm-sales-marketing-automation'),
 
     'Thanks for configuring your CRM. These solutions will help you manage your entire sales pipeline.' => __('Thanks for configuring your CRM. These solutions will help you manage your entire sales pipeline.', 'bit-crm-sales-marketing-automation'),
+
+    'Help us make Bit CRM better' => __('Help us make Bit CRM better', 'bit-crm-sales-marketing-automation'),
+
+    'Share non-sensitive diagnostic data and usage info. No CRM records are shared' => __('Share non-sensitive diagnostic data and usage info. No CRM records are shared', 'bit-crm-sales-marketing-automation'),
+
+    'what we collect' => __('what we collect', 'bit-crm-sales-marketing-automation'),
 
     'Back' => __('Back', 'bit-crm-sales-marketing-automation'),
 
@@ -2251,7 +2309,11 @@ return [
 
     'This invoice is not open for payment yet.' => __('This invoice is not open for payment yet.', 'bit-crm-sales-marketing-automation'),
 
-    'Due' => __('Due', 'bit-crm-sales-marketing-automation'),
+    'Payment history' => __('Payment history', 'bit-crm-sales-marketing-automation'),
+
+    'Charged' => __('Charged', 'bit-crm-sales-marketing-automation'),
+
+    'Date unavailable' => __('Date unavailable', 'bit-crm-sales-marketing-automation'),
 
     'There is no payable amount on this invoice yet.' => __('There is no payable amount on this invoice yet.', 'bit-crm-sales-marketing-automation')
 ];

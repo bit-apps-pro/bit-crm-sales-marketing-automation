@@ -8,6 +8,7 @@ use BitApps\Crm\Model\Attachment;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
+use BitApps\Crm\Model\InvoicePayment;
 use BitApps\Crm\Model\Lead;
 use BitApps\Crm\Model\Trash;
 use BitApps\Crm\Services\ContactService;
@@ -29,9 +30,10 @@ use Throwable;
  *  - Contacts that have deals are kept as an anonymized shell so deals and
  *    invoices stay consistent business records; every personal column is
  *    blanked and the records hanging off the contact are deleted.
- *  - Deals are retained with the email column cleared. Invoices are retained
- *    untouched — they are financial records the site owner is normally
- *    obliged to keep — and reported as retained.
+ *  - Deals are retained with the email column cleared. Invoices and the
+ *    payments recorded against them are retained untouched — they are
+ *    financial records the site owner is normally obliged to keep — and
+ *    reported as retained.
  *  - Emails synced or sent for the address (the person's own timeline) are
  *    deleted. Emails on other contacts' timelines that merely mention the
  *    address stay: they are those contacts' records.
@@ -214,6 +216,16 @@ class PersonalDataEraser
             _n('%d invoice was retained for accounting and record-keeping purposes.', '%d invoices were retained for accounting and record-keeping purposes.', \count($ids), 'bit-crm-sales-marketing-automation'),
             \count($ids)
         );
+
+        $payments = (int) InvoicePayment::where('module', Invoice::MODULE_NAME)->whereIn('entity_id', $ids)->count();
+
+        if ($payments > 0) {
+            $this->reportRetained(
+                // translators: %d: number of payment records
+                _n('%d invoice payment record was retained with the invoice it belongs to for accounting and record-keeping purposes.', '%d invoice payment records were retained with the invoices they belong to for accounting and record-keeping purposes.', $payments, 'bit-crm-sales-marketing-automation'),
+                $payments
+            );
+        }
     }
 
     private function eraseEmails(PersonalDataLocator $locator): void

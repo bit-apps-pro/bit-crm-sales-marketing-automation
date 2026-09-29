@@ -5,6 +5,12 @@ parameters:
 
     scanDirectories:
         - vendor/bitapps
+
+    # wp-kit's tests/bootstrap.php defines a constructor-less WP_REST_Response
+    # stub that would shadow the real WordPress class.
+    excludePaths:
+        analyseAndScan:
+            - vendor/bitapps/wp-kit/tests
     
     paths:
         - backend

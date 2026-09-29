@@ -12,9 +12,17 @@ export default function FieldRenderer({
   type
 }: FieldRendererPropsType) {
   return (
-    <div className="flex w-full items-center gap-4">
-      <Typography.Text className="m-0 text-sm">{label}</Typography.Text>
-      <div className="flex items-center justify-start">
+    /*
+      Name + tag are sized to their content so the tag sits right beside the name, and
+      the block never shrinks (`shrink-0`) -- otherwise on a phone it is squeezed to zero
+      by the hover-only row controls, which are wider than the screen. The `max-w` cap
+      lets a long name ellipsise instead; the controls take what is left and scroll.
+    */
+    <div className="flex min-w-0 max-w-[75%] shrink-0 items-center gap-2 sm:gap-4">
+      <Typography.Text className="m-0 min-w-0 truncate text-sm" title={label}>
+        {label}
+      </Typography.Text>
+      <div className="flex shrink-0 items-center justify-start">
         <If conditions={isGroup}>
           <Tag className="text-xs" color="blue">
             {__('group')}

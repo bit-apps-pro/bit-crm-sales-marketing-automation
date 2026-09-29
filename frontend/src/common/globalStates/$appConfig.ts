@@ -12,6 +12,7 @@ interface AppConfigType {
   isWpMenuCollapsed: boolean
   onboardingCompleted: boolean
   preferNodeDetailsInDrawer: boolean
+  publicUrlPrefix: string
   sampleDataStatus: typeof config.SAMPLE_DATA_STATUS
 }
 
@@ -25,6 +26,7 @@ const $appConfig = atomWithStorage(
     isWpMenuCollapsed: false,
     onboardingCompleted: config.ONBOARDING_COMPLETED,
     preferNodeDetailsInDrawer: false,
+    publicUrlPrefix: config.PUBLIC_URL_PREFIX,
     sampleDataStatus: config.SAMPLE_DATA_STATUS
   },
   {
@@ -37,6 +39,7 @@ const $appConfig = atomWithStorage(
         homeCurrencyData: config.HOME_CURRENCY_DATA,
         isPro: config.IS_PRO,
         onboardingCompleted: config.ONBOARDING_COMPLETED,
+        publicUrlPrefix: config.PUBLIC_URL_PREFIX,
         sampleDataStatus: config.SAMPLE_DATA_STATUS
       }
     },

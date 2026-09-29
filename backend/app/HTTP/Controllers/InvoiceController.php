@@ -3,6 +3,7 @@
 namespace BitApps\Crm\HTTP\Controllers;
 
 use BitApps\Crm\Config;
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Connection;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
@@ -11,6 +12,8 @@ use BitApps\Crm\Helpers\FileHandler;
 use BitApps\Crm\HTTP\Requests\Invoice\DownloadRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\IndexRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\InvoiceByDealRequest;
+use BitApps\Crm\HTTP\Requests\Invoice\ManualPaymentRequest;
+use BitApps\Crm\HTTP\Requests\Invoice\PaymentsRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\PrefixRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\SendInvoiceRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\ShowRequest;
@@ -23,6 +26,7 @@ use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Model\LineItem;
 use BitApps\Crm\Model\Setting;
 use BitApps\Crm\Model\Trash;
+use BitApps\Crm\Services\InvoiceLedgerService;
 use BitApps\Crm\Services\InvoicePdfService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\Services\InvoiceShareTokenService;
@@ -155,6 +159,69 @@ final class InvoiceController
             Connection::rollBack();
 
             return Response::error(null)->message(__('Failed to update invoice!', 'bit-crm-sales-marketing-automation'));
+        }
+    }
+
+    /**
+     * Payment history of an invoice: the ledger rows plus the total/paid/due
+     * summary — what the sidebar's Payment History panel renders.
+     *
+     * Free because the ledger is: viewing what was paid is bookkeeping, not
+     * payment collection. Pro's InvoicePaymentController::payments() serves
+     * the same rows with the checkout-side extras (provider context, partial
+     * and recurring settings) its own panels need.
+     */
+    public function payments(PaymentsRequest $request)
+    {
+        $invoice = $this->resolveInvoice($request->validated());
+
+        if ($invoice === null) {
+            return $this->invoiceNotFound();
+        }
+
+        // Null when the invoice cannot be totalled (no deal, no currency): the
+        // history is still real, the summary is simply null.
+        $details = InvoiceService::getInvoiceDetails((int) $invoice->id);
+
+        $ledger = new InvoiceLedgerService();
+        $payments = $ledger->getPayments((int) $invoice->id);
+
+        return Response::success(Hooks::applyFilter(
+            HookKeys::INVOICE_PAYMENTS_DATA,
+            [
+                'payments' => $payments,
+                'summary'  => $ledger->getDisplayPaymentSummary($invoice, $details, $payments),
+            ],
+            $invoice,
+            $details
+        ));
+    }
+
+    /**
+     * Records an offline settlement (cash, bank transfer, cheque) as a
+     * completed payment row and lets the invoice status derive from the
+     * history — what "Mark as Paid" does.
+     *
+     * Lives in free because the ledger does: the records must outlive the pro
+     * plugin. Pro adds every provider-collected row to the same history.
+     */
+    public function recordManualPayment(ManualPaymentRequest $request)
+    {
+        $validated = $request->validated();
+
+        $invoice = $this->resolveInvoice($validated);
+
+        if ($invoice === null) {
+            return $this->invoiceNotFound();
+        }
+
+        try {
+            (new InvoiceLedgerService())->recordManualPayment($invoice, $validated);
+
+            return Response::success([])
+                ->message(__('Payment recorded successfully', 'bit-crm-sales-marketing-automation'));
+        } catch (Throwable $th) {
+            return Response::error($th->getMessage());
         }
     }
 
@@ -416,5 +483,18 @@ final class InvoiceController
             ->selectRaw("{$dealTable}.name AS deal_name")
             ->where("{$invoiceTable}.module", Deal::MODULE_NAME)
             ->leftJoin('deals', "{$invoiceTable}.entity_id", '=', "{$dealTable}.id");
+    }
+
+    /** The live (non-trashed) invoice a request addresses, or null. */
+    private function resolveInvoice(array $validated): ?Invoice
+    {
+        $invoice = Invoice::findOne(['id' => $validated['id']]);
+
+        return empty($invoice) || $invoice->is_trash ? null : $invoice;
+    }
+
+    private function invoiceNotFound()
+    {
+        return Response::error(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
     }
 }

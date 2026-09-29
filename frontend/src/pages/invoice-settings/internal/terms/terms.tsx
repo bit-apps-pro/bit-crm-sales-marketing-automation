@@ -30,8 +30,8 @@ export default function Terms() {
 
   return (
     <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-      <div className="flex items-center gap-2 p-3">
-        <Typography.Title className="mb-0" level={4}>
+      <div className="flex flex-wrap items-center gap-2 p-3">
+        <Typography.Title className="mb-0 whitespace-nowrap" level={4}>
           {__('Terms')}
         </Typography.Title>
         <Button

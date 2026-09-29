@@ -13,6 +13,7 @@ use BitApps\Crm\HTTP\Requests\Company\AttachTagRequest;
 use BitApps\Crm\HTTP\Requests\Company\AttachTagsRequest;
 use BitApps\Crm\HTTP\Requests\Company\DetachTagRequest;
 use BitApps\Crm\HTTP\Requests\Company\DetachTagsRequest;
+use BitApps\Crm\HTTP\Requests\Company\FieldsWithOrderRequest;
 use BitApps\Crm\HTTP\Requests\Company\ImportRequest;
 use BitApps\Crm\HTTP\Requests\Company\SearchRequest;
 use BitApps\Crm\HTTP\Requests\Company\ShowRequest;
@@ -46,7 +47,7 @@ final class CompanyController
         $this->companyService = new CompanyService();
     }
 
-    public function fieldsWithOrder()
+    public function fieldsWithOrder(FieldsWithOrderRequest $request)
     {
         $fieldsOrder = SettingService::getSettingsValue(Company::SETTINGS_KEYS['FIELDS_ORDER']);
         $columnSettings = SettingService::getSettingsValue(Company::SETTINGS_KEYS['COLUMNS_SETTINGS']);

@@ -1,6 +1,13 @@
 import { __ } from '@common/helpers/i18nWrap'
 import { Button, Radio, Tabs, Tag, Typography } from 'antd'
-import { LuAlignJustify, LuColumns2, LuGripVertical, LuInfo, LuPlus } from 'react-icons/lu'
+import {
+  LuAlignJustify,
+  LuColumns2,
+  LuGripVertical,
+  LuInfo,
+  LuPlus,
+  LuTextCursorInput
+} from 'react-icons/lu'
 
 import { type ProFeatureAlertProps } from '../../shared/type'
 import LockedOverlay from '../locked-overlay'
@@ -77,7 +84,12 @@ export default function ProEntitySettingsAlert({ featureName, fields }: ProEntit
             {
               children: <FieldSettingsMock fields={fields} />,
               key: 'field-settings',
-              label: __('Field Settings')
+              label: (
+                <span className="flex items-center gap-1.5">
+                  <LuTextCursorInput />
+                  {__('Field Settings')}
+                </span>
+              )
             }
           ]}
         />

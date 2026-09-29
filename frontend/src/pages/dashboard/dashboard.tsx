@@ -66,7 +66,7 @@ export default function Dashboard() {
         <StatCards stats={stats} />
         <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-10">
           <If conditions={checkCapability(CAPABILITIES.ACTIVITY.VIEW)}>
-            <div className="w-full md:col-span-3">
+            <div className="w-full lg:col-span-3">
               <PendingActivities pendingActivities={pendingActivities} />
             </div>
           </If>
@@ -93,7 +93,7 @@ export default function Dashboard() {
               </If>
             </div>
           </div>
-          <div className="w-full space-y-5 md:col-span-2">
+          <div className="w-full space-y-5 lg:col-span-2">
             <If conditions={checkCapability(CAPABILITIES.LEAD.VIEW)}>
               <LeadsBySource leadCountBySource={leadCountBySource} />
             </If>

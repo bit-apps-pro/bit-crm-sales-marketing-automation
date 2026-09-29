@@ -216,7 +216,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
         <div className="flex flex-wrap items-center justify-between gap-2 p-2">
           <div className="flex flex-wrap items-center gap-2">
             <Select
-              className="w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
+              className="w-full sm:w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
               disabled={!email}
               onChange={handleSourceChange}
               options={[
@@ -227,7 +227,7 @@ export default function EntityEmails({ email, entityId, fields, module }: Entity
               value={source}
             />
             <Select
-              className="w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
+              className="w-full sm:w-52 [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
               disabled={source === pluginSlug}
               loading={isImapsLoading}
               notFoundContent={<EmptyImapSelect />}

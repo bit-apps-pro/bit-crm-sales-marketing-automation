@@ -40,7 +40,8 @@ class ContactSearchService
         $ownerTableJoin = $this->getOwnerTableJoin();
         $ownerNameSelect = $this->getOwnerNameSelect();
         $parentNameSelect = $this->getParentNameSelect();
-        $select = "SELECT {$contactTableAlias}.*" . $companyNameSelect . $ownerNameSelect . $parentNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
+        $contactColumnsSelect = (new EntityColumnsSelectBuilder())->buildSelect($contactTable, $contactTableAlias, $customFieldKeys);
+        $select = "SELECT {$contactColumnsSelect}" . $companyNameSelect . $ownerNameSelect . $parentNameSelect . ($customFieldsSelect ? ', ' . $customFieldsSelect : '');
 
         $baseQuery = "
         {$select}

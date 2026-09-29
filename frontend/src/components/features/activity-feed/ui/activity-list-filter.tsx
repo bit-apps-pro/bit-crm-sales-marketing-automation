@@ -25,5 +25,5 @@ export default function ActivityListFilter({ showPriority = false }: { showPrior
       placeholder: __('Filter by priority')
     })
 
-  return <ActivityFilter filters={filters} />
+  return <ActivityFilter compact filters={filters} />
 }

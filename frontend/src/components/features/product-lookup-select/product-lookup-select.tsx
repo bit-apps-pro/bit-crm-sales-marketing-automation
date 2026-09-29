@@ -18,6 +18,7 @@ export default function ProductLookupSelect({
   className,
   disabled = false,
   enableFluentCartProducts = false,
+  enableSureCartProducts = false,
   enableWooProducts = false,
   name,
   onNameChange,
@@ -36,6 +37,7 @@ export default function ProductLookupSelect({
   const sourceOptions = getProductSourceOptions({
     allowCustomSource,
     fluentCartEnabled: enableFluentCartProducts,
+    sureCartEnabled: enableSureCartProducts,
     wooEnabled: enableWooProducts
   })
   const allSourcesDisabled = sourceOptions.every(opt => opt.disabled)

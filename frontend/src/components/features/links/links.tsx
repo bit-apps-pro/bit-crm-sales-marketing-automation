@@ -87,7 +87,7 @@ export default function Links({ entityId, fields, module }: LinksProps) {
 
   return (
     <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-      <div className="flex justify-between gap-2 p-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-2">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={5}>
             {__('Links')}
@@ -106,13 +106,15 @@ export default function Links({ entityId, fields, module }: LinksProps) {
             <LoadingOutlined />
           </If>
         </div>
-        <div className="flex items-center justify-between gap-2">
+        {/* `contents` below `sm`: the sort select and search join the header row, so the
+            select fits beside the title and New button while the full-width search
+            wraps onto its own line. */}
+        <div className="contents sm:flex sm:flex-wrap sm:items-center sm:gap-2">
           <Select
-            className="[&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
+            className="w-[120px] sm:w-[150px] [&_.ant-select-selection-item]:rounded-full [&_.ant-select-selector]:rounded-full"
             defaultValue={sortOrder}
             onChange={handleSortChange}
             options={SORT_OPTIONS}
-            style={{ width: 150 }}
           />
 
           <SearchInput queryKey="search" />

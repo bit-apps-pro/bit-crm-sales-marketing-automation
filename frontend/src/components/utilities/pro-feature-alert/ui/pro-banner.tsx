@@ -39,7 +39,7 @@ export default function ProBanner({ className = '', featureName, showIcon = true
         </div>
       </If>
       <div>
-        <h2 className="m-0 mb-1 text-3xl font-semibold" style={{ color: primary }}>
+        <h2 className="m-0 mb-1 text-2xl font-semibold md:text-3xl" style={{ color: primary }}>
           {__('Pro Feature')}
         </h2>
         <p className="m-0 text-sm text-gray-500 dark:text-gray-400">{subTitle}</p>

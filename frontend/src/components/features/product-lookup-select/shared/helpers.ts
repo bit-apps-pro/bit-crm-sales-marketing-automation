@@ -19,7 +19,9 @@ export const getDisplayValue = (
     return value
   }
 
-  if (!value || !options) return value
+  if (!value) return value
+
+  if (!options) return settings?.fallback || value
 
   const valueExists = (items: DataNode[]): boolean => {
     for (const item of items) {

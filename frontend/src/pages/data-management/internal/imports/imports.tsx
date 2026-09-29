@@ -38,7 +38,7 @@ export default function Imports() {
 
   return (
     <div className="rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
-      <div className="flex items-center justify-between gap-2 p-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-2">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={4}>
             {__('Imports history')}

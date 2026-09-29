@@ -1,0 +1,130 @@
+/* Viewport caps for antd overlays.
+ *
+ * Modals and drawers across the app hardcode a designed pixel width -- `width={1200}` on
+ * the product assignment modal, 720 on the capability and email panels, 700/640/600/550
+ * elsewhere. Every one of those exceeds a phone viewport, and antd applies the number as
+ * an inline style, so a component-level default would not reach them.
+ *
+ * Capping here instead of in ConfigProvider is deliberate: antd renders these into body
+ * portals, the inline width has to be beaten by something equally specific, and a single
+ * rule covers all 14 call sites plus any added later. The designed width still wins
+ * whenever it fits -- these are ceilings, not overrides.
+ */
+
+/* Modals: keep a small gutter so the dialog reads as floating rather than edge-to-edge. */
+.ant-modal {
+  max-width: calc(100vw - 2rem);
+}
+
+/* antd sets the pixel width on the inner .ant-modal element; its content box has to
+   follow or the body overflows the now-narrower frame. */
+.ant-modal-content {
+  max-width: 100%;
+}
+
+/* Drawers are edge-anchored, so a gutter would look like a rendering fault. They go
+   full-bleed instead, which is the conventional mobile drawer. antd sets the width on
+   the wrapper for left/right drawers and the height for top/bottom ones, so only the
+   horizontal pair is capped here. */
+.ant-drawer-left > .ant-drawer-content-wrapper,
+.ant-drawer-right > .ant-drawer-content-wrapper {
+  max-width: 100vw;
+}
+
+@media screen and (width <= 640px) {
+  .ant-drawer-left > .ant-drawer-content-wrapper,
+  .ant-drawer-right > .ant-drawer-content-wrapper {
+    width: 100vw !important;
+  }
+}
+
+/* Dropdowns, selects and pickers are positioned by rc-trigger against their trigger
+   element, which can place a wide panel partly off-screen on a narrow viewport. The
+   filter popover (`w-[600px]`) is the worst case. */
+.ant-dropdown,
+.ant-select-dropdown,
+.ant-picker-dropdown,
+.ant-popover {
+  max-width: calc(100vw - 1rem);
+}
+
+/* The popover's inner content carries the fixed width, so the cap has to reach it too,
+   otherwise the panel is clipped rather than reflowed. */
+.ant-popover-inner,
+.ant-popover-inner-content {
+  max-width: 100%;
+}
+
+/* The date panel is too wide for a phone at the app's control height: the DatePicker
+   token `controlHeight: 40` (with `algorithm`) derives 45px day cells, so seven columns
+   plus padding make a 351px panel. That is under the cap above, so the cap never
+   engages -- rc-trigger instead shifts the panel to fit and pushes its left edge past
+   the viewport. antd's stock 36px cells bring it to 288px, which fits beside the field.
+   The cell width has to move with the table and panel widths, which antd also pins. */
+@media screen and (width <= 782px) {
+  .ant-picker-dropdown .ant-picker-date-panel,
+  .ant-picker-dropdown .ant-picker-date-panel .ant-picker-content {
+    width: auto;
+  }
+
+  .ant-picker-dropdown .ant-picker-date-panel .ant-picker-content th,
+  .ant-picker-dropdown .ant-picker-date-panel .ant-picker-cell {
+    width: 36px;
+    min-width: 36px;
+  }
+
+  /* A RangePicker lays two months side by side (576px), and stacked they are ~720px
+     tall -- neither fits a phone. Show one month instead. rc-picker only hides the
+     first month's forward arrows with an inline `visibility: hidden`; their click
+     handlers stay wired, so revealing them keeps month-to-month navigation working
+     with the second month gone. */
+  .ant-picker-dropdown-range .ant-picker-panels > :not(:first-child) {
+    display: none;
+  }
+
+  .ant-picker-dropdown-range .ant-picker-panels > :first-child .ant-picker-header > button {
+    visibility: visible !important;
+  }
+
+  /* `showTime` puts a three-column time panel (3 x 70px) beside the calendar, ~500px in
+     all. Stacking the two is too tall to place, so both are tightened to sit side by
+     side: 30px day cells with less body padding (~222px) and 40px time columns (120px)
+     come to ~342px, inside the dropdown cap on a 360px phone. */
+  .ant-picker-dropdown .ant-picker-datetime-panel .ant-picker-date-panel .ant-picker-body {
+    padding-inline: 6px;
+  }
+
+  .ant-picker-dropdown .ant-picker-datetime-panel .ant-picker-date-panel .ant-picker-content th,
+  .ant-picker-dropdown .ant-picker-datetime-panel .ant-picker-date-panel .ant-picker-cell {
+    width: 30px;
+    min-width: 30px;
+  }
+
+  .ant-picker-dropdown .ant-picker-datetime-panel .ant-picker-time-panel-column {
+    width: 40px;
+  }
+
+  .ant-picker-dropdown
+    .ant-picker-datetime-panel
+    .ant-picker-time-panel-column
+    > li.ant-picker-time-panel-cell
+    .ant-picker-time-panel-cell-inner {
+    width: auto;
+    padding-inline: 0;
+    text-align: center;
+  }
+}
+
+/* Even at a width that fits, rc-picker anchors the panel to one edge of its field and
+   only flips sides -- it never shifts along the edge. A field on the right of a narrow
+   phone (a modal's date+time input at 360px) therefore still starts the panel past the
+   left of the screen. On a phone the panel is centred instead, which is where a picker
+   reads as expected anyway. `translate` rather than `transform`, so antd's open/close
+   motion -- which animates `transform` -- is left alone. The positions rc-trigger
+   writes are inline, hence `!important`. */
+@media screen and (width <= 480px) {
+  .ant-picker-dropdown {
+    left: 50% !important;
+    translate: -50% 0;
+  }
+}

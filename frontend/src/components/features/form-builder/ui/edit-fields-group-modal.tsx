@@ -102,7 +102,13 @@ export default function EditFieldsGroupModal<T extends BaseFieldType>({
         title={__('Edit Fields Group')}
       >
         <div className="mt-4">
-          <Table columns={columns} dataSource={dataSource} pagination={false} size="small" />
+          <Table
+            columns={columns}
+            dataSource={dataSource}
+            pagination={false}
+            scroll={{ x: 'max-content' }}
+            size="small"
+          />
         </div>
       </Modal>
     </>

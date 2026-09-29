@@ -48,6 +48,7 @@ class Invoice extends Model
     public const RELATED_MODELS = [
         LineItem::class,
         Trash::class,
+        InvoicePayment::class,
     ];
 
     protected $prefix = Config::VAR_PREFIX;

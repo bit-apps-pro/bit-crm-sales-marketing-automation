@@ -106,6 +106,7 @@ export default function LinkTable({ links, loading }: { links?: LinkType[]; load
       loading={loading}
       pagination={false}
       rowKey="id"
+      scroll={{ x: 'max-content' }}
       size="small"
     />
   )

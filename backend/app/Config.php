@@ -24,13 +24,13 @@ class Config
 
     public const VAR_PREFIX = 'bit_crm_';
 
-    public const VERSION = '1.2.0';
+    public const VERSION = '1.3.0';
 
-    public const DB_VERSION = '1.0.4';
+    public const DB_VERSION = '1.0.5';
 
     public const REQUIRED_PHP_VERSION = '8.2';
 
-    public const REQUIRED_WP_VERSION = '5.8';
+    public const REQUIRED_WP_VERSION = '6.5';
 
     public const API_VERSION = '1.0';
 
@@ -41,6 +41,12 @@ class Config
     public const ASSETS_FOLDER = 'assets';
 
     public const DEV_ROLE = '';
+
+    public const TELEMETRY_SERVER_BASE_URL = 'https://wp-api.bitapps.pro/public/';
+
+    public const TELEMETRY_TERMS_URL = 'https://bit-crm.com/terms-and-conditions/';
+
+    public const TELEMETRY_POLICY_URL = 'https://bit-crm.com/privacy-policy/';
 
     /**
      * Provides configuration for plugin.

@@ -9,19 +9,12 @@ import { Button, Layout } from 'antd'
 import { LuSettings } from 'react-icons/lu'
 import { Link, useHref, useLocation } from 'react-router'
 
+import HeaderMobileMenu from './header-mobile-menu'
 import HeaderMoreDropdown from './header-more-dropdown'
 import HeaderNavItem from './header-nav-item'
+import { PRIMARY_NAV_ITEMS } from './nav-items'
 
 const { Header: AntHeader } = Layout
-
-const navItems = [
-  { capability: CAPABILITIES.DASHBOARD, end: true, label: __('Dashboard'), path: '../' },
-  { capability: CAPABILITIES.LEAD.MENU, label: __('Leads'), path: '../leads' },
-  { capability: CAPABILITIES.CONTACT.MENU, label: __('Contacts'), path: '../contacts' },
-  { capability: CAPABILITIES.COMPANY.MENU, label: __('Companies'), path: '../companies' },
-  { capability: CAPABILITIES.DEAL.MENU, label: __('Deals'), path: '../deals' },
-  { capability: CAPABILITIES.INVOICE.MENU, label: __('Invoices'), path: '../invoices' }
-]
 
 export default function Header() {
   const location = useLocation()
@@ -29,11 +22,11 @@ export default function Header() {
   const settingsHref = useHref('/settings')
 
   return (
-    <AntHeader className="flex h-16 items-center justify-between gap-4 bg-transparent px-6 py-5">
-      <Link className="flex shrink-0 items-center" to="/">
+    <AntHeader className="flex h-16 items-center justify-between gap-2 bg-transparent px-4 py-5 sm:gap-4 sm:px-6">
+      <Link className="flex min-w-0 shrink items-center" to="/">
         <svg
           aria-label="Bit CRM"
-          className="block h-10 w-auto text-[#171336] dark:text-white"
+          className="block h-8 w-auto max-w-full text-[#171336] sm:h-10 dark:text-white"
           height="36"
           role="img"
           viewBox="0 0 152 36"
@@ -42,23 +35,26 @@ export default function Header() {
           <use href={`${brandLogo}#brand-logo`} />
         </svg>
       </Link>
-      <div className="flex gap-1">
-        {navItems.map(link => {
+      {/* The pill bar and its overflow dropdown need roughly 700px; below `lg` they are
+          replaced wholesale by the drawer, which carries the same destinations. */}
+      <div className="hidden gap-1 lg:flex">
+        {PRIMARY_NAV_ITEMS.map(link => {
           if (!checkCapability(link.capability)) {
             return
           }
-          return <HeaderNavItem key={link.label} props={link} />
+          return <HeaderNavItem key={link.key} props={link} />
         })}
         <HeaderMoreDropdown />
       </div>
       <div className="flex items-center gap-1">
         <ThemeToggle />
+        {/* Settings has its own drawer entry, so the icon button would be a duplicate. */}
         <If conditions={checkCapability(CAPABILITIES.SETTING.MENU)}>
           <Button
             aria-current={isSettingsActive ? 'page' : undefined}
             aria-label={__('Settings')}
             className={cn([
-              'h-10 w-10 shadow-none transition-colors duration-300 ease-in-out',
+              'hidden h-10 w-10 shadow-none transition-colors duration-300 ease-in-out lg:inline-flex',
               isSettingsActive && 'border-none bg-primary'
             ])}
             classNames={{ icon: ' flex items-center' }}
@@ -67,6 +63,7 @@ export default function Header() {
             shape="circle"
           />
         </If>
+        <HeaderMobileMenu />
       </div>
     </AntHeader>
   )

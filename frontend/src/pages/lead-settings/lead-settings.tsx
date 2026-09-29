@@ -3,6 +3,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import FieldSettings from '@features/field-settings'
 import SettingsPageHeader from '@utilities/settings-page-header'
 import SettingsTabs from '@utilities/settings-tabs'
+import { LuRefreshCcw, LuTextCursorInput } from 'react-icons/lu'
 import { useSearchParams } from 'react-router'
 
 import ConversionMapping from './internal/conversion-mapping'
@@ -20,11 +21,13 @@ export default function LeadSettings() {
         items={[
           {
             children: <FieldSettings module={MODULES.LEAD} />,
+            icon: <LuTextCursorInput />,
             key: 'field-settings',
             label: __('Field Settings')
           },
           {
             children: <ConversionMapping />,
+            icon: <LuRefreshCcw />,
             key: 'conversion-mapping',
             label: __('Conversion Mapping')
           }

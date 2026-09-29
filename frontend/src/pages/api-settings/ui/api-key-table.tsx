@@ -127,6 +127,7 @@ export default function ApiKeyTable({ isLoadingApiKeys, users }: ApiKeyTableProp
       loading={isLoadingApiKeys}
       pagination={false}
       rowKey="id"
+      scroll={{ x: 'max-content' }}
       size="small"
     />
   )

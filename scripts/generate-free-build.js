@@ -41,6 +41,20 @@ function copyRuntimeFiles() {
   }
 }
 
+/**
+ * The .po/.pot sources only feed `pnpm i18n` and translation tooling; WordPress
+ * 6.5+ loads the compiled `.l10n.php` files, so the sources stay out of the ZIP.
+ */
+function removeTranslationSources() {
+  const languagesDirectory = path.join(OUTPUT_DIRECTORY, 'languages')
+
+  for (const entry of fs.readdirSync(languagesDirectory)) {
+    if (entry.endsWith('.po') || entry.endsWith('.pot')) {
+      fs.rmSync(path.join(languagesDirectory, entry))
+    }
+  }
+}
+
 function runComposer(args) {
   execFileSync('composer', args, { cwd: OUTPUT_DIRECTORY, stdio: 'inherit' })
 }
@@ -77,6 +91,7 @@ function generateBuild() {
   fs.rmSync(path.join(OUTPUT_DIRECTORY, 'backend/scripts'), { force: true, recursive: true })
   fs.rmSync(path.join(OUTPUT_DIRECTORY, 'vendor/typisttech'), { force: true, recursive: true })
   removeNestedComposerLocks(path.join(OUTPUT_DIRECTORY, 'vendor'))
+  removeTranslationSources()
 
   if (shouldCreateZip) {
     execFileSync('zip', ['-qr', `${PLUGIN_SLUG}.zip`, PLUGIN_SLUG], {

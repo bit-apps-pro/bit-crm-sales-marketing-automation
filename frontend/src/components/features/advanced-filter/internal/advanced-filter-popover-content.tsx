@@ -109,7 +109,7 @@ export default function AdvancedFilterPopoverContent({
   }, [moduleActiveFilters, setFilterGroups])
 
   return (
-    <div className="max-h-[400px] w-[600px] space-y-4 overflow-y-auto px-1 pb-1">
+    <div className="max-h-[70vh] w-[min(600px,calc(100vw-3rem))] space-y-4 overflow-y-auto px-1 pb-1 sm:max-h-[400px]">
       {filterGroups.map((group, groupIndex) => {
         const shouldShowRemoveButton = hasMultipleGroups || group.length > 1
 

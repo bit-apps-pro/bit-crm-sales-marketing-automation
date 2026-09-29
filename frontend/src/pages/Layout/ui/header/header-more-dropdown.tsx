@@ -1,4 +1,3 @@
-import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
@@ -8,25 +7,17 @@ import { useMemo } from 'react'
 import { LuChevronDown } from 'react-icons/lu'
 import { NavLink, useLocation } from 'react-router'
 
-const MORE_MENU_ITEMS = [
-  { capability: CAPABILITIES.PRODUCT.MENU, key: 'products', label: __('Products'), to: '../products' },
-  { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'tasks', label: __('Tasks'), to: '/tasks' },
-  { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'meetings', label: __('Meetings'), to: '/meetings' },
-  { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'calls', label: __('Calls'), to: '/calls' },
-  { capability: CAPABILITIES.TAG.MENU, key: 'tags', label: __('Tags'), to: '/tags' },
-  { capability: CAPABILITIES.WORKFLOW.MENU, key: 'workflows', label: __('Workflows'), to: '/workflows' },
-  { capability: CAPABILITIES.OTHERS.History, key: 'history', label: __('History'), to: '/history' }
-]
+import { SECONDARY_NAV_ITEMS } from './nav-items'
 
 export default function HeaderMoreDropdown() {
   const location = useLocation()
 
   const validMoreMenuItems = useMemo(
     () =>
-      MORE_MENU_ITEMS.filter(item => checkCapability(item.capability)).map(item => ({
+      SECONDARY_NAV_ITEMS.filter(item => checkCapability(item.capability)).map(item => ({
         key: item.key,
         label: (
-          <NavLink className="text-sm font-medium" to={item.to}>
+          <NavLink className="text-sm font-medium" to={item.path}>
             {item.label}
           </NavLink>
         )

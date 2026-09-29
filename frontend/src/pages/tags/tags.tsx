@@ -64,7 +64,7 @@ export default function Tags() {
 
   return (
     <div className="px-6 py-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Typography.Title className="mb-0" level={3}>
             {__('Tags')}
@@ -85,16 +85,16 @@ export default function Tags() {
       </div>
       <div className="mt-4 rounded-md border border-solid border-[#EBEAFF] bg-white dark:border-neutral-700 dark:bg-neutral-900">
         <div className="flex flex-wrap items-center justify-between gap-4 p-3">
-          <div>
+          <div className="empty:hidden">
             <If conditions={selectedTagKeys.length !== 0}>
               <TagsBulkOperations />
             </If>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex w-full flex-wrap items-center gap-2 sm:ms-auto sm:w-auto">
             <ModuleFilter excludeModules={[MODULES.INVOICE]} />
             <AntInput
               allowClear
-              className="ms-auto w-52 rounded-full"
+              className="w-full rounded-full sm:w-52"
               defaultValue={searchTerm}
               onChange={handleSearchChange}
               placeholder={__('Search')}
