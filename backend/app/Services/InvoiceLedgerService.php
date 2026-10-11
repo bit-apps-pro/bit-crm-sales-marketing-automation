@@ -320,6 +320,7 @@ class InvoiceLedgerService
         }
 
         try {
+            $invoice = (new LineItemService($invoice->id, Invoice::MODULE_NAME))->appendLineItems($invoice);
             Hooks::doAction('bit_crm/invoice_status_updated', $invoice);
         } catch (Throwable $th) {
             Logger::error($th);

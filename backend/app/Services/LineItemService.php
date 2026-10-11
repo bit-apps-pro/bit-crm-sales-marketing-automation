@@ -39,6 +39,28 @@ class LineItemService
         return !empty($lineItems) ? $lineItems->toArray() : [];
     }
 
+    /**
+     * Attaches the entity's line items to its deal/invoice model as a
+     * "line_items" attribute, for the bit_crm/* hook payloads. The attribute
+     * is always present; it stays an empty array when the entity has none.
+     *
+     * @param mixed $model the deal/invoice model this service was built for
+     *
+     * @return mixed the same model instance
+     */
+    public function appendLineItems($model)
+    {
+        $lineItems = $this->getLineItems();
+
+        // Untracked, so a later update() on this model can never write it as
+        // a column — see CommonService::appendCustomFieldsValues().
+        $model->setExists(false);
+        $model->line_items = $lineItems;
+        $model->setExists(true);
+
+        return $model;
+    }
+
     public function syncLineItems(array $lineItemsData, ?string $entityCurrency = null, string $taxOption = LineItem::TAX_EXCLUSIVE)
     {
         if (empty($this->entityId) || empty($this->module)) {

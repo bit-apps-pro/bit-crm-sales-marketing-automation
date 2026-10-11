@@ -933,6 +933,9 @@ return [
     'Enter the number of days to retain workflow logs.' => __('Enter the number of days to retain workflow logs.', 'bit-crm-sales-marketing-automation'),
 
     /* translators: %s: placeholder value */
+    'Bit CRM Pro is paused because it needs Bit CRM %s or newer. Update Bit CRM to resume Pro features.' => __('Bit CRM Pro is paused because it needs Bit CRM %s or newer. Update Bit CRM to resume Pro features.', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %s: placeholder value */
     'Upgrade to Bit CRM Pro to unlock %s.' => __('Upgrade to Bit CRM Pro to unlock %s.', 'bit-crm-sales-marketing-automation'),
 
     'Upgrade to Bit CRM Pro to unlock this feature.' => __('Upgrade to Bit CRM Pro to unlock this feature.', 'bit-crm-sales-marketing-automation'),

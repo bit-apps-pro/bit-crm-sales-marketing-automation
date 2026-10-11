@@ -4,7 +4,7 @@ Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -237,6 +237,18 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Changelog ==
 
+= 1.3.1 (October 11, 2026) =
+* Features:
+   * Incoming webhooks (Pro): Other apps can now send data to a webhook URL to create or update a lead, contact, company, deal or product from the fields you map and start a workflow, with a Listen option to capture a sample request.
+   * AI assistant and MCP server (Pro): Records can now be filtered and counted by any field, tag or created date, and tags can be attached to existing records.
+* Improvements:
+   * Fields: Record fields inserted with # now show as tags instead of raw text.
+   * AI assistant (Pro): The assistant now declines requests unrelated to the CRM.
+   * Updates (Pro): Bit CRM Pro pauses with a notice when Bit CRM is on an older version.
+   * Integrations: Deal and invoice events now include line items.
+* Fixed:
+   * AI assistant and MCP server (Pro): Tasks, meetings and calls created without an assignee or due date now default to the signed-in user and the current time, and due dates follow the site's timezone.
+
 = 1.3.0 (September 29, 2026) =
 * Features:
    * SureCart (Pro): SureCart buyers now sync as CRM contacts as purchases come in, with product and coupon tags, optional tag prefixes and a background backfill of earlier purchases, and SureCart products can be added as deal and invoice line items from a new SureCart settings page.
@@ -344,5 +356,5 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Upgrade Notice ==
 
-= 1.3.0 =
-Adds SureCart sync and products, CRM roles and a custom portal URL prefix in Pro, plus recorded invoice payments and mobile layouts. Requires WordPress 6.5 or later.
+= 1.3.1 =
+Adds incoming webhooks in Pro, so other apps can create or update CRM records and start a workflow, plus record filtering and tagging in the AI assistant.

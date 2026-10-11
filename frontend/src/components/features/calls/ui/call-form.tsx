@@ -3,6 +3,7 @@ import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
 import { DATE_TIME_FORMAT } from '@config/date-format'
 import LookupFieldSelect from '@features/lookup-field-select'
+import MentionInput from '@features/mention-input'
 import ShareWithContact from '@features/share-with-contact'
 import WpMediaUploader from '@features/wp-media-uploader'
 import customizedRequiredMark from '@utilities/customized-required-mark'
@@ -85,7 +86,7 @@ export default function CallForm({
           rules={[{ message: __('Please input title!'), required: true }]}
         >
           {variant === 'component' && fieldOptions && fieldOptions.length > 0 ? (
-            <Mentions options={fieldOptions} placeholder={__('Input title')} prefix="#" />
+            <MentionInput options={fieldOptions} placeholder={__('Input title')} />
           ) : (
             <Input placeholder={__('Input title')} />
           )}

@@ -1,9 +1,10 @@
 import { generateFieldOptions } from '@common/helpers/generate-field-options'
 import { __ } from '@common/helpers/i18nWrap'
+import MentionInput from '@features/mention-input'
 import useDealFields from '@pages/deal-create/data/use-deal-fields'
 import useLeadFields from '@pages/lead-create/data/use-lead-fields'
 import If from '@utilities/If'
-import { Button, Form, Input, Mentions, Select, Space, Typography } from 'antd'
+import { Button, Form, Input, Select, Space, Typography } from 'antd'
 import { useEffect, useMemo, useState } from 'react'
 import { LuPlus, LuTrash2 } from 'react-icons/lu'
 
@@ -67,11 +68,7 @@ export default function DealFieldOverrideEditor({
         name={['dealFieldOverrides', 'name']}
         rules={[{ message: __('Deal name is required'), required: true }]}
       >
-        <Mentions
-          options={generateFieldOptions(leadFields)}
-          placeholder={__('Enter deal name')}
-          prefix="#"
-        />
+        <MentionInput options={generateFieldOptions(leadFields)} placeholder={__('Enter deal name')} />
       </Form.Item>
 
       <If conditions={fieldOverrides.length > 0}>

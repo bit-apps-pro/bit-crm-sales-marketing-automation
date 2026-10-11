@@ -1,5 +1,6 @@
 import { MODULES } from '@common/constants/modules'
 import { __ } from '@common/helpers/i18nWrap'
+import MentionInput from '@features/mention-input'
 import QuillEditor from '@features/quill-editor'
 import { MINIMAL_TOOLBAR_CONFIG } from '@features/quill-editor/shared/toolbar-configs'
 import ShareWithContact from '@features/share-with-contact'
@@ -7,7 +8,7 @@ import WpMediaUploader from '@features/wp-media-uploader'
 import customizedRequiredMark from '@utilities/customized-required-mark'
 import If from '@utilities/If'
 import { type FormInstance } from 'antd'
-import { Form, Input, Mentions } from 'antd'
+import { Form, Input } from 'antd'
 
 import { type FieldOptionsType } from '../shared/note-types'
 
@@ -62,7 +63,7 @@ export default function NoteForm({ detailsValue, entityId, fieldOptions, form, m
           name="title"
           rules={[{ message: __('Please input title!'), required: true }]}
         >
-          <Mentions options={fieldOptions} placeholder={__('Input title')} prefix="#" />
+          <MentionInput options={fieldOptions} placeholder={__('Input title')} />
         </Form.Item>
         <Form.Item
           extra={__('Type # to access record field values.')}

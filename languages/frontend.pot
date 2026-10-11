@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Tue Sep 29 2026 17:13:22 GMT+0600 (Bangladesh Standard "
+"POT-Creation-Date: Sun Oct 11 2026 17:26:08 GMT+0600 (Bangladesh Standard "
 "Time)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -304,9 +304,9 @@ msgid "Are you sure you want to delete this?"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:12
-#: frontend/src/components/features/calls/ui/call-form.tsx:62
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:62
-#: frontend/src/components/features/tasks/ui/task-form.tsx:51
+#: frontend/src/components/features/calls/ui/call-form.tsx:63
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:63
+#: frontend/src/components/features/tasks/ui/task-form.tsx:52
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:29
@@ -352,7 +352,7 @@ msgstr ""
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:23
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:23
 #: frontend/src/components/features/activity-feed/ui/activity.tsx:114
-#: frontend/src/components/features/tasks/ui/task-form.tsx:109
+#: frontend/src/components/features/tasks/ui/task-form.tsx:110
 msgid "Priority"
 msgstr ""
 
@@ -363,9 +363,9 @@ msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:15
 #: frontend/src/components/features/activity-feed/ui/activity.tsx:88
-#: frontend/src/components/features/calls/ui/call-form.tsx:107
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:107
-#: frontend/src/components/features/tasks/ui/task-form.tsx:96
+#: frontend/src/components/features/calls/ui/call-form.tsx:108
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:108
+#: frontend/src/components/features/tasks/ui/task-form.tsx:97
 msgid "Assigned To"
 msgstr ""
 
@@ -495,9 +495,9 @@ msgid "Not shared"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity.tsx:104
-#: frontend/src/components/features/calls/ui/call-form.tsx:94
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:94
-#: frontend/src/components/features/tasks/ui/task-form.tsx:83
+#: frontend/src/components/features/calls/ui/call-form.tsx:95
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:95
+#: frontend/src/components/features/tasks/ui/task-form.tsx:84
 #: frontend/src/pages/invoice-create/ui/invoice-information.tsx:76
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:180
 msgid "Due Date"
@@ -640,7 +640,7 @@ msgid "Select condition"
 msgstr ""
 
 #: frontend/src/components/features/advanced-filter/ui/filter-select-input.tsx:41
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:87
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:84
 msgid "Select field"
 msgstr ""
 
@@ -893,43 +893,43 @@ msgstr ""
 msgid "Update Call"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:64
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:64
-#: frontend/src/components/features/tasks/ui/task-form.tsx:53
+#: frontend/src/components/features/calls/ui/call-form.tsx:65
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:65
+#: frontend/src/components/features/tasks/ui/task-form.tsx:54
 msgid "Please select module!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:70
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:70
-#: frontend/src/components/features/tasks/ui/task-form.tsx:59
+#: frontend/src/components/features/calls/ui/call-form.tsx:71
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:71
+#: frontend/src/components/features/tasks/ui/task-form.tsx:60
 msgid "Entity"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:72
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:72
-#: frontend/src/components/features/tasks/ui/task-form.tsx:61
+#: frontend/src/components/features/calls/ui/call-form.tsx:73
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:73
+#: frontend/src/components/features/tasks/ui/task-form.tsx:62
 msgid "Please select entity!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:82
-#: frontend/src/components/features/calls/ui/call-form.tsx:120
+#: frontend/src/components/features/calls/ui/call-form.tsx:83
+#: frontend/src/components/features/calls/ui/call-form.tsx:121
 #: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:179
-#: frontend/src/components/features/links/ui/link-form.tsx:23
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:82
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:120
-#: frontend/src/components/features/notes/ui/note-form.tsx:60
-#: frontend/src/components/features/notes/ui/note-form.tsx:68
-#: frontend/src/components/features/tasks/ui/task-form.tsx:71
-#: frontend/src/components/features/tasks/ui/task-form.tsx:116
+#: frontend/src/components/features/links/ui/link-form.tsx:24
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:83
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:121
+#: frontend/src/components/features/notes/ui/note-form.tsx:61
+#: frontend/src/components/features/notes/ui/note-form.tsx:69
+#: frontend/src/components/features/tasks/ui/task-form.tsx:72
+#: frontend/src/components/features/tasks/ui/task-form.tsx:117
 msgid "Type # to access record field values."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:83
-#: frontend/src/components/features/links/ui/link-form.tsx:16
+#: frontend/src/components/features/calls/ui/call-form.tsx:84
+#: frontend/src/components/features/links/ui/link-form.tsx:17
 #: frontend/src/components/features/links/ui/link-table.tsx:39
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:83
-#: frontend/src/components/features/notes/ui/note-form.tsx:61
-#: frontend/src/components/features/tasks/ui/task-form.tsx:72
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:84
+#: frontend/src/components/features/notes/ui/note-form.tsx:62
+#: frontend/src/components/features/tasks/ui/task-form.tsx:73
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
 #: frontend/src/pages/imap-settings/ui/imap-form.tsx:33
 #: frontend/src/pages/invoice-create/state/use-invoice-create-store.ts:58
@@ -938,101 +938,101 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:85
-#: frontend/src/components/features/links/ui/link-form.tsx:18
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:85
-#: frontend/src/components/features/notes/ui/note-form.tsx:63
-#: frontend/src/components/features/tasks/ui/task-form.tsx:74
+#: frontend/src/components/features/calls/ui/call-form.tsx:86
+#: frontend/src/components/features/links/ui/link-form.tsx:19
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:86
+#: frontend/src/components/features/notes/ui/note-form.tsx:64
+#: frontend/src/components/features/tasks/ui/task-form.tsx:75
 msgid "Please input title!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:88
-#: frontend/src/components/features/calls/ui/call-form.tsx:90
-#: frontend/src/components/features/links/ui/link-form.tsx:20
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:88
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:90
-#: frontend/src/components/features/notes/ui/note-form.tsx:65
-#: frontend/src/components/features/tasks/ui/task-form.tsx:77
-#: frontend/src/components/features/tasks/ui/task-form.tsx:79
+#: frontend/src/components/features/calls/ui/call-form.tsx:89
+#: frontend/src/components/features/calls/ui/call-form.tsx:91
+#: frontend/src/components/features/links/ui/link-form.tsx:21
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:89
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:91
+#: frontend/src/components/features/notes/ui/note-form.tsx:66
+#: frontend/src/components/features/tasks/ui/task-form.tsx:78
+#: frontend/src/components/features/tasks/ui/task-form.tsx:80
 msgid "Input title"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:96
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:96
-#: frontend/src/components/features/tasks/ui/task-form.tsx:85
+#: frontend/src/components/features/calls/ui/call-form.tsx:97
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:97
+#: frontend/src/components/features/tasks/ui/task-form.tsx:86
 msgid "Please select due date!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:102
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:102
-#: frontend/src/components/features/tasks/ui/task-form.tsx:91
+#: frontend/src/components/features/calls/ui/call-form.tsx:103
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:103
+#: frontend/src/components/features/tasks/ui/task-form.tsx:92
 #: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:42
 msgid "Select date and time"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:110
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:110
-#: frontend/src/components/features/tasks/ui/task-form.tsx:99
+#: frontend/src/components/features/calls/ui/call-form.tsx:111
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:111
+#: frontend/src/components/features/tasks/ui/task-form.tsx:100
 msgid "Please select assigned to!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:121
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:121
-#: frontend/src/components/features/notes/ui/note-form.tsx:69
-#: frontend/src/components/features/tasks/ui/task-form.tsx:117
+#: frontend/src/components/features/calls/ui/call-form.tsx:122
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:122
+#: frontend/src/components/features/notes/ui/note-form.tsx:70
+#: frontend/src/components/features/tasks/ui/task-form.tsx:118
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
 msgid "Details"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:129
-#: frontend/src/components/features/calls/ui/call-form.tsx:133
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:129
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:133
-#: frontend/src/components/features/tasks/ui/task-form.tsx:125
-#: frontend/src/components/features/tasks/ui/task-form.tsx:129
+#: frontend/src/components/features/calls/ui/call-form.tsx:130
+#: frontend/src/components/features/calls/ui/call-form.tsx:134
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:130
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:134
+#: frontend/src/components/features/tasks/ui/task-form.tsx:126
+#: frontend/src/components/features/tasks/ui/task-form.tsx:130
 msgid "Details..."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:141
+#: frontend/src/components/features/calls/ui/call-form.tsx:142
 msgid "Contact will have access to this call."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:142
+#: frontend/src/components/features/calls/ui/call-form.tsx:143
 msgid "Only you and your team can see this call."
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:60
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:61
 msgid "Deal Field Overrides"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:65
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:66
 msgid "Type # to access Lead field values."
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:66
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:67
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:24
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:98
 msgid "Deal Name"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:68
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:69
 msgid "Deal name is required"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:72
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:71
 msgid "Enter deal name"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:97
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:94
 msgid "Value is required"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:104
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:101
 #: frontend/src/components/features/deal-field-override-editor/ui/deal-field-input.tsx:14
 msgid "Select a field first"
 msgstr ""
 
-#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:124
+#: frontend/src/components/features/deal-field-override-editor/deal-field-override-editor.tsx:121
 msgid "Add Field Override"
 msgstr ""
 
@@ -1441,27 +1441,27 @@ msgstr ""
 msgid "Update Link"
 msgstr ""
 
-#: frontend/src/components/features/links/ui/link-form.tsx:24
+#: frontend/src/components/features/links/ui/link-form.tsx:25
 #: frontend/src/components/features/links/ui/link-table.tsx:59
 msgid "Link"
 msgstr ""
 
-#: frontend/src/components/features/links/ui/link-form.tsx:26
+#: frontend/src/components/features/links/ui/link-form.tsx:27
 msgid "Please input link!"
 msgstr ""
 
-#: frontend/src/components/features/links/ui/link-form.tsx:28
+#: frontend/src/components/features/links/ui/link-form.tsx:29
 msgid "Input link"
 msgstr ""
 
-#: frontend/src/components/features/links/ui/link-form.tsx:30
+#: frontend/src/components/features/links/ui/link-form.tsx:31
 #: frontend/src/components/features/links/ui/link-table.tsx:44
 #: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:55
 #: frontend/src/pages/product-settings/product-settings.tsx:10
 msgid "Description"
 msgstr ""
 
-#: frontend/src/components/features/links/ui/link-form.tsx:31
+#: frontend/src/components/features/links/ui/link-form.tsx:32
 msgid "Input description"
 msgstr ""
 
@@ -1533,11 +1533,11 @@ msgstr ""
 msgid "Update Meeting"
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:141
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:142
 msgid "Contact will have access to this meeting."
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:142
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:143
 msgid "Only you and your team can see this meeting."
 msgstr ""
 
@@ -1561,11 +1561,11 @@ msgstr ""
 msgid "Update Note"
 msgstr ""
 
-#: frontend/src/components/features/notes/ui/note-form.tsx:88
+#: frontend/src/components/features/notes/ui/note-form.tsx:89
 msgid "Contact will have access to this note."
 msgstr ""
 
-#: frontend/src/components/features/notes/ui/note-form.tsx:89
+#: frontend/src/components/features/notes/ui/note-form.tsx:90
 msgid "Only you and your team can see this note."
 msgstr ""
 
@@ -1928,11 +1928,11 @@ msgstr ""
 msgid "Update Task"
 msgstr ""
 
-#: frontend/src/components/features/tasks/ui/task-form.tsx:111
+#: frontend/src/components/features/tasks/ui/task-form.tsx:112
 msgid "Please select priority!"
 msgstr ""
 
-#: frontend/src/components/features/tasks/ui/task-form.tsx:113
+#: frontend/src/components/features/tasks/ui/task-form.tsx:114
 msgid "Select priority"
 msgstr ""
 
@@ -2430,20 +2430,26 @@ msgstr ""
 msgid "Enter the number of days to retain workflow logs."
 msgstr ""
 
-#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:26
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:28
+msgid ""
+"Bit CRM Pro is paused because it needs Bit CRM %s or newer. Update Bit CRM "
+"to resume Pro features."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:34
 msgid "Upgrade to Bit CRM Pro to unlock %s."
 msgstr ""
 
-#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:27
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:35
 msgid "Upgrade to Bit CRM Pro to unlock this feature."
 msgstr ""
 
-#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:38
-#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:43
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:46
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:51
 msgid "Pro Feature"
 msgstr ""
 
-#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:56
+#: frontend/src/components/utilities/pro-feature-alert/ui/pro-banner.tsx:65
 msgid "Unlock with Pro"
 msgstr ""
 

@@ -52,6 +52,7 @@ declare const SERVER_VARIABLES: {
     token: string
   }
   publicUrlPrefix: string
+  requiredFreeVersion?: string
   rootURL: string
   routePrefix: string
   sampleDataStatus?: 'dismissed' | 'pending' | 'removed' | 'seeded'
