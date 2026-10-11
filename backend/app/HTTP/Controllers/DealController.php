@@ -144,6 +144,7 @@ final class DealController
             return Response::error(__('Failed to update deal stage.', 'bit-crm-sales-marketing-automation'));
         }
 
+        $deal = (new LineItemService($deal->id, Deal::MODULE_NAME))->appendLineItems($deal);
         Hooks::doAction('bit_crm/deal_stage_updated', $deal, $validated['stage']);
 
         return Response::success(__('Deal stage updated successfully.', 'bit-crm-sales-marketing-automation'));

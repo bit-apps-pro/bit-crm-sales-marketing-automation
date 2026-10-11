@@ -7,8 +7,6 @@ use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Connection;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
-use BitApps\Crm\Helpers\File;
-use BitApps\Crm\Helpers\FileHandler;
 use BitApps\Crm\HTTP\Requests\Invoice\DownloadRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\IndexRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\InvoiceByDealRequest;
@@ -29,7 +27,6 @@ use BitApps\Crm\Model\Trash;
 use BitApps\Crm\Services\InvoiceLedgerService;
 use BitApps\Crm\Services\InvoicePdfService;
 use BitApps\Crm\Services\InvoiceService;
-use BitApps\Crm\Services\InvoiceShareTokenService;
 use BitApps\Crm\Services\LineItemService;
 use Throwable;
 
@@ -42,8 +39,6 @@ final class InvoiceController
     private const SETTING_KEY = Setting::BUSINESS_SETTINGS_KEY;
 
     private const SORTABLE_COLUMNS = ['id', 'status', 'amount', 'invoice_date', 'due_date', 'paid_at', 'created_at', 'updated_at'];
-
-    private const TEMP_DIR = '/bit_crm/temp';
 
     public function store(StoreRequest $request)
     {
@@ -78,6 +73,7 @@ final class InvoiceController
 
             Connection::commit();
 
+            $storedInvoice = (new LineItemService($storedInvoice->id, Invoice::MODULE_NAME))->appendLineItems($storedInvoice);
             Hooks::doAction('bit_crm/invoice_created', $storedInvoice);
 
             return Response::success(['id' => $storedInvoice->id])->message(__('Invoice created successfully', 'bit-crm-sales-marketing-automation'));
@@ -152,6 +148,7 @@ final class InvoiceController
 
             Connection::commit();
 
+            $invoice = $lineItemsService->appendLineItems($invoice);
             Hooks::doAction('bit_crm/invoice_updated', $invoice);
 
             return Response::success(null)->message(__('Invoice updated successfully', 'bit-crm-sales-marketing-automation'));
@@ -259,6 +256,7 @@ final class InvoiceController
         try {
             $invoice->update($updateData);
 
+            $invoice = (new LineItemService($invoice->id, Invoice::MODULE_NAME))->appendLineItems($invoice);
             Hooks::doAction('bit_crm/invoice_status_updated', $invoice);
 
             return Response::success(__('Invoice status updated successfully', 'bit-crm-sales-marketing-automation'));
@@ -371,61 +369,9 @@ final class InvoiceController
     {
         $validated = $request->validated();
 
-        $invoice = Invoice::findOne(['id' => $validated['id']]);
+        $result = InvoiceService::sendInvoiceById((int) $validated['id']);
 
-        if (empty($invoice)) {
-            return Response::error(__('Invoice not found!', 'bit-crm-sales-marketing-automation'));
-        }
-
-        $deal = $invoice->module === Deal::MODULE_NAME
-            ? Deal::select(['id', 'name', 'email'])->findOne(['id' => $invoice->entity_id])
-            : null;
-
-        if (empty($deal) || empty($deal['email'])) {
-            return Response::error(__('Deal email address not found!', 'bit-crm-sales-marketing-automation'));
-        }
-
-        $tempDir = null;
-        $tempFile = null;
-        $emailSent = false;
-
-        try {
-            $invoicePdfService = new InvoicePdfService();
-            $mpdf = $invoicePdfService->generate($validated['id']);
-
-            $invoiceFileName = InvoiceService::generateInvoiceFileName($invoice->invoice_prefix, (int) $invoice->id);
-
-            $tempDir = Config::get('UPLOAD_BASE_DIR') . self::TEMP_DIR . '/' . uniqid('', true);
-            wp_mkdir_p($tempDir);
-
-            $tempFile = $tempDir . '/' . $invoiceFileName;
-            $mpdf->Output($tempFile, 'F');
-
-            $shareUrl = (new InvoiceShareTokenService())->getPublicInvoiceUrl($invoice);
-
-            $emailSent = InvoiceService::sendInvoice($deal['email'], (int) $deal['id'], [$tempFile], $shareUrl);
-        } catch (Throwable $th) {
-            return Response::error(__('Failed to send invoice!', 'bit-crm-sales-marketing-automation'));
-        } finally {
-            if ($tempFile !== null && FileHandler::isValidPath($tempFile)) {
-                wp_delete_file($tempFile);
-            }
-            if ($tempDir !== null && is_dir($tempDir)) {
-                File::removeDirectory($tempDir);
-            }
-        }
-
-        if (!$emailSent) {
-            return Response::error(__('Failed to send invoice email!', 'bit-crm-sales-marketing-automation'));
-        }
-
-        try {
-            InvoiceService::publishInvoice($invoice, true);
-        } catch (Throwable $th) {
-            return Response::success(__('Invoice sent, but status could not be updated. Please refresh.', 'bit-crm-sales-marketing-automation'));
-        }
-
-        return Response::success(__('Invoice sent successfully', 'bit-crm-sales-marketing-automation'));
+        return $result['success'] ? Response::success($result['message']) : Response::error($result['message']);
     }
 
     public function invoicePrefix(PrefixRequest $request)

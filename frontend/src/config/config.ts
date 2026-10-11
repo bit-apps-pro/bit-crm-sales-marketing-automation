@@ -39,6 +39,7 @@ interface ConfigType {
   PRO_VERSION?: string
   PRODUCT_NAME: string
   PUBLIC_URL_PREFIX: string
+  REQUIRED_FREE_VERSION?: string
   ROOT_URL: string
   ROUTE_PREFIX: string
   SAMPLE_DATA_STATUS: NonNullable<(typeof SERVER_VARIABLES)['sampleDataStatus']>
@@ -73,6 +74,7 @@ const config = {
   PRO_VERSION: getServerVariable('proPluginVersion'),
   PRODUCT_NAME: 'Bit CRM',
   PUBLIC_URL_PREFIX: getServerVariable('publicUrlPrefix'),
+  REQUIRED_FREE_VERSION: SERVER_VARIABLES?.requiredFreeVersion,
   ROOT_URL: getServerVariable('rootURL', 'http://.local'),
   ROUTE_PREFIX: getServerVariable('routePrefix', 'bit_crm_'),
   SAMPLE_DATA_STATUS: SERVER_VARIABLES?.sampleDataStatus ?? 'dismissed',

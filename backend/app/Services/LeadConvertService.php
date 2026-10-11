@@ -327,6 +327,11 @@ class LeadConvertService
             }
 
             $entity = CommonService::appendCustomFieldsValues($entity, $module);
+
+            if ($module === Deal::MODULE_NAME) {
+                $entity = (new LineItemService($entity->id, $module))->appendLineItems($entity);
+            }
+
             Hooks::doAction($hook, $entity);
         }
     }

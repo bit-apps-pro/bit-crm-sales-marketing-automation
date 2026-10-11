@@ -1,5 +1,6 @@
 import { cn } from '@common/helpers/globalHelpers'
 import { __, sprintf } from '@common/helpers/i18nWrap'
+import config from '@config/config'
 import lockIcon from '@resource/img/lock.svg'
 import If from '@utilities/If'
 import { Button, theme } from 'antd'
@@ -22,9 +23,16 @@ export default function ProBanner({ className = '', featureName, showIcon = true
   const { token } = theme.useToken()
   const primary = token.colorPrimary
 
-  const subTitle = featureName
-    ? sprintf(__('Upgrade to Bit CRM Pro to unlock %s.'), featureName)
-    : __('Upgrade to Bit CRM Pro to unlock this feature.')
+  const subTitle = config.REQUIRED_FREE_VERSION
+    ? sprintf(
+        __(
+          'Bit CRM Pro is paused because it needs Bit CRM %s or newer. Update Bit CRM to resume Pro features.'
+        ),
+        config.REQUIRED_FREE_VERSION
+      )
+    : featureName
+      ? sprintf(__('Upgrade to Bit CRM Pro to unlock %s.'), featureName)
+      : __('Upgrade to Bit CRM Pro to unlock this feature.')
 
   return (
     <div
@@ -44,17 +52,19 @@ export default function ProBanner({ className = '', featureName, showIcon = true
         </h2>
         <p className="m-0 text-sm text-gray-500 dark:text-gray-400">{subTitle}</p>
       </div>
-      <Button
-        href="https://bitapps.pro/"
-        icon={<LuCrown size={16} />}
-        rel="noopener noreferrer"
-        size="large"
-        style={BUTTON_STYLE}
-        target="_blank"
-        type="primary"
-      >
-        {__('Unlock with Pro')}
-      </Button>
+      <If conditions={!config.REQUIRED_FREE_VERSION}>
+        <Button
+          href="https://bitapps.pro/"
+          icon={<LuCrown size={16} />}
+          rel="noopener noreferrer"
+          size="large"
+          style={BUTTON_STYLE}
+          target="_blank"
+          type="primary"
+        >
+          {__('Unlock with Pro')}
+        </Button>
+      </If>
     </div>
   )
 }

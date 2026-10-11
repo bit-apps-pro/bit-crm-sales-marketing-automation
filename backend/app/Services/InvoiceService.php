@@ -6,6 +6,8 @@ use BitApps\Crm\Config;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Model;
 use BitApps\Crm\Deps\BitApps\WPDatabase\QueryBuilder;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
+use BitApps\Crm\Helpers\File;
+use BitApps\Crm\Helpers\FileHandler;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
@@ -17,6 +19,8 @@ use Throwable;
 
 class InvoiceService
 {
+    private const TEMP_DIR = '/bit_crm/temp';
+
     public static function generateInvoiceFileName(string $prefix, int $id): string
     {
         return Invoice::MODULE_NAME . '-' . sanitize_file_name($prefix) . '-' . $id . '.pdf';
@@ -81,6 +85,72 @@ class InvoiceService
         return !empty($result['success']);
     }
 
+    /**
+     * Sends an invoice to its deal's email — PDF attached, share link in the
+     * body — then publishes it as sent/overdue. The single entry point for
+     * every caller (REST, automations), so no two paths send differently.
+     *
+     * @return array{success: bool, message: string}
+     */
+    public static function sendInvoiceById(int $invoiceId): array
+    {
+        $invoice = Invoice::findOne(['id' => $invoiceId]);
+
+        if (empty($invoice)) {
+            return ['success' => false, 'message' => __('Invoice not found!', 'bit-crm-sales-marketing-automation')];
+        }
+
+        $deal = $invoice->module === Deal::MODULE_NAME
+            ? Deal::select(['id', 'name', 'email'])->findOne(['id' => $invoice->entity_id])
+            : null;
+
+        if (empty($deal) || empty($deal['email'])) {
+            return ['success' => false, 'message' => __('Deal email address not found!', 'bit-crm-sales-marketing-automation')];
+        }
+
+        $tempDir = null;
+        $tempFile = null;
+        $emailSent = false;
+
+        try {
+            $invoicePdfService = new InvoicePdfService();
+            $mpdf = $invoicePdfService->generate($invoiceId);
+
+            $invoiceFileName = self::generateInvoiceFileName($invoice->invoice_prefix, (int) $invoice->id);
+
+            $tempDir = Config::get('UPLOAD_BASE_DIR') . self::TEMP_DIR . '/' . uniqid('', true);
+            wp_mkdir_p($tempDir);
+
+            $tempFile = $tempDir . '/' . $invoiceFileName;
+            $mpdf->Output($tempFile, 'F');
+
+            $shareUrl = (new InvoiceShareTokenService())->getPublicInvoiceUrl($invoice);
+
+            $emailSent = self::sendInvoice($deal['email'], (int) $deal['id'], [$tempFile], $shareUrl);
+        } catch (Throwable $th) {
+            return ['success' => false, 'message' => __('Failed to send invoice!', 'bit-crm-sales-marketing-automation')];
+        } finally {
+            if ($tempFile !== null && FileHandler::isValidPath($tempFile)) {
+                wp_delete_file($tempFile);
+            }
+            if ($tempDir !== null && is_dir($tempDir)) {
+                File::removeDirectory($tempDir);
+            }
+        }
+
+        if (!$emailSent) {
+            return ['success' => false, 'message' => __('Failed to send invoice email!', 'bit-crm-sales-marketing-automation')];
+        }
+
+        try {
+            self::publishInvoice($invoice, true);
+        } catch (Throwable $th) {
+            return ['success' => true, 'message' => __('Invoice sent, but status could not be updated. Please refresh.', 'bit-crm-sales-marketing-automation')];
+        }
+
+        return ['success' => true, 'message' => __('Invoice sent successfully', 'bit-crm-sales-marketing-automation')];
+    }
+
     public static function isPastDue(Invoice $invoice): bool
     {
         return !empty($invoice->due_date)
@@ -124,6 +194,7 @@ class InvoiceService
         $invoice->update($updateData);
 
         if ($statusChanged) {
+            $invoice = (new LineItemService($invoice->id, Invoice::MODULE_NAME))->appendLineItems($invoice);
             Hooks::doAction('bit_crm/invoice_status_updated', $invoice);
         }
 

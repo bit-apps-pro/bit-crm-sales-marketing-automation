@@ -163,6 +163,12 @@ export const componentsTokenDark: ThemeConfig['components'] = {
     colorBorder: '#424242',
     controlHeight: 40
   },
+  Mentions: {
+    algorithm: true,
+    borderRadius: 8,
+    colorBorder: '#424242',
+    controlHeight: 40
+  },
   Menu: {
     itemSelectedBg: '#6E62E5',
     itemSelectedColor: '#fff'
