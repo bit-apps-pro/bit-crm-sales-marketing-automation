@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Sun Oct 25 2026 13:43:31 GMT+0600 (Bangladesh Standard "
+"POT-Creation-Date: Sun Oct 25 2026 14:56:28 GMT+0600 (Bangladesh Standard "
 "Time)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1658,7 +1658,7 @@ msgid "Quick actions"
 msgstr ""
 
 #: frontend/src/components/features/global-search/internal/search-modal.tsx:208
-msgid "See all %s %s"
+msgid "See all %1$s %2$s"
 msgstr ""
 
 #: frontend/src/components/features/global-search/internal/search-modal.tsx:286

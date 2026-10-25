@@ -597,7 +597,7 @@ return [
     'Quick actions' => __('Quick actions', 'bit-crm-sales-marketing-automation'),
 
     /* translators: 1: placeholder value, 2: placeholder value */
-    'See all %s %s' => __('See all %s %s', 'bit-crm-sales-marketing-automation'),
+    'See all %1$s %2$s' => __('See all %1$s %2$s', 'bit-crm-sales-marketing-automation'),
 
     /* translators: %s: placeholder value */
     'No filter matches “%s”.' => __('No filter matches “%s”.', 'bit-crm-sales-marketing-automation'),

@@ -205,7 +205,11 @@ export default function SearchModal({ onClose, open }: SearchModalProps) {
           icon: ICONS.more,
           id: `more:${group.key}`,
           path: group.listPath,
-          title: sprintf(__('See all %s %s'), group.total.toLocaleString(), group.label.toLowerCase())
+          title: sprintf(
+            __('See all %1$s %2$s'),
+            group.total.toLocaleString(),
+            group.label.toLowerCase()
+          )
         })
       }
 

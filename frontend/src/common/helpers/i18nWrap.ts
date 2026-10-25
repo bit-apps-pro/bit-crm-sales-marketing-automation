@@ -19,7 +19,7 @@ const __ = (text: string, domain = 'bit-crm-sales-marketing-automation') => {
 
 const sprintf = (text: string, ...vars: any) => {
   if (typeof wp === 'undefined' || !wp?.i18n) {
-    const matches: any = text.match(/%[ E-GXb-gosux]/g)
+    const matches: any = text.match(/%(\d+\$)?[ E-GXb-gosux]/g)
     let str = text
     vars.map((val: any, idx: number) => {
       str = str.replace(matches[idx], val)
