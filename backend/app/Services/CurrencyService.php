@@ -4,11 +4,14 @@ namespace BitApps\Crm\Services;
 
 use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
+use BitApps\Crm\Model\LineItem;
 use BitApps\Crm\Model\Setting;
 use BitApps\Crm\src\StaticData\CurrencyHelper;
 
 class CurrencyService
 {
+    private ?array $currencyMap = null;
+
     public function getStoredCurrencies(): array
     {
         $settings = Setting::whereIn(
@@ -55,10 +58,21 @@ class CurrencyService
 
     public function getCurrencyMap(): array
     {
-        $homeCurrencyData = CurrencyHelper::getHomeCurrencyData();
-        $otherCurrenciesData = Hooks::applyFilter(HookKeys::OTHER_CURRENCIES_DATA, []);
+        if (\is_null($this->currencyMap)) {
+            $homeCurrencyData = CurrencyHelper::getHomeCurrencyData();
+            $otherCurrenciesData = Hooks::applyFilter(HookKeys::OTHER_CURRENCIES_DATA, []);
 
-        return array_merge([$homeCurrencyData['currency'] => $homeCurrencyData], $otherCurrenciesData);
+            $this->currencyMap = array_merge([$homeCurrencyData['currency'] => $homeCurrencyData], $otherCurrenciesData);
+        }
+
+        return $this->currencyMap;
+    }
+
+    public function getDecimalPlaces(?string $currency): int
+    {
+        $currencyData = $this->getCurrencyMap()[(string) $currency] ?? CurrencyHelper::getHomeCurrencyData();
+
+        return max(0, min(LineItem::MONETARY_PRECISION, (int) ($currencyData['decimal_places'] ?? 2)));
     }
 
     public function convertIntoHomeCurrency(float $amount, ?string $currency = ''): float
@@ -109,24 +123,12 @@ class CurrencyService
         return $this->ratePerHomeUnit($currency) !== null;
     }
 
-    /**
-     * Units of the given currency per one home-currency unit — the direction
-     * the CRM stores exchange rates in (see convertIntoHomeCurrency()).
-     */
-    private function ratePerHomeUnit(?string $currency): ?float
+    // Cuts binary noise first, as the browser does, since PHP 8.4's round() no longer does; '%h' ignores the locale.
+    public function roundAmount(float $value, int $decimals): float
     {
-        if (empty($currency)) {
-            return null;
-        }
+        $factor = 10 ** $decimals;
 
-        if ($currency === CurrencyHelper::getHomeCurrency()) {
-            return 1.0;
-        }
-
-        $currencies = Hooks::applyFilter(HookKeys::OTHER_CURRENCIES_DATA, []);
-        $rate = $currencies[$currency]['exchange_rate'] ?? null;
-
-        return is_numeric($rate) && (float) $rate > 0 ? (float) $rate : null;
+        return round((float) \sprintf('%.15h', $value * $factor)) / $factor;
     }
 
     public function currencyFormatPreview(array $currency, $number = 0, bool $includeSymbol = true): string
@@ -138,10 +140,7 @@ class CurrencyService
         $numeralSystem = $currency['numeral_system'] ?? 'international';
         $symbol = $currency['currency'] ?? $currency['symbol'] ?? '';
 
-        // Round the number based on decimal places
-        $roundedNumber = $decimalPlaces === 0
-            ? round($sampleNumber)
-            : round($sampleNumber, $decimalPlaces);
+        $roundedNumber = $this->roundAmount($sampleNumber, $decimalPlaces);
 
         // Split into integer and decimal parts
         $parts = explode('.', number_format($roundedNumber, $decimalPlaces, '.', ''));
@@ -174,5 +173,25 @@ class CurrencyService
         return $includeSymbol
             ? $symbol . ' ' . $integerPart . $separator . $paddedDecimalPart
             : $integerPart . $separator . $paddedDecimalPart;
+    }
+
+    /**
+     * Units of the given currency per one home-currency unit — the direction
+     * the CRM stores exchange rates in (see convertIntoHomeCurrency()).
+     */
+    private function ratePerHomeUnit(?string $currency): ?float
+    {
+        if (empty($currency)) {
+            return null;
+        }
+
+        if ($currency === CurrencyHelper::getHomeCurrency()) {
+            return 1.0;
+        }
+
+        $currencies = Hooks::applyFilter(HookKeys::OTHER_CURRENCIES_DATA, []);
+        $rate = $currencies[$currency]['exchange_rate'] ?? null;
+
+        return is_numeric($rate) && (float) $rate > 0 ? (float) $rate : null;
     }
 }

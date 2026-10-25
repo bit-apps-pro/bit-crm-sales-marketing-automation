@@ -1,7 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
 import { ICONS } from '@common/icons'
 import { useAssignProductModalStoreActions } from '@features/assign-product-modal/state/use-assign-product-modal-store'
-import { calculateGrandTotal, calculateSubtotal } from '@features/product-line-items/shared/helpers'
+import { calculateTotals, getRoundingDecimals } from '@features/product-line-items/shared/helpers'
 import {
   useGrossDiscountSelect,
   useGrossDiscountTypeSelect,
@@ -27,18 +27,23 @@ export default function DealProductList({ currencyData }: DealProductListProps) 
   const { setIsModalOpen } = useAssignProductModalStoreActions()
 
   const { grandTotal, subtotal, totalQuantity } = useMemo(() => {
-    const grandTotalBeforeDiscount = calculateGrandTotal(lineItems, taxOption)
-    const discountAmount =
-      grossDiscountType === 'amount' ? grossDiscount : (grandTotalBeforeDiscount * grossDiscount) / 100
+    const totals = calculateTotals(
+      lineItems,
+      taxOption,
+      grossDiscount,
+      grossDiscountType,
+      currencyData?.decimal_places
+    )
 
     return {
-      grandTotal: Math.max(0, grandTotalBeforeDiscount - discountAmount),
-      subtotal: calculateSubtotal(lineItems, taxOption),
+      grandTotal: totals.grandTotal,
+      subtotal: totals.subtotal,
       totalQuantity: lineItems.reduce((sum, item) => sum + item.quantity, 0)
     }
-  }, [lineItems, taxOption, grossDiscount, grossDiscountType])
+  }, [lineItems, taxOption, grossDiscount, grossDiscountType, currencyData?.decimal_places])
 
   const hasLineItems = lineItems.length > 0
+  const roundingDecimals = getRoundingDecimals(lineItems, taxOption, currencyData?.decimal_places)
 
   return (
     <div
@@ -59,6 +64,7 @@ export default function DealProductList({ currencyData }: DealProductListProps) 
                 currencyData={currencyData}
                 item={item}
                 key={item.id}
+                roundingDecimals={roundingDecimals}
                 taxOption={taxOption}
               />
             ))}

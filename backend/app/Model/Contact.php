@@ -62,6 +62,7 @@ class Contact extends Model
         'lead_source',
         'date_of_birth',
         'secondary_email',
+        'tax_id',
         'billing_address_line_1',
         'billing_address_line_2',
         'billing_city',

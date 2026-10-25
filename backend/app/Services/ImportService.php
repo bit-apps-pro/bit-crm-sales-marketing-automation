@@ -134,7 +134,7 @@ abstract class ImportService
             $fields[$dbKey] = $entity[$csvKey] ?? null;
         }
 
-        return $fields;
+        return (new CountryService())->formatAddressCodes($fields);
     }
 
     /**

@@ -8,7 +8,7 @@ import { useAtomValue } from 'jotai'
 import { useMemo } from 'react'
 
 import { TAX } from '../shared/constants'
-import { calculateGrandTotal, calculateSubtotal, calculateTotalTax } from '../shared/helpers'
+import { calculateTotals } from '../shared/helpers'
 import { type ProductSummaryProps } from '../shared/types'
 import {
   useGrossDiscountSelect,
@@ -54,19 +54,13 @@ export default function ProductSummary({
 
   const { setGrossDiscount, setGrossDiscountType } = useLineItemsStoreActions()
 
-  const { grandTotal, grandTotalBeforeDiscount, subtotal, totalTax } = useMemo(() => {
-    const grandTotalBeforeDiscount = calculateGrandTotal(localLineItems, taxOption)
+  const decimals = (currencyData ?? homeCurrencyData)?.decimal_places
 
-    const discountAmount =
-      grossDiscountType === 'amount' ? grossDiscount : (grandTotalBeforeDiscount * grossDiscount) / 100
-
-    return {
-      grandTotal: Math.max(0, grandTotalBeforeDiscount - discountAmount),
-      grandTotalBeforeDiscount,
-      subtotal: calculateSubtotal(localLineItems, taxOption),
-      totalTax: calculateTotalTax(localLineItems, taxOption)
-    }
-  }, [localLineItems, taxOption, grossDiscount, grossDiscountType])
+  const { discountAmount, grandTotal, grandTotalBeforeDiscount, subtotal, taxBreakdown, totalTax } =
+    useMemo(
+      () => calculateTotals(localLineItems, taxOption, grossDiscount, grossDiscountType, decimals),
+      [localLineItems, taxOption, grossDiscount, grossDiscountType, decimals]
+    )
 
   const discountTypeOptions = useMemo(
     () => [
@@ -83,7 +77,7 @@ export default function ProductSummary({
           <span>{__('Subtotal:')}</span>
           <span className="font-medium">{generateCurrencyFormatPreview(currencyData, subtotal)}</span>
         </div>
-        <If conditions={taxOption !== TAX.NO_TAX}>
+        <If conditions={[taxOption !== TAX.NO_TAX, taxBreakdown.length === 0]}>
           <div className="flex items-center justify-between text-sm">
             <span>
               {__('Tax')} ({taxOption === TAX.INCLUSIVE ? __('Included') : __('Added')}):
@@ -91,6 +85,17 @@ export default function ProductSummary({
             <span className="font-medium">{generateCurrencyFormatPreview(currencyData, totalTax)}</span>
           </div>
         </If>
+        {taxBreakdown.map(tax => (
+          <div className="flex items-center justify-between gap-2 text-sm" key={tax.label}>
+            <span>
+              {tax.label}
+              {tax.amount > 0 && ` (${taxOption === TAX.INCLUSIVE ? __('Included') : __('Added')})`}:
+            </span>
+            <span className="font-medium">
+              {generateCurrencyFormatPreview(currencyData, tax.amount)}
+            </span>
+          </div>
+        ))}
         <If conditions={grossDiscountOptions.enabled}>
           <div className="flex items-center justify-between text-sm">
             <span>{__('Gross Discount:')}</span>
@@ -115,8 +120,8 @@ export default function ProductSummary({
             ) : (
               <span className="font-medium">
                 {grossDiscountType === 'amount'
-                  ? generateCurrencyFormatPreview(currencyData, grossDiscount)
-                  : `${grossDiscount}%`}
+                  ? generateCurrencyFormatPreview(currencyData, discountAmount)
+                  : `${Math.min(grossDiscount, 100)}%`}
               </span>
             )}
           </div>

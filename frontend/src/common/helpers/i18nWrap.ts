@@ -26,7 +26,7 @@ const sprintf = (text: string, ...vars: any) => {
     })
     return str
   }
-  return i18nsprintf(text, vars)
+  return i18nsprintf(text, ...vars)
 }
 
 export { __, sprintf }

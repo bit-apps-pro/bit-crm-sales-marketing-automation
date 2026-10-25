@@ -68,6 +68,15 @@ export default function BusinessSettingsForm({
         <Form.Item className="mb-0" label={__('Website')} name="website">
           <Input placeholder={__('https://example.com')} size="middle" />
         </Form.Item>
+
+        <Form.Item
+          className="mb-0"
+          label={__('Tax ID')}
+          name="tax_id"
+          tooltip={__('Your VAT, GST or other tax registration number. Printed on invoices.')}
+        >
+          <Input placeholder={__('Enter tax ID')} size="middle" />
+        </Form.Item>
       </div>
 
       <Typography.Title level={4}>{__('Business Address')}</Typography.Title>

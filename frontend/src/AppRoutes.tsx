@@ -62,6 +62,7 @@ const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations
 const McpSettings = lazy(() => import('@pages/mcp-settings'))
 const AiSettings = lazy(() => import('@pages/ai-settings'))
 const Currencies = lazy(() => import('@pages/currencies'))
+const TaxSettings = lazy(() => import('@pages/tax-settings'))
 const InvoiceCreate = lazy(() => import('@pages/invoice-create'))
 const Invoices = lazy(() => import('@pages/invoices'))
 const DataManagement = lazy(() => import('@pages/data-management'))
@@ -234,6 +235,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="currencies"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.TAX}>
+                      <TaxSettings />
+                    </ProtectedRoute>
+                  }
+                  path="tax-settings"
                 />
                 <Route
                   element={

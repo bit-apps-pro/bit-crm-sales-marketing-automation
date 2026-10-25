@@ -69,6 +69,7 @@ class Company extends Model
         'annual_revenue',
         'type',
         'rating',
+        'tax_id',
         'billing_address_line_1',
         'billing_address_line_2',
         'billing_city',

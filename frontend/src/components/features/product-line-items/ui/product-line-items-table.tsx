@@ -4,10 +4,12 @@ import { generateCurrencyFormatPreview } from '@pages/currencies/shared/common-f
 import useFluentCartProductIntegration from '@pages/fluent-cart-settings/data/use-fluent-cart-product-integration'
 import useSureCartProductIntegration from '@pages/surecart-settings/data/use-surecart-product-integration'
 import useWooProductIntegration from '@pages/woo-settings/data/use-woo-product-integration'
+import { useMutationState } from '@tanstack/react-query'
 import { Button, InputNumber, Table, type TableColumnsType } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import { LuTrash2 } from 'react-icons/lu'
 
+import { TAX_RULES_MUTATION_KEY } from '../shared/constants'
 import { isLineItemEditable } from '../shared/helpers'
 import { type LineItem, type ProductLineItemsTableProps } from '../shared/types'
 import { useTaxOptionSelect } from '../state/use-line-items-store'
@@ -25,6 +27,15 @@ export default function ProductLineItemsTable({
   const { isFluentCartEnabled } = useFluentCartProductIntegration()
   const { isSureCartEnabled } = useSureCartProductIntegration()
   const taxOption = useTaxOptionSelect()
+  // A rate typed while the rules run would be overwritten, so those lines wait.
+  const taxRuleLineIds = new Set(
+    useMutationState({
+      filters: { mutationKey: TAX_RULES_MUTATION_KEY, status: 'pending' },
+      select: mutation => (mutation.state.variables as { items?: LineItem[] })?.items ?? []
+    })
+      .flat()
+      .map(item => item.id)
+  )
 
   const columns: TableColumnsType<LineItem> = [
     {
@@ -117,7 +128,7 @@ export default function ProductLineItemsTable({
       render: (_, record) => (
         <InputNumber
           className="w-full"
-          disabled={!isLineItemEditable(record)}
+          disabled={!isLineItemEditable(record) || taxRuleLineIds.has(record.id)}
           max={1000}
           min={0}
           onChange={value => onUpdate(record.id, 'tax_rate', value || 0)}

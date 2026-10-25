@@ -1,8 +1,10 @@
 import { MODULES } from '@common/constants/modules'
 import { renderFullAddress, renderFullName } from '@common/helpers/entity-helpers'
 import { __ } from '@common/helpers/i18nWrap'
+import useCountries from '@common/hooks/use-countries'
+import useStates from '@common/hooks/use-states'
 import LookupFieldSelect from '@features/lookup-field-select'
-import { createEmptyLineItem, formatLineItems } from '@features/product-line-items/shared/helpers'
+import { copyLineItems, formatLineItems } from '@features/product-line-items/shared/helpers'
 import {
   useGrossDiscountSelect,
   useGrossDiscountTypeSelect,
@@ -51,6 +53,8 @@ export default function DealSelect({ mode }: { mode: string }) {
   const dealInformation = useDealInformationSelect()
   const contactInformation = useContactInformationSelect()
   const invoiceLineItems = useInvoiceLineItemsSelect()
+  const { getCountryLabel } = useCountries()
+  const { getStateLabel } = useStates(contactInformation?.billing_country)
 
   useEffect(() => {
     if (
@@ -65,13 +69,7 @@ export default function DealSelect({ mode }: { mode: string }) {
     const { contact, currencyData, deal, lineItems } = dealContactCurrency.data
     if (String(deal.id) !== String(dealId)) return
 
-    // Give the invoice its own rows; never carry over the deal's persisted row IDs.
-    const invoiceItems = lineItems.map(item => ({
-      ...item,
-      entity_id: undefined,
-      id: createEmptyLineItem().id,
-      module: undefined
-    }))
+    const invoiceItems = copyLineItems(lineItems)
     importedSnapshot.current = JSON.stringify([
       formatLineItems(invoiceItems),
       deal.tax_option || 'exclusive',
@@ -200,11 +198,16 @@ export default function DealSelect({ mode }: { mode: string }) {
                 contactInformation?.billing_address_line_2,
                 contactInformation?.billing_city,
                 contactInformation?.billing_county,
-                contactInformation?.billing_state,
+                getStateLabel(contactInformation?.billing_country, contactInformation?.billing_state),
                 contactInformation?.billing_zip,
-                contactInformation?.billing_country
+                getCountryLabel(contactInformation?.billing_country)
               )}
             </Typography.Text>
+            {contactInformation?.tax_id && (
+              <Typography.Text className="block">
+                {__('Tax ID')}: {contactInformation.tax_id}
+              </Typography.Text>
+            )}
           </div>
         </div>
       ) : (

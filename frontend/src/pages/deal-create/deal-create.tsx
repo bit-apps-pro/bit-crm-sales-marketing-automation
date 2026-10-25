@@ -11,6 +11,7 @@ import DealProductList from '@features/deal-product-list'
 import EntityCreateSkeleton from '@features/entity-form/ui/entity-create-skeleton'
 import EntityForm from '@features/entity-form/ui/entity-form'
 import EntityTags from '@features/entity-overview/ui/entity-tags'
+import { TAX_RULES_MUTATION_KEY } from '@features/product-line-items/shared/constants'
 import { formatLineItems } from '@features/product-line-items/shared/helpers'
 import {
   useGrossDiscountSelect,
@@ -20,6 +21,7 @@ import {
   useTaxOptionSelect
 } from '@features/product-line-items/state/use-line-items-store'
 import useDealStages from '@pages/deals/internal/deals-kanban/data/use-deal-stages'
+import { useIsMutating } from '@tanstack/react-query'
 import Breadcrumb from '@utilities/breadcrumb/breadcrumb'
 import { Button, Collapse, Form, type FormInstance, Tag, Tooltip, Typography } from 'antd'
 import { useAtomValue } from 'jotai'
@@ -63,6 +65,8 @@ const DealCreate = () => {
   const { homeCurrencyData } = useAtomValue($appConfig)
   const currency = useCurrencyData(fields, form)
   const { clearStore: clearLineItems } = useLineItemsStoreActions()
+
+  const isApplyingTaxRules = useIsMutating({ mutationKey: TAX_RULES_MUTATION_KEY }) > 0
 
   const stageValue = Form.useWatch('stage', form)
 
@@ -206,6 +210,7 @@ const DealCreate = () => {
               <div className="ms-auto flex items-center gap-1">
                 <Button
                   className="rounded-full"
+                  disabled={isApplyingTaxRules}
                   loading={isCreateAndAddPending}
                   onClick={() => handleSubmit(form)}
                   type="text"
@@ -214,6 +219,7 @@ const DealCreate = () => {
                 </Button>
                 <Button
                   className="rounded-full"
+                  disabled={isApplyingTaxRules}
                   loading={isCreatePending}
                   onClick={() => handleSubmit(form, 'create')}
                   size="large"

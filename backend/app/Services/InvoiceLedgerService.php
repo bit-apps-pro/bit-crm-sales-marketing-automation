@@ -150,10 +150,16 @@ class InvoiceLedgerService
             }
 
             $decimals = $this->currencyDecimals($details['currency_data'] ?? []);
-            $totals = (new InvoicePdfService())->calculateTotals($invoice, $details['line_items']);
-            $total = round($totals->grandTotal, $decimals);
+            $totals = (new InvoicePdfService())->calculateTotals($invoice, $details['line_items'], $decimals);
+            $total = (new CurrencyService())->roundAmount($totals->grandTotal, $decimals);
             $rows = $rows ?? $this->paymentRows((int) $invoice->id);
             $paid = $this->getCompletedPaymentTotal($rows, $decimals);
+
+            // Paid before roundAmount() was used here: PHP 8.4's round() can make that total a cent lower.
+            if ($paid > 0 && $paid === round($totals->grandTotal, $decimals)) {
+                $total = $paid;
+            }
+
             $due = max(0.0, round($total - $paid, $decimals));
 
             return [

@@ -60,7 +60,7 @@ export default function SettingsLayout() {
     <AntLayout className="bg-transparent px-4 py-4 sm:px-6" hasSider={isDesktop}>
       <SettingsSidebar />
       <Content
-        className="lg:rounded-s-none flex min-h-[80vh] flex-col rounded-md border border-solid border-[#EBEAFF] bg-white lg:border-s-0 dark:border-neutral-700 dark:bg-neutral-900"
+        className="flex min-h-[80vh] flex-col rounded-md border border-solid border-[#EBEAFF] bg-white lg:rounded-s-[0px] lg:border-s-0 dark:border-neutral-700 dark:bg-neutral-900"
         ref={contentRef}
       >
         <Suspense fallback={fallbackOf()} key={pathname}>

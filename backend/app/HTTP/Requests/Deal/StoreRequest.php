@@ -33,6 +33,7 @@ class StoreRequest extends Request
             'lineItems.*.quantity'                 => ['nullable', 'integer'],
             'lineItems.*.discount_percentage'      => ['nullable', 'numeric', new NumberBetweenRule(0, 100)],
             'lineItems.*.tax_rate'                 => ['nullable', 'numeric', new NumberBetweenRule(0, 1000)],
+            'lineItems.*.taxes'                    => ['nullable', 'array'],
             'lineItems.*.product_code'             => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.product_source'           => ['nullable', 'string', 'sanitize:text'],
             'lineItems.*.description'              => ['nullable', 'string', 'sanitize:text'],

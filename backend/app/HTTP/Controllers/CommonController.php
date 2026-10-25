@@ -12,10 +12,12 @@ use BitApps\Crm\HTTP\Requests\CommonContr\RelatedEntitiesTableFieldsRequest;
 use BitApps\Crm\HTTP\Requests\CommonContr\RelatedFieldOptionsRequest;
 use BitApps\Crm\HTTP\Requests\CommonContr\RequiredFieldsRequest;
 use BitApps\Crm\HTTP\Requests\CommonContr\SampleCsvRequest;
+use BitApps\Crm\HTTP\Requests\CommonContr\StatesRequest;
 use BitApps\Crm\Model\Activity;
 use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Services\CommonService;
+use BitApps\Crm\Services\CountryService;
 use BitApps\Crm\Services\SettingService;
 use BitApps\Crm\Utils\Logger;
 use Throwable;
@@ -92,6 +94,18 @@ final class CommonController
         } catch (Throwable $th) {
             return Response::error([])->message(__('Failed to retrieve required fields.', 'bit-crm-sales-marketing-automation'));
         }
+    }
+
+    public function countries()
+    {
+        return Response::success((new CountryService())->getCountriesAsOptions());
+    }
+
+    public function states(StatesRequest $request)
+    {
+        $validated = $request->validated();
+
+        return Response::success((new CountryService())->getStatesAsOptions($validated['country']));
     }
 
     public function sampleCsv(SampleCsvRequest $request)

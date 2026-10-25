@@ -27,6 +27,7 @@ class UpdateRequest extends Request
             'postal_code'   => ['nullable', 'string', 'sanitize:text'],
             'state'         => ['nullable', 'string', 'sanitize:text'],
             'street'        => ['nullable', 'string', 'sanitize:text'],
+            'tax_id'        => ['nullable', 'string', 'sanitize:text'],
             'website'       => ['nullable', 'url', 'sanitize:url']
         ];
     }

@@ -1,6 +1,13 @@
 import { type ProductOptionData } from '@components/features/product-lookup-select/shared/types'
 import { type CurrencyItemType } from '@pages/currencies/shared/currency-types'
 
+export interface LineItemTax {
+  id: number
+  is_compound: boolean
+  name: string
+  rate: number
+}
+
 export interface LineItem {
   description?: string
   discount_percentage?: number
@@ -13,7 +20,9 @@ export interface LineItem {
   product_name?: string
   product_source: string
   quantity: number
+  tax_customer?: string
   tax_rate: number
+  taxes?: LineItemTax[] | null
   total_price_in_deal_currency?: number
   total_price_in_home_currency?: number
   unit_price_in_deal_currency?: number
@@ -53,4 +62,10 @@ export interface ProductLineItemsProps {
   currencyData: CurrencyItemType
   localLineItems: LineItem[]
   setLocalLineItems: (updater: ((prevState: LineItem[]) => LineItem[]) | LineItem[]) => void
+  taxContactId?: number | string
 }
+
+export type LineItemTaxRulesProps = Pick<
+  ProductLineItemsProps,
+  'localLineItems' | 'setLocalLineItems' | 'taxContactId'
+>

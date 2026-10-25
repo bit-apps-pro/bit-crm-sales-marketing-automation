@@ -20,6 +20,7 @@ import {
   LuLayers,
   LuMagnet,
   LuPackage,
+  LuPercent,
   LuPlug,
   LuScrollText,
   LuSettings,
@@ -31,7 +32,7 @@ import { useLocation, useNavigate } from 'react-router'
 
 const { Sider } = Layout
 
-const navGroups = [
+export const navGroups = [
   {
     items: [
       {
@@ -160,6 +161,12 @@ const navGroups = [
         icon: <LuDollarSign />,
         label: __('Currency Settings'),
         path: '../settings/currencies'
+      },
+      {
+        capability: CAPABILITIES.SETTING.TAX,
+        icon: <LuPercent />,
+        label: __('Tax Settings'),
+        path: '../settings/tax-settings'
       },
       {
         capability: CAPABILITIES.SETTING.DATA_MANAGEMENT,

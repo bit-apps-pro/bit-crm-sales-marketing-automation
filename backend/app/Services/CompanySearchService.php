@@ -38,6 +38,7 @@ class CompanySearchService
         $ownerNameSelect = $this->getOwnerNameSelect();
         $parentNameSelect = $this->getParentNameSelect();
         $tagsFilter = $this->filterByTags($args['tags']);
+        $idsFilter = $this->filterByIds($args['ids'] ?? []);
         [$searchFilter, $searchBindings] = $this->filterBySearchTerm($args['searchTerm']);
         [$advancedFilters, $advancedFiltersBindings] = $this->advancedFilters($args['advancedFilterGroups'] ?? [], $allowedColumns);
         $companyColumnsSelect = (new EntityColumnsSelectBuilder())->buildSelect($companyTable, $companyTableAlias, $customFieldKeys);
@@ -49,7 +50,7 @@ class CompanySearchService
         {$customFieldsJoin}
         {$ownerTableJoin}
         WHERE {$companyTableAlias}.status = 1 AND {$companyTableAlias}.is_trash = 0
-        {$tagsFilter} {$searchFilter} GROUP BY {$companyTableAlias}.id {$advancedFilters}";
+        {$tagsFilter} {$idsFilter} {$searchFilter} GROUP BY {$companyTableAlias}.id {$advancedFilters}";
 
         $countQuery = $baseQuery;
 
@@ -66,6 +67,18 @@ class CompanySearchService
         $total = \count($data) > 0 ? $this->totalData($countQuery, $bindings) : 0;
 
         return $this->formatPagination($data, $args['page'], $args['perPage'], $total);
+    }
+
+    private function filterByIds(array $ids): ?string
+    {
+        if (empty($ids)) {
+            return null;
+        }
+
+        $companyTableAlias = self::COMPANY_TABLE_ALIAS;
+        $idsPlaceholder = implode(',', array_map('intval', $ids));
+
+        return " AND `{$companyTableAlias}`.`id` IN ({$idsPlaceholder})";
     }
 
     private function filterByTags(array $tags): ?string

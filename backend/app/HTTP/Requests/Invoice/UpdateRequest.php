@@ -39,6 +39,7 @@ class UpdateRequest extends Request
             'line_items.*.quantity'            => ['nullable', 'integer'],
             'line_items.*.discount_percentage' => ['nullable', 'numeric', new NumberBetweenRule(0, 100)],
             'line_items.*.tax_rate'            => ['nullable', 'numeric', new NumberBetweenRule(0, 1000)],
+            'line_items.*.taxes'               => ['nullable', 'array'],
             'line_items.*.product_code'        => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.product_source'      => ['nullable', 'string', 'sanitize:text'],
             'line_items.*.description'         => ['nullable', 'string', 'sanitize:text'],

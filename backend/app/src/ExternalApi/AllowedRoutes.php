@@ -43,7 +43,8 @@ final class AllowedRoutes
      *   links/* (index, store, edit/{id}, update, delete), emails/{id},
      *   plugins/info, activities/upcoming, common/required-fields,
      *   common/entity-related-lists-count, common/sample-csv,
-     *   common/related-field-options.
+     *   common/related-field-options. The exception is common/countries and
+     *   common/states: public reference data with no record data in it.
      *
      * - Admin plumbing that is not API surface, whatever its capability check:
      *   imaps/* (holds mail server credentials), plugins/install,
@@ -110,6 +111,10 @@ final class AllowedRoutes
         ['method' => 'POST', 'path' => 'deals/detach-tag'],
         ['method' => 'POST', 'path' => 'deals/attach-tags'],
         ['method' => 'POST', 'path' => 'deals/detach-tags'],
+
+        // Countries
+        ['method' => 'GET', 'path' => 'common/countries'],
+        ['method' => 'GET', 'path' => 'common/states'],
 
         // Tags
         ['method' => 'POST', 'path' => 'tags/index'],

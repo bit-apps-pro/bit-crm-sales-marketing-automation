@@ -53,6 +53,8 @@ class EntityFieldService
             return $content;
         }
 
+        $data = \is_array($data) ? (new CountryService())->formatAddressLabels($data) : $data;
+
         return preg_replace_callback(
             '/#\{([\w-]+)\}/',
             function ($matches) use ($data) {
@@ -82,6 +84,8 @@ class EntityFieldService
         if (empty($content) || empty($data)) {
             return $content;
         }
+
+        $data = \is_array($data) ? (new CountryService())->formatAddressLabels($data) : $data;
 
         $doc = new DOMDocument();
         @$doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));

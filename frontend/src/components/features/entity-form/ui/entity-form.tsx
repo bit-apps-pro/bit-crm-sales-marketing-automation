@@ -40,12 +40,20 @@ export default function EntityForm<T extends Store | undefined, Y extends BaseFi
   form,
   specialComponents
 }: EntityFormPropsType<T, Y>) {
+  const handleValuesChange = (changedValues: Store) => {
+    fields
+      .flatMap(field => Object.values(field.group_fields ?? {}))
+      .filter(field => field.country_field && field.country_field in changedValues)
+      .forEach(field => form.setFieldValue(field.field_key, undefined))
+  }
+
   return (
     <Form
       className={cn([className, 'space-y-2'])}
       form={form}
       initialValues={entity}
       layout="vertical"
+      onValuesChange={handleValuesChange}
       requiredMark={customizedRequiredMark}
     >
       {(() => {

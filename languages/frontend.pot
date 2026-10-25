@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Sun Oct 11 2026 17:26:08 GMT+0600 (Bangladesh Standard "
+"POT-Creation-Date: Sun Oct 25 2026 13:43:31 GMT+0600 (Bangladesh Standard "
 "Time)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -9,6 +9,7 @@ msgstr ""
 #: frontend/src/common/constants/field-types.ts:5
 #: frontend/src/pages/product-settings/product-settings.tsx:6
 #: frontend/src/pages/product-settings/product-settings.tsx:7
+#: frontend/src/pages/tax-settings/tax-settings.tsx:6
 msgid "Text"
 msgstr ""
 
@@ -20,6 +21,7 @@ msgstr ""
 #: frontend/src/pages/product-settings/product-settings.tsx:11
 #: frontend/src/pages/product-settings/product-settings.tsx:12
 #: frontend/src/pages/product-settings/product-settings.tsx:13
+#: frontend/src/pages/tax-settings/tax-settings.tsx:7
 msgid "Number"
 msgstr ""
 
@@ -163,6 +165,7 @@ msgstr ""
 
 #: frontend/src/components/features/activity-feed/shared/activity-constants.ts:16
 #: frontend/src/components/features/entity-emails/entity-emails.tsx:224
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:368
 msgid "All"
 msgstr ""
 
@@ -394,7 +397,7 @@ msgstr ""
 #: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:94
 #: frontend/src/pages/company-create/company-create.tsx:138
 #: frontend/src/pages/contact-create/contact-create.tsx:151
-#: frontend/src/pages/deal-create/deal-create.tsx:222
+#: frontend/src/pages/deal-create/deal-create.tsx:228
 #: frontend/src/pages/deal-settings/ui/stages/internal/stage-create-modal.tsx:54
 #: frontend/src/pages/imap-settings/ui/imap-create-modal.tsx:59
 #: frontend/src/pages/invoice-settings/internal/terms/ui/term-create-modal.tsx:55
@@ -440,7 +443,7 @@ msgid "Are you sure you want to delete this note?"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-note.tsx:127
-#: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:65
+#: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:91
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-activity-logs-alert.tsx:42
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-portal-settings-alert.tsx:51
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-workflow-logs-alert.tsx:36
@@ -463,6 +466,7 @@ msgid "Choose an activity from the list to view its notes."
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:57
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:176
 #: frontend/src/components/features/notes/notes.tsx:91
 #: frontend/src/pages/company/company.tsx:152
 #: frontend/src/pages/contact/contact.tsx:170
@@ -536,7 +540,7 @@ msgid "Add OR Group"
 msgstr ""
 
 #: frontend/src/components/features/advanced-filter/internal/advanced-filter-popover-content.tsx:159
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:143
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:153
 msgid "Clear All"
 msgstr ""
 
@@ -662,15 +666,15 @@ msgid "Select options"
 msgstr ""
 
 #: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:118
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:143
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:144
 msgid "Enter value"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:132
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:133
 msgid "Select option"
 msgstr ""
 
-#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:163
+#: frontend/src/components/features/advanced-filter/ui/filter-value-input.tsx:164
 #: frontend/src/components/utilities/input-select-option/input-select-option.tsx:47
 msgid "Value"
 msgstr ""
@@ -688,7 +692,7 @@ msgstr ""
 #: frontend/src/components/features/ai-chat/internal/chat-shell.tsx:153
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-ai-settings-alert.tsx:15
 #: frontend/src/pages/ai-settings/ai-settings.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:144
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:145
 msgid "AI Assistant"
 msgstr ""
 
@@ -701,6 +705,7 @@ msgid "Full screen"
 msgstr ""
 
 #: frontend/src/components/features/ai-chat/internal/chat-shell.tsx:170
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:357
 #: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:92
 msgid "Close"
 msgstr ""
@@ -735,7 +740,7 @@ msgstr ""
 msgid "AI Summary"
 msgstr ""
 
-#: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:77
+#: frontend/src/components/features/assign-product-modal/assign-product-modal.tsx:103
 msgid "Add Products to Deal"
 msgstr ""
 
@@ -824,6 +829,7 @@ msgid "Uploaded By"
 msgstr ""
 
 #: frontend/src/components/features/attachments/ui/attachment-table.tsx:108
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:224
 #: frontend/src/components/features/links/ui/link-table.tsx:96
 #: frontend/src/components/features/related-entities/ui/related-entities-table.tsx:196
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:10
@@ -832,16 +838,16 @@ msgstr ""
 #: frontend/src/pages/api-settings/ui/api-key-table.tsx:61
 #: frontend/src/pages/api-settings/ui/api-key-table.tsx:107
 #: frontend/src/pages/bit-form-settings/ui/bit-form-forms-table.tsx:129
-#: frontend/src/pages/companies/ui/companies-table.tsx:140
+#: frontend/src/pages/companies/ui/companies-table.tsx:147
 #: frontend/src/pages/contacts/ui/contacts-columns.tsx:106
-#: frontend/src/pages/contacts/ui/contacts-table.tsx:156
+#: frontend/src/pages/contacts/ui/contacts-table.tsx:163
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:76
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:114
 #: frontend/src/pages/deals/ui/deals-table.tsx:157
 #: frontend/src/pages/Invoice/ui/invoice-actions.tsx:85
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:224
 #: frontend/src/pages/leads/ui/leads-columns.tsx:125
-#: frontend/src/pages/leads/ui/leads-table.tsx:140
+#: frontend/src/pages/leads/ui/leads-table.tsx:147
 #: frontend/src/pages/products/products.tsx:11
 #: frontend/src/pages/tags/ui/tags-table.tsx:140
 #: frontend/src/pages/workflows/workflows.tsx:12
@@ -849,6 +855,7 @@ msgid "Actions"
 msgstr ""
 
 #: frontend/src/components/features/calls/calls.tsx:74
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:175
 #: frontend/src/pages/calls/calls-page.tsx:54
 #: frontend/src/pages/company/company.tsx:138
 #: frontend/src/pages/contact/contact.tsx:156
@@ -882,7 +889,7 @@ msgstr ""
 #: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:182
 #: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-modal.tsx:93
 #: frontend/src/pages/imap-settings/ui/imap-edit-modal.tsx:68
-#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:147
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:151
 #: frontend/src/pages/invoice-settings/internal/terms/ui/term-edit-modal.tsx:68
 #: frontend/src/pages/lead/internal/lead-overview/lead-overview.tsx:91
 #: frontend/src/pages/tags/ui/tag-edit-modal.tsx:75
@@ -1064,19 +1071,19 @@ msgid ""
 "lead conversion mapping."
 msgstr ""
 
-#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:32
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:34
 msgid "Quantity:"
 msgstr ""
 
-#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:36
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:38
 msgid "Discount:"
 msgstr ""
 
-#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:43
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:45
 msgid "Tax:"
 msgstr ""
 
-#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:49
+#: frontend/src/components/features/deal-product-list/deal-product-list-item.tsx:51
 msgid "Total Price:"
 msgstr ""
 
@@ -1092,11 +1099,11 @@ msgstr ""
 msgid "Grand Total"
 msgstr ""
 
-#: frontend/src/components/features/deal-product-list/deal-product-list.tsx:72
+#: frontend/src/components/features/deal-product-list/deal-product-list.tsx:78
 msgid "Customize"
 msgstr ""
 
-#: frontend/src/components/features/deal-product-list/deal-product-list.tsx:72
+#: frontend/src/components/features/deal-product-list/deal-product-list.tsx:78
 #: frontend/src/pages/deal-create/ui/amount-field-with-toggle.tsx:45
 msgid "Add Products"
 msgstr ""
@@ -1216,7 +1223,7 @@ msgstr ""
 
 #: frontend/src/components/features/entity-emails/ui/email-view.tsx:44
 #: frontend/src/pages/invoice-create/ui/business-information.tsx:16
-#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:24
+#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:29
 msgid "From"
 msgstr ""
 
@@ -1252,8 +1259,12 @@ msgstr ""
 msgid "Please enter a valid URL"
 msgstr ""
 
-#: frontend/src/components/features/entity-form/ui/entity-input.tsx:126
+#: frontend/src/components/features/entity-form/ui/entity-input.tsx:132
 msgid "Enter number"
+msgstr ""
+
+#: frontend/src/components/features/entity-form/ui/state-select.tsx:22
+msgid "Select a country first"
 msgstr ""
 
 #: frontend/src/components/features/entity-overview/ui/entity-audit-stamp.tsx:25
@@ -1272,8 +1283,8 @@ msgid "SKU"
 msgstr ""
 
 #: frontend/src/components/features/entity-overview/ui/entity-summary-info.tsx:81
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:78
-#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:62
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:89
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:63
 msgid "Price"
 msgstr ""
 
@@ -1406,6 +1417,320 @@ msgstr ""
 msgid "section"
 msgstr ""
 
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:45
+msgid "Lead Fields"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:51
+msgid "Lead Conversion Mapping"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:56
+msgid "Contact Fields"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:61
+msgid "Company Fields"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:66
+msgid "Deal Fields"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:72
+msgid "Deal Stages"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:77
+msgid "Archived Deal Stages"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:82
+msgid "Product Fields"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:87
+#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:32
+msgid "Invoice Prefix"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:92
+msgid "Payment Terms"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:98
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-invoice-payments-alert.tsx:19
+#: frontend/src/pages/invoice-settings/internal/payments/payments.tsx:9
+msgid "Invoice Payments"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:104
+#: frontend/src/pages/data-management/data-management.tsx:22
+#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:106
+msgid "Recycle Bin"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:109
+#: frontend/src/pages/data-management/data-management.tsx:29
+msgid "Imports"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:114
+#: frontend/src/pages/data-management/data-management.tsx:36
+msgid "Exports"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:119
+#: frontend/src/pages/data-management/data-management.tsx:43
+msgid "History Logs"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:124
+#: frontend/src/pages/data-management/data-management.tsx:50
+#: frontend/src/pages/data-management/internal/workflow-logs/workflow-logs.tsx:5
+msgid "Workflow Logs"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:129
+#: frontend/src/pages/data-management/data-management.tsx:57
+msgid "Uninstall"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:134
+msgid "Portal Permissions"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:139
+msgid "Portal Clients"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:145
+msgid "Portal White Label"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:148
+msgid "CRM Roles"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:152
+msgid "Workflow Settings"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:158
+#: frontend/src/pages/lead-create/lead-create.tsx:24
+#: frontend/src/pages/lead-create/lead-create.tsx:110
+msgid "Create Lead"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:159
+#: frontend/src/pages/contact-create/contact-create.tsx:25
+#: frontend/src/pages/contact-create/contact-create.tsx:122
+msgid "Create Contact"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:160
+#: frontend/src/pages/company-create/company-create.tsx:23
+#: frontend/src/pages/company-create/company-create.tsx:109
+msgid "Create Company"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:161
+#: frontend/src/pages/deal-create/deal-create.tsx:44
+#: frontend/src/pages/deal-create/deal-create.tsx:197
+msgid "Create Deal"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:162
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:87
+msgid "Create Invoice"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:168
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:22
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:32
+#: frontend/src/pages/lead-create/lead-create.tsx:20
+#: frontend/src/pages/lead/lead.tsx:65
+#: frontend/src/pages/leads/leads.tsx:97
+msgid "Leads"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:169
+#: frontend/src/pages/company/company.tsx:173
+#: frontend/src/pages/contact-create/contact-create.tsx:21
+#: frontend/src/pages/contact/contact.tsx:65
+#: frontend/src/pages/contacts/contacts.tsx:101
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:29
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:33
+msgid "Contacts"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:170
+#: frontend/src/pages/companies/companies.tsx:98
+#: frontend/src/pages/company-create/company-create.tsx:19
+#: frontend/src/pages/company/company.tsx:63
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:36
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:37
+msgid "Companies"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:171
+#: frontend/src/pages/company/company.tsx:186
+#: frontend/src/pages/contact/contact.tsx:191
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:43
+#: frontend/src/pages/deal-create/deal-create.tsx:40
+#: frontend/src/pages/deal/deal.tsx:65
+#: frontend/src/pages/deals/deals.tsx:111
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:40
+msgid "Deals"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:172
+#: frontend/src/pages/dashboard/ui/stat-cards.tsx:50
+#: frontend/src/pages/deal/deal.tsx:172
+#: frontend/src/pages/deal/internal/deal-invoices/deal-invoices.tsx:51
+#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:83
+#: frontend/src/pages/Invoice/invoice.tsx:67
+#: frontend/src/pages/invoices/invoices.tsx:49
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:41
+msgid "Invoices"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:173
+#: frontend/src/components/features/tasks/tasks.tsx:75
+#: frontend/src/pages/company/company.tsx:122
+#: frontend/src/pages/contact/contact.tsx:140
+#: frontend/src/pages/deal/deal.tsx:136
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:46
+#: frontend/src/pages/lead/lead.tsx:140
+#: frontend/src/pages/tasks/tasks-page.tsx:55
+msgid "Tasks"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:174
+#: frontend/src/components/features/meetings/meetings.tsx:74
+#: frontend/src/pages/company/company.tsx:130
+#: frontend/src/pages/contact/contact.tsx:148
+#: frontend/src/pages/deal/deal.tsx:142
+#: frontend/src/pages/Layout/ui/header/nav-items.ts:47
+#: frontend/src/pages/lead/lead.tsx:146
+#: frontend/src/pages/meetings/meetings-page.tsx:54
+msgid "Meetings"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:183
+msgid "Pages"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/navigation-entries.tsx:184
+#: frontend/src/pages/Layout/ui/header/header-mobile-menu.tsx:94
+#: frontend/src/pages/Layout/ui/header/header.tsx:57
+#: frontend/src/pages/Layout/ui/header/more-option-button.tsx:15
+msgid "Settings"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:92
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:187
+msgid "Pages & Settings"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:125
+msgid "Search in %s"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:127
+msgid "Filter by"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:136
+msgid "Clear"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:146
+msgid "Recent searches"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:159
+msgid "Recently opened"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:167
+msgid "Quick actions"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:208
+msgid "See all %s %s"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:286
+msgid "No filter matches “%s”."
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:288
+msgid "Search leads, contacts, deals, invoices, settings and more."
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:290
+msgid "Keep typing to search records."
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:292
+msgid "No results for “%s”."
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:335
+#: frontend/src/components/features/global-search/internal/search-trigger.tsx:21
+#: frontend/src/components/features/table/ui/table-column-dropdown.tsx:33
+#: frontend/src/pages/calls/calls-page.tsx:77
+#: frontend/src/pages/meetings/meetings-page.tsx:77
+#: frontend/src/pages/tags/tags.tsx:100
+#: frontend/src/pages/tasks/tasks-page.tsx:78
+msgid "Search"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:341
+msgid "Search records, pages and settings… type / to filter"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:342
+msgid "Search %s…"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:386
+msgid "Search results"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:493
+msgid "to navigate"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:496
+msgid "to open"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:499
+msgid "new tab"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:502
+msgid "to filter"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:505
+msgid "Esc"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:505
+msgid "to close"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-modal.tsx:552
+msgid "Searching…"
+msgstr ""
+
+#: frontend/src/components/features/global-search/internal/search-trigger.tsx:28
+msgid "Search…"
+msgstr ""
+
 #: frontend/src/components/features/links/data/use-save-link.ts:36
 msgid "Link created successfully"
 msgstr ""
@@ -1456,7 +1781,7 @@ msgstr ""
 
 #: frontend/src/components/features/links/ui/link-form.tsx:31
 #: frontend/src/components/features/links/ui/link-table.tsx:44
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:55
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:66
 #: frontend/src/pages/product-settings/product-settings.tsx:10
 msgid "Description"
 msgstr ""
@@ -1513,16 +1838,6 @@ msgstr ""
 
 #: frontend/src/components/features/meetings/data/use-update-meeting.ts:36
 msgid "Meeting updated successfully"
-msgstr ""
-
-#: frontend/src/components/features/meetings/meetings.tsx:74
-#: frontend/src/pages/company/company.tsx:130
-#: frontend/src/pages/contact/contact.tsx:148
-#: frontend/src/pages/deal/deal.tsx:142
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:47
-#: frontend/src/pages/lead/lead.tsx:146
-#: frontend/src/pages/meetings/meetings-page.tsx:54
-msgid "Meetings"
 msgstr ""
 
 #: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:93
@@ -1679,25 +1994,37 @@ msgstr ""
 msgid "Bit SMTP Plugin Not Installed"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:114
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:124
 msgid "Tax Calculation:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:140
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:164
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:150
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:174
 msgid "Add Line Item"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:148
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:158
 msgid "Products:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:152
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:162
 msgid "Total product quantity:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/product-line-items.tsx:162
+#: frontend/src/components/features/product-line-items/product-line-items.tsx:172
 msgid "Click \"Add Line Item\" to start adding products"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/helpers.ts:45
+#: frontend/src/components/features/product-line-items/shared/helpers.ts:171
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:83
+msgid "Tax"
+msgstr ""
+
+#: frontend/src/components/features/product-line-items/shared/helpers.ts:178
+#: frontend/src/components/features/product-line-items/shared/helpers.ts:188
+#: frontend/src/components/features/product-line-items/shared/helpers.ts:190
+msgid "Other tax"
 msgstr ""
 
 #: frontend/src/components/features/product-line-items/shared/options.tsx:45
@@ -1717,13 +2044,13 @@ msgstr ""
 
 #: frontend/src/components/features/product-line-items/shared/options.tsx:63
 #: frontend/src/components/features/product-line-items/shared/options.tsx:65
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:115
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:116
 msgid "FluentCart"
 msgstr ""
 
 #: frontend/src/components/features/product-line-items/shared/options.tsx:72
 #: frontend/src/components/features/product-line-items/shared/options.tsx:73
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:121
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:122
 msgid "SureCart"
 msgstr ""
 
@@ -1750,59 +2077,57 @@ msgstr ""
 msgid "No Tax"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:62
-#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:50
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:73
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:51
 #: frontend/src/pages/product-settings/product-settings.tsx:6
 #: frontend/src/pages/products/products.tsx:6
 msgid "Product Name"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:93
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:104
 msgid "Quantity"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:110
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:121
 msgid "Discount"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:128
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:139
 #: frontend/src/pages/product-settings/product-settings.tsx:13
 msgid "Tax Rate"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:139
+#: frontend/src/components/features/product-line-items/ui/product-line-items-table.tsx:150
 #: frontend/src/pages/data-management/internal/imports/ui/imports-table.tsx:39
-#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:99
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:100
 #: frontend/src/pages/Invoice/ui/invoice-payments-panel/internal/payment-summary.tsx:12
 #: frontend/src/public-invoice/ui/public-pay-card/internal/public-pay-summary.tsx:15
 msgid "Total"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:74
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:68
 msgid "%"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:83
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:77
 msgid "Subtotal:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:89
-msgid "Tax"
-msgstr ""
-
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:89
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:83
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:92
 msgid "Included"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:89
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:83
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:92
 msgid "Added"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:96
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:101
 msgid "Gross Discount:"
 msgstr ""
 
-#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:125
+#: frontend/src/components/features/product-line-items/ui/product-summary.tsx:130
 msgid "Grand Total:"
 msgstr ""
 
@@ -1810,7 +2135,7 @@ msgstr ""
 msgid "Item name"
 msgstr ""
 
-#: frontend/src/components/features/product-lookup-select/product-lookup-select.tsx:151
+#: frontend/src/components/features/product-lookup-select/product-lookup-select.tsx:156
 msgid "Source"
 msgstr ""
 
@@ -1886,14 +2211,6 @@ msgstr ""
 msgid "Bulk Actions"
 msgstr ""
 
-#: frontend/src/components/features/table/ui/table-column-dropdown.tsx:33
-#: frontend/src/pages/calls/calls-page.tsx:77
-#: frontend/src/pages/meetings/meetings-page.tsx:77
-#: frontend/src/pages/tags/tags.tsx:100
-#: frontend/src/pages/tasks/tasks-page.tsx:78
-msgid "Search"
-msgstr ""
-
 #: frontend/src/components/features/table/ui/table-header-row/table-header-row.tsx:86
 msgid "Open column filter dropdown"
 msgstr ""
@@ -1908,16 +2225,6 @@ msgstr ""
 
 #: frontend/src/components/features/tasks/data/use-update-task.ts:36
 msgid "Task updated successfully"
-msgstr ""
-
-#: frontend/src/components/features/tasks/tasks.tsx:75
-#: frontend/src/pages/company/company.tsx:122
-#: frontend/src/pages/contact/contact.tsx:140
-#: frontend/src/pages/deal/deal.tsx:136
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:46
-#: frontend/src/pages/lead/lead.tsx:140
-#: frontend/src/pages/tasks/tasks-page.tsx:55
-msgid "Tasks"
 msgstr ""
 
 #: frontend/src/components/features/tasks/ui/task-create-modal.tsx:103
@@ -2178,7 +2485,7 @@ msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:17
 #: frontend/src/pages/crm-users/crm-users.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:179
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:186
 msgid "CRM Users"
 msgstr ""
 
@@ -2228,7 +2535,7 @@ msgstr ""
 #: frontend/src/pages/company-settings/company-settings.tsx:23
 #: frontend/src/pages/contact-create/contact-create.tsx:124
 #: frontend/src/pages/contact-settings/contact-settings.tsx:23
-#: frontend/src/pages/deal-create/deal-create.tsx:195
+#: frontend/src/pages/deal-create/deal-create.tsx:199
 #: frontend/src/pages/deal-settings/deal-settings.tsx:27
 #: frontend/src/pages/lead-create/lead-create.tsx:112
 #: frontend/src/pages/lead-settings/lead-settings.tsx:26
@@ -2296,11 +2603,6 @@ msgstr ""
 msgid "Search history..."
 msgstr ""
 
-#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-invoice-payments-alert.tsx:19
-#: frontend/src/pages/invoice-settings/internal/payments/payments.tsx:9
-msgid "Invoice Payments"
-msgstr ""
-
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-invoice-payments-alert.tsx:25
 msgid "Accept invoice payments via WooCommerce"
 msgstr ""
@@ -2321,7 +2623,7 @@ msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:18
 #: frontend/src/pages/mcp-settings/mcp-settings.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:150
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:151
 msgid "MCP Server"
 msgstr ""
 
@@ -2453,6 +2755,14 @@ msgstr ""
 msgid "Unlock with Pro"
 msgstr ""
 
+#: frontend/src/components/utilities/theme-toggle.tsx:10
+msgid "Switch to light mode"
+msgstr ""
+
+#: frontend/src/components/utilities/theme-toggle.tsx:10
+msgid "Switch to dark mode"
+msgstr ""
+
 #: frontend/src/pages/access-denied/access-denied.jsx:16
 msgid "Access Denied"
 msgstr ""
@@ -2462,7 +2772,7 @@ msgid "Sorry, you are not authorized to access this page!"
 msgstr ""
 
 #: frontend/src/pages/api-settings/api-settings.tsx:29
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:185
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:192
 msgid "REST API"
 msgstr ""
 
@@ -2659,7 +2969,7 @@ msgid "Preview form in Bit Form"
 msgstr ""
 
 #: frontend/src/pages/bit-form-settings/ui/bit-form-integration-panel.tsx:28
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:175
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:173
 #: frontend/src/pages/Invoice/ui/invoice-payments-panel/index.tsx:36
 #: frontend/src/pages/others-integrations-settings/ui/plugin-integration-card.tsx:79
 msgid "Retry"
@@ -2700,7 +3010,7 @@ msgid "Check again"
 msgstr ""
 
 #: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:29
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:127
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:128
 msgid "Bit Form"
 msgstr ""
 
@@ -2768,14 +3078,6 @@ msgstr ""
 #: frontend/src/pages/calls/calls-page.tsx:63
 #: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:39
 msgid "New Call"
-msgstr ""
-
-#: frontend/src/pages/companies/companies.tsx:98
-#: frontend/src/pages/company-create/company-create.tsx:19
-#: frontend/src/pages/company/company.tsx:63
-#: frontend/src/pages/dashboard/ui/stat-cards.tsx:36
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:37
-msgid "Companies"
 msgstr ""
 
 #: frontend/src/pages/companies/companies.tsx:104
@@ -2859,7 +3161,7 @@ msgstr ""
 #: frontend/src/pages/contact-create/contact-create.tsx:165
 #: frontend/src/pages/contact/internal/contact-overview/contact-overview.tsx:127
 #: frontend/src/pages/contacts/internal/contact-bulk-operations/ui/tags-modal.tsx:81
-#: frontend/src/pages/deal-create/deal-create.tsx:266
+#: frontend/src/pages/deal-create/deal-create.tsx:272
 #: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:235
 #: frontend/src/pages/deals/internal/deal-bulk-operations/ui/tags-modal.tsx:61
 #: frontend/src/pages/Layout/ui/header/nav-items.ts:49
@@ -2983,20 +3285,15 @@ msgid ""
 "same import. Please choose one."
 msgstr ""
 
-#: frontend/src/pages/company-create/company-create.tsx:23
-#: frontend/src/pages/company-create/company-create.tsx:109
-msgid "Create Company"
-msgstr ""
-
 #: frontend/src/pages/company-create/company-create.tsx:129
 #: frontend/src/pages/contact-create/contact-create.tsx:142
-#: frontend/src/pages/deal-create/deal-create.tsx:213
+#: frontend/src/pages/deal-create/deal-create.tsx:218
 #: frontend/src/pages/lead-create/lead-create.tsx:130
 msgid "Create & Add Another"
 msgstr ""
 
 #: frontend/src/pages/company-settings/company-settings.tsx:15
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:63
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:64
 msgid "Company Settings"
 msgstr ""
 
@@ -3009,25 +3306,6 @@ msgstr ""
 #: frontend/src/pages/deal/deal.tsx:117
 #: frontend/src/pages/lead/lead.tsx:121
 msgid "Overview"
-msgstr ""
-
-#: frontend/src/pages/company/company.tsx:173
-#: frontend/src/pages/contact-create/contact-create.tsx:21
-#: frontend/src/pages/contact/contact.tsx:65
-#: frontend/src/pages/contacts/contacts.tsx:101
-#: frontend/src/pages/dashboard/ui/stat-cards.tsx:29
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:33
-msgid "Contacts"
-msgstr ""
-
-#: frontend/src/pages/company/company.tsx:186
-#: frontend/src/pages/contact/contact.tsx:191
-#: frontend/src/pages/dashboard/ui/stat-cards.tsx:43
-#: frontend/src/pages/deal-create/deal-create.tsx:38
-#: frontend/src/pages/deal/deal.tsx:65
-#: frontend/src/pages/deals/deals.tsx:111
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:40
-msgid "Deals"
 msgstr ""
 
 #: frontend/src/pages/company/internal/company-overview/company-overview.tsx:134
@@ -3046,13 +3324,8 @@ msgstr ""
 msgid "Are you sure you want to delete the company? This will be moved to Trash."
 msgstr ""
 
-#: frontend/src/pages/contact-create/contact-create.tsx:25
-#: frontend/src/pages/contact-create/contact-create.tsx:122
-msgid "Create Contact"
-msgstr ""
-
 #: frontend/src/pages/contact-settings/contact-settings.tsx:15
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:57
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:58
 msgid "Contact Settings"
 msgstr ""
 
@@ -3431,24 +3704,6 @@ msgid ""
 "own contacts and deals."
 msgstr ""
 
-#: frontend/src/pages/dashboard/ui/stat-cards.tsx:22
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:32
-#: frontend/src/pages/lead-create/lead-create.tsx:20
-#: frontend/src/pages/lead/lead.tsx:65
-#: frontend/src/pages/leads/leads.tsx:97
-msgid "Leads"
-msgstr ""
-
-#: frontend/src/pages/dashboard/ui/stat-cards.tsx:50
-#: frontend/src/pages/deal/deal.tsx:172
-#: frontend/src/pages/deal/internal/deal-invoices/deal-invoices.tsx:51
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:83
-#: frontend/src/pages/Invoice/invoice.tsx:67
-#: frontend/src/pages/invoices/invoices.tsx:49
-#: frontend/src/pages/Layout/ui/header/nav-items.ts:41
-msgid "Invoices"
-msgstr ""
-
 #: frontend/src/pages/dashboard/ui/stat-cards.tsx:59
 msgid "vs last month"
 msgstr ""
@@ -3476,32 +3731,6 @@ msgstr ""
 
 #: frontend/src/pages/dashboard/ui/tutorial.tsx:29
 msgid "Watch Tutorials"
-msgstr ""
-
-#: frontend/src/pages/data-management/data-management.tsx:22
-#: frontend/src/pages/data-management/internal/recycle-bin/recycle-bin.tsx:106
-msgid "Recycle Bin"
-msgstr ""
-
-#: frontend/src/pages/data-management/data-management.tsx:29
-msgid "Imports"
-msgstr ""
-
-#: frontend/src/pages/data-management/data-management.tsx:36
-msgid "Exports"
-msgstr ""
-
-#: frontend/src/pages/data-management/data-management.tsx:43
-msgid "History Logs"
-msgstr ""
-
-#: frontend/src/pages/data-management/data-management.tsx:50
-#: frontend/src/pages/data-management/internal/workflow-logs/workflow-logs.tsx:5
-msgid "Workflow Logs"
-msgstr ""
-
-#: frontend/src/pages/data-management/data-management.tsx:57
-msgid "Uninstall"
 msgstr ""
 
 #: frontend/src/pages/data-management/data-management.tsx:69
@@ -3625,17 +3854,12 @@ msgid ""
 "Deactivating keeps everything. This cannot be undone."
 msgstr ""
 
-#: frontend/src/pages/deal-create/deal-create.tsx:42
-#: frontend/src/pages/deal-create/deal-create.tsx:193
-msgid "Create Deal"
-msgstr ""
-
-#: frontend/src/pages/deal-create/deal-create.tsx:273
+#: frontend/src/pages/deal-create/deal-create.tsx:279
 #: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:242
 msgid "Product List"
 msgstr ""
 
-#: frontend/src/pages/deal-create/deal-create.tsx:275
+#: frontend/src/pages/deal-create/deal-create.tsx:281
 #: frontend/src/pages/deal/internal/deal-overview/deal-overview.tsx:244
 #: frontend/src/pages/Layout/ui/header/nav-items.ts:45
 #: frontend/src/pages/products/products.tsx:14
@@ -3659,7 +3883,7 @@ msgid "item"
 msgstr ""
 
 #: frontend/src/pages/deal-settings/deal-settings.tsx:18
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:69
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:70
 msgid "Deal Settings"
 msgstr ""
 
@@ -3981,7 +4205,7 @@ msgid "Kanban"
 msgstr ""
 
 #: frontend/src/pages/general-settings/general-settings.tsx:9
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:40
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:41
 msgid "General Settings"
 msgstr ""
 
@@ -4105,51 +4329,69 @@ msgstr ""
 msgid "https://example.com"
 msgstr ""
 
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:73
-msgid "Business Address"
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:74
+#: frontend/src/pages/invoice-create/ui/business-information.tsx:65
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:208
+#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:69
+#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:94
+msgid "Tax ID"
 msgstr ""
 
 #: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:76
-msgid "Street Address"
+msgid "Your VAT, GST or other tax registration number. Printed on invoices."
 msgstr ""
 
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:77
-msgid "Enter street address"
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:78
+msgid "Enter tax ID"
 msgstr ""
 
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:80
-msgid "City"
-msgstr ""
-
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:81
-msgid "Enter city"
-msgstr ""
-
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:84
-msgid "State"
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:82
+msgid "Business Address"
 msgstr ""
 
 #: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:85
-msgid "Enter state"
+msgid "Street Address"
 msgstr ""
 
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:88
-msgid "Zip/Postal Code"
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:86
+msgid "Enter street address"
 msgstr ""
 
 #: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:89
-msgid "Enter zip code"
+msgid "City"
 msgstr ""
 
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:92
-msgid "Country"
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:90
+msgid "Enter city"
 msgstr ""
 
 #: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:93
+#: frontend/src/pages/tax-settings/tax-settings.tsx:10
+msgid "State"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:94
+msgid "Enter state"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:97
+msgid "Zip/Postal Code"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:98
+msgid "Enter zip code"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:101
+#: frontend/src/pages/tax-settings/tax-settings.tsx:9
+msgid "Country"
+msgstr ""
+
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:102
 msgid "Enter country"
 msgstr ""
 
-#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:105
+#: frontend/src/pages/general-settings/internal/business-settings/ui/business-settings-form.tsx:114
 #: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:65
 msgid "Save Changes"
 msgstr ""
@@ -4291,10 +4533,6 @@ msgid "Invoice created successfully."
 msgstr ""
 
 #: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:87
-msgid "Create Invoice"
-msgstr ""
-
-#: frontend/src/pages/invoice-create/shared/invoice-form-layout.tsx:87
 msgid "Edit Invoice"
 msgstr ""
 
@@ -4315,33 +4553,33 @@ msgstr ""
 msgid "Terms"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/business-information.tsx:74
+#: frontend/src/pages/invoice-create/ui/business-information.tsx:79
 msgid "Add Business Settings"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:138
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:136
 msgid ""
 "Changing the deal will replace the invoice line items, taxes, and "
 "discounts. Any edits to these will be lost."
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:148
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:146
 msgid "Replace invoice line items?"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:160
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:158
 msgid "Select a deal"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:176
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:174
 msgid "Unable to load the selected deal. Please try again."
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:185
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:183
 msgid "Contact Information"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/deal-select.tsx:219
+#: frontend/src/pages/invoice-create/ui/deal-select.tsx:222
 msgid "Create New Deal"
 msgstr ""
 
@@ -4397,21 +4635,21 @@ msgstr ""
 msgid "Add Logo"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:60
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:62
 msgid "Please add at least one line item to proceed."
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:67
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:69
 msgid ""
 "Business settings are not configured. Please set up your business "
 "information in Settings before creating an invoice."
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:159
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:163
 msgid "Create & Preview"
 msgstr ""
 
-#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:159
+#: frontend/src/pages/invoice-create/ui/invoice-submit-button.tsx:163
 msgid "Update & Preview"
 msgstr ""
 
@@ -4421,10 +4659,6 @@ msgstr ""
 
 #: frontend/src/pages/invoice-edit/data/use-update-invoice.ts:25
 msgid "Invoice updated successfully."
-msgstr ""
-
-#: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:32
-msgid "Invoice Prefix"
 msgstr ""
 
 #: frontend/src/pages/invoice-settings/internal/prefix/prefix.tsx:40
@@ -4504,7 +4738,7 @@ msgid "Are you sure you want to delete the term?"
 msgstr ""
 
 #: frontend/src/pages/invoice-settings/invoice-settings.tsx:16
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:81
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:82
 msgid "Invoice Settings"
 msgstr ""
 
@@ -4586,15 +4820,15 @@ msgstr ""
 msgid "Terms:"
 msgstr ""
 
-#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:68
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:69
 msgid "Qty"
 msgstr ""
 
-#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:74
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:75
 msgid "Discount (%)"
 msgstr ""
 
-#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:83
+#: frontend/src/pages/Invoice/ui/invoice-line-items-preview.tsx:84
 msgid "Tax Rate (%)"
 msgstr ""
 
@@ -4631,7 +4865,7 @@ msgstr ""
 msgid "Due"
 msgstr ""
 
-#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:64
+#: frontend/src/pages/Invoice/ui/invoice-sender-receiver-preview.tsx:74
 msgid "Bill To"
 msgstr ""
 
@@ -4748,12 +4982,6 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: frontend/src/pages/Layout/ui/header/header-mobile-menu.tsx:94
-#: frontend/src/pages/Layout/ui/header/header.tsx:55
-#: frontend/src/pages/Layout/ui/header/more-option-button.tsx:15
-msgid "Settings"
-msgstr ""
-
 #: frontend/src/pages/Layout/ui/header/header-more-dropdown.tsx:44
 #: frontend/src/pages/Layout/ui/header/more-option-button.tsx:66
 msgid "More"
@@ -4818,11 +5046,6 @@ msgid ""
 "dashboard. You'll only see this once."
 msgstr ""
 
-#: frontend/src/pages/lead-create/lead-create.tsx:24
-#: frontend/src/pages/lead-create/lead-create.tsx:110
-msgid "Create Lead"
-msgstr ""
-
 #: frontend/src/pages/lead-settings/internal/conversion-mapping/conversion-mapping.tsx:244
 #: frontend/src/pages/lead-settings/internal/conversion-mapping/ui/ConversionMappingSkeleton.tsx:10
 msgid "Field mapping"
@@ -4837,7 +5060,7 @@ msgid "Conversion mapping saved successfully"
 msgstr ""
 
 #: frontend/src/pages/lead-settings/lead-settings.tsx:17
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:51
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:52
 msgid "Lead Settings"
 msgstr ""
 
@@ -5164,7 +5387,7 @@ msgid "Administrator permission required"
 msgstr ""
 
 #: frontend/src/pages/portal-settings/portal-settings.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:173
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:180
 msgid "Portal Settings"
 msgstr ""
 
@@ -5181,6 +5404,9 @@ msgstr ""
 #: frontend/src/pages/product-settings/product-settings.tsx:8
 #: frontend/src/pages/product-settings/product-settings.tsx:9
 #: frontend/src/pages/product-settings/product-settings.tsx:14
+#: frontend/src/pages/tax-settings/tax-settings.tsx:8
+#: frontend/src/pages/tax-settings/tax-settings.tsx:9
+#: frontend/src/pages/tax-settings/tax-settings.tsx:10
 msgid "Dropdown"
 msgstr ""
 
@@ -5202,56 +5428,61 @@ msgid "Cost Price"
 msgstr ""
 
 #: frontend/src/pages/product-settings/product-settings.tsx:17
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:75
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:76
 msgid "Product Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:44
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:45
 msgid "General"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:85
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:86
 msgid "Entities"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:92
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:93
 msgid "IMAP Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:98
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:99
 #: frontend/src/pages/smtp-settings/smtp-settings.tsx:10
 msgid "SMTP Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:102
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:103
 msgid "Communication"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:109
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:110
 msgid "Woo Commerce"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:133
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:134
 msgid "Others"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:137
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:138
 msgid "Integrations"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:154
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:155
 msgid "AI"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:161
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:162
 msgid "Currency Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:167
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:168
+#: frontend/src/pages/tax-settings/tax-settings.tsx:13
+msgid "Tax Settings"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:174
 msgid "Data management"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:189
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:196
 msgid "System"
 msgstr ""
 
@@ -5356,6 +5587,18 @@ msgstr ""
 
 #: frontend/src/pages/tags/ui/tags-table.tsx:135
 msgid "Delete tag"
+msgstr ""
+
+#: frontend/src/pages/tax-settings/tax-settings.tsx:6
+msgid "Tax Name"
+msgstr ""
+
+#: frontend/src/pages/tax-settings/tax-settings.tsx:7
+msgid "Rate"
+msgstr ""
+
+#: frontend/src/pages/tax-settings/tax-settings.tsx:8
+msgid "Tax Class"
 msgstr ""
 
 #: frontend/src/pages/woo-settings/data/use-update-woo-product-integration.ts:54

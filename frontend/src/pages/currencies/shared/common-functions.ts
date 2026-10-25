@@ -1,6 +1,12 @@
 import { DIGIT_SEPARATOR_KEYS, ZERO_DECIMAL_DIGIT_SEPARATOR_OPTIONS } from './constants'
 import { type CurrencyItemType, type CurrencyStaticDataType } from './currency-types'
 
+export const roundAmount = (value: number, decimals: number): number => {
+  const factor = 10 ** decimals
+  // toPrecision drops the binary noise first, so 1.005 rounds to 1.01.
+  return Math.round(Number((value * factor).toPrecision(15))) / factor
+}
+
 export const getDecimalPart = (places: number): string => {
   if (places <= 0) return ''
   if (places === 1) return '.8'
@@ -55,8 +61,7 @@ export const generateCurrencyFormatPreview = (
   const numeralSystem = currency.numeral_system
   const symbol = currency.symbol
 
-  const roundedNumber =
-    decimalPlaces === 0 ? Math.round(sampleNumber) : Number(sampleNumber.toFixed(decimalPlaces))
+  const roundedNumber = roundAmount(sampleNumber, Number.isNaN(decimalPlaces) ? 0 : decimalPlaces)
 
   const parts = roundedNumber.toString().split('.')
   let integerPart = parts[0]

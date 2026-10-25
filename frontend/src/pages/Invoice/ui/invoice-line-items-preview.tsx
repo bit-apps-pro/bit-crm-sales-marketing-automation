@@ -1,6 +1,6 @@
 import { $appConfig } from '@common/globalStates'
 import { __ } from '@common/helpers/i18nWrap'
-import { calculateLineItemTotal } from '@features/product-line-items/shared/helpers'
+import { calculateLineItemTotal, getRoundingDecimals } from '@features/product-line-items/shared/helpers'
 import {
   type DiscountType,
   type LineItem,
@@ -31,6 +31,7 @@ export default function InvoiceLineItemsPreview({
 }: InvoiceLineItemsPreviewProps) {
   const { homeCurrencyData } = useAtomValue($appConfig)
   const currencyData = currencyDataProp ?? homeCurrencyData
+  const roundingDecimals = getRoundingDecimals(lineItems, taxOption, currencyData?.decimal_places)
 
   const columns: TableColumnsType<LineItem> = useMemo(
     () => [
@@ -91,7 +92,7 @@ export default function InvoiceLineItemsPreview({
           <Typography.Text>
             {generateCurrencyFormatPreview(
               currencyData,
-              calculateLineItemTotal(record, taxOption),
+              calculateLineItemTotal(record, taxOption, roundingDecimals),
               false
             )}
           </Typography.Text>
@@ -99,7 +100,7 @@ export default function InvoiceLineItemsPreview({
         title: __('Total') + ` (${currencyData.symbol})`
       }
     ],
-    [taxOption, currencyData]
+    [taxOption, currencyData, roundingDecimals]
   )
 
   return (

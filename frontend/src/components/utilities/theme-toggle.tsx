@@ -1,10 +1,13 @@
 import { $appConfig } from '@common/globalStates'
-import { cn } from '@common/helpers/globalHelpers'
+import { __ } from '@common/helpers/i18nWrap'
+import { Button, Tooltip } from 'antd'
 import { useAtom } from 'jotai'
 import { LuMoon, LuSun } from 'react-icons/lu'
 
+/** A single icon button showing the theme it switches to, sized like the header's other icon buttons. */
 export default function ThemeToggle() {
   const [{ isDarkTheme }, setAppConfig] = useAtom($appConfig)
+  const label = isDarkTheme ? __('Switch to light mode') : __('Switch to dark mode')
 
   const toggleTheme = () =>
     setAppConfig(prv => ({
@@ -13,26 +16,21 @@ export default function ThemeToggle() {
     }))
 
   return (
-    <button
-      className="relative flex h-10 w-20 cursor-pointer items-center justify-center rounded-full border border-solid border-[#EBEAFF] bg-white transition-colors duration-300 focus:outline-none focus:ring-0 dark:border-neutral-700 dark:bg-transparent"
-      onClick={toggleTheme}
-    >
-      <div className="absolute inset-0 flex items-center justify-between px-3">
-        <LuSun className={isDarkTheme ? 'text-gray-400' : 'text-gray-500'} size={16} />
-        <LuMoon className={isDarkTheme ? 'text-gray-500' : 'text-gray-400'} size={16} />
-      </div>
-      <div
-        className={cn([
-          'absolute z-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary shadow-md transition-all duration-300',
-          isDarkTheme ? 'start-11' : 'start-1'
-        ])}
-      >
-        {isDarkTheme ? (
-          <LuMoon className="text-white" size={16} />
-        ) : (
-          <LuSun className="text-white" size={16} />
-        )}
-      </div>
-    </button>
+    <Tooltip title={label}>
+      <Button
+        aria-label={label}
+        className="h-10 w-10 shadow-none"
+        classNames={{ icon: 'flex items-center' }}
+        icon={
+          isDarkTheme ? (
+            <LuSun className="text-gray-500" size={18} />
+          ) : (
+            <LuMoon className="text-gray-500" size={18} />
+          )
+        }
+        onClick={toggleTheme}
+        shape="circle"
+      />
+    </Tooltip>
   )
 }

@@ -4,6 +4,7 @@ namespace BitApps\Crm\src\StaticData;
 
 use BitApps\Crm\Constants\CommonConstant;
 use BitApps\Crm\Model\Company;
+use BitApps\Crm\Services\CountryService;
 use BitApps\Crm\Services\CurrencyService;
 use BitApps\Crm\Services\FieldService;
 use BitApps\Crm\Services\UserService;
@@ -140,6 +141,14 @@ class CompanySystemDefinedFields
                 'name'               => '',
                 'is_always_required' => false
             ],
+            'tax_id' => [
+                'type'               => 'text',
+                'field_key'          => 'tax_id',
+                'label'              => 'Tax ID',
+                'required'           => false,
+                'name'               => '',
+                'is_always_required' => false
+            ],
             self::BILLING_ADDRESS_GROUP_KEY => [
                 'type'                               => 'address',
                 'field_key'                          => self::BILLING_ADDRESS_GROUP_KEY,
@@ -177,26 +186,29 @@ class CompanySystemDefinedFields
                         'name'               => '',
                         'is_always_required' => false
                     ],
+                    'billing_country' => [
+                        'type'               => 'select',
+                        'field_key'          => 'billing_country',
+                        'label'              => 'Billing Country',
+                        'required'           => false,
+                        'name'               => '',
+                        'options'            => (new CountryService())->getCountriesAsOptions(),
+                        'is_country'         => true,
+                        'is_always_required' => false
+                    ],
                     'billing_state' => [
                         'type'               => 'text',
                         'field_key'          => 'billing_state',
                         'label'              => 'Billing State',
                         'required'           => false,
                         'name'               => '',
+                        'country_field'      => 'billing_country',
                         'is_always_required' => false
                     ],
                     'billing_zip' => [
                         'type'               => 'text',
                         'field_key'          => 'billing_zip',
                         'label'              => 'Billing Zip',
-                        'required'           => false,
-                        'name'               => '',
-                        'is_always_required' => false
-                    ],
-                    'billing_country' => [
-                        'type'               => 'text',
-                        'field_key'          => 'billing_country',
-                        'label'              => 'Billing Country',
                         'required'           => false,
                         'name'               => '',
                         'is_always_required' => false
@@ -240,26 +252,29 @@ class CompanySystemDefinedFields
                         'name'               => '',
                         'is_always_required' => false
                     ],
+                    'shipping_country' => [
+                        'type'               => 'select',
+                        'field_key'          => 'shipping_country',
+                        'label'              => 'Shipping Country',
+                        'required'           => false,
+                        'name'               => '',
+                        'options'            => (new CountryService())->getCountriesAsOptions(),
+                        'is_country'         => true,
+                        'is_always_required' => false
+                    ],
                     'shipping_state' => [
                         'type'               => 'text',
                         'field_key'          => 'shipping_state',
                         'label'              => 'Shipping State',
                         'required'           => false,
                         'name'               => '',
+                        'country_field'      => 'shipping_country',
                         'is_always_required' => false
                     ],
                     'shipping_zip' => [
                         'type'               => 'text',
                         'field_key'          => 'shipping_zip',
                         'label'              => 'Shipping Zip',
-                        'required'           => false,
-                        'name'               => '',
-                        'is_always_required' => false
-                    ],
-                    'shipping_country' => [
-                        'type'               => 'text',
-                        'field_key'          => 'shipping_country',
-                        'label'              => 'Shipping Country',
                         'required'           => false,
                         'name'               => '',
                         'is_always_required' => false

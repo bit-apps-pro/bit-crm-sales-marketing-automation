@@ -14,6 +14,7 @@ import {
   addLineItem,
   calculateLineItemTotal,
   clearLineItemProduct,
+  getRoundingDecimals,
   removeLineItem,
   selectProduct,
   updateLineItem
@@ -25,6 +26,7 @@ import {
   useLineItemsStoreActions,
   useTaxOptionSelect
 } from './state/use-line-items-store'
+import LineItemTaxRules from './ui/line-item-tax-rules'
 import ProductSummary from './ui/product-summary'
 
 const ProductLineItemsTable = lazy(() => import('./ui/product-line-items-table'))
@@ -44,7 +46,8 @@ export default function ProductLineItems({
   className = '',
   currencyData,
   localLineItems,
-  setLocalLineItems
+  setLocalLineItems,
+  taxContactId
 }: ProductLineItemsProps) {
   const existingLineItems = useLineItemsSelect()
   const taxOption = useTaxOptionSelect()
@@ -95,9 +98,11 @@ export default function ProductLineItems({
     setLocalLineItems(addLineItem([], defaultProductSource))
   }, [setLocalLineItems, defaultProductSource])
 
+  const roundingDecimals = getRoundingDecimals(localLineItems, taxOption, currencyData?.decimal_places)
+
   const calculateLineTotal = useCallback(
-    (item: LineItem) => calculateLineItemTotal(item, taxOption),
-    [taxOption]
+    (item: LineItem) => calculateLineItemTotal(item, taxOption, roundingDecimals),
+    [taxOption, roundingDecimals]
   )
 
   useEffect(() => {
@@ -111,6 +116,11 @@ export default function ProductLineItems({
   return (
     <div className={cn('space-y-4 pt-4', className)}>
       <div className="flex items-center justify-end gap-2">
+        <LineItemTaxRules
+          localLineItems={localLineItems}
+          setLocalLineItems={setLocalLineItems}
+          taxContactId={taxContactId}
+        />
         <span className="text-sm font-medium">{__('Tax Calculation:')}</span>
         <Select
           className="w-[180px]"

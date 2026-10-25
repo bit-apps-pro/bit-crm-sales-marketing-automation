@@ -2,7 +2,9 @@
 
 namespace BitApps\Crm\Services;
 
+use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Connection;
+use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Model\LineItem;
 use BitApps\Crm\src\StaticData\CurrencyHelper;
 use Exception;
@@ -91,6 +93,27 @@ class LineItemService
             ->delete();
     }
 
+    public function getProductData(array $itemData): array
+    {
+        $unitPrice = max(0, (float) ($itemData['unit_price'] ?? 0));
+        $quantity = max(1, (int) ($itemData['quantity'] ?? LineItem::DEFAULT_QUANTITY));
+        $discountPercentage = max(0, min(100, (float) ($itemData['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
+        $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (float) ($itemData['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
+
+        $productData = [
+            'product_id'          => $itemData['product_id'] ?? null,
+            'product_name'        => $itemData['product_name'] ?? '',
+            'product_code'        => $itemData['product_code'] ?? '',
+            'product_source'      => !empty($itemData['product_source']) ? $itemData['product_source'] : LineItem::SOURCE_PRODUCT,
+            'unit_price'          => (string) $unitPrice,
+            'tax_rate'            => $taxRate,
+            'discount_percentage' => $discountPercentage,
+            'quantity'            => $quantity,
+        ];
+
+        return Hooks::applyFilter(HookKeys::LINE_ITEM_PRODUCT_DATA, $productData, $itemData);
+    }
+
     private function createLineItems(array $lineItemsData, ?string $dealCurrency = null, string $taxOption = LineItem::TAX_EXCLUSIVE)
     {
         if (empty($lineItemsData)) {
@@ -102,7 +125,14 @@ class LineItemService
             $lineItems[] = $this->prepareLineItemData($itemData, $dealCurrency, $taxOption);
         }
 
-        return LineItem::insert($lineItems);
+        $createdLineItems = LineItem::insert($lineItems);
+
+        // insert() fails silently; throwing rolls back the delete in syncLineItems().
+        if (!$createdLineItems) {
+            throw new Exception(esc_html__('Failed to create line items', 'bit-crm-sales-marketing-automation'));
+        }
+
+        return $createdLineItems;
     }
 
     private function calculateLineItemTotal(float $unitPrice, int $quantity, float $discountPercentage, float $taxRate, string $taxOption): string
@@ -174,31 +204,13 @@ class LineItemService
             'quantity'                     => $quantity,
             'discount_percentage'          => $discountPercentage,
             'tax_rate'                     => $taxRate,
+            'taxes'                        => $productData['taxes'] ?? null,
             'unit_price_in_home_currency'  => $unitPriceInHomeCurrency !== null ? (string) $unitPriceInHomeCurrency : null,
             'unit_price_in_deal_currency'  => $unitPriceInDealCurrency !== null ? (string) $unitPriceInDealCurrency : null,
             'total_price_in_home_currency' => $totalPriceInHomeCurrency,
             'total_price_in_deal_currency' => $totalPriceInDealCurrency,
             'description'                  => $itemData['description'] ?? null,
             'created_by'                   => get_current_user_id(),
-        ];
-    }
-
-    private function getProductData(array $itemData): array
-    {
-        $unitPrice = max(0, (float) ($itemData['unit_price'] ?? 0));
-        $quantity = max(1, (int) ($itemData['quantity'] ?? LineItem::DEFAULT_QUANTITY));
-        $discountPercentage = max(0, min(100, (float) ($itemData['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
-        $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (float) ($itemData['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
-
-        return [
-            'product_id'          => $itemData['product_id'] ?? null,
-            'product_name'        => $itemData['product_name'] ?? '',
-            'product_code'        => $itemData['product_code'] ?? '',
-            'product_source'      => !empty($itemData['product_source']) ? $itemData['product_source'] : LineItem::SOURCE_PRODUCT,
-            'unit_price'          => (string) $unitPrice,
-            'tax_rate'            => $taxRate,
-            'discount_percentage' => $discountPercentage,
-            'quantity'            => $quantity,
         ];
     }
 }

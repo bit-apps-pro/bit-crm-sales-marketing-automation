@@ -16,6 +16,7 @@ use BitApps\Crm\HTTP\Controllers\DealStageController;
 use BitApps\Crm\HTTP\Controllers\DownloadController;
 use BitApps\Crm\HTTP\Controllers\EmailController;
 use BitApps\Crm\HTTP\Controllers\ExternalApiController;
+use BitApps\Crm\HTTP\Controllers\GlobalSearchController;
 use BitApps\Crm\HTTP\Controllers\ImapController;
 use BitApps\Crm\HTTP\Controllers\ImportExportListController;
 use BitApps\Crm\HTTP\Controllers\IntegrationSettingsController;
@@ -194,6 +195,10 @@ Route::group(
         Route::post('common/related-entities', [CommonController::class, 'relatedEntities']);
         Route::get('common/entity-related-lists-count', [CommonController::class, 'entityRelatedListsCount']);
         Route::get('common/required-fields', [CommonController::class, 'requiredFields']);
+        Route::get('common/countries', [CommonController::class, 'countries']);
+        Route::get('common/states', [CommonController::class, 'states']);
+
+        Route::post('global-search', [GlobalSearchController::class, 'search']);
 
         Route::get('currencies/index', [CurrencyController::class, 'index']);
         Route::get('currencies/static-data', [CurrencyController::class, 'staticData']);

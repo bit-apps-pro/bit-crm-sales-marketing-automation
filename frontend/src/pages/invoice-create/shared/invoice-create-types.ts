@@ -80,6 +80,7 @@ export type ContactInformation = Pick<
   | 'id'
   | 'last_name'
   | 'phone'
+  | 'tax_id'
   | 'title'
 >
 export type DealInformation = Pick<Deal, 'email' | 'name'> & {
