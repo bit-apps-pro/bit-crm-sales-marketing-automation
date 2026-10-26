@@ -59,6 +59,7 @@ export interface ContactType {
   shipping_zip?: string
   status?: boolean
   tags: ContactTagType[]
+  tax_id?: string
   title?: string
   updated_at?: string
   updated_by_name?: string

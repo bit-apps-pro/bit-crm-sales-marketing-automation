@@ -1,0 +1,18 @@
+/*
+  The search box sits flush in the modal header, so it opts out of the app-wide focus
+  outline (globalCssInJs) and wp-admin's text-input border. Repeated classes outrank
+  those rules' specificity; both sides use !important.
+*/
+.searchInput.searchInput.searchInput {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.searchInput.searchInput :global(input.ant-input) {
+  background: transparent;
+  border: 0 !important;
+  box-shadow: none !important;
+  min-height: 0;
+  outline: none !important;
+}

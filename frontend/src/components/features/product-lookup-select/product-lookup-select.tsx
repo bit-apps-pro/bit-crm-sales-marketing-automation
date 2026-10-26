@@ -51,7 +51,7 @@ export default function ProductLookupSelect({
     isFetchingNextPage
   } = useLookupSelectOptions({
     perPage: 20,
-    relatedModule: productSource,
+    relatedModule: isCustomSource ? '' : productSource,
     searchTerm: debouncedSearch,
     selectedValue: value
   })
@@ -137,7 +137,12 @@ export default function ProductLookupSelect({
     }
 
     return (
-      <LoadMoreSelect {...commonProps} labelRender={option => renderLabel(option, name)} value={value} />
+      <LoadMoreSelect
+        {...commonProps}
+        filterOption={false}
+        labelRender={option => renderLabel(option, name)}
+        value={value}
+      />
     )
   }
 

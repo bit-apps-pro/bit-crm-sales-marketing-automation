@@ -2,6 +2,7 @@ import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { formatDate, unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
+import useAddressLabels from '@common/hooks/use-address-labels'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { type CompanyType } from '@pages/company/shared/company-types'
@@ -27,6 +28,7 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
   const sortBy = searchParams.get('sortBy') || ''
   const sortOrder = searchParams.get('sortOrder') || ''
   const tableScrollY = useTableScrollHeight(400)
+  const getAddressLabel = useAddressLabels(fieldList, companies)
 
   const handleTableChange = (_pagination: unknown, _filters: unknown, sorter: unknown) => {
     const sortData = Array.isArray(sorter) ? sorter[0] : sorter
@@ -81,6 +83,11 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
               return !text || text.startsWith('0000-00-00') ? '' : formatDate(text)
             }
 
+            const addressLabel = getAddressLabel(field, record, text)
+            if (addressLabel !== undefined) {
+              return addressLabel
+            }
+
             if (field.type === 'select' || field.type === 'radio') {
               return unslugify(text)
             }
@@ -115,7 +122,7 @@ export default function CompaniesTable({ companies, fieldList, isLoading }: Comp
           title: field?.label,
           width: 200
         })),
-    [fieldList, sortBy, sortOrder]
+    [fieldList, sortBy, sortOrder, getAddressLabel]
   )
 
   const columns = [

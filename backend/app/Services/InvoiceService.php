@@ -250,16 +250,18 @@ class InvoiceService
         string $grossDiscountType
     ): array {
         $currencyService = new CurrencyService();
+        $lineItemService = new LineItemService(null, null);
         $homeCurrency = CurrencyHelper::getHomeCurrency();
 
         // Normalize each line item (clamp + convert to home currency) using the same rules
         // LineItemService applies at save time, so the total matches what will be persisted.
         $normalized = [];
         foreach ($requestLineItems as $item) {
-            $unitPriceInDealCurrency = max(0, (float) ($item['unit_price'] ?? 0));
-            $quantity = max(1, (int) ($item['quantity'] ?? LineItem::DEFAULT_QUANTITY));
-            $discountPercentage = max(0, min(100, (float) ($item['discount_percentage'] ?? LineItem::DEFAULT_DISCOUNT)));
-            $taxRate = max(0, min(LineItem::MAX_TAX_RATE, (float) ($item['tax_rate'] ?? LineItem::DEFAULT_TAX_RATE)));
+            $productData = $lineItemService->getProductData($item);
+            $unitPriceInDealCurrency = (float) $productData['unit_price'];
+            $quantity = (int) $productData['quantity'];
+            $discountPercentage = (float) $productData['discount_percentage'];
+            $taxRate = (float) $productData['tax_rate'];
 
             $unitPriceInHomeCurrency = $unitPriceInDealCurrency;
             if ($currency && $currency !== $homeCurrency) {
@@ -272,6 +274,7 @@ class InvoiceService
                 'quantity'                    => $quantity,
                 'discount_percentage'         => $discountPercentage,
                 'tax_rate'                    => $taxRate,
+                'taxes'                       => $productData['taxes'] ?? null,
             ];
         }
 
@@ -289,14 +292,16 @@ class InvoiceService
                 $taxOption,
                 $grossDiscountAmount,
                 $grossDiscountType,
-                'unit_price_in_deal_currency'
+                'unit_price_in_deal_currency',
+                $currencyService->getDecimalPlaces($currency)
             ),
             'home_currency_amount' => self::calculateGrandTotal(
                 $normalized,
                 $taxOption,
                 $homeGrossDiscountAmount,
                 $grossDiscountType,
-                'unit_price_in_home_currency'
+                'unit_price_in_home_currency',
+                $currencyService->getDecimalPlaces($homeCurrency)
             ),
         ];
     }
@@ -306,24 +311,47 @@ class InvoiceService
      * reading unit prices from $unitPriceColumn ('unit_price_in_deal_currency' or
      * 'unit_price_in_home_currency'). Returns raw floats — the single source of truth for the
      * total math, consumed by calculateGrandTotal() (storage) and InvoicePdfService (rendering).
+     * With a $precision, lines that carry named taxes are rounded one by one.
      *
      * @param array<int, array<string, mixed>> $lineItems
+     * @param null|int                         $precision decimals of the currency the amounts are in
      *
-     * @return array{subtotal: float, totalTax: float, discount: float, grandTotal: float}
+     * @return array{subtotal: float, totalTax: float, discount: float, grandTotal: float, taxBreakdown: array<string, float>, lineTotals: array<int|string, float>}
      */
     public static function computeTotals(
         array $lineItems,
         string $taxOption,
         float $grossDiscountAmount,
         string $grossDiscountType,
-        string $unitPriceColumn = 'unit_price_in_deal_currency'
+        string $unitPriceColumn = 'unit_price_in_deal_currency',
+        ?int $precision = null
     ): array {
         $subtotal = 0.0;
         $totalTax = 0.0;
+        $taxBreakdown = [];
+        $lineTotals = [];
         $isExclusive = $taxOption === LineItem::TAX_EXCLUSIVE;
         $isInclusive = $taxOption === LineItem::TAX_INCLUSIVE;
+        $isRoundedPerTax = $precision !== null
+            && ($isExclusive || $isInclusive)
+            && !empty(array_filter($lineItems, static fn ($item) => !empty($item['taxes']) && \is_array($item['taxes'])));
 
-        foreach ($lineItems as $item) {
+        $currencyService = new CurrencyService();
+
+        foreach ($lineItems as $key => $item) {
+            if ($isRoundedPerTax) {
+                $line = self::computeLineAmounts($item, $taxOption, $precision, $unitPriceColumn, $currencyService);
+                $subtotal += $line['net'];
+                $lineTotals[$key] = $line['total'];
+
+                foreach ($line['taxes'] as $label => $amount) {
+                    $taxBreakdown[$label] = ($taxBreakdown[$label] ?? 0) + $amount;
+                    $totalTax += $amount;
+                }
+
+                continue;
+            }
+
             $unitPrice = (float) ($item[$unitPriceColumn] ?? 0);
             $quantity = (float) ($item['quantity'] ?? 0);
             $discountPercentage = (float) ($item['discount_percentage'] ?? 0);
@@ -345,11 +373,26 @@ class InvoiceService
 
         $discount = self::calculateGrossDiscount($subtotal, $totalTax, $grossDiscountAmount, $grossDiscountType);
 
+        if ($isRoundedPerTax) {
+            $discount = $currencyService->roundAmount($discount, $precision);
+        }
+
+        $otherTax = self::getOtherTaxLabel();
+
+        // Listed after the named taxes; alone, the single tax row is shown instead.
+        if (isset($taxBreakdown[$otherTax])) {
+            $otherTaxAmount = $taxBreakdown[$otherTax];
+            unset($taxBreakdown[$otherTax]);
+            $taxBreakdown = $taxBreakdown ? $taxBreakdown + [$otherTax => $otherTaxAmount] : [];
+        }
+
         return [
-            'subtotal'   => $subtotal,
-            'totalTax'   => $totalTax,
-            'discount'   => $discount,
-            'grandTotal' => $subtotal + $totalTax - $discount,
+            'subtotal'     => $subtotal,
+            'totalTax'     => $totalTax,
+            'discount'     => $discount,
+            'grandTotal'   => max(0.0, $subtotal + $totalTax - $discount),
+            'taxBreakdown' => $taxBreakdown,
+            'lineTotals'   => $lineTotals,
         ];
     }
 
@@ -365,9 +408,10 @@ class InvoiceService
         string $taxOption,
         float $grossDiscountAmount,
         string $grossDiscountType,
-        string $unitPriceColumn
+        string $unitPriceColumn,
+        ?int $precision = null
     ): string {
-        $totals = self::computeTotals($lineItems, $taxOption, $grossDiscountAmount, $grossDiscountType, $unitPriceColumn);
+        $totals = self::computeTotals($lineItems, $taxOption, $grossDiscountAmount, $grossDiscountType, $unitPriceColumn, $precision);
 
         return number_format(
             $totals['grandTotal'],
@@ -392,10 +436,93 @@ class InvoiceService
         }
 
         if ($grossDiscountType === 'rate') {
-            return ($subtotal + $totalTax) * ($grossDiscountAmount / 100);
+            return ($subtotal + $totalTax) * (min($grossDiscountAmount, 100) / 100);
         }
 
-        return $grossDiscountAmount;
+        return min($grossDiscountAmount, $subtotal + $totalTax);
+    }
+
+    /**
+     * What each tax adds to the net amount, in percent; a compound tax is charged on top of the ones before it.
+     *
+     * @param array<int, array<string, mixed>> $taxes
+     *
+     * @return array<int, float>
+     */
+    public static function getTaxShares(array $taxes): array
+    {
+        $shares = [];
+        $combinedRate = 0.0;
+
+        foreach ($taxes as $tax) {
+            $share = (empty($tax['is_compound']) ? 100 : 100 + $combinedRate) * (float) ($tax['rate'] ?? 0) / 100;
+            $shares[] = $share;
+            $combinedRate += $share;
+        }
+
+        return $shares;
+    }
+
+    /**
+     * @param array<string, mixed> $item
+     *
+     * @return array{net: float, taxes: array<string, float>, total: float}
+     */
+    private static function computeLineAmounts(
+        array $item,
+        string $taxOption,
+        int $precision,
+        string $unitPriceColumn,
+        CurrencyService $currencyService
+    ): array {
+        $taxRate = (float) ($item['tax_rate'] ?? 0);
+        $isInclusive = $taxOption === LineItem::TAX_INCLUSIVE;
+        $afterDiscount = (float) ($item[$unitPriceColumn] ?? 0)
+            * (float) ($item['quantity'] ?? 0)
+            * (1 - (float) ($item['discount_percentage'] ?? 0) / 100);
+        $lineAmount = $currencyService->roundAmount($afterDiscount, $precision);
+        $taxableAmount = $isInclusive ? $lineAmount / (1 + $taxRate / 100) : $lineAmount;
+        $taxes = [];
+
+        foreach (self::getLineTaxShares($item, $taxRate) as $label => $share) {
+            $taxes[$label] = $currencyService->roundAmount($taxableAmount * $share / 100, $precision);
+        }
+
+        $tax = array_sum($taxes);
+
+        return [
+            'net'   => $isInclusive ? $lineAmount - $tax : $lineAmount,
+            'taxes' => $taxes,
+            'total' => $isInclusive ? $lineAmount : $lineAmount + $tax,
+        ];
+    }
+
+    /**
+     * A rate from no tax rule (typed, or a line without named taxes) is listed as "Other tax".
+     *
+     * @param array<string, mixed> $item
+     *
+     * @return array<string, float>
+     */
+    private static function getLineTaxShares(array $item, float $taxRate): array
+    {
+        $singleTax = $taxRate > 0 ? [['rate' => $taxRate]] : [];
+        $taxes = array_values(\is_array($item['taxes'] ?? null) ? $item['taxes'] : $singleTax);
+        $shares = [];
+
+        foreach (self::getTaxShares($taxes) as $index => $share) {
+            $tax = $taxes[$index];
+            $rate = (float) ($tax['rate'] ?? 0);
+            $label = $rate > 0 ? \sprintf('%s (%s%%)', $tax['name'] ?? '', $rate) : (string) ($tax['name'] ?? '');
+
+            if ($rate > 0 && empty($tax['id'])) {
+                $label = self::getOtherTaxLabel();
+            }
+
+            $shares[$label] = ($shares[$label] ?? 0) + $share;
+        }
+
+        return $shares;
     }
 
     private static function invoiceJoinQuery(int $invoiceId): QueryBuilder
@@ -459,5 +586,10 @@ class InvoiceService
     private static function getLineItems(int $invoiceId)
     {
         return LineItem::find(['entity_id' => $invoiceId, 'module' => Invoice::MODULE_NAME]);
+    }
+
+    private static function getOtherTaxLabel(): string
+    {
+        return __('Other tax', 'bit-crm-sales-marketing-automation');
     }
 }

@@ -32,6 +32,7 @@ final class BitAppsCrmCompaniesTableMigration extends Migration
                 $table->string('annual_revenue')->nullable();
                 $table->string('type')->nullable();
                 $table->string('rating')->nullable();
+                $table->string('tax_id')->nullable();
                 $table->text('billing_address_line_1')->nullable();
                 $table->text('billing_address_line_2')->nullable();
                 $table->string('billing_city')->nullable();

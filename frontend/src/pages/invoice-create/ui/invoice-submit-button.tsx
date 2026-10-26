@@ -3,6 +3,7 @@ import { MODULES } from '@common/constants/modules'
 import NotifyContext from '@common/context/NotifyContext'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { __ } from '@common/helpers/i18nWrap'
+import { TAX_RULES_MUTATION_KEY } from '@features/product-line-items/shared/constants'
 import { formatLineItems } from '@features/product-line-items/shared/helpers'
 import {
   useGrossDiscountSelect,
@@ -12,6 +13,7 @@ import {
 } from '@features/product-line-items/state/use-line-items-store'
 import useBusinessSettings from '@pages/general-settings/internal/business-settings/data/use-business-settings'
 import useUpdateInvoice from '@pages/invoice-edit/data/use-update-invoice'
+import { useIsMutating } from '@tanstack/react-query'
 import If from '@utilities/If'
 import { Button, type FormInstance } from 'antd'
 import { useContext, useRef } from 'react'
@@ -129,6 +131,7 @@ export default function InvoiceSubmitButton({ form, mode }: InvoiceSubmitButtonP
   }
 
   const isPending = mode === 'create' ? isStorePending : isUpdatePending
+  const isApplyingTaxRules = useIsMutating({ mutationKey: TAX_RULES_MUTATION_KEY }) > 0
 
   return (
     <If
@@ -140,6 +143,7 @@ export default function InvoiceSubmitButton({ form, mode }: InvoiceSubmitButtonP
         <If conditions={mode === 'edit'}>
           <Button
             className="rounded-full"
+            disabled={isApplyingTaxRules}
             loading={isPending && !pendingWithPreview.current}
             onClick={() => handleSubmitForm(false)}
             size="large"
@@ -149,7 +153,7 @@ export default function InvoiceSubmitButton({ form, mode }: InvoiceSubmitButtonP
         </If>
         <Button
           className="rounded-full"
-          disabled={mode === 'create' && !dealInformation.isDealSelected}
+          disabled={(mode === 'create' && !dealInformation.isDealSelected) || isApplyingTaxRules}
           icon={<LuPlus />}
           loading={isPending && pendingWithPreview.current}
           onClick={() => handleSubmitForm(true)}

@@ -128,6 +128,7 @@ export default function FilterValueInput({
             allowClear
             className="w-full"
             onChange={handleValueChange}
+            optionFilterProp="label"
             options={selectedField?.options}
             placeholder={__('Select option')}
             showSearch

@@ -63,6 +63,7 @@ export default function InvoiceForm({ form, mode }: InvoiceFormProps) {
             currencyData={currencyData}
             localLineItems={invoiceLineItems}
             setLocalLineItems={setInvoiceLineItems}
+            taxContactId={dealInformation.contact_id}
           />
         )}
       </fieldset>

@@ -7,12 +7,14 @@ export interface Option {
 }
 
 export interface FieldItem {
+  country_field?: string
   field_key: string
   group_fields?: Record<string, FieldItem>
   help_text?: string
   hidden?: boolean
   id: number
   is_always_required?: boolean
+  is_country?: boolean
   is_custom?: boolean
   is_visible?: boolean
   label: string

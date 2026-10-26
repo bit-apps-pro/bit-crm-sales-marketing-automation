@@ -1,9 +1,10 @@
 import { __ } from '@common/helpers/i18nWrap'
 import { type ProductOptionData } from '@components/features/product-lookup-select/shared/types'
+import { roundAmount } from '@pages/currencies/shared/common-functions'
 import { type CurrencyItemType } from '@pages/currencies/shared/currency-types'
 
 import { PRODUCT_SOURCE, TAX } from './constants'
-import { type LineItem, type TaxOption } from './types'
+import { type DiscountType, type LineItem, type LineItemTax, type TaxOption } from './types'
 
 export function isLineItemEditable(item: LineItem): boolean {
   return Boolean(item.product_name) || item.product_source === PRODUCT_SOURCE.CUSTOM
@@ -36,7 +37,18 @@ export function updateLineItem(
   field: keyof LineItem,
   value: number | string | undefined
 ): LineItem[] {
-  return lineItems.map(item => (item.id === id ? { ...item, [field]: value } : item))
+  return lineItems.map(item => {
+    if (item.id !== id) return item
+
+    if (field === 'tax_rate' && Array.isArray(item.taxes)) {
+      const rate = Number(value) || 0
+      const typedTax = { id: 0, is_compound: false, name: __('Tax'), rate }
+
+      return { ...item, tax_customer: undefined, tax_rate: rate, taxes: rate ? [typedTax] : [] }
+    }
+
+    return { ...item, [field]: value }
+  })
 }
 
 export function clearLineItemProduct(
@@ -62,6 +74,15 @@ export function clearLineItemProduct(
   )
 }
 
+export function copyLineItems(lineItems: LineItem[]): LineItem[] {
+  return lineItems.map(item => ({
+    ...item,
+    entity_id: undefined,
+    id: createEmptyLineItem().id,
+    module: undefined
+  }))
+}
+
 export function selectProduct(
   lineItems: LineItem[],
   lineItemId: string,
@@ -83,13 +104,18 @@ export function selectProduct(
           product_name: productData.name,
           product_source: productData.source || '',
           tax_rate: Number(productData.tax_rate) || 0,
+          taxes: undefined,
           unit_price_in_deal_currency: price
         }
       : item
   )
 }
 
-export function calculateLineItemTotal(item: LineItem, taxOption: TaxOption): number {
+export function calculateLineItemTotal(item: LineItem, taxOption: TaxOption, decimals?: number): number {
+  if (decimals !== undefined && taxOption !== TAX.NO_TAX) {
+    return getRoundedLineAmounts(item, taxOption, decimals).total
+  }
+
   const baseAmount = (item.unit_price_in_deal_currency || 0) * item.quantity
 
   const discountAmount = baseAmount * ((item.discount_percentage || 0) / 100)
@@ -101,10 +127,6 @@ export function calculateLineItemTotal(item: LineItem, taxOption: TaxOption): nu
   }
 
   return afterDiscount
-}
-
-export function calculateGrandTotal(lineItems: LineItem[], taxOption: TaxOption): number {
-  return lineItems.reduce((sum, item) => sum + calculateLineItemTotal(item, taxOption), 0)
 }
 
 export function calculateSubtotal(lineItems: LineItem[], taxOption: TaxOption): number {
@@ -135,6 +157,120 @@ export function calculateTotalTax(lineItems: LineItem[], taxOption: TaxOption): 
   }, 0)
 }
 
+function getTaxShares(taxes: LineItemTax[]): number[] {
+  let combinedRate = 0
+
+  return taxes.map(tax => {
+    const share = ((tax.is_compound ? 100 + combinedRate : 100) * Number(tax.rate)) / 100
+    combinedRate += share
+    return share
+  })
+}
+
+function getLineTaxShares(item: LineItem): Map<string, number> {
+  const singleTax = { id: 0, is_compound: false, name: __('Tax'), rate: item.tax_rate }
+  const taxes = item.taxes ?? (item.tax_rate ? [singleTax] : [])
+  const shares = getTaxShares(taxes)
+  const sharesByLabel = new Map<string, number>()
+
+  taxes.forEach((tax, index) => {
+    const namedLabel = Number(tax.rate) > 0 ? `${tax.name} (${Number(tax.rate)}%)` : tax.name
+    const label = Number(tax.rate) > 0 && !tax.id ? __('Other tax') : namedLabel
+
+    sharesByLabel.set(label, (sharesByLabel.get(label) || 0) + shares[index])
+  })
+
+  return sharesByLabel
+}
+
+function formatTaxBreakdown(amounts: Map<string, number>): { amount: number; label: string }[] {
+  const rows = [...amounts].map(([label, amount]) => ({ amount, label }))
+  const namedRows = rows.filter(row => row.label !== __('Other tax'))
+
+  return namedRows.length > 0 ? [...namedRows, ...rows.filter(row => row.label === __('Other tax'))] : []
+}
+
+export function calculateCombinedTaxRate(taxes: LineItemTax[]): number {
+  const combinedRate = getTaxShares(taxes).reduce((sum, share) => sum + share, 0)
+
+  return Math.round(combinedRate * 10_000) / 10_000
+}
+
+// Lines with named taxes are rounded one by one so the tax rows add up to the cent.
+export function getRoundingDecimals(
+  lineItems: LineItem[],
+  taxOption: TaxOption,
+  decimalPlaces?: number | string
+): number | undefined {
+  const hasNamedTaxes = taxOption !== TAX.NO_TAX && lineItems.some(item => Boolean(item.taxes?.length))
+
+  return hasNamedTaxes ? Number(decimalPlaces ?? 2) : undefined
+}
+
+function getRoundedLineAmounts(item: LineItem, taxOption: TaxOption, decimals: number) {
+  const baseAmount = (item.unit_price_in_deal_currency || 0) * item.quantity
+  const afterDiscount = baseAmount - baseAmount * ((item.discount_percentage || 0) / 100)
+  const isInclusive = taxOption === TAX.INCLUSIVE
+  const lineAmount = roundAmount(afterDiscount, decimals)
+  const taxableAmount = isInclusive ? lineAmount / (1 + item.tax_rate / 100) : lineAmount
+  const taxes = [...getLineTaxShares(item)].map(([label, share]) => ({
+    amount: roundAmount((taxableAmount * share) / 100, decimals),
+    label
+  }))
+  const tax = taxes.reduce((sum, lineTax) => sum + lineTax.amount, 0)
+
+  return {
+    net: isInclusive ? lineAmount - tax : lineAmount,
+    taxes,
+    total: isInclusive ? lineAmount : lineAmount + tax
+  }
+}
+
+export function calculateTotals(
+  lineItems: LineItem[],
+  taxOption: TaxOption,
+  grossDiscount: number,
+  grossDiscountType: DiscountType,
+  decimalPlaces?: number | string
+) {
+  const decimals = getRoundingDecimals(lineItems, taxOption, decimalPlaces)
+  const taxAmounts = new Map<string, number>()
+  let subtotal = 0
+  let totalTax = 0
+
+  if (decimals === undefined) {
+    subtotal = calculateSubtotal(lineItems, taxOption)
+    totalTax = calculateTotalTax(lineItems, taxOption)
+  } else {
+    lineItems.forEach(item => {
+      const line = getRoundedLineAmounts(item, taxOption, decimals)
+
+      subtotal += line.net
+      line.taxes.forEach(lineTax => {
+        taxAmounts.set(lineTax.label, (taxAmounts.get(lineTax.label) || 0) + lineTax.amount)
+        totalTax += lineTax.amount
+      })
+    })
+  }
+
+  const grandTotalBeforeDiscount = subtotal + totalTax
+
+  const cappedDiscount = Math.min(
+    grossDiscountType === 'amount' ? grossDiscount : (grandTotalBeforeDiscount * grossDiscount) / 100,
+    grandTotalBeforeDiscount
+  )
+  const discountAmount = decimals === undefined ? cappedDiscount : roundAmount(cappedDiscount, decimals)
+
+  return {
+    discountAmount,
+    grandTotal: Math.max(0, grandTotalBeforeDiscount - discountAmount),
+    grandTotalBeforeDiscount,
+    subtotal,
+    taxBreakdown: formatTaxBreakdown(taxAmounts),
+    totalTax
+  }
+}
+
 export function formatLineItems(lineItems: LineItem[]) {
   const formattedLineItems = lineItems
     ?.filter(item => item.product_name)
@@ -148,6 +284,7 @@ export function formatLineItems(lineItems: LineItem[]) {
       product_source: item.product_source || '',
       quantity: item.quantity,
       tax_rate: item.tax_rate || 0,
+      taxes: item.taxes ?? undefined,
       unit_price: item.unit_price_in_deal_currency || 0
     }))
 

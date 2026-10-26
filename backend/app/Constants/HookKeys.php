@@ -8,7 +8,7 @@ namespace BitApps\Crm\Constants;
  * Every constant is the string name of a hook fired with `apply_filters()` in
  * the free plugin. The free plugin defines these extension points and ships
  * working defaults; the pro plugin (and third-party code) may hook in to
- * extend behaviour.
+ * extend behavior.
  *
  * Each constant's docblock states the hook signature as:
  *   apply_filters(<filtered value>, <extra args…>): <return type>
@@ -66,7 +66,7 @@ class HookKeys
     public const ADMIN_CAPABILITIES = 'bit_crm_admin_capabilities';
 
     /**
-     * Filters the additional user roles recognised by the CRM.
+     * Filters the additional user roles recognized by the CRM.
      *
      * apply_filters(array $roles): array
      */
@@ -417,4 +417,48 @@ class HookKeys
      * apply_filters(array $response, string $email, array $context): array
      */
     public const PRIVACY_ERASURE_RESPONSE = 'bit_crm_privacy_erasure_response';
+
+    /**
+     * Filters the record groups the header's global search covers, keyed by group
+     * (and filter scope) name. The pro plugin appends its own (product, workflow).
+     *
+     * A group has:
+     *   - 'label': plural, translated.
+     *   - 'route': detail-page route, opened as '/<route>/details/<id>' (e.g. 'products').
+     *   - 'format': callable(array $row): array{0: string, 1: string} -- title, subtitle.
+     *   - 'listPath' (optional): list page the term is appended to, e.g. '/products?searchTerm='.
+     *   - 'capability' (optional): view capability. Omit it only for a registered module,
+     *     which is then checked with ModuleService::canViewModule().
+     *   - 'service' (optional for a registered module, which is searched through its
+     *     EntityFactory service): callable returning an object whose search(array $args)
+     *     takes the list-page arguments (page, perPage, offset, searchTerm, ids, sortBy,
+     *     sortOrder) and returns ['data' => rows, 'total' => int].
+     *   - 'scopeOnly' (optional): searched only when picked as the filter, not under "All".
+     *
+     * Registered modules with a 'route' also become records activities and notes may be
+     * found on, while the record is live (its model's table has `is_trash = 0`). Other keys
+     * the built-in groups use are internal and may change.
+     *
+     * apply_filters(array $groups): array
+     */
+    public const GLOBAL_SEARCH_GROUPS = 'bit_crm_global_search_groups';
+
+    // -------------------------------------------------------------------------
+    // Line items — extension point implemented by the pro plugin.
+    // -------------------------------------------------------------------------
+
+    /**
+     * Filters one line item's product data before it is priced and stored.
+     * Fired by LineItemService for every line of a deal or invoice. $productData
+     * holds the sanitized product_id, product_name, product_code, product_source,
+     * unit_price, tax_rate, discount_percentage and quantity; $itemData is the
+     * line as it was submitted. A listener may set `taxes` — the named taxes
+     * the line carries, each ['id', 'name', 'rate', 'is_compound'] — together
+     * with the combined `tax_rate` they add up to. Without a listener the line
+     * keeps its single tax_rate and stores no taxes. InvoiceService reads the
+     * same data while totalling an invoice.
+     *
+     * apply_filters(array $productData, array $itemData): array
+     */
+    public const LINE_ITEM_PRODUCT_DATA = 'bit_crm_line_item_product_data';
 }

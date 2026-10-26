@@ -53,6 +53,7 @@ class LineItem extends Model
         'quantity',
         'discount_percentage',
         'tax_rate',
+        'taxes',
         'unit_price_in_home_currency',
         'unit_price_in_deal_currency',
         'total_price_in_home_currency',
@@ -68,6 +69,7 @@ class LineItem extends Model
         'quantity'            => 'int',
         'discount_percentage' => 'float',
         'tax_rate'            => 'float',
+        'taxes'               => 'array',
     ];
 
     protected function castToSiteTimeZone($value)

@@ -10,5 +10,6 @@ export interface BusinessSettings {
   postal_code?: string
   state?: string
   street?: string
+  tax_id?: string
   website?: string
 }

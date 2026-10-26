@@ -2,6 +2,7 @@
 
 namespace BitApps\Crm\src\InvoicePdfTemplate;
 
+use BitApps\Crm\Services\CountryService;
 use BitApps\Crm\Services\CurrencyService;
 
 class InvoicePdfTemplate
@@ -159,7 +160,17 @@ class InvoicePdfTemplate
             $html .= $this->escapeWithBreak($s['country']);
         }
 
+        if (!empty($s['tax_id'])) {
+            $html .= $this->escapeWithBreak($this->formatTaxIdLine($s['tax_id']));
+        }
+
         return $html ?: esc_html__('Business information not configured', 'bit-crm-sales-marketing-automation');
+    }
+
+    private function formatTaxIdLine(string $taxId): string
+    {
+        // translators: %s: the tax ID (VAT number) of the business or the customer
+        return \sprintf(__('Tax ID: %s', 'bit-crm-sales-marketing-automation'), $taxId);
     }
 
     private function buildContactInfo(): string
@@ -181,10 +192,16 @@ class InvoicePdfTemplate
             ]
         );
 
-        $html .= $this->cityStateZip([$contact->billing_city ?? '', $contact->billing_state ?? '', $contact->billing_zip ?? '']);
+        $labels = (new CountryService())->getBillingAddressLabels($contact);
+
+        $html .= $this->cityStateZip([$contact->billing_city ?? '', $labels['billing_state'], $contact->billing_zip ?? '']);
 
         if (!empty($contact->billing_country)) {
-            $html .= $this->escapeWithBreak($contact->billing_country);
+            $html .= $this->escapeWithBreak($labels['billing_country']);
+        }
+
+        if (!empty($contact->tax_id)) {
+            $html .= $this->escapeWithBreak($this->formatTaxIdLine($contact->tax_id));
         }
 
         return $html;
@@ -234,14 +251,14 @@ class InvoicePdfTemplate
             </thead>
             <tbody>';
 
-        foreach ($this->data->lineItems as $lineItem) {
+        foreach ($this->data->lineItems as $key => $lineItem) {
             $unitPrice = (float) ($lineItem['unit_price_in_deal_currency'] ?? 0);
             $quantity = (float) ($lineItem['quantity'] ?? 0);
             $discountPercentage = (float) ($lineItem['discount_percentage'] ?? 0);
             $taxRate = (float) ($lineItem['tax_rate'] ?? 0);
 
             $afterDiscount = $unitPrice * $quantity * (1 - $discountPercentage / 100);
-            $lineTotal = $this->totals->isExclusive ? $afterDiscount * (1 + $taxRate / 100) : $afterDiscount;
+            $lineTotal = $this->totals->lineTotals[$key] ?? ($this->totals->isExclusive ? $afterDiscount * (1 + $taxRate / 100) : $afterDiscount);
 
             $qtyFormatted = $quantity === floor($quantity)
                 ? number_format((int) $quantity)
@@ -273,7 +290,15 @@ class InvoicePdfTemplate
                 <td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($this->totals->subtotal) . '</td>
             </tr>';
 
-        if ($this->totals->hasTax()) {
+        foreach ($this->totals->taxBreakdown as $taxName => $taxAmount) {
+            $taxRowLabel = $taxAmount > 0 ? \sprintf('%s (%s)', $taxName, $this->totals->taxLabel()) : $taxName;
+            $html .= '<tr>
+                <td>' . $this->escape($taxRowLabel . ':') . '</td>
+                <td style="text-align: ' . $this->endAlign . ';">' . $this->formatCurrency($taxAmount) . '</td>
+            </tr>';
+        }
+
+        if ($this->totals->hasTax() && empty($this->totals->taxBreakdown)) {
             $html .= '<tr>
                 <td>' . \sprintf(
                 // translators: %s: tax label
@@ -290,7 +315,7 @@ class InvoicePdfTemplate
                 ? \sprintf(
                     // translators: %s: gross discount amount
                     esc_html__('Gross Discount (%s%%):', 'bit-crm-sales-marketing-automation'),
-                    $grossDiscountAmount
+                    min($grossDiscountAmount, 100)
                 )
                 : esc_html__('Gross Discount:', 'bit-crm-sales-marketing-automation');
 

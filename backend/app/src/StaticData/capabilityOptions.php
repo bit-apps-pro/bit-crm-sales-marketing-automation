@@ -104,6 +104,7 @@ return [
         ['label' => __('Product Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_product'],
         ['label' => __('Imap Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_imap'],
         ['label' => __('Currency Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_currency'],
+        ['label' => __('Tax Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_tax'],
         ['label' => __('Invoice Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_invoice'],
         ['label' => __('Data Management Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_data_management'],
         ['label' => __('SMTP Settings', 'bit-crm-sales-marketing-automation'), 'value' => 'bit_crm_setting_smtp'],

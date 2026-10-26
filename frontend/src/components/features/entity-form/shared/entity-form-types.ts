@@ -3,12 +3,14 @@ import { type FormInstance } from 'antd'
 import { type ReactElement } from 'react'
 
 export interface BaseFieldItemType {
+  country_field?: string
   default_value?: string
   field_key: string
   group_fields?: Record<string, BaseFieldItemType>
   help_text?: string
   hidden?: boolean
   id?: number | string
+  is_country?: boolean
   is_custom?: boolean
   label: string
   max?: number
@@ -58,4 +60,13 @@ export interface EntityTagsPropsType {
   onRemoveTag: (tag: string) => void
   options: { label: string; value: string }[]
   value: string[] | undefined
+}
+
+export interface StateSelectPropsType {
+  countryField: string
+  disabled?: boolean
+  id?: string
+  name: string
+  onChange?: (value?: string) => void
+  value?: string
 }

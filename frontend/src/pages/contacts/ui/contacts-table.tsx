@@ -3,6 +3,7 @@ import { checkCapability } from '@common/helpers/capabilityHelper'
 import { renderFullName } from '@common/helpers/entity-helpers'
 import { formatDate, unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
+import useAddressLabels from '@common/hooks/use-address-labels'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { type ContactType } from '@pages/contact/shared/contact-types'
@@ -31,6 +32,7 @@ export default function ContactsTable({ contacts, fieldList, isLoading }: Contac
   const sortBy = searchParams.get('sortBy') || ''
   const sortOrder = searchParams.get('sortOrder') || ''
   const tableScrollY = useTableScrollHeight(400)
+  const getAddressLabel = useAddressLabels(fieldList, contacts)
 
   const handleTableChange = (_pagination: unknown, _filters: unknown, sorter: unknown) => {
     const sortData = Array.isArray(sorter) ? sorter[0] : sorter
@@ -85,6 +87,11 @@ export default function ContactsTable({ contacts, fieldList, isLoading }: Contac
               return !text || text.startsWith('0000-00-00') ? '' : formatDate(text)
             }
 
+            const addressLabel = getAddressLabel(field, record, text)
+            if (addressLabel !== undefined) {
+              return addressLabel
+            }
+
             if (field.type === 'select' || field.type === 'radio') {
               return unslugify(text)
             }
@@ -132,7 +139,7 @@ export default function ContactsTable({ contacts, fieldList, isLoading }: Contac
           title: field?.label,
           width: 200
         })),
-    [fieldList, sortBy, sortOrder]
+    [fieldList, sortBy, sortOrder, getAddressLabel]
   )
 
   const columns = [

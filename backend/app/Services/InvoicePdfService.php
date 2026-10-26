@@ -35,7 +35,7 @@ class InvoicePdfService
         return $this->createPdf($data, $totals);
     }
 
-    public function calculateTotals(Invoice $invoice, array $lineItems): InvoiceTotals
+    public function calculateTotals(Invoice $invoice, array $lineItems, ?int $decimals = null): InvoiceTotals
     {
         $isExclusive = $invoice->tax_option === LineItem::TAX_EXCLUSIVE;
         $isInclusive = $invoice->tax_option === LineItem::TAX_INCLUSIVE;
@@ -45,7 +45,8 @@ class InvoicePdfService
             $invoice->tax_option,
             (float) ($invoice->gross_discount_amount ?? 0),
             $invoice->gross_discount_type ?? 'amount',
-            'unit_price_in_deal_currency'
+            'unit_price_in_deal_currency',
+            $decimals ?? $this->currencyService->getDecimalPlaces($invoice->currency)
         );
 
         return new InvoiceTotals(
@@ -54,7 +55,9 @@ class InvoicePdfService
             $totals['grandTotal'],
             $totals['discount'],
             $isExclusive,
-            $isInclusive
+            $isInclusive,
+            $totals['taxBreakdown'],
+            $totals['lineTotals']
         );
     }
 

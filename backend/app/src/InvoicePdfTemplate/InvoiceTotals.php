@@ -16,13 +16,21 @@ final class InvoiceTotals
 
     public bool $isInclusive;
 
+    /** @var array<string, float> */
+    public array $taxBreakdown;
+
+    /** @var array<int|string, float> */
+    public array $lineTotals;
+
     public function __construct(
         float $subtotal,
         float $totalTax,
         float $grandTotal,
         float $discount,
         bool $isExclusive,
-        bool $isInclusive
+        bool $isInclusive,
+        array $taxBreakdown = [],
+        array $lineTotals = []
     ) {
         $this->subtotal = $subtotal;
         $this->totalTax = $totalTax;
@@ -30,6 +38,8 @@ final class InvoiceTotals
         $this->discount = $discount;
         $this->isExclusive = $isExclusive;
         $this->isInclusive = $isInclusive;
+        $this->taxBreakdown = $taxBreakdown;
+        $this->lineTotals = $lineTotals;
     }
 
     public function taxLabel(): string

@@ -4,7 +4,7 @@ Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -237,6 +237,18 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Changelog ==
 
+= 1.3.2 (October 22, 2026) =
+* Features:
+   * Global search: Search records, pages and settings from the header or with Ctrl+K (products and workflows in Pro).
+   * Tax rules (Pro): Tax rates by country, state and tax class are applied to line items automatically, with each tax listed by name on invoices and EU reverse charge for verified VAT numbers.
+   * Tax ID: Contacts, companies and your business now have a Tax ID, shown on invoices.
+* Improvements:
+   * Addresses: Country and state are now picked from dropdowns.
+   * External API: Added country and state endpoints.
+* Fixed:
+   * Invoices: Gross discounts can no longer exceed the invoice total, and totals round the same way everywhere.
+   * Filters: Dropdown filter search now matches option names.
+
 = 1.3.1 (October 11, 2026) =
 * Features:
    * Incoming webhooks (Pro): Other apps can now send data to a webhook URL to create or update a lead, contact, company, deal or product from the fields you map and start a workflow, with a Listen option to capture a sample request.
@@ -356,5 +368,5 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Upgrade Notice ==
 
-= 1.3.1 =
-Adds incoming webhooks in Pro, so other apps can create or update CRM records and start a workflow, plus record filtering and tagging in the AI assistant.
+= 1.3.2 =
+Adds global search, Tax ID fields and country and state dropdowns, plus automatic tax rules in Pro.

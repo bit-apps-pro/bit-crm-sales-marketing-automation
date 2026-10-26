@@ -117,6 +117,7 @@ const CAPABILITIES = {
     PORTAL: 'bit_crm_setting_portal',
     PRODUCT: 'bit_crm_setting_product',
     SMTP: 'bit_crm_setting_smtp',
+    TAX: 'bit_crm_setting_tax',
     USER: 'bit_crm_setting_crm_user',
     WORKFLOW: 'bit_crm_setting_workflow'
   },

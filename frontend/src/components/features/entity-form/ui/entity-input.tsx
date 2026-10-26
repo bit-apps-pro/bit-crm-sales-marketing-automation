@@ -12,6 +12,7 @@ import { LuPercent } from 'react-icons/lu'
 import { MAX_ALLOWED_AMOUNT, MAX_ALLOWED_PERCENTAGE } from '../shared/constants'
 import { getValidationRules } from '../shared/entity-form-helpers'
 import { type EntityInputPropsType } from '../shared/entity-form-types'
+import StateSelect from './state-select'
 
 export default function EntityInput({
   currencyData,
@@ -21,9 +22,11 @@ export default function EntityInput({
   specialComponents
 }: EntityInputPropsType) {
   const {
+    country_field: countryField,
     default_value: defaultValue,
     field_key: fieldKey,
     help_text: helpText,
+    is_country: isCountry,
     label,
     max,
     min,
@@ -109,9 +112,12 @@ export default function EntityInput({
       case 'select': {
         return (
           <Select
+            allowClear={isCountry}
             disabled={disabled}
             mode={type === 'select' ? undefined : 'multiple'}
+            optionFilterProp="label"
             options={options}
+            showSearch
           />
         )
       }
@@ -150,6 +156,10 @@ export default function EntityInput({
       }
 
       default: {
+        if (countryField) {
+          return <StateSelect countryField={countryField} disabled={disabled} name={fieldKey} />
+        }
+
         return <Input disabled={disabled} name={fieldKey} type={type} />
       }
     }

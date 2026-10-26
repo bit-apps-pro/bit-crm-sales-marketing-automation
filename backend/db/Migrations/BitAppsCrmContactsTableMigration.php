@@ -34,6 +34,7 @@ final class BitAppsCrmContactsTableMigration extends Migration
                 $table->string('lead_source')->nullable();
                 $table->date('date_of_birth')->nullable();
                 $table->string('secondary_email')->nullable();
+                $table->string('tax_id')->nullable();
                 $table->text('billing_address_line_1')->nullable();
                 $table->text('billing_address_line_2')->nullable();
                 $table->string('billing_city')->nullable();

@@ -440,6 +440,8 @@ return [
 
     'Enter number' => __('Enter number', 'bit-crm-sales-marketing-automation'),
 
+    'Select a country first' => __('Select a country first', 'bit-crm-sales-marketing-automation'),
+
     'by' => __('by', 'bit-crm-sales-marketing-automation'),
 
     'Not set' => __('Not set', 'bit-crm-sales-marketing-automation'),
@@ -507,6 +509,131 @@ return [
 
     'section' => __('section', 'bit-crm-sales-marketing-automation'),
 
+    'Lead Fields' => __('Lead Fields', 'bit-crm-sales-marketing-automation'),
+
+    'Lead Conversion Mapping' => __('Lead Conversion Mapping', 'bit-crm-sales-marketing-automation'),
+
+    'Contact Fields' => __('Contact Fields', 'bit-crm-sales-marketing-automation'),
+
+    'Company Fields' => __('Company Fields', 'bit-crm-sales-marketing-automation'),
+
+    'Deal Fields' => __('Deal Fields', 'bit-crm-sales-marketing-automation'),
+
+    'Deal Stages' => __('Deal Stages', 'bit-crm-sales-marketing-automation'),
+
+    'Archived Deal Stages' => __('Archived Deal Stages', 'bit-crm-sales-marketing-automation'),
+
+    'Product Fields' => __('Product Fields', 'bit-crm-sales-marketing-automation'),
+
+    'Invoice Prefix' => __('Invoice Prefix', 'bit-crm-sales-marketing-automation'),
+
+    'Payment Terms' => __('Payment Terms', 'bit-crm-sales-marketing-automation'),
+
+    'Invoice Payments' => __('Invoice Payments', 'bit-crm-sales-marketing-automation'),
+
+    'Recycle Bin' => __('Recycle Bin', 'bit-crm-sales-marketing-automation'),
+
+    'Imports' => __('Imports', 'bit-crm-sales-marketing-automation'),
+
+    'Exports' => __('Exports', 'bit-crm-sales-marketing-automation'),
+
+    'History Logs' => __('History Logs', 'bit-crm-sales-marketing-automation'),
+
+    'Workflow Logs' => __('Workflow Logs', 'bit-crm-sales-marketing-automation'),
+
+    'Uninstall' => __('Uninstall', 'bit-crm-sales-marketing-automation'),
+
+    'Portal Permissions' => __('Portal Permissions', 'bit-crm-sales-marketing-automation'),
+
+    'Portal Clients' => __('Portal Clients', 'bit-crm-sales-marketing-automation'),
+
+    'Portal White Label' => __('Portal White Label', 'bit-crm-sales-marketing-automation'),
+
+    'CRM Roles' => __('CRM Roles', 'bit-crm-sales-marketing-automation'),
+
+    'Workflow Settings' => __('Workflow Settings', 'bit-crm-sales-marketing-automation'),
+
+    'Create Lead' => __('Create Lead', 'bit-crm-sales-marketing-automation'),
+
+    'Create Contact' => __('Create Contact', 'bit-crm-sales-marketing-automation'),
+
+    'Create Company' => __('Create Company', 'bit-crm-sales-marketing-automation'),
+
+    'Create Deal' => __('Create Deal', 'bit-crm-sales-marketing-automation'),
+
+    'Create Invoice' => __('Create Invoice', 'bit-crm-sales-marketing-automation'),
+
+    'Leads' => __('Leads', 'bit-crm-sales-marketing-automation'),
+
+    'Contacts' => __('Contacts', 'bit-crm-sales-marketing-automation'),
+
+    'Companies' => __('Companies', 'bit-crm-sales-marketing-automation'),
+
+    'Deals' => __('Deals', 'bit-crm-sales-marketing-automation'),
+
+    'Invoices' => __('Invoices', 'bit-crm-sales-marketing-automation'),
+
+    'Tasks' => __('Tasks', 'bit-crm-sales-marketing-automation'),
+
+    'Meetings' => __('Meetings', 'bit-crm-sales-marketing-automation'),
+
+    'Pages' => __('Pages', 'bit-crm-sales-marketing-automation'),
+
+    'Settings' => __('Settings', 'bit-crm-sales-marketing-automation'),
+
+    'Pages & Settings' => __('Pages & Settings', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %s: placeholder value */
+    'Search in %s' => __('Search in %s', 'bit-crm-sales-marketing-automation'),
+
+    'Filter by' => __('Filter by', 'bit-crm-sales-marketing-automation'),
+
+    'Clear' => __('Clear', 'bit-crm-sales-marketing-automation'),
+
+    'Recent searches' => __('Recent searches', 'bit-crm-sales-marketing-automation'),
+
+    'Recently opened' => __('Recently opened', 'bit-crm-sales-marketing-automation'),
+
+    'Quick actions' => __('Quick actions', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: 1: placeholder value, 2: placeholder value */
+    'See all %1$s %2$s' => __('See all %1$s %2$s', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %s: placeholder value */
+    'No filter matches “%s”.' => __('No filter matches “%s”.', 'bit-crm-sales-marketing-automation'),
+
+    'Search leads, contacts, deals, invoices, settings and more.' => __('Search leads, contacts, deals, invoices, settings and more.', 'bit-crm-sales-marketing-automation'),
+
+    'Keep typing to search records.' => __('Keep typing to search records.', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %s: placeholder value */
+    'No results for “%s”.' => __('No results for “%s”.', 'bit-crm-sales-marketing-automation'),
+
+    'Search' => __('Search', 'bit-crm-sales-marketing-automation'),
+
+    'Search records, pages and settings… type / to filter' => __('Search records, pages and settings… type / to filter', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %s: placeholder value */
+    'Search %s…' => __('Search %s…', 'bit-crm-sales-marketing-automation'),
+
+    'Search results' => __('Search results', 'bit-crm-sales-marketing-automation'),
+
+    'to navigate' => __('to navigate', 'bit-crm-sales-marketing-automation'),
+
+    'to open' => __('to open', 'bit-crm-sales-marketing-automation'),
+
+    'new tab' => __('new tab', 'bit-crm-sales-marketing-automation'),
+
+    'to filter' => __('to filter', 'bit-crm-sales-marketing-automation'),
+
+    'Esc' => __('Esc', 'bit-crm-sales-marketing-automation'),
+
+    'to close' => __('to close', 'bit-crm-sales-marketing-automation'),
+
+    'Searching…' => __('Searching…', 'bit-crm-sales-marketing-automation'),
+
+    'Search…' => __('Search…', 'bit-crm-sales-marketing-automation'),
+
     'Link created successfully' => __('Link created successfully', 'bit-crm-sales-marketing-automation'),
 
     'Link updated successfully' => __('Link updated successfully', 'bit-crm-sales-marketing-automation'),
@@ -548,8 +675,6 @@ return [
     'Meeting created successfully' => __('Meeting created successfully', 'bit-crm-sales-marketing-automation'),
 
     'Meeting updated successfully' => __('Meeting updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Meetings' => __('Meetings', 'bit-crm-sales-marketing-automation'),
 
     'Create Meeting' => __('Create Meeting', 'bit-crm-sales-marketing-automation'),
 
@@ -625,6 +750,10 @@ return [
 
     'Click "Add Line Item" to start adding products' => __('Click "Add Line Item" to start adding products', 'bit-crm-sales-marketing-automation'),
 
+    'Tax' => __('Tax', 'bit-crm-sales-marketing-automation'),
+
+    'Other tax' => __('Other tax', 'bit-crm-sales-marketing-automation'),
+
     'Pro' => __('Pro', 'bit-crm-sales-marketing-automation'),
 
     'Inactive' => __('Inactive', 'bit-crm-sales-marketing-automation'),
@@ -658,8 +787,6 @@ return [
     '%' => __('%', 'bit-crm-sales-marketing-automation'),
 
     'Subtotal:' => __('Subtotal:', 'bit-crm-sales-marketing-automation'),
-
-    'Tax' => __('Tax', 'bit-crm-sales-marketing-automation'),
 
     'Included' => __('Included', 'bit-crm-sales-marketing-automation'),
 
@@ -704,8 +831,6 @@ return [
 
     'Bulk Actions' => __('Bulk Actions', 'bit-crm-sales-marketing-automation'),
 
-    'Search' => __('Search', 'bit-crm-sales-marketing-automation'),
-
     'Open column filter dropdown' => __('Open column filter dropdown', 'bit-crm-sales-marketing-automation'),
 
     'Filter With Tags' => __('Filter With Tags', 'bit-crm-sales-marketing-automation'),
@@ -713,8 +838,6 @@ return [
     'Task created successfully' => __('Task created successfully', 'bit-crm-sales-marketing-automation'),
 
     'Task updated successfully' => __('Task updated successfully', 'bit-crm-sales-marketing-automation'),
-
-    'Tasks' => __('Tasks', 'bit-crm-sales-marketing-automation'),
 
     'Create Task' => __('Create Task', 'bit-crm-sales-marketing-automation'),
 
@@ -874,8 +997,6 @@ return [
 
     'Search history...' => __('Search history...', 'bit-crm-sales-marketing-automation'),
 
-    'Invoice Payments' => __('Invoice Payments', 'bit-crm-sales-marketing-automation'),
-
     'Accept invoice payments via WooCommerce' => __('Accept invoice payments via WooCommerce', 'bit-crm-sales-marketing-automation'),
 
     'Let customers pay invoices through the WooCommerce checkout using your store payment gateways.' => __('Let customers pay invoices through the WooCommerce checkout using your store payment gateways.', 'bit-crm-sales-marketing-automation'),
@@ -943,6 +1064,10 @@ return [
     'Pro Feature' => __('Pro Feature', 'bit-crm-sales-marketing-automation'),
 
     'Unlock with Pro' => __('Unlock with Pro', 'bit-crm-sales-marketing-automation'),
+
+    'Switch to light mode' => __('Switch to light mode', 'bit-crm-sales-marketing-automation'),
+
+    'Switch to dark mode' => __('Switch to dark mode', 'bit-crm-sales-marketing-automation'),
 
     'Access Denied' => __('Access Denied', 'bit-crm-sales-marketing-automation'),
 
@@ -1090,8 +1215,6 @@ return [
 
     'New Call' => __('New Call', 'bit-crm-sales-marketing-automation'),
 
-    'Companies' => __('Companies', 'bit-crm-sales-marketing-automation'),
-
     'New Company' => __('New Company', 'bit-crm-sales-marketing-automation'),
 
     'Search by name or website' => __('Search by name or website', 'bit-crm-sales-marketing-automation'),
@@ -1158,8 +1281,6 @@ return [
 
     'You cannot map both Parent Company (ID) and Parent Company (Name) in the same import. Please choose one.' => __('You cannot map both Parent Company (ID) and Parent Company (Name) in the same import. Please choose one.', 'bit-crm-sales-marketing-automation'),
 
-    'Create Company' => __('Create Company', 'bit-crm-sales-marketing-automation'),
-
     'Create & Add Another' => __('Create & Add Another', 'bit-crm-sales-marketing-automation'),
 
     'Company Settings' => __('Company Settings', 'bit-crm-sales-marketing-automation'),
@@ -1168,17 +1289,11 @@ return [
 
     'Overview' => __('Overview', 'bit-crm-sales-marketing-automation'),
 
-    'Contacts' => __('Contacts', 'bit-crm-sales-marketing-automation'),
-
-    'Deals' => __('Deals', 'bit-crm-sales-marketing-automation'),
-
     'Timeline' => __('Timeline', 'bit-crm-sales-marketing-automation'),
 
     'Company updated successfully' => __('Company updated successfully', 'bit-crm-sales-marketing-automation'),
 
     'Are you sure you want to delete the company? This will be moved to Trash.' => __('Are you sure you want to delete the company? This will be moved to Trash.', 'bit-crm-sales-marketing-automation'),
-
-    'Create Contact' => __('Create Contact', 'bit-crm-sales-marketing-automation'),
 
     'Contact Settings' => __('Contact Settings', 'bit-crm-sales-marketing-automation'),
 
@@ -1351,10 +1466,6 @@ return [
 
     'You\'re exploring with sample data. Remove it when you\'re ready to add your own contacts and deals.' => __('You\'re exploring with sample data. Remove it when you\'re ready to add your own contacts and deals.', 'bit-crm-sales-marketing-automation'),
 
-    'Leads' => __('Leads', 'bit-crm-sales-marketing-automation'),
-
-    'Invoices' => __('Invoices', 'bit-crm-sales-marketing-automation'),
-
     'vs last month' => __('vs last month', 'bit-crm-sales-marketing-automation'),
 
     'Top Products' => __('Top Products', 'bit-crm-sales-marketing-automation'),
@@ -1368,18 +1479,6 @@ return [
     'Watch the tutorial for a quick start.' => __('Watch the tutorial for a quick start.', 'bit-crm-sales-marketing-automation'),
 
     'Watch Tutorials' => __('Watch Tutorials', 'bit-crm-sales-marketing-automation'),
-
-    'Recycle Bin' => __('Recycle Bin', 'bit-crm-sales-marketing-automation'),
-
-    'Imports' => __('Imports', 'bit-crm-sales-marketing-automation'),
-
-    'Exports' => __('Exports', 'bit-crm-sales-marketing-automation'),
-
-    'History Logs' => __('History Logs', 'bit-crm-sales-marketing-automation'),
-
-    'Workflow Logs' => __('Workflow Logs', 'bit-crm-sales-marketing-automation'),
-
-    'Uninstall' => __('Uninstall', 'bit-crm-sales-marketing-automation'),
 
     'Data Management' => __('Data Management', 'bit-crm-sales-marketing-automation'),
 
@@ -1438,8 +1537,6 @@ return [
     'Erase all plugin data on deletion' => __('Erase all plugin data on deletion', 'bit-crm-sales-marketing-automation'),
 
     'When you delete Bit CRM from the Plugins screen, every contact, lead, company, deal, invoice, note, setting and log is permanently removed. Deactivating keeps everything. This cannot be undone.' => __('When you delete Bit CRM from the Plugins screen, every contact, lead, company, deal, invoice, note, setting and log is permanently removed. Deactivating keeps everything. This cannot be undone.', 'bit-crm-sales-marketing-automation'),
-
-    'Create Deal' => __('Create Deal', 'bit-crm-sales-marketing-automation'),
 
     'Product List' => __('Product List', 'bit-crm-sales-marketing-automation'),
 
@@ -1662,6 +1759,12 @@ return [
 
     'https://example.com' => __('https://example.com', 'bit-crm-sales-marketing-automation'),
 
+    'Tax ID' => __('Tax ID', 'bit-crm-sales-marketing-automation'),
+
+    'Your VAT, GST or other tax registration number. Printed on invoices.' => __('Your VAT, GST or other tax registration number. Printed on invoices.', 'bit-crm-sales-marketing-automation'),
+
+    'Enter tax ID' => __('Enter tax ID', 'bit-crm-sales-marketing-automation'),
+
     'Business Address' => __('Business Address', 'bit-crm-sales-marketing-automation'),
 
     'Street Address' => __('Street Address', 'bit-crm-sales-marketing-automation'),
@@ -1754,8 +1857,6 @@ return [
 
     'Invoice created successfully.' => __('Invoice created successfully.', 'bit-crm-sales-marketing-automation'),
 
-    'Create Invoice' => __('Create Invoice', 'bit-crm-sales-marketing-automation'),
-
     'Edit Invoice' => __('Edit Invoice', 'bit-crm-sales-marketing-automation'),
 
     'Payment settings' => __('Payment settings', 'bit-crm-sales-marketing-automation'),
@@ -1813,8 +1914,6 @@ return [
     'Failed to update invoice.' => __('Failed to update invoice.', 'bit-crm-sales-marketing-automation'),
 
     'Invoice updated successfully.' => __('Invoice updated successfully.', 'bit-crm-sales-marketing-automation'),
-
-    'Invoice Prefix' => __('Invoice Prefix', 'bit-crm-sales-marketing-automation'),
 
     'Please provide an invoice prefix' => __('Please provide an invoice prefix', 'bit-crm-sales-marketing-automation'),
 
@@ -1972,8 +2071,6 @@ return [
 
     'Menu' => __('Menu', 'bit-crm-sales-marketing-automation'),
 
-    'Settings' => __('Settings', 'bit-crm-sales-marketing-automation'),
-
     'More' => __('More', 'bit-crm-sales-marketing-automation'),
 
     'Dark' => __('Dark', 'bit-crm-sales-marketing-automation'),
@@ -2003,8 +2100,6 @@ return [
     'Starting point' => __('Starting point', 'bit-crm-sales-marketing-automation'),
 
     'Sample data is clearly tagged and can be removed anytime from the dashboard. You\'ll only see this once.' => __('Sample data is clearly tagged and can be removed anytime from the dashboard. You\'ll only see this once.', 'bit-crm-sales-marketing-automation'),
-
-    'Create Lead' => __('Create Lead', 'bit-crm-sales-marketing-automation'),
 
     'Field mapping' => __('Field mapping', 'bit-crm-sales-marketing-automation'),
 
@@ -2196,6 +2291,8 @@ return [
 
     'Currency Settings' => __('Currency Settings', 'bit-crm-sales-marketing-automation'),
 
+    'Tax Settings' => __('Tax Settings', 'bit-crm-sales-marketing-automation'),
+
     'Data management' => __('Data management', 'bit-crm-sales-marketing-automation'),
 
     'System' => __('System', 'bit-crm-sales-marketing-automation'),
@@ -2247,6 +2344,12 @@ return [
     'Are you sure you want to delete this tag?' => __('Are you sure you want to delete this tag?', 'bit-crm-sales-marketing-automation'),
 
     'Delete tag' => __('Delete tag', 'bit-crm-sales-marketing-automation'),
+
+    'Tax Name' => __('Tax Name', 'bit-crm-sales-marketing-automation'),
+
+    'Rate' => __('Rate', 'bit-crm-sales-marketing-automation'),
+
+    'Tax Class' => __('Tax Class', 'bit-crm-sales-marketing-automation'),
 
     'Integration settings updated successfully' => __('Integration settings updated successfully', 'bit-crm-sales-marketing-automation'),
 

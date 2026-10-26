@@ -3,6 +3,7 @@ import { checkCapability } from '@common/helpers/capabilityHelper'
 import { renderFullName } from '@common/helpers/entity-helpers'
 import { formatDate, unslugify } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
+import useAddressLabels from '@common/hooks/use-address-labels'
 import useTableScrollHeight from '@common/hooks/use-table-scroll-height'
 import { type FieldItem } from '@features/field-settings/shared/field-types'
 import { type LeadType } from '@pages/lead/shared/lead-types'
@@ -28,6 +29,7 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
   const sortBy = searchParams.get('sortBy') || ''
   const sortOrder = searchParams.get('sortOrder') || ''
   const tableScrollY = useTableScrollHeight(400)
+  const getAddressLabel = useAddressLabels(fieldList, leads)
 
   const handleTableChange = (_pagination: unknown, _filters: unknown, sorter: unknown) => {
     const sortData = Array.isArray(sorter) ? sorter[0] : sorter
@@ -83,6 +85,11 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
             if (field.field_key === 'owner_id') {
               return record.owner_name || ''
             }
+            const addressLabel = getAddressLabel(field, record, text)
+            if (addressLabel !== undefined) {
+              return addressLabel
+            }
+
             if (field.type === 'select' || field.type === 'radio') {
               return unslugify(text)
             }
@@ -116,7 +123,7 @@ export default function LeadsTable({ fieldList, isLoading, leads }: LeadsTablePr
           title: field?.label,
           width: 200
         })),
-    [fieldList, sortBy, sortOrder]
+    [fieldList, sortBy, sortOrder, getAddressLabel]
   )
 
   const columns = [

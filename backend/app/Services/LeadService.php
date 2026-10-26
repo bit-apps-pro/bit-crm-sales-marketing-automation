@@ -56,7 +56,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             return $validated;
         }
 
-        $systemDefinedFieldsValues = $validated['systemDefinedFieldsValues'];
+        $systemDefinedFieldsValues = (new CountryService())->formatAddressCodes($validated['systemDefinedFieldsValues']);
         $systemDefinedFieldsValues['reference_uuid'] = Uuid::generate();
         $systemDefinedFieldsValues['created_by'] = get_current_user_id();
 
@@ -144,6 +144,7 @@ class LeadService implements EntityDataInterface, EntityFieldsInterface
             return $validated;
         }
 
+        $validated['systemDefinedFieldsValues'] = (new CountryService())->formatAddressCodes($validated['systemDefinedFieldsValues'] ?? []);
         $validated['systemDefinedFieldsValues']['updated_by'] = get_current_user_id();
 
         $lead = Lead::findOne(['id' => $validated['id'], 'is_trash' => 0]);

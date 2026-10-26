@@ -11,6 +11,7 @@ use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Model\InvoicePayment;
 use BitApps\Crm\Model\Setting;
 use BitApps\Crm\Services\BusinessSettingService;
+use BitApps\Crm\Services\CountryService;
 use BitApps\Crm\Services\InvoiceLedgerService;
 use BitApps\Crm\Services\InvoicePdfService;
 use BitApps\Crm\Services\InvoiceService;
@@ -290,6 +291,7 @@ final class InvoiceShareController
             'billing_state',
             'billing_zip',
             'billing_country',
+            'tax_id',
         ];
 
         $data = [];
@@ -298,6 +300,6 @@ final class InvoiceShareController
             $data[$field] = $contact->{$field} ?? null;
         }
 
-        return $data;
+        return array_merge($data, (new CountryService())->getBillingAddressLabels($contact));
     }
 }

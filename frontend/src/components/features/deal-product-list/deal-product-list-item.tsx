@@ -8,15 +8,17 @@ import If from '@utilities/If'
 interface DealProductListItemProps {
   currencyData: CurrencyItemType
   item: LineItem
+  roundingDecimals?: number
   taxOption: TaxOption
 }
 
 export default function DealProductListItem({
   currencyData,
   item,
+  roundingDecimals,
   taxOption
 }: DealProductListItemProps) {
-  const lineTotal = calculateLineItemTotal(item, taxOption)
+  const lineTotal = calculateLineItemTotal(item, taxOption, roundingDecimals)
 
   return (
     <div className="rounded-md border border-solid border-[#EBEAFF] bg-white p-3 dark:border-neutral-700 dark:bg-neutral-800">

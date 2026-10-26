@@ -4,6 +4,8 @@ export const TAX = {
   NO_TAX: 'no_tax'
 } as const
 
+export const TAX_RULES_MUTATION_KEY = ['tax-rates', 'resolve']
+
 export const PRODUCT_SOURCE = {
   CUSTOM: 'custom',
   FLUENT_CART: 'fluent_cart_product',

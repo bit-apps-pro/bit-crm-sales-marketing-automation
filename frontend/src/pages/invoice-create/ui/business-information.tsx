@@ -60,6 +60,11 @@ export default function BusinessInformation({ businessSettings }: BusinessInform
                 {businessSettings.country}
               </Typography.Text>
             </If>
+            <If conditions={businessSettings.tax_id}>
+              <Typography.Text className="block text-sm" type="secondary">
+                {__('Tax ID')}: {businessSettings.tax_id}
+              </Typography.Text>
+            </If>
           </div>
         </div>
       ) : (

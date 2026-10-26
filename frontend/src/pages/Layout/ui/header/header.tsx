@@ -2,6 +2,7 @@ import CAPABILITIES from '@common/constants/capabilities'
 import { checkCapability } from '@common/helpers/capabilityHelper'
 import { cn } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
+import GlobalSearch from '@features/global-search'
 import brandLogo from '@resource/brand-logo.svg'
 import If from '@utilities/If'
 import ThemeToggle from '@utilities/theme-toggle'
@@ -47,6 +48,7 @@ export default function Header() {
         <HeaderMoreDropdown />
       </div>
       <div className="flex items-center gap-1">
+        <GlobalSearch />
         <ThemeToggle />
         {/* Settings has its own drawer entry, so the icon button would be a duplicate. */}
         <If conditions={checkCapability(CAPABILITIES.SETTING.MENU)}>
