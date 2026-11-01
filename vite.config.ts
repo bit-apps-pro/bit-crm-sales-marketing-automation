@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react'
-import { generateBuildCodeNamePlugin } from 'bitapps-dev-utils'
+import { checkSubmoduleUpdatesPlugin, generateBuildCodeNamePlugin } from 'bitapps-dev-utils'
 import { humanId } from 'human-id'
 import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
@@ -76,7 +76,8 @@ export default defineConfig(({ mode }) => {
         jsxRuntime: 'automatic'
       }),
       tsconfigPaths(),
-      generateBuildCodeNamePlugin({ codeName, dir: ASSETS_DIR })
+      generateBuildCodeNamePlugin({ codeName, dir: ASSETS_DIR }),
+      checkSubmoduleUpdatesPlugin()
     ],
     root: 'frontend',
     server: {
@@ -98,7 +99,7 @@ export default defineConfig(({ mode }) => {
       environment: 'happy-dom',
       // environment: 'jsdom',
       globals: true,
-      include: ['frontend/src/**/*.test.{tsx,ts}'],
+      include: ['frontend/src/**/*.test.{tsx,ts}', '_bitapps-plugin-commons/**/*.test.{tsx,ts}'],
       root: './',
       setupFiles: ['./frontend/src/config/test.setup.ts'],
       testTimeout: 10_000
