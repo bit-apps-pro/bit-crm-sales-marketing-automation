@@ -218,6 +218,8 @@ Route::group(
         Route::post('invoices/trash', [InvoiceController::class, 'trash']);
         Route::post('invoices/send', [InvoiceController::class, 'sendInvoice']);
         Route::get('invoices/prefix', [InvoiceController::class, 'invoicePrefix']);
+        Route::get('invoices/defaults', [InvoiceController::class, 'defaults']);
+        Route::post('invoices/defaults', [InvoiceController::class, 'updateDefaults']);
         Route::get('invoices/deals/{id}', [InvoiceController::class, 'invoicesByDeal']);
         Route::get('invoices/{id}', [InvoiceController::class, 'show']);
         Route::post('invoices/{id}', [InvoiceController::class, 'update']);

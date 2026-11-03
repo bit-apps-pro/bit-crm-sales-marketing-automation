@@ -72,6 +72,8 @@ const CrmUsers = lazy(() => import('@pages/crm-users'))
 const SmtpSettings = lazy(() => import('@pages/smtp-settings'))
 const Onboarding = lazy(() => import('@pages/onboarding'))
 const InvoiceSettings = lazy(() => import('@pages/invoice-settings'))
+const QuoteSettings = lazy(() => import('@pages/quote-settings'))
+const Quotes = lazy(() => import('@pages/quotes'))
 
 const { darkAlgorithm, defaultAlgorithm } = theme
 
@@ -211,6 +213,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="invoice-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.SETTING.QUOTE}>
+                      <QuoteSettings />
+                    </ProtectedRoute>
+                  }
+                  path="quote-settings"
                 />
                 <Route
                   element={
@@ -517,6 +527,14 @@ export default function AppRoutes() {
                   </ProtectedRoute>
                 }
                 path="/products"
+              />
+              <Route
+                element={
+                  <ProtectedRoute capability={CAPABILITIES.QUOTE.MENU}>
+                    <Quotes />
+                  </ProtectedRoute>
+                }
+                path="/quotes"
               />
               <Route
                 element={

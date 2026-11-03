@@ -42,6 +42,7 @@ export const PRIMARY_NAV_ITEMS: HeaderNavItem[] = [
 ]
 
 export const SECONDARY_NAV_ITEMS: HeaderNavItem[] = [
+  { capability: CAPABILITIES.QUOTE.MENU, key: 'quotes', label: __('Quotes'), path: '../quotes' },
   { capability: CAPABILITIES.PRODUCT.MENU, key: 'products', label: __('Products'), path: '../products' },
   { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'tasks', label: __('Tasks'), path: '/tasks' },
   { capability: CAPABILITIES.ACTIVITY.VIEW, key: 'meetings', label: __('Meetings'), path: '/meetings' },

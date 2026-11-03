@@ -4,7 +4,7 @@ Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -237,6 +237,16 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Changelog ==
 
+= 1.4.0 (November 1, 2026) =
+* Features:
+   * Quotes (Pro): Build quotes for a deal with line items, taxes, discounts and an expiry date, send them with a shareable public link or through the client portal for the client to accept or reject online, save revisions as new versions, and convert an accepted quote into an invoice.
+   * Invoices: You can now set default note sections for the top and bottom of your invoices, added automatically to every new invoice.
+* Improvements:
+   * Line items: The first column is now labelled Item instead of Product Name.
+* Fixed:
+   * Filters: Currency and percentage fields now offer the numeric operators such as greater than and less than.
+   * Email sync: Fixed a fatal error that could stop email syncing on some sites when a conflicting version of a bundled date library was loaded.
+
 = 1.3.2 (October 22, 2026) =
 * Features:
    * Global search: Search records, pages and settings from the header or with Ctrl+K (products and workflows in Pro).
@@ -368,5 +378,5 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Upgrade Notice ==
 
-= 1.3.2 =
-Adds global search, Tax ID fields and country and state dropdowns, plus automatic tax rules in Pro.
+= 1.4.0 =
+Adds a Quotes module in Pro with versioning, online accept or reject and conversion to an invoice, plus default invoice notes, and fixes numeric filter operators for currency and percentage fields.

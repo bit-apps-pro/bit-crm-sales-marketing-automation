@@ -15,6 +15,7 @@ import {
   LuBuilding2,
   LuDatabase,
   LuDollarSign,
+  LuFilePen,
   LuFileUser,
   LuHandshake,
   LuLayers,
@@ -75,6 +76,12 @@ export const navGroups = [
         icon: <LuPackage />,
         label: __('Product Settings'),
         path: '../settings/product-settings'
+      },
+      {
+        capability: CAPABILITIES.SETTING.QUOTE,
+        icon: <LuFilePen />,
+        label: __('Quote Settings'),
+        path: '../settings/quote-settings'
       },
       {
         capability: CAPABILITIES.SETTING.INVOICE,

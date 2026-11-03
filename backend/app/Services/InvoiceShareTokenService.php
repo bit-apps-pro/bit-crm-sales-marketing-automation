@@ -28,9 +28,13 @@ class InvoiceShareTokenService
     public const TOKEN_QUERY_PARAM = 'token';
 
     /**
-     * Returns the invoice share token, generating and persisting one when missing.
+     * Returns the share token, generating and persisting one when missing.
+     * Any record with a `token` column works (pro quotes use it too); pass a
+     * findOne() instance, as update() is only safe on one.
+     *
+     * @param Invoice|object $invoice
      */
-    public function ensureToken(Invoice $invoice): string
+    public function ensureToken(object $invoice): string
     {
         if (!empty($invoice->token)) {
             return $invoice->token;
@@ -42,7 +46,11 @@ class InvoiceShareTokenService
         return $token;
     }
 
-    public function isValidToken(Invoice $invoice, $token): bool
+    /**
+     * @param Invoice|object $invoice
+     * @param mixed          $token
+     */
+    public function isValidToken(object $invoice, $token): bool
     {
         return !empty($invoice->token)
             && \is_string($token)

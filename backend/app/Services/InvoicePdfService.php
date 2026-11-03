@@ -61,6 +61,36 @@ class InvoicePdfService
         );
     }
 
+    /** Also used by pro quotes, which lay a quote onto the same template. */
+    public function createPdf(InvoiceData $data, InvoiceTotals $totals): Mpdf
+    {
+        $pdfConfig = $this->getDefaultPdfConfig();
+        $mpdf = new Mpdf($pdfConfig);
+
+        if (is_rtl()) {
+            $mpdf->SetDirectionality('rtl');
+        }
+
+        $template = new InvoicePdfTemplate($data, $totals, $this->currencyService);
+
+        $html = $template->render();
+
+        $cssPath = Config::get('BASEDIR') . '/resources/invoice/template-1.css';
+        if (!file_exists($cssPath)) {
+            throw new Exception(esc_html__('Invoice CSS template not found.', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $styleSheet = file_get_contents($cssPath);
+        if ($styleSheet === false) {
+            throw new Exception(esc_html__('Failed to read invoice CSS template.', 'bit-crm-sales-marketing-automation'));
+        }
+
+        $mpdf->WriteHTML('<style>' . $styleSheet . '</style>', MpdfHTMLParserMode::HEADER_CSS);
+        $mpdf->WriteHTML($html, MpdfHTMLParserMode::HTML_BODY);
+
+        return $mpdf;
+    }
+
     private function fetchData(int $invoiceId): InvoiceData
     {
         $details = InvoiceService::getInvoiceDetails($invoiceId);
@@ -96,34 +126,5 @@ class InvoicePdfService
             'margin_right'  => 10,
             'default_font'  => 'dejavusans'
         ];
-    }
-
-    private function createPdf(InvoiceData $data, InvoiceTotals $totals): Mpdf
-    {
-        $pdfConfig = $this->getDefaultPdfConfig();
-        $mpdf = new Mpdf($pdfConfig);
-
-        if (is_rtl()) {
-            $mpdf->SetDirectionality('rtl');
-        }
-
-        $template = new InvoicePdfTemplate($data, $totals, $this->currencyService);
-
-        $html = $template->render();
-
-        $cssPath = Config::get('BASEDIR') . '/resources/invoice/template-1.css';
-        if (!file_exists($cssPath)) {
-            throw new Exception(esc_html__('Invoice CSS template not found.', 'bit-crm-sales-marketing-automation'));
-        }
-
-        $styleSheet = file_get_contents($cssPath);
-        if ($styleSheet === false) {
-            throw new Exception(esc_html__('Failed to read invoice CSS template.', 'bit-crm-sales-marketing-automation'));
-        }
-
-        $mpdf->WriteHTML('<style>' . $styleSheet . '</style>', MpdfHTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML($html, MpdfHTMLParserMode::HTML_BODY);
-
-        return $mpdf;
     }
 }

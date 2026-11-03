@@ -70,7 +70,7 @@ export default function ProductLineItemsTable({
           />
         </div>
       ),
-      title: __('Product Name'),
+      title: __('Item'),
       width: 300
     },
     {

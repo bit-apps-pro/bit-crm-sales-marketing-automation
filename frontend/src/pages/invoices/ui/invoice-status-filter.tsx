@@ -4,7 +4,11 @@ import { Select } from 'antd'
 import { useMemo } from 'react'
 import { useSearchParams } from 'react-router'
 
-export default function InvoiceStatusFilter() {
+export default function InvoiceStatusFilter({
+  options = INVOICE_STATUS_OPTIONS
+}: {
+  options?: { label: string; value: string }[]
+}) {
   const [searchParams, setSearchParams] = useSearchParams()
   const statusesParam = searchParams.get('statuses')
   const selectedStatuses = useMemo(() => {
@@ -27,7 +31,7 @@ export default function InvoiceStatusFilter() {
       maxTagCount="responsive"
       mode="multiple"
       onChange={handleFilterChange}
-      options={INVOICE_STATUS_OPTIONS}
+      options={options}
       placeholder={__('Filter With Statuses')}
       value={selectedStatuses}
     />

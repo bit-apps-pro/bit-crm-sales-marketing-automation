@@ -11,8 +11,9 @@
     "typisttech/imposter-plugin": "^0.6.2",
     "deliciousbrains/wp-background-processing": "^1.4",
     "webklex/php-imap": "^6.1",
+    "nesbot/carbon": "3.8.4",
     "mpdf/mpdf": "^8.2",
-    "bitapps/wp-telemetry": "^1.0"
+    "bitapps/wp-telemetry": "^2.1"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3",

@@ -48,7 +48,7 @@ export default function InvoiceLineItemsPreview({
             )}
           </div>
         ),
-        title: __('Product Name'),
+        title: __('Item'),
         width: '40%'
       },
       {

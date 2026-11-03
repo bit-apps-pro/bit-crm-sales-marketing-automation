@@ -7,6 +7,7 @@ export const MODULES = {
   INVOICE: 'invoice',
   LEAD: 'lead',
   PRODUCT: 'product',
+  QUOTE: 'quote',
   USER: 'user'
 } as const
 

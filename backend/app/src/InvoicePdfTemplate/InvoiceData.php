@@ -22,6 +22,13 @@ final class InvoiceData
 
     public array $businessSettings;
 
+    /**
+     * Optional heading overrides for documents that reuse this layout (pro
+     * quotes): title, number, due_date, and hide_terms to drop the Terms
+     * row. Missing keys keep the invoice wording.
+     */
+    public array $labels;
+
     public function __construct(
         Invoice $invoice,
         Deal $deal,
@@ -29,7 +36,8 @@ final class InvoiceData
         array $lineItems,
         string $termName,
         array $currencyData,
-        array $businessSettings
+        array $businessSettings,
+        array $labels = []
     ) {
         $this->invoice = $invoice;
         $this->deal = $deal;
@@ -38,5 +46,6 @@ final class InvoiceData
         $this->termName = $termName;
         $this->currencyData = $currencyData;
         $this->businessSettings = $businessSettings;
+        $this->labels = $labels;
     }
 }

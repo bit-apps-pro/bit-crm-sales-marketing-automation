@@ -29,6 +29,7 @@ import { useParams, useSearchParams } from 'react-router'
 import useDeal from './data/use-deal'
 import DealInvoices from './internal/deal-invoices'
 import DealOverview from './internal/deal-overview'
+import DealQuotes from './internal/deal-quotes'
 import Actions from './ui/actions'
 
 const tabLabel = (icon: ReactNode, text: string, count?: string) => (
@@ -164,6 +165,12 @@ export default function Deal() {
                   children: <Links entityId={Number(dealId)} fields={fields} module={MODULES.DEAL} />,
                   key: 'links',
                   label: tabLabel(ICONS['link'], __('Links'), linkCount)
+                },
+                {
+                  capability: CAPABILITIES.QUOTE.VIEW,
+                  children: <DealQuotes />,
+                  key: 'quotes',
+                  label: __('Quotes')
                 },
                 {
                   capability: CAPABILITIES.INVOICE.VIEW,

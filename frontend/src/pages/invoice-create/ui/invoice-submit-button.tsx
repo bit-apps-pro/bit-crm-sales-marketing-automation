@@ -17,7 +17,6 @@ import { useIsMutating } from '@tanstack/react-query'
 import If from '@utilities/If'
 import { Button, type FormInstance } from 'antd'
 import { useContext, useRef } from 'react'
-import { LuPlus } from 'react-icons/lu'
 import { useNavigate } from 'react-router'
 
 import useStoreInvoice from '../data/use-store-invoice'
@@ -154,7 +153,6 @@ export default function InvoiceSubmitButton({ form, mode }: InvoiceSubmitButtonP
         <Button
           className="rounded-full"
           disabled={(mode === 'create' && !dealInformation.isDealSelected) || isApplyingTaxRules}
-          icon={<LuPlus />}
           loading={isPending && pendingWithPreview.current}
           onClick={() => handleSubmitForm(true)}
           size="large"

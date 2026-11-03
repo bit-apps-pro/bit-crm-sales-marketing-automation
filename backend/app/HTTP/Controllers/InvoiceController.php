@@ -7,6 +7,7 @@ use BitApps\Crm\Constants\HookKeys;
 use BitApps\Crm\Deps\BitApps\WPDatabase\Connection;
 use BitApps\Crm\Deps\BitApps\WPKit\Hooks\Hooks;
 use BitApps\Crm\Deps\BitApps\WPKit\Http\Response;
+use BitApps\Crm\HTTP\Requests\Invoice\DefaultsRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\DownloadRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\IndexRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\InvoiceByDealRequest;
@@ -17,6 +18,7 @@ use BitApps\Crm\HTTP\Requests\Invoice\SendInvoiceRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\ShowRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\StoreRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\TrashRequest;
+use BitApps\Crm\HTTP\Requests\Invoice\UpdateDefaultsRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\UpdateRequest;
 use BitApps\Crm\HTTP\Requests\Invoice\UpdateStatusRequest;
 use BitApps\Crm\Model\Deal;
@@ -28,6 +30,7 @@ use BitApps\Crm\Services\InvoiceLedgerService;
 use BitApps\Crm\Services\InvoicePdfService;
 use BitApps\Crm\Services\InvoiceService;
 use BitApps\Crm\Services\LineItemService;
+use BitApps\Crm\Utils\Logger;
 use Throwable;
 
 final class InvoiceController
@@ -268,8 +271,8 @@ final class InvoiceController
     public function index(IndexRequest $request)
     {
         $validated = $request->validated();
-        $sortBy = $validated['sortBy'] ?: 'id';
-        $sortOrder = $validated['sortOrder'] ?: 'desc';
+        $sortBy = ($validated['sortBy'] ?? '') ?: 'id';
+        $sortOrder = ($validated['sortOrder'] ?? '') ?: 'desc';
         $page = $validated['page'] ?? self::DEFAULT_PAGE;
         $perPage = $validated['perPage'] ?? self::DEFAULT_PER_PAGE;
         $statuses = array_filter(explode(',', $validated['statuses'] ?? ''));
@@ -387,12 +390,29 @@ final class InvoiceController
         );
     }
 
+    public function defaults(DefaultsRequest $request)
+    {
+        return Response::success((new InvoiceService())->getDefaults());
+    }
+
+    public function updateDefaults(UpdateDefaultsRequest $request)
+    {
+        try {
+            return Response::success((new InvoiceService())->saveDefaults($request->validated()))
+                ->message(__('Invoice defaults saved', 'bit-crm-sales-marketing-automation'));
+        } catch (Throwable $th) {
+            Logger::error($th);
+
+            return Response::error(__('Failed to save invoice defaults!', 'bit-crm-sales-marketing-automation'));
+        }
+    }
+
     public function invoicesByDeal(InvoiceByDealRequest $request)
     {
         $validated = $request->validated();
         $dealId = $validated['id'];
-        $sortBy = $validated['sortBy'] ?: 'id';
-        $sortOrder = $validated['sortOrder'] ?: 'desc';
+        $sortBy = ($validated['sortBy'] ?? '') ?: 'id';
+        $sortOrder = ($validated['sortOrder'] ?? '') ?: 'desc';
         $page = $validated['page'] ?? self::DEFAULT_PAGE;
         $perPage = $validated['perPage'] ?? self::DEFAULT_PER_PAGE;
 

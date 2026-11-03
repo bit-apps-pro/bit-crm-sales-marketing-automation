@@ -9,11 +9,15 @@ export interface InvoiceShareTarget {
   url: string
 }
 
-export const buildInvoiceShareTargets = (shareUrl: string): InvoiceShareTarget[] => {
-  const shareMessage = __('You can view and pay your invoice here:')
+/** The message and subject default to invoice wording; pro quotes pass their own. */
+export const buildInvoiceShareTargets = (
+  shareUrl: string,
+  shareMessage = __('You can view and pay your invoice here:'),
+  subject = __('Your invoice')
+): InvoiceShareTarget[] => {
   const encodedUrl = encodeURIComponent(shareUrl)
   const encodedMessage = encodeURIComponent(`${shareMessage} ${shareUrl}`)
-  const emailSubject = encodeURIComponent(__('Your invoice'))
+  const emailSubject = encodeURIComponent(subject)
 
   return [
     {

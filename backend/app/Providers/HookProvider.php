@@ -34,6 +34,8 @@ class HookProvider
         Hooks::addFilter(HookKeys::TELEMETRY_ADDITIONAL_DATA, [$telemetryService, 'filterTrackingData']);
         Hooks::addFilter(Config::withPrefix('telemetry_notice_heading'), [$telemetryService, 'getNoticeHeading']);
         Hooks::addFilter(Config::withPrefix('telemetry_notice_description'), [$telemetryService, 'getNoticeDescription']);
+        // The opt-in description already links to what we collect; drop the library's own list so the notice shows it once.
+        Hooks::addFilter(Config::withPrefix('telemetry_data_we_collect'), '__return_empty_array');
         $this->registerWooCommerceHooks();
 
         // Priority 0: must run before redirect_canonical's 404-permalink

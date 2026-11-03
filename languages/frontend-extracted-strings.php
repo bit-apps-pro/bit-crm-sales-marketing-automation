@@ -531,6 +531,8 @@ return [
 
     'Invoice Payments' => __('Invoice Payments', 'bit-crm-sales-marketing-automation'),
 
+    'Quote Prefix & Validity' => __('Quote Prefix & Validity', 'bit-crm-sales-marketing-automation'),
+
     'Recycle Bin' => __('Recycle Bin', 'bit-crm-sales-marketing-automation'),
 
     'Imports' => __('Imports', 'bit-crm-sales-marketing-automation'),
@@ -774,7 +776,7 @@ return [
 
     'No Tax' => __('No Tax', 'bit-crm-sales-marketing-automation'),
 
-    'Product Name' => __('Product Name', 'bit-crm-sales-marketing-automation'),
+    'Item' => __('Item', 'bit-crm-sales-marketing-automation'),
 
     'Quantity' => __('Quantity', 'bit-crm-sales-marketing-automation'),
 
@@ -1631,6 +1633,8 @@ return [
 
     'New Stage' => __('New Stage', 'bit-crm-sales-marketing-automation'),
 
+    'Quotes' => __('Quotes', 'bit-crm-sales-marketing-automation'),
+
     'Could not remove tag.' => __('Could not remove tag.', 'bit-crm-sales-marketing-automation'),
 
     'Deal updated successfully' => __('Deal updated successfully', 'bit-crm-sales-marketing-automation'),
@@ -1915,6 +1919,8 @@ return [
 
     'Invoice updated successfully.' => __('Invoice updated successfully.', 'bit-crm-sales-marketing-automation'),
 
+    'New invoices start with these notes. You can still change them on each invoice.' => __('New invoices start with these notes. You can still change them on each invoice.', 'bit-crm-sales-marketing-automation'),
+
     'Please provide an invoice prefix' => __('Please provide an invoice prefix', 'bit-crm-sales-marketing-automation'),
 
     'Enter the prefix that will appear before each invoice number.' => __('Enter the prefix that will appear before each invoice number.', 'bit-crm-sales-marketing-automation'),
@@ -1959,7 +1965,17 @@ return [
 
     'Configure Payment Terms' => __('Configure Payment Terms', 'bit-crm-sales-marketing-automation'),
 
+    'Default Notes' => __('Default Notes', 'bit-crm-sales-marketing-automation'),
+
     'Payments' => __('Payments', 'bit-crm-sales-marketing-automation'),
+
+    'Shown above the line items.' => __('Shown above the line items.', 'bit-crm-sales-marketing-automation'),
+
+    'Top of the document' => __('Top of the document', 'bit-crm-sales-marketing-automation'),
+
+    'Shown below the totals.' => __('Shown below the totals.', 'bit-crm-sales-marketing-automation'),
+
+    'Bottom of the document' => __('Bottom of the document', 'bit-crm-sales-marketing-automation'),
 
     'Invoice sent successfully' => __('Invoice sent successfully', 'bit-crm-sales-marketing-automation'),
 
@@ -2019,15 +2035,9 @@ return [
 
     'Share Link' => __('Share Link', 'bit-crm-sales-marketing-automation'),
 
-    'Share invoice' => __('Share invoice', 'bit-crm-sales-marketing-automation'),
-
     'Anyone with this link can view and pay this invoice without logging in.' => __('Anyone with this link can view and pay this invoice without logging in.', 'bit-crm-sales-marketing-automation'),
 
-    'Copied' => __('Copied', 'bit-crm-sales-marketing-automation'),
-
-    'Copy' => __('Copy', 'bit-crm-sales-marketing-automation'),
-
-    'Or send it directly via' => __('Or send it directly via', 'bit-crm-sales-marketing-automation'),
+    'Share invoice' => __('Share invoice', 'bit-crm-sales-marketing-automation'),
 
     'Record Payment' => __('Record Payment', 'bit-crm-sales-marketing-automation'),
 
@@ -2048,6 +2058,12 @@ return [
     'Note' => __('Note', 'bit-crm-sales-marketing-automation'),
 
     'Optional note about this payment' => __('Optional note about this payment', 'bit-crm-sales-marketing-automation'),
+
+    'Copied' => __('Copied', 'bit-crm-sales-marketing-automation'),
+
+    'Copy' => __('Copy', 'bit-crm-sales-marketing-automation'),
+
+    'Or send it directly via' => __('Or send it directly via', 'bit-crm-sales-marketing-automation'),
 
     'New Invoice' => __('New Invoice', 'bit-crm-sales-marketing-automation'),
 
@@ -2255,6 +2271,8 @@ return [
 
     'Portal Settings' => __('Portal Settings', 'bit-crm-sales-marketing-automation'),
 
+    'Product Name' => __('Product Name', 'bit-crm-sales-marketing-automation'),
+
     'Product Code/SKU' => __('Product Code/SKU', 'bit-crm-sales-marketing-automation'),
 
     'Product Type' => __('Product Type', 'bit-crm-sales-marketing-automation'),
@@ -2270,6 +2288,20 @@ return [
     'Cost Price' => __('Cost Price', 'bit-crm-sales-marketing-automation'),
 
     'Product Settings' => __('Product Settings', 'bit-crm-sales-marketing-automation'),
+
+    'Quote Prefix' => __('Quote Prefix', 'bit-crm-sales-marketing-automation'),
+
+    'Default validity (days)' => __('Default validity (days)', 'bit-crm-sales-marketing-automation'),
+
+    'Default notes and terms' => __('Default notes and terms', 'bit-crm-sales-marketing-automation'),
+
+    'Quote Settings' => __('Quote Settings', 'bit-crm-sales-marketing-automation'),
+
+    'Quote Number' => __('Quote Number', 'bit-crm-sales-marketing-automation'),
+
+    'Quote Date' => __('Quote Date', 'bit-crm-sales-marketing-automation'),
+
+    'Valid Until' => __('Valid Until', 'bit-crm-sales-marketing-automation'),
 
     'General' => __('General', 'bit-crm-sales-marketing-automation'),
 

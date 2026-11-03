@@ -35,6 +35,7 @@ const SETTINGS_KEYWORDS: Record<string, string> = {
   'invoice-settings': 'prefix payment terms',
   'mcp-server': 'ai agent claude chatgpt connector',
   'portal-settings': 'client customer portal white label',
+  'quote-settings': 'estimate proposal prefix validity',
   'smtp-settings': 'email outgoing mail sender',
   'woo-settings': 'woocommerce store shop orders'
 }
@@ -97,6 +98,12 @@ const getSettingsTabs = () => [
     keywords: 'stripe paypal gateway checkout',
     label: __('Invoice Payments'),
     path: 'invoice-settings?tab=payments'
+  },
+  {
+    capability: CAPABILITIES.SETTING.QUOTE,
+    keywords: 'estimate proposal expiry',
+    label: __('Quote Prefix & Validity'),
+    path: 'quote-settings?tab=general'
   },
   {
     capability: CAPABILITIES.SETTING.DATA_MANAGEMENT,

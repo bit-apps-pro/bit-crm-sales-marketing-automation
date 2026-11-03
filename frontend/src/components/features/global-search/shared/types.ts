@@ -13,6 +13,7 @@ export type SearchScope =
   | 'note'
   | 'pages'
   | 'product'
+  | 'quote'
   | 'task'
   | 'workflow'
 

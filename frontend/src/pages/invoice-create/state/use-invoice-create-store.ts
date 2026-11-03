@@ -30,17 +30,23 @@ interface InvoiceCreateStore {
   topSectionNotes: SectionType[]
 }
 
-const initialState = {
-  bottomSectionNotes: [
-    {
-      label: __('Notes'),
-      value: __('')
-    },
-    {
-      label: __('Terms'),
-      value: __('')
-    }
-  ],
+const defaultBottomSectionNotes = (): SectionType[] => [
+  { label: __('Notes'), value: __('') },
+  { label: __('Terms'), value: __('') }
+]
+
+const defaultTopSectionNotes = (): SectionType[] => [{ label: __('Title'), value: __('') }]
+
+export const resolveSections = (
+  position: 'bottom' | 'top',
+  sections: null | SectionType[] | undefined
+): SectionType[] => {
+  if (sections?.length) return sections
+  return position === 'top' ? defaultTopSectionNotes() : defaultBottomSectionNotes()
+}
+
+const createInitialState = () => ({
+  bottomSectionNotes: defaultBottomSectionNotes(),
   contactInformation: undefined,
   currencyData: undefined,
   dealInformation: {
@@ -53,18 +59,13 @@ const initialState = {
   },
   invoiceLineItems: [],
   invoiceNumber: '',
-  topSectionNotes: [
-    {
-      label: __('Title'),
-      value: __('')
-    }
-  ]
-}
+  topSectionNotes: defaultTopSectionNotes()
+})
 
 const useInvoiceCreateStore = create<InvoiceCreateStore>(set => ({
   actions: {
     clearStore: () => {
-      set({ ...initialState })
+      set(createInitialState())
     },
     setContactInformation: contactInformation => {
       set({ contactInformation })
@@ -111,7 +112,7 @@ const useInvoiceCreateStore = create<InvoiceCreateStore>(set => ({
       })
     }
   },
-  ...initialState
+  ...createInitialState()
 }))
 
 export const useInvoiceCurrencyDataSelect = () => useInvoiceCreateStore(state => state.currencyData)
