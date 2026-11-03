@@ -8,7 +8,7 @@ import { DatePicker, Input, Select, Typography } from 'antd'
 import { type Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 
-import { FILTER_OPERATORS_WITHOUT_VALUE } from '../shared/constants'
+import { FILTER_OPERATORS_WITHOUT_VALUE, NUMBER_FIELD_TYPES } from '../shared/constants'
 import { type FilterInputProps } from '../shared/types'
 
 export default function FilterValueInput({
@@ -18,7 +18,9 @@ export default function FilterValueInput({
   onUpdate
 }: FilterInputProps) {
   const selectedField = filterableFields.find(f => f.value === filter.field_key)
-  const fieldType = selectedField?.type
+  // Money/percentage fields are typed 'currency'/'percentage' but render a numeric input.
+  const fieldType =
+    selectedField && NUMBER_FIELD_TYPES.has(selectedField.type) ? 'number' : selectedField?.type
 
   const handleValueChange = (value: Dayjs | number | string | string[] | undefined) => {
     let processedValue: number | string | string[] | undefined

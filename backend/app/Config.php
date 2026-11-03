@@ -24,7 +24,7 @@ class Config
 
     public const VAR_PREFIX = 'bit_crm_';
 
-    public const VERSION = '1.3.2';
+    public const VERSION = '1.4.0';
 
     public const DB_VERSION = '1.0.6';
 

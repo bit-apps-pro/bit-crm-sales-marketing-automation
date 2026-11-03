@@ -93,15 +93,16 @@ class InvoicePdfTemplate
         $invoiceNumber = !empty($invoice->invoice_prefix)
             ? $invoice->invoice_prefix . '-' . $invoice->id
             : (string) $invoice->id;
+        $labels = $this->data->labels;
 
         return '<table class="no-border" style="margin-bottom: 20px;">
             <tr>
                 <td class="half-width no-border" style="padding: 0;">' . $logoHtml . '</td>
                 <td class="half-width no-border" style="padding: 0; text-align: ' . $this->endAlign . ';">
-                    <h1>' . esc_html__('INVOICE', 'bit-crm-sales-marketing-automation') . '</h1>
+                    <h1>' . esc_html($labels['title'] ?? __('INVOICE', 'bit-crm-sales-marketing-automation')) . '</h1>
                     <table class="no-border" style="width: 100%;">
                         <tr>
-                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Invoice Number:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html($labels['number'] ?? __('Invoice Number:', 'bit-crm-sales-marketing-automation')) . ' </strong></td>
                             <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($invoiceNumber) . '</td>
                         </tr>
                         <tr>
@@ -109,13 +110,14 @@ class InvoicePdfTemplate
                             <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($invoiceDate) . '</td>
                         </tr>
                         <tr>
-                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Due Date:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
+                            <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html($labels['due_date'] ?? __('Due Date:', 'bit-crm-sales-marketing-automation')) . ' </strong></td>
                             <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($dueDate) . '</td>
-                        </tr>
+                        </tr>'
+                        . (!empty($labels['hide_terms']) ? '' : '
                         <tr>
                             <td class="no-border" style="text-align: ' . $this->endAlign . ';"><strong>' . esc_html__('Terms:', 'bit-crm-sales-marketing-automation') . ' </strong></td>
                             <td class="no-border" style="text-align: ' . $this->endAlign . ';">' . $this->escape($this->data->termName) . '</td>
-                        </tr>
+                        </tr>') . '
                     </table>
                 </td>
             </tr>
@@ -233,7 +235,7 @@ class InvoicePdfTemplate
         $html = '<table class="items-table">
             <thead>
                 <tr style="background-color: #FAFAFB;">
-                    <th width="40%" style="padding: 10px">' . esc_html__('Product Name', 'bit-crm-sales-marketing-automation') . '</th>
+                    <th width="40%" style="padding: 10px">' . esc_html__('Item', 'bit-crm-sales-marketing-automation') . '</th>
                     <th style="padding: 10px; text-align: ' . $this->endAlign . ';">' . \sprintf(
             // translators: %s: currency symbol
             esc_html__('Price (%s)', 'bit-crm-sales-marketing-automation'),

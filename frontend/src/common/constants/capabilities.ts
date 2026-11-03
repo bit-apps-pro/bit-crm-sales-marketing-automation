@@ -100,6 +100,13 @@ const CAPABILITIES = {
     UPDATE: 'bit_crm_product_update',
     VIEW: 'bit_crm_product_view'
   },
+  QUOTE: {
+    CREATE: 'bit_crm_quote_create',
+    DELETE: 'bit_crm_quote_delete',
+    MENU: 'bit_crm_quote_menu',
+    UPDATE: 'bit_crm_quote_update',
+    VIEW: 'bit_crm_quote_view'
+  },
   SETTING: {
     API: 'bit_crm_setting_api',
     COMPANY: 'bit_crm_setting_company',
@@ -116,6 +123,7 @@ const CAPABILITIES = {
     MENU: 'bit_crm_setting_menu',
     PORTAL: 'bit_crm_setting_portal',
     PRODUCT: 'bit_crm_setting_product',
+    QUOTE: 'bit_crm_setting_quote',
     SMTP: 'bit_crm_setting_smtp',
     TAX: 'bit_crm_setting_tax',
     USER: 'bit_crm_setting_crm_user',

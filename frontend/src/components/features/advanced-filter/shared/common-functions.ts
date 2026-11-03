@@ -4,6 +4,7 @@ import {
   MULTI_SELECT_FIELD_TYPES,
   NON_FILTERABLE_FIELD_KEYS,
   NON_FILTERABLE_FIELD_TYPES,
+  NUMBER_FIELD_TYPES,
   SELECT_FIELD_TYPES,
   TEXT_FIELD_TYPES
 } from './constants'
@@ -20,6 +21,10 @@ export const getFieldFilterType = (fieldType: string): string => {
 
   if (TEXT_FIELD_TYPES.has(fieldType)) {
     return 'text'
+  }
+
+  if (NUMBER_FIELD_TYPES.has(fieldType)) {
+    return 'number'
   }
 
   return fieldType

@@ -11,7 +11,8 @@ class Invoice extends Model
     public const MODULE_NAME = 'invoice';
 
     public const SETTINGS_KEYS = [
-        'PREFIX' => 'invoice_prefix',
+        'PREFIX'   => 'invoice_prefix',
+        'DEFAULTS' => 'invoice_defaults',
     ];
 
     public const DEFAULT_PREFIX = 'INV';

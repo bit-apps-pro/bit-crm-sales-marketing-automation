@@ -29,16 +29,20 @@ export default function InvoiceInfoPreview({ data, logoUrl, termName }: InvoiceI
     <div className="grid grid-cols-2 items-center">
       <div>{logoUrl && <img alt={__('Business Logo')} className="w-32" src={logoUrl} />}</div>
       <div className="text-end">
-        <Typography.Title>{__('INVOICE')}</Typography.Title>
+        <Typography.Title>{data.labels?.title ?? __('INVOICE')}</Typography.Title>
         <div className="grid grid-cols-2">
-          <Typography.Text>{__('Invoice Number:')} </Typography.Text>
+          <Typography.Text>{data.labels?.number ?? __('Invoice Number:')} </Typography.Text>
           <Typography.Text>{displayNumber}</Typography.Text>
           <Typography.Text>{__('Date:')} </Typography.Text>
           <Typography.Text>{data.invoiceDate ? formatDate(data.invoiceDate) : '-'}</Typography.Text>
-          <Typography.Text>{__('Due Date:')}</Typography.Text>
+          <Typography.Text>{data.labels?.dueDate ?? __('Due Date:')}</Typography.Text>
           <Typography.Text>{data.dueDate ? formatDate(data.dueDate) : '-'}</Typography.Text>
-          <Typography.Text>{__('Terms:')}</Typography.Text>
-          <Typography.Text>{term?.label || termName || '-'}</Typography.Text>
+          {!data.labels?.hideTerms && (
+            <>
+              <Typography.Text>{__('Terms:')}</Typography.Text>
+              <Typography.Text>{term?.label || termName || '-'}</Typography.Text>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -33,6 +33,17 @@ class AdvancedFilterService
     private const FILTER_OPERATORS_WITHOUT_VALUE = ['is_empty', 'is_not_empty'];
 
     /**
+     * Form field types that reuse another type's operators. Built-in money
+     * fields are typed `currency` and tax rate `percentage`; both filter as
+     * numbers. Mirrors the list pages' filter panel and the MCP tools so the
+     * three paths stay in agreement.
+     */
+    private const FILTER_TYPE_ALIASES = [
+        'currency'   => 'number',
+        'percentage' => 'number',
+    ];
+
+    /**
      * Column identifiers a filter is allowed to reference, keyed for lookup.
      *
      * Holds the module's real columns plus its registered custom fields. Filter
@@ -113,6 +124,7 @@ class AdvancedFilterService
         $operator = $filter['operator'];
         $value = $filter['value'] ?? null;
         $fieldType = $filter['field_type'];
+        $fieldType = self::FILTER_TYPE_ALIASES[$fieldType] ?? $fieldType;
 
         if (!isset($this->allowedFieldKeys[$fieldKey])) {
             return [null, []];

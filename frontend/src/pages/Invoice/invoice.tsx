@@ -98,7 +98,11 @@ export default function Invoice() {
           stays at full A4 height, so on a phone the container kept ~1100px of height for
           a ~400px page and left a large empty gap above the sidebar.
         */}
-        <div className="w-full min-w-0 flex-1" ref={containerRef} style={{ aspectRatio: '210 / 297' }}>
+        <div
+          className="w-full min-w-0 flex-1"
+          ref={containerRef}
+          style={{ aspectRatio: '210 / 297', maxWidth: INVOICE_PAGE_WIDTH }}
+        >
           <div style={{ width: INVOICE_PAGE_WIDTH, zoom: scale }}>
             <InvoicePreview data={previewData} />
           </div>

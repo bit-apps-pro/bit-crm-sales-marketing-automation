@@ -22,6 +22,13 @@ export interface InvoicePreviewData {
   invoiceNumber: number | string
   invoicePrefix?: string
   invoiceTermKey?: string
+  /** Heading overrides for documents that reuse the invoice layout (pro quotes). */
+  labels?: {
+    dueDate?: string
+    hideTerms?: boolean
+    number?: string
+    title?: string
+  }
   lineItems: LineItem[]
   taxOption: TaxOption
   topSectionNotes: SectionType[]

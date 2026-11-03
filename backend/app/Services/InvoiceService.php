@@ -12,14 +12,57 @@ use BitApps\Crm\Model\Contact;
 use BitApps\Crm\Model\Deal;
 use BitApps\Crm\Model\Invoice;
 use BitApps\Crm\Model\LineItem;
+use BitApps\Crm\Model\Setting;
 use BitApps\Crm\src\Queue\MarkOverdueInvoicesProcess;
 use BitApps\Crm\src\StaticData\CurrencyHelper;
 use BitApps\Crm\Utils\Logger;
+use RuntimeException;
 use Throwable;
 
 class InvoiceService
 {
     private const TEMP_DIR = '/bit_crm/temp';
+
+    /**
+     * Notes a new invoice starts with, edited under Invoice Settings. Empty
+     * lists mean the create form keeps its built-in sections.
+     */
+    public function getDefaults(): array
+    {
+        $stored = SettingService::getSettingsValue(Invoice::SETTINGS_KEYS['DEFAULTS']);
+        $stored = \is_array($stored) ? $stored : [];
+
+        return [
+            'top_section_notes'    => \is_array($stored['top_section_notes'] ?? null) ? $stored['top_section_notes'] : [],
+            'bottom_section_notes' => \is_array($stored['bottom_section_notes'] ?? null) ? $stored['bottom_section_notes'] : [],
+        ];
+    }
+
+    public function saveDefaults(array $defaults): array
+    {
+        $value = [
+            'top_section_notes'    => $this->formatNotes($defaults['top_section_notes'] ?? []),
+            'bottom_section_notes' => $this->formatNotes($defaults['bottom_section_notes'] ?? []),
+        ];
+
+        $setting = Setting::findOne(['setting_key' => Invoice::SETTINGS_KEYS['DEFAULTS']]);
+
+        if (empty($setting)) {
+            $inserted = Setting::insert([
+                'setting_key'   => Invoice::SETTINGS_KEYS['DEFAULTS'],
+                'setting_value' => $value,
+                'created_by'    => get_current_user_id(),
+            ]);
+
+            if (!$inserted) {
+                throw new RuntimeException('Invoice defaults could not be saved.');
+            }
+        } else {
+            $setting->update(['setting_value' => $value, 'updated_by' => get_current_user_id()]);
+        }
+
+        return $this->getDefaults();
+    }
 
     public static function generateInvoiceFileName(string $prefix, int $id): string
     {
@@ -581,6 +624,15 @@ class InvoiceService
         $model->setExists(true);
 
         return $model;
+    }
+
+    /** Keeps only the label and text of each note section. */
+    private function formatNotes(?array $notes): array
+    {
+        return array_map(
+            fn ($note) => ['label' => (string) ($note['label'] ?? ''), 'value' => (string) ($note['value'] ?? '')],
+            array_values(array_filter($notes ?? [], 'is_array'))
+        );
     }
 
     private static function getLineItems(int $invoiceId)

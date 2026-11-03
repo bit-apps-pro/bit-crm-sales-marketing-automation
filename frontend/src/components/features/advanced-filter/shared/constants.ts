@@ -11,6 +11,8 @@ export const NEW_FILTER: FilterCondition = {
 export const FILTER_OPERATORS_WITHOUT_VALUE = ['is_empty', 'is_not_empty'] as const
 export const LOOKUP_FIELD_TYPES = ['lookup_select', 'lookup_autocomplete'] as const
 export const MULTI_SELECT_FIELD_TYPES = new Set(['checkbox', 'multi-select'])
+// Built-in money fields are typed 'currency' and tax rate 'percentage'; both filter as numbers.
+export const NUMBER_FIELD_TYPES = new Set(['currency', 'number', 'percentage'])
 export const SELECT_FIELD_TYPES = new Set(['radio', 'select', ...LOOKUP_FIELD_TYPES])
 export const TEXT_FIELD_TYPES = new Set(['text', 'textarea'])
 export const NON_FILTERABLE_FIELD_KEYS = new Set(['full_name'])
