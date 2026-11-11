@@ -37,10 +37,11 @@
       "@static/*": ["./frontend/src/static/*"],
       "@config/*": ["./frontend/src/config/*"],
       "@/*": ["./frontend/src/*"],
+      "@plugin-commons/*": ["./frontend/_plugin-commons/*"],
       "@services/*": ["./frontend/src/services/*"]
     }
   },
-  "include": ["./frontend", "./frontend/src/types", "./scripts"],
+  "include": ["./frontend", "./frontend/src/types", "./scripts", "./_bitapps-plugin-commons"],
   "exclude": ["node_modules"],
   "types": ["node", "vite/client"]
 }
