@@ -1,8 +1,10 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import CAPABILITIES from '@common/constants/capabilities'
 import { __ } from '@common/helpers/i18nWrap'
 import useMeetingStore from '@components/features/meetings/state/use-meeting-store'
 import ActivityFeed from '@features/activity-feed/activity-feed'
 import ActivityListFilterPage from '@features/activity-feed/ui/activity-list-filter-page'
+import IntegrationSettingsNavigation from '@features/integration-settings-navigation'
 import useInfiniteMeetings from '@features/meetings/data/use-meetings'
 import MeetingCreateModal from '@features/meetings/ui/meeting-create-modal'
 import MeetingEditModal from '@features/meetings/ui/meeting-edit-modal'
@@ -77,6 +79,14 @@ export default function MeetingsPage() {
             placeholder={__('Search')}
             prefix={<LuSearch />}
             type="search"
+          />
+          <IntegrationSettingsNavigation
+            capability={CAPABILITIES.ACTIVITY.VIEW}
+            label={__('Sync calendar')}
+            to="/settings/calendar-integration"
+            tooltip={__(
+              'Show your meetings and calls in your Google, Outlook, Zoho or iCloud calendar, and bring changes back.'
+            )}
           />
         </div>
       </div>

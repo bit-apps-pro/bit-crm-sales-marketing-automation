@@ -49,6 +49,7 @@ class Activity extends Model
         'is_shared'    => 'bool',
         'is_completed' => 'bool',
         'attachments'  => 'array',
+        'attributes'   => 'array',
         'due_date'     => 'siteTimeZone',
         'created_at'   => 'siteTimeZone',
         'updated_at'   => 'siteTimeZone',

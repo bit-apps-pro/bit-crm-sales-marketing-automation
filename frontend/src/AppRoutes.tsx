@@ -59,6 +59,7 @@ const FluentCartSettings = lazy(() => import('@pages/fluent-cart-settings'))
 const SureCartSettings = lazy(() => import('@pages/surecart-settings'))
 const BitFormSettings = lazy(() => import('@pages/bit-form-settings'))
 const OthersIntegrationsSettings = lazy(() => import('@pages/others-integrations-settings'))
+const CalendarIntegration = lazy(() => import('@pages/calendar-integration'))
 const McpSettings = lazy(() => import('@pages/mcp-settings'))
 const AiSettings = lazy(() => import('@pages/ai-settings'))
 const Currencies = lazy(() => import('@pages/currencies'))
@@ -144,7 +145,10 @@ export default function AppRoutes() {
 
               <Route
                 element={
-                  <ProtectedRoute capability={CAPABILITIES.SETTING.MENU}>
+                  // Calendar Integration is every user's own calendar, so activity
+                  // access also opens Settings; the sidebar and each child route
+                  // still check their own capability.
+                  <ProtectedRoute capability={[CAPABILITIES.SETTING.MENU, CAPABILITIES.ACTIVITY.VIEW]}>
                     <SettingsLayout />
                   </ProtectedRoute>
                 }
@@ -341,6 +345,14 @@ export default function AppRoutes() {
                     </ProtectedRoute>
                   }
                   path="workflow-settings"
+                />
+                <Route
+                  element={
+                    <ProtectedRoute capability={CAPABILITIES.ACTIVITY.VIEW}>
+                      <CalendarIntegration />
+                    </ProtectedRoute>
+                  }
+                  path="calendar-integration"
                 />
                 <Route
                   element={

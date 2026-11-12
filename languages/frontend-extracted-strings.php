@@ -50,6 +50,16 @@ return [
 
     'Custom Fields' => __('Custom Fields', 'bit-crm-sales-marketing-automation'),
 
+    'Minutes' => __('Minutes', 'bit-crm-sales-marketing-automation'),
+
+    'Set' => __('Set', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %d: placeholder value */
+    '%d min' => __('%d min', 'bit-crm-sales-marketing-automation'),
+
+    /* translators: %d: placeholder value */
+    '%d h' => __('%d h', 'bit-crm-sales-marketing-automation'),
+
     'Item deleted successfully.' => __('Item deleted successfully.', 'bit-crm-sales-marketing-automation'),
 
     'Status updated successfully' => __('Status updated successfully', 'bit-crm-sales-marketing-automation'),
@@ -147,6 +157,8 @@ return [
     'Not shared' => __('Not shared', 'bit-crm-sales-marketing-automation'),
 
     'Due Date' => __('Due Date', 'bit-crm-sales-marketing-automation'),
+
+    'Duration' => __('Duration', 'bit-crm-sales-marketing-automation'),
 
     'Attachments' => __('Attachments', 'bit-crm-sales-marketing-automation'),
 
@@ -948,6 +960,30 @@ return [
     'Answers' => __('Answers', 'bit-crm-sales-marketing-automation'),
 
     'Thoroughness' => __('Thoroughness', 'bit-crm-sales-marketing-automation'),
+
+    'Gmail or Google Workspace account.' => __('Gmail or Google Workspace account.', 'bit-crm-sales-marketing-automation'),
+
+    'Google Calendar' => __('Google Calendar', 'bit-crm-sales-marketing-automation'),
+
+    'Microsoft 365, work, school or Outlook.com account.' => __('Microsoft 365, work, school or Outlook.com account.', 'bit-crm-sales-marketing-automation'),
+
+    'Outlook Calendar' => __('Outlook Calendar', 'bit-crm-sales-marketing-automation'),
+
+    'Zoho account, in any Zoho data center.' => __('Zoho account, in any Zoho data center.', 'bit-crm-sales-marketing-automation'),
+
+    'Zoho Calendar' => __('Zoho Calendar', 'bit-crm-sales-marketing-automation'),
+
+    'iCloud account, on your iPhone and Mac.' => __('iCloud account, on your iPhone and Mac.', 'bit-crm-sales-marketing-automation'),
+
+    'Apple iCloud Calendar' => __('Apple iCloud Calendar', 'bit-crm-sales-marketing-automation'),
+
+    'Calendar Integration' => __('Calendar Integration', 'bit-crm-sales-marketing-automation'),
+
+    'Meetings and calls assigned to you appear in your own calendar, with a reminder 30 minutes before. Each team member sets up their own.' => __('Meetings and calls assigned to you appear in your own calendar, with a reminder 30 minutes before. Each team member sets up their own.', 'bit-crm-sales-marketing-automation'),
+
+    'Not connected' => __('Not connected', 'bit-crm-sales-marketing-automation'),
+
+    'Connect' => __('Connect', 'bit-crm-sales-marketing-automation'),
 
     'Name' => __('Name', 'bit-crm-sales-marketing-automation'),
 
@@ -2205,6 +2241,10 @@ return [
 
     'Are you sure you want to delete the lead?' => __('Are you sure you want to delete the lead?', 'bit-crm-sales-marketing-automation'),
 
+    'Sync calendar' => __('Sync calendar', 'bit-crm-sales-marketing-automation'),
+
+    'Show your meetings and calls in your Google, Outlook, Zoho or iCloud calendar, and bring changes back.' => __('Show your meetings and calls in your Google, Outlook, Zoho or iCloud calendar, and bring changes back.', 'bit-crm-sales-marketing-automation'),
+
     'Failed to complete onboarding' => __('Failed to complete onboarding', 'bit-crm-sales-marketing-automation'),
 
     'Welcome to' => __('Welcome to', 'bit-crm-sales-marketing-automation'),
@@ -2312,6 +2352,8 @@ return [
     'SMTP Settings' => __('SMTP Settings', 'bit-crm-sales-marketing-automation'),
 
     'Communication' => __('Communication', 'bit-crm-sales-marketing-automation'),
+
+    'Calendar' => __('Calendar', 'bit-crm-sales-marketing-automation'),
 
     'Woo Commerce' => __('Woo Commerce', 'bit-crm-sales-marketing-automation'),
 

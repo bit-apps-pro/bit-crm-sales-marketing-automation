@@ -7,10 +7,11 @@ const ProtectedRouteComponent = ({
   capability,
   children
 }: {
-  capability: string
+  /** One capability, or a list where any one grants access. */
+  capability: string | string[]
   children: JSX.Element
 }) => {
-  if (!checkCapability(capability)) return <AccessDenied />
+  if (![capability].flat().some(checkCapability)) return <AccessDenied />
   return children
 }
 export default ProtectedRouteComponent

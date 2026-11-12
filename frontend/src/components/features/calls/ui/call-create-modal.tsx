@@ -1,5 +1,6 @@
 import { __ } from '@common/helpers/i18nWrap'
 import config from '@config/config'
+import { siteDateTimeToUtc } from '@config/date-format'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import If from '@utilities/If'
 import { Form, Modal } from 'antd'
@@ -42,6 +43,7 @@ export default function CallCreateModal({
     const data = {
       ...values,
       attachments,
+      due_date: values.due_date ? siteDateTimeToUtc(values.due_date) : values.due_date,
       type: 'call'
     }
 

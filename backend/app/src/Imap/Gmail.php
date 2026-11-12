@@ -14,5 +14,11 @@ class Gmail extends BaseImap
         $this->sentFolder = $this->receivedFolder = 'All Mail';
 
         parent::__construct();
+
+        $allMailFolder = $this->getFolderNameByFlag('\All');
+
+        if ($allMailFolder) {
+            $this->sentFolder = $this->receivedFolder = $allMailFolder;
+        }
     }
 }

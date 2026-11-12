@@ -1,4 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
+import { siteDateTimeToUtc } from '@config/date-format'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import If from '@utilities/If'
 import { Form, Modal } from 'antd'
@@ -35,7 +36,13 @@ export default function MeetingEditModal({ fieldOptions, variant }: MeetingEditM
     const values = await form.validateFields()
     const id = Number(searchParams.get('id'))
 
-    await updateMeeting({ ...values, attachments, id, type: 'meeting' })
+    await updateMeeting({
+      ...values,
+      attachments,
+      due_date: values.due_date ? siteDateTimeToUtc(values.due_date) : values.due_date,
+      id,
+      type: 'meeting'
+    })
 
     setEditModalOpen(false)
     form.resetFields()

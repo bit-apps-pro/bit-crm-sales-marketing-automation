@@ -1,4 +1,5 @@
 import config from '@config/config'
+import dayjs, { type Dayjs } from 'dayjs'
 
 /**
  * WordPress stores `date_format`/`time_format` as **PHP** date tokens, but
@@ -96,3 +97,71 @@ export const TIME_FORMAT = phpToDayjsFormat(config.TIME_FORMAT) || DEFAULT_TIME_
 
 /** For pickers using `showTime`; mirrors `formatDateTime()` in globalHelpers. */
 export const DATE_TIME_FORMAT = `${DATE_FORMAT} ${TIME_FORMAT}`
+
+/** The UTC format the API stores dates in. */
+const API_DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
+
+/** WordPress gives an offset ("+06:00") when the site uses one, not a zone name. */
+const UTC_OFFSET_PATTERN = /^([+-])(\d{2}):?(\d{2})$/
+
+/**
+ * A date and time picked in the site's timezone, as the UTC value the API
+ * stores. The CRM shows every date in site time (the API converts on the way
+ * out), so a picked 12:00 means 12:00 site time. Sending the picker's value
+ * as it is would read it in the browser's timezone instead, and every user
+ * whose browser is not in the site's timezone would save, show and sync a
+ * different time than they picked.
+ *
+ * @param timeZone the site's zone name ("Asia/Dhaka") or UTC offset ("+06:00")
+ */
+export function siteDateTimeToUtc(value: Dayjs, timeZone: string = config.TIME_ZONE): string {
+  const wallClock = value.format('YYYY-MM-DDTHH:mm:ss')
+  const offsetMinutes = getOffsetMinutes(timeZone)
+
+  if (offsetMinutes !== undefined) {
+    return dayjs.utc(wallClock).subtract(offsetMinutes, 'minute').format(API_DATE_TIME_FORMAT)
+  }
+
+  try {
+    return dayjs
+      .tz(wallClock, timeZone || 'UTC')
+      .utc()
+      .format(API_DATE_TIME_FORMAT)
+  } catch {
+    // An unknown zone name: treat the time as UTC rather than fail the save.
+    return dayjs.utc(wallClock).format(API_DATE_TIME_FORMAT)
+  }
+}
+
+/**
+ * The reverse of siteDateTimeToUtc: a stored UTC value ("2026-11-10
+ * 06:00:00" or an ISO string) as the site-time date and time a picker shows.
+ */
+export function utcToSiteDateTime(value: string, timeZone: string = config.TIME_ZONE): Dayjs {
+  const instant = dayjs.utc(value)
+  const offsetMinutes = getOffsetMinutes(timeZone)
+  let siteTime = instant
+
+  if (offsetMinutes === undefined) {
+    try {
+      siteTime = instant.tz(timeZone || 'UTC')
+    } catch {
+      // An unknown zone name: show the time as UTC.
+    }
+  } else {
+    siteTime = instant.add(offsetMinutes, 'minute')
+  }
+
+  return dayjs(siteTime.format('YYYY-MM-DDTHH:mm:ss'))
+}
+
+/** Minutes east of UTC for an offset like "+06:00"; undefined for a zone name. */
+function getOffsetMinutes(timeZone: string): number | undefined {
+  const offset = UTC_OFFSET_PATTERN.exec(timeZone ?? '')
+
+  if (!offset) {
+    return undefined
+  }
+
+  return (Number(offset[2]) * 60 + Number(offset[3])) * (offset[1] === '-' ? -1 : 1)
+}

@@ -37,6 +37,10 @@ class ActivityService
             unset($validated['attachments']);
         }
 
+        if (empty($validated['attributes'])) {
+            unset($validated['attributes']);
+        }
+
         if (!empty($validated['is_shared'])) {
             $error = Hooks::applyFilter(HookKeys::VALIDATE_SHARED_ACTIVITY, null, (int) $validated['entity_id'], $validated['type']);
 
@@ -114,6 +118,13 @@ class ActivityService
 
         if (empty($validated['attachments'])) {
             $validated['attachments'] = null;
+        }
+
+        // Attributes are merged, so a form that sends one key keeps the rest.
+        if (empty($validated['attributes'])) {
+            unset($validated['attributes']);
+        } else {
+            $validated['attributes'] = array_merge((array) ($activity->attributes ?? []), $validated['attributes']);
         }
 
         if ($activity->update($validated)) {

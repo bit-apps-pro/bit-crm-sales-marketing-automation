@@ -13,6 +13,7 @@ import { Layout, Menu, type MenuProps, Select } from 'antd'
 import { useEffect } from 'react'
 import {
   LuBuilding2,
+  LuCalendarSync,
   LuDatabase,
   LuDollarSign,
   LuFilePen,
@@ -111,6 +112,13 @@ export const navGroups = [
   },
   {
     items: [
+      {
+        // Every user's own calendar, so activity access is enough.
+        capability: CAPABILITIES.ACTIVITY.VIEW,
+        icon: <LuCalendarSync />,
+        label: __('Calendar'),
+        path: '../settings/calendar-integration'
+      },
       {
         capability: CAPABILITIES.SETTING.INTEGRATION,
         icon: <WooCommerceIcon />,
