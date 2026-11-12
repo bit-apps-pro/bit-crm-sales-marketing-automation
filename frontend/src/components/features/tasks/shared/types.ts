@@ -7,6 +7,8 @@ export interface Activity {
   assigned_to: number
   assignee?: string
   attachments: Attachment[]
+  /** Meetings and calls: duration in minutes, the calendar invite switch, and more. */
+  attributes?: Record<string, unknown> & { duration?: number }
   details?: string
   due_date: string
   entity_id?: number

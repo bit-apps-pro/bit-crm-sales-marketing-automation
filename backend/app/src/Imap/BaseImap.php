@@ -2,6 +2,7 @@
 
 namespace BitApps\Crm\src\Imap;
 
+use BitApps\Crm\Deps\Webklex\PHPIMAP\Folder;
 use Throwable;
 
 class BaseImap
@@ -139,6 +140,30 @@ class BaseImap
         } catch (Throwable $th) {
             return [];
         }
+    }
+
+    /**
+     * Full name of the folder carrying a special-use flag (RFC 6154), e.g. '\All'.
+     *
+     * Providers translate folder names to the account language (Gmail's
+     * "All Mail" is "所有郵件" in Chinese), but the flag stays the same.
+     */
+    protected function getFolderNameByFlag(string $flag): ?string
+    {
+        if (\is_string($this->client)) {
+            return null;
+        }
+
+        try {
+            foreach ($this->client->getConnection()->folders('', '*')->validatedData() as $path => $folder) {
+                if (\in_array($flag, (array) $folder['flags'], true)) {
+                    return (new Folder($this->client, $path, $folder['delimiter'], (array) $folder['flags']))->full_name;
+                }
+            }
+        } catch (Throwable $th) {
+        }
+
+        return null;
     }
 
     protected function countMessages(string $folder, string $type): array|int

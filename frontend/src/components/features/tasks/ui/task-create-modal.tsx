@@ -1,6 +1,7 @@
 import { __ } from '@common/helpers/i18nWrap'
 // Import from the original activities feature
 import config from '@config/config'
+import { siteDateTimeToUtc } from '@config/date-format'
 import { PRIORITIES } from '@features/activity-feed/shared/activity-constants'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import If from '@utilities/If'
@@ -44,6 +45,7 @@ export default function TaskCreateModal({
     const data = {
       ...values,
       attachments,
+      due_date: values.due_date ? siteDateTimeToUtc(values.due_date) : values.due_date,
       type: 'task'
     }
 

@@ -1,6 +1,10 @@
 import { cn, formatDateTime } from '@common/helpers/globalHelpers'
 import { __ } from '@common/helpers/i18nWrap'
 import {
+  DEFAULT_DURATION_MINUTES,
+  formatDuration
+} from '@features/activity-duration/shared/format-duration'
+import {
   type ActivityPriority,
   type ActivityTypeValue
 } from '@features/activity-feed/shared/activity-types'
@@ -8,7 +12,7 @@ import AttachmentGallery from '@features/attachment-gallery'
 import { type Activity as ActivityData } from '@features/tasks/shared/types'
 import { Divider, Tag, Typography } from 'antd'
 import { type ReactNode } from 'react'
-import { LuCalendar, LuEye, LuEyeOff, LuFlag, LuPaperclip, LuUser } from 'react-icons/lu'
+import { LuCalendar, LuEye, LuEyeOff, LuFlag, LuPaperclip, LuTimer, LuUser } from 'react-icons/lu'
 
 import ActivityActions from './activity-actions'
 import ActivitySkeleton from './activity-skeleton'
@@ -108,6 +112,16 @@ export default function Activity({
         </Typography.Text>
       )
     },
+    !isTask && {
+      icon: <LuTimer />,
+      key: 'duration',
+      label: __('Duration'),
+      value: (
+        <Typography.Text strong>
+          {formatDuration(Number(activity.attributes?.duration) || DEFAULT_DURATION_MINUTES)}
+        </Typography.Text>
+      )
+    },
     isTask && {
       icon: <LuFlag />,
       key: 'priority',
@@ -125,7 +139,7 @@ export default function Activity({
       className={cn(
         // Stacked below `lg`; see activity-feed.tsx. Capped rather than `h-full` so the
         // detail pane cannot push the list and notes off the bottom of a phone screen.
-        'max-h-[60vh] min-h-0 space-y-7 overflow-y-auto transition-opacity lg:col-span-2 lg:h-full lg:max-h-none',
+        'scroller thin max-h-[60vh] min-h-0 space-y-7 overflow-y-auto transition-opacity lg:col-span-2 lg:h-full lg:max-h-none',
         isPlaceholderData && 'opacity-60'
       )}
     >

@@ -70,7 +70,7 @@ export default function ActivityNotes({ activityType, isValidSelection }: Activi
         </div>
         {total > 0 ? (
           <div
-            className="min-h-0 flex-1 space-y-4 overflow-y-auto"
+            className="scroller thin min-h-0 flex-1 space-y-4 overflow-y-auto"
             style={{
               marginInline: '-16px',
               paddingInline: '16px'

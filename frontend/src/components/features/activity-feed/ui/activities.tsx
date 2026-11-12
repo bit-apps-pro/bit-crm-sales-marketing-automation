@@ -74,7 +74,7 @@ export default function Activities({
       </div>
       {activities && activities.length > 0 ? (
         <div
-          className="min-h-0 flex-1 space-y-4 overflow-y-auto"
+          className="scroller thin min-h-0 flex-1 space-y-4 overflow-y-auto"
           ref={containerRef}
           style={{
             marginInline: '-16px',

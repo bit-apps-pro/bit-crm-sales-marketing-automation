@@ -1,4 +1,5 @@
 import { __ } from '@common/helpers/i18nWrap'
+import { siteDateTimeToUtc } from '@config/date-format'
 import useAttachmentStore from '@features/wp-media-uploader/state/use-attachment-store'
 import If from '@utilities/If'
 import { Form, Modal } from 'antd'
@@ -36,7 +37,13 @@ export default function TaskEditModal({ fieldOptions, variant }: TaskEditModalPr
     const values = await form.validateFields()
     const id = Number(searchParams.get('id'))
 
-    await updateTask({ ...values, attachments, id, type: 'task' })
+    await updateTask({
+      ...values,
+      attachments,
+      due_date: values.due_date ? siteDateTimeToUtc(values.due_date) : values.due_date,
+      id,
+      type: 'task'
+    })
 
     setEditModalOpen(false)
     form.resetFields()

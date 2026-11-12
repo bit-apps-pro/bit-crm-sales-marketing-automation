@@ -4,7 +4,7 @@ Tags: crm, sales pipeline, invoice, lead management, WooCommerce sync
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -237,6 +237,17 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Changelog ==
 
+= 1.4.1 (November 11, 2026) =
+* Features:
+   * Calendar sync (Pro): Each team member can connect their own Google, Outlook, Zoho or Apple iCloud calendar under Settings > Calendar, so meetings and calls assigned to them appear there with a reminder 30 minutes before, and changes made in the calendar come back to the CRM.
+   * Calendar invites (Pro): Meetings and calls with a contact can send the contact a calendar invite by email, which stays up to date when the meeting is changed or cancelled.
+   * Meetings and calls: Meetings and calls now have a duration, picked from common lengths or typed in minutes.
+* Improvements:
+   * AI assistant (Pro): The model list now loads from your provider once the API key is entered, and any other model id can still be typed in.
+* Fixed:
+   * Email sync: Gmail accounts set to a language other than English now sync their emails.
+   * Dates: Tasks, meetings, calls and workflow-created activities now save the due time you picked when your browser is in a different timezone from the site.
+
 = 1.4.0 (November 1, 2026) =
 * Features:
    * Quotes (Pro): Build quotes for a deal with line items, taxes, discounts and an expiry date, send them with a shareable public link or through the client portal for the client to accept or reject online, save revisions as new versions, and convert an accepted quote into an invoice.
@@ -378,5 +389,5 @@ No CRM records or personal customer data are collected. For more details about d
 
 == Upgrade Notice ==
 
-= 1.4.0 =
-Adds a Quotes module in Pro with versioning, online accept or reject and conversion to an invoice, plus default invoice notes, and fixes numeric filter operators for currency and percentage fields.
+= 1.4.1 =
+Adds two-way Google, Outlook, Zoho and iCloud calendar sync with contact invites in Pro and a duration for meetings and calls, and fixes Gmail sync for non-English accounts and due times saved from a different timezone.

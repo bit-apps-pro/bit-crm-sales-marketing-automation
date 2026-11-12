@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Mon Nov 02 2026 16:06:39 GMT+0600 (Bangladesh Standard "
+"POT-Creation-Date: Thu Nov 12 2026 15:15:07 GMT+0600 (Bangladesh Standard "
 "Time)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -146,6 +146,23 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
+#: frontend/src/components/features/activity-duration/activity-duration.tsx:57
+msgid "Minutes"
+msgstr ""
+
+#: frontend/src/components/features/activity-duration/activity-duration.tsx:62
+msgid "Set"
+msgstr ""
+
+#: frontend/src/components/features/activity-duration/shared/format-duration.ts:12
+#: frontend/src/components/features/activity-duration/shared/format-duration.ts:19
+msgid "%d min"
+msgstr ""
+
+#: frontend/src/components/features/activity-duration/shared/format-duration.ts:17
+msgid "%d h"
+msgstr ""
+
 #: frontend/src/components/features/activity-feed/data/use-delete-activity.ts:23
 msgid "Item deleted successfully."
 msgstr ""
@@ -173,13 +190,13 @@ msgid "All"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/shared/activity-constants.ts:17
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:138
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:152
 #: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:11
 msgid "Pending"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/shared/activity-constants.ts:18
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:138
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:152
 #: frontend/src/pages/Invoice/shared/invoice-payment-status.ts:9
 msgid "Completed"
 msgstr ""
@@ -310,8 +327,8 @@ msgid "Are you sure you want to delete this?"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:12
-#: frontend/src/components/features/calls/ui/call-form.tsx:63
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:63
+#: frontend/src/components/features/calls/ui/call-form.tsx:64
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:64
 #: frontend/src/components/features/tasks/ui/task-form.tsx:52
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-export-list-alert.tsx:9
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
@@ -358,7 +375,7 @@ msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter-page.tsx:23
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:23
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:114
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:128
 #: frontend/src/components/features/tasks/ui/task-form.tsx:110
 msgid "Priority"
 msgstr ""
@@ -369,9 +386,9 @@ msgid "Filter by priority"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-list-filter.tsx:15
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:88
-#: frontend/src/components/features/calls/ui/call-form.tsx:108
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:108
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:92
+#: frontend/src/components/features/calls/ui/call-form.tsx:115
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:115
 #: frontend/src/components/features/tasks/ui/task-form.tsx:97
 msgid "Assigned To"
 msgstr ""
@@ -390,13 +407,13 @@ msgid "Cancel"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-note-create-modal.tsx:78
-#: frontend/src/components/features/calls/ui/call-create-modal.tsx:82
+#: frontend/src/components/features/calls/ui/call-create-modal.tsx:84
 #: frontend/src/components/features/entity-emails/ui/empty-imap-select.tsx:16
 #: frontend/src/components/features/entity-quick-create/entity-quick-create-modal.tsx:56
 #: frontend/src/components/features/links/ui/link-create-modal.tsx:53
-#: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:81
+#: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:83
 #: frontend/src/components/features/notes/ui/note-create-modal.tsx:71
-#: frontend/src/components/features/tasks/ui/task-create-modal.tsx:91
+#: frontend/src/components/features/tasks/ui/task-create-modal.tsx:93
 #: frontend/src/pages/api-settings/ui/api-key-create-modal.tsx:47
 #: frontend/src/pages/bit-form-settings/ui/create-lead-form-modal.tsx:94
 #: frontend/src/pages/company-create/company-create.tsx:138
@@ -461,7 +478,7 @@ msgid "Edit Note"
 msgstr ""
 
 #: frontend/src/components/features/activity-feed/ui/activity-notes.tsx:39
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:50
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:54
 msgid "Select an activity"
 msgstr ""
 
@@ -485,33 +502,39 @@ msgstr ""
 msgid "Add Note"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:53
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:57
 msgid "Choose an activity from the list to view its details and attachments."
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:94
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:98
 msgid "Client Portal"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:97
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:101
 #: frontend/src/pages/imap-settings/ui/imap-item.tsx:34
 msgid "Shared"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:97
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:101
 msgid "Not shared"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:104
-#: frontend/src/components/features/calls/ui/call-form.tsx:95
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:95
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:108
+#: frontend/src/components/features/calls/ui/call-form.tsx:98
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:98
 #: frontend/src/components/features/tasks/ui/task-form.tsx:84
 #: frontend/src/pages/invoice-create/ui/invoice-information.tsx:76
 #: frontend/src/pages/invoices/ui/invoices-table.tsx:180
 msgid "Due Date"
 msgstr ""
 
-#: frontend/src/components/features/activity-feed/ui/activity.tsx:166
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:118
+#: frontend/src/components/features/calls/ui/call-form.tsx:110
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:110
+msgid "Duration"
+msgstr ""
+
+#: frontend/src/components/features/activity-feed/ui/activity.tsx:180
 #: frontend/src/components/features/attachments/attachments.tsx:46
 #: frontend/src/pages/company/company.tsx:144
 #: frontend/src/pages/contact/contact.tsx:162
@@ -696,7 +719,7 @@ msgstr ""
 #: frontend/src/components/features/ai-chat/internal/chat-shell.tsx:153
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-ai-settings-alert.tsx:15
 #: frontend/src/pages/ai-settings/ai-settings.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:152
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:160
 msgid "AI Assistant"
 msgstr ""
 
@@ -878,16 +901,16 @@ msgstr ""
 msgid "Call updated successfully"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-create-modal.tsx:94
+#: frontend/src/components/features/calls/ui/call-create-modal.tsx:96
 msgid "Create Call"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-edit-modal.tsx:83
+#: frontend/src/components/features/calls/ui/call-edit-modal.tsx:90
 #: frontend/src/components/features/form-builder/ui/edit-field-modal/edit-field-modal.tsx:62
 #: frontend/src/components/features/links/ui/link-edit-modal.tsx:71
-#: frontend/src/components/features/meetings/ui/meeting-edit-modal.tsx:80
+#: frontend/src/components/features/meetings/ui/meeting-edit-modal.tsx:87
 #: frontend/src/components/features/notes/ui/note-edit-modal.tsx:85
-#: frontend/src/components/features/tasks/ui/task-edit-modal.tsx:85
+#: frontend/src/components/features/tasks/ui/task-edit-modal.tsx:92
 #: frontend/src/pages/company/internal/company-overview/company-overview.tsx:92
 #: frontend/src/pages/contact/internal/contact-overview/contact-overview.tsx:91
 #: frontend/src/pages/currencies/ui/home-currency-edit-modal.tsx:74
@@ -901,34 +924,34 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-edit-modal.tsx:95
+#: frontend/src/components/features/calls/ui/call-edit-modal.tsx:102
 msgid "Update Call"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:65
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:65
+#: frontend/src/components/features/calls/ui/call-form.tsx:66
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:66
 #: frontend/src/components/features/tasks/ui/task-form.tsx:54
 msgid "Please select module!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:71
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:71
+#: frontend/src/components/features/calls/ui/call-form.tsx:72
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:72
 #: frontend/src/components/features/tasks/ui/task-form.tsx:60
 msgid "Entity"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:73
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:73
+#: frontend/src/components/features/calls/ui/call-form.tsx:74
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:74
 #: frontend/src/components/features/tasks/ui/task-form.tsx:62
 msgid "Please select entity!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:83
-#: frontend/src/components/features/calls/ui/call-form.tsx:121
+#: frontend/src/components/features/calls/ui/call-form.tsx:84
+#: frontend/src/components/features/calls/ui/call-form.tsx:128
 #: frontend/src/components/features/entity-emails/ui/email-compose-drawer.tsx:179
 #: frontend/src/components/features/links/ui/link-form.tsx:24
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:83
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:121
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:84
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:128
 #: frontend/src/components/features/notes/ui/note-form.tsx:61
 #: frontend/src/components/features/notes/ui/note-form.tsx:69
 #: frontend/src/components/features/tasks/ui/task-form.tsx:72
@@ -936,10 +959,10 @@ msgstr ""
 msgid "Type # to access record field values."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:84
+#: frontend/src/components/features/calls/ui/call-form.tsx:85
 #: frontend/src/components/features/links/ui/link-form.tsx:17
 #: frontend/src/components/features/links/ui/link-table.tsx:39
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:84
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:85
 #: frontend/src/components/features/notes/ui/note-form.tsx:62
 #: frontend/src/components/features/tasks/ui/task-form.tsx:73
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
@@ -950,66 +973,66 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:86
+#: frontend/src/components/features/calls/ui/call-form.tsx:87
 #: frontend/src/components/features/links/ui/link-form.tsx:19
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:86
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:87
 #: frontend/src/components/features/notes/ui/note-form.tsx:64
 #: frontend/src/components/features/tasks/ui/task-form.tsx:75
 msgid "Please input title!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:89
-#: frontend/src/components/features/calls/ui/call-form.tsx:91
+#: frontend/src/components/features/calls/ui/call-form.tsx:90
+#: frontend/src/components/features/calls/ui/call-form.tsx:92
 #: frontend/src/components/features/links/ui/link-form.tsx:21
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:89
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:91
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:90
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:92
 #: frontend/src/components/features/notes/ui/note-form.tsx:66
 #: frontend/src/components/features/tasks/ui/task-form.tsx:78
 #: frontend/src/components/features/tasks/ui/task-form.tsx:80
 msgid "Input title"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:97
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:97
+#: frontend/src/components/features/calls/ui/call-form.tsx:100
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:100
 #: frontend/src/components/features/tasks/ui/task-form.tsx:86
 msgid "Please select due date!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:103
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:103
+#: frontend/src/components/features/calls/ui/call-form.tsx:106
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:106
 #: frontend/src/components/features/tasks/ui/task-form.tsx:92
 #: frontend/src/pages/deals/internal/deals-kanban/ui/update-deal-stage-form.tsx:42
 msgid "Select date and time"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:111
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:111
+#: frontend/src/components/features/calls/ui/call-form.tsx:118
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:118
 #: frontend/src/components/features/tasks/ui/task-form.tsx:100
 msgid "Please select assigned to!"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:122
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:122
+#: frontend/src/components/features/calls/ui/call-form.tsx:129
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:129
 #: frontend/src/components/features/notes/ui/note-form.tsx:70
 #: frontend/src/components/features/tasks/ui/task-form.tsx:118
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-history-alert.tsx:11
 msgid "Details"
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:130
-#: frontend/src/components/features/calls/ui/call-form.tsx:134
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:130
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:134
+#: frontend/src/components/features/calls/ui/call-form.tsx:137
+#: frontend/src/components/features/calls/ui/call-form.tsx:141
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:137
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:141
 #: frontend/src/components/features/tasks/ui/task-form.tsx:126
 #: frontend/src/components/features/tasks/ui/task-form.tsx:130
 msgid "Details..."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:142
+#: frontend/src/components/features/calls/ui/call-form.tsx:149
 msgid "Contact will have access to this call."
 msgstr ""
 
-#: frontend/src/components/features/calls/ui/call-form.tsx:143
+#: frontend/src/components/features/calls/ui/call-form.tsx:150
 msgid "Only you and your team can see this call."
 msgstr ""
 
@@ -1623,7 +1646,7 @@ msgstr ""
 #: frontend/src/pages/deal/deal.tsx:143
 #: frontend/src/pages/Layout/ui/header/nav-items.ts:48
 #: frontend/src/pages/lead/lead.tsx:146
-#: frontend/src/pages/meetings/meetings-page.tsx:54
+#: frontend/src/pages/meetings/meetings-page.tsx:56
 msgid "Meetings"
 msgstr ""
 
@@ -1691,7 +1714,7 @@ msgstr ""
 #: frontend/src/components/features/global-search/internal/search-trigger.tsx:21
 #: frontend/src/components/features/table/ui/table-column-dropdown.tsx:33
 #: frontend/src/pages/calls/calls-page.tsx:77
-#: frontend/src/pages/meetings/meetings-page.tsx:77
+#: frontend/src/pages/meetings/meetings-page.tsx:79
 #: frontend/src/pages/tags/tags.tsx:100
 #: frontend/src/pages/tasks/tasks-page.tsx:78
 msgid "Search"
@@ -1850,19 +1873,19 @@ msgstr ""
 msgid "Meeting updated successfully"
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:93
+#: frontend/src/components/features/meetings/ui/meeting-create-modal.tsx:95
 msgid "Create Meeting"
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-edit-modal.tsx:92
+#: frontend/src/components/features/meetings/ui/meeting-edit-modal.tsx:99
 msgid "Update Meeting"
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:142
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:149
 msgid "Contact will have access to this meeting."
 msgstr ""
 
-#: frontend/src/components/features/meetings/ui/meeting-form.tsx:143
+#: frontend/src/components/features/meetings/ui/meeting-form.tsx:150
 msgid "Only you and your team can see this meeting."
 msgstr ""
 
@@ -2054,13 +2077,13 @@ msgstr ""
 
 #: frontend/src/components/features/product-line-items/shared/options.tsx:63
 #: frontend/src/components/features/product-line-items/shared/options.tsx:65
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:123
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:131
 msgid "FluentCart"
 msgstr ""
 
 #: frontend/src/components/features/product-line-items/shared/options.tsx:72
 #: frontend/src/components/features/product-line-items/shared/options.tsx:73
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:129
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:137
 msgid "SureCart"
 msgstr ""
 
@@ -2235,11 +2258,11 @@ msgstr ""
 msgid "Task updated successfully"
 msgstr ""
 
-#: frontend/src/components/features/tasks/ui/task-create-modal.tsx:103
+#: frontend/src/components/features/tasks/ui/task-create-modal.tsx:105
 msgid "Create Task"
 msgstr ""
 
-#: frontend/src/components/features/tasks/ui/task-edit-modal.tsx:97
+#: frontend/src/components/features/tasks/ui/task-edit-modal.tsx:104
 msgid "Update Task"
 msgstr ""
 
@@ -2472,6 +2495,57 @@ msgstr ""
 msgid "Thoroughness"
 msgstr ""
 
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:10
+msgid "Gmail or Google Workspace account."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:10
+msgid "Google Calendar"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:12
+msgid "Microsoft 365, work, school or Outlook.com account."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:13
+msgid "Outlook Calendar"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:15
+msgid "Zoho account, in any Zoho data center."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:15
+msgid "Zoho Calendar"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:16
+msgid "iCloud account, on your iPhone and Mac."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:16
+msgid "Apple iCloud Calendar"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:25
+#: frontend/src/pages/calendar-integration/calendar-integration.tsx:5
+msgid "Calendar Integration"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:31
+msgid ""
+"Meetings and calls assigned to you appear in your own calendar, with a "
+"reminder 30 minutes before. Each team member sets up their own."
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:55
+msgid "Not connected"
+msgstr ""
+
+#: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-calendar-integration-alert.tsx:57
+msgid "Connect"
+msgstr ""
+
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:10
 #: frontend/src/pages/api-settings/ui/api-key-table.tsx:30
 #: frontend/src/pages/data-management/internal/recycle-bin/ui/trash-table.tsx:61
@@ -2493,7 +2567,7 @@ msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-crm-users-alert.tsx:17
 #: frontend/src/pages/crm-users/crm-users.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:193
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:201
 msgid "CRM Users"
 msgstr ""
 
@@ -2631,7 +2705,7 @@ msgstr ""
 
 #: frontend/src/components/utilities/pro-feature-alert/internal/mocks/pro-mcp-settings-alert.tsx:18
 #: frontend/src/pages/mcp-settings/mcp-settings.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:158
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:166
 msgid "MCP Server"
 msgstr ""
 
@@ -2781,7 +2855,7 @@ msgid "Sorry, you are not authorized to access this page!"
 msgstr ""
 
 #: frontend/src/pages/api-settings/api-settings.tsx:29
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:199
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:207
 msgid "REST API"
 msgstr ""
 
@@ -3019,7 +3093,7 @@ msgid "Check again"
 msgstr ""
 
 #: frontend/src/pages/bit-form-settings/ui/bit-form-update-notice.tsx:29
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:135
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:143
 msgid "Bit Form"
 msgstr ""
 
@@ -3302,7 +3376,7 @@ msgid "Create & Add Another"
 msgstr ""
 
 #: frontend/src/pages/company-settings/company-settings.tsx:15
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:65
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:66
 msgid "Company Settings"
 msgstr ""
 
@@ -3334,7 +3408,7 @@ msgid "Are you sure you want to delete the company? This will be moved to Trash.
 msgstr ""
 
 #: frontend/src/pages/contact-settings/contact-settings.tsx:15
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:59
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:60
 msgid "Contact Settings"
 msgstr ""
 
@@ -3892,7 +3966,7 @@ msgid "item"
 msgstr ""
 
 #: frontend/src/pages/deal-settings/deal-settings.tsx:18
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:71
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:72
 msgid "Deal Settings"
 msgstr ""
 
@@ -4117,7 +4191,7 @@ msgid "New Task"
 msgstr ""
 
 #: frontend/src/pages/deals/internal/deals-kanban/ui/deal-card-actions.tsx:33
-#: frontend/src/pages/meetings/meetings-page.tsx:63
+#: frontend/src/pages/meetings/meetings-page.tsx:65
 msgid "New Meeting"
 msgstr ""
 
@@ -4221,7 +4295,7 @@ msgid "Kanban"
 msgstr ""
 
 #: frontend/src/pages/general-settings/general-settings.tsx:9
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:42
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:43
 msgid "General Settings"
 msgstr ""
 
@@ -4761,7 +4835,7 @@ msgid "Are you sure you want to delete the term?"
 msgstr ""
 
 #: frontend/src/pages/invoice-settings/invoice-settings.tsx:17
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:89
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:90
 msgid "Invoice Settings"
 msgstr ""
 
@@ -5103,7 +5177,7 @@ msgid "Conversion mapping saved successfully"
 msgstr ""
 
 #: frontend/src/pages/lead-settings/lead-settings.tsx:17
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:53
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:54
 msgid "Lead Settings"
 msgstr ""
 
@@ -5285,6 +5359,16 @@ msgstr ""
 msgid "Are you sure you want to delete the lead?"
 msgstr ""
 
+#: frontend/src/pages/meetings/meetings-page.tsx:85
+msgid "Sync calendar"
+msgstr ""
+
+#: frontend/src/pages/meetings/meetings-page.tsx:87
+msgid ""
+"Show your meetings and calls in your Google, Outlook, Zoho or iCloud "
+"calendar, and bring changes back."
+msgstr ""
+
 #: frontend/src/pages/onboarding/data/use-save-onboarding.ts:24
 msgid "Failed to complete onboarding"
 msgstr ""
@@ -5430,7 +5514,7 @@ msgid "Administrator permission required"
 msgstr ""
 
 #: frontend/src/pages/portal-settings/portal-settings.tsx:5
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:187
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:195
 msgid "Portal Settings"
 msgstr ""
 
@@ -5476,7 +5560,7 @@ msgid "Cost Price"
 msgstr ""
 
 #: frontend/src/pages/product-settings/product-settings.tsx:17
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:77
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:78
 msgid "Product Settings"
 msgstr ""
 
@@ -5493,7 +5577,7 @@ msgid "Default notes and terms"
 msgstr ""
 
 #: frontend/src/pages/quote-settings/quote-settings.tsx:11
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:83
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:84
 msgid "Quote Settings"
 msgstr ""
 
@@ -5509,57 +5593,61 @@ msgstr ""
 msgid "Valid Until"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:46
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:47
 msgid "General"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:93
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:94
 msgid "Entities"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:100
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:101
 msgid "IMAP Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:106
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:107
 #: frontend/src/pages/smtp-settings/smtp-settings.tsx:10
 msgid "SMTP Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:110
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:111
 msgid "Communication"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:117
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:119
+msgid "Calendar"
+msgstr ""
+
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:125
 msgid "Woo Commerce"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:141
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:149
 msgid "Others"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:145
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:153
 msgid "Integrations"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:162
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:170
 msgid "AI"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:169
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:177
 msgid "Currency Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:175
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:183
 #: frontend/src/pages/tax-settings/tax-settings.tsx:13
 msgid "Tax Settings"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:181
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:189
 msgid "Data management"
 msgstr ""
 
-#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:203
+#: frontend/src/pages/settings-layout/internal/settings-sidebar.tsx:211
 msgid "System"
 msgstr ""
 
